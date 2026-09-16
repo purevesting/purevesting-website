@@ -1,0 +1,814 @@
+/* ==========================================================================
+   PUREVESTING — SITE STYLES
+   Save at:  /assets/site.css
+
+   Every page links to this one file. There is no build step: this is plain
+   CSS the browser reads directly.
+
+   CONTENTS
+     1.  Fonts
+     2.  Tokens — colour, type, spacing. Edit here first.
+     3.  Base
+     4.  Layout
+     5.  Typography
+     6.  Links and buttons
+     7.  Header
+     8.  Footer
+     9.  Cards
+     10. Tables
+     11. Chips: passes / fails
+     12. Answer box, contents list, byline, sources
+     13. Newsletter form
+     14. Motion
+     15. Bigger screens
+   ========================================================================== */
+
+
+/* 1. FONTS ================================================================
+   The font files live in your own repo at /assets/fonts/ rather than loading
+   from Google's servers. Three reasons: the browser makes one less
+   connection (worth roughly 200ms on a slow in-app browser), you can
+   preload them, and the files never change under you.
+
+   Three files, not four: Bricolage and Plus Jakarta are "variable" fonts —
+   one file holds every weight from 200 to 800, so 400, 600 and 800 all come
+   out of a single download.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/assets/fonts/bricolage-grotesque-latin-wght.woff2') format('woff2');
+  font-weight: 200 800;        /* the weight range inside the one file */
+  font-style: normal;
+  font-display: swap;          /* show fallback text at once, swap when ready */
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('/assets/fonts/plus-jakarta-sans-latin-wght.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Mono';
+  src: url('/assets/fonts/dm-mono-latin-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* 2. TOKENS ===============================================================
+   Every colour and font is named once here, then referenced below as
+   var(--name). Change a value here and it changes everywhere it is used.
+   This is the block to edit when you want the site to look different.
+
+   Dark mode later is a copy of this block with different values inside a
+   media query — that is the whole reason nothing below holds a hex code.
+   ========================================================================== */
+
+:root {
+
+  color-scheme: light;   /* stops Android Chrome force-inverting the site */
+
+  /* --- Surfaces --- */
+  --bone:   #FAF7F0;   /* the page */
+  --white:  #FFFFFF;   /* cards and data tables */
+  --forest: #123B30;   /* footer and video cards ONLY, nowhere else */
+
+  /* --- Text --- */
+  --ink:    #1A1814;   /* body text */
+  --ink-2:  #5B5951;   /* secondary text */
+  --ink-3:  #6E6B60;   /* meta, dates, captions */
+
+  /* --- Lines --- */
+  --line:   #E7E1D4;
+
+  /* --- Green: the brand, and "passes the screen". Never "good returns". --- */
+  --green:       #0E9E6E;   /* chips, graphics, icons, large headings */
+  --green-deep:  #0A7F58;   /* white text on green, and green text links */
+  --green-tint:  #D7F2E6;   /* background of a "passes" chip */
+  --green-ink:   #0A5B41;   /* text sitting on green-tint */
+
+  /* --- Amber: a highlighter, never a fill --- */
+  --amber:  #F5A524;
+
+  /* --- Derived tokens (mine, not in your list — change freely) ---
+     Your tokens have no colour for text on the forest footer, and no softer
+     amber for the wash behind a highlighted word. These fill those gaps. */
+  --forest-text:   #F2EFE6;   /* text on --forest */
+  --forest-text-2: #A9BDB5;   /* secondary text on --forest */
+  --amber-soft:    #FDE1AE;   /* the highlighter wash behind a word */
+
+  /* --- Fonts ---
+     Fallbacks come after each comma. If a font file fails to load, the
+     browser walks down the list instead of showing nothing. No serif. */
+  --font-display: 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body:    'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:    'DM Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* --- Spacing and shape ---
+     rem = a multiple of the browser's base text size, normally 16px. Using
+     rem instead of px means the layout respects a reader who has made their
+     text larger. */
+  --wrap:      64rem;     /* widest the content ever gets */
+  --section:   3rem;      /* vertical air between big blocks */
+  --radius:    12px;
+  --radius-sm: 8px;
+  --tap:       44px;      /* minimum height of anything tappable */
+}
+
+
+/* 3. BASE =================================================================
+   Browser defaults straightened out. You will rarely touch this.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;   /* stop iOS inflating text sideways */
+}
+
+body {
+  margin: 0;
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;             /* 17px on mobile */
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;               /* the page never scrolls sideways */
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* 4. LAYOUT ===============================================================
+   Two classes do nearly all the layout work on this site.
+   ========================================================================== */
+
+/* .wrap — centres content, caps its width, keeps it off the screen edge.
+   Put one <div class="wrap"> inside the header, footer and each section. */
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* .section — vertical space between the big blocks of a page. */
+.section {
+  padding: var(--section) 0;
+}
+
+/* .grid — a stack on mobile. Add .grid-2 or .grid-3 alongside it and
+   section 15 turns it into that many columns once the screen is wide. */
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+
+/* 5. TYPOGRAPHY ===========================================================
+   Bricolage Grotesque 800 for H1 and H2 only. Plus Jakarta Sans for H3 and
+   everything else. DM Mono for figures. The sizes here are the 390px phone
+   sizes; section 15 scales them up.
+   ========================================================================== */
+
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5em;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.0;
+}
+
+h2 {
+  font-size: 1.625rem;
+  line-height: 1.05;
+  margin-top: 2.5rem;
+}
+
+h3, h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 2rem 0 0.5em;
+}
+
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+
+p {
+  margin: 0 0 1.15em;
+  max-width: 38em;      /* long lines are hard to read; this caps them */
+}
+
+/* .standfirst — the one paragraph directly under an H1. */
+.standfirst {
+  font-size: 1.1rem;
+  color: var(--ink-2);
+  max-width: 34em;
+}
+
+/* .t-green — a large heading in brand green. Only ever on H1 or H2: this
+   green is not readable at small sizes. */
+.t-green { color: var(--green); }
+
+/* .muted — secondary text anywhere. */
+.muted { color: var(--ink-2); }
+
+/* .meta — dates, captions, read time. */
+.meta {
+  font-size: 0.85rem;
+  color: var(--ink-3);
+}
+
+/* .mark — the amber highlighter. A wash behind a word, not a filled box,
+   and the text on it stays dark. Use on a word or two, never a sentence. */
+.mark {
+  background-image: linear-gradient(transparent 55%, var(--amber-soft) 55%);
+  padding: 0 0.08em;
+}
+
+/* .num — wrap every figure: <span class="num">6.36%</span>
+   tabular-nums makes every digit the same width, so figures stacked in a
+   column line up under each other.
+
+   Deliberately carries NO colour rule, and must never be given one.
+   Colouring 12.25% green and 2.80% red is a verdict written in CSS. */
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.95em;
+}
+
+
+/* 6. LINKS AND BUTTONS ====================================================
+   Everything tappable is at least 44px tall, and nothing depends on hover,
+   because a phone has no hover.
+   ========================================================================== */
+
+a {
+  color: var(--green-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover { text-decoration-thickness: 2px; }
+
+/* .btn — the solid button. Deep green, because white text on the lighter
+   --green fails contrast at this size. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0.6rem 1.35rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--green-deep);
+  border: 1px solid var(--green-deep);
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+
+.btn:hover  { background: var(--green-ink); }
+.btn:active { transform: scale(0.98); }      /* tap feedback, works on touch */
+
+/* .btn-quiet — the same shape, outlined instead of filled. */
+.btn-quiet {
+  color: var(--green-deep);
+  background: transparent;
+  border-color: var(--line);
+}
+
+.btn-quiet:hover { background: var(--white); }
+
+/* Keyboard users must be able to see where they are. Do not remove. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--green-deep);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+
+/* 7. HEADER ===============================================================
+   Pasted identically into every page. The nav wraps onto a second line by
+   itself on a narrow phone — no menu button, no JavaScript, so Google and
+   a screen reader always see the links.
+   ========================================================================== */
+
+.site-header {
+  background: var(--bone);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 1.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* The wordmark is live text set in Bricolage Grotesque, not an image. */
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  text-decoration: none;
+  margin-right: auto;          /* pushes the nav to the far side */
+}
+
+.site-logo .dot { color: var(--green); }   /* the one green mark in the name */
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.1rem;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+.site-nav a:hover { color: var(--ink); }
+
+
+/* 8. FOOTER ===============================================================
+   The one dark area of the site. Holds the newsletter form, the navigation
+   and the disclaimer that must appear on every page.
+   ========================================================================== */
+
+.site-footer {
+  margin-top: var(--section);
+  background: var(--forest);
+  color: var(--forest-text-2);
+  font-size: 0.9rem;
+}
+
+.site-footer .wrap {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.site-footer h2 {
+  font-size: 1.4rem;
+  color: var(--forest-text);
+  margin-top: 0;
+}
+
+.site-footer a {
+  color: var(--forest-text);
+  text-decoration: none;
+}
+
+.site-footer a:hover { text-decoration: underline; }
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.footer-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  font-weight: 600;
+}
+
+/* The compliance line. Required on every page — never delete it. */
+.disclaimer {
+  max-width: 44em;
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+
+/* 9. CARDS ================================================================ */
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.card h3 { margin-top: 0; }
+
+/* .card-video — the only place other than the footer where dark is allowed. */
+.card-video {
+  background: var(--forest);
+  color: var(--forest-text);
+  border-color: var(--forest);
+}
+
+.card-video a { color: var(--forest-text); }
+
+
+/* 10. TABLES ==============================================================
+   Markup shape — the scroll box is what stops a wide table dragging the
+   whole page sideways on a phone:
+
+     <div class="table-scroll">
+       <table> ... </table>
+     </div>
+   ========================================================================== */
+
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+
+th {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  white-space: nowrap;      /* stops column headings breaking mid-word */
+}
+
+tbody tr:last-child td { border-bottom: 0; }
+
+/* Figures go right-aligned so decimal points line up down the column.
+   Put class="num" on the <th> as well as on each <td>. */
+th.num, td.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* The first column is usually the fund or instrument name. */
+td:first-child { font-weight: 600; }
+
+
+/* 11. CHIPS: PASSES / FAILS ===============================================
+   Pass and fail are never shown by colour alone. Each chip carries a symbol
+   and a word too, so it still reads correctly to someone colour-blind, in a
+   black-and-white printout, or in a screenshot with a filter on it.
+   ========================================================================== */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.2em 0.6em;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.chip-pass {
+  background: var(--green-tint);
+  color: var(--green-ink);
+}
+
+/* Fail is deliberately neutral, not red. There is no red in this palette,
+   and "fails a screening rule" is not the same thing as "bad". */
+.chip-fail {
+  background: var(--bone);
+  color: var(--ink-2);
+  border: 1px solid var(--line);
+}
+
+
+/* 12. ANSWER BOX, CONTENTS, BYLINE, SOURCES =============================== */
+
+/* .answer — the three-sentence real answer, sitting above everything else
+   on an instrument page. The green edge marks it as the site's answer. */
+.answer {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.answer p:last-child { margin-bottom: 0; }
+
+/* .toc — the contents list, on any page over roughly 800 words. */
+.toc {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 0;
+  margin: 1.5rem 0;
+}
+
+.toc ol {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.toc li { margin-bottom: 0.35rem; }
+
+/* .byline — photo, name, and the last-updated date. */
+.byline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.byline img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* .source-note — the sources line under a table or a figure. */
+.source-note {
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  margin-top: 0.6rem;
+}
+
+/* .source — a tappable source chip on a single figure. Built on <details>
+   and <summary>, which open on tap with no JavaScript at all. */
+.source { display: inline; }
+
+.source summary {
+  display: inline;
+  list-style: none;
+  cursor: pointer;
+  color: var(--green-deep);
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+
+.source summary::-webkit-details-marker { display: none; }
+
+.source[open] > summary { font-weight: 600; }
+
+.source .source-body {
+  display: block;
+  margin: 0.5rem 0;
+  padding: 0.6rem 0.8rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  color: var(--ink-2);
+}
+
+
+/* .visually-hidden — text only a screen reader hears. Used for the label on
+   the newsletter input, which has a visible placeholder but still needs a
+   real label to be accessible. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+
+/* 13. NEWSLETTER FORM ===================================================== */
+
+.subscribe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  max-width: 28rem;
+  margin-top: 1rem;
+}
+
+.subscribe input[type="email"] {
+  flex: 1 1 14rem;
+  min-height: var(--tap);
+  padding: 0.6rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.subscribe .btn { flex: 0 0 auto; }
+
+
+/* 14. MOTION ==============================================================
+   Everything is visible by default. The .js class is added to <html> by one
+   line of JavaScript, so if JavaScript fails or is switched off, nothing
+   hides and nothing animates. Text never waits on an animation.
+   ========================================================================== */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Some people set their phone to reduce motion. Honour it. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+
+/* 15. BIGGER SCREENS ======================================================
+   Everything above is the 390px phone design. These blocks only add changes
+   on wider screens — that is what "mobile first" means in practice.
+   ========================================================================== */
+
+@media (min-width: 46em) {          /* tablets and up */
+
+  :root { --section: 4.5rem; }
+
+  body { font-size: 1.125rem; }     /* 18px */
+
+  h1 { font-size: 3.5rem; }
+  h2 { font-size: 2.25rem; }
+  h3 { font-size: 1.3rem; }
+
+  .standfirst { font-size: 1.25rem; }
+
+  .card   { padding: 1.75rem; }
+  .answer { padding: 1.75rem; }
+
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+
+  .site-footer .wrap {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+@media (min-width: 64em) {          /* laptops and up */
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+
+/* 16. HOME PAGE PIECES ===================================================
+   Styles used only by the home page. Kept together at the end so the rest
+   of the file stays general.
+   ========================================================================== */
+
+/* --- The screen grid ---
+   500 small squares, one per company in the Nifty 500. Filled = passes.
+   It is plain HTML: 500 <i> tags inside one <div class="screen-grid">.
+   CSS decides how many go on a row, so it reflows on any screen width. */
+
+.screen-grid {
+  display: grid;
+  grid-template-columns: repeat(25, 1fr);   /* 25 across, so 20 rows of 25 */
+  gap: 2px;
+  margin: 1.25rem 0 1rem;
+  max-width: 34rem;
+}
+
+.screen-grid i {
+  display: block;
+  aspect-ratio: 1 / 1;            /* keeps every square square */
+  border-radius: 1px;
+  background: var(--line);        /* does not pass */
+}
+
+.screen-grid i.on {
+  background: var(--green);       /* passes the screen */
+}
+
+/* The big number above the grid. */
+.screen-stat {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+  max-width: none;
+}
+
+.screen-stat .num {
+  font-family: var(--font-mono);
+  font-size: 1em;
+}
+
+/* --- The two entry routes --- */
+
+.route-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.route-list li {
+  border-bottom: 1px solid var(--line);
+}
+
+.route-list li:last-child { border-bottom: 0; }
+
+.route-list a,
+.route-list span {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0.5rem 0;
+}
+
+.route-list span { color: var(--ink-3); }   /* not built yet, so not a link */
+
+/* .soon — the small tag on a page that does not exist yet. */
+.soon {
+  margin-left: auto;
+  padding-left: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+/* --- Video cards --- */
+
+.card-video img {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.75rem;
+}
+
+.card-video h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+@media (min-width: 46em) {
+  .screen-grid {
+    grid-template-columns: repeat(50, 1fr);   /* 50 across, 10 rows */
+    max-width: 44rem;
+  }
+  .screen-stat { font-size: 2rem; }
+}
+
+
+/* ==========================================================================
+   DARK MODE GOES HERE LATER.
+   It is a copy of the :root block from section 2 with different values,
+   wrapped in @media (prefers-color-scheme: dark). Nothing else changes,
+   because nothing below section 2 contains a hex code.
+   ========================================================================== */
