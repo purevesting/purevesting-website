@@ -723,6 +723,23 @@ td:first-child { font-weight: 600; }
    of the file stays general.
    ========================================================================== */
 
+/* --- The hero tagline badge ---
+   Amber block behind dark text, sitting under the H1. Dark text, not white:
+   white on amber is unreadable, and amber is a highlighter here, not a
+   large fill, so it stays small. */
+.hero-badge {
+  display: inline-block;
+  margin: 0 0 1.25rem;
+  padding: 0.35rem 0.85rem;
+  background: var(--amber);
+  color: var(--ink);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  max-width: none;
+}
+
 /* --- The screen grid ---
    500 small squares, one per company in the Nifty 500. Filled = passes.
    It is plain HTML: 500 <i> tags inside one <div class="screen-grid">.
