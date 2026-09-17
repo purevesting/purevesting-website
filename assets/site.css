@@ -498,6 +498,12 @@ th.num, td.num {
   white-space: nowrap;
 }
 
+/* Table captions are hidden visually but read out by screen readers, which
+   is why they use .visually-hidden rather than being left out. */
+caption {
+  text-align: left;
+}
+
 /* The first column is usually the fund or instrument name. */
 td:first-child { font-weight: 600; }
 
