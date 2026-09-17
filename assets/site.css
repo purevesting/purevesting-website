@@ -332,10 +332,13 @@ input:focus-visible {
   padding-bottom: 0.5rem;
 }
 
-/* The wordmark is live text set in Bricolage Grotesque, not an image. */
+/* The icon is your real logo file, /assets/img/logo.svg. The word
+   "Purevesting" next to it is still live text, not part of the image, so it
+   stays sharp and Google can read it. */
 .site-logo {
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
   min-height: var(--tap);
   font-family: var(--font-display);
   font-weight: 800;
@@ -346,7 +349,11 @@ input:focus-visible {
   margin-right: auto;          /* pushes the nav to the far side */
 }
 
-.site-logo .dot { color: var(--green); }   /* the one green mark in the name */
+.site-logo img {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;              /* never lets the nav squash the icon */
+}
 
 .site-nav {
   display: flex;
