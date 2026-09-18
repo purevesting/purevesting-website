@@ -152,12 +152,20 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
 - [x] ~~`/instruments/epf/`~~ — built. Still needs its four source links.
 - [x] ~~`/instruments/ppf/`~~ — built. Still needs its two source links.
 - [ ] `/instruments/nps/`, `/instruments/digital-gold/`,
-      `/instruments/sukanya-samriddhi/`
-- [ ] `/instruments/` — an index page listing every instrument page. The header
-      nav links to it, so it stays commented out until this exists.
+      `/instruments/sukanya-samriddhi/` — all three are already listed as rows
+      on the `/instruments/` index marked "Page being written". When each one
+      goes live, turn its row's instrument name into a link and replace the
+      "Page being written" cell.
+- [x] ~~`/instruments/`~~ — built 18 Sep, and the "Instruments" link is now
+      LIVE in the header and footer of every page. It is not just a list: it
+      carries a summary table of where the rulings land, and the
+      compulsory-vs-voluntary through-line that runs across instruments.
 - [ ] `/newsletter/` — a dedicated page, separate from the footer form.
-- [ ] When each page goes live, turn its greyed-out "soon" line on the home
-      page into a real link, and uncomment its link in the header nav.
+- [ ] When each page goes live: turn its greyed-out "soon" line on the home
+      page into a real link, turn its row on `/instruments/` into a link, and
+      uncomment its link in the header nav if it is a top-level section.
+- [ ] **Header nav is now Instruments | Compare.** Methodology and Newsletter
+      are still commented out in every page's header, waiting on those pages.
 
 ## 5. Analytics and tracking
 

@@ -168,6 +168,14 @@ img {
   padding: var(--section) 0;
 }
 
+/* When one section follows another, their padding would stack — the first
+   one's bottom plus the second one's top — leaving roughly double the gap
+   you asked for. This drops the second one's top padding so the break
+   between two sections is one unit of space, not two. */
+.section + .section {
+  padding-top: 0;
+}
+
 /* .grid — a stack on mobile. Add .grid-2 or .grid-3 alongside it and
    section 15 turns it into that many columns once the screen is wide. */
 .grid {
@@ -197,7 +205,21 @@ h1 {
 h2 {
   font-size: 1.625rem;
   line-height: 1.05;
-  margin-top: 2.5rem;
+  margin-top: 2.5rem;    /* for an H2 that follows text inside a section */
+}
+
+/* An H2 that OPENS a section doesn't need that top margin — the section's
+   own padding already provides the space, and the two together left a big
+   empty band above every heading. Headings mid-section keep their margin. */
+.wrap > h2:first-child,
+.wrap > h3:first-child {
+  margin-top: 0;
+}
+
+/* Same idea at the other end: the last thing in a section shouldn't add its
+   own bottom margin on top of the section's padding. */
+.wrap > *:last-child {
+  margin-bottom: 0;
 }
 
 h3, h4 {
