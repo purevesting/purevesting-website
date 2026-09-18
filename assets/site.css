@@ -440,11 +440,14 @@ input:focus-visible {
 
 .card h3 { margin-top: 0; }
 
-/* .card-video — the only place other than the footer where dark is allowed. */
+/* .card-video — the only place other than the footer where dark is allowed.
+   The whole card is a link, so the underline that every other link gets has
+   to be switched off here, or the title and everything in it gets underlined. */
 .card-video {
   background: var(--forest);
   color: var(--forest-text);
   border-color: var(--forest);
+  text-decoration: none;
 }
 
 .card-video a { color: var(--forest-text); }
@@ -563,11 +566,18 @@ td:first-child { font-weight: 600; }
 }
 
 .toc ol {
-  margin: 0.5rem 0 0;
+  margin: 0.25rem 0 0;
   padding-left: 1.2rem;
 }
 
-.toc li { margin-bottom: 0.35rem; }
+/* Contents links are navigation, not prose, so they get a real tap target.
+   Inline links inside a paragraph deliberately do NOT — stretching those to
+   44px would pull the lines of text apart. */
+.toc li a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+}
 
 /* .byline — photo, name, and the last-updated date. */
 .byline {
@@ -591,14 +601,25 @@ td:first-child { font-weight: 600; }
   margin-top: 0.6rem;
 }
 
-/* .source — a tappable source chip on a single figure. Built on <details>
-   and <summary>, which open on tap with no JavaScript at all. */
-.source { display: inline; }
+/* .source — a tappable source chip. Tap it and the exact wording of the
+   source opens underneath. Built on <details> and <summary>, which open on
+   tap with no JavaScript at all — so it still works with JavaScript off.
+
+   It sits between paragraphs, never inside one: <details> is not allowed
+   inside a <p>, and putting it there produces broken HTML. */
+.source {
+  display: block;
+  margin: 0 0 1.15em;
+}
 
 .source summary {
-  display: inline;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);        /* tappable on a phone */
   list-style: none;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
   color: var(--green-deep);
   text-decoration: underline dotted;
   text-underline-offset: 3px;
