@@ -80,6 +80,25 @@ date. These are the places that don't yet.
       says that is not a claim of consensus. Worth one more pass through Indian
       darul iftas before this page gets traffic.
 
+- [ ] **NPS page — three source links point at `#`.** The PFRDA asset-class
+      description, the PFRDA scheme preference rules (to confirm the 75%/50%
+      equity caps), and the PFRDA exit and withdrawal regulations.
+- [ ] **NPS page — the exit table has a deliberate hole.** It shows only the
+      two bands both sources agreed on: under ₹8 lakh (no annuity) and above
+      ₹12 lakh (min 20% annuity). The ₹8–12 lakh band was described
+      differently by two sources, so it was left out rather than guessed.
+      Government-subscriber and premature-exit rules are also missing. Get the
+      PFRDA notification (reported as December 2025) and fill all of it from
+      that one document.
+- [ ] **NPS page — the annuity question has NO ruling attached.** This is the
+      biggest genuine gap on the site. The page says plainly that no ruling on
+      the NPS annuity requirement was found, and does not substitute a general
+      insurance ruling for one. Worth asking a mufti directly — it would be
+      original, citable material nobody else has, and it is the part of NPS
+      that is forced rather than chosen.
+- [ ] **NPS page — confirm the IslamWeb fatwa.** Fatwa 352687, dated
+      9 September 2017. Open it and confirm the wording and number.
+
 ## 2. Automating the data instead of typing it
 
 Right now every number is typed into the HTML by hand. That doesn't scale
@@ -151,8 +170,10 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
       sources, an interactive example.
 - [x] ~~`/instruments/epf/`~~ — built. Still needs its four source links.
 - [x] ~~`/instruments/ppf/`~~ — built. Still needs its two source links.
-- [ ] `/instruments/nps/`, `/instruments/digital-gold/`,
-      `/instruments/sukanya-samriddhi/` — all three are already listed as rows
+- [x] ~~`/instruments/nps/`~~ — built 18 Sep. Still needs its three source
+      links, and the annuity question is genuinely open.
+- [ ] `/instruments/digital-gold/`, `/instruments/sukanya-samriddhi/`
+      — both are already listed as rows
       on the `/instruments/` index marked "Page being written". When each one
       goes live, turn its row's instrument name into a link and replace the
       "Page being written" cell.
