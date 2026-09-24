@@ -1,0 +1,20 @@
+# .assetsignore — files that live in the repo but must NOT be published on
+# purevesting.com. Same format as .gitignore. Cloudflare reads this file
+# every time the site deploys.
+
+# Hidden folders: git's full history, and your editor settings.
+.git/
+.claude/
+.vscode/
+
+# Notes and working files that are for you, not for visitors.
+# (Delete the TODO.md line if you ever want the TODO list public.)
+TODO.md
+README.md
+_template.html
+index-old.html
+
+# Settings files the live site has no reason to show anyone.
+wrangler.jsonc
+.gitignore
+.assetsignore

@@ -3,7 +3,7 @@
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 23 September 2026
+Last updated: 24 September 2026
 
 ---
 
@@ -12,9 +12,24 @@ Last updated: 23 September 2026
 Every figure on the site is supposed to carry a source link and an "as of"
 date. These are the places that don't yet.
 
-- [ ] **Home page — the 205 of 500 figure.** The source link under the screen
-      grid points at `#`, which goes nowhere. Needs the exact NSE page the
-      205 came from. File: `index.html`, search for `href="#"`.
+- [x] ~~**Home page — the 205 of 500 figure.**~~ FIXED 24 Sep. The source
+      link now goes to NSE's Nifty500 Shariah factsheet, which lists 205
+      constituents as of 31 August 2026.
+- [ ] **Home page and compare page — "behind the Nifty 500" has no source.**
+      The home page says the Nifty500 Shariah index is behind the Nifty 500
+      over 1 and 5 years, "largely because the screen removes about 31% of the
+      market in financial services". The compare page repeats the 31%. Neither
+      figure has a source. The Nifty500 Shariah factsheet (31 Aug 2026) only
+      gives the Shariah index's own returns: price return 1.19 over 1 year and
+      6.05 over 5 years, total return 2.27 and 7.33 (all %, as printed). Get
+      the Nifty 500 factsheet for the same month-end — the obvious factsheet
+      addresses on niftyindices.com say "page not found", so go through the
+      site's Reports → Factsheets menu. Compare like with like (price with
+      price, same dates), then keep, correct or delete the sentence. Delete
+      "The comparison page shows both" either way — the compare page shows
+      funds, not the two indices. Files: `index.html` (the grey line under the
+      screen grid) and `compare/shariah-mutual-funds/index.html` (search for
+      `31%`).
 - [ ] **Compare page — the whole returns table is empty.** Every cell is a
       dash. Fill from ONE website, ONE date, Direct plan Growth option for all
       six funds. Different sites report Tata Ethical's 3-year return as 6.36%,
@@ -135,6 +150,26 @@ date. These are the places that don't yet.
       FAQ answer. The PTI quote has a typo, "aiding", shown on the page as
       "[adding]".
 
+- [ ] **Methodology page — cite AAOIFI Standard 21 directly.** AAOIFI's own
+      web page for the standard currently shows unrelated content, so the
+      30% / 30% / 5% limits are quoted from an academic paper that cites the
+      standard (Qadi, Sharma and Medda, arXiv, 2025). Get the standard's own
+      text — AAOIFI publishes its Shari'ah Standards as a book — and cite it
+      with clause numbers. File: `methodology/index.html`, search for
+      `FILL IN`.
+- [ ] **Methodology page — confirm NSE's methodology is the latest.** The
+      NSE document the page links is dated January 2020. Check niftyindices.com
+      for a newer version. If any limit changed, update step 2 AND the worked
+      example (the 25% is also written into the small script at the bottom
+      of the page).
+- [ ] **Methodology page — find Dow Jones's announcement of its September
+      2026 change.** The page says the Dow Jones Islamic Market indices went
+      from a 33% debt limit to two limits under 30% on 18 September 2026. That
+      comes from the September 2026 edition of Dow Jones's methodology
+      document and its record of changes. If S&P Dow Jones Indices published
+      an announcement of the change, link it next to the methodology as a
+      second source. (S&P's separate Shariah index family shows 30% as well.)
+
 ## 2. Automating the data instead of typing it
 
 Right now every number is typed into the HTML by hand. That doesn't scale
@@ -202,8 +237,11 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
 
 ## 4. Pages not built yet
 
-- [ ] `/methodology/` — the two screening steps, the AAOIFI limits with
-      sources, an interactive example.
+- [x] ~~`/methodology/`~~ — built 24 Sep. The two screening steps, the
+      AAOIFI and NSE limits with sources, a worked example you can change,
+      purification, what the screen does to the real market, and why halal
+      stock lists disagree. Linked from the home page's "By goal" list. Its
+      header link is still switched off — see the nav item below.
 - [x] ~~`/instruments/epf/`~~ — built. Still needs its four source links.
 - [x] ~~`/instruments/ppf/`~~ — built. Still needs its two source links.
 - [x] ~~`/instruments/nps/`~~ — built 18 Sep. Still needs its three source
@@ -230,8 +268,13 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
 - [ ] When each page goes live: turn its greyed-out "soon" line on the home
       page into a real link, turn its row on `/instruments/` into a link, and
       uncomment its link in the header nav if it is a top-level section.
-- [ ] **Header nav is now Instruments | Compare.** Methodology and Newsletter
-      are still commented out in every page's header, waiting on those pages.
+- [ ] **Header nav is still Instruments | Compare.** Methodology is built, but
+      its header link stays commented out until the newsletter page exists.
+      Then both links get switched on in one batch, so every page is
+      replaced once instead of twice. In that same batch, fix the footer on
+      the compare page and in `_template.html`: both are missing the sentence
+      "Shariah positions are quoted from the bodies that issued them…" that
+      every other page's disclaimer has (the home page got it on 24 Sep).
 
 ## 5. Analytics and tracking
 
@@ -302,12 +345,18 @@ here, which needs building before the first sponsor conversation, not after.
 
 ## 8. Housekeeping
 
-- [ ] **Rename `.gitignore.txt` to `.gitignore`** — with the `.txt` on the end
-      git ignores the file completely, so it is doing nothing right now.
-- [ ] Decide whether this TODO file should stay public. Anything in the repo
-      is reachable on the live site by anyone who guesses the address, and
-      section 6 describes commercial plans. If that's not wanted, add it to
-      `.gitignore` once that file is named correctly.
+- [x] ~~**Rename `.gitignore.txt` to `.gitignore`**~~ — checked 24 Sep: the
+      file in the repo is already called `.gitignore`.
+- [ ] **Stop publishing files that are only meant for the repo (found
+      24 Sep).** The live site publishes everything in the repo folder. That
+      includes this TODO file — anyone can read it at purevesting.com/TODO.md,
+      section 6 included — and the hidden `.git` folder, which holds the whole
+      history of the repo. `.gitignore` can't fix this: it decides what goes
+      into git, not what Cloudflare publishes. The fix is the `.assetsignore`
+      file in the repo root (sent 24 Sep). After pushing it, check that
+      purevesting.com/TODO.md and purevesting.com/.git/HEAD both show "page
+      not found". If you ever want this TODO public, delete its line from
+      `.assetsignore`.
 - [ ] Fill the Beehiiv publication address in the footer of every page —
       currently `YOUR-PUBLICATION.beehiiv.com`.
 - [ ] Paste three real YouTube video IDs into the home page video cards.
