@@ -3,7 +3,7 @@
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 18 September 2026
+Last updated: 23 September 2026
 
 ---
 
@@ -69,8 +69,10 @@ date. These are the places that don't yet.
       on the National Small Savings Fund.
 - [ ] **PPF page — confirm the rate for the CURRENT quarter.** The page states
       7.1% as notified for April–June 2026. That was also the rate for
-      January–March 2026. Check the July–September 2026 notification and update
-      both the figure and the date if it moved.
+      January–March 2026. The 30 June 2026 announcement kept every small
+      savings rate unchanged for July–September 2026, so 7.1% still holds —
+      only the date and source line on the page need updating. (The Sukanya
+      page already cites that announcement.)
 - [ ] **PPF page — confirm both Deoband fatwa references.** Fatwa
       894/876/SN=09/1437 (interest is riba) and Fatwa 634/510/B=1431 (account
       may be used for tax saving). Open both, confirm the numbers and wording.
@@ -98,6 +100,40 @@ date. These are the places that don't yet.
       that is forced rather than chosen.
 - [ ] **NPS page — confirm the IslamWeb fatwa.** Fatwa 352687, dated
       9 September 2017. Open it and confirm the wording and number.
+
+- [ ] **Digital gold page — upgrade three sources to primary ones.** Every
+      link works, but three rest on secondary sources: the provider structure
+      table (currently a comparison blog by OroPocket, a competing platform —
+      replace with MMTC-PAMP, SafeGold and Augmont's own terms), the SEBI
+      caution (currently All India Radio's report — replace with SEBI's own
+      8 November 2025 press release), and the SGB status note (currently
+      GoldenPi — replace with RBI's SGB FAQ).
+- [ ] **Digital gold page — confirm the Islamonweb quotes word for word.**
+      Ahammed Nijad PC, 26 March 2026. Note this is an analysis by a named
+      author, not a fatwa — the page says so. Islamonweb is a different site
+      from IslamWeb (cited on the NPS page).
+- [ ] **Digital gold page — ask the providers the two AAOIFI questions.**
+      Is a customer's gold tied to a specific, serial-numbered bar? Is a
+      certificate issued on the day of purchase? The page says public
+      information does not show either. A written answer from MMTC-PAMP,
+      SafeGold or Augmont would be original, citable material — same idea as
+      asking a mufti about the NPS annuity.
+
+- [ ] **Sukanya page — replace two sources with India Post's scheme page.**
+      The rate currently cites Upstox and the rules cite Wikipedia. Both work
+      as pointers, but India Post is the primary source.
+- [ ] **Sukanya page — one rule conflict to settle.** Wikipedia says the girl
+      can run the account from age 10; a 2026 source says the guardian runs it
+      until 18. The page uses 18, which matches the 2019 scheme. Confirm on
+      India Post.
+- [ ] **Sukanya page — confirm what a defaulted account earns.** The page
+      says stopping deposits does not stop the interest. That is certain for
+      years 15–21. For an account that goes into default before year 15,
+      confirm in the 2019 scheme rules which rate it keeps earning.
+- [ ] **Sukanya page — confirm the two quotes.** The Jamiat Ulama-i-Hind
+      resolution (PTI, 30 March 2019 — quote and the four names) and the TASIS
+      FAQ answer. The PTI quote has a typo, "aiding", shown on the page as
+      "[adding]".
 
 ## 2. Automating the data instead of typing it
 
@@ -172,11 +208,20 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
 - [x] ~~`/instruments/ppf/`~~ — built. Still needs its two source links.
 - [x] ~~`/instruments/nps/`~~ — built 18 Sep. Still needs its three source
       links, and the annuity question is genuinely open.
-- [ ] `/instruments/digital-gold/`, `/instruments/sukanya-samriddhi/`
-      — both are already listed as rows
-      on the `/instruments/` index marked "Page being written". When each one
-      goes live, turn its row's instrument name into a link and replace the
-      "Page being written" cell.
+- [x] ~~`/instruments/digital-gold/`~~ — built 23 Sep. Covers physical gold,
+      gold ETFs and SGBs in one comparison table as well.
+- [ ] `/instruments/sovereign-gold-bonds/` — the planning pipeline lists the
+      SGB "trap" (2.5% interest on top of the gold price) as its own priority
+      video. The gold page covers it in one row and one paragraph; a full page
+      can follow the video.
+- [x] ~~`/instruments/sukanya-samriddhi/`~~ — built 23 Sep. Every row on
+      the `/instruments/` index is now a live link.
+- [ ] **Instruments for the first website draft: DONE at five pages** — EPF,
+      PPF, NPS, digital gold, Sukanya Samriddhi (MAS's call, 23 Sep). This is
+      not the final list. More instruments get added after the first draft,
+      taken from the planning chat's pipeline doc (smallcases, foreign Islamic
+      ETFs, REITs, savings accounts, insurance, crypto and the rest). The SGB
+      page above is the natural first one.
 - [x] ~~`/instruments/`~~ — built 18 Sep, and the "Instruments" link is now
       LIVE in the header and footer of every page. It is not just a list: it
       carries a summary table of where the rulings land, and the
@@ -210,6 +255,19 @@ The plan: approach sponsors, and be paid commission on people who reach them
 from the Purevesting site. That requires proving how many people came from
 here, which needs building before the first sponsor conversation, not after.
 
+- [ ] **Commission links with tracking BOTH sides can trust (MAS, 23 Sep).**
+      A commission deal needs a count of referred people that you and the
+      sponsor both accept — not just the sponsor's own figure, and not just
+      yours. Kinds of setup to look into: a neutral third-party affiliate
+      network, where both of you log into the same dashboard; the sponsor's
+      own affiliate platform with read-only access for you; a unique coupon
+      code per channel, so every redemption is unambiguous; and UTM tags on
+      every link, so the visits appear under Purevesting's name in the
+      sponsor's own analytics. Before any deal, check the sponsor against the
+      SEBI RA guide in project knowledge — once you are registered, every paid
+      relationship must be disclosed as a conflict, and distribution
+      commissions from your own research clients are barred (section 13,
+      point 10). The items below are the starting notes on this.
 - [ ] **Decide how attribution is proved.** Two realistic options:
       (a) the sponsor gives a unique link or coupon code used only on this
       site, and their own system counts it — simplest, and the sponsor trusts
