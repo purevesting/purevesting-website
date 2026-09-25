@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SITEMAP — the list of pages Google should read on purevesting.com.
+     When a new page goes live, copy one <url> block, change the address
+     in <loc>, and set <lastmod> to the date on that page's
+     "Last updated" line (written year-month-day). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://purevesting.com/</loc>
+    <lastmod>2026-09-16</lastmod>
+  </url>
+  <url>
+    <loc>https://purevesting.com/instruments/</loc>
+    <lastmod>2026-09-18</lastmod>
+  </url>
+  <url>
+    <loc>https://purevesting.com/instruments/epf/</loc>
+    <lastmod>2026-09-18</lastmod>
+  </url>
+  <url>
+    <loc>https://purevesting.com/instruments/ppf/</loc>
+    <lastmod>2026-09-18</lastmod>
+  </url>
+  <url>
+    <loc>https://purevesting.com/instruments/nps/</loc>
+    <lastmod>2026-09-18</lastmod>
+  </url>
+  <url>
+    <loc>https://purevesting.com/instruments/digital-gold/</loc>
+    <lastmod>2026-09-23</lastmod>
+  </url>
+  <url>
+    <loc>https://purevesting.com/instruments/sukanya-samriddhi/</loc>
+    <lastmod>2026-09-23</lastmod>
+  </url>
+  <url>
+    <loc>https://purevesting.com/compare/shariah-mutual-funds/</loc>
+    <lastmod>2026-09-17</lastmod>
+  </url>
+  <url>
+    <loc>https://purevesting.com/methodology/</loc>
+    <lastmod>2026-09-24</lastmod>
+  </url>
+  <url>
+    <loc>https://purevesting.com/newsletter/</loc>
+    <lastmod>2026-09-24</lastmod>
+  </url>
+</urlset>

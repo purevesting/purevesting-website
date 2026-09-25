@@ -1,0 +1,8 @@
+# ROBOTS.TXT - tells search engines what they may read on this site.
+# Every page on purevesting.com may be crawled, and the sitemap below
+# lists them all.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://purevesting.com/sitemap.xml

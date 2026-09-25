@@ -3,7 +3,7 @@
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 24 September 2026
+Last updated: 25 September 2026
 
 ---
 
@@ -269,8 +269,9 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
       pages. Once issues exist, add a link to the Beehiiv archive of past
       issues.
 - [ ] When each page goes live: turn its greyed-out "soon" line on the home
-      page into a real link, turn its row on `/instruments/` into a link, and
-      uncomment its link in the header nav if it is a top-level section.
+      page into a real link, turn its row on `/instruments/` into a link,
+      uncomment its link in the header nav if it is a top-level section, and
+      add it to `sitemap.xml` (the file explains how).
 - [x] ~~**Header nav.**~~ DONE 24 Sep. Every page now shows Instruments |
       Compare | Methodology | Newsletter in the header, and the same four in
       the footer. The compare page and `_template.html` got the missing
@@ -279,19 +280,37 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
 
 ## 5. Analytics and tracking
 
-- [ ] **Cloudflare Web Analytics.** One script tag, no cookies, no consent
-      banner needed. The tag is already sitting commented out at the bottom of
-      every page — just needs the real token pasted in. Get it from:
-      Cloudflare dashboard → Analytics & Logs → Web Analytics → Add a site.
-- [ ] **Google Search Console.** This is not analytics — it is what shows
-      which searches people are finding the site through, and whether Google
-      can index the pages. Verify via the Cloudflare DNS method. This matters
-      more than analytics for an SEO-led site.
-- [ ] **Google Analytics (GA4).** Optional and a real decision, not automatic.
-      It gives much deeper reporting than Cloudflare, but it uses cookies,
-      which means a consent banner for European visitors and a slower page.
-      Decide whether the extra detail is worth it, or whether Cloudflare
-      Analytics plus Search Console covers what's actually needed.
+- [ ] **Cloudflare Web Analytics — use the AUTOMATIC setup (decided
+      25 Sep).** Because purevesting.com runs through Cloudflare, Cloudflare
+      adds the counting script to every page by itself — no code, no token to
+      paste. Cloudflare dashboard → Web Analytics → Add a site → pick
+      purevesting.com from the drop-down → Done. IMPORTANT: the Cloudflare
+      snippet that sits commented out at the bottom of every page must STAY
+      commented out. Automatic setup plus that snippet would count every
+      visit twice. Delete the snippet from every page in the next batch that
+      touches every page anyway.
+- [ ] **Google Search Console (steps given 25 Sep).** Not analytics — it
+      shows which Google searches bring people to the site, and whether Google
+      can read every page. Add a Domain property for purevesting.com, verify
+      it with a TXT record in Cloudflare DNS, then submit `sitemap.xml`. This
+      matters more than analytics for an SEO-led site.
+- [x] ~~**Google Analytics (GA4).**~~ DECIDED 25 Sep: not now. Cloudflare Web
+      Analytics plus Search Console cover what the site needs at this stage.
+      GA4 uses cookies, so it would need a consent banner for European
+      visitors, and it adds a heavy script to every page. Revisit when a
+      sponsor asks for audience detail Cloudflare can't give, or when paid
+      campaigns start and sign-ups need tracking to their source.
+- [ ] **Bing Webmaster Tools — after Search Console has run for a week.**
+      Bing's results also feed other search engines, such as DuckDuckGo and
+      Yahoo. Sign in at bing.com/webmasters and use the option to import from
+      Google Search Console — it copies the site and the sitemap across.
+- [ ] **Fix www.purevesting.com (found 25 Sep).** It shows a Cloudflare
+      error page (522) instead of the site. Fix: Cloudflare → Rules → the
+      "Redirect from WWW to Root" template (steps given 25 Sep). Afterwards,
+      typing www.purevesting.com should land on purevesting.com.
+- [ ] **purevesting.in redirect is "temporary" (302).** It works, but a
+      "permanent" redirect (301) is the correct signal to Google. Low
+      priority — switch it to 301 wherever that redirect was set up.
 
 ## 6. Sponsors and referral tracking
 
