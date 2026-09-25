@@ -264,17 +264,18 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
       LIVE in the header and footer of every page. It is not just a list: it
       carries a summary table of where the rulings land, and the
       compulsory-vs-voluntary through-line that runs across instruments.
-- [ ] `/newsletter/` — a dedicated page, separate from the footer form.
+- [x] ~~`/newsletter/`~~ — built 24 Sep. What an issue contains, the
+      sign-up form, and links to the methodology, instruments and compare
+      pages. Once issues exist, add a link to the Beehiiv archive of past
+      issues.
 - [ ] When each page goes live: turn its greyed-out "soon" line on the home
       page into a real link, turn its row on `/instruments/` into a link, and
       uncomment its link in the header nav if it is a top-level section.
-- [ ] **Header nav is still Instruments | Compare.** Methodology is built, but
-      its header link stays commented out until the newsletter page exists.
-      Then both links get switched on in one batch, so every page is
-      replaced once instead of twice. In that same batch, fix the footer on
-      the compare page and in `_template.html`: both are missing the sentence
-      "Shariah positions are quoted from the bodies that issued them…" that
-      every other page's disclaimer has (the home page got it on 24 Sep).
+- [x] ~~**Header nav.**~~ DONE 24 Sep. Every page now shows Instruments |
+      Compare | Methodology | Newsletter in the header, and the same four in
+      the footer. The compare page and `_template.html` got the missing
+      "Shariah positions are quoted…" sentence in the same batch, so the
+      header and footer are now identical on every page.
 
 ## 5. Analytics and tracking
 
@@ -356,7 +357,19 @@ here, which needs building before the first sponsor conversation, not after.
       file in the repo root (sent 24 Sep). After pushing it, check that
       purevesting.com/TODO.md and purevesting.com/.git/HEAD both show "page
       not found". If you ever want this TODO public, delete its line from
-      `.assetsignore`.
-- [ ] Fill the Beehiiv publication address in the footer of every page —
-      currently `YOUR-PUBLICATION.beehiiv.com`.
+      `.assetsignore`. CHECKED 24 Sep after the push: TODO.md, README.md,
+      index-old.html, _template.html and the .git folder all give "page not
+      found" on a fresh request.
+- [ ] Fill the Beehiiv publication address in the footer of every page AND
+      in the sign-up form at the top of `/newsletter/` — currently
+      `YOUR-PUBLICATION.beehiiv.com`. Search every file for `YOUR-PUBLICATION`.
+- [ ] **Then test the sign-up form yourself.** Type your own email into it
+      on the live site. The form opens your Beehiiv subscribe page in a new
+      tab. Beehiiv's help pages don't say whether that page picks up the
+      email you typed. If it arrives already filled in, nothing to do. If it
+      arrives empty (so people would have to type their email twice), switch
+      the `/newsletter/` form to Beehiiv's own embedded form instead —
+      Beehiiv: Subscribers → Subscribe forms → Create new form, choose the
+      inline layout, save, and copy the one script tag it shows you. Paste it
+      in place of the `<form>` on that page.
 - [ ] Paste three real YouTube video IDs into the home page video cards.
