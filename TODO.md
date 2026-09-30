@@ -3,7 +3,7 @@
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 25 September 2026
+Last updated: 30 September 2026
 
 ---
 
@@ -207,8 +207,41 @@ In the order they matter, from the original plan.
       position to read the exact wording it was issued in. Note the constraint:
       `<details>` cannot go inside a `<p>`, so a source chip sits between
       paragraphs, not mid-sentence.
-- [ ] **Corrections log** at `/corrections/` — mistakes made and fixed.
+- [x] ~~**Corrections log**~~ — built 30 Sep at `/corrections/`, linked in
+      the footer of every page and from the "Found something wrong here?"
+      line on every instrument page and the methodology page. It starts
+      empty: no published fact has needed correcting yet. When one does:
+      (1) fix the page; (2) add a card at the top of the log (the page has
+      a ready-made example block to copy); (3) put a "Corrected on [date]"
+      line next to the corrected page's "Last updated" date, linking to
+      the log.
 - [ ] **Purification calculator**, embedded in the relevant instrument pages.
+- [ ] **Halal finance near you: loans, cooperatives, by city (MAS, 30 Sep).**
+      The site so far covers investing. This adds borrowing and saving
+      without interest:
+      - **Loans and credit without interest** — Islamic cooperative credit
+        societies, interest-free loan (qard hasan) groups, halal wallets,
+        and whatever else actually exists and can be checked.
+      - **By city** — a visitor picks their city and sees the options near
+        them, as a map or a list.
+      - **Every Islamic cooperative in India, mapped** — name, city, what it
+        offers, its registration number and the law it is registered under.
+      Before building it:
+      - The data is the whole job. There is no official list of Islamic
+        cooperatives. Places to start: each state's Registrar of Cooperative
+        Societies, the Central Registrar's list of multi-state cooperative
+        societies, and known networks of Islamic cooperatives — then confirm
+        every entry directly before it goes up.
+      - List only what can be checked, and describe rather than recommend,
+        like the rest of the site. To many visitors a listing reads as an
+        endorsement. Schemes sold to Muslims as halal have collapsed before
+        and taken people's savings — IMA in Bengaluru, 2019, is the
+        best-known — so each listing shows its registration and regulator.
+      - Explain what protects a member's money. A credit cooperative society
+        is not a bank, and deposit insurance (DICGC) covers banks, not these
+        societies. Confirm this and say it plainly on the page.
+      - Never take a fee from a listed cooperative without disclosing it on
+        the page (see section 6).
 
 ## 3b. Visual polish — logged, not yet actioned
 
@@ -280,20 +313,15 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
 
 ## 5. Analytics and tracking
 
-- [ ] **Cloudflare Web Analytics — use the AUTOMATIC setup (decided
-      25 Sep).** Because purevesting.com runs through Cloudflare, Cloudflare
-      adds the counting script to every page by itself — no code, no token to
-      paste. Cloudflare dashboard → Web Analytics → Add a site → pick
-      purevesting.com from the drop-down → Done. IMPORTANT: the Cloudflare
-      snippet that sits commented out at the bottom of every page must STAY
-      commented out. Automatic setup plus that snippet would count every
-      visit twice. Delete the snippet from every page in the next batch that
-      touches every page anyway.
-- [ ] **Google Search Console (steps given 25 Sep).** Not analytics — it
-      shows which Google searches bring people to the site, and whether Google
-      can read every page. Add a Domain property for purevesting.com, verify
-      it with a TXT record in Cloudflare DNS, then submit `sitemap.xml`. This
-      matters more than analytics for an SEO-led site.
+- [x] ~~**Cloudflare Web Analytics**~~ — DONE 30 Sep, automatic setup:
+      Cloudflare adds the counting script to every page by itself. The old
+      commented-out snippet at the bottom of every page was removed on
+      30 Sep and replaced with a one-line note saying so. Never paste a
+      Cloudflare snippet into a page — it would count every visit twice.
+- [x] ~~**Google Search Console**~~ — DONE 30 Sep. Once a week, open the
+      Performance report (which searches found the site) and the Sitemaps
+      page (`sitemap.xml` should show status "Success"). The first search
+      data takes a few days to appear.
 - [x] ~~**Google Analytics (GA4).**~~ DECIDED 25 Sep: not now. Cloudflare Web
       Analytics plus Search Console cover what the site needs at this stage.
       GA4 uses cookies, so it would need a consent banner for European
@@ -304,10 +332,8 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
       Bing's results also feed other search engines, such as DuckDuckGo and
       Yahoo. Sign in at bing.com/webmasters and use the option to import from
       Google Search Console — it copies the site and the sitemap across.
-- [ ] **Fix www.purevesting.com (found 25 Sep).** It shows a Cloudflare
-      error page (522) instead of the site. Fix: Cloudflare → Rules → the
-      "Redirect from WWW to Root" template (steps given 25 Sep). Afterwards,
-      typing www.purevesting.com should land on purevesting.com.
+- [x] ~~**Fix www.purevesting.com**~~ — CHECKED 30 Sep: www.purevesting.com
+      now opens the site instead of the Cloudflare 522 error page.
 - [ ] **purevesting.in redirect is "temporary" (302).** It works, but a
       "permanent" redirect (301) is the correct signal to Google. Low
       priority — switch it to 301 wherever that redirect was set up.
