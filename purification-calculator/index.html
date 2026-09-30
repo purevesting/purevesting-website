@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FAF7F0">
+
+<!-- ==================================================================
+     PER-PAGE BLOCK — only these six lines differ from page to page.
+     ================================================================== -->
+
+<title>Purification calculator: how much to give away from shares</title>
+<meta name="description" content="Work out how much to give away to purify income from Shariah-compliant shares, with the three common methods side by side: dividend-based, AAOIFI and TASIS.">
+<link rel="canonical" href="https://purevesting.com/purification-calculator/">
+<meta property="og:title" content="Purification calculator: how much to give away from shares">
+<meta property="og:description" content="Three common ways to work out purification, side by side, for any company, and why their answers can be far apart.">
+<meta property="og:url" content="https://purevesting.com/purification-calculator/">
+
+<!-- ================ END PER-PAGE BLOCK ============================== -->
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Purevesting">
+<meta property="og:image" content="https://purevesting.com/assets/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="/assets/site.css">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+
+<!-- ==================================================================
+     HEADER — identical in every page. Never edit this per page.
+     ================================================================== -->
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-logo" href="/">
+      <img src="/assets/img/logo.svg" width="28" height="28" alt="">
+      Purevesting
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/instruments/">Instruments</a>
+      <a href="/compare/shariah-mutual-funds/">Compare</a>
+      <a href="/methodology/">Methodology</a>
+      <a href="/newsletter/">Newsletter</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ======================= END HEADER =============================== -->
+
+
+<main>
+
+  <section class="section">
+    <div class="wrap">
+
+      <h1>How much should you give away to <span class="t-green">purify</span> your shares?</h1>
+
+      <!-- THE ANSWER BOX: three sentences, the real answer, before
+           anything else on the page. Never expand this past three. -->
+      <div class="answer">
+        <p>When a Shariah-compliant company earns some interest, its investors
+           are expected to give away their share of that income to charity —
+           this is called purification. There are three common ways to work
+           out "your share", and they can differ a lot: one takes a slice of
+           your dividend, while the other two take your share of all the
+           interest the company earned that year. The calculator below works
+           out all three for any company, so you can take the numbers to your
+           scholar.</p>
+      </div>
+
+      <div class="byline">
+        <!-- UNCOMMENT once byline-96.webp and byline-192.webp are in
+             assets/img/. Until then it shows a broken image icon.
+        <img src="/assets/img/byline-96.webp"
+             srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
+             width="48" height="48" alt="Moin Ali Syed">
+        -->
+        <div>
+          <div><strong>Moin Ali Syed</strong></div>
+          <div class="meta">Founder, Purevesting</div>
+          <div class="meta">Last updated <time datetime="2026-09-30">30 September 2026</time> · 5 min read</div>
+        </div>
+      </div>
+
+      <nav class="toc" aria-label="Contents">
+        <strong>On this page</strong>
+        <ol>
+          <li><a href="#calculator">Work it out for your shares</a></li>
+          <li><a href="#methods">The three methods, and who uses them</a></li>
+          <li><a href="#numbers">Where to find the numbers</a></li>
+          <li><a href="#related">Related</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ol>
+      </nav>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       THE CALCULATOR
+       The table below is written out in full for the starting
+       numbers, so the page reads correctly even with JavaScript
+       switched off. The small script at the bottom of this page
+       only makes the six boxes live.
+       ============================================================ -->
+
+  <section class="section reveal">
+    <div class="wrap">
+
+      <h2 id="calculator">Work it out for your shares</h2>
+
+      <p>Take a made-up company. This year it earned ₹10,000 crore in total,
+         ₹120 crore of it as interest. It has 50 crore shares and paid a
+         dividend of ₹6 a share. You held 100 of its shares for the whole
+         year.</p>
+
+      <div class="calc-fields">
+        <p class="calc-hint" id="calc-hint" aria-live="polite">Put in any company's numbers and the table below updates.</p>
+        <div>
+          <label for="in-interest">Company's interest income (₹ crore)</label>
+          <input id="in-interest" type="number" value="120" min="0" step="any" inputmode="decimal">
+        </div>
+        <div>
+          <label for="in-total">Company's total income (₹ crore)</label>
+          <input id="in-total" type="number" value="10000" min="0" step="any" inputmode="decimal">
+        </div>
+        <div>
+          <label for="in-shares">Company's total shares (crore)</label>
+          <input id="in-shares" type="number" value="50" min="0" step="any" inputmode="decimal">
+        </div>
+        <div>
+          <label for="in-dps">Dividend per share for the year (₹)</label>
+          <input id="in-dps" type="number" value="6" min="0" step="any" inputmode="decimal">
+        </div>
+        <div>
+          <label for="in-held">Shares you hold</label>
+          <input id="in-held" type="number" value="100" min="0" step="1" inputmode="numeric">
+        </div>
+        <div>
+          <label for="in-months">Months you held them (0 to 12)</label>
+          <input id="in-months" type="number" value="12" min="0" max="12" step="1" inputmode="numeric">
+        </div>
+      </div>
+
+      <div class="table-scroll" aria-live="polite">
+        <table>
+          <caption class="visually-hidden">The amount to give away under three purification methods</caption>
+          <thead>
+            <tr>
+              <th scope="col">Method</th>
+              <th scope="col" class="num">You would give</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dividend-based <span class="cell-note">A slice of your dividend. Used by S&amp;P's Shariah indices</span></td>
+              <td class="num" id="r-div">₹7.20</td>
+            </tr>
+            <tr>
+              <td>AAOIFI method <span class="cell-note">Your share of the year's interest, if you still held the shares at the company's year-end</span></td>
+              <td class="num" id="r-aaoifi">₹240.00</td>
+            </tr>
+            <tr>
+              <td>Modified AAOIFI <span class="cell-note">The same, scaled to the months you held them. Used by TASIS</span></td>
+              <td class="num" id="r-mod">₹240.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="source-note">
+        This covers the interest the company earned. It does not work out
+        anything on profit you make from selling shares.
+      </p>
+
+      <p>With the starting numbers, the dividend-based method asks for ₹7.20
+         and the AAOIFI methods for ₹240 — <span class="mark">over 30 times
+         more</span>. The gap comes from what each method starts from. The
+         dividend-based method only purifies the part of the interest that
+         reached you as a dividend. The AAOIFI methods count your share of all
+         of it, paid out or not.</p>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       THE THREE METHODS
+       ============================================================ -->
+
+  <section class="section reveal">
+    <div class="wrap">
+
+      <h2 id="methods">The three methods, and who uses them</h2>
+
+      <p>The three formulas below are as TASIS sets them out. TASIS is the
+         Shariah adviser that screens NSE's Shariah indices, the list behind
+         this site's 205 figure.</p>
+
+      <h3>1. Dividend-based</h3>
+
+      <p><strong>Interest income ÷ total income × dividend per share × shares
+         you hold.</strong> S&amp;P Dow Jones Indices publishes its version for
+         its Shariah indices as the "dividend purification ratio". TASIS points
+         out two weaknesses: it purges only a small part of the company's
+         interest income, and in a year with no dividend, nothing is purged at
+         all.</p>
+
+      <details class="source">
+        <summary>What the sources say</summary>
+        <span class="source-body">
+          "Dividends * (Non-Permissible Revenue / Total Income) … This ratio is
+          provided to investors for purification purposes and is not a
+          compliance ratio."
+          — S&amp;P Dow Jones Indices, S&amp;P Shariah Indices methodology,
+          September 2026 edition.
+          <a href="https://www.spglobal.com/spdji/en/documents/methodologies/methodology-sp-shariah-indices.pdf">Read the methodology</a>
+          <br><br>
+          "It can be demonstrated that this method, in effect, leads to the
+          purging of only a small part of the total interest income (from as
+          little as under 5% to about 10% of the total interest income in the
+          best case scenarios) … Also, in the event a company does not pay a
+          dividend in a particular year, the interest income of that year is
+          not purged at all."
+          — TASIS, "Methodology of purging interest income".
+          <a href="https://tasis.in/knowledgecentre/islamicfinance/topic/2/19/33">Read it</a>
+        </span>
+      </details>
+
+      <h3>2. The AAOIFI method</h3>
+
+      <p><strong>Interest income ÷ the company's total shares × shares you
+         hold at the company's year-end.</strong> This counts your share of all
+         the interest the company earned that year, whether it paid a dividend
+         or not. TASIS's objection: it puts the whole year's purification on
+         whoever happens to hold the shares on the last day of the company's
+         financial year.</p>
+
+      <h3>3. Modified AAOIFI — the version TASIS uses</h3>
+
+      <p><strong>The AAOIFI amount × months you held the shares ÷ 12.</strong>
+         It spreads the purification over the time you actually held the
+         shares, so selling just before the year-end doesn't avoid it, and
+         buying just before doesn't load you with the whole year. TASIS says
+         it has adopted this version and calls it "logical and
+         equitable".</p>
+
+      <details class="source">
+        <summary>What TASIS says</summary>
+        <span class="source-body">
+          On the AAOIFI method: "there appears to be a tenuous justification
+          for laying the responsibility of purging the interest for the entire
+          year solely and entirely on the person who is found to be holding the
+          shares at the time of closing of the financial year."
+          <br><br>
+          On the modified method: "This method requires the purging of impure
+          (interest) income earned per share of a company held by an investor
+          pro-rated over the period for which the investor held those shares in
+          his portfolio … The modified AAOIFI method of purification is logical
+          and equitable."
+          — TASIS, "Methodology of purging interest income".
+          <a href="https://tasis.in/knowledgecentre/islamicfinance/topic/2/19/33">Read it</a>
+        </span>
+      </details>
+
+      <p>NSE's own methodology asks investors to purge "the pro rata portion of
+         interest income accrued on their holding of shares", which reads
+         closest to the second and third methods. Purevesting does not say
+         which method is right. Which one to follow is a question for your
+         scholar.</p>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       WHERE TO FIND THE NUMBERS
+       ============================================================ -->
+
+  <section class="section reveal">
+    <div class="wrap">
+
+      <h2 id="numbers">Where to find the numbers</h2>
+
+      <ol>
+        <li><strong>Total income and interest income</strong> — in the
+            company's annual report, in the statement of profit and loss.
+            "Total income" has a line of its own. Interest income sits inside
+            "Other income": open the note that line points to. Take both
+            figures from the same statement — reports usually have a
+            standalone and a consolidated version.</li>
+        <li><strong>Total shares</strong> — the "Equity share capital" note
+            in the same annual report gives the number of shares.</li>
+        <li><strong>Dividend per share</strong> — the dividend declared for
+            that year, in the annual report or the company's announcement to
+            the stock exchange.</li>
+        <li><strong>Your shares and months held</strong> — your broker's
+            holdings statement.</li>
+      </ol>
+
+      <p>Enter money in ₹ crore, as most Indian annual reports print it. If a
+         report prints ₹ lakh or ₹ million instead, convert first: 1 crore is
+         100 lakh, or 10 million.</p>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       RELATED
+       ============================================================ -->
+
+  <section class="section reveal">
+    <div class="wrap">
+
+      <h2 id="related">Related</h2>
+
+      <ul class="route-list">
+        <li><a href="/methodology/">How a Shariah screen decides what passes</a></li>
+        <li><a href="/instruments/">Every instrument checked so far</a></li>
+        <li><a href="/newsletter/">Get HalalEdge, one email a week</a></li>
+      </ul>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SOURCES
+       ============================================================ -->
+
+  <section class="section">
+    <div class="wrap">
+
+      <h2 id="sources">Sources</h2>
+
+      <p class="source-note">
+        The three formulas and TASIS's comments:
+        <a href="https://tasis.in/knowledgecentre/islamicfinance/topic/2/19/33">TASIS, "Methodology of purging interest income"</a>.
+        S&amp;P's formula:
+        <a href="https://www.spglobal.com/spdji/en/documents/methodologies/methodology-sp-shariah-indices.pdf">S&amp;P Dow Jones Indices, S&amp;P Shariah Indices methodology</a>,
+        September 2026 edition. NSE's wording:
+        <a href="https://www.niftyindices.com/Methodology/Method_Nifty_Shariah_Indices.pdf">NSE Indices, methodology for the Nifty Shariah indices</a>,
+        document dated January 2020. All checked
+        <time datetime="2026-09-30">30 September 2026</time>.
+      </p>
+
+      <p class="source-note">
+        Found something wrong here? Write to
+        <a href="mailto:hello@purevesting.com">hello@purevesting.com</a> and the
+        correction gets published in the <a href="/corrections/">corrections
+        log</a>, not quietly edited in.
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ==================================================================
+     FOOTER — identical in every page. Never edit this per page.
+     ================================================================== -->
+
+<footer class="site-footer">
+  <div class="wrap">
+
+    <h2>HalalEdge by Purevesting</h2>
+    <p>One email a week on Shariah screening in Indian markets. Data and
+       methodology, never recommendations.</p>
+
+    <!-- REPLACE YOUR-PUBLICATION with your Beehiiv subdomain.
+         Beehiiv: Settings -> Publication -> your web address. -->
+    <form class="subscribe" action="https://YOUR-PUBLICATION.beehiiv.com/subscribe" method="get" target="_blank" rel="noopener">
+      <label class="visually-hidden" for="footer-email">Email address</label>
+      <input id="footer-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+      <button class="btn" type="submit">Subscribe</button>
+    </form>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/instruments/">Instruments</a>
+      <a href="/compare/shariah-mutual-funds/">Compare</a>
+      <a href="/methodology/">Methodology</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/corrections/">Corrections</a>
+      <a href="mailto:hello@purevesting.com">hello@purevesting.com</a>
+    </nav>
+
+    <p class="disclaimer">
+      Educational content, not investment advice. Purevesting is not
+      registered with SEBI as a research analyst or investment adviser.
+      Nothing here is a recommendation to buy, sell or hold any security,
+      fund or product. Shariah positions are quoted from the bodies that
+      issued them and are not rulings by Purevesting — for your own situation,
+      ask a qualified scholar. Figures carry a source and a date — check them
+      against the source before acting on anything.
+    </p>
+
+  </div>
+</footer>
+
+<!-- ======================= END FOOTER =============================== -->
+
+<script src="/assets/site.js"></script>
+
+<!-- ==================================================================
+     CALCULATOR SCRIPT — used on this page only.
+     The table above already shows the answer for the starting numbers,
+     so the page is complete without this. It only makes the six boxes
+     live: each time a number changes, it works out the three amounts
+     again. Formulas are TASIS's, as quoted on the page.
+     ================================================================== -->
+<script>
+(function () {
+  var box = {
+    interest: document.getElementById('in-interest'),
+    total:    document.getElementById('in-total'),
+    shares:   document.getElementById('in-shares'),
+    dps:      document.getElementById('in-dps'),
+    held:     document.getElementById('in-held'),
+    months:   document.getElementById('in-months')
+  };
+  var hint = document.getElementById('calc-hint');
+  var out  = {
+    div:    document.getElementById('r-div'),
+    aaoifi: document.getElementById('r-aaoifi'),
+    mod:    document.getElementById('r-mod')
+  };
+  for (var k in box) { if (!box[k]) return; }
+  if (!hint || !out.div || !out.aaoifi || !out.mod) return;
+
+  // The line above the boxes swaps to the second message while any box
+  // holds something that can't be worked out, and back again after.
+  var HINT_OK  = hint.textContent;
+  var HINT_BAD = 'Each box needs a number of zero or more. Total income and ' +
+                 'total shares must be above zero, and months can be 0 to 12.';
+
+  // Rupees with Indian digit grouping and two decimals, e.g. ₹1,20,000.00
+  function rupees(x) {
+    return '₹' + x.toLocaleString('en-IN', {
+      minimumFractionDigits: 2, maximumFractionDigits: 2
+    });
+  }
+
+  function update() {
+    var v = {};
+    for (var k in box) { v[k] = parseFloat(box[k].value); }
+
+    var ok = true;
+    for (var k in v) { if (!(v[k] >= 0)) ok = false; }   // empty or negative
+    if (!(v.total > 0) || !(v.shares > 0) || v.months > 12) ok = false;
+
+    if (!ok) {
+      out.div.textContent = out.aaoifi.textContent = out.mod.textContent = '—';
+      if (hint.textContent !== HINT_BAD) hint.textContent = HINT_BAD;
+      return;
+    }
+
+    // Interest and total income are both in ₹ crore, and shares in crore,
+    // so the "crore" cancels out in each division below.
+    var dividendBased = (v.interest / v.total) * v.dps * v.held;
+    var aaoifi        = (v.interest / v.shares) * v.held;
+    var modified      = aaoifi * (v.months / 12);
+
+    out.div.textContent    = rupees(dividendBased);
+    out.aaoifi.textContent = rupees(aaoifi);
+    out.mod.textContent    = rupees(modified);
+    if (hint.textContent !== HINT_OK) hint.textContent = HINT_OK;
+  }
+
+  for (var k in box) { box[k].addEventListener('input', update); }
+})();
+</script>
+
+<!-- Visitor counting: Cloudflare Web Analytics is switched on in the
+     Cloudflare dashboard ("automatic setup") and adds its script to every
+     page by itself. Nothing needs pasting here. -->
+
+</body>
+</html>

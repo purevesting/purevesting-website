@@ -215,7 +215,32 @@ In the order they matter, from the original plan.
       a ready-made example block to copy); (3) put a "Corrected on [date]"
       line next to the corrected page's "Last updated" date, linking to
       the log.
-- [ ] **Purification calculator**, embedded in the relevant instrument pages.
+- [x] ~~**Purification calculator**~~ — built 30 Sep as its own page,
+      `/purification-calculator/`, rather than inside the instrument pages:
+      people search for it by name, and a page of its own can be shared.
+      Linked from the methodology page's purification section and from the
+      home page's "By goal" list. It shows the three common methods side by
+      side (dividend-based, AAOIFI, and TASIS's modified AAOIFI), with the
+      formulas as TASIS sets them out.
+- [ ] **Feedback form and "Ask a question" form (MAS, 30 Sep).** Two ways
+      for visitors to write in without opening their email app: a feedback
+      form (what they think of the site, what's missing) and a question form
+      (questions that could become videos, newsletter issues or new pages).
+      Every submission should reach MAS by email.
+      - The site has no server of its own, so the forms need a service that
+        receives them and emails them on. Simplest: a free form service
+        (Formspree is one) that emails each submission to
+        hello@purevesting.com. Or a Google Form, whose answers land in a
+        Google Sheet. A small Cloudflare Worker could do the same later
+        without an outside service.
+      - Add spam protection (Cloudflare Turnstile is free), or the inbox
+        fills with junk.
+      - The question form must say plainly that it can't answer personal
+        questions like "should I buy this share" — that would be investment
+        advice — and that questions may be answered publicly (a video, the
+        newsletter, a page) without the asker's name.
+      - Say what happens to the data: used only to reply, never sold — the
+        same line as the newsletter page.
 - [ ] **Halal finance near you: loans, cooperatives, by city (MAS, 30 Sep).**
       The site so far covers investing. This adds borrowing and saving
       without interest:
@@ -318,6 +343,19 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
       commented-out snippet at the bottom of every page was removed on
       30 Sep and replaced with a one-line note saying so. Never paste a
       Cloudflare snippet into a page — it would count every visit twice.
+- [ ] **Google shows a blank icon instead of the logo (MAS, 30 Sep).**
+      Two likely reasons:
+      (1) Time. Google picks up a site's icon when it crawls the home page,
+      and for a new site that can take days to weeks. To speed it up:
+      Search Console → paste https://purevesting.com/ into the search bar at
+      the top → Request indexing.
+      (2) Format. Google's favicon guide lists the formats it reads (PNG,
+      ICO, GIF, JPEG and a few others) and SVG isn't among them. Our main
+      icon is an SVG, the only PNG icon is 32×32 (Google recommends bigger
+      than 48×48), and there is no favicon.ico at the site root.
+      Fix: make a 192×192 PNG icon and a favicon.ico from the logo, list the
+      PNG first in every page's head, then request indexing again. Do it in
+      the next batch that touches every page anyway.
 - [x] ~~**Google Search Console**~~ — DONE 30 Sep. Once a week, open the
       Performance report (which searches found the site) and the Sitemaps
       page (`sitemap.xml` should show status "Success"). The first search
