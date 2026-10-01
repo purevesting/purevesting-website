@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FAF7F0">
+
+<!-- ==================================================================
+     PER-PAGE BLOCK — only these six lines differ from page to page.
+     ================================================================== -->
+
+<title>Ask a question about halal investing, or send feedback</title>
+<meta name="description" content="Send Purevesting a question about halal investing in India, or tell us what is missing or wrong on the site. Good questions may be answered in a video.">
+<link rel="canonical" href="https://purevesting.com/ask/">
+<meta property="og:title" content="Ask a question about halal investing, or send feedback">
+<meta property="og:description" content="Questions shape what Purevesting covers next. Feedback tells us what to fix.">
+<meta property="og:url" content="https://purevesting.com/ask/">
+
+<!-- ================ END PER-PAGE BLOCK ============================== -->
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Purevesting">
+<meta property="og:image" content="https://purevesting.com/assets/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="/assets/site.css">
+
+<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+
+<!-- ==================================================================
+     HEADER — identical in every page. Never edit this per page.
+     ================================================================== -->
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-logo" href="/">
+      <img src="/assets/img/logo.svg" width="28" height="28" alt="">
+      Purevesting
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/instruments/">Instruments</a>
+      <a href="/compare/shariah-mutual-funds/">Compare</a>
+      <a href="/methodology/">Methodology</a>
+      <a href="/newsletter/">Newsletter</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ======================= END HEADER =============================== -->
+
+
+<main>
+
+  <section class="section">
+    <div class="wrap">
+
+      <h1>Ask a question, or <span class="t-green">tell us what to fix</span></h1>
+
+      <p class="standfirst">Questions shape what gets covered next — videos,
+         newsletter issues and new pages. Feedback shows what is missing,
+         unclear or wrong on the site. Both arrive in Purevesting's inbox and
+         are read.</p>
+
+      <div class="byline">
+        <!-- UNCOMMENT once byline-96.webp and byline-192.webp are in
+             assets/img/. Until then it shows a broken image icon.
+        <img src="/assets/img/byline-96.webp"
+             srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
+             width="48" height="48" alt="Moin Ali Syed">
+        -->
+        <div>
+          <div><strong>Moin Ali Syed</strong></div>
+          <div class="meta">Founder, Purevesting</div>
+          <div class="meta">Last updated <time datetime="2026-09-30">30 September 2026</time></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       THE TWO FORMS
+       Both are delivered by Web3Forms, which emails each one to the
+       address that owns the access key. REPLACE YOUR-WEB3FORMS-KEY
+       (it appears twice on this page, once in each form) with the
+       key Web3Forms sends you.
+       ============================================================ -->
+
+  <section class="section reveal">
+    <div class="wrap">
+
+      <h2 id="question">Ask a question</h2>
+
+      <p>About any product, rule or ruling — EPF, a mutual fund, gold, how a
+         Shariah screen works, what purification means for you.</p>
+
+      <p class="source-note">
+        What can't be answered: personal questions like "should I buy this
+        share" or "where should I put my money" — that would be investment
+        advice, and Purevesting is not registered to give it. Good questions
+        may be answered publicly, in a video, the newsletter or on a page,
+        without your name.
+      </p>
+
+      <form class="form-stack" action="https://api.web3forms.com/submit" method="POST" data-web3forms>
+        <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-KEY">
+        <input type="hidden" name="subject" value="New question from purevesting.com">
+        <input type="hidden" name="from_name" value="Purevesting website">
+
+        <div>
+          <label for="q-question">Your question</label>
+          <textarea id="q-question" name="question" required maxlength="3000"></textarea>
+        </div>
+        <div>
+          <label for="q-name">Your name <span class="optional">(optional)</span></label>
+          <input id="q-name" type="text" name="name" autocomplete="name" maxlength="100">
+        </div>
+        <div>
+          <label for="q-email">Your email <span class="optional">(optional — only if you'd like a reply)</span></label>
+          <input id="q-email" type="email" name="email" autocomplete="email" maxlength="200">
+        </div>
+
+        <!-- A trap for spam robots: people never see this box, so only a
+             robot ticks it, and Web3Forms then throws the message away. -->
+        <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
+
+        <button class="btn" type="submit">Send question</button>
+        <p class="form-status" role="status" hidden></p>
+      </form>
+
+    </div>
+  </section>
+
+
+  <section class="section reveal">
+    <div class="wrap">
+
+      <h2 id="feedback">Send feedback</h2>
+
+      <p>Something missing, unclear or broken? Say which page, if you can. A
+         factual mistake gets checked against its source and, if the page is
+         wrong, fixed and recorded in the <a href="/corrections/">corrections
+         log</a>.</p>
+
+      <form class="form-stack" action="https://api.web3forms.com/submit" method="POST" data-web3forms>
+        <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-KEY">
+        <input type="hidden" name="subject" value="New feedback from purevesting.com">
+        <input type="hidden" name="from_name" value="Purevesting website">
+
+        <div>
+          <label for="f-feedback">Your feedback</label>
+          <textarea id="f-feedback" name="feedback" required maxlength="3000"></textarea>
+        </div>
+        <div>
+          <label for="f-page">Which page? <span class="optional">(optional)</span></label>
+          <input id="f-page" type="text" name="page" placeholder="For example, the EPF page" maxlength="200">
+        </div>
+        <div>
+          <label for="f-email">Your email <span class="optional">(optional — only if you'd like a reply)</span></label>
+          <input id="f-email" type="email" name="email" autocomplete="email" maxlength="200">
+        </div>
+
+        <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
+
+        <button class="btn" type="submit">Send feedback</button>
+        <p class="form-status" role="status" hidden></p>
+      </form>
+
+    </div>
+  </section>
+
+
+  <section class="section reveal">
+    <div class="wrap">
+
+      <h2 id="privacy">What happens to what you send</h2>
+
+      <p>Messages are delivered by email through Web3Forms, a form service.
+         Your email address is optional, is used only to reply to you, and is
+         never sold. If you would rather write directly, the address is
+         <a href="mailto:hello@purevesting.com">hello@purevesting.com</a>.</p>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ==================================================================
+     FOOTER — identical in every page. Never edit this per page.
+     ================================================================== -->
+
+<footer class="site-footer">
+  <div class="wrap">
+
+    <h2>HalalEdge by Purevesting</h2>
+    <p>One email a week on Shariah screening in Indian markets. Data and
+       methodology, never recommendations.</p>
+
+    <!-- Sign-ups go to HalalEdge's subscribe page on Beehiiv. -->
+    <form class="subscribe" action="https://halaledge.beehiiv.com/subscribe" method="get" target="_blank" rel="noopener">
+      <label class="visually-hidden" for="footer-email">Email address</label>
+      <input id="footer-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+      <button class="btn" type="submit">Subscribe</button>
+    </form>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/instruments/">Instruments</a>
+      <a href="/compare/shariah-mutual-funds/">Compare</a>
+      <a href="/methodology/">Methodology</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/corrections/">Corrections</a>
+      <a href="/ask/">Ask a question</a>
+      <a href="mailto:hello@purevesting.com">hello@purevesting.com</a>
+    </nav>
+
+    <p class="disclaimer">
+      Educational content, not investment advice. Purevesting is not
+      registered with SEBI as a research analyst or investment adviser.
+      Nothing here is a recommendation to buy, sell or hold any security,
+      fund or product. Shariah positions are quoted from the bodies that
+      issued them and are not rulings by Purevesting — for your own situation,
+      ask a qualified scholar. Figures carry a source and a date — check them
+      against the source before acting on anything.
+    </p>
+
+  </div>
+</footer>
+
+<!-- ======================= END FOOTER =============================== -->
+
+<script src="/assets/site.js"></script>
+<script src="/assets/share-card.js"></script>
+
+<!-- ==================================================================
+     FORM SCRIPT — used on this page only.
+     Without it, both forms still work: the browser sends them to
+     Web3Forms and shows Web3Forms' own "sent" page. With it, the
+     message is sent without leaving this page, and a line under the
+     button says whether it arrived.
+     ================================================================== -->
+<script>
+(function () {
+  if (!window.fetch || !Object.fromEntries) return;   // old browser: normal send
+
+  document.querySelectorAll('form[data-web3forms]').forEach(function (form) {
+    var button = form.querySelector('button[type="submit"]');
+    var status = form.querySelector('.form-status');
+
+    function say(message) {
+      status.hidden = false;
+      status.textContent = message;
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      // Until the real access key is pasted in, don't pretend to send.
+      if (form.access_key.value.indexOf('YOUR-') === 0) {
+        say('This form isn\'t connected yet. Please email hello@purevesting.com instead.');
+        return;
+      }
+
+      button.disabled = true;
+      say('Sending…');
+
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      })
+        .then(function (response) {
+          if (response.status !== 200) throw new Error('not sent');
+          form.reset();
+          say('Thank you — it has been sent.');
+        })
+        .catch(function () {
+          say('That didn\'t go through. Please try again, or email hello@purevesting.com.');
+        })
+        .then(function () {
+          button.disabled = false;
+        });
+    });
+  });
+})();
+</script>
+
+<!-- Visitor counting: Cloudflare Web Analytics is switched on in the
+     Cloudflare dashboard ("automatic setup") and adds its script to every
+     page by itself. Nothing needs pasting here. -->
+
+</body>
+</html>

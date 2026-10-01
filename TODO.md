@@ -229,25 +229,21 @@ In the order they matter, from the original plan.
       home page's "By goal" list. It shows the three common methods side by
       side (dividend-based, AAOIFI, and TASIS's modified AAOIFI), with the
       formulas as TASIS sets them out.
-- [ ] **Feedback form and "Ask a question" form (MAS, 30 Sep).** Two ways
-      for visitors to write in without opening their email app: a feedback
-      form (what they think of the site, what's missing) and a question form
-      (questions that could become videos, newsletter issues or new pages).
-      Every submission should reach MAS by email.
-      - The site has no server of its own, so the forms need a service that
-        receives them and emails them on. Simplest: a free form service
-        (Formspree is one) that emails each submission to
-        hello@purevesting.com. Or a Google Form, whose answers land in a
-        Google Sheet. A small Cloudflare Worker could do the same later
-        without an outside service.
-      - Add spam protection (Cloudflare Turnstile is free), or the inbox
-        fills with junk.
-      - The question form must say plainly that it can't answer personal
-        questions like "should I buy this share" — that would be investment
-        advice — and that questions may be answered publicly (a video, the
-        newsletter, a page) without the asker's name.
-      - Say what happens to the data: used only to reply, never sold — the
-        same line as the newsletter page.
+- [x] ~~**Feedback form and "Ask a question" form (MAS, 30 Sep)**~~ —
+      built 30 Sep at `/ask/`, linked from the footer of every page, the home
+      page's "By question" list and the corrections page. Both forms go
+      through Web3Forms (free up to 250 messages a month), which emails each
+      one to the address that owns the access key. A hidden trap box catches
+      simple spam robots. The question form says plainly that personal "should
+      I buy this" questions can't be answered, and that questions may be
+      answered publicly without the asker's name.
+- [ ] **Connect the two forms to Web3Forms (steps given 30 Sep).** Until
+      then, both forms say "This form isn't connected yet". Get an access key
+      at web3forms.com using hello@purevesting.com, then in `ask/index.html`
+      replace `YOUR-WEB3FORMS-KEY` (it appears twice) with the key. Send a
+      test question and a test feedback to yourself once it's live. Web3Forms
+      also keeps a copy of each message — in its dashboard, set the retention
+      period shorter than the default.
 - [ ] **Halal finance near you: loans, cooperatives, by city (MAS, 30 Sep).**
       The site so far covers investing. This adds borrowing and saving
       without interest:
@@ -452,9 +448,9 @@ here, which needs building before the first sponsor conversation, not after.
       `.assetsignore`. CHECKED 24 Sep after the push: TODO.md, README.md,
       index-old.html, _template.html and the .git folder all give "page not
       found" on a fresh request.
-- [ ] Fill the Beehiiv publication address in the footer of every page AND
-      in the sign-up form at the top of `/newsletter/` — currently
-      `YOUR-PUBLICATION.beehiiv.com`. Search every file for `YOUR-PUBLICATION`.
+- [x] ~~Fill the Beehiiv publication address~~ — DONE 30 Sep: every sign-up
+      form (the footer on every page, and the top of `/newsletter/`) now
+      goes to https://halaledge.beehiiv.com/subscribe.
 - [ ] **Then test the sign-up form yourself.** Type your own email into it
       on the live site. The form opens your Beehiiv subscribe page in a new
       tab. Beehiiv's help pages don't say whether that page picks up the
