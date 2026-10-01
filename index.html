@@ -10,10 +10,10 @@
      ================================================================== -->
 
 <title>Halal finance in India: investing, EPF, PPF and gold</title>
-<meta name="description" content="205 of the Nifty 500 pass a Shariah screen. Compare India's six Shariah mutual funds, see how the screen works, and check whether EPF, PPF and gold qualify. Every figure sourced.">
+<meta name="description" content="204 of the Nifty 500's companies pass a Shariah screen. Compare India's Shariah mutual funds and see where EPF, PPF and gold stand. Every figure sourced.">
 <link rel="canonical" href="https://purevesting.com/">
 <meta property="og:title" content="Halal finance in India: investing, EPF, PPF and gold">
-<meta property="og:description" content="205 of the Nifty 500 pass a Shariah screen. Compare India's six Shariah mutual funds, and check whether EPF, PPF and gold qualify.">
+<meta property="og:description" content="204 of the Nifty 500's companies pass a Shariah screen. Compare India's Shariah mutual funds and see where EPF, PPF and gold stand.">
 <meta property="og:url" content="https://purevesting.com/">
 
 <!-- ================ END PER-PAGE BLOCK ============================== -->
@@ -77,47 +77,70 @@
         site shows the working, names the Shariah authority behind every
         position, and puts a source and a date on every figure.</p>
 
-      <p class="screen-stat">
-        <span class="num">205</span> of <span class="num">500</span> companies
+      <p class="screen-stat" id="screen-stat" aria-live="polite">
+        <span class="num">204</span> of the <span class="num">501</span> companies
         in the Nifty 500 pass NSE's Shariah screen.
       </p>
 
-      <!-- The grid below is 500 <i> tags, one per company. class="on" means
+      <!-- THE SWITCH. Two buttons that redraw the grid: by companies (the
+           default, and all that shows without JavaScript) or by market
+           value. They stay hidden until the small script at the bottom of
+           this page runs. -->
+      <div class="grid-switch" role="group" aria-label="Count the grid by">
+        <button type="button" class="switch-btn" data-view="count" aria-pressed="true">By companies</button>
+        <button type="button" class="switch-btn" data-view="value" aria-pressed="false">By market value</button>
+      </div>
+
+      <!-- The grid below is one <i> tag per company — 501 in September
+           2026, because that month's Nifty 500 factsheet lists 501
+           constituents. class="on" means
            that company passes. It is generated, so do not hand-edit it.
            aria-hidden hides it from screen readers, because the sentence
            above already says the same thing in words. -->
       <div class="screen-grid" aria-hidden="true">
-      <i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i>
-      <i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i>
-      <i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i>
-      <i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i>
-      <i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i>
-      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i>
-      <i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
-      <i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i>
-      <i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i>
-      <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i>
-      <i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i>
-      <i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i>
-      <i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i>
-      <i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i>
-      <i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i>
-      <i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
-      <i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i>
-      <i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i>
-      <i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i>
-      <i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i>      </div>
+      <i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i>
+      <i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i>
+      <i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i>
+      <i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i>
+      <i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i>
+      <i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i>
+      <i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i>
+      <i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i>
+      <i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i>
+      <i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i>
+      <i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i>
+      <i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i>
+      <i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i>
+      <i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i>
+      <i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i>
+      <i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i>
+      <i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i>
+      <i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i>
+      <i class="on"></i>
+      </div>
 
       <p class="source-note">
         Each square is one company in the Nifty 500. Filled squares pass.
-        Squares are not in index order.<br>
-        Source: <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">Nifty500 Shariah Index, NSE Indices</a>
-        — as of <time datetime="2026-08-31">31 August 2026</time>.
+        Squares are not in index order. In the market-value view, each square
+        stands for an equal slice of the index's value instead.<br>
+        By market value, the companies that pass come to about 31% of the
+        Nifty 500. That is worked out from Infosys, which is 1.83% of the
+        Nifty 500 and 5.83% of the Shariah index: both indices weight each
+        company by the value of its freely traded shares, so 1.83 ÷ 5.83 is
+        the Shariah index's share of the whole.<br>
+        Sources: <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">Nifty500 Shariah</a>
+        and <a href="https://www.niftyindices.com/Factsheet/ind_nifty_500.pdf">Nifty 500</a>
+        factsheets, NSE Indices — as of <time datetime="2026-09-30">30 September 2026</time>.
       </p>
 
       <p class="meta">Over 1 year and 5 years the Nifty500 Shariah index is
-        behind the Nifty 500, largely because the screen removes about 31% of
-        the market in financial services. The comparison page shows both.</p>
+        behind the Nifty 500, as of <time datetime="2026-09-30">30 September
+        2026</time>. The two hold different businesses: financial services,
+        the Nifty 500's biggest sector, all but disappear from the Shariah
+        index. <a href="/compare/shariah-mutual-funds/#index-returns">See both
+        indices, with sources</a>.</p>
 
     </div>
   </section>
@@ -209,7 +232,8 @@
         <div>
           <div><strong>Moin Ali Syed</strong></div>
           <div class="meta">Founder, Purevesting</div>
-          <div class="meta">Last updated <time datetime="2026-09-16">16 September 2026</time></div>
+          <div class="meta">Last updated <time datetime="2026-10-01">1 October 2026</time></div>
+          <div class="meta">Corrected <time datetime="2026-10-01">1 October 2026</time> · <a href="/corrections/#log">see the corrections log</a></div>
         </div>
       </div>
     </div>
@@ -229,12 +253,9 @@
     <p>One email a week on Shariah screening in Indian markets. Data and
        methodology, never recommendations.</p>
 
-    <!-- Sign-ups go to HalalEdge's subscribe page on Beehiiv. -->
-    <form class="subscribe" action="https://halaledge.beehiiv.com/subscribe" method="get" target="_blank" rel="noopener">
-      <label class="visually-hidden" for="footer-email">Email address</label>
-      <input id="footer-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
-      <button class="btn" type="submit">Subscribe</button>
-    </form>
+    <!-- Signing up happens on the newsletter page, so nobody has to type
+         their email twice. -->
+    <p class="subscribe"><a class="btn" href="/newsletter/">Subscribe to HalalEdge</a></p>
 
     <nav class="footer-nav" aria-label="Footer">
       <a href="/">Home</a>
@@ -264,6 +285,50 @@
 
 <script src="/assets/site.js"></script>
 <script src="/assets/share-card.js"></script>
+
+<script>
+/* THE GRID SWITCH (home page only).
+   "By market value": the companies that pass are about 31.4% of the
+   Nifty 500's value (Infosys is 1.83% of the Nifty 500 and 5.83% of the
+   Shariah index, 30 Sep 2026; 1.83 / 5.83 = 0.314). 31.4% of 501 squares
+   is 157, so the switch dims 47 of the 204 filled squares, spread evenly.
+   EVERY MONTH: update VALUE_SQUARES and the 31% wording with the new
+   factsheets — and the sentence in the source note above the grid. */
+(function () {
+  var grid = document.querySelector('.screen-grid');
+  var stat = document.getElementById('screen-stat');
+  var buttons = document.querySelectorAll('.switch-btn');
+  if (!grid || !stat || buttons.length !== 2) return;
+
+  var VALUE_SQUARES = 157;
+  var on = grid.querySelectorAll('i.on');
+  var dim = on.length - VALUE_SQUARES;
+  for (var k = 0; k < dim; k++) {
+    on[Math.floor((k + 0.5) * on.length / dim)].classList.add('dim');
+  }
+
+  var words = {
+    count: stat.innerHTML,
+    value: 'By market value, the companies that pass make up about ' +
+           '<span class="num">31%</span> of the Nifty 500.'
+  };
+
+  function show(view) {
+    grid.classList.toggle('by-value', view === 'value');
+    stat.innerHTML = words[view];
+    for (var i = 0; i < buttons.length; i++) {
+      var pressed = buttons[i].getAttribute('data-view') === view;
+      buttons[i].setAttribute('aria-pressed', pressed ? 'true' : 'false');
+    }
+  }
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function () {
+      show(this.getAttribute('data-view'));
+    });
+  }
+})();
+</script>
 
 <!-- Visitor counting: Cloudflare Web Analytics is switched on in the
      Cloudflare dashboard ("automatic setup") and adds its script to every

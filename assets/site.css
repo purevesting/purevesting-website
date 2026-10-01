@@ -432,6 +432,12 @@ input:focus-visible {
 
 .site-footer a:hover { text-decoration: underline; }
 
+/* The footer's Subscribe button keeps its button colours: the general
+   footer-link rule above would otherwise turn its text cream and
+   underline it on hover. */
+.site-footer .btn { color: var(--white); }
+.site-footer .btn:hover { text-decoration: none; }
+
 .footer-nav {
   display: flex;
   flex-wrap: wrap;
@@ -803,7 +809,7 @@ td:first-child { font-weight: 600; }
 
 /* --- The screen grid ---
    500 small squares, one per company in the Nifty 500. Filled = passes.
-   It is plain HTML: 500 <i> tags inside one <div class="screen-grid">.
+   It is plain HTML: one <i> tag per company inside <div class="screen-grid">.
    CSS decides how many go on a row, so it reflows on any screen width. */
 
 .screen-grid {
@@ -823,6 +829,42 @@ td:first-child { font-weight: 600; }
 
 .screen-grid i.on {
   background: var(--green);       /* passes the screen */
+}
+
+/* The "by market value" view dims some of the filled squares (the home
+   page's script picks which). Fades rather than snaps, unless the reader
+   has asked for less motion. */
+.screen-grid i { transition: background-color 300ms ease; }
+.screen-grid.by-value i.dim { background: var(--line); }
+@media (prefers-reduced-motion: reduce) {
+  .screen-grid i { transition: none; }
+}
+
+/* The two buttons above the grid: by companies / by market value. Hidden
+   without JavaScript, because they do nothing without it. */
+.grid-switch {
+  display: none;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+}
+.js .grid-switch { display: flex; }
+
+.switch-btn {
+  min-height: var(--tap);
+  padding: 0 1rem;
+  font: 600 0.9rem var(--font-body);
+  color: var(--green-deep);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.switch-btn:hover { background: var(--white); }
+.switch-btn[aria-pressed="true"] {
+  color: var(--white);
+  background: var(--green-deep);
+  border-color: var(--green-deep);
 }
 
 /* The big number above the grid. */

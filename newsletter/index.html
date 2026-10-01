@@ -74,17 +74,17 @@
          calculation — and works through it with the sources on the page.
          Free, and never a sales pitch.</p>
 
-      <!-- THE SIGN-UP FORM. Same form as the one in the footer: it sends
-           the email address to HalalEdge's subscribe page on Beehiiv. -->
-      <form class="subscribe" action="https://halaledge.beehiiv.com/subscribe" method="get" target="_blank" rel="noopener">
-        <label class="visually-hidden" for="newsletter-email">Email address</label>
-        <input id="newsletter-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
-        <button class="btn" type="submit">Subscribe</button>
-      </form>
+      <!-- THE SIGN-UP. For now the button opens HalalEdge's sign-up page
+           on Beehiiv, where the email is typed once. When the Beehiiv
+           embedded form is ready (TODO.md, section 0), its script tag
+           replaces this button, and the first sentence of the small print
+           below goes. -->
+      <p class="subscribe"><a class="btn" href="https://halaledge.beehiiv.com/subscribe" target="_blank" rel="noopener">Subscribe on Beehiiv</a></p>
 
-      <p class="meta">One email a week. Every issue has an unsubscribe link.
-         Your address is only used to send the newsletter, and is never
-         sold.</p>
+      <p class="meta">The button opens HalalEdge's sign-up page on Beehiiv,
+         the service that sends the newsletter. One email a week. Every issue
+         has an unsubscribe link. Your address is only used to send the
+         newsletter, and is never sold.</p>
 
       <div class="byline">
         <!-- UNCOMMENT once byline-96.webp and byline-192.webp are in
@@ -96,7 +96,7 @@
         <div>
           <div><strong>Moin Ali Syed</strong></div>
           <div class="meta">Founder, Purevesting</div>
-          <div class="meta">Last updated <time datetime="2026-09-24">24 September 2026</time></div>
+          <div class="meta">Last updated <time datetime="2026-10-01">1 October 2026</time></div>
         </div>
       </div>
 
@@ -177,12 +177,9 @@
     <p>One email a week on Shariah screening in Indian markets. Data and
        methodology, never recommendations.</p>
 
-    <!-- Sign-ups go to HalalEdge's subscribe page on Beehiiv. -->
-    <form class="subscribe" action="https://halaledge.beehiiv.com/subscribe" method="get" target="_blank" rel="noopener">
-      <label class="visually-hidden" for="footer-email">Email address</label>
-      <input id="footer-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
-      <button class="btn" type="submit">Subscribe</button>
-    </form>
+    <!-- Signing up happens on the newsletter page, so nobody has to type
+         their email twice. -->
+    <p class="subscribe"><a class="btn" href="/newsletter/">Subscribe to HalalEdge</a></p>
 
     <nav class="footer-nav" aria-label="Footer">
       <a href="/">Home</a>

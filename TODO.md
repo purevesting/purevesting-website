@@ -3,7 +3,49 @@
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 30 September 2026
+Last updated: 1 October 2026
+
+---
+
+## 0. End tasks for MAS — do these last (MAS, 1 Oct)
+
+MAS will do these at the end. Do them in this order, because each one needs
+the one before it.
+
+- [ ] **1. Create the hello@purevesting.com address — in Zoho Mail (MAS's
+      choice, 1 Oct; he already uses Zoho's free plan).** It is printed on
+      every page (footer, corrections page, ask page, instrument pages), so
+      until it exists every email sent to it bounces. Outline: in Zoho Mail,
+      add the domain purevesting.com; Zoho shows a few DNS records (one to
+      prove you own the domain, and the "MX" records that route mail to Zoho);
+      add each one in Cloudflare → purevesting.com → DNS; then create the user
+      "hello". Ask for the step-by-step version when you sit down to do it.
+- [ ] **2. Connect the two forms on /ask/ to Web3Forms** — needs step 1. Full
+      steps are in section 3 below ("Connect the two forms to Web3Forms").
+- [ ] **3. Optional: Beehiiv's embedded sign-up form.** No longer urgent.
+      MAS's test on 1 Oct showed Beehiiv ignores the email typed on our site,
+      so people had to type it twice. Fixed the same day without Beehiiv: the
+      footer button now goes to /newsletter/, and that page's button opens
+      the Beehiiv sign-up page, where the email is typed once. The embed is
+      an upgrade on top: people could sign up without leaving the site.
+      What it is: a few lines of code, made by Beehiiv, that draw Beehiiv's
+      own sign-up box inside our page. Steps (Beehiiv's help page, updated
+      27 July 2026; works on the free plan):
+      1. Log in to Beehiiv and open the HalalEdge publication.
+      2. In the left menu: Subscribers → Subscribe forms.
+      3. Click "Create new form". Click the pencil next to its name and call
+         it "Website".
+      4. On the Style tab, under Embed: Layout = Slim; embed type = Inline.
+      5. Click the small arrow next to "Save changes" → "Save & get embed
+         code", and copy the code it shows.
+      6. Send the code in the website chat. It goes in place of the button on
+         `/newsletter/` only — not in the footer, so Beehiiv's code doesn't
+         load on every page.
+- [ ] **4. Search Console: request indexing of the home page** (for the blank
+      icon on Google) — section 5.
+- [ ] **5. Bing Webmaster Tools** (after Search Console has run a week),
+      **purevesting.in redirect to 301**, **byline photo**, **social preview
+      image**, **three YouTube video IDs** — sections 5, 7 and 8.
 
 ---
 
@@ -15,31 +57,39 @@ date. These are the places that don't yet.
 - [x] ~~**Home page — the 205 of 500 figure.**~~ FIXED 24 Sep. The source
       link now goes to NSE's Nifty500 Shariah factsheet, which lists 205
       constituents as of 31 August 2026.
-- [ ] **Home page and compare page — "behind the Nifty 500" has no source.**
-      The home page says the Nifty500 Shariah index is behind the Nifty 500
-      over 1 and 5 years, "largely because the screen removes about 31% of the
-      market in financial services". The compare page repeats the 31%. Neither
-      figure has a source. The Nifty500 Shariah factsheet (31 Aug 2026) only
-      gives the Shariah index's own returns: price return 1.19 over 1 year and
-      6.05 over 5 years, total return 2.27 and 7.33 (all %, as printed). Get
-      the Nifty 500 factsheet for the same month-end — the obvious factsheet
-      addresses on niftyindices.com say "page not found", so go through the
-      site's Reports → Factsheets menu. Compare like with like (price with
-      price, same dates), then keep, correct or delete the sentence. Delete
-      "The comparison page shows both" either way — the compare page shows
-      funds, not the two indices. Files: `index.html` (the grey line under the
-      screen grid) and `compare/shariah-mutual-funds/index.html` (search for
-      `31%`).
-- [ ] **Compare page — the whole returns table is empty.** Every cell is a
-      dash. Fill from ONE website, ONE date, Direct plan Growth option for all
-      six funds. Different sites report Tata Ethical's 3-year return as 6.36%,
-      7.28%, 10.91% and 12.49% — mixing them puts four different truths in one
-      table. File: `compare/shariah-mutual-funds/index.html`.
-- [ ] **Compare page — TASIS source link** points at `#`. Needs the real TASIS
-      page URL and the date it was checked.
-- [ ] **Compare page — Nippon scheme document link** points at `#`. Needs the
-      scheme information document where Nippon states the scheme is not
-      Shariah compliant. This is an important claim; it must be linked.
+- [x] ~~**Home page and compare page — "behind the Nifty 500" has no
+      source.**~~ FIXED 1 Oct. The Nifty 500 factsheet is at
+      niftyindices.com/Factsheet/ind_nifty_500.pdf. Both factsheets for
+      30 September 2026 confirm the Shariah index is behind over 1 and 5 years
+      (total return −3.87% vs −2.03%, and 5.52% vs 9.04% a year) and that
+      financial services are 30.58% of the Nifty 500 and 0.18% of the Shariah
+      index. The claim that this is the *main reason* had no source, so it is
+      gone; both pages now state only the facts, and the compare page shows
+      the two indices in a small table. Logged in the corrections log.
+- [x] ~~**Compare page — the returns table is empty.**~~ FILLED 1 Oct.
+      Returns are worked out from each fund's NAV as reported to AMFI
+      (Direct plan, Growth; the Nippon ETF has one plan), 30 Sep 2026 against
+      30 Sep 2025, 2023 and 2021, annualised for 3 and 5 years. Checked
+      against Value Research and Groww where they show the same figure (Tata
+      Ethical 3 years 3.8%, 5 years about 5.5%). Fund size and expense ratio
+      from Value Research's fund pages. Rows were re-ordered by fund size —
+      the UTI fund was out of place — and that is logged. The NAVs used are
+      in a comment under the table.
+- [ ] **EVERY QUARTER — the compare page's returns table.** After each
+      quarter-end, redo it the same way: one end date for every fund, the
+      same date one, three and five years before, Direct plan Growth. Update
+      fund sizes and expense ratios at the same time, re-check the row order
+      and the "nearly nine times" sentence under "How to read this table".
+- [x] ~~**Compare page — TASIS source link.**~~ DONE 1 Oct: TASIS's home page
+      says Tata Ethical and UTI Nifty 500 Shariah Index Fund are the only
+      mutual funds it certifies, and that Taurus Ethical Fund is not certified
+      by TASIS.
+- [x] ~~**Compare page — Nippon document link.**~~ DONE 1 Oct: Nippon's own
+      product note (February 2026) says the scheme "is not a Shariah compliant
+      scheme", has not appointed a Shariah board and does not follow any
+      dividend purification process. Because of this, the page no longer
+      calls all six funds Shariah-compliant or says all six have a board —
+      logged in the corrections log.
 - [ ] **Nippon: dig into the contradiction properly.** The fund is literally
       called "Nifty 50 Shariah BeES" and tracks the Nifty 50 Shariah index,
       yet its own scheme objective says the scheme is not Shariah compliant.
@@ -53,80 +103,116 @@ date. These are the places that don't yet.
       strong page — a fund sold under a Shariah name that disclaims being
       Shariah compliant — but only if the reason is established first rather
       than implied. Do not build a "gotcha" on a disclaimer that turns out to
-      be routine legal boilerplate.
-- [ ] **Compare page — The Wealth Company Ethical Fund.** Launch year is a
-      guess (2025) and its Shariah advisor is marked "Not verified". Check the
-      scheme documents and correct both.
-- [ ] **Compare page — Quantum Ethical Fund.** Confirm whether it is currently
-      certified by any board other than ShariahCap Advisors.
+      be routine legal boilerplate. UPDATE 1 Oct: the product note gives
+      the fund house's own reason — no Shariah board and no purification at
+      the fund level; the index itself is screened by TASIS for NSE. Still
+      open: whether it ever had a board, and whether it changed over time.
+- [ ] **Compare page — The Wealth Company Ethical Fund's board.** Launch
+      year confirmed 1 Oct: launched 14 October 2025, first NAV 17 October
+      2025. Its own fund page says it follows "select Shariah principles",
+      uses the Nifty 500 Shariah TRI as its benchmark, and names no board, so
+      the page still says "Not verified". Check its scheme information
+      document for a Shariah board.
+- [ ] **Compare page — Taurus and Quantum: ShariahCap has no source link.**
+      The page says both are screened by ShariahCap Advisors. ShariahCap's
+      site (checked 1 Oct) links itself to Taurus Ethical Fund's launch but
+      doesn't mention Quantum. Find each fund's own document naming its
+      Shariah board, link it, and confirm Quantum has no other board.
 
-- [ ] **EPF page — four source links point at `#`.** The investment pattern
-      (45–65% government securities etc.), the list of ETF indices EPFO tracks,
-      the EPFO contribution rules, and Malaysia's Simpanan Shariah. The first
-      two should come from the EPFO annual report or the Ministry of Labour
-      notification rather than a news article — news reports of the pattern were
-      consistent with each other, but a primary source is what the page claims
-      to rest on. File: `instruments/epf/index.html`.
+- [x] ~~**EPF page — four source links point at `#`.**~~ DONE 1 Oct. Who
+      notifies the pattern and which ETFs EPFO buys: the Labour Ministry's own
+      statement (PIB, 2 Dec 2024). It says the pattern is notified by the
+      Department of Financial Services, not the Labour Ministry as the page
+      said — corrected and logged. Contributions: Code on Social Security,
+      2020, section 16(1)(a) (the labour codes replaced the EPF Act on
+      21 Nov 2025). Malaysia: KWSP's Simpanan Shariah page.
+- [ ] **EPF page — the bands rest on Business Standard (20 Jul 2026).** The
+      primary source is the Department of Financial Services' pattern for
+      provident funds (notification of 2 March 2015, No. 11/14/2013-PR, as
+      amended in 2016 when the government-securities limit went to 65%).
+      India Code and the department's site didn't open from here. Link the
+      notification itself when you can open it.
 - [ ] **EPF page — confirm the latest declared interest rate.** EPFO declared
       8.25% for FY 2024–25. Sources disagreed on whether FY 2025–26 was also
       8.25% or not yet declared, so the page deliberately does not state a rate
       at all. Add one only once you have the EPFO announcement itself.
-- [ ] **EPF page — confirm the Deoband fatwa reference.** The page cites Fatwa
-      1084/915/B=1432 and links darulifta-deoband.com. Open it, confirm the
-      number and wording match, and confirm the fatwa is still listed. A
-      misquoted fatwa is the single worst error this site could publish.
+- [x] ~~**EPF page — confirm the Deoband fatwa reference.**~~ CHECKED 1 Oct:
+      Fatwa 1084/915/B=1432 is live at the linked address and the quote
+      matches word for word. The ACJU and Dr Khalid Zaheer quotes on the same
+      page also match (the ACJU's own spellings "admit" and "quiet" are shown
+      corrected in square brackets, as before).
+- [ ] **EPF page — Darul Ifta Birmingham's VPF quote not yet checked.** Its
+      website refuses automated reading. Open
+      daruliftabirmingham.co.uk/is-a-voluntary-provident-fund-vpf-allowed-in-the-shariah/
+      in a browser and compare the two sentences on the EPF page word for
+      word.
 - [ ] **EPF page — consider adding an Indian ruling on VPF specifically.**
       The two rulings quoted on VPF are from Sri Lanka and the UK. An Indian
       darul ifta ruling on VPF would be a stronger fit for the audience.
 
-- [ ] **PPF page — two source links point at `#`.** The Ministry of Finance
-      quarterly rate notification, and the Department of Economic Affairs page
-      on the National Small Savings Fund.
-- [ ] **PPF page — confirm the rate for the CURRENT quarter.** The page states
-      7.1% as notified for April–June 2026. That was also the rate for
-      January–March 2026. The 30 June 2026 announcement kept every small
-      savings rate unchanged for July–September 2026, so 7.1% still holds —
-      only the date and source line on the page need updating. (The Sukanya
-      page already cites that announcement.)
-- [ ] **PPF page — confirm both Deoband fatwa references.** Fatwa
-      894/876/SN=09/1437 (interest is riba) and Fatwa 634/510/B=1431 (account
-      may be used for tax saving). Open both, confirm the numbers and wording.
-      Same standard as the EPF page: a misquoted fatwa is unrecoverable.
+- [x] ~~**PPF page — two source links point at `#`.**~~ DONE 1 Oct: the
+      Department of Economic Affairs' small savings page (it lists every
+      quarter's office memorandum) and the Indian Economic Service's
+      Arthapedia page on the National Small Savings Fund.
+- [x] ~~**PPF page — confirm the rate for the CURRENT quarter.**~~ DONE 1 Oct:
+      the office memorandum of 30 Sep 2026 kept every rate unchanged for
+      October–December 2026 — PPF 7.1%, Sukanya 8.2%. Both pages updated.
+- [ ] **EVERY QUARTER — small savings rates.** Around 31 Mar, 30 Jun, 30 Sep
+      and 31 Dec the Ministry of Finance announces the next quarter's rates.
+      Open the Department of Economic Affairs link on the PPF page, then update
+      the rate, the quarter and the "Last updated" date on the PPF and Sukanya
+      pages (and their dates in `sitemap.xml`).
+- [x] ~~**PPF page — confirm both Deoband fatwa references.**~~ CHECKED
+      1 Oct: both numbers and both quotes match. One wording fix: the page
+      said the second questioner wanted "the Section 80C deduction"; the
+      question itself says he wanted to save income tax through a PPF
+      account, so the page now says that.
 - [ ] **PPF page — look harder for a competing ruling.** The page states
       plainly that no ruling holding PPF interest is not riba was found, and
       says that is not a claim of consensus. Worth one more pass through Indian
       darul iftas before this page gets traffic.
 
-- [ ] **NPS page — three source links point at `#`.** The PFRDA asset-class
-      description, the PFRDA scheme preference rules (to confirm the 75%/50%
-      equity caps), and the PFRDA exit and withdrawal regulations.
-- [ ] **NPS page — the exit table has a deliberate hole.** It shows only the
-      two bands both sources agreed on: under ₹8 lakh (no annuity) and above
-      ₹12 lakh (min 20% annuity). The ₹8–12 lakh band was described
-      differently by two sources, so it was left out rather than guessed.
-      Government-subscriber and premature-exit rules are also missing. Get the
-      PFRDA notification (reported as December 2025) and fill all of it from
-      that one document.
+- [x] ~~**NPS page — three source links point at `#`.**~~ DONE 1 Oct, and
+      checking them showed the page was out of date: asset class A was merged
+      into C and E in December 2025 (three classes now, not four); the equity
+      class buys large-company shares directly rather than tracking indices;
+      since October 2025 non-government subscribers can pick pension fund
+      schemes with up to 100% equity; and central government staff can choose
+      75% equity while young. All corrected and logged. PFRDA's own site
+      blocks automated reading, so the circulars are linked from the
+      record-keeping agency's copies (npscra.proteantech.in).
+- [x] ~~**NPS page — the exit table has a deliberate hole.**~~ FILLED 1 Oct
+      from the Ministry of Finance's summary of PFRDA's amended exit
+      regulations (PIB, 19 Dec 2025): the ₹8–12 lakh band, government
+      subscribers and leaving before 60 are all on the page now.
+- [ ] **NPS page — the Unified Pension Scheme isn't covered.** Since April 2025
+      central government staff in NPS can opt for UPS, which pays an assured
+      pension. That is a different structure with its own Shariah question.
+      Worth a section (or its own page) later.
 - [ ] **NPS page — the annuity question has NO ruling attached.** This is the
       biggest genuine gap on the site. The page says plainly that no ruling on
       the NPS annuity requirement was found, and does not substitute a general
       insurance ruling for one. Worth asking a mufti directly — it would be
       original, citable material nobody else has, and it is the part of NPS
       that is forced rather than chosen.
-- [ ] **NPS page — confirm the IslamWeb fatwa.** Fatwa 352687, dated
-      9 September 2017. Open it and confirm the wording and number.
+- [x] ~~**NPS page — confirm the IslamWeb fatwa.**~~ CHECKED 1 Oct: number,
+      date and wording all match; the questioner is a Karnataka government
+      employee for whom NPS is compulsory, as the page says.
 
-- [ ] **Digital gold page — upgrade three sources to primary ones.** Every
-      link works, but three rest on secondary sources: the provider structure
-      table (currently a comparison blog by OroPocket, a competing platform —
-      replace with MMTC-PAMP, SafeGold and Augmont's own terms), the SEBI
-      caution (currently All India Radio's report — replace with SEBI's own
-      8 November 2025 press release), and the SGB status note (currently
-      GoldenPi — replace with RBI's SGB FAQ).
-- [ ] **Digital gold page — confirm the Islamonweb quotes word for word.**
-      Ahammed Nijad PC, 26 March 2026. Note this is an analysis by a named
-      author, not a fatwa — the page says so. Islamonweb is a different site
-      from IslamWeb (cited on the NPS page).
+- [x] ~~**Digital gold page — upgrade three sources to primary ones.**~~
+      DONE 1 Oct: SEBI's own press release (No. 70/2025); RBI's SGB FAQ plus
+      the Government's July 2025 Rajya Sabha reply on the pause; and the
+      providers' own pages for the structure table. The providers' pages
+      showed one error — MMTC-PAMP keeps the gold in its own vaults, not a
+      third party's — corrected and logged.
+- [ ] **Digital gold page — two rows still rest on OroPocket.** GST and
+      storage. Neither SafeGold's FAQ nor MMTC-PAMP's or Augmont's pages state
+      a storage period or fee, and SafeGold's terms page refused automated
+      reading. Check each provider's terms in a browser; link them, or drop
+      the storage row if no provider states it.
+- [x] ~~**Digital gold page — confirm the Islamonweb quotes word for
+      word.**~~ CHECKED 1 Oct: both quotes, the author, title and both dates
+      match.
 - [ ] **Digital gold page — ask the providers the two AAOIFI questions.**
       Is a customer's gold tied to a specific, serial-numbered bar? Is a
       certificate issued on the day of purchase? The page says public
@@ -134,21 +220,20 @@ date. These are the places that don't yet.
       SafeGold or Augmont would be original, citable material — same idea as
       asking a mufti about the NPS annuity.
 
-- [ ] **Sukanya page — replace two sources with India Post's scheme page.**
-      The rate currently cites Upstox and the rules cite Wikipedia. Both work
-      as pointers, but India Post is the primary source.
-- [ ] **Sukanya page — one rule conflict to settle.** Wikipedia says the girl
-      can run the account from age 10; a 2026 source says the guardian runs it
-      until 18. The page uses 18, which matches the 2019 scheme. Confirm on
-      India Post.
-- [ ] **Sukanya page — confirm what a defaulted account earns.** The page
-      says stopping deposits does not stop the interest. That is certain for
-      years 15–21. For an account that goes into default before year 15,
-      confirm in the 2019 scheme rules which rate it keeps earning.
-- [ ] **Sukanya page — confirm the two quotes.** The Jamiat Ulama-i-Hind
-      resolution (PTI, 30 March 2019 — quote and the four names) and the TASIS
-      FAQ answer. The PTI quote has a typo, "aiding", shown on the page as
-      "[adding]".
+- [x] ~~**Sukanya page — replace the Wikipedia source.**~~ DONE 1 Oct with
+      something better than India Post's page: the scheme rules themselves
+      (Sukanya Samriddhi Account Scheme, 2019, as amended in 2020), published
+      by the Finance Ministry's National Savings Institute. They settle the
+      two open questions: the guardian runs the account until the girl turns
+      18; and an account in default that is never revived still earns the
+      scheme's rate until it is closed (now on the page). Small wording fix:
+      the girl must be "under 10" at opening, not "up to 10".
+- [x] ~~**Sukanya page — confirm the two quotes.**~~ CHECKED 1 Oct: the PTI
+      quote matches (its typo "aiding" is still shown corrected as
+      "[adding]"), and so does the TASIS answer, which is dated 17 September
+      2022 (now on the page). One name fixed to match PTI: "Maulana", not
+      "Mufti", Habiburrahman Khairabadi — he is described as the mufti of
+      Darul Uloom Deoband.
 
 - [ ] **Methodology page — cite AAOIFI Standard 21 directly.** AAOIFI's own
       web page for the standard currently shows unrelated content, so the
@@ -170,6 +255,21 @@ date. These are the places that don't yet.
       an announcement of the change, link it next to the methodology as a
       second source. (S&P's separate Shariah index family shows 30% as well.)
 
+- [ ] **EVERY MONTH — NSE factsheet figures.** NSE replaces its factsheets
+      at the same web address at the start of each month. DONE for
+      30 September 2026 (in the 1 Oct batch): 204 of the 501 companies pass
+      (the Nifty 500 listed 501 that month, so the grid has 501 squares). Each
+      month, from the two factsheets (Nifty500 Shariah, and Nifty 500 at
+      niftyindices.com/Factsheet/ind_nifty_500.pdf), update:
+      - home page: the count, the two meta descriptions, the grid (one square
+        per company), the "as of" date;
+      - home page market-value switch: Infosys's weight in each factsheet,
+        the "about 31%" wording (twice: source note and script), and
+        VALUE_SQUARES in the script at the bottom of the page (share × number
+        of squares);
+      - methodology page: the "204" mentions and the sector table;
+      - purification calculator: the "204 figure" line.
+
 ## 2. Automating the data instead of typing it
 
 Right now every number is typed into the HTML by hand. That doesn't scale
@@ -189,18 +289,30 @@ past a few pages, and hand-typed numbers go stale silently.
 
 In the order they matter, from the original plan.
 
-- [ ] **Screen grid toggles.** The 500 squares are on the home page but static.
-      Making companies drop out as you switch a screening rule on and off
-      needs a list of which company fails which rule. Not built until that
-      data exists.
+- [x] ~~**Screen grid switch — by companies / by market value.**~~ BUILT
+      1 Oct. Two buttons above the home page grid. "By market value" shows
+      that the companies that pass are about 31% of the Nifty 500's value
+      (against 41% by count). Worked out from the two NSE factsheets: Infosys
+      is 1.83% of the Nifty 500 and 5.83% of the Shariah index, and both
+      indices weight companies by free-float market value (the Shariah
+      index's only caps are 33% per stock and 62% for the top three, far
+      above Infosys), so 1.83 ÷ 5.83 is the Shariah index's share of the
+      whole. This takes the place of the market-cap treemap.
+- [ ] **Screen grid — one switch per screening rule (needs data).** Turning
+      the business test or the debt test on and off needs, for each company,
+      which rule it fails. NSE and TASIS publish only the final list of
+      companies that pass, not the reasons. Options: TASIS's paid stock
+      screening service, a market-data vendor, or computing the ratios from
+      every company's own accounts (a big job). Not built until that data
+      exists.
 - [ ] **Quarterly movement in the screen grid.** Show companies entering and
       leaving compliance quarter by quarter, with a year marker. Needs NSE
       index constituent lists at each rebalance date.
-- [ ] **Market-cap treemap.** Each company a square sized by market cap,
-      coloured by pass/fail on the screen — NOT by gain/loss. 205 of 500 pass
-      by count, but by market value the passing share is far smaller, because
-      the screen removes the very large financial companies. That gap is the
-      whole point of the picture.
+- [x] ~~**Market-cap treemap.**~~ REPLACED 1 Oct by the "by market value"
+      switch above, which makes the same point — 41% of companies pass, but
+      only about 31% of the market's value — from NSE's own factsheets. A
+      company-by-company treemap would need every company's market value,
+      which NSE does not publish in a form the site can use.
 - [x] ~~**Share-card button**~~ — built 30 Sep. A "Share as image" button
       sits under every answer box and every table (the code is
       `assets/share-card.js`, loaded on every page). It draws a 1080-pixel-wide
@@ -208,16 +320,19 @@ In the order they matter, from the original plan.
       address and "not investment advice" — and opens the phone's share
       sheet; on a computer it downloads instead. Long tables show as many
       rows as fit and end with "…and N more rows on the page". Tables with
-      more than five columns, or no data yet (the compare page's returns
-      table), get no button.
+      more than five columns (the compare page's returns table has six) get
+      no button. When a source note is too long for the picture, it keeps
+      the part from "Source" onwards.
 - [x] ~~**Source chips**~~ — built and in use on the EPF page: tap a scholar's
       position to read the exact wording it was issued in. Note the constraint:
       `<details>` cannot go inside a `<p>`, so a source chip sits between
       paragraphs, not mid-sentence.
 - [x] ~~**Corrections log**~~ — built 30 Sep at `/corrections/`, linked in
       the footer of every page and from the "Found something wrong here?"
-      line on every instrument page and the methodology page. It starts
-      empty: no published fact has needed correcting yet. When one does:
+      line on every instrument page and the methodology page. First entries
+      logged 1 Oct (EPF, NPS, digital gold, and the compare and home pages),
+      each with a
+      "Corrected" line under the page's "Last updated" date. For the next:
       (1) fix the page; (2) add a card at the top of the log (the page has
       a ready-made example block to copy); (3) put a "Corrected on [date]"
       line next to the corrected page's "Last updated" date, linking to
@@ -237,13 +352,17 @@ In the order they matter, from the original plan.
       simple spam robots. The question form says plainly that personal "should
       I buy this" questions can't be answered, and that questions may be
       answered publicly without the asker's name.
-- [ ] **Connect the two forms to Web3Forms (steps given 30 Sep).** Until
-      then, both forms say "This form isn't connected yet". Get an access key
-      at web3forms.com using hello@purevesting.com, then in `ask/index.html`
-      replace `YOUR-WEB3FORMS-KEY` (it appears twice) with the key. Send a
-      test question and a test feedback to yourself once it's live. Web3Forms
-      also keeps a copy of each message — in its dashboard, set the retention
-      period shorter than the default.
+- [ ] **Connect the two forms to Web3Forms — END TASK, after
+      hello@purevesting.com exists (section 0).** Until then, both forms say
+      "This form isn't connected yet". Steps: (1) go to web3forms.com and
+      click "Create your Form — Free"; (2) sign up with
+      hello@purevesting.com — not the Gmail — because every message goes to
+      the address that owns the key; (3) open the verification email and
+      confirm; (4) copy the access key from the dashboard; (5) in
+      `ask/index.html` replace `YOUR-WEB3FORMS-KEY` (it appears twice) with
+      the key; (6) send a test question and a test feedback once it's live.
+      Web3Forms also keeps a copy of each message — in its dashboard, set the
+      retention period shorter than the default.
 - [ ] **Halal finance near you: loans, cooperatives, by city (MAS, 30 Sep).**
       The site so far covers investing. This adds borrowing and saving
       without interest:
@@ -303,10 +422,10 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
       purification, what the screen does to the real market, and why halal
       stock lists disagree. Linked from the home page's "By goal" list. Its
       header link is still switched off — see the nav item below.
-- [x] ~~`/instruments/epf/`~~ — built. Still needs its four source links.
-- [x] ~~`/instruments/ppf/`~~ — built. Still needs its two source links.
-- [x] ~~`/instruments/nps/`~~ — built 18 Sep. Still needs its three source
-      links, and the annuity question is genuinely open.
+- [x] ~~`/instruments/epf/`~~ — built. Source links filled 1 Oct.
+- [x] ~~`/instruments/ppf/`~~ — built. Source links filled 1 Oct.
+- [x] ~~`/instruments/nps/`~~ — built 18 Sep. Source links filled and
+      page brought up to date 1 Oct; the annuity question is genuinely open.
 - [x] ~~`/instruments/digital-gold/`~~ — built 23 Sep. Covers physical gold,
       gold ETFs and SGBs in one comparison table as well.
 - [ ] `/instruments/sovereign-gold-bonds/` — the planning pipeline lists the
@@ -451,13 +570,9 @@ here, which needs building before the first sponsor conversation, not after.
 - [x] ~~Fill the Beehiiv publication address~~ — DONE 30 Sep: every sign-up
       form (the footer on every page, and the top of `/newsletter/`) now
       goes to https://halaledge.beehiiv.com/subscribe.
-- [ ] **Then test the sign-up form yourself.** Type your own email into it
-      on the live site. The form opens your Beehiiv subscribe page in a new
-      tab. Beehiiv's help pages don't say whether that page picks up the
-      email you typed. If it arrives already filled in, nothing to do. If it
-      arrives empty (so people would have to type their email twice), switch
-      the `/newsletter/` form to Beehiiv's own embedded form instead —
-      Beehiiv: Subscribers → Subscribe forms → Create new form, choose the
-      inline layout, save, and copy the one script tag it shows you. Paste it
-      in place of the `<form>` on that page.
+- [x] ~~**Sign-up form test — FAILED (MAS, 1 Oct).**~~ FIXED 1 Oct: the
+      email box is gone from the footer (it now has a "Subscribe to
+      HalalEdge" button that goes to /newsletter/), and /newsletter/ has a
+      "Subscribe on Beehiiv" button, so the email is typed once, on Beehiiv.
+      The optional embed is end task 3 in section 0.
 - [ ] Paste three real YouTube video IDs into the home page video cards.

@@ -256,6 +256,13 @@
     var sourceSize = 24;
     ctx.font = font(400, sourceSize, FONT.body);
     var allSource = card.source ? wrap(ctx, card.source, INNER) : [];
+    // A note that starts with an explanation can be too long for five
+    // lines. Then the explanation is dropped, so the card keeps the part
+    // that names the source.
+    var sourceAt = card.source ? card.source.search(/\bSources?\b/) : -1;
+    if (allSource.length > 5 && sourceAt > 0) {
+      allSource = wrap(ctx, card.source.slice(sourceAt), INNER);
+    }
     var sourceLines = allSource.slice(0, 5);
     if (allSource.length > 5) {               // cut short: end on a whole word and "…"
       var last = sourceLines[4];
