@@ -201,8 +201,15 @@ In the order they matter, from the original plan.
       by count, but by market value the passing share is far smaller, because
       the screen removes the very large financial companies. That gap is the
       whole point of the picture.
-- [ ] **Share-card button** on every table and answer box, generating a
-      branded image sized for WhatsApp and Instagram.
+- [x] ~~**Share-card button**~~ — built 30 Sep. A "Share as image" button
+      sits under every answer box and every table (the code is
+      `assets/share-card.js`, loaded on every page). It draws a 1080-pixel-wide
+      picture — logo, heading, the answer or table, its source line, the page
+      address and "not investment advice" — and opens the phone's share
+      sheet; on a computer it downloads instead. Long tables show as many
+      rows as fit and end with "…and N more rows on the page". Tables with
+      more than five columns, or no data yet (the compare page's returns
+      table), get no button.
 - [x] ~~**Source chips**~~ — built and in use on the EPF page: tap a scholar's
       position to read the exact wording it was issued in. Note the constraint:
       `<details>` cannot go inside a `<p>`, so a source chip sits between
@@ -353,9 +360,11 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
       ICO, GIF, JPEG and a few others) and SVG isn't among them. Our main
       icon is an SVG, the only PNG icon is 32×32 (Google recommends bigger
       than 48×48), and there is no favicon.ico at the site root.
-      Fix: make a 192×192 PNG icon and a favicon.ico from the logo, list the
-      PNG first in every page's head, then request indexing again. Do it in
-      the next batch that touches every page anyway.
+      FIXED 30 Sep on the site's side: `favicon-192.png` and `favicon.ico`
+      (made from the logo) are in the main folder, and the 192×192 PNG is
+      listed first in every page's head. Still to do: request indexing of the
+      home page in Search Console, then wait — Google can take days to weeks
+      to show the new icon.
 - [x] ~~**Google Search Console**~~ — DONE 30 Sep. Once a week, open the
       Performance report (which searches found the site) and the Sitemaps
       page (`sitemap.xml` should show status "Success"). The first search

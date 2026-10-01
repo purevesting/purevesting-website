@@ -964,6 +964,37 @@ td:first-child { font-weight: 600; }
 }
 
 
+/* 18. SHARE BUTTON ========================================================
+   The "Share as image" button under every answer box and table. It is
+   added by /assets/share-card.js, so it only appears when JavaScript
+   works — which is what draws the picture in the first place.
+   ========================================================================== */
+
+.share-row {
+  margin: 0.5rem 0 1.25rem;
+}
+
+/* Tuck it up closer under an answer box, which has a big margin of its own. */
+.answer + .share-row { margin-top: -0.75rem; }
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 1rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.share-btn:hover { background: var(--white); }
+
+
 /* ==========================================================================
    DARK MODE GOES HERE LATER.
    It is a copy of the :root block from section 2 with different values,
