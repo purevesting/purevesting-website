@@ -324,6 +324,19 @@
     ctx.font = font(800, 40, FONT.display);
     ctx.fillStyle = C.ink;
     ctx.fillText('Purevesting', PAD + 56 + 16, y + 8);
+
+    // The green dot after the name, as in the site header: sitting on the
+    // baseline like a full stop. alphabeticBaseline says how far below the
+    // top of the text the baseline is; 31 is the same figure for browsers
+    // too old to report it.
+    var wordmark = ctx.measureText('Purevesting');
+    var drop = typeof wordmark.alphabeticBaseline === 'number' ? -wordmark.alphabeticBaseline : 31;
+    var dot = 40 * 0.13;
+    ctx.fillStyle = C.green;
+    ctx.beginPath();
+    ctx.arc(PAD + 56 + 16 + wordmark.width + 40 * 0.06 + dot, y + 8 + drop - dot, dot, 0, 2 * Math.PI);
+    ctx.fill();
+
     y += L.brandH + L.gapAfterBrand;
 
     // Heading

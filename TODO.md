@@ -3,49 +3,71 @@
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 1 October 2026
+Last updated: 2 October 2026
 
 ---
 
-## 0. End tasks for MAS — do these last (MAS, 1 Oct)
+## 0. What's left for MAS (2 Oct)
 
-MAS will do these at the end. Do them in this order, because each one needs
-the one before it.
+Everything on the site's side of the brief is done. What's below needs MAS:
+a test only he can run, or a setting only he can reach. Do 1–3 right after
+pushing the 2 Oct batch.
 
-- [ ] **1. Create the hello@purevesting.com address — in Zoho Mail (MAS's
-      choice, 1 Oct; he already uses Zoho's free plan).** It is printed on
-      every page (footer, corrections page, ask page, instrument pages), so
-      until it exists every email sent to it bounces. Outline: in Zoho Mail,
-      add the domain purevesting.com; Zoho shows a few DNS records (one to
-      prove you own the domain, and the "MX" records that route mail to Zoho);
-      add each one in Cloudflare → purevesting.com → DNS; then create the user
-      "hello". Ask for the step-by-step version when you sit down to do it.
-- [ ] **2. Connect the two forms on /ask/ to Web3Forms** — needs step 1. Full
-      steps are in section 3 below ("Connect the two forms to Web3Forms").
-- [ ] **3. Optional: Beehiiv's embedded sign-up form.** No longer urgent.
-      MAS's test on 1 Oct showed Beehiiv ignores the email typed on our site,
-      so people had to type it twice. Fixed the same day without Beehiiv: the
-      footer button now goes to /newsletter/, and that page's button opens
-      the Beehiiv sign-up page, where the email is typed once. The embed is
-      an upgrade on top: people could sign up without leaving the site.
-      What it is: a few lines of code, made by Beehiiv, that draw Beehiiv's
-      own sign-up box inside our page. Steps (Beehiiv's help page, updated
-      27 July 2026; works on the free plan):
-      1. Log in to Beehiiv and open the HalalEdge publication.
-      2. In the left menu: Subscribers → Subscribe forms.
-      3. Click "Create new form". Click the pencil next to its name and call
-         it "Website".
-      4. On the Style tab, under Embed: Layout = Slim; embed type = Inline.
-      5. Click the small arrow next to "Save changes" → "Save & get embed
-         code", and copy the code it shows.
-      6. Send the code in the website chat. It goes in place of the button on
-         `/newsletter/` only — not in the footer, so Beehiiv's code doesn't
-         load on every page.
-- [ ] **4. Search Console: request indexing of the home page** (for the blank
+- [x] ~~**Create the site's email address.**~~ DONE by MAS: he made
+      **salam@purevesting.com** in Zoho Mail (not hello@, as first planned).
+      Every page now uses salam@ (2 Oct).
+- [ ] **1. Test both forms on purevesting.com/ask/.** The Web3Forms key is in
+      both forms (2 Oct). Send one test question and one test feedback. Each
+      should show "Thank you — it has been sent." under its button and reach
+      salam@purevesting.com within a minute or two. Check spam the first
+      time, and mark it "not spam" if it lands there. Then, in the Web3Forms
+      dashboard, set how long it keeps copies of messages to the shortest
+      option.
+- [ ] **2. Test the newsletter sign-up on purevesting.com/newsletter/.**
+      Beehiiv's sign-up box should appear a second after the page loads. Sign
+      up with a second email address of yours: the box should say "You're in!
+      The next issue will land in your inbox.", and the address should show
+      up in Beehiiv → Subscribers. Then delete the test subscriber. Already
+      decided: double opt-in off (MAS, 1 Oct). Beehiiv's second script,
+      "attribution tracking", was left out on purpose: it records where each
+      sign-up came from, for Beehiiv's reports, and the site adds no tracking
+      scripts. Add it later only if that becomes worth knowing.
+- [ ] **3. Check the link preview.** Paste https://purevesting.com/?v=2 into
+      a WhatsApp chat with yourself. The preview should show the new image
+      (the logo, "Purevesting." with its green dot, and "Halal finance in
+      India, made better"). The `?v=2` stops
+      WhatsApp reusing an old preview it saved before the image existed.
+- [ ] **4. Fix the purevesting.in redirect — it still answers 302 (checked
+      2 Oct, after the 301 rule showed "Active").** Cloudflare runs Redirect
+      Rules before Page Rules and Bulk Redirects, and the first Redirect Rule
+      that matches wins. So if the 301 rule were catching visits to
+      purevesting.in, visitors would get a 301. They don't, so something is in
+      its way. Check in this order:
+      1. In Cloudflare, pick **purevesting.in** (not purevesting.com) from
+         the list of sites → Rules → Overview. Is the 301 rule listed there?
+         A rule saved under purevesting.com never sees visits to the .in
+         address. If that's where it is, make it again under purevesting.in
+         and delete the one under .com.
+      2. On that same Overview page: is there more than one redirect rule?
+         The one higher in the list wins. If an older 302 rule sits above the
+         new one, delete the old one.
+      3. Open the 301 rule and set it exactly like Cloudflare's own example
+         for moving a whole domain: Request URL `http*://purevesting.in/*`;
+         Target URL `https://purevesting.com/${2}`; Status code 301;
+         "Preserve query string" ticked. The `http*` catches both http:// and
+         https:// visits. Save, then Deploy.
+      4. www.purevesting.in didn't respond at all when checked (2 Oct, twice).
+         Add a second rule the same way, with Request URL
+         `http*://www.purevesting.in/*` and the same Target URL.
+      5. Then tell the website chat "check the .in redirect". A browser
+         doesn't show 301 or 302, but Claude can check it from outside.
+- [ ] **5. Search Console: request indexing of the home page** (for the blank
       icon on Google) — section 5.
-- [ ] **5. Bing Webmaster Tools** (after Search Console has run a week),
-      **purevesting.in redirect to 301**, **byline photo**, **social preview
-      image**, **three YouTube video IDs** — sections 5, 7 and 8.
+- [ ] **6. Bing Webmaster Tools — from about 7 October**, once Search Console
+      has run for a week — section 5.
+- [ ] **7. When the flagship videos are published:** send their links in the
+      website chat, to replace the three video cards on the home page
+      (section 8).
 
 ---
 
@@ -111,13 +133,18 @@ date. These are the places that don't yet.
       year confirmed 1 Oct: launched 14 October 2025, first NAV 17 October
       2025. Its own fund page says it follows "select Shariah principles",
       uses the Nifty 500 Shariah TRI as its benchmark, and names no board, so
-      the page still says "Not verified". Check its scheme information
-      document for a Shariah board.
-- [ ] **Compare page — Taurus and Quantum: ShariahCap has no source link.**
-      The page says both are screened by ShariahCap Advisors. ShariahCap's
-      site (checked 1 Oct) links itself to Taurus Ethical Fund's launch but
-      doesn't mention Quantum. Find each fund's own document naming its
-      Shariah board, link it, and confirm Quantum has no other board.
+      the page says "None named" (2 Oct). Still worth checking its scheme
+      information document for a Shariah board; if one is named, change the
+      chip and the source note.
+- [x] ~~**Compare page — Taurus and Quantum: ShariahCap has no source
+      link.**~~ CORRECTED 2 Oct. Neither fund's own documents name
+      ShariahCap or any other Shariah board: Taurus's scheme information
+      document (28 Nov 2025) says it "may also seek guidance from identified
+      ethical advisors", and Quantum describes its own screening. So the
+      ShariahCap claim is gone, the board column reads TASIS / None named /
+      Its own screening / TASIS / No board / None named, and the page says
+      two of the six are certified by a Shariah board, both by TASIS. Logged
+      in the corrections log.
 
 - [x] ~~**EPF page — four source links point at `#`.**~~ DONE 1 Oct. Who
       notifies the pattern and which ETFs EPFO buys: the Labour Ministry's own
@@ -141,11 +168,10 @@ date. These are the places that don't yet.
       matches word for word. The ACJU and Dr Khalid Zaheer quotes on the same
       page also match (the ACJU's own spellings "admit" and "quiet" are shown
       corrected in square brackets, as before).
-- [ ] **EPF page — Darul Ifta Birmingham's VPF quote not yet checked.** Its
-      website refuses automated reading. Open
-      daruliftabirmingham.co.uk/is-a-voluntary-provident-fund-vpf-allowed-in-the-shariah/
-      in a browser and compare the two sentences on the EPF page word for
-      word.
+- [x] ~~**EPF page — Darul Ifta Birmingham's VPF quote not yet checked.**~~
+      CHECKED 2 Oct against the page text MAS copied from the ruling: both
+      sentences match. The page now names the ruling in full: Fatwa ID
+      05248, answered by Mufti Eunus Ali, 17 April 2021.
 - [ ] **EPF page — consider adding an Indian ruling on VPF specifically.**
       The two rulings quoted on VPF are from Sri Lanka and the UK. An Indian
       darul ifta ruling on VPF would be a stronger fit for the audience.
@@ -205,11 +231,20 @@ date. These are the places that don't yet.
       providers' own pages for the structure table. The providers' pages
       showed one error — MMTC-PAMP keeps the gold in its own vaults, not a
       third party's — corrected and logged.
-- [ ] **Digital gold page — two rows still rest on OroPocket.** GST and
-      storage. Neither SafeGold's FAQ nor MMTC-PAMP's or Augmont's pages state
-      a storage period or fee, and SafeGold's terms page refused automated
-      reading. Check each provider's terms in a browser; link them, or drop
-      the storage row if no provider states it.
+- [x] ~~**Digital gold page — two rows still rest on OroPocket.**~~ DONE
+      2 Oct; OroPocket is no longer cited anywhere. GST: 3% from Business
+      Standard (the GST Council kept it in September 2025); not refunded when
+      you sell, from Aditya Birla Capital's guide. Storage, from each
+      provider's own terms: free for 2 years at SafeGold (from the terms text
+      MAS copied, since SafeGold's site refuses automated reading) and 5 at
+      MMTC-PAMP and Augmont; after that it is charged for, the charge can come
+      out of your gold, and MMTC-PAMP can buy the gold back. Augmont also
+      requires delivery within 10 years. The old row ("then a small annual
+      fee") was logged in the corrections log.
+- [ ] **EVERY FEW MONTHS — digital gold storage terms.** Providers change
+      these without notice. Re-open the three terms pages linked under the
+      gold page's structure table and check the free periods (2 / 5 / 5
+      years) and the 10-year delivery rule.
 - [x] ~~**Digital gold page — confirm the Islamonweb quotes word for
       word.**~~ CHECKED 1 Oct: both quotes, the author, title and both dates
       match.
@@ -330,8 +365,8 @@ In the order they matter, from the original plan.
 - [x] ~~**Corrections log**~~ — built 30 Sep at `/corrections/`, linked in
       the footer of every page and from the "Found something wrong here?"
       line on every instrument page and the methodology page. First entries
-      logged 1 Oct (EPF, NPS, digital gold, and the compare and home pages),
-      each with a
+      logged 1 Oct (EPF, NPS, digital gold, and the compare and home pages)
+      and 2 Oct (compare: ShariahCap; digital gold: storage), each with a
       "Corrected" line under the page's "Last updated" date. For the next:
       (1) fix the page; (2) add a card at the top of the log (the page has
       a ready-made example block to copy); (3) put a "Corrected on [date]"
@@ -352,17 +387,11 @@ In the order they matter, from the original plan.
       simple spam robots. The question form says plainly that personal "should
       I buy this" questions can't be answered, and that questions may be
       answered publicly without the asker's name.
-- [ ] **Connect the two forms to Web3Forms — END TASK, after
-      hello@purevesting.com exists (section 0).** Until then, both forms say
-      "This form isn't connected yet". Steps: (1) go to web3forms.com and
-      click "Create your Form — Free"; (2) sign up with
-      hello@purevesting.com — not the Gmail — because every message goes to
-      the address that owns the key; (3) open the verification email and
-      confirm; (4) copy the access key from the dashboard; (5) in
-      `ask/index.html` replace `YOUR-WEB3FORMS-KEY` (it appears twice) with
-      the key; (6) send a test question and a test feedback once it's live.
-      Web3Forms also keeps a copy of each message — in its dashboard, set the
-      retention period shorter than the default.
+- [x] ~~**Connect the two forms to Web3Forms.**~~ DONE 2 Oct: MAS made the
+      Web3Forms account with salam@purevesting.com, and its access key is in
+      both forms in `ask/index.html`. The key is meant to be public — it only
+      lets people send messages to that inbox. Still to do after the push:
+      the test in section 0, and the shorter retention setting.
 - [ ] **Halal finance near you: loans, cooperatives, by city (MAS, 30 Sep).**
       The site so far covers investing. This adds borrowing and saving
       without interest:
@@ -390,9 +419,9 @@ In the order they matter, from the original plan.
       - Never take a fee from a listed cooperative without disclosing it on
         the page (see section 6).
 
-## 3b. Visual polish — logged, not yet actioned
+## 3b. Visual polish
 
-Things MAS flagged while reviewing pages. One fixed, one still open.
+Things MAS flagged while reviewing pages. Both done.
 
 - [x] ~~**Too much empty space between sections.**~~ FIXED 18 Sep. Three
       spacings were stacking before every heading: the first section's bottom
@@ -409,11 +438,12 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
       fix applies here, or whether the empty table (all dashes, section 1
       above) is what's making the "Size and returns" section look
       disproportionately tall and empty.
-- [ ] **Bring back the green dot** that sat next to "Purevesting" in the
-      original preview's logo lockup (top-left, beside the wordmark). It was
-      dropped when the real logo icon replaced the text-only wordmark. MAS
-      liked it and wants it back — figure out where it fits now that there's
-      an actual logo image to the left of the text as well.
+- [x] ~~**Bring back the green dot**~~ — DONE 2 Oct. The logo icon now
+      sits where the dot used to be, so the dot moved to the end of the
+      wordmark, on the baseline like a full stop: "Purevesting." with a green
+      dot. It is one rule in `site.css` (`.site-logo::after`), so the header
+      HTML is unchanged, and the social preview image has it too. If MAS
+      remembers it somewhere else, it's a one-line change.
 
 ## 4. Pages not built yet
 
@@ -496,9 +526,11 @@ Things MAS flagged while reviewing pages. One fixed, one still open.
       Google Search Console — it copies the site and the sitemap across.
 - [x] ~~**Fix www.purevesting.com**~~ — CHECKED 30 Sep: www.purevesting.com
       now opens the site instead of the Cloudflare 522 error page.
-- [ ] **purevesting.in redirect is "temporary" (302).** It works, but a
-      "permanent" redirect (301) is the correct signal to Google. Low
-      priority — switch it to 301 wherever that redirect was set up.
+- [ ] **purevesting.in redirect is still "temporary" (302).** It works, but
+      a "permanent" redirect (301) is the correct signal to Google. MAS added
+      a 301 Redirect Rule in Cloudflare, but on 2 Oct the address still
+      answered 302, and www.purevesting.in didn't respond at all. What to
+      check is in section 0, item 4.
 
 ## 6. Sponsors and referral tracking
 
@@ -541,13 +573,14 @@ here, which needs building before the first sponsor conversation, not after.
 
 ## 7. Assets still needed
 
-- [ ] **Photo for the byline** — WebP, square, two sizes: `byline-96.webp`
-      (96×96) and `byline-192.webp` (192×192), both into `assets/img/`. Then
-      uncomment the byline image block in `index.html`, `_template.html` and
-      the compare page.
-- [ ] **Social preview image** — 1200×630, saved as JPG not WebP (WhatsApp
-      previews are unreliable with WebP), under 300KB, at `assets/og/default.jpg`.
-      This image is the entire first impression when someone shares a link.
+- [x] ~~**Photo for the byline**~~ — DONE 2 Oct from MAS's photo:
+      `byline-96.webp` and `byline-192.webp` in `assets/img/`, and the byline
+      image switched on in every page that has a byline.
+- [x] ~~**Social preview image**~~ — DONE 2 Oct: `assets/og/default.jpg`,
+      1200×630, 70 KB, JPG (WhatsApp previews are unreliable with WebP). The
+      logo, "Purevesting." with the green dot, "Halal finance in India, made
+      better", and a small grid like the home page's. Every page already
+      points to it.
 - [ ] Eventually, a different preview image per page type rather than one
       default for everything.
 
@@ -574,5 +607,17 @@ here, which needs building before the first sponsor conversation, not after.
       email box is gone from the footer (it now has a "Subscribe to
       HalalEdge" button that goes to /newsletter/), and /newsletter/ has a
       "Subscribe on Beehiiv" button, so the email is typed once, on Beehiiv.
-      The optional embed is end task 3 in section 0.
-- [ ] Paste three real YouTube video IDs into the home page video cards.
+- [x] ~~**Beehiiv's embedded sign-up form.**~~ DONE 2 Oct: Beehiiv's own
+      sign-up box now sits on `/newsletter/`, so people sign up without
+      leaving the site. It loads only on that page; the footer button on
+      every other page leads there. Without JavaScript, the page shows a
+      "Subscribe on Beehiiv" button instead, and the line under the box links
+      to Beehiiv's own sign-up page in case a browser's blocker stops the box
+      from loading. Test it — section 0, item 2.
+- [x] ~~Paste three real YouTube video IDs into the home page video
+      cards.~~ DONE 2 Oct with three published videos: "Halal (ethical)
+      investing kya hai?", "Muslims ne banaya tha duniya ka pehla bank" and
+      the Zakat basics Short. Titles taken from YouTube itself.
+- [ ] **Swap in the flagship videos once they are published (MAS, 2 Oct).**
+      Send the three links in the website chat. Each card needs the video's
+      address, its thumbnail and its exact title.

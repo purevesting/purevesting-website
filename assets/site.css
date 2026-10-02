@@ -377,6 +377,22 @@ input:focus-visible {
   flex-shrink: 0;              /* never lets the nav squash the icon */
 }
 
+/* The green dot after the wordmark, back from the first preview (MAS).
+   Drawn here rather than in the HTML, so the header stays identical on
+   every page. The negative margin cancels most of the gap above, so the
+   dot sits right after the "g"; translateY moves it from the middle of the
+   line down onto the baseline, like a full stop. */
+.site-logo::after {
+  content: "";
+  flex-shrink: 0;
+  width: 0.26em;
+  height: 0.26em;
+  margin-left: calc(0.06em - 0.5rem);
+  border-radius: 50%;
+  background: var(--green);
+  transform: translateY(0.18em);
+}
+
 /* On a phone the four links get a row of their own under the logo, spread
    evenly across it. Slightly smaller text is what lets all four fit on one
    row even on a 360px phone. Section 15 puts them back beside the logo on
@@ -715,6 +731,11 @@ td:first-child { font-weight: 600; }
 /* The small print right under a sign-up form (the newsletter page's
    privacy line) needs a little air above it. */
 .subscribe + p { margin-top: 0.6rem; }
+
+/* The Beehiiv form on /newsletter/ arrives a moment after the page loads.
+   The minimum height keeps the text below from jumping when it does. */
+.beehiiv-form { margin-top: 1rem; min-height: var(--tap); }
+.beehiiv-form + p { margin-top: 0.6rem; }
 
 
 /* 14. MOTION ==============================================================

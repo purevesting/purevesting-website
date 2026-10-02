@@ -75,16 +75,13 @@
          are read.</p>
 
       <div class="byline">
-        <!-- UNCOMMENT once byline-96.webp and byline-192.webp are in
-             assets/img/. Until then it shows a broken image icon.
         <img src="/assets/img/byline-96.webp"
              srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
              width="48" height="48" alt="Moin Ali Syed">
-        -->
         <div>
           <div><strong>Moin Ali Syed</strong></div>
           <div class="meta">Founder, Purevesting</div>
-          <div class="meta">Last updated <time datetime="2026-09-30">30 September 2026</time></div>
+          <div class="meta">Last updated <time datetime="2026-10-02">2 October 2026</time></div>
         </div>
       </div>
 
@@ -95,9 +92,9 @@
   <!-- ============================================================
        THE TWO FORMS
        Both are delivered by Web3Forms, which emails each one to the
-       address that owns the access key. REPLACE YOUR-WEB3FORMS-KEY
-       (it appears twice on this page, once in each form) with the
-       key Web3Forms sends you.
+       address that owns the access key (salam@purevesting.com). The key
+       appears twice on this page, once in each form. It is meant to be
+       public: it only lets people send messages to that inbox.
        ============================================================ -->
 
   <section class="section reveal">
@@ -117,7 +114,7 @@
       </p>
 
       <form class="form-stack" action="https://api.web3forms.com/submit" method="POST" data-web3forms>
-        <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-KEY">
+        <input type="hidden" name="access_key" value="c8aa73dd-74ef-47e4-b316-bf5d6896a82f">
         <input type="hidden" name="subject" value="New question from purevesting.com">
         <input type="hidden" name="from_name" value="Purevesting website">
 
@@ -157,7 +154,7 @@
          log</a>.</p>
 
       <form class="form-stack" action="https://api.web3forms.com/submit" method="POST" data-web3forms>
-        <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-KEY">
+        <input type="hidden" name="access_key" value="c8aa73dd-74ef-47e4-b316-bf5d6896a82f">
         <input type="hidden" name="subject" value="New feedback from purevesting.com">
         <input type="hidden" name="from_name" value="Purevesting website">
 
@@ -192,7 +189,7 @@
       <p>Messages are delivered by email through Web3Forms, a form service.
          Your email address is optional, is used only to reply to you, and is
          never sold. If you would rather write directly, the address is
-         <a href="mailto:hello@purevesting.com">hello@purevesting.com</a>.</p>
+         <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>.</p>
 
     </div>
   </section>
@@ -223,7 +220,7 @@
       <a href="/newsletter/">Newsletter</a>
       <a href="/corrections/">Corrections</a>
       <a href="/ask/">Ask a question</a>
-      <a href="mailto:hello@purevesting.com">hello@purevesting.com</a>
+      <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
     </nav>
 
     <p class="disclaimer">
@@ -267,12 +264,6 @@
     form.addEventListener('submit', function (event) {
       event.preventDefault();
 
-      // Until the real access key is pasted in, don't pretend to send.
-      if (form.access_key.value.indexOf('YOUR-') === 0) {
-        say('This form isn\'t connected yet. Please email hello@purevesting.com instead.');
-        return;
-      }
-
       button.disabled = true;
       say('Sending…');
 
@@ -287,7 +278,7 @@
           say('Thank you — it has been sent.');
         })
         .catch(function () {
-          say('That didn\'t go through. Please try again, or email hello@purevesting.com.');
+          say('That didn\'t go through. Please try again, or email salam@purevesting.com.');
         })
         .then(function () {
           button.disabled = false;

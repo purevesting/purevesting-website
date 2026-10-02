@@ -74,29 +74,34 @@
          calculation — and works through it with the sources on the page.
          Free, and never a sales pitch.</p>
 
-      <!-- THE SIGN-UP. For now the button opens HalalEdge's sign-up page
-           on Beehiiv, where the email is typed once. When the Beehiiv
-           embedded form is ready (TODO.md, section 0), its script tag
-           replaces this button, and the first sentence of the small print
-           below goes. -->
-      <p class="subscribe"><a class="btn" href="https://halaledge.beehiiv.com/subscribe" target="_blank" rel="noopener">Subscribe on Beehiiv</a></p>
+      <!-- THE SIGN-UP FORM. This is Beehiiv's own embedded form — the form
+           called "Website" in Beehiiv → Subscribers → Subscribe forms. To
+           change how it looks, edit that form in Beehiiv; nothing here needs
+           to change. If JavaScript is switched off, the button inside
+           <noscript> shows instead. Beehiiv's separate "attribution" script
+           is left out on purpose: it would add tracking to this page. -->
+      <div class="beehiiv-form">
+        <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="032d9ee8-0af0-47ee-85a6-77d450a8f55e"></script>
+        <noscript><p class="subscribe"><a class="btn" href="https://halaledge.beehiiv.com/subscribe">Subscribe on Beehiiv</a></p></noscript>
+      </div>
 
-      <p class="meta">The button opens HalalEdge's sign-up page on Beehiiv,
-         the service that sends the newsletter. One email a week. Every issue
-         has an unsubscribe link. Your address is only used to send the
-         newsletter, and is never sold.</p>
+      <!-- The link below is the way in if Beehiiv's form fails to appear,
+           for example when a browser's blocker stops its script. -->
+      <p class="meta">Sign-ups are handled by Beehiiv, the service that sends
+         the newsletter. If the sign-up box doesn't appear, use
+         <a href="https://halaledge.beehiiv.com/subscribe">Beehiiv's sign-up
+         page</a> instead. One email a week. Every issue has an unsubscribe
+         link. Your address is only used to send the newsletter, and is never
+         sold.</p>
 
       <div class="byline">
-        <!-- UNCOMMENT once byline-96.webp and byline-192.webp are in
-             assets/img/. Until then it shows a broken image icon.
         <img src="/assets/img/byline-96.webp"
              srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
              width="48" height="48" alt="Moin Ali Syed">
-        -->
         <div>
           <div><strong>Moin Ali Syed</strong></div>
           <div class="meta">Founder, Purevesting</div>
-          <div class="meta">Last updated <time datetime="2026-10-01">1 October 2026</time></div>
+          <div class="meta">Last updated <time datetime="2026-10-02">2 October 2026</time></div>
         </div>
       </div>
 
@@ -189,7 +194,7 @@
       <a href="/newsletter/">Newsletter</a>
       <a href="/corrections/">Corrections</a>
       <a href="/ask/">Ask a question</a>
-      <a href="mailto:hello@purevesting.com">hello@purevesting.com</a>
+      <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
     </nav>
 
     <p class="disclaimer">
