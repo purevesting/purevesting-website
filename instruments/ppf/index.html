@@ -20,10 +20,76 @@
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Purevesting">
-<meta property="og:image" content="https://purevesting.com/assets/og/default.jpg">
+<meta property="og:image" content="https://purevesting.com/assets/og/instruments-ppf.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="en_IN">
+
+<!-- STRUCTURED DATA — a summary of this page written for Google (JSON-LD).
+     Visitors never see it. When you change this page's "Last updated"
+     date, change "dateModified" below to the same date (year-month-day). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://purevesting.com/instruments/ppf/#article",
+      "headline": "Is PPF halal?",
+      "description": "Is PPF Shariah-compliant? Deoband ruled the interest is riba, but that the account may be used to save tax if the interest is given away. Here is why.",
+      "url": "https://purevesting.com/instruments/ppf/",
+      "mainEntityOfPage": "https://purevesting.com/instruments/ppf/",
+      "image": "https://purevesting.com/assets/og/instruments-ppf.jpg",
+      "datePublished": "2026-09-18",
+      "dateModified": "2026-10-05",
+      "inLanguage": "en-IN",
+      "author": {
+        "@type": "Person",
+        "@id": "https://purevesting.com/about/#founder",
+        "name": "Moin Ali Syed",
+        "url": "https://purevesting.com/about/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://purevesting.com/#organization",
+        "name": "Purevesting",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://purevesting.com/assets/img/logo-512.png",
+          "width": 512,
+          "height": 512
+        }
+      },
+      "isPartOf": {
+        "@id": "https://purevesting.com/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://purevesting.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Instruments",
+          "item": "https://purevesting.com/instruments/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Is PPF halal?"
+        }
+      ]
+    }
+  ]
+}
+</script>
 
 <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
@@ -88,9 +154,9 @@
              srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
              width="48" height="48" alt="Moin Ali Syed">
         <div>
-          <div><strong>Moin Ali Syed</strong></div>
+          <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
           <div class="meta">Founder, Purevesting</div>
-          <div class="meta">Last updated <time datetime="2026-10-01">1 October 2026</time> · 6 min read</div>
+          <div class="meta">Last updated <time datetime="2026-10-05">5 October 2026</time> · 6 min read</div>
         </div>
       </div>
 
@@ -125,7 +191,7 @@
          it pays you back with the credit at the end.</p>
 
       <div class="table-scroll">
-        <table>
+        <table data-src="src-ppf-rules">
           <caption class="visually-hidden">How the PPF scheme works</caption>
           <thead>
             <tr>
@@ -140,7 +206,7 @@
             </tr>
             <tr>
               <td>Rate</td>
-              <td><span class="num">7.1%</span> a year, compounded annually</td>
+              <td data-src="src-ppf-rate"><span class="num">7.1%</span> a year, compounded annually</td>
             </tr>
             <tr>
               <td>Deposit limits</td>
@@ -166,10 +232,18 @@
         <!-- EVERY QUARTER (around 31 March, 30 June, 30 September and
              31 December): open the link below, read the newest office
              memorandum, and update the rate and the quarter here. -->
-        Source:
+        <!-- The two <span>s are what a reader sees on tapping a figure in
+             the table above: the rate row points at the first, the rest of
+             the table at the second (data-src). Keep the ids. -->
+        <span id="src-ppf-rate">Source for the rate:
         <a href="https://dea.gov.in/budget-division/475">Ministry of Finance, Department of Economic Affairs — small savings interest rates</a>
         (office memorandum of 30 September 2026) — rate as notified for
-        <time datetime="2026-10-01">October–December 2026</time>.
+        <time datetime="2026-10-01">October–December 2026</time>.</span>
+        <span id="src-ppf-rules">Source for the deposit limits and the
+        lock-in:
+        <a href="https://www.indiapost.gov.in/documents/offerings/schemesandservices/posb/PublicProvidentFundScheme2019English.pdf">Public Provident Fund Scheme, 2019</a>,
+        the scheme's rules as published by India Post — as of
+        <time datetime="2026-10-05">5 October 2026</time>.</span>
       </p>
 
       <h3>Where your deposit actually goes</h3>
@@ -465,14 +539,25 @@
 
     <nav class="footer-nav" aria-label="Footer">
       <a href="/">Home</a>
+      <a href="/about/">About</a>
       <a href="/instruments/">Instruments</a>
       <a href="/compare/shariah-mutual-funds/">Compare</a>
+      <a href="/halal-stocks/">Halal stocks</a>
       <a href="/methodology/">Methodology</a>
       <a href="/newsletter/">Newsletter</a>
       <a href="/corrections/">Corrections</a>
       <a href="/ask/">Ask a question</a>
+      <a href="https://www.youtube.com/channel/UCY_rjMlDGOAXyhC-aC_aQCA" rel="me">YouTube</a>
+      <a href="https://www.instagram.com/purevesting/" rel="me">Instagram</a>
       <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
     </nav>
+
+    <!-- What Purevesting is, in one line. The same words open the About
+         page and sit in the home page's structured data, so Google and
+         its AI answers describe the site the same way everywhere. -->
+    <p class="footer-about"><strong>Purevesting</strong> is a startup building
+       India's one-stop destination for halal finance — every figure sourced,
+       every Shariah position attributed. <a href="/about/">About Purevesting</a></p>
 
     <p class="disclaimer">
       Educational content, not investment advice. Purevesting is not

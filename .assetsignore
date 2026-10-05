@@ -13,6 +13,7 @@ TODO.md
 README.md
 _template.html
 index-old.html
+og-template.html
 
 # Settings files the live site has no reason to show anyone.
 wrangler.jsonc

@@ -3,40 +3,31 @@
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 2 October 2026
+Last updated: 5 October 2026
 
 ---
 
-## 0. What's left for MAS (2 Oct)
+## 0. What's left for MAS (5 Oct)
 
-Everything on the site's side of the brief is done. What's below needs MAS:
-a test only he can run, or a setting only he can reach. Do 1–3 right after
-pushing the 2 Oct batch.
+Only things that need MAS himself: a setting only he can reach, or a
+decision only he can make.
 
 - [x] ~~**Create the site's email address.**~~ DONE by MAS: he made
       **salam@purevesting.com** in Zoho Mail (not hello@, as first planned).
       Every page now uses salam@ (2 Oct).
-- [ ] **1. Test both forms on purevesting.com/ask/.** The Web3Forms key is in
-      both forms (2 Oct). Send one test question and one test feedback. Each
-      should show "Thank you — it has been sent." under its button and reach
-      salam@purevesting.com within a minute or two. Check spam the first
-      time, and mark it "not spam" if it lands there. Then, in the Web3Forms
-      dashboard, set how long it keeps copies of messages to the shortest
-      option.
-- [ ] **2. Test the newsletter sign-up on purevesting.com/newsletter/.**
-      Beehiiv's sign-up box should appear a second after the page loads. Sign
-      up with a second email address of yours: the box should say "You're in!
-      The next issue will land in your inbox.", and the address should show
-      up in Beehiiv → Subscribers. Then delete the test subscriber. Already
-      decided: double opt-in off (MAS, 1 Oct). Beehiiv's second script,
-      "attribution tracking", was left out on purpose: it records where each
-      sign-up came from, for Beehiiv's reports, and the site adds no tracking
-      scripts. Add it later only if that becomes worth knowing.
-- [ ] **3. Check the link preview.** Paste https://purevesting.com/?v=2 into
-      a WhatsApp chat with yourself. The preview should show the new image
-      (the logo, "Purevesting." with its green dot, and "Halal finance in
-      India, made better"). The `?v=2` stops
-      WhatsApp reusing an old preview it saved before the image existed.
+- [x] ~~**1. Test both forms on purevesting.com/ask/.**~~ DONE by MAS,
+      5 Oct. One small setting to check if it isn't done yet: in the
+      Web3Forms dashboard, set how long it keeps copies of messages to the
+      shortest option.
+- [x] ~~**2. Test the newsletter sign-up on purevesting.com/newsletter/.**~~
+      DONE by MAS, 5 Oct. Already decided: double opt-in off (MAS, 1 Oct).
+      Beehiiv's second script, "attribution tracking", was left out on
+      purpose: the site adds no tracking scripts.
+- [x] ~~**3. Check the link preview.**~~ DONE by MAS, 5 Oct. Every page now
+      has its own preview image (5 Oct batch), so test one inner page the
+      same way once that batch is live: paste
+      https://purevesting.com/instruments/epf/?v=3 into a WhatsApp chat
+      with yourself — the `?v=3` stops WhatsApp reusing an old preview.
 - [ ] **4. Fix the purevesting.in redirect — it still answers 302 (checked
       2 Oct, after the 301 rule showed "Active").** Cloudflare runs Redirect
       Rules before Page Rules and Bulk Redirects, and the first Redirect Rule
@@ -61,13 +52,96 @@ pushing the 2 Oct batch.
          `http*://www.purevesting.in/*` and the same Target URL.
       5. Then tell the website chat "check the .in redirect". A browser
          doesn't show 301 or 302, but Claude can check it from outside.
-- [ ] **5. Search Console: request indexing of the home page** (for the blank
-      icon on Google) — section 5.
+- [x] ~~**5. Search Console: request indexing of the home page**~~ DONE by
+      MAS, 5 Oct. Once the 5 Oct batch is live, request indexing once more
+      for the home page and for the new /about/ page, so Google reads the
+      new site name, logo and description sooner — section 5.
 - [ ] **6. Bing Webmaster Tools — from about 7 October**, once Search Console
       has run for a week — section 5.
-- [ ] **7. When the flagship videos are published:** send their links in the
-      website chat, to replace the three video cards on the home page
-      (section 8).
+- The flagship-videos item is now a monthly job — see the next section
+  (MAS, 5 Oct).
+- [ ] **7. Use the same one-line description everywhere.** Google's AI
+      answers describe Purevesting from the site AND from Instagram and
+      YouTube. The site now says, in its About page, footer and structured
+      data: "Purevesting is a startup building India's one-stop destination
+      for halal finance." Put that same sentence (or one very close to it),
+      plus a link to https://purevesting.com, in the Instagram bio, the
+      YouTube channel description and the channel's links. Also add the
+      relevant purevesting.com page link to each video's description — links
+      from YouTube are the easiest way for Google to connect the two.
+- [ ] **8. Purevesting GPT: send the link.** Google's AI answer lists
+      "Purevesting GPT" (it read that on Instagram), but the site never
+      mentions it. If it is live, send the link in the website chat and it
+      gets a line on the About page (or a page of its own). If it is no
+      longer live, take it off the Instagram bio, or Google will keep
+      describing a tool nobody can find.
+- [ ] **9. Google still shows a globe instead of the logo — wait, then
+      check.** The site's side is correct (a 192×192 PNG listed first, plus
+      favicon.ico with 16/32/48 sizes, all added 1 Oct), and since 5 Oct
+      the home page also tells Google the site's name and logo. Google
+      refreshes icons on its own schedule — usually days to a few weeks
+      after it recrawls the home page. If it is still a globe after about
+      two weeks: in Cloudflare, check Security → Bots, and make sure
+      nothing there blocks Google's crawlers (Google fetches the icon with
+      its own crawler, not a browser).
+
+---
+
+## 0b. Monthly to-do — and the other jobs that repeat
+
+Jobs that never finish, because the data or the videos keep changing.
+Each one says what to send or change, and where.
+
+### Every month
+
+- [ ] **Refresh the three video cards on the home page.** Send the links of
+      the three videos to show (the newest flagship videos, or whichever
+      three matter most that month) in the website chat. Each card needs
+      the video's address, its thumbnail and its exact title — the comment
+      above the cards in `index.html` explains the format. The same three
+      go on the /about/ page's "Watch" list if they replace one there.
+- [ ] **NSE factsheet figures.** NSE replaces its factsheets at the same web
+      address at the start of each month. DONE for 30 September 2026 (in the
+      1 Oct batch): 204 of the 501 companies pass (the Nifty 500 listed 501
+      that month, so the grid has 501 squares). Each month, from the two
+      factsheets (Nifty500 Shariah, and Nifty 500 at
+      niftyindices.com/Factsheet/ind_nifty_500.pdf), update:
+      - home page: the count, the two meta descriptions, the grid (one square
+        per company), the "as of" date;
+      - home page market-value switch: Infosys's weight in each factsheet,
+        the "about 31%" wording (twice: source note and script), and
+        VALUE_SQUARES in the script at the bottom of the page (share × number
+        of squares);
+      - methodology page: the "204" mentions and the sector table;
+      - purification calculator: the "204 figure" line;
+      - home page: the og:description (it quotes the count);
+      - /halal-stocks/: the answer box, the "501" and "204" in the first
+        section, the table (40.7% = count ÷ companies; 31.4% = Infosys's
+        weight in the Nifty 500 ÷ its weight in the Shariah index), the
+        financial services figures, every "as of" date, the meta and
+        og:title, and the page's "Last updated" date and dateModified;
+      - the preview images don't show the count, so they never need
+        remaking for this.
+
+### Every quarter
+
+- [ ] **The compare page's returns table.** After each quarter-end, redo it
+      the same way: one end date for every fund, the same date one, three
+      and five years before, Direct plan Growth. Update fund sizes and
+      expense ratios at the same time, re-check the row order and the
+      "nearly nine times" sentence under "How to read this table".
+- [ ] **Small savings rates.** Around 31 Mar, 30 Jun, 30 Sep and 31 Dec the
+      Ministry of Finance announces the next quarter's rates. Open the
+      Department of Economic Affairs link on the PPF page, then update the
+      rate, the quarter and the "Last updated" date on the PPF and Sukanya
+      pages (and their dates in `sitemap.xml`).
+
+### Every few months
+
+- [ ] **Digital gold storage terms.** Providers change these without
+      notice. Re-open the three terms pages linked under the gold page's
+      structure table and check the free periods (2 / 5 / 5 years) and the
+      10-year delivery rule.
 
 ---
 
@@ -97,11 +171,7 @@ date. These are the places that don't yet.
       from Value Research's fund pages. Rows were re-ordered by fund size —
       the UTI fund was out of place — and that is logged. The NAVs used are
       in a comment under the table.
-- [ ] **EVERY QUARTER — the compare page's returns table.** After each
-      quarter-end, redo it the same way: one end date for every fund, the
-      same date one, three and five years before, Direct plan Growth. Update
-      fund sizes and expense ratios at the same time, re-check the row order
-      and the "nearly nine times" sentence under "How to read this table".
+- The quarterly redo of the returns table moved to section 0b (5 Oct).
 - [x] ~~**Compare page — TASIS source link.**~~ DONE 1 Oct: TASIS's home page
       says Tata Ethical and UTI Nifty 500 Shariah Index Fund are the only
       mutual funds it certifies, and that Taurus Ethical Fund is not certified
@@ -153,6 +223,19 @@ date. These are the places that don't yet.
       said — corrected and logged. Contributions: Code on Social Security,
       2020, section 16(1)(a) (the labour codes replaced the EPF Act on
       21 Nov 2025). Malaysia: KWSP's Simpanan Shariah page.
+- [ ] **Compare page — the "Launched" column has no source link (found
+      5 Oct).** Every other figure on the page has one. Add each fund's
+      inception date from its own factsheet or scheme information document
+      (or one source that lists all six), then remove `data-src="none"` from
+      the column's heading so the years become tappable like the rest. Web
+      search agrees with the years shown (e.g. Tata Ethical 1996), but the
+      5 Oct session couldn't open the documents to link them.
+- [ ] **PPF page — open the scheme rules link once (added 5 Oct).** The
+      deposit limits and the lock-in now cite the Public Provident Fund
+      Scheme, 2019, as published by India Post. The 5 Oct session found it
+      by web search, which quoted the scheme's own wording (₹500 minimum,
+      ₹1,50,000 maximum a year, 15 years, then 5-year blocks), but it could
+      not open the PDF itself. Open it once and check it loads.
 - [ ] **EPF page — the bands rest on Business Standard (20 Jul 2026).** The
       primary source is the Department of Financial Services' pattern for
       provident funds (notification of 2 March 2015, No. 11/14/2013-PR, as
@@ -183,11 +266,7 @@ date. These are the places that don't yet.
 - [x] ~~**PPF page — confirm the rate for the CURRENT quarter.**~~ DONE 1 Oct:
       the office memorandum of 30 Sep 2026 kept every rate unchanged for
       October–December 2026 — PPF 7.1%, Sukanya 8.2%. Both pages updated.
-- [ ] **EVERY QUARTER — small savings rates.** Around 31 Mar, 30 Jun, 30 Sep
-      and 31 Dec the Ministry of Finance announces the next quarter's rates.
-      Open the Department of Economic Affairs link on the PPF page, then update
-      the rate, the quarter and the "Last updated" date on the PPF and Sukanya
-      pages (and their dates in `sitemap.xml`).
+- The quarterly small savings rates check moved to section 0b (5 Oct).
 - [x] ~~**PPF page — confirm both Deoband fatwa references.**~~ CHECKED
       1 Oct: both numbers and both quotes match. One wording fix: the page
       said the second questioner wanted "the Section 80C deduction"; the
@@ -241,10 +320,7 @@ date. These are the places that don't yet.
       out of your gold, and MMTC-PAMP can buy the gold back. Augmont also
       requires delivery within 10 years. The old row ("then a small annual
       fee") was logged in the corrections log.
-- [ ] **EVERY FEW MONTHS — digital gold storage terms.** Providers change
-      these without notice. Re-open the three terms pages linked under the
-      gold page's structure table and check the free periods (2 / 5 / 5
-      years) and the 10-year delivery rule.
+- The storage-terms check moved to section 0b (5 Oct).
 - [x] ~~**Digital gold page — confirm the Islamonweb quotes word for
       word.**~~ CHECKED 1 Oct: both quotes, the author, title and both dates
       match.
@@ -290,20 +366,7 @@ date. These are the places that don't yet.
       an announcement of the change, link it next to the methodology as a
       second source. (S&P's separate Shariah index family shows 30% as well.)
 
-- [ ] **EVERY MONTH — NSE factsheet figures.** NSE replaces its factsheets
-      at the same web address at the start of each month. DONE for
-      30 September 2026 (in the 1 Oct batch): 204 of the 501 companies pass
-      (the Nifty 500 listed 501 that month, so the grid has 501 squares). Each
-      month, from the two factsheets (Nifty500 Shariah, and Nifty 500 at
-      niftyindices.com/Factsheet/ind_nifty_500.pdf), update:
-      - home page: the count, the two meta descriptions, the grid (one square
-        per company), the "as of" date;
-      - home page market-value switch: Infosys's weight in each factsheet,
-        the "about 31%" wording (twice: source note and script), and
-        VALUE_SQUARES in the script at the bottom of the page (share × number
-        of squares);
-      - methodology page: the "204" mentions and the sector table;
-      - purification calculator: the "204 figure" line.
+- The monthly NSE factsheet update moved to section 0b (5 Oct).
 
 ## 2. Automating the data instead of typing it
 
@@ -333,13 +396,8 @@ In the order they matter, from the original plan.
       index's only caps are 33% per stock and 62% for the top three, far
       above Infosys), so 1.83 ÷ 5.83 is the Shariah index's share of the
       whole. This takes the place of the market-cap treemap.
-- [ ] **Screen grid — one switch per screening rule (needs data).** Turning
-      the business test or the debt test on and off needs, for each company,
-      which rule it fails. NSE and TASIS publish only the final list of
-      companies that pass, not the reasons. Options: TASIS's paid stock
-      screening service, a market-data vendor, or computing the ratios from
-      every company's own accounts (a big job). Not built until that data
-      exists.
+- The per-rule switches for the screen grid were dropped (MAS, 5 Oct) —
+  see section 9.
 - [ ] **Quarterly movement in the screen grid.** Show companies entering and
       leaving compliance quarter by quarter, with a year marker. Needs NSE
       index constituent lists at each rebalance date.
@@ -358,6 +416,28 @@ In the order they matter, from the original plan.
       more than five columns (the compare page's returns table has six) get
       no button. When a source note is too long for the picture, it keeps
       the part from "Source" onwards.
+- [x] ~~**Share cards for the compare page's two big tables**~~ — DONE
+      5 Oct. Cards now take tables up to 6 columns. A column can be left
+      off a card with `data-share="skip"` on its heading (the first table
+      drops "Fund house", which repeats the fund's name), a cell can say
+      something shorter on the card with `data-share-text`, and a table
+      with several source notes under it gets every source on the card.
+      The card always uses the page's own row order (fund size).
+- [x] ~~**Tap a number to see its source and date**~~ — DONE 5 Oct, on every
+      page, by `assets/site.js` (section 2 of that file explains it). Each
+      figure takes the source note nearest to it; `data-src` points a
+      figure, a column or a table at a specific note instead, and
+      `data-src="none"` marks something that isn't a sourced figure (the
+      calculators' answers). Without JavaScript the figures are plain text
+      and nothing changes.
+- [x] ~~**Count-up**~~ — DONE 5 Oct: the home page's 204 counts up once, but
+      only if it starts below the screen's edge; a number already on screen
+      never animates. Mark any other whole number with `data-count`.
+- Not built, on purpose (5 Oct): **table sorting** — six rows fit on one
+  screen, and sorting by return is the one view the compliance rules
+  warn against (a shared screenshot of it reads as a ranking); and the
+  **ticker strip** — it would add movement without adding information.
+  Both were allowed by the brief, not required.
 - [x] ~~**Source chips**~~ — built and in use on the EPF page: tap a scholar's
       position to read the exact wording it was issued in. Note the constraint:
       `<details>` cannot go inside a `<p>`, so a source chip sits between
@@ -478,6 +558,26 @@ Things MAS flagged while reviewing pages. Both done.
       sign-up form, and links to the methodology, instruments and compare
       pages. Once issues exist, add a link to the Beehiiv archive of past
       issues.
+- [x] ~~`/about/`~~ — built 5 Oct. What Purevesting is (the one-line
+      description Google should use), what it covers, how every page is
+      made, who runs it, and where else Purevesting lives. Linked from every
+      byline and from the footer.
+- [x] ~~`/halal-stocks/`~~ — built 5 Oct: "How many Indian stocks are
+      halal?" as its own page, so that search lands on a page made for it
+      instead of the home page. Built only from figures the site already
+      sources (NSE's factsheets and methodology). Linked from the home
+      page, the methodology page and the footer.
+- [ ] **Pages worth adding next** — each needs a session that can open
+      websites (the 5 Oct one couldn't), because every Shariah position
+      has to be quoted from the ruling itself:
+      1. **Zakat on shares and mutual funds** — the channel already covers
+         Zakat, and people search for it by name, especially before
+         Ramadan;
+      2. **Is a mutual fund SIP halal?** — the home page's "soon" line;
+      3. **The full list of the 204 companies** on /halal-stocks/, from
+         NSE's monthly constituent file (adds a monthly job);
+      4. **Interest in loans and EMIs** — on the channel, not on the site;
+      5. **Purevesting GPT** — once MAS sends the link (section 0).
 - [ ] When each page goes live: turn its greyed-out "soon" line on the home
       page into a real link, turn its row on `/instruments/` into a link,
       uncomment its link in the header nav if it is a top-level section, and
@@ -495,21 +595,11 @@ Things MAS flagged while reviewing pages. Both done.
       commented-out snippet at the bottom of every page was removed on
       30 Sep and replaced with a one-line note saying so. Never paste a
       Cloudflare snippet into a page — it would count every visit twice.
-- [ ] **Google shows a blank icon instead of the logo (MAS, 30 Sep).**
-      Two likely reasons:
-      (1) Time. Google picks up a site's icon when it crawls the home page,
-      and for a new site that can take days to weeks. To speed it up:
-      Search Console → paste https://purevesting.com/ into the search bar at
-      the top → Request indexing.
-      (2) Format. Google's favicon guide lists the formats it reads (PNG,
-      ICO, GIF, JPEG and a few others) and SVG isn't among them. Our main
-      icon is an SVG, the only PNG icon is 32×32 (Google recommends bigger
-      than 48×48), and there is no favicon.ico at the site root.
-      FIXED 30 Sep on the site's side: `favicon-192.png` and `favicon.ico`
-      (made from the logo) are in the main folder, and the 192×192 PNG is
-      listed first in every page's head. Still to do: request indexing of the
-      home page in Search Console, then wait — Google can take days to weeks
-      to show the new icon.
+- [x] ~~**Google shows a blank icon instead of the logo (MAS, 30 Sep).**~~
+      Site side FIXED 30 Sep (`favicon-192.png` listed first, plus
+      `favicon.ico`), indexing requested by MAS 5 Oct, and the logo and site
+      name added as structured data 5 Oct. What's left is waiting for
+      Google — see section 0, item 9.
 - [x] ~~**Google Search Console**~~ — DONE 30 Sep. Once a week, open the
       Performance report (which searches found the site) and the Sitemaps
       page (`sitemap.xml` should show status "Success"). The first search
@@ -520,6 +610,15 @@ Things MAS flagged while reviewing pages. Both done.
       visitors, and it adds a heavy script to every page. Revisit when a
       sponsor asks for audience detail Cloudflare can't give, or when paid
       campaigns start and sign-ups need tracking to their source.
+- [x] ~~**Structured data (SEO), 5 Oct.**~~ Every page now carries a
+      JSON-LD block that Google reads: the home page says the site is
+      called "Purevesting" (so results stop saying "purevesting.com"), gives
+      the logo (`/assets/img/logo-512.png`), the one-line description, the
+      founder, and links the YouTube channel, Instagram and the newsletter
+      as the same organisation; every article page names its author, its
+      dates and its place in the site (breadcrumbs). The one rule to
+      remember: when a page's "Last updated" date changes, change
+      `dateModified` in its block to the same date.
 - [ ] **Bing Webmaster Tools — after Search Console has run for a week.**
       Bing's results also feed other search engines, such as DuckDuckGo and
       Yahoo. Sign in at bing.com/webmasters and use the option to import from
@@ -581,7 +680,12 @@ here, which needs building before the first sponsor conversation, not after.
       logo, "Purevesting." with the green dot, "Halal finance in India, made
       better", and a small grid like the home page's. Every page already
       points to it.
-- [ ] Eventually, a different preview image per page type rather than one
+- [x] ~~Per-page preview images~~ — DONE 5 Oct: every page has its own
+      1200×630 JPG in `assets/og/`, named after its address (e.g.
+      `instruments-epf.jpg`), all under 80 KB. They are made from
+      `og-template.html` (never published): ask the website chat to make
+      one for each new page. The home page keeps `default.jpg`.
+- [x] ~~Eventually, a different preview image per page type rather than one
       default for everything.
 
 ## 8. Housekeeping
@@ -618,6 +722,18 @@ here, which needs building before the first sponsor conversation, not after.
       cards.~~ DONE 2 Oct with three published videos: "Halal (ethical)
       investing kya hai?", "Muslims ne banaya tha duniya ka pehla bank" and
       the Zakat basics Short. Titles taken from YouTube itself.
-- [ ] **Swap in the flagship videos once they are published (MAS, 2 Oct).**
-      Send the three links in the website chat. Each card needs the video's
-      address, its thumbnail and its exact title.
+- Swapping in the flagship videos is now a monthly job (MAS, 5 Oct) —
+  see section 0b.
+
+## 9. Obsolete — decided against
+
+Kept here so nobody re-plans them by accident. Each says who decided and
+why.
+
+- ~~**Screen grid — one switch per screening rule.**~~ DROPPED by MAS,
+  5 Oct. Turning the business test or the debt test on and off needs, for
+  each company, which rule it fails. NSE and TASIS publish only the final
+  list of companies that pass, not the reasons, so it would mean buying
+  TASIS's screening data (or a market-data vendor's) — not worth it. The
+  grid keeps its "by companies / by market value" switch, which is built
+  from NSE's free factsheets.

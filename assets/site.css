@@ -468,6 +468,19 @@ input:focus-visible {
   font-weight: 600;
 }
 
+/* The one line saying what Purevesting is, just above the disclaimer. */
+.footer-about {
+  max-width: 44em;
+  margin: 0 0 1.25rem;
+}
+
+.footer-about strong { color: var(--forest-text); }
+
+.footer-about a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* The compliance line. Required on every page — never delete it. */
 .disclaimer {
   max-width: 44em;
@@ -522,7 +535,8 @@ input:focus-visible {
 
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;   /* not "collapse": a sticky first column */
+  border-spacing: 0;           /* (below) would hide some row lines */
   font-size: 0.9rem;
 }
 
@@ -559,6 +573,19 @@ caption {
 
 /* The first column is usually the fund or instrument name. */
 td:first-child { font-weight: 600; }
+
+/* On a phone a wide table scrolls sideways inside its box. The first
+   column stays put while the figures slide under it, so you always know
+   which row you are reading. On a table that fits the screen this does
+   nothing at all. The thin shadow is the line between the two. */
+.table-scroll thead th:first-child,
+.table-scroll tbody tr:not(.fig-row) > td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--white);
+  box-shadow: 1px 0 0 var(--line);
+}
 
 
 /* 11. CHIPS: PASSES / FAILS ===============================================
@@ -644,6 +671,20 @@ td:first-child { font-weight: 600; }
   flex-shrink: 0;
 }
 
+/* The name in a byline links to the About page — Google looks for a page
+   about the person behind the writing. It keeps the text colour, with a
+   faint underline so it still reads as a link. */
+.byline-name {
+  color: inherit;
+  text-decoration-color: var(--line);
+}
+
+/* The About page's bigger version of the byline photo. */
+.founder img {
+  width: 96px;
+  height: 96px;
+}
+
 /* .source-note — the sources line under a table or a figure. */
 .source-note {
   font-size: 0.82rem;
@@ -688,6 +729,14 @@ td:first-child { font-weight: 600; }
   border-radius: var(--radius-sm);
   font-size: 0.82rem;
   color: var(--ink-2);
+}
+
+/* The "Read the fatwa" link at the end of each chip is what gets tapped
+   most on a phone, so it gets a full-size tap target too. */
+.source .source-body a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
 }
 
 
@@ -1116,6 +1165,81 @@ td:first-child { font-weight: 600; }
   margin: 0;
   font-weight: 600;
 }
+
+
+/* 20. TAPPABLE FIGURES ====================================================
+   /assets/site.js turns each sourced figure into a button: tap it and its
+   source and date open underneath. Without JavaScript none of this
+   exists and the figures are plain text.
+
+   The dotted underline is the only hint, and it is the same quiet grey on
+   every figure — a figure is never coloured, whatever its value.
+   ========================================================================== */
+
+button.fig {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  text-align: inherit;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline dotted var(--ink-3);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+button.fig[aria-expanded="true"] { text-decoration-style: solid; }
+
+/* In a table the whole cell is the button, so it is easy to hit with a
+   thumb: the negative margin stretches it over the cell's padding. */
+td.num > button.fig {
+  display: block;
+  width: calc(100% + 1.8rem);
+  margin: -0.75rem -0.9rem;
+  padding: 0.75rem 0.9rem;
+  text-align: right;
+}
+
+/* The panel that opens: a small white box, like a source chip's. */
+.fig-pop {
+  display: block;
+  max-width: 34rem;
+  margin: 0.35rem 0 0.75rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: normal;
+  color: var(--ink-2);
+  text-align: left;
+  white-space: normal;
+}
+
+/* Under a table row: a full-width row of its own. On a phone a wide table
+   scrolls sideways, so the panel holds still at the left edge and stays
+   no wider than the screen — readable without scrolling the table. */
+.fig-row td {
+  padding: 0 0.9rem 0.75rem;
+  font-weight: 400;
+  background: var(--bone);
+}
+
+.fig-row .fig-pop {
+  position: sticky;
+  left: 0.9rem;
+  max-width: min(34rem, calc(100vw - 5rem));
+  margin: 0.6rem 0 0;
+}
+
+tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 
 /* ==========================================================================

@@ -37,7 +37,7 @@
   var MAX_H   = 1350;         // tallest card: Instagram's 4:5 portrait
   var PAD     = 72;           // space around the edge of the card
   var INNER   = W - PAD * 2;  // width left for the content
-  var MAX_COLUMNS = 5;        // wider tables are too cramped to share
+  var MAX_COLUMNS = 6;        // wider tables are too cramped to share
 
   // Text sizes to try, largest first (1 = full size). An answer shrinks
   // further so it always fits whole. A table stops shrinking sooner and
@@ -64,9 +64,19 @@
 
   /* 2. READING THE PAGE ================================================== */
 
-  // Collapse runs of spaces and line breaks into single spaces.
+  // Collapse runs of spaces and line breaks into single spaces. A
+  // non-breaking space (&nbsp; in the HTML) is kept, so words joined by one
+  // — "Size&nbsp;(₹&nbsp;cr)" — stay on one line on the card too.
   function clean(text) {
-    return (text || '').replace(/\s+/g, ' ').trim();
+    return (text || '').replace(/[ \t\r\n\f]+/g, ' ').trim();
+  }
+
+  // An element's text without any source panel a reader has opened inside
+  // it (see the tappable figures in site.js), so the card never shows one.
+  function textOf(el) {
+    var copy = el.cloneNode(true);
+    copy.querySelectorAll('.fig-pop').forEach(function (pop) { pop.remove(); });
+    return clean(copy.textContent);
   }
 
   // The page address without "https://", e.g. purevesting.com/instruments/epf/
@@ -96,14 +106,18 @@
 
   // One table cell: its main text, its small second line (if any), and
   // whether it is a number column or a pass / fail chip.
+  // A cell can carry data-share-text="…" to say something shorter on the
+  // card than on the page — e.g. a chip whose "see note" points at a note
+  // the card doesn't show.
   function readCell(cell, isNumColumn) {
     var copy = cell.cloneNode(true);
+    copy.querySelectorAll('.fig-pop').forEach(function (pop) { pop.remove(); });
     var note = copy.querySelector('.cell-note');
     var noteText = note ? clean(note.textContent) : '';
     if (note) note.remove();
     var chip = cell.querySelector('.chip');
     return {
-      text: clean(copy.textContent),
+      text: cell.getAttribute('data-share-text') || clean(copy.textContent),
       note: noteText,
       num: isNumColumn || cell.classList.contains('num'),
       chip: chip ? (chip.classList.contains('chip-pass') ? 'pass' : 'fail') : null
@@ -111,23 +125,45 @@
   }
 
   // A whole table: header cells and body rows.
+  // A column whose <th> has data-share="skip" is left off the card — use it
+  // for a column that only repeats what another one says, so the rest have
+  // room. Rows opened by tapping a figure (class "fig-row") are not data.
   function readTable(table) {
     var headCells = table.querySelectorAll('thead th');
     var numCols = [];
+    var skip = [];
     var head = [];
     headCells.forEach(function (th, i) {
+      skip[i] = th.getAttribute('data-share') === 'skip';
       numCols[i] = th.classList.contains('num');
-      head.push(clean(th.textContent));
+      if (!skip[i]) head.push(clean(th.textContent));
     });
     var rows = [];
     table.querySelectorAll('tbody tr').forEach(function (tr) {
+      if (tr.classList.contains('fig-row')) return;
       var cells = [];
       tr.querySelectorAll('th, td').forEach(function (cell, i) {
-        cells.push(readCell(cell, numCols[i]));
+        if (!skip[i]) cells.push(readCell(cell, numCols[i]));
       });
       rows.push(cells);
     });
     return { head: head, rows: rows };
+  }
+
+  // The source line for a table's card. A table can have more than one
+  // source note under it (the compare page's first table has three); the
+  // card takes the part of each that starts at "Source", so every source is
+  // named and the explanations are left for the page. If no note names a
+  // source, the first note goes on the card whole.
+  function tableSource(notes) {
+    var parts = [];
+    notes.forEach(function (note) {
+      var text = textOf(note);
+      var at = text.search(/\bSources?\b/);
+      if (at >= 0) parts.push(text.slice(at));
+    });
+    if (parts.length) return parts.join(' ');
+    return notes.length ? textOf(notes[0]) : '';
   }
 
   // A table is worth sharing only if it has rows, isn't too wide, and
@@ -441,7 +477,15 @@
       data.head.forEach(function (t, c) { consider(t, font(600, headSize, FONT.body), c); });
       rows.forEach(function (row) {
         row.forEach(function (cell, c) {
-          consider(cell.text, cellFont(cell, c), c);
+          if (cell.chip) {
+            // A chip never wraps, so its column must fit the whole pill.
+            ctx.font = cellFont(cell, c);
+            var pill = ctx.measureText(cell.text).width + 24 * s + padX * 2;
+            minW[c] = Math.max(minW[c], pill);
+            maxW[c] = Math.max(maxW[c], pill);
+          } else {
+            consider(cell.text, cellFont(cell, c), c);
+          }
           if (cell.note) consider(cell.note, font(400, noteSize, FONT.body), c);
         });
       });
@@ -659,16 +703,16 @@
           titlePieces: headingPieces(),
           titleSize: 60,
           scales: ANSWER_SCALES,
-          body: answerBody(clean(box.textContent)),
+          body: answerBody(textOf(box)),
           source: updated,
           address: address
         }, fileName(n));
       });
     });
 
-    // Tables. The button goes under the table's source line if it has one.
-    // A table whose columns can't fit side by side on the card, even at
-    // the smallest text size, gets no button.
+    // Tables. The button goes under the table's first source line if it
+    // has one. A table whose columns can't fit side by side on the card,
+    // even at the smallest text size, gets no button.
     var measure = document.createElement('canvas').getContext('2d');
     document.querySelectorAll('.table-scroll').forEach(function (wrapEl) {
       var table = wrapEl.querySelector('table');
@@ -676,10 +720,14 @@
       var data = readTable(table);
       if (!tableIsShareable(data)) return;
       if (!tableBody(data).body(measure, TABLE_SCALES[TABLE_SCALES.length - 1]).fits) return;
-      var next = wrapEl.nextElementSibling;
-      var sourceEl = next && next.classList.contains('source-note') ? next : null;
+      // Every source note directly under the table, collected before any
+      // button is added between them.
+      var notes = [];
+      for (var el = wrapEl.nextElementSibling;
+           el && el.classList.contains('source-note');
+           el = el.nextElementSibling) notes.push(el);
       var n = ++count;
-      addButton(sourceEl || wrapEl, function () {
+      addButton(notes[0] || wrapEl, function () {
         // Read the table at the moment of the tap, so a calculator's
         // current numbers are what go on the card.
         var t = tableBody(readTable(table));
@@ -689,7 +737,7 @@
           scales: TABLE_SCALES,
           body: t.body,
           fitRows: t.fitRows,
-          source: sourceEl ? clean(sourceEl.textContent) : updated,
+          source: notes.length ? tableSource(notes) : updated,
           address: address
         }, fileName(n));
       });

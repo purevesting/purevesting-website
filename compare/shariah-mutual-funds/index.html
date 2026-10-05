@@ -20,10 +20,70 @@
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Purevesting">
-<meta property="og:image" content="https://purevesting.com/assets/og/default.jpg">
+<meta property="og:image" content="https://purevesting.com/assets/og/compare-shariah-mutual-funds.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="en_IN">
+
+<!-- STRUCTURED DATA — a summary of this page written for Google (JSON-LD).
+     Visitors never see it. When you change this page's "Last updated"
+     date, change "dateModified" below to the same date (year-month-day). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://purevesting.com/compare/shariah-mutual-funds/#article",
+      "headline": "Halal mutual funds in India, compared",
+      "description": "All six Shariah-compliant mutual funds in India, side by side: who certifies the screening, active or passive, size and returns. Sourced data, no recommendations.",
+      "url": "https://purevesting.com/compare/shariah-mutual-funds/",
+      "mainEntityOfPage": "https://purevesting.com/compare/shariah-mutual-funds/",
+      "image": "https://purevesting.com/assets/og/compare-shariah-mutual-funds.jpg",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-10-02",
+      "inLanguage": "en-IN",
+      "author": {
+        "@type": "Person",
+        "@id": "https://purevesting.com/about/#founder",
+        "name": "Moin Ali Syed",
+        "url": "https://purevesting.com/about/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://purevesting.com/#organization",
+        "name": "Purevesting",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://purevesting.com/assets/img/logo-512.png",
+          "width": 512,
+          "height": 512
+        }
+      },
+      "isPartOf": {
+        "@id": "https://purevesting.com/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://purevesting.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Shariah mutual funds compared"
+        }
+      ]
+    }
+  ]
+}
+</script>
 
 <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
@@ -79,7 +139,7 @@
              srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
              width="48" height="48" alt="Moin Ali Syed">
         <div>
-          <div><strong>Moin Ali Syed</strong></div>
+          <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
           <div class="meta">Founder, Purevesting</div>
           <div class="meta">Last updated <time datetime="2026-10-02">2 October 2026</time> · 5 min read</div>
           <div class="meta">Corrected <time datetime="2026-10-02">2 October 2026</time> · <a href="/corrections/#log">see the corrections log</a></div>
@@ -119,10 +179,10 @@
           <thead>
             <tr>
               <th scope="col">Fund</th>
-              <th scope="col">Fund house</th>
+              <th scope="col" data-share="skip">Fund house</th>
               <th scope="col">How it invests</th>
               <th scope="col">Tracks</th>
-              <th scope="col">Launched</th>
+              <th scope="col" data-src="none">Launched</th>
               <th scope="col">Shariah screening by</th>
             </tr>
           </thead>
@@ -170,7 +230,7 @@
               <td>Tracks an index</td>
               <td>Nifty 50 Shariah</td>
               <td class="num">2009</td>
-              <td><span class="chip chip-fail">No board — see note</span></td>
+              <td data-share-text="No board"><span class="chip chip-fail">No board — see note</span></td>
             </tr>
 
             <tr>
@@ -259,11 +319,11 @@
           <thead>
             <tr>
               <th scope="col">Fund</th>
-              <th scope="col" class="num">Size (₹ cr)</th>
-              <th scope="col" class="num">1 year</th>
-              <th scope="col" class="num">3 years</th>
-              <th scope="col" class="num">5 years</th>
-              <th scope="col" class="num">Expense ratio</th>
+              <th scope="col" class="num" data-src="src-size">Size&nbsp;(₹&nbsp;cr)</th>
+              <th scope="col" class="num" data-src="src-returns">1 year</th>
+              <th scope="col" class="num" data-src="src-returns">3 years</th>
+              <th scope="col" class="num" data-src="src-returns">5 years</th>
+              <th scope="col" class="num" data-src="src-size">Expense ratio</th>
             </tr>
           </thead>
           <tbody>
@@ -302,19 +362,24 @@
         </table>
       </div>
 
+      <!-- The two <span>s below are what a reader sees on tapping a
+           figure: the column headings above point at them with data-src.
+           Keep the ids when you update the wording or the dates. -->
       <p class="source-note">
-        A dash means the fund has not existed that long. Three- and five-year
-        returns are per year. Returns compare each
-        fund's NAV on 30 September 2026 with its NAV on 30 September 2025,
-        2023 and 2021 (or the last working day before), worked out by
-        Purevesting from the NAVs fund houses report to
+        <span id="src-returns">Returns: worked out by Purevesting from the
+        NAVs fund houses report to
         <a href="https://www.amfiindia.com/net-asset-value/nav-download">AMFI</a>,
-        collected through <a href="https://www.mfapi.in/">mfapi.in</a>.
-        Returns are past performance and do not indicate future returns.
-        Fund size and expense ratio (Direct plan):
+        collected through <a href="https://www.mfapi.in/">mfapi.in</a> —
+        Direct plan, Growth, as of
+        <time datetime="2026-09-30">30 September 2026</time>. Returns are past
+        performance and do not indicate future returns.</span>
+        <span id="src-size">Fund size and expense ratio (Direct plan):
         <a href="https://www.valueresearchonline.com/">Value Research</a> fund
-        pages, checked <time datetime="2026-10-01">1 October 2026</time>.
-        Returns as of <time datetime="2026-09-30">30 September 2026</time>.
+        pages, checked <time datetime="2026-10-01">1 October 2026</time>.</span>
+        A dash means the fund has not existed that long. Three- and five-year
+        returns are per year. Each fund's NAV on 30 September 2026 is compared
+        with its NAV on 30 September 2025, 2023 and 2021 (or the last working
+        day before).
       </p>
 
       <!-- HOW THE RETURNS WERE WORKED OUT (keep for the next update).
@@ -432,14 +497,25 @@
 
     <nav class="footer-nav" aria-label="Footer">
       <a href="/">Home</a>
+      <a href="/about/">About</a>
       <a href="/instruments/">Instruments</a>
       <a href="/compare/shariah-mutual-funds/">Compare</a>
+      <a href="/halal-stocks/">Halal stocks</a>
       <a href="/methodology/">Methodology</a>
       <a href="/newsletter/">Newsletter</a>
       <a href="/corrections/">Corrections</a>
       <a href="/ask/">Ask a question</a>
+      <a href="https://www.youtube.com/channel/UCY_rjMlDGOAXyhC-aC_aQCA" rel="me">YouTube</a>
+      <a href="https://www.instagram.com/purevesting/" rel="me">Instagram</a>
       <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
     </nav>
+
+    <!-- What Purevesting is, in one line. The same words open the About
+         page and sit in the home page's structured data, so Google and
+         its AI answers describe the site the same way everywhere. -->
+    <p class="footer-about"><strong>Purevesting</strong> is a startup building
+       India's one-stop destination for halal finance — every figure sourced,
+       every Shariah position attributed. <a href="/about/">About Purevesting</a></p>
 
     <p class="disclaimer">
       Educational content, not investment advice. Purevesting is not

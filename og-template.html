@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- OG-TEMPLATE — makes the 1200x630 preview images in /assets/og/.
+     Not a page of the site (it is listed in .assetsignore, so it is never
+     published). To make or remake an image, ask the website chat: it opens
+     this file in a browser with the page's title, label and motif, and
+     saves a screenshot. -->
+<style>
+@font-face { font-family: 'Bricolage Grotesque'; src: url('/assets/fonts/bricolage-grotesque-latin-wght.woff2') format('woff2'); font-weight: 200 800; }
+@font-face { font-family: 'Plus Jakarta Sans'; src: url('/assets/fonts/plus-jakarta-sans-latin-wght.woff2') format('woff2'); font-weight: 200 800; }
+@font-face { font-family: 'DM Mono'; src: url('/assets/fonts/dm-mono-latin-400.woff2') format('woff2'); font-weight: 400; }
+:root {
+  --bone: #FAF7F0; --white: #FFFFFF; --ink: #1A1814; --ink-2: #5B5951; --ink-3: #6E6B60;
+  --line: #E7E1D4; --green: #0E9E6E; --green-deep: #0A7F58; --green-tint: #D7F2E6; --green-ink: #0A5B41;
+}
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1200px; height: 630px; overflow: hidden; background: var(--bone); }
+body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+.card { position: relative; width: 1200px; height: 630px; padding: 72px 80px 64px; }
+.brand { display: flex; align-items: center; gap: 18px; font: 800 44px/1 'Bricolage Grotesque'; letter-spacing: -0.03em; }
+.brand img { width: 60px; height: 60px; }
+.brand .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; background: var(--green); margin-left: 3px; }
+.text { position: absolute; left: 80px; top: 178px; width: 640px; }
+.label { font: 700 19px/1 'Plus Jakarta Sans'; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px; }
+h1 { font: 800 70px/1.0 'Bricolage Grotesque'; letter-spacing: -0.025em; }
+h1 .g { color: var(--green); }
+.sub { margin-top: 24px; font: 400 27px/1.38 'Plus Jakarta Sans'; color: var(--ink-2); max-width: 600px; }
+.url { position: absolute; left: 80px; bottom: 58px; font: 700 27px/1 'Plus Jakarta Sans'; color: var(--green-deep); }
+.motif { position: absolute; right: 80px; top: 155px; width: 340px; height: 340px; }
+/* grid motif */
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 5px; }
+.grid i { display: block; aspect-ratio: 1; border-radius: 2px; background: var(--line); }
+.grid i.on { background: var(--green); }
+/* answer motif */
+.answer { background: var(--white); border: 2px solid var(--line); border-left: 10px solid var(--green); border-radius: 14px; padding: 34px 30px; }
+.answer b { display: block; height: 16px; border-radius: 8px; background: var(--line); margin-bottom: 18px; }
+.answer b:last-child { margin-bottom: 0; }
+.answer .q { height: auto; background: none; font: 800 30px/1.1 'Bricolage Grotesque'; color: var(--ink); margin-bottom: 26px; border-radius: 0; }
+/* table motif */
+.table { background: var(--white); border: 2px solid var(--line); border-radius: 14px; overflow: hidden; }
+.table .row { display: flex; align-items: center; gap: 14px; height: 52px; padding: 0 22px; border-top: 2px solid var(--line); }
+.table .row:first-child { border-top: 0; background: var(--bone); }
+.table .row span { height: 12px; border-radius: 6px; background: var(--line); }
+.table .row span.name { flex: 1.6; background: #D9D2C3; }
+.table .row span.n { flex: 0.7; }
+.table .row:first-child span { background: #DDD6C8; height: 10px; }
+/* person motif */
+.person { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; }
+.person img { width: 192px; height: 192px; border-radius: 50%; border: 6px solid var(--white); box-shadow: 0 0 0 2px var(--line); }
+.person .who { font: 800 30px/1.1 'Bricolage Grotesque'; text-align: center; }
+.person .role { font: 400 22px/1.2 'Plus Jakarta Sans'; color: var(--ink-3); text-align: center; margin-top: -10px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="brand"><img src="/assets/img/logo.svg" alt=""><span>Purevesting<span class="dot"></span></span></div>
+  <div class="text">
+    <div class="label" id="label"></div>
+    <h1 id="title"></h1>
+    <p class="sub" id="sub"></p>
+  </div>
+  <div class="motif" id="motif"></div>
+  <div class="url" id="url"></div>
+</div>
+<script>
+// Reads the image's words from the address: og-template.html#{"title":...}
+var p = JSON.parse(decodeURIComponent(location.hash.slice(1)));
+document.getElementById('label').textContent = p.label;
+document.getElementById('title').innerHTML = p.title;   // <span class="g"> marks the green words
+document.getElementById('sub').textContent = p.sub;
+document.getElementById('url').textContent = p.url;
+var m = document.getElementById('motif');
+if (p.motif === 'grid') {
+  m.className = 'motif grid';
+  // a fixed pattern, so the image is the same every time it is made
+  var on = '010111001101110100101011001011000110110101100101011101001011010010100110110101011001110100101101001010110110010101100100101101100110100101011001011010010110';
+  for (var i = 0; i < 144; i++) { var sq = document.createElement('i'); if (on[i] === '1') sq.className = 'on'; m.appendChild(sq); }
+} else if (p.motif === 'answer') {
+  m.innerHTML = '<div class="answer"><b class="q">' + p.q + '</b><b style="width:100%"></b><b style="width:92%"></b><b style="width:97%"></b><b style="width:64%"></b></div>';
+} else if (p.motif === 'table') {
+  // grey bars only: a picture of "a table", never a verdict on anything
+  var rows = '';
+  for (var r = 0; r < 6; r++) rows += '<div class="row"><span class="name"></span><span class="n"></span><span class="n"></span><span class="n"></span></div>';
+  m.innerHTML = '<div class="table">' + rows + '</div>';
+} else if (p.motif === 'person') {
+  m.className = 'motif person';
+  m.innerHTML = '<img src="/assets/img/byline-192.webp" alt=""><div><div class="who">Moin Ali Syed</div></div><div class="role">Founder, Purevesting</div>';
+}
+// Long titles: shrink the heading until the words clear the address at
+// the bottom; if even that isn't enough, drop the line under the heading.
+document.fonts.ready.then(function () {
+  var text = document.querySelector('.text'), h1 = document.getElementById('title');
+  var limit = 630 - 58 - 27 - 34;   // top of the address, minus a gap
+  var size = 70;
+  while (text.getBoundingClientRect().bottom > limit && size > 52) {
+    size -= 2;
+    h1.style.fontSize = size + 'px';
+  }
+  if (text.getBoundingClientRect().bottom > limit) document.getElementById('sub').style.display = 'none';
+  document.body.setAttribute('data-ready', '1');
+});
+</script>
+</body>
+</html>

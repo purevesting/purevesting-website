@@ -9,11 +9,11 @@
      PER-PAGE BLOCK — only these six lines differ from page to page.
      ================================================================== -->
 
-<title>Halal finance in India: investing, EPF, PPF and gold</title>
-<meta name="description" content="204 of the Nifty 500's companies pass a Shariah screen. Compare India's Shariah mutual funds and see where EPF, PPF and gold stand. Every figure sourced.">
+<title>Purevesting — halal finance and investing in India</title>
+<meta name="description" content="Purevesting is a startup building India's one-stop destination for halal finance: Shariah funds compared, EPF, PPF, NPS and gold checked, every figure sourced.">
 <link rel="canonical" href="https://purevesting.com/">
-<meta property="og:title" content="Halal finance in India: investing, EPF, PPF and gold">
-<meta property="og:description" content="204 of the Nifty 500's companies pass a Shariah screen. Compare India's Shariah mutual funds and see where EPF, PPF and gold stand.">
+<meta property="og:title" content="Purevesting: halal finance in India, made better">
+<meta property="og:description" content="India's one-stop destination for halal finance, in the making: 204 of the Nifty 500 pass a Shariah screen, six Shariah funds compared, EPF, PPF and gold checked.">
 <meta property="og:url" content="https://purevesting.com/">
 
 <!-- ================ END PER-PAGE BLOCK ============================== -->
@@ -24,6 +24,79 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="en_IN">
+
+<!-- STRUCTURED DATA — what Google reads about Purevesting itself (JSON-LD).
+     Visitors never see it. It gives Google the site's name (so results say
+     "Purevesting", not "purevesting.com"), the logo, a one-line description,
+     the founder, and where else Purevesting lives (sameAs: YouTube,
+     Instagram, the newsletter). Change it only when one of those changes. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://purevesting.com/#website",
+      "url": "https://purevesting.com/",
+      "name": "Purevesting",
+      "alternateName": "purevesting.com",
+      "description": "Halal finance in India, made better.",
+      "inLanguage": "en-IN",
+      "publisher": {
+        "@id": "https://purevesting.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://purevesting.com/#organization",
+      "name": "Purevesting",
+      "url": "https://purevesting.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://purevesting.com/assets/img/logo-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://purevesting.com/assets/og/default.jpg",
+      "description": "Purevesting is a startup building India's one-stop destination for halal finance. It checks stocks, mutual funds, EPF, PPF, NPS, gold and the interest hidden in loans against Shariah screening standards, with every figure sourced and every Shariah position attributed to the body that holds it. Educational content, not investment advice.",
+      "slogan": "Halal finance in India, made better",
+      "email": "salam@purevesting.com",
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      },
+      "knowsAbout": [
+        "Halal investing",
+        "Islamic finance",
+        "Shariah screening of stocks",
+        "Shariah-compliant mutual funds",
+        "Purification of investment income",
+        "Zakat"
+      ],
+      "founder": {
+        "@id": "https://purevesting.com/about/#founder"
+      },
+      "sameAs": [
+        "https://www.youtube.com/channel/UCY_rjMlDGOAXyhC-aC_aQCA",
+        "https://www.instagram.com/purevesting/",
+        "https://halaledge.beehiiv.com/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://purevesting.com/about/#founder",
+      "name": "Moin Ali Syed",
+      "jobTitle": "Founder",
+      "url": "https://purevesting.com/about/",
+      "image": "https://purevesting.com/assets/img/byline-192.webp",
+      "worksFor": {
+        "@id": "https://purevesting.com/#organization"
+      }
+    }
+  ]
+}
+</script>
 
 <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
@@ -72,13 +145,15 @@
 
       <p class="hero-badge">Don't compromise on ethics</p>
 
-      <p class="standfirst">All of your money, not just the stock market —
-        mutual funds, EPF, PPF, gold, insurance, and the debt you carry. This
-        site shows the working, names the Shariah authority behind every
-        position, and puts a source and a date on every figure.</p>
+      <p class="standfirst">Purevesting is a startup building India's
+        one-stop destination for halal finance — all of your money, not just
+        the stock market: mutual funds, EPF, PPF, gold, insurance, and the
+        debt you carry. Every page shows the working, names the Shariah
+        authority behind every position, and puts a source and a date on
+        every figure.</p>
 
       <p class="screen-stat" id="screen-stat" aria-live="polite">
-        <span class="num">204</span> of the <span class="num">501</span> companies
+        <span class="num" data-count>204</span> of the <span class="num">501</span> companies
         in the Nifty 500 pass NSE's Shariah screen.
       </p>
 
@@ -157,6 +232,7 @@
         <div class="card">
           <h3>By question</h3>
           <ul class="route-list">
+            <li><a href="/halal-stocks/">How many Indian stocks are halal?</a></li>
             <li><a href="/instruments/epf/">Is EPF Shariah-compliant?</a></li>
             <li><a href="/instruments/ppf/">Is PPF Shariah-compliant?</a></li>
             <li><a href="/instruments/nps/">Is NPS Shariah-compliant?</a></li>
@@ -228,9 +304,9 @@
              srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
              width="48" height="48" alt="Moin Ali Syed">
         <div>
-          <div><strong>Moin Ali Syed</strong></div>
+          <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
           <div class="meta">Founder, Purevesting</div>
-          <div class="meta">Last updated <time datetime="2026-10-02">2 October 2026</time></div>
+          <div class="meta">Last updated <time datetime="2026-10-05">5 October 2026</time></div>
           <div class="meta">Corrected <time datetime="2026-10-01">1 October 2026</time> · <a href="/corrections/#log">see the corrections log</a></div>
         </div>
       </div>
@@ -257,14 +333,25 @@
 
     <nav class="footer-nav" aria-label="Footer">
       <a href="/">Home</a>
+      <a href="/about/">About</a>
       <a href="/instruments/">Instruments</a>
       <a href="/compare/shariah-mutual-funds/">Compare</a>
+      <a href="/halal-stocks/">Halal stocks</a>
       <a href="/methodology/">Methodology</a>
       <a href="/newsletter/">Newsletter</a>
       <a href="/corrections/">Corrections</a>
       <a href="/ask/">Ask a question</a>
+      <a href="https://www.youtube.com/channel/UCY_rjMlDGOAXyhC-aC_aQCA" rel="me">YouTube</a>
+      <a href="https://www.instagram.com/purevesting/" rel="me">Instagram</a>
       <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
     </nav>
+
+    <!-- What Purevesting is, in one line. The same words open the About
+         page and sit in the home page's structured data, so Google and
+         its AI answers describe the site the same way everywhere. -->
+    <p class="footer-about"><strong>Purevesting</strong> is a startup building
+       India's one-stop destination for halal finance — every figure sourced,
+       every Shariah position attributed. <a href="/about/">About Purevesting</a></p>
 
     <p class="disclaimer">
       Educational content, not investment advice. Purevesting is not
@@ -314,6 +401,7 @@
   function show(view) {
     grid.classList.toggle('by-value', view === 'value');
     stat.innerHTML = words[view];
+    if (window.pvFigures) window.pvFigures(stat);   // new figure: tappable too
     for (var i = 0; i < buttons.length; i++) {
       var pressed = buttons[i].getAttribute('data-view') === view;
       buttons[i].setAttribute('aria-pressed', pressed ? 'true' : 'false');

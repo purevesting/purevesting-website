@@ -20,10 +20,76 @@
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Purevesting">
-<meta property="og:image" content="https://purevesting.com/assets/og/default.jpg">
+<meta property="og:image" content="https://purevesting.com/assets/og/instruments-digital-gold.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="en_IN">
+
+<!-- STRUCTURED DATA — a summary of this page written for Google (JSON-LD).
+     Visitors never see it. When you change this page's "Last updated"
+     date, change "dateModified" below to the same date (year-month-day). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://purevesting.com/instruments/digital-gold/#article",
+      "headline": "Is digital gold halal?",
+      "description": "Is digital gold Shariah-compliant? The question is possession, not interest: what AAOIFI's gold standard requires, and how Indian apps hold your gold.",
+      "url": "https://purevesting.com/instruments/digital-gold/",
+      "mainEntityOfPage": "https://purevesting.com/instruments/digital-gold/",
+      "image": "https://purevesting.com/assets/og/instruments-digital-gold.jpg",
+      "datePublished": "2026-09-24",
+      "dateModified": "2026-10-02",
+      "inLanguage": "en-IN",
+      "author": {
+        "@type": "Person",
+        "@id": "https://purevesting.com/about/#founder",
+        "name": "Moin Ali Syed",
+        "url": "https://purevesting.com/about/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://purevesting.com/#organization",
+        "name": "Purevesting",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://purevesting.com/assets/img/logo-512.png",
+          "width": 512,
+          "height": 512
+        }
+      },
+      "isPartOf": {
+        "@id": "https://purevesting.com/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://purevesting.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Instruments",
+          "item": "https://purevesting.com/instruments/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Is digital gold halal?"
+        }
+      ]
+    }
+  ]
+}
+</script>
 
 <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
@@ -91,7 +157,7 @@
              srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
              width="48" height="48" alt="Moin Ali Syed">
         <div>
-          <div><strong>Moin Ali Syed</strong></div>
+          <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
           <div class="meta">Founder, Purevesting</div>
           <div class="meta">Last updated <time datetime="2026-10-02">2 October 2026</time> · 10 min read</div>
           <div class="meta">Corrected <time datetime="2026-10-02">2 October 2026</time> · <a href="/corrections/#log">see the corrections log</a></div>
@@ -150,19 +216,19 @@
             </tr>
             <tr>
               <td>Smallest purchase</td>
-              <td>As little as <span class="num">₹1</span> (SafeGold) or <span class="num">₹10</span> (Augmont)</td>
+              <td data-src="src-gold-providers">As little as <span class="num">₹1</span> (SafeGold) or <span class="num">₹10</span> (Augmont)</td>
             </tr>
             <tr>
               <td>Tax on purchase</td>
-              <td><span class="num">3%</span> GST, added to the price you pay and not refunded when you sell</td>
+              <td data-src="src-gold-gst"><span class="num">3%</span> GST, added to the price you pay and not refunded when you sell</td>
             </tr>
             <tr>
               <td>Physical delivery</td>
-              <td>Available as coins or bars above a minimum (from <span class="num">0.5</span> g at SafeGold), with a charge that covers minting and delivery</td>
+              <td data-src="src-gold-providers">Available as coins or bars above a minimum (from <span class="num">0.5</span> g at SafeGold), with a charge that covers minting and delivery</td>
             </tr>
             <tr>
               <td>Storage</td>
-              <td>Free for a set time — <span class="num">2</span> years at SafeGold, <span class="num">5</span> at MMTC-PAMP and Augmont. After that, storage is charged for, and the charge can come out of your gold. MMTC-PAMP can also buy your gold back, at its sell-back price, once the <span class="num">5</span> years are up</td>
+              <td data-src="src-gold-storage">Free for a set time — <span class="num">2</span> years at SafeGold, <span class="num">5</span> at MMTC-PAMP and Augmont. After that, storage is charged for, and the charge can come out of your gold. MMTC-PAMP can also buy your gold back, at its sell-back price, once the <span class="num">5</span> years are up</td>
             </tr>
             <tr>
               <td>Regulated by</td>
@@ -172,25 +238,29 @@
         </table>
       </div>
 
+      <!-- Each <span> below is what a reader sees on tapping the figures
+           in that row of the table: the rows point at them with data-src.
+           Keep the ids when you update the wording or the dates. -->
       <p class="source-note">
-        Sources: the providers' own pages —
+        <span id="src-gold-providers">Sources: the providers' own pages —
         <a href="https://www.safegold.com/faq">SafeGold's FAQ</a>,
         <a href="https://www.mmtcpamp.com/digital-gold">MMTC-PAMP's digital gold page</a>
         and <a href="https://augmont.com/digital-gold">Augmont's digital gold page</a>
         — as of <time datetime="2026-10-01">1 October 2026</time>. SafeGold's
-        FAQ also says it falls under neither SEBI nor RBI. Storage: the
-        providers' terms —
+        FAQ also says it falls under neither SEBI nor RBI.</span>
+        <span id="src-gold-storage">Storage: the providers' terms —
         <a href="https://www.safegold.com/terms-and-conditions">SafeGold's</a>,
         <a href="https://www.mmtcpamp.com/terms-and-conditions">MMTC-PAMP's</a>
         and <a href="https://augmont.com/terms-conditions">Augmont's</a>
         — as of <time datetime="2026-10-02">2 October 2026</time>. Augmont's
         also say you must take delivery of your gold within 10 years of
-        buying it. The 3% GST rate:
+        buying it.</span>
+        <span id="src-gold-gst">The 3% GST rate:
         <a href="https://www.business-standard.com/industry/news/gst-rate-for-jewellery-unchanged-at-3-pc-but-industry-sees-indirect-gains-125090401225_1.html">Business Standard</a>,
         reporting that the GST Council kept it unchanged in September 2025.
         That it is not refunded when you sell:
         <a href="https://www.adityabirlacapital.com/abc-of-money/gst-on-digital-gold-gold-etfs">Aditya Birla Capital's guide</a>,
-        updated <time datetime="2026-08-21">21 August 2026</time>.
+        updated <time datetime="2026-08-21">21 August 2026</time>.</span>
       </p>
 
       <h3>What SEBI has said about it</h3>
@@ -573,14 +643,25 @@
 
     <nav class="footer-nav" aria-label="Footer">
       <a href="/">Home</a>
+      <a href="/about/">About</a>
       <a href="/instruments/">Instruments</a>
       <a href="/compare/shariah-mutual-funds/">Compare</a>
+      <a href="/halal-stocks/">Halal stocks</a>
       <a href="/methodology/">Methodology</a>
       <a href="/newsletter/">Newsletter</a>
       <a href="/corrections/">Corrections</a>
       <a href="/ask/">Ask a question</a>
+      <a href="https://www.youtube.com/channel/UCY_rjMlDGOAXyhC-aC_aQCA" rel="me">YouTube</a>
+      <a href="https://www.instagram.com/purevesting/" rel="me">Instagram</a>
       <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
     </nav>
+
+    <!-- What Purevesting is, in one line. The same words open the About
+         page and sit in the home page's structured data, so Google and
+         its AI answers describe the site the same way everywhere. -->
+    <p class="footer-about"><strong>Purevesting</strong> is a startup building
+       India's one-stop destination for halal finance — every figure sourced,
+       every Shariah position attributed. <a href="/about/">About Purevesting</a></p>
 
     <p class="disclaimer">
       Educational content, not investment advice. Purevesting is not
