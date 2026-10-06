@@ -1396,6 +1396,94 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .site-footer .btn-quiet:hover { background: rgba(255, 255, 255, 0.08); }
 
 
+/* 22. CALCULATORS — SIP and loan ==========================================
+   The result boxes of /sip-calculator/ and /loan-calculator/. These two
+   are the only places on the site where results carry colour, and only
+   because they are the reader's own made-up numbers, not a real product's:
+   the SIP's in the brand greens, the loan's interest in a warning red
+   (MAS, 6 Oct). Real returns in tables stay uncoloured, as ever.
+   ========================================================================== */
+
+.calc-fields input[type="range"] {
+  min-height: 32px;
+  margin-top: 0.35rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  accent-color: var(--green-deep);
+}
+
+.calc-result {
+  display: grid;
+  gap: 0.8rem;
+  margin: 1.25rem 0 0.75rem;
+  padding: 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.calc-stat {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+}
+
+.calc-label { color: var(--ink-2); font-size: 0.95rem; }
+.calc-value { font-size: 1.15rem; }
+
+.calc-main {
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line);
+}
+
+.calc-main .calc-label { color: var(--ink); font-weight: 600; }
+.calc-main .calc-value { font-size: 1.65rem; color: var(--green-deep); }
+
+.calc-words {
+  flex-basis: 100%;
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+}
+
+/* The bar under the results: what you put in, and what it grew by. */
+.split-bar {
+  display: flex;
+  height: 14px;
+  overflow: hidden;
+  border-radius: 7px;
+  background: var(--line);
+}
+
+.split-in   { background: var(--green-tint); }
+.split-gain { background: var(--green); }
+
+.split-key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.key {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0.35rem;
+  border-radius: 3px;
+  vertical-align: -0.1em;
+}
+
+.key-in   { background: var(--green-tint); border: 1px solid var(--line); }
+.key-gain { background: var(--green); }
+
+
 /* ==========================================================================
    DARK MODE GOES HERE LATER.
    It is a copy of the :root block from section 2 with different values,
