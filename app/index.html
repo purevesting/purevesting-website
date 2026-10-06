@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FAF7F0">
+
+<!-- ==================================================================
+     PER-PAGE BLOCK — only these six lines differ from page to page.
+     ================================================================== -->
+
+<title>Install the Purevesting app — free, no app store</title>
+<meta name="description" content="Install Purevesting on your phone in a few taps: free, no app store, and pages you've opened work offline. Steps for Android, iPhone and computers.">
+<link rel="canonical" href="https://purevesting.com/app/">
+<meta property="og:title" content="Install the Purevesting app — free, no app store">
+<meta property="og:description" content="Purevesting installs straight from your browser: free, no app store, nothing to update. Steps for Android, iPhone and computers.">
+<meta property="og:url" content="https://purevesting.com/app/">
+
+<!-- ================ END PER-PAGE BLOCK ============================== -->
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Purevesting">
+<meta property="og:image" content="https://purevesting.com/assets/og/app.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="en_IN">
+
+<!-- STRUCTURED DATA — a summary of this page written for Google (JSON-LD).
+     Visitors never see it. When you change this page's "Last updated"
+     date, change "dateModified" below to the same date (year-month-day). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://purevesting.com/app/#page",
+      "name": "Install the Purevesting app",
+      "description": "Install Purevesting on your phone in a few taps: free, no app store, and pages you've opened work offline. Steps for Android, iPhone and computers.",
+      "url": "https://purevesting.com/app/",
+      "image": "https://purevesting.com/assets/og/app.jpg",
+      "datePublished": "2026-10-06",
+      "dateModified": "2026-10-06",
+      "inLanguage": "en-IN",
+      "isPartOf": { "@id": "https://purevesting.com/#website" },
+      "publisher": { "@id": "https://purevesting.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://purevesting.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Install the app" }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="/assets/site.css">
+
+<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- THE APP — lets phones install the site from the browser (see /app/). -->
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Purevesting">
+
+<script>
+document.documentElement.classList.add('js');
+// The browser's offer to install the site can arrive before the page has
+// finished loading, so it is caught here, early. The script at the bottom
+// of this page turns it into the Install button.
+window.addEventListener('beforeinstallprompt', function (event) {
+  event.preventDefault();
+  window.pvInstallOffer = event;
+  document.dispatchEvent(new Event('pv-install-offer'));
+});
+</script>
+</head>
+
+<body>
+
+<!-- ==================================================================
+     HEADER — identical in every page. Never edit this per page.
+     ================================================================== -->
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-logo" href="/">
+      <img src="/assets/img/logo.svg" width="28" height="28" alt="">
+      Purevesting
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/instruments/">Instruments</a>
+      <a href="/compare/shariah-mutual-funds/">Compare</a>
+      <a href="/methodology/">Methodology</a>
+      <a href="/newsletter/">Newsletter</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ======================= END HEADER =============================== -->
+
+
+<main>
+
+  <section class="section">
+    <div class="wrap">
+
+      <h1>Install the <span class="t-green">Purevesting</span> app</h1>
+
+      <p class="standfirst">Purevesting installs straight from your browser,
+        like an app: free, no app store, and nothing to update — it is always
+        the latest version of this site. It opens from your home screen,
+        full-screen, and pages you've opened before still work without
+        internet.</p>
+
+      <!-- THE INSTALL BOX. Hidden without JavaScript, because the button
+           needs it; the written steps below work for everyone. The script
+           at the bottom of this page picks the message that fits the
+           reader's phone and browser. -->
+      <div class="install-box" id="install-box">
+        <p id="install-status">If an Install button doesn't appear here in a
+          few seconds, use your browser's menu instead — the steps for each
+          phone are below.</p>
+        <button type="button" class="btn" id="install-btn" hidden>Install Purevesting</button>
+      </div>
+
+      <div class="byline">
+        <img src="/assets/img/byline-96.webp"
+             srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
+             width="48" height="48" alt="Moin Ali Syed">
+        <div>
+          <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
+          <div class="meta">Founder, Purevesting</div>
+          <div class="meta">Last updated <time datetime="2026-10-06">6 October 2026</time> · 3 min read</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       THE STEPS, PHONE BY PHONE
+       ============================================================ -->
+
+  <section class="section reveal">
+    <div class="wrap">
+
+      <h2 id="android">On an Android phone</h2>
+
+      <ol class="steps">
+        <li>Open <strong>purevesting.com</strong> in Chrome.</li>
+        <li>Tap the menu — the three dots <strong>⋮</strong> at the top
+            right.</li>
+        <li>Tap <strong>Install app</strong>. On some phones it says
+            <strong>Add to Home screen</strong>.</li>
+        <li>Tap <strong>Install</strong>. The Purevesting icon appears on
+            your home screen.</li>
+      </ol>
+
+      <p>Other browsers, such as Samsung Internet, have the same option in
+         their menu, usually called <strong>Install</strong> or
+         <strong>Add to Home screen</strong>.</p>
+
+      <h2 id="iphone">On an iPhone or iPad</h2>
+
+      <ol class="steps">
+        <li>Open <strong>purevesting.com</strong> in Safari.</li>
+        <li>Tap the <strong>Share</strong> button — the square with an arrow
+            pointing up. In newer versions of Safari it sits inside the
+            <strong>···</strong> menu.</li>
+        <li>Scroll down and tap <strong>Add to Home Screen</strong>.</li>
+        <li>Tap <strong>Add</strong>. The Purevesting icon appears on your
+            home screen.</li>
+      </ol>
+
+      <h2 id="in-app">Opened this from Instagram or YouTube?</h2>
+
+      <p>Apps like Instagram and YouTube often open links in their own small
+         browser, and that browser can't install anything. Open the page in
+         your phone's own browser first:</p>
+
+      <ol class="steps">
+        <li>Tap the menu — <strong>⋮</strong> or <strong>···</strong>,
+            usually at the top right.</li>
+        <li>Choose <strong>Open in Chrome</strong>, <strong>Open in
+            browser</strong> or <strong>Open in Safari</strong> — the name
+            depends on the app.</li>
+        <li>Then follow the steps for your phone above.</li>
+      </ol>
+
+      <h2 id="computer">On a computer</h2>
+
+      <p>In Chrome or Edge, look for the install icon at the right-hand end
+         of the address bar, or open the browser's menu and choose
+         <strong>Install</strong>. On a Mac, Safari can do the same:
+         <strong>File</strong>, then <strong>Add to Dock</strong>. Purevesting
+         then opens in its own window, like any other program.</p>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       WHAT YOU GET
+       ============================================================ -->
+
+  <section class="section reveal">
+    <div class="wrap">
+
+      <h2 id="what-you-get">What you get</h2>
+
+      <div class="grid grid-2">
+
+        <div class="card">
+          <h3>It opens like an app</h3>
+          <p>From your home screen, full-screen, without the browser's
+             address bar around it.</p>
+        </div>
+
+        <div class="card">
+          <h3>Pages you've opened work offline</h3>
+          <p>They are saved on your phone and open without internet. A saved
+             page says so, because figures can change — each one shows its
+             "as of" date.</p>
+        </div>
+
+        <div class="card">
+          <h3>It is always up to date</h3>
+          <p>There is nothing to update. Whenever you're online, every page
+             loads fresh from purevesting.com.</p>
+        </div>
+
+        <div class="card">
+          <h3>It asks for nothing</h3>
+          <p>No account and no sign-in, and no permissions: it doesn't ask
+             for your location, contacts, camera or notifications.</p>
+        </div>
+
+      </div>
+
+      <h2 id="remove">Removing it</h2>
+
+      <p>Press and hold the Purevesting icon, then choose
+         <strong>Uninstall</strong> on Android or <strong>Remove</strong> on
+         iPhone, and confirm.</p>
+
+      <p class="source-note">
+        Something not working on your phone? Write to
+        <a href="mailto:salam@purevesting.com">salam@purevesting.com</a> and
+        say which phone and browser you use.
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ==================================================================
+     FOOTER — identical in every page. Never edit this per page.
+     ================================================================== -->
+
+<footer class="site-footer">
+  <div class="wrap">
+
+    <h2>HalalEdge by Purevesting</h2>
+    <p>One email a week on Shariah screening in Indian markets. Data and
+       methodology, never recommendations.</p>
+
+    <!-- Signing up happens on the newsletter page, so nobody has to type
+         their email twice. The second button leads to /app/, which shows
+         how to install the site on a phone. -->
+    <p class="subscribe"><a class="btn" href="/newsletter/">Subscribe to HalalEdge</a>
+       <a class="btn btn-quiet" href="/app/">Install the app</a></p>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/instruments/">Instruments</a>
+      <a href="/compare/shariah-mutual-funds/">Compare</a>
+      <a href="/halal-stocks/">Halal stocks</a>
+      <a href="/methodology/">Methodology</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/corrections/">Corrections</a>
+      <a href="/ask/">Ask a question</a>
+      <a href="https://www.youtube.com/channel/UCY_rjMlDGOAXyhC-aC_aQCA" rel="me">YouTube</a>
+      <a href="https://www.instagram.com/purevesting/" rel="me">Instagram</a>
+      <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
+    </nav>
+
+    <!-- What Purevesting is, in one line. The same words open the About
+         page and sit in the home page's structured data, so Google and
+         its AI answers describe the site the same way everywhere. -->
+    <p class="footer-about"><strong>Purevesting</strong> is a startup building
+       India's one-stop destination for halal finance — every figure sourced,
+       every Shariah position attributed. <a href="/about/">About Purevesting</a></p>
+
+    <p class="disclaimer">
+      Educational content, not investment advice. Purevesting is not
+      registered with SEBI as a research analyst or investment adviser.
+      Nothing here is a recommendation to buy, sell or hold any security,
+      fund or product. Shariah positions are quoted from the bodies that
+      issued them and are not rulings by Purevesting — for your own situation,
+      ask a qualified scholar. Figures carry a source and a date — check them
+      against the source before acting on anything.
+    </p>
+
+  </div>
+</footer>
+
+
+<!-- ======================= END FOOTER =============================== -->
+
+<script src="/assets/site.js"></script>
+<script src="/assets/share-card.js"></script>
+
+<!-- ==================================================================
+     INSTALL BOX SCRIPT — used on this page only.
+     Picks the message that fits the reader's phone, and shows the Install
+     button when the browser offers one (Chrome and Edge on Android and on
+     computers do; Safari never does, so iPhone readers get the steps).
+     ================================================================== -->
+<script>
+(function () {
+  var status = document.getElementById('install-status');
+  var btn = document.getElementById('install-btn');
+  if (!status || !btn) return;
+
+  var ua = navigator.userAgent;
+  var installed = window.matchMedia('(display-mode: standalone)').matches ||
+                  window.navigator.standalone === true;
+  var inApp = /Instagram|FBAN|FBAV|FB_IAB|FBIOS|Snapchat|Line\//i.test(ua);
+  var iOS = /iPad|iPhone|iPod/.test(ua) ||
+            (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+  function say(text) { status.textContent = text; }
+
+  if (installed) {
+    say('You\'re using the Purevesting app right now. To share it, send ' +
+        'someone the address purevesting.com/app.');
+  } else if (inApp) {
+    say('You\'ve opened this inside another app, which can\'t install ' +
+        'anything. Tap its menu (\u22ee or \u00b7\u00b7\u00b7), choose to open ' +
+        'the page in your browser, then come back to this page.');
+  } else if (iOS) {
+    say('On iPhone and iPad, install from Safari\'s Share menu: tap Share, ' +
+        'then \u201cAdd to Home Screen\u201d, then Add. The steps are below.');
+  }
+
+  // The browser's offer, caught early in this page's <head>.
+  function offer() {
+    if (installed || inApp || !window.pvInstallOffer) return;
+    say('Tap the button to install. It takes a second, and the Purevesting ' +
+        'icon appears on your home screen.');
+    btn.hidden = false;
+  }
+  offer();
+  document.addEventListener('pv-install-offer', offer);
+
+  btn.addEventListener('click', function () {
+    var offerEvent = window.pvInstallOffer;
+    if (!offerEvent) return;
+    window.pvInstallOffer = null;   // an offer can only be used once
+    btn.hidden = true;
+    offerEvent.prompt();
+    offerEvent.userChoice.then(function (choice) {
+      if (choice.outcome === 'accepted') {
+        say('Installed. Look for Purevesting on your home screen.');
+      } else {
+        say('Not now. Reload this page whenever you want the Install ' +
+            'button back.');
+      }
+    });
+  });
+
+  window.addEventListener('appinstalled', function () {
+    btn.hidden = true;
+    say('Installed. Look for Purevesting on your home screen.');
+  });
+})();
+</script>
+
+<!-- Visitor counting: Cloudflare Web Analytics is switched on in the
+     Cloudflare dashboard ("automatic setup") and adds its script to every
+     page by itself. Nothing needs pasting here. -->
+
+</body>
+</html>

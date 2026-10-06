@@ -587,6 +587,10 @@ td:first-child { font-weight: 600; }
   box-shadow: 1px 0 0 var(--line);
 }
 
+/* Wide enough that a fund's name wraps onto two or three lines on a phone,
+   not five — the figures beside it scroll instead. */
+.table-scroll tbody tr:not(.fig-row) > td:first-child { min-width: 9rem; }
+
 
 /* 11. CHIPS: PASSES / FAILS ===============================================
    Pass and fail are never shown by colour alone. Each chip carries a symbol
@@ -1240,6 +1244,83 @@ td.num > button.fig {
 }
 
 tr:has(+ .fig-row) td { border-bottom-color: transparent; }
+
+
+/* 21. THE APP =============================================================
+   The pieces that make the site installable: the offline note, the /app/
+   page's install box, and the footer's second button.
+   ========================================================================== */
+
+/* The note pinned to the bottom of the screen when a page is a saved copy
+   read offline. Fixed in place, so it never moves the page around. */
+.offline-note {
+  position: fixed;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 38rem;
+  margin: 0 auto;
+  padding: 0.6rem 0.6rem 0.6rem 1rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 18px rgba(26, 24, 20, 0.12);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.offline-note p { margin: 0; }
+.offline-note strong { color: var(--ink); }
+
+.offline-close {
+  flex-shrink: 0;
+  min-height: var(--tap);
+  padding: 0 0.9rem;
+  font: 600 0.85rem var(--font-body);
+  color: var(--green-deep);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+/* The install box on /app/. Hidden without JavaScript, because the
+   button inside it only works with JavaScript; the written steps under it
+   work for everyone. */
+.install-box {
+  display: none;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius-sm);
+}
+
+.js .install-box { display: block; }
+
+.install-box p { margin: 0; }
+.install-box .btn { margin-top: 0.9rem; }
+.install-box .btn[hidden] { display: none; }
+
+/* The steps for each phone: numbered, with room between them. */
+.steps { padding-left: 1.3rem; }
+.steps li { margin-bottom: 0.5rem; }
+
+/* The footer's second button, "Install the app": outlined, in the footer's
+   own light text, so it sits beside the green Subscribe button. */
+.site-footer .btn-quiet {
+  color: var(--forest-text);
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.site-footer .btn-quiet:hover { background: rgba(255, 255, 255, 0.08); }
 
 
 /* ==========================================================================

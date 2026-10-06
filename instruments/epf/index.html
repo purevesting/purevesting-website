@@ -101,6 +101,12 @@
 <link rel="icon" href="/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+<!-- THE APP — lets phones install the site from the browser (see /app/). -->
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Purevesting">
+
 <script>document.documentElement.classList.add('js');</script>
 </head>
 
@@ -637,8 +643,10 @@
        methodology, never recommendations.</p>
 
     <!-- Signing up happens on the newsletter page, so nobody has to type
-         their email twice. -->
-    <p class="subscribe"><a class="btn" href="/newsletter/">Subscribe to HalalEdge</a></p>
+         their email twice. The second button leads to /app/, which shows
+         how to install the site on a phone. -->
+    <p class="subscribe"><a class="btn" href="/newsletter/">Subscribe to HalalEdge</a>
+       <a class="btn btn-quiet" href="/app/">Install the app</a></p>
 
     <nav class="footer-nav" aria-label="Footer">
       <a href="/">Home</a>

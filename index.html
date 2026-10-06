@@ -108,6 +108,12 @@
 <link rel="icon" href="/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+<!-- THE APP — lets phones install the site from the browser (see /app/). -->
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Purevesting">
+
 <script>document.documentElement.classList.add('js');</script>
 </head>
 
@@ -248,6 +254,7 @@
             <li><a href="/compare/shariah-mutual-funds/">Compare India's six Shariah mutual funds</a></li>
             <li><a href="/methodology/">See exactly how the screen works</a></li>
             <li><a href="/purification-calculator/">Work out how much to give away in purification</a></li>
+            <li><a href="/app/">Install Purevesting on your phone</a></li>
             <li><span>Check what I already hold<span class="soon">soon</span></span></li>
           </ul>
         </div>
@@ -328,8 +335,10 @@
        methodology, never recommendations.</p>
 
     <!-- Signing up happens on the newsletter page, so nobody has to type
-         their email twice. -->
-    <p class="subscribe"><a class="btn" href="/newsletter/">Subscribe to HalalEdge</a></p>
+         their email twice. The second button leads to /app/, which shows
+         how to install the site on a phone. -->
+    <p class="subscribe"><a class="btn" href="/newsletter/">Subscribe to HalalEdge</a>
+       <a class="btn btn-quiet" href="/app/">Install the app</a></p>
 
     <nav class="footer-nav" aria-label="Footer">
       <a href="/">Home</a>

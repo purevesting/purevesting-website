@@ -5,10 +5,13 @@
    Deliberately small. The site works completely without it: every number,
    every table and every link is in the HTML. This file only adds polish.
 
-   It does three things:
+   It does five things:
      1. Fades sections in as you scroll to them.
      2. Tappable figures — tap a number to see its source and date.
      3. Count-up — one marked number counts up once, if it scrolls into view.
+     4. The app — switches on /sw.js, which lets the site install like an
+        app and keeps opened pages for reading offline.
+     5. The offline note — says so when a page is a saved copy.
    ========================================================================== */
 
 
@@ -315,5 +318,68 @@
     });
     watcher.observe(el);
   });
+
+})();
+
+
+/* 4. THE APP ===============================================================
+   Switches on the service worker (/sw.js — its own comments explain it).
+   It waits until the page has fully loaded, so it never slows the first
+   view. Opening a page as a file on your computer (no web address) skips
+   it, because browsers only allow service workers on a real website.
+   ========================================================================== */
+
+(function () {
+
+  if (!('serviceWorker' in navigator)) return;
+  var local = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+  if (location.protocol !== 'https:' && !local) return;
+
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/sw.js').catch(function () {
+      // If it can't start, the site simply works as a normal website.
+    });
+  });
+
+})();
+
+
+/* 5. THE OFFLINE NOTE ======================================================
+   With no internet, the app shows the copy of a page saved on the phone.
+   A saved copy can be older than the live page, so a small note says so,
+   pinned to the bottom of the screen (it never pushes the page around).
+   It goes away by itself when the internet comes back, or with Close.
+   ========================================================================== */
+
+(function () {
+
+  if (!('onLine' in navigator)) return;
+  if (document.getElementById('offline-page')) return;   // says it already
+
+  var note = null;
+
+  function show() {
+    if (note) return;
+    note = document.createElement('div');
+    note.className = 'offline-note';
+    note.setAttribute('role', 'status');
+    note.innerHTML =
+      '<p><strong>You\'re offline.</strong> This is the copy of this page saved ' +
+      'on your phone, so figures may have changed since — each one shows ' +
+      'its \u201cas of\u201d date.</p>' +
+      '<button type="button" class="offline-close">Close</button>';
+    note.querySelector('button').addEventListener('click', hide);
+    document.body.appendChild(note);
+  }
+
+  function hide() {
+    if (!note) return;
+    note.remove();
+    note = null;
+  }
+
+  if (!navigator.onLine) show();
+  window.addEventListener('offline', show);
+  window.addEventListener('online', hide);
 
 })();

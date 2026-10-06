@@ -51,6 +51,13 @@ h1 .g { color: var(--green); }
 .person img { width: 192px; height: 192px; border-radius: 50%; border: 6px solid var(--white); box-shadow: 0 0 0 2px var(--line); }
 .person .who { font: 800 30px/1.1 'Bricolage Grotesque'; text-align: center; }
 .person .role { font: 400 22px/1.2 'Plus Jakarta Sans'; color: var(--ink-3); text-align: center; margin-top: -10px; }
+/* app-icon motif: a home screen, with Purevesting's icon in the middle */
+.home { display: grid; grid-template-columns: repeat(3, 92px); gap: 30px 32px; justify-content: center; padding-top: 6px; }
+.home .app { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.home .app i { display: block; width: 92px; height: 92px; border-radius: 22px; background: var(--line); }
+.home .app b { display: block; width: 64px; height: 10px; border-radius: 5px; background: var(--line); }
+.home .app.pv i { background: #0A0A0A url('/assets/img/icon-maskable-192.png') center / 100% no-repeat; box-shadow: 0 6px 18px rgba(26,24,20,0.18); }
+.home .app.pv span { font: 700 17px/1 'Plus Jakarta Sans'; color: var(--ink); }
 </style>
 </head>
 <body>
@@ -84,6 +91,12 @@ if (p.motif === 'grid') {
   var rows = '';
   for (var r = 0; r < 6; r++) rows += '<div class="row"><span class="name"></span><span class="n"></span><span class="n"></span><span class="n"></span></div>';
   m.innerHTML = '<div class="table">' + rows + '</div>';
+} else if (p.motif === 'appicon') {
+  var cells = '';
+  for (var k = 0; k < 9; k++) cells += k === 4
+    ? '<div class="app pv"><i></i><span>Purevesting</span></div>'
+    : '<div class="app"><i></i><b></b></div>';
+  m.innerHTML = '<div class="home">' + cells + '</div>';
 } else if (p.motif === 'person') {
   m.className = 'motif person';
   m.innerHTML = '<img src="/assets/img/byline-192.webp" alt=""><div><div class="who">Moin Ali Syed</div></div><div class="role">Founder, Purevesting</div>';

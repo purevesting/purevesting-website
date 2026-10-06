@@ -3,7 +3,7 @@
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 5 October 2026
+Last updated: 6 October 2026
 
 ---
 
@@ -84,6 +84,13 @@ decision only he can make.
       two weeks: in Cloudflare, check Security → Bots, and make sure
       nothing there blocks Google's crawlers (Google fetches the icon with
       its own crawler, not a browser).
+- [ ] **10. Install the app on your own phone (after the 6 Oct batch is
+      live).** On Android: open purevesting.com/app in Chrome and tap
+      Install. On an iPhone: open it in Safari, Share, Add to Home Screen.
+      Open it from the home screen, open two or three pages, turn on
+      airplane mode and open them again — they should still work, with a
+      "You're offline" note at the bottom. Then tell people about it: say
+      "purevesting.com/app" in videos and put it in the Instagram bio.
 
 ---
 
@@ -416,6 +423,45 @@ In the order they matter, from the original plan.
       more than five columns (the compare page's returns table has six) get
       no button. When a source note is too long for the picture, it keeps
       the part from "Source" onwards.
+- [x] ~~**Installable site — the "app" (MAS, 6 Oct)**~~ — DONE 6 Oct, free.
+      People install it from the browser: Chrome on Android shows an
+      Install button on /app/ (or in its own menu); an iPhone uses Safari's
+      Share → Add to Home Screen. It opens full-screen from the home screen,
+      pages a reader has opened work offline (with a "You're offline" note,
+      because a saved copy can be older than the live page), and it is
+      always the live site when online. The pieces:
+      - `manifest.json` — the app's name, icon, colours, the page it opens
+        on, four long-press shortcuts on Android, and screenshots for
+        Android's install sheet (`assets/img/app/`);
+      - `sw.js` — the service worker that saves pages and answers offline
+        (its comments explain the rules); `/offline/` is the page it shows
+        for a page that was never saved (hidden from Google);
+      - `/app/` — the install page, to share as purevesting.com/app;
+      - `assets/img/icon-maskable-*.png` — the icon Android crops into its
+        own shapes; every page's head has four "THE APP" lines, and the
+        footer an "Install the app" button.
+      **Day to day there is nothing to do:** new pages are saved
+      automatically as people open them. Only if the PRECACHE list in
+      `sw.js` changes, raise its VERSION by one.
+      **If the app ever misbehaves** (say, people keep seeing an old page),
+      replace everything in `sw.js` with the lines below and push. Every
+      phone deletes its saved copies and goes back to being a plain
+      website; the old `sw.js` can be put back once the problem is found.
+      ```
+      self.addEventListener('install', function () { self.skipWaiting(); });
+      self.addEventListener('activate', function (e) {
+        e.waitUntil(caches.keys().then(function (names) {
+          return Promise.all(names.map(function (n) { return caches.delete(n); }));
+        }).then(function () { return self.registration.unregister(); }));
+      });
+      ```
+- [ ] **The app, later (only if wanted):** listing it in the **Microsoft
+      Store** for laptops (free, packaged with PWABuilder); in the **Google
+      Play Store** ($25 once; a personal account needs a government ID
+      check and a 14-day test with 12 testers first); and **notifications**
+      ("new video", "monthly update") — they need a small sender running
+      somewhere, which Cloudflare's free tier can do. Not the Apple App
+      Store: it usually rejects apps that are just a website.
 - [x] ~~**Share cards for the compare page's two big tables**~~ — DONE
       5 Oct. Cards now take tables up to 6 columns. A column can be left
       off a card with `data-share="skip"` on its heading (the first table
