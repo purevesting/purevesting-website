@@ -278,6 +278,14 @@ https://code.claude.com/docs/en/cloud-environments#network-access
 Every figure on the site is supposed to carry a source link and an "as of"
 date. These are the places that don't yet.
 
+- [ ] **Compare page — ShariahCap Advisors for Taurus and Quantum (6 Oct).**
+      Restored as MAS set it on 17 Sep (the 2 Oct "None named" change was
+      undone; logged on /corrections/). It now rests on ShariahCap's own site
+      (a Taurus CEO quote about the fund's launch) and Shariah Securities'
+      list (8 Apr 2025). A stronger source would be a Taurus or Quantum
+      document, or a ShariahCap certificate, naming the board — if MAS has
+      one, send the link and it replaces these.
+
 - [x] ~~**Home page — the 205 of 500 figure.**~~ FIXED 24 Sep. The source
       link now goes to NSE's Nifty500 Shariah factsheet, which lists 205
       constituents as of 31 August 2026.
