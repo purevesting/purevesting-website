@@ -149,6 +149,7 @@
       <div class="nav-item">
         <a href="/compare/shariah-mutual-funds/">Compare</a>
         <div class="nav-menu">
+          <a href="/screener/">Is my stock halal? The screener</a>
           <a href="/compare/shariah-mutual-funds/">India's six Shariah mutual funds</a>
           <a href="/halal-stocks/">How many Indian stocks are halal?</a>
         </div>
@@ -173,6 +174,7 @@
       <div class="nav-item nav-desktop">
         <a href="/#tools">Tools</a>
         <div class="nav-menu">
+          <a href="/screener/">Halal stock screener</a>
           <a href="/sip-calculator/">SIP and lump-sum calculator</a>
           <a href="/loan-calculator/">Loan and EMI calculator</a>
           <a href="/purification-calculator/">Purification calculator</a>
@@ -203,6 +205,20 @@
         authority behind every position, and puts a source and a date on
         every figure.</p>
 
+      <!-- THE SCREENER BOX. A plain form: it sends the name to /screener/,
+           which shows the answer, so it works even without JavaScript.
+           scripts/update_screener.py keeps the date and count current. -->
+      <form class="screener-box" action="/screener/" method="get" role="search">
+        <label for="home-q">Is your stock halal? Check it against NSE's Shariah list</label>
+        <div class="screener-row">
+          <input id="home-q" name="q" type="search" placeholder="e.g. Infosys or TCS" autocomplete="off" spellcheck="false">
+          <button class="btn" type="submit">Check</button>
+        </div>
+        <p class="meta">Covers the <span data-screener-all>501</span> companies in the
+          Nifty 500 · NSE's list as of <time datetime="2026-09-30" data-screener-date>30 September 2026</time>
+          · <a href="/screener/">see them all</a></p>
+      </form>
+
     </div>
   </section>
 
@@ -222,6 +238,7 @@
           <h3>Invest</h3>
           <p class="meta">Stocks, mutual funds and gold</p>
           <ul class="route-list">
+            <li><a href="/screener/">Is my stock halal? The screener</a></li>
             <li><a href="/halal-stocks/">How many Indian stocks are halal?</a></li>
             <li><a href="/compare/shariah-mutual-funds/">India's six Shariah mutual funds, compared</a></li>
             <li><a href="/methodology/">How a stock is screened, step by step</a></li>
@@ -246,6 +263,7 @@
           <h3>Tools</h3>
           <p class="meta">Work it out for your own money</p>
           <ul class="route-list">
+            <li><a href="/screener/">Halal stock screener</a></li>
             <li><a href="/sip-calculator/">SIP and lump-sum calculator</a></li>
             <li><a href="/loan-calculator/">Loan calculator: what interest really costs</a></li>
             <li><a href="/purification-calculator/">Purification calculator</a></li>
@@ -426,6 +444,7 @@
       <a href="/instruments/">Instruments</a>
       <a href="/compare/shariah-mutual-funds/">Compare</a>
       <a href="/halal-stocks/">Halal stocks</a>
+      <a href="/screener/">Screener</a>
       <a href="/methodology/">Methodology</a>
       <a href="/sip-calculator/">SIP calculator</a>
       <a href="/loan-calculator/">Loan calculator</a>

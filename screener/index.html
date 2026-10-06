@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FAF7F0">
+
+<!-- ==================================================================
+     PER-PAGE BLOCK — only these six lines differ from page to page.
+     ================================================================== -->
+
+<title>Halal stock screener: is my stock Shariah compliant? | Purevesting</title>
+<meta name="description" content="Halal stock screener for India: check whether a company is in NSE's Nifty500 Shariah index. All 501 Nifty 500 companies, sourced and dated. Not a recommendation.">
+<link rel="canonical" href="https://purevesting.com/screener/">
+<meta property="og:title" content="Is your stock halal? The Purevesting screener">
+<meta property="og:description" content="Check any Nifty 500 company against NSE's Nifty500 Shariah index — sourced, dated, free.">
+<meta property="og:url" content="https://purevesting.com/screener/">
+
+<!-- ================ END PER-PAGE BLOCK ============================== -->
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Purevesting">
+<meta property="og:image" content="https://purevesting.com/assets/og/screener.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="en_IN">
+
+<!-- STRUCTURED DATA — a summary of this page written for Google (JSON-LD).
+     Visitors never see it. When you change this page's "Last updated"
+     date, change "dateModified" below to the same date (year-month-day). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://purevesting.com/screener/#page",
+      "name": "Halal stock screener",
+      "description": "Halal stock screener for India: check whether a company is in NSE's Nifty500 Shariah index. All 501 Nifty 500 companies, sourced and dated. Not a recommendation.",
+      "url": "https://purevesting.com/screener/",
+      "image": "https://purevesting.com/assets/og/screener.jpg",
+      "datePublished": "2026-10-06",
+      "dateModified": "2026-10-06",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://purevesting.com/#website"
+      },
+      "publisher": {
+        "@id": "https://purevesting.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://purevesting.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Screener"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="/assets/site.css">
+
+<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- THE APP — lets phones install the site from the browser (see /app/). -->
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Purevesting">
+
+<script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+
+<!-- ==================================================================
+     HEADER — identical in every page. Never edit this per page.
+     ================================================================== -->
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-logo" href="/">
+      <img src="/assets/img/logo.svg" width="28" height="28" alt="">
+      Purevesting
+    </a>
+    <!-- THE MENUS. On a phone only the four plain links show, exactly as
+         before. On a computer, pointing at one opens its list (the
+         "nav-menu"), and "Tools" appears as a fifth. Every link is plain
+         HTML, so Google reads them all. To add a page, add one line to
+         the right list — on every page, so the header stays identical. -->
+    <nav class="site-nav" aria-label="Main">
+      <div class="nav-item">
+        <a href="/instruments/">Instruments</a>
+        <div class="nav-menu">
+          <a href="/instruments/epf/">Is EPF halal?</a>
+          <a href="/instruments/ppf/">Is PPF halal?</a>
+          <a href="/instruments/nps/">Is NPS halal?</a>
+          <a href="/instruments/sukanya-samriddhi/">Is Sukanya Samriddhi halal?</a>
+          <a href="/instruments/digital-gold/">Is digital gold halal?</a>
+          <a href="/instruments/">All instruments, checked</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/compare/shariah-mutual-funds/">Compare</a>
+        <div class="nav-menu">
+          <a href="/screener/">Is my stock halal? The screener</a>
+          <a href="/compare/shariah-mutual-funds/">India's six Shariah mutual funds</a>
+          <a href="/halal-stocks/">How many Indian stocks are halal?</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/methodology/">Methodology</a>
+        <div class="nav-menu">
+          <a href="/methodology/">How a stock is screened</a>
+          <a href="/methodology/#disagree">Why halal stock lists disagree</a>
+          <a href="/corrections/">Corrections log</a>
+          <a href="/about/">About Purevesting</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/newsletter/">Newsletter</a>
+        <div class="nav-menu">
+          <a href="/newsletter/">HalalEdge, the weekly email</a>
+          <a href="/ask/">Ask a question</a>
+          <a href="/app/">Install the app</a>
+        </div>
+      </div>
+      <div class="nav-item nav-desktop">
+        <a href="/#tools">Tools</a>
+        <div class="nav-menu">
+          <a href="/screener/">Halal stock screener</a>
+          <a href="/sip-calculator/">SIP and lump-sum calculator</a>
+          <a href="/loan-calculator/">Loan and EMI calculator</a>
+          <a href="/purification-calculator/">Purification calculator</a>
+          <a href="/app/">Install the app</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ======================= END HEADER =============================== -->
+
+
+<main>
+
+  <section class="section">
+    <div class="wrap">
+
+      <h1>Is your stock <span class="t-green">halal</span>?</h1>
+
+      <p class="standfirst">Type a company and see whether it is in NSE's
+        Nifty500 Shariah index — the Nifty 500 companies that pass the
+        Shariah screen NSE uses, which TASIS applies. As of
+        <time datetime="2026-09-30" data-screener-date>30 September 2026</time>,
+        <span class="num" data-screener-in>204</span> of the
+        <span class="num" data-screener-all>501</span> companies are in it.</p>
+
+      <div class="byline">
+        <img src="/assets/img/byline-96.webp"
+             srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
+             width="48" height="48" alt="Moin Ali Syed">
+        <div>
+          <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
+          <div class="meta">Founder, Purevesting</div>
+          <div class="meta">Last updated <time datetime="2026-10-06">6 October 2026</time> · 3 min read</div>
+        </div>
+      </div>
+
+      <!-- THE SEARCH. Needs JavaScript, so it stays hidden without it; the
+           full list below is readable either way. A search from the home
+           page arrives here as ?q=..., and the script fills it in. -->
+      <div class="screener-search" role="search">
+        <label for="sc-q">Company name or NSE symbol</label>
+        <input id="sc-q" type="search" autocomplete="off" spellcheck="false"
+               placeholder="e.g. Infosys, TCS, Tata Motors">
+        <div class="grid-switch" role="group" aria-label="Show">
+          <button type="button" class="switch-btn" data-show="all" aria-pressed="true">All</button>
+          <button type="button" class="switch-btn" data-show="in" aria-pressed="false">In the index</button>
+          <button type="button" class="switch-btn" data-show="out" aria-pressed="false">Not in it</button>
+        </div>
+      </div>
+
+      <div class="screener-result" id="sc-result" aria-live="polite" hidden></div>
+
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="wrap">
+
+      <h2 id="list">All <span class="num" data-screener-all>501</span> Nifty 500 companies</h2>
+
+      <p class="meta" id="sc-count">Sorted A to Z.</p>
+
+      <div class="table-scroll">
+        <table id="sc-table" data-share="none">
+          <caption class="visually-hidden">Every Nifty 500 company, and whether it is in NSE's Nifty500 Shariah index</caption>
+          <thead>
+            <tr>
+              <th scope="col">Company</th>
+              <th scope="col">NSE symbol</th>
+              <th scope="col">Industry</th>
+              <th scope="col">NSE Shariah index</th>
+              <th scope="col" class="num">Weight in it</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- SCREENER ROWS START -->
+            <tr class="sc-out"><td>360 ONE WAM Ltd.</td><td>360ONE</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Aadhar Housing Finance Ltd.</td><td>AADHARHFC</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Aarti Industries Ltd.</td><td>AARTIIND</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Aavas Financiers Ltd.</td><td>AAVAS</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>ABB India Ltd.</td><td>ABB</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Abbott India Ltd.</td><td>ABBOTINDIA</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>ACC Ltd.</td><td>ACC</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.12%</td></tr>
+            <tr class="sc-out"><td>ACME Solar Holdings Ltd.</td><td>ACMESOLAR</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Action Construction Equipment Ltd.</td><td>ACE</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.08%</td></tr>
+            <tr class="sc-in"><td>Acutaas Chemicals Ltd.</td><td>ACUTAAS</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.28%</td></tr>
+            <tr class="sc-out"><td>Adani Energy Solutions Ltd.</td><td>ADANIENSOL</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Adani Enterprises Ltd.</td><td>ADANIENT</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Adani Green Energy Ltd.</td><td>ADANIGREEN</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Adani Ports and Special Economic Zone Ltd.</td><td>ADANIPORTS</td><td>Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Adani Power Ltd.</td><td>ADANIPOWER</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Adani Total Gas Ltd.</td><td>ATGL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Aditya Birla Capital Ltd.</td><td>ABCAPITAL</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Aditya Birla Real Estate Ltd.</td><td>ABREL</td><td>Realty</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Aditya Birla Sun Life AMC Ltd.</td><td>ABSLAMC</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Aditya Infotech Ltd.</td><td>CPPLUS</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.17%</td></tr>
+            <tr class="sc-out"><td>Aegis Logistics Ltd.</td><td>AEGISLOG</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Aegis Vopak Terminals Ltd.</td><td>AEGISVOPAK</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Aether Industries Ltd.</td><td>AETHER</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Afcons Infrastructure Ltd.</td><td>AFCONS</td><td>Construction</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.06%</td></tr>
+            <tr class="sc-out"><td>Affle 3i Ltd.</td><td>AFFLE</td><td>Information Technology</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>AIA Engineering Ltd.</td><td>AIAENG</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Ajanta Pharmaceuticals Ltd.</td><td>AJANTPHARM</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.27%</td></tr>
+            <tr class="sc-in"><td>Alkem Laboratories Ltd.</td><td>ALKEM</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.52%</td></tr>
+            <tr class="sc-out"><td>Allied Blenders and Distillers Ltd.</td><td>ABDL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Amara Raja Energy &amp; Mobility Ltd.</td><td>ARE&amp;M</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.15%</td></tr>
+            <tr class="sc-in"><td>Amber Enterprises India Ltd.</td><td>AMBER</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.24%</td></tr>
+            <tr class="sc-in"><td>Ambuja Cements Ltd.</td><td>AMBUJACEM</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.39%</td></tr>
+            <tr class="sc-out"><td>Anand Rathi Wealth Ltd.</td><td>ANANDRATHI</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Anant Raj Ltd.</td><td>ANANTRAJ</td><td>Realty</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.15%</td></tr>
+            <tr class="sc-out"><td>Angel One Ltd.</td><td>ANGELONE</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Anthem Biosciences Ltd.</td><td>ANTHEM</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Anupam Rasayan India Ltd.</td><td>ANURAS</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Apar Industries Ltd.</td><td>APARINDS</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.54%</td></tr>
+            <tr class="sc-in"><td>APL Apollo Tubes Ltd.</td><td>APLAPOLLO</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.66%</td></tr>
+            <tr class="sc-out"><td>Apollo Hospitals Enterprise Ltd.</td><td>APOLLOHOSP</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Apollo Tyres Ltd.</td><td>APOLLOTYRE</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.22%</td></tr>
+            <tr class="sc-out"><td>Aptus Value Housing Finance India Ltd.</td><td>APTUS</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Asahi India Glass Ltd.</td><td>ASAHIINDIA</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Ashok Leyland Ltd.</td><td>ASHOKLEY</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Asian Paints Ltd.</td><td>ASIANPAINT</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.80%</td></tr>
+            <tr class="sc-in"><td>Aster DM Quality Care Ltd.</td><td>ASTERDM</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.31%</td></tr>
+            <tr class="sc-in"><td>Astral Ltd.</td><td>ASTRAL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.28%</td></tr>
+            <tr class="sc-out"><td>Ather Energy Ltd.</td><td>ATHERENERG</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Atul Ltd.</td><td>ATUL</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.16%</td></tr>
+            <tr class="sc-out"><td>AU Small Finance Bank Ltd.</td><td>AUBANK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Aurobindo Pharma Ltd.</td><td>AUROPHARMA</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.77%</td></tr>
+            <tr class="sc-out"><td>Authum Investment &amp; Infrastructure Ltd.</td><td>AIIL</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Avanti Feeds Ltd.</td><td>AVANTIFEED</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Avenue Supermarts Ltd.</td><td>DMART</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.02%</td></tr>
+            <tr class="sc-out"><td>AWL Agri Business Ltd.</td><td>AWL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Axis Bank Ltd.</td><td>AXISBANK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Azad Engineering Ltd.</td><td>AZAD</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Bagmane Prime Office REIT</td><td>BAGMANE</td><td>Realty</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Bajaj Auto Ltd.</td><td>BAJAJ-AUTO</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Bajaj Finance Ltd.</td><td>BAJFINANCE</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Bajaj Finserv Ltd.</td><td>BAJAJFINSV</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Bajaj Holdings &amp; Investment Ltd.</td><td>BAJAJHLDNG</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Bajaj Housing Finance Ltd.</td><td>BAJAJHFL</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Balkrishna Industries Ltd.</td><td>BALKRISIND</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.28%</td></tr>
+            <tr class="sc-out"><td>Balrampur Chini Mills Ltd.</td><td>BALRAMCHIN</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Bandhan Bank Ltd.</td><td>BANDHANBNK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Bank of Baroda</td><td>BANKBARODA</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Bank of India</td><td>BANKINDIA</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Bank of Maharashtra</td><td>MAHABANK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Bata India Ltd.</td><td>BATAINDIA</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.07%</td></tr>
+            <tr class="sc-out"><td>Belrise Industries Ltd.</td><td>BELRISE</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>BEML Ltd.</td><td>BEML</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Berger Paints India Ltd.</td><td>BERGEPAINT</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.22%</td></tr>
+            <tr class="sc-in"><td>Bharat Coking Coal Ltd.</td><td>BHARATCOAL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.03%</td></tr>
+            <tr class="sc-out"><td>Bharat Dynamics Ltd.</td><td>BDL</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Bharat Electronics Ltd.</td><td>BEL</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Bharat Forge Ltd.</td><td>BHARATFORG</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Bharat Heavy Electricals Ltd.</td><td>BHEL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.01%</td></tr>
+            <tr class="sc-in"><td>Bharat Petroleum Corporation Ltd.</td><td>BPCL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.01%</td></tr>
+            <tr class="sc-out"><td>Bharti Airtel Ltd.</td><td>BHARTIARTL</td><td>Telecommunication</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Bharti Hexacom Ltd.</td><td>BHARTIHEXA</td><td>Telecommunication</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.18%</td></tr>
+            <tr class="sc-out"><td>Billionbrains Garage Ventures Ltd.</td><td>GROWW</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Biocon Ltd.</td><td>BIOCON</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.43%</td></tr>
+            <tr class="sc-in"><td>Birlasoft Ltd.</td><td>BSOFT</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.07%</td></tr>
+            <tr class="sc-in"><td>Black Box Ltd.</td><td>BBOX</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.06%</td></tr>
+            <tr class="sc-out"><td>BLS International Services Ltd.</td><td>BLS</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Blue Star Ltd.</td><td>BLUESTARCO</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.33%</td></tr>
+            <tr class="sc-out"><td>Bosch Ltd.</td><td>BOSCHLTD</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Brainbees Solutions Ltd.</td><td>FIRSTCRY</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.07%</td></tr>
+            <tr class="sc-out"><td>Brigade Enterprises Ltd.</td><td>BRIGADE</td><td>Realty</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Britannia Industries Ltd.</td><td>BRITANNIA</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.94%</td></tr>
+            <tr class="sc-out"><td>Brookfield India Real Estate Trust</td><td>BIRET</td><td>Realty</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>BSE Ltd.</td><td>BSE</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Can Fin Homes Ltd.</td><td>CANFINHOME</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Canara Bank</td><td>CANBK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Canara HSBC Life Insurance Company Ltd.</td><td>CANHLIFE</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Caplin Point Laboratories Ltd.</td><td>CAPLIPOINT</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Capri Global Capital Ltd.</td><td>CGCL</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Carborundum Universal Ltd.</td><td>CARBORUNIV</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.24%</td></tr>
+            <tr class="sc-out"><td>Cartrade Tech Ltd.</td><td>CARTRADE</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Castrol India Ltd.</td><td>CASTROLIND</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.16%</td></tr>
+            <tr class="sc-out"><td>CCL Products (I) Ltd.</td><td>CCL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Ceat Ltd.</td><td>CEATLTD</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.11%</td></tr>
+            <tr class="sc-in"><td>Cemindia Projects Ltd.</td><td>CEMPRO</td><td>Construction</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.11%</td></tr>
+            <tr class="sc-out"><td>Central Bank of India</td><td>CENTRALBK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Central Depository Services (India) Ltd.</td><td>CDSL</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Central Mine Planning &amp; Design Institute Ltd.</td><td>CMPDI</td><td>Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>CESC Ltd.</td><td>CESC</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>CG Power and Industrial Solutions Ltd.</td><td>CGPOWER</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.97%</td></tr>
+            <tr class="sc-in"><td>Chambal Fertilizers &amp; Chemicals Ltd.</td><td>CHAMBLFERT</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.10%</td></tr>
+            <tr class="sc-in"><td>Chennai Petroleum Corporation Ltd.</td><td>CHENNPETRO</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.11%</td></tr>
+            <tr class="sc-out"><td>Choice International Ltd.</td><td>CHOICEIN</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Cholamandalam Financial Holdings Ltd.</td><td>CHOLAHLDNG</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Cholamandalam Investment and Finance Company Ltd.</td><td>CHOLAFIN</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>CIE Automotive India Ltd.</td><td>CIEINDIA</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.08%</td></tr>
+            <tr class="sc-in"><td>Cipla Ltd.</td><td>CIPLA</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.26%</td></tr>
+            <tr class="sc-out"><td>City Union Bank Ltd.</td><td>CUB</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Clean Max Enviro Energy Solutions Ltd.</td><td>CLEANMAX</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Clean Science and Technology Ltd.</td><td>CLEAN</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Coal India Ltd.</td><td>COALINDIA</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Cochin Shipyard Ltd.</td><td>COCHINSHIP</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Coforge Ltd.</td><td>COFORGE</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.01%</td></tr>
+            <tr class="sc-in"><td>Cohance Lifesciences Ltd.</td><td>COHANCE</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.12%</td></tr>
+            <tr class="sc-in"><td>Colgate Palmolive (India) Ltd.</td><td>COLPAL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.39%</td></tr>
+            <tr class="sc-out"><td>Computer Age Management Services Ltd.</td><td>CAMS</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Concord Biotech Ltd.</td><td>CONCORDBIO</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.08%</td></tr>
+            <tr class="sc-out"><td>Container Corporation of India Ltd.</td><td>CONCOR</td><td>Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Coromandel International Ltd.</td><td>COROMANDEL</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.35%</td></tr>
+            <tr class="sc-out"><td>Craftsman Automation Ltd.</td><td>CRAFTSMAN</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>CreditAccess Grameen Ltd.</td><td>CREDITACC</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>CRISIL Ltd.</td><td>CRISIL</td><td>Financial Services</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.18%</td></tr>
+            <tr class="sc-in"><td>Crompton Greaves Consumer Electricals Ltd.</td><td>CROMPTON</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.22%</td></tr>
+            <tr class="sc-in"><td>Cummins India Ltd.</td><td>CUMMINSIND</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.07%</td></tr>
+            <tr class="sc-out"><td>Cupid Ltd.</td><td>CUPID</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Cyient Ltd.</td><td>CYIENT</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.14%</td></tr>
+            <tr class="sc-out"><td>Dabur India Ltd.</td><td>DABUR</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Dalmia Bharat Ltd.</td><td>DALBHARAT</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.22%</td></tr>
+            <tr class="sc-out"><td>Data Patterns (India) Ltd.</td><td>DATAPATTNS</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Deepak Fertilisers &amp; Petrochemicals Corp. Ltd.</td><td>DEEPAKFERT</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Deepak Nitrite Ltd.</td><td>DEEPAKNTR</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.17%</td></tr>
+            <tr class="sc-out"><td>Delhivery Ltd.</td><td>DELHIVERY</td><td>Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Devyani International Ltd.</td><td>DEVYANI</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Divi&#x27;s Laboratories Ltd.</td><td>DIVISLAB</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Dixon Technologies (India) Ltd.</td><td>DIXON</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.91%</td></tr>
+            <tr class="sc-out"><td>DLF Ltd.</td><td>DLF</td><td>Realty</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>DOMS Industries Ltd.</td><td>DOMS</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.08%</td></tr>
+            <tr class="sc-out"><td>Dr. Lal Path Labs Ltd.</td><td>LALPATHLAB</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Dr. Reddy&#x27;s Laboratories Ltd.</td><td>DRREDDY</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.25%</td></tr>
+            <tr class="sc-in"><td>Dummy HEG Ltd.</td><td>DUMMYHEG</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.06%</td></tr>
+            <tr class="sc-out"><td>E.I.D. Parry (India) Ltd.</td><td>EIDPARRY</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>eClerx Services Ltd.</td><td>ECLERX</td><td>Services</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.12%</td></tr>
+            <tr class="sc-out"><td>Eicher Motors Ltd.</td><td>EICHERMOT</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>EIH Ltd.</td><td>EIHOTEL</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Elecon Engineering Co. Ltd.</td><td>ELECON</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Elgi Equipments Ltd.</td><td>ELGIEQUIP</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.22%</td></tr>
+            <tr class="sc-in"><td>Emami Ltd.</td><td>EMAMILTD</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.12%</td></tr>
+            <tr class="sc-out"><td>EMBASSY OFFICE PARKS REIT</td><td>EMBASSY</td><td>Realty</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Emcure Pharmaceuticals Ltd.</td><td>EMCURE</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.13%</td></tr>
+            <tr class="sc-out"><td>Emmvee Photovoltaic Power Ltd.</td><td>EMMVEE</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Endurance Technologies Ltd.</td><td>ENDURANCE</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.16%</td></tr>
+            <tr class="sc-out"><td>Engineers India Ltd.</td><td>ENGINERSIN</td><td>Construction</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Escorts Kubota Ltd.</td><td>ESCORTS</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Eternal Ltd.</td><td>ETERNAL</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">3.85%</td></tr>
+            <tr class="sc-in"><td>Exide Industries Ltd.</td><td>EXIDEIND</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.31%</td></tr>
+            <tr class="sc-out"><td>Federal Bank Ltd.</td><td>FEDERALBNK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Fertilisers and Chemicals Travancore Ltd.</td><td>FACT</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Finolex Cables Ltd.</td><td>FINCABLES</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.18%</td></tr>
+            <tr class="sc-out"><td>Firstsource Solutions Ltd.</td><td>FSL</td><td>Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Five-Star Business Finance Ltd.</td><td>FIVESTAR</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Force Motors Ltd.</td><td>FORCEMOT</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.14%</td></tr>
+            <tr class="sc-in"><td>Fortis Healthcare Ltd.</td><td>FORTIS</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.67%</td></tr>
+            <tr class="sc-in"><td>Fractal Analytics Ltd.</td><td>FRACTAL</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.06%</td></tr>
+            <tr class="sc-out"><td>FSN E-Commerce Ventures Ltd.</td><td>NYKAA</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Gabriel India Ltd.</td><td>GABRIEL</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.13%</td></tr>
+            <tr class="sc-in"><td>GAIL (India) Ltd.</td><td>GAIL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.76%</td></tr>
+            <tr class="sc-in"><td>Gallantt Ispat Ltd.</td><td>GALLANTT</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.03%</td></tr>
+            <tr class="sc-out"><td>Garden Reach Shipbuilders &amp; Engineers Ltd.</td><td>GRSE</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>GE Vernova T&amp;D India Ltd.</td><td>GVT&amp;D</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.86%</td></tr>
+            <tr class="sc-out"><td>General Insurance Corporation of India</td><td>GICRE</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Gillette India Ltd.</td><td>GILLETTE</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.09%</td></tr>
+            <tr class="sc-out"><td>Gland Pharma Ltd.</td><td>GLAND</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Glaxosmithkline Pharmaceuticals Ltd.</td><td>GLAXO</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Glenmark Pharmaceuticals Ltd.</td><td>GLENMARK</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.58%</td></tr>
+            <tr class="sc-in"><td>Global Health Ltd.</td><td>MEDANTA</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.20%</td></tr>
+            <tr class="sc-out"><td>GMR Airports Ltd.</td><td>GMRAIRPORT</td><td>Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Godawari Power &amp; Ispat Ltd.</td><td>GPIL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.09%</td></tr>
+            <tr class="sc-out"><td>Godfrey Phillips India Ltd.</td><td>GODFRYPHLP</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Godrej Consumer Products Ltd.</td><td>GODREJCP</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.57%</td></tr>
+            <tr class="sc-out"><td>Godrej Industries Ltd.</td><td>GODREJIND</td><td>Diversified</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Godrej Properties Ltd.</td><td>GODREJPROP</td><td>Realty</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Granules India Ltd.</td><td>GRANULES</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.21%</td></tr>
+            <tr class="sc-out"><td>Graphite India Ltd.</td><td>GRAPHITE</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Grasim Industries Ltd.</td><td>GRASIM</td><td>Construction Materials</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Gravita India Ltd.</td><td>GRAVITA</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.08%</td></tr>
+            <tr class="sc-out"><td>Great Eastern Shipping Co. Ltd.</td><td>GESHIP</td><td>Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Gujarat Fluorochemicals Ltd.</td><td>FLUOROCHEM</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.31%</td></tr>
+            <tr class="sc-out"><td>Gujarat Mineral Development Corporation Ltd.</td><td>GMDCLTD</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Havells India Ltd.</td><td>HAVELLS</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.42%</td></tr>
+            <tr class="sc-out"><td>HBL Engineering Ltd.</td><td>HBLENGINE</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>HCL Technologies Ltd.</td><td>HCLTECH</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">2.15%</td></tr>
+            <tr class="sc-out"><td>HDB Financial Services Ltd.</td><td>HDBFS</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>HDFC Asset Management Company Ltd.</td><td>HDFCAMC</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>HDFC Bank Ltd.</td><td>HDFCBANK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>HDFC Life Insurance Company Ltd.</td><td>HDFCLIFE</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>HEG Advanced Materials Ltd.</td><td>HEGAM</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.03%</td></tr>
+            <tr class="sc-in"><td>Hero MotoCorp Ltd.</td><td>HEROMOTOCO</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.13%</td></tr>
+            <tr class="sc-in"><td>Hexaware Technologies Ltd.</td><td>HEXT</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.12%</td></tr>
+            <tr class="sc-in"><td>HFCL Ltd.</td><td>HFCL</td><td>Telecommunication</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.39%</td></tr>
+            <tr class="sc-out"><td>Himadri Speciality Chemical Ltd.</td><td>HSCL</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Hindalco Industries Ltd.</td><td>HINDALCO</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">2.26%</td></tr>
+            <tr class="sc-out"><td>Hindustan Aeronautics Ltd.</td><td>HAL</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Hindustan Copper Ltd.</td><td>HINDCOPPER</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.30%</td></tr>
+            <tr class="sc-out"><td>Hindustan Petroleum Corporation Ltd.</td><td>HINDPETRO</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Hindustan Unilever Ltd.</td><td>HINDUNILVR</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">2.77%</td></tr>
+            <tr class="sc-in"><td>Hindustan Zinc Ltd.</td><td>HINDZINC</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.45%</td></tr>
+            <tr class="sc-out"><td>Hitachi Energy India Ltd.</td><td>POWERINDIA</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Home First Finance Company India Ltd.</td><td>HOMEFIRST</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Honasa Consumer Ltd.</td><td>HONASA</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Honeywell Automation India Ltd.</td><td>HONAUT</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Housing &amp; Urban Development Corporation Ltd.</td><td>HUDCO</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Hyundai Motor India Ltd.</td><td>HYUNDAI</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.48%</td></tr>
+            <tr class="sc-out"><td>ICICI Bank Ltd.</td><td>ICICIBANK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>ICICI Lombard General Insurance Company Ltd.</td><td>ICICIGI</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>ICICI Prudential Asset Management Company Ltd.</td><td>ICICIAMC</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>ICICI Prudential Life Insurance Company Ltd.</td><td>ICICIPRULI</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>IDBI Bank Ltd.</td><td>IDBI</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>IDFC First Bank Ltd.</td><td>IDFCFIRSTB</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>IFCI Ltd.</td><td>IFCI</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>IIFL Finance Ltd.</td><td>IIFL</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>India Cements Ltd.</td><td>INDIACEM</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.03%</td></tr>
+            <tr class="sc-out"><td>Indiamart Intermesh Ltd.</td><td>INDIAMART</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Indian Bank</td><td>INDIANB</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Indian Energy Exchange Ltd.</td><td>IEX</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Indian Hotels Co. Ltd.</td><td>INDHOTEL</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Indian Oil Corporation Ltd.</td><td>IOC</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.84%</td></tr>
+            <tr class="sc-out"><td>Indian Overseas Bank</td><td>IOB</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Indian Railway Catering And Tourism Corporation Ltd.</td><td>IRCTC</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Indian Railway Finance Corporation Ltd.</td><td>IRFC</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Indian Renewable Energy Development Agency Ltd.</td><td>IREDA</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Indraprastha Gas Ltd.</td><td>IGL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.17%</td></tr>
+            <tr class="sc-in"><td>Indus Towers Ltd.</td><td>INDUSTOWER</td><td>Telecommunication</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.80%</td></tr>
+            <tr class="sc-out"><td>IndusInd Bank Ltd.</td><td>INDUSINDBK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Info Edge (India) Ltd.</td><td>NAUKRI</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Infosys Ltd.</td><td>INFY</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">5.83%</td></tr>
+            <tr class="sc-in"><td>INOX India Ltd.</td><td>INOXINDIA</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.08%</td></tr>
+            <tr class="sc-in"><td>Inox Wind Ltd.</td><td>INOXWIND</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.11%</td></tr>
+            <tr class="sc-out"><td>Intellect Design Arena Ltd.</td><td>INTELLECT</td><td>Information Technology</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>InterGlobe Aviation Ltd.</td><td>INDIGO</td><td>Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>International Gemological Institute Ltd.</td><td>IGIL</td><td>Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Inventurus Knowledge Solutions Ltd.</td><td>IKS</td><td>Information Technology</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Ipca Laboratories Ltd.</td><td>IPCALAB</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.44%</td></tr>
+            <tr class="sc-out"><td>IRB Infrastructure Developers Ltd.</td><td>IRB</td><td>Construction</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>IRCON International Ltd.</td><td>IRCON</td><td>Construction</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>ITC Hotels Ltd.</td><td>ITCHOTELS</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>ITC Ltd.</td><td>ITC</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>ITI Ltd.</td><td>ITI</td><td>Telecommunication</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.04%</td></tr>
+            <tr class="sc-out"><td>J.K. Cement Ltd.</td><td>JKCEMENT</td><td>Construction Materials</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Jain Resource Recycling Ltd.</td><td>JAINREC</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Jaiprakash Power Ventures Ltd.</td><td>JPPOWER</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Jammu &amp; Kashmir Bank Ltd.</td><td>J&amp;KBANK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>JBM Auto Ltd.</td><td>JBMA</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Jindal Saw Ltd.</td><td>JINDALSAW</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.11%</td></tr>
+            <tr class="sc-in"><td>Jindal Stainless Ltd.</td><td>JSL</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.39%</td></tr>
+            <tr class="sc-in"><td>Jindal Steel Ltd.</td><td>JINDALSTEL</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.70%</td></tr>
+            <tr class="sc-out"><td>Jio Financial Services Ltd.</td><td>JIOFIN</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>JK Tyre &amp; Industries Ltd.</td><td>JKTYRE</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>JM Financial Ltd.</td><td>JMFINANCIL</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>JSW Cement Ltd.</td><td>JSWCEMENT</td><td>Construction Materials</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>JSW Energy Ltd.</td><td>JSWENERGY</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>JSW Infrastructure Ltd.</td><td>JSWINFRA</td><td>Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>JSW Steel Ltd.</td><td>JSWSTEEL</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Jubilant Foodworks Ltd.</td><td>JUBLFOOD</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Jubilant Ingrevia Ltd.</td><td>JUBLINGREA</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.09%</td></tr>
+            <tr class="sc-in"><td>Jupiter Wagons Ltd.</td><td>JWL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.05%</td></tr>
+            <tr class="sc-in"><td>Jyoti CNC Automation Ltd.</td><td>JYOTICNC</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.15%</td></tr>
+            <tr class="sc-out"><td>K.P.R. Mill Ltd.</td><td>KPRMILL</td><td>Textiles</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Kajaria Ceramics Ltd.</td><td>KAJARIACER</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.17%</td></tr>
+            <tr class="sc-in"><td>Kalpataru Projects International Ltd.</td><td>KPIL</td><td>Construction</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.26%</td></tr>
+            <tr class="sc-out"><td>Kalyan Jewellers India Ltd.</td><td>KALYANKJIL</td><td>Consumer Durables</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Karur Vysya Bank Ltd.</td><td>KARURVYSYA</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Kaynes Technology India Ltd.</td><td>KAYNES</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Kec International Ltd.</td><td>KEC</td><td>Construction</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.08%</td></tr>
+            <tr class="sc-in"><td>KEI Industries Ltd.</td><td>KEI</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.46%</td></tr>
+            <tr class="sc-out"><td>Kfin Technologies Ltd.</td><td>KFINTECH</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Kirloskar Brothers Ltd.</td><td>KIRLOSBROS</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.07%</td></tr>
+            <tr class="sc-out"><td>Kirloskar Oil Eng Ltd.</td><td>KIRLOSENG</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Kotak Mahindra Bank Ltd.</td><td>KOTAKBANK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>KPIT Technologies Ltd.</td><td>KPITTECH</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.14%</td></tr>
+            <tr class="sc-out"><td>Krishna Institute of Medical Sciences Ltd.</td><td>KIMS</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>KSB Ltd.</td><td>KSB</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.07%</td></tr>
+            <tr class="sc-out"><td>L&amp;T Finance Ltd.</td><td>LTF</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>L&amp;T Technology Services Ltd.</td><td>LTTS</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.15%</td></tr>
+            <tr class="sc-out"><td>Larsen &amp; Toubro Ltd.</td><td>LT</td><td>Construction</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Laurus Labs Ltd.</td><td>LAURUSLABS</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.28%</td></tr>
+            <tr class="sc-out"><td>Lemon Tree Hotels Ltd.</td><td>LEMONTREE</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Lenskart Solutions Ltd.</td><td>LENSKART</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.83%</td></tr>
+            <tr class="sc-out"><td>LG Electronics India Ltd.</td><td>LGEINDIA</td><td>Consumer Durables</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>LIC Housing Finance Ltd.</td><td>LICHSGFIN</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Life Insurance Corporation of India</td><td>LICI</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Linde India Ltd.</td><td>LINDEINDIA</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.22%</td></tr>
+            <tr class="sc-out"><td>Lloyds Metals And Energy Ltd.</td><td>LLOYDSME</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Lodha Developers Ltd.</td><td>LODHA</td><td>Realty</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.56%</td></tr>
+            <tr class="sc-in"><td>LT Foods Ltd.</td><td>LTFOODS</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.09%</td></tr>
+            <tr class="sc-in"><td>LTM Ltd.</td><td>LTM</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.62%</td></tr>
+            <tr class="sc-in"><td>Lupin Ltd.</td><td>LUPIN</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.82%</td></tr>
+            <tr class="sc-in"><td>Mahanagar Gas Ltd.</td><td>MGL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.10%</td></tr>
+            <tr class="sc-out"><td>Mahindra &amp; Mahindra Financial Services Ltd.</td><td>M&amp;MFIN</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Mahindra &amp; Mahindra Ltd.</td><td>M&amp;M</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Manappuram Finance Ltd.</td><td>MANAPPURAM</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Mangalore Refinery &amp; Petrochemicals Ltd.</td><td>MRPL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Mankind Pharma Ltd.</td><td>MANKIND</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.47%</td></tr>
+            <tr class="sc-in"><td>Marico Ltd.</td><td>MARICO</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.69%</td></tr>
+            <tr class="sc-out"><td>Maruti Suzuki India Ltd.</td><td>MARUTI</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Max Financial Services Ltd.</td><td>MFSL</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Max Healthcare Institute Ltd.</td><td>MAXHEALTH</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.15%</td></tr>
+            <tr class="sc-out"><td>Mazagoan Dock Shipbuilders Ltd.</td><td>MAZDOCK</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Meesho Ltd.</td><td>MEESHO</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Minda Corporation Ltd.</td><td>MINDACORP</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.09%</td></tr>
+            <tr class="sc-out"><td>MMTC Ltd.</td><td>MMTC</td><td>Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Motherson Sumi Wiring India Ltd.</td><td>MSUMI</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.14%</td></tr>
+            <tr class="sc-out"><td>Motilal Oswal Financial Services Ltd.</td><td>MOTILALOFS</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>MphasiS Ltd.</td><td>MPHASIS</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.47%</td></tr>
+            <tr class="sc-in"><td>MRF Ltd.</td><td>MRF</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.42%</td></tr>
+            <tr class="sc-out"><td>MTAR Technologies Ltd.</td><td>MTARTECH</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Multi Commodity Exchange of India Ltd.</td><td>MCX</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Muthoot Finance Ltd.</td><td>MUTHOOTFIN</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Narayana Hrudayalaya Ltd.</td><td>NH</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>NATCO Pharma Ltd.</td><td>NATCOPHARM</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>National Aluminium Co. Ltd.</td><td>NATIONALUM</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Nava Ltd.</td><td>NAVA</td><td>Power</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.13%</td></tr>
+            <tr class="sc-in"><td>Navin Fluorine International Ltd.</td><td>NAVINFLUOR</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.50%</td></tr>
+            <tr class="sc-in"><td>NBCC (India) Ltd.</td><td>NBCC</td><td>Construction</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.13%</td></tr>
+            <tr class="sc-in"><td>NCC Ltd.</td><td>NCC</td><td>Construction</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.09%</td></tr>
+            <tr class="sc-in"><td>Nestle India Ltd.</td><td>NESTLEIND</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.56%</td></tr>
+            <tr class="sc-in"><td>Netweb Technologies India Ltd.</td><td>NETWEB</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.15%</td></tr>
+            <tr class="sc-in"><td>Neuland Laboratories Ltd.</td><td>NEULANDLAB</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.31%</td></tr>
+            <tr class="sc-out"><td>NHPC Ltd.</td><td>NHPC</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Nippon Life India Asset Management Ltd.</td><td>NAM-INDIA</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>NLC India Ltd.</td><td>NLCINDIA</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>NMDC Ltd.</td><td>NMDC</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>NMDC Steel Ltd.</td><td>NSLNISP</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.08%</td></tr>
+            <tr class="sc-out"><td>NTPC Green Energy Ltd.</td><td>NTPCGREEN</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>NTPC Ltd.</td><td>NTPC</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Nuvama Wealth Management Ltd.</td><td>NUVAMA</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Nuvoco Vistas Corporation Ltd.</td><td>NUVOCO</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.06%</td></tr>
+            <tr class="sc-out"><td>Oberoi Realty Ltd.</td><td>OBEROIRLTY</td><td>Realty</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Oil &amp; Natural Gas Corporation Ltd.</td><td>ONGC</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.46%</td></tr>
+            <tr class="sc-out"><td>Oil India Ltd.</td><td>OIL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Ola Electric Mobility Ltd.</td><td>OLAELEC</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Olectra Greentech Ltd.</td><td>OLECTRA</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.08%</td></tr>
+            <tr class="sc-out"><td>One 97 Communications Ltd.</td><td>PAYTM</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Onesource Specialty Pharma Ltd.</td><td>ONESOURCE</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Oracle Financial Services Software Ltd.</td><td>OFSS</td><td>Information Technology</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Page Industries Ltd.</td><td>PAGEIND</td><td>Textiles</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.38%</td></tr>
+            <tr class="sc-out"><td>Paradeep Phosphates Ltd.</td><td>PARADEEP</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Patanjali Foods Ltd.</td><td>PATANJALI</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.21%</td></tr>
+            <tr class="sc-out"><td>PB Fintech Ltd.</td><td>POLICYBZR</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>PCBL Chemical Ltd.</td><td>PCBL</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Persistent Systems Ltd.</td><td>PERSISTENT</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.95%</td></tr>
+            <tr class="sc-in"><td>Petronet LNG Ltd.</td><td>PETRONET</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.35%</td></tr>
+            <tr class="sc-in"><td>PG Electroplast Ltd.</td><td>PGEL</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.13%</td></tr>
+            <tr class="sc-out"><td>Phoenix Mills Ltd.</td><td>PHOENIXLTD</td><td>Realty</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Physicswallah Ltd.</td><td>PWL</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>PI Industries Ltd.</td><td>PIIND</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Pidilite Industries Ltd.</td><td>PIDILITIND</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.76%</td></tr>
+            <tr class="sc-out"><td>Pine Labs Ltd.</td><td>PINELABS</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Piramal Finance Ltd.</td><td>PIRAMALFIN</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Piramal Pharma Ltd.</td><td>PPLPHARMA</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>PNB Housing Finance Ltd.</td><td>PNBHOUSING</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Poly Medicure Ltd.</td><td>POLYMED</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Polycab India Ltd.</td><td>POLYCAB</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.71%</td></tr>
+            <tr class="sc-out"><td>Poonawalla Fincorp Ltd.</td><td>POONAWALLA</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Power Finance Corporation Ltd.</td><td>PFC</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Power Grid Corporation of India Ltd.</td><td>POWERGRID</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Premier Energies Ltd.</td><td>PREMIERENE</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Prestige Estates Projects Ltd.</td><td>PRESTIGE</td><td>Realty</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Prime Focus Ltd.</td><td>PFOCUS</td><td>Media Entertainment &amp; Publication</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Privi Speciality Chemicals Ltd.</td><td>PRIVISCL</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>PTC Industries Ltd.</td><td>PTCIL</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Punjab National Bank</td><td>PNB</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>PVR INOX Ltd.</td><td>PVRINOX</td><td>Media Entertainment &amp; Publication</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>R R Kabel Ltd.</td><td>RRKABEL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.14%</td></tr>
+            <tr class="sc-out"><td>Radico Khaitan Ltd</td><td>RADICO</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Rail Vikas Nigam Ltd.</td><td>RVNL</td><td>Construction</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.19%</td></tr>
+            <tr class="sc-in"><td>Railtel Corporation Of India Ltd.</td><td>RAILTEL</td><td>Telecommunication</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.04%</td></tr>
+            <tr class="sc-out"><td>Rainbow Childrens Medicare Ltd.</td><td>RAINBOW</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Ramkrishna Forgings Ltd.</td><td>RKFORGE</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>RBL Bank Ltd.</td><td>RBLBANK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>REC Ltd.</td><td>RECLTD</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Redington Ltd.</td><td>REDINGTON</td><td>Services</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.40%</td></tr>
+            <tr class="sc-out"><td>Reliance Industries Ltd.</td><td>RELIANCE</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Reliance Power Ltd.</td><td>RPOWER</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>RHI MAGNESITA INDIA LTD.</td><td>RHIM</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.04%</td></tr>
+            <tr class="sc-out"><td>RITES Ltd.</td><td>RITES</td><td>Construction</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Rubicon Research Ltd.</td><td>RUBICON</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.10%</td></tr>
+            <tr class="sc-in"><td>Sagility Ltd.</td><td>SAGILITY</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.16%</td></tr>
+            <tr class="sc-in"><td>Sai Life Sciences Ltd.</td><td>SAILIFE</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.35%</td></tr>
+            <tr class="sc-out"><td>Sammaan Capital Ltd.</td><td>SAMMAANCAP</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Samvardhana Motherson International Ltd.</td><td>MOTHERSON</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.20%</td></tr>
+            <tr class="sc-in"><td>Sansera Engineering Ltd.</td><td>SANSERA</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.33%</td></tr>
+            <tr class="sc-out"><td>Sarda Energy and Minerals Ltd.</td><td>SARDAEN</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>SBI Cards and Payment Services Ltd.</td><td>SBICARD</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>SBI Life Insurance Company Ltd.</td><td>SBILIFE</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Schaeffler India Ltd.</td><td>SCHAEFFLER</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.26%</td></tr>
+            <tr class="sc-in"><td>Schneider Electric Infrastructure Ltd.</td><td>SCHNEIDER</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.12%</td></tr>
+            <tr class="sc-in"><td>Shipping Corporation of India Ltd.</td><td>SCI</td><td>Services</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.08%</td></tr>
+            <tr class="sc-out"><td>Shree Cement Ltd.</td><td>SHREECEM</td><td>Construction Materials</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Shriram Finance Ltd.</td><td>SHRIRAMFIN</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Shyam Metalics and Energy Ltd.</td><td>SHYAMMETL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.12%</td></tr>
+            <tr class="sc-in"><td>Siemens Energy India Ltd.</td><td>ENRIN</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.47%</td></tr>
+            <tr class="sc-in"><td>Siemens Ltd.</td><td>SIEMENS</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.55%</td></tr>
+            <tr class="sc-out"><td>Signatureglobal (India) Ltd.</td><td>SIGNATURE</td><td>Realty</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>SJVN Ltd.</td><td>SJVN</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Sobha Ltd.</td><td>SOBHA</td><td>Realty</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Solar Industries India Ltd.</td><td>SOLARINDS</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Sona BLW Precision Forgings Ltd.</td><td>SONACOMS</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.62%</td></tr>
+            <tr class="sc-out"><td>SPR Auto Technologies Ltd.</td><td>SHRIPISTON</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>SRF Ltd.</td><td>SRF</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.60%</td></tr>
+            <tr class="sc-out"><td>Star Health and Allied Insurance Company Ltd.</td><td>STARHEALTH</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>State Bank of India</td><td>SBIN</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Steel Authority of India Ltd.</td><td>SAIL</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.44%</td></tr>
+            <tr class="sc-out"><td>Sterlite Technologies Ltd.</td><td>STLTECH</td><td>Telecommunication</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Sumitomo Chemical India Ltd.</td><td>SUMICHEM</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Sun Pharmaceutical Industries Ltd.</td><td>SUNPHARMA</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">3.19%</td></tr>
+            <tr class="sc-out"><td>Sun TV Network Ltd.</td><td>SUNTV</td><td>Media Entertainment &amp; Publication</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Sundaram Finance Ltd.</td><td>SUNDARMFIN</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Supreme Industries Ltd.</td><td>SUPREMEIND</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.37%</td></tr>
+            <tr class="sc-in"><td>Suzlon Energy Ltd.</td><td>SUZLON</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.80%</td></tr>
+            <tr class="sc-out"><td>Swan Corp Ltd.</td><td>SWANCORP</td><td>Chemicals</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Swiggy Ltd.</td><td>SWIGGY</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.62%</td></tr>
+            <tr class="sc-in"><td>Syngene International Ltd.</td><td>SYNGENE</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.12%</td></tr>
+            <tr class="sc-in"><td>Syrma SGS Technology Ltd.</td><td>SYRMA</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.23%</td></tr>
+            <tr class="sc-out"><td>Tata Capital Ltd.</td><td>TATACAP</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Tata Chemicals Ltd.</td><td>TATACHEM</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.16%</td></tr>
+            <tr class="sc-out"><td>Tata Communications Ltd.</td><td>TATACOMM</td><td>Telecommunication</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Tata Consultancy Services Ltd.</td><td>TCS</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">3.48%</td></tr>
+            <tr class="sc-in"><td>Tata Consumer Products Ltd.</td><td>TATACONSUM</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.03%</td></tr>
+            <tr class="sc-out"><td>Tata Elxsi Ltd.</td><td>TATAELXSI</td><td>Information Technology</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Tata Investment Corporation Ltd.</td><td>TATAINVEST</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Tata Motors Ltd.</td><td>TMCV</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.46%</td></tr>
+            <tr class="sc-in"><td>Tata Motors Passenger Vehicles Ltd.</td><td>TMPV</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.98%</td></tr>
+            <tr class="sc-out"><td>Tata Power Co. Ltd.</td><td>TATAPOWER</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Tata Steel Ltd.</td><td>TATASTEEL</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Tata Technologies Ltd.</td><td>TATATECH</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.20%</td></tr>
+            <tr class="sc-out"><td>Tata Teleservices (Maharashtra) Ltd.</td><td>TTML</td><td>Telecommunication</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>TBO Tek Ltd.</td><td>TBOTEK</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.10%</td></tr>
+            <tr class="sc-in"><td>TD Power Systems Ltd.</td><td>TDPOWERSYS</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.30%</td></tr>
+            <tr class="sc-in"><td>Tech Mahindra Ltd.</td><td>TECHM</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.61%</td></tr>
+            <tr class="sc-out"><td>Techno Electric &amp; Engineering Company Ltd.</td><td>TECHNOE</td><td>Construction</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Tega Industries Ltd.</td><td>TEGA</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.06%</td></tr>
+            <tr class="sc-out"><td>Tejas Networks Ltd.</td><td>TEJASNET</td><td>Telecommunication</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Tenneco Clean Air India Ltd.</td><td>TENNIND</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.09%</td></tr>
+            <tr class="sc-out"><td>Thangamayil Jewellery Ltd.</td><td>THANGAMAYL</td><td>Consumer Durables</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>The New India Assurance Company Ltd.</td><td>NIACL</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>The Ramco Cements Ltd.</td><td>RAMCOCEM</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.18%</td></tr>
+            <tr class="sc-in"><td>Thermax Ltd.</td><td>THERMAX</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.22%</td></tr>
+            <tr class="sc-in"><td>Timken India Ltd.</td><td>TIMKEN</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.19%</td></tr>
+            <tr class="sc-in"><td>Titagarh Rail Systems Ltd.</td><td>TITAGARH</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.11%</td></tr>
+            <tr class="sc-out"><td>Titan Company Ltd.</td><td>TITAN</td><td>Consumer Durables</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Torrent Pharmaceuticals Ltd.</td><td>TORNTPHARM</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Torrent Power Ltd.</td><td>TORNTPOWER</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Transformers And Rectifiers (India) Ltd.</td><td>TARIL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.05%</td></tr>
+            <tr class="sc-in"><td>Trent Ltd.</td><td>TRENT</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">1.45%</td></tr>
+            <tr class="sc-in"><td>Trident Ltd.</td><td>TRIDENT</td><td>Textiles</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.05%</td></tr>
+            <tr class="sc-out"><td>Triveni Turbine Ltd.</td><td>TRITURBINE</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Tube Investments of India Ltd.</td><td>TIINDIA</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.42%</td></tr>
+            <tr class="sc-out"><td>TVS Motor Company Ltd.</td><td>TVSMOTOR</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>UCO Bank</td><td>UCOBANK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>UltraTech Cement Ltd.</td><td>ULTRACEMCO</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">2.15%</td></tr>
+            <tr class="sc-out"><td>Union Bank of India</td><td>UNIONBANK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>United Breweries Ltd.</td><td>UBL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>United Spirits Ltd.</td><td>UNITDSPR</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>UNO Minda Ltd.</td><td>UNOMINDA</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.35%</td></tr>
+            <tr class="sc-in"><td>UPL Ltd.</td><td>UPL</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.50%</td></tr>
+            <tr class="sc-out"><td>Urban Company Ltd.</td><td>URBANCO</td><td>Consumer Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Usha Martin Ltd.</td><td>USHAMART</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.15%</td></tr>
+            <tr class="sc-out"><td>UTI Asset Management Company Ltd.</td><td>UTIAMC</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Vardhman Textiles Ltd.</td><td>VTL</td><td>Textiles</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.09%</td></tr>
+            <tr class="sc-out"><td>Varun Beverages Ltd.</td><td>VBL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Vedanta Aluminium Metal Ltd.</td><td>VAML</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Vedanta Iron and Steel Ltd.</td><td>VISL</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Vedanta Ltd.</td><td>VEDL</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.76%</td></tr>
+            <tr class="sc-out"><td>Vedanta Oil and Gas Ltd.</td><td>VOGL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Vedanta Power Ltd.</td><td>VEDPOWER</td><td>Power</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Vijaya Diagnostic Centre Ltd.</td><td>VIJAYA</td><td>Healthcare</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Vishal Mega Mart Ltd.</td><td>VMM</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.47%</td></tr>
+            <tr class="sc-out"><td>Vodafone Idea Ltd.</td><td>IDEA</td><td>Telecommunication</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Voltas Ltd.</td><td>VOLTAS</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.41%</td></tr>
+            <tr class="sc-out"><td>Waaree Energies Ltd.</td><td>WAAREEENER</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Welspun Corp Ltd.</td><td>WELCORP</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.59%</td></tr>
+            <tr class="sc-in"><td>Welspun Living Ltd.</td><td>WELSPUNLIV</td><td>Textiles</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.12%</td></tr>
+            <tr class="sc-in"><td>Whirlpool of India Ltd.</td><td>WHIRLPOOL</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.11%</td></tr>
+            <tr class="sc-out"><td>Wipro Ltd.</td><td>WIPRO</td><td>Information Technology</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Wockhardt Ltd.</td><td>WOCKPHARMA</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.29%</td></tr>
+            <tr class="sc-out"><td>Yes Bank Ltd.</td><td>YESBANK</td><td>Financial Services</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Zee Entertainment Enterprises Ltd.</td><td>ZEEL</td><td>Media Entertainment &amp; Publication</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Zen Technologies Ltd.</td><td>ZENTEC</td><td>Capital Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>Zensar Technolgies Ltd.</td><td>ZENSARTECH</td><td>Information Technology</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-out"><td>ZF Commercial Vehicle Control Systems India Ltd.</td><td>ZFCVINDIA</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <tr class="sc-in"><td>Zydus Lifesciences Ltd.</td><td>ZYDUSLIFE</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; In the index</span></td><td class="num">0.48%</td></tr>
+            <tr class="sc-out"><td>Zydus Wellness Ltd.</td><td>ZYDUSWELL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">Not in the index</span></td><td class="num">—</td></tr>
+            <!-- SCREENER ROWS END -->
+          </tbody>
+        </table>
+      </div>
+
+      <p class="source-note">
+        Sources: NSE Indices — the
+        <a href="https://www.niftyindices.com/indices/equity/thematic-indices/nifty500-shariah">Nifty500 Shariah index</a>
+        (its companies and weights, from the index page's sector data, and
+        its <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">factsheet</a>)
+        and the
+        <a href="https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv">Nifty 500 list of companies</a>
+        — as of <time datetime="2026-09-30" data-screener-date>30 September 2026</time>.
+        "Weight" is the company's share of the Shariah index.
+      </p>
+
+    </div>
+  </section>
+
+
+  <section class="section reveal">
+    <div class="wrap">
+
+      <h2 id="read-this">What the answer means</h2>
+
+      <div class="grid grid-2">
+
+        <div class="card">
+          <h3>"In the index": it passed NSE's screen</h3>
+          <p>The company's business and its borrowing, interest income and
+             cash-like assets were inside the limits NSE's screen uses, at
+             the last monthly review. <a href="/methodology/">How the screen
+             works</a>.</p>
+        </div>
+
+        <div class="card">
+          <h3>"Not in the index": not on NSE's list</h3>
+          <p>It did not make NSE's Shariah list at the last review. That is
+             one screen's answer, not a ruling: other screens draw the limits
+             elsewhere, so <a href="/methodology/#disagree">lists can
+             disagree</a>.</p>
+        </div>
+
+        <div class="card">
+          <h3>Not a recommendation</h3>
+          <p>Being on the list says nothing about whether a share is worth
+             buying, and this page doesn't either. Companies that pass can
+             still need <a href="/purification-calculator/">purification</a>.</p>
+        </div>
+
+        <div class="card">
+          <h3>More companies are coming</h3>
+          <p>For now this covers the 501 companies in the Nifty 500. Others —
+             smaller companies, new listings — will be added as Purevesting
+             screens them. Until then, a company outside the Nifty 500 shows
+             as "not screened yet".</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ==================================================================
+     FOOTER — identical in every page. Never edit this per page.
+     ================================================================== -->
+
+<footer class="site-footer">
+  <div class="wrap">
+
+    <h2>HalalEdge by Purevesting</h2>
+    <p>One email a week on Shariah screening in Indian markets. Data and
+       methodology, never recommendations.</p>
+
+    <!-- Signing up happens on the newsletter page, so nobody has to type
+         their email twice. The second button leads to /app/, which shows
+         how to install the site on a phone. -->
+    <p class="subscribe"><a class="btn" href="/newsletter/">Subscribe to HalalEdge</a>
+       <a class="btn btn-quiet" href="/app/">Install the app</a></p>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/instruments/">Instruments</a>
+      <a href="/compare/shariah-mutual-funds/">Compare</a>
+      <a href="/halal-stocks/">Halal stocks</a>
+      <a href="/screener/">Screener</a>
+      <a href="/methodology/">Methodology</a>
+      <a href="/sip-calculator/">SIP calculator</a>
+      <a href="/loan-calculator/">Loan calculator</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/corrections/">Corrections</a>
+      <a href="/ask/">Ask a question</a>
+      <a href="https://www.youtube.com/channel/UCY_rjMlDGOAXyhC-aC_aQCA" rel="me">YouTube</a>
+      <a href="https://www.instagram.com/purevesting/" rel="me">Instagram</a>
+      <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
+    </nav>
+
+    <!-- What Purevesting is, in one line. The same words open the About
+         page and sit in the home page's structured data, so Google and
+         its AI answers describe the site the same way everywhere. -->
+    <p class="footer-about"><strong>Purevesting</strong> is a startup building
+       India's one-stop destination for halal finance — every figure sourced,
+       every Shariah position attributed. <a href="/about/">About Purevesting</a></p>
+
+    <p class="disclaimer">
+      Educational content, not investment advice. Purevesting is not
+      registered with SEBI as a research analyst or investment adviser.
+      Nothing here is a recommendation to buy, sell or hold any security,
+      fund or product. Shariah positions are quoted from the bodies that
+      issued them and are not rulings by Purevesting — for your own situation,
+      ask a qualified scholar. Figures carry a source and a date — check them
+      against the source before acting on anything.
+    </p>
+
+  </div>
+</footer>
+
+<!-- ======================= END FOOTER =============================== -->
+
+<script src="/assets/site.js"></script>
+<script src="/assets/share-card.js"></script>
+
+<!-- ==================================================================
+     SCREENER SCRIPT — used on this page only.
+     Reads the table itself (so there is one copy of the data: the table),
+     then filters it as you type and says what the closest match is.
+     ================================================================== -->
+<script>
+(function () {
+  var box = document.getElementById('sc-q');
+  var result = document.getElementById('sc-result');
+  var count = document.getElementById('sc-count');
+  var table = document.getElementById('sc-table');
+  if (!box || !result || !table) return;
+
+  var asOf = document.querySelector('[data-screener-date]').textContent;
+  var show = 'all';
+  var rows = Array.prototype.map.call(table.tBodies[0].rows, function (tr) {
+    return { tr: tr, name: tr.cells[0].textContent, sym: tr.cells[1].textContent,
+             inIndex: tr.classList.contains('sc-in'), key: norm(tr.cells[0].textContent + ' ' + tr.cells[1].textContent) };
+  });
+
+  // Names people type that differ from NSE's: brand -> NSE symbol. Add a
+  // line whenever a search for a well-known name finds nothing.
+  var ALSO = { zomato: 'ETERNAL', blinkit: 'ETERNAL', dmart: 'DMART', nykaa: 'NYKAA',
+               paytm: 'PAYTM', policybazaar: 'POLICYBZR', naukri: 'NAUKRI', indigo: 'INDIGO',
+               hul: 'HINDUNILVR', 'sun pharma': 'SUNPHARMA', jio: 'JIOFIN' };
+
+  function norm(t) {
+    return t.toLowerCase().replace(/&/g, 'and').replace(/\b(ltd|limited|the|of|india|co|company)\b\.?/g, ' ')
+            .replace(/[^a-z0-9]+/g, ' ').trim();
+  }
+  function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+
+  function score(r, q, raw) {
+    var sym = r.sym.toLowerCase();
+    if (sym === raw) return 4;
+    if (r.key.indexOf(q) === 0) return 3;
+    if ((' ' + r.key).indexOf(' ' + q) >= 0) return 2;
+    if (r.key.indexOf(q) >= 0) return 1;
+    return 0;
+  }
+
+  function verdict(r) {
+    return r.inIndex
+      ? '<p><span class="chip chip-pass">&#10003; In the index</span></p><p><strong>' + esc(r.name) + '</strong> (' + esc(r.sym) + ') is in NSE\'s Nifty500 Shariah index, as of ' + esc(asOf) + ' — it passed the Shariah screen NSE uses at the last review.</p>'
+      : '<p><span class="chip chip-fail">Not in the index</span></p><p><strong>' + esc(r.name) + '</strong> (' + esc(r.sym) + ') is in the Nifty 500 but not in NSE\'s Shariah index, as of ' + esc(asOf) + '. That is NSE\'s screen; <a href="/methodology/#disagree">other screens can differ</a>.</p>';
+  }
+
+  function update() {
+    var raw = box.value.trim().toLowerCase(), q = norm(box.value);
+    if (ALSO[raw]) { raw = ALSO[raw].toLowerCase(); q = norm(raw); }
+    var shown = 0, matches = [];
+    rows.forEach(function (r) {
+      var s = q ? score(r, q, raw) : 1;
+      var okShow = show === 'all' || (show === 'in') === r.inIndex;
+      var visible = s > 0 && okShow;
+      r.tr.hidden = !visible;
+      if (visible) shown++;
+      if (q && s > 0) matches.push({ r: r, s: s });
+    });
+    count.textContent = shown + (shown === 1 ? ' company' : ' companies') + ' shown.';
+    if (!q) { result.hidden = true; return; }
+    result.hidden = false;
+    matches.sort(function (a, b) { return b.s - a.s || a.r.name.localeCompare(b.r.name); });
+    if (!matches.length) {
+      result.innerHTML = '<p><span class="chip chip-fail">Not screened yet</span></p><p><strong>' + esc(box.value.trim()) +
+        '</strong> isn\'t in the Nifty 500, so it hasn\'t been screened here yet — more companies are coming. ' +
+        'Check the spelling, or try the NSE symbol.</p>';
+    } else if (matches.length === 1 || matches[0].s > matches[1].s) {
+      result.innerHTML = verdict(matches[0].r);
+    } else {
+      result.innerHTML = '<p>' + matches.length + ' companies match. The list below shows them all; type a little more to pick one.</p>';
+    }
+  }
+
+  box.addEventListener('input', update);
+  var buttons = document.querySelectorAll('[data-show]');
+  for (var b = 0; b < buttons.length; b++) {
+    buttons[b].addEventListener('click', function () {
+      show = this.getAttribute('data-show');
+      for (var k = 0; k < buttons.length; k++) buttons[k].setAttribute('aria-pressed', buttons[k] === this ? 'true' : 'false');
+      update();
+    });
+  }
+  var fromHome = new URLSearchParams(location.search).get('q');
+  if (fromHome) { box.value = fromHome; update(); }
+})();
+</script>
+
+<!-- Visitor counting: Cloudflare Web Analytics is switched on in the
+     Cloudflare dashboard ("automatic setup") and adds its script to every
+     page by itself. Nothing needs pasting here. -->
+
+</body>
+</html>

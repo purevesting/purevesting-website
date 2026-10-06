@@ -716,7 +716,8 @@
     var measure = document.createElement('canvas').getContext('2d');
     document.querySelectorAll('.table-scroll').forEach(function (wrapEl) {
       var table = wrapEl.querySelector('table');
-      if (!table) return;
+      // data-share="none" on a table: no button (the screener's 501 rows).
+      if (!table || table.getAttribute('data-share') === 'none') return;
       var data = readTable(table);
       if (!tableIsShareable(data)) return;
       if (!tableBody(data).body(measure, TABLE_SCALES[TABLE_SCALES.length - 1]).fits) return;

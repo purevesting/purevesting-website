@@ -1554,6 +1554,64 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 }
 
 
+/* 23. SCREENER ==============================================================
+   The "check your stock" box at the top of the home page (a plain form,
+   so it works without JavaScript) and the search on /screener/.
+   ========================================================================== */
+
+.screener-box {
+  max-width: 40rem;
+  margin: 1.5rem 0 0;
+  padding: 1.1rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius-sm);
+}
+
+.screener-box label,
+.screener-search label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.screener-row { display: flex; gap: 0.5rem; }
+
+.screener-box input,
+.screener-search input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  min-height: var(--tap);
+  padding: 0.55rem 1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;              /* 16px or more stops iPhones zooming in */
+  color: var(--ink);
+  background: var(--bone);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.screener-box .meta { margin: 0.6rem 0 0; }
+
+.screener-search { display: none; max-width: 40rem; margin: 1.25rem 0 0; }
+.js .screener-search { display: block; }
+.screener-search .grid-switch { margin-top: 0.75rem; }
+
+.screener-result {
+  max-width: 40rem;
+  margin: 1rem 0 0;
+  padding: 1rem 1.1rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.screener-result p { margin: 0 0 0.5rem; }
+.screener-result p:last-child { margin: 0; }
+
+
 /* ==========================================================================
    DARK MODE GOES HERE LATER.
    It is a copy of the :root block from section 2 with different values,
