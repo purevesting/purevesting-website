@@ -9,7 +9,10 @@ What it does:
      the Shariah index with its weight and the date of the data.
   2. Rewrites the table in screener/index.html (between the
      "SCREENER ROWS" markers) and every "as of" date on that page and in
-     the home page's screener box.
+     the home page's screener box. A company in the Shariah index is
+     marked "Halal"; a Nifty 500 company that isn't, "Not halal" (MAS,
+     6 Oct). Anything outside the Nifty 500 shows "Don't know yet" when
+     searched — that part is in the page's own script.
 
 It needs web access (niftyindices.com). It prints the counts at the end:
 check they match NSE's factsheet before pushing. Not published on the
@@ -53,11 +56,11 @@ def build(n500_text, shariah_text):
     for c in sorted(companies, key=lambda c: c['Company Name'].strip().lower()):
         sym, name, ind = c['Symbol'].strip(), c['Company Name'].strip(), c['Industry'].strip()
         if sym in weight:
-            status = '<span class="chip chip-pass">&#10003; In the index</span>'
+            status = '<span class="chip chip-pass">&#10003; Halal</span>'
             w = f'{weight[sym]:.2f}%'
             row_cls = 'in'
         else:
-            status = '<span class="chip chip-fail">Not in the index</span>'
+            status = '<span class="chip chip-fail">&#10007; Not halal</span>'
             w = '—'
             row_cls = 'out'
         rows.append(f'            <tr class="sc-{row_cls}"><td>{html.escape(name)}</td><td>{html.escape(sym)}</td>'

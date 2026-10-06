@@ -1611,6 +1611,39 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .screener-result p { margin: 0 0 0.5rem; }
 .screener-result p:last-child { margin: 0; }
 
+/* The third answer — "Don't know yet", for a company outside the Nifty 500
+   that hasn't been screened. Dashed and empty, so it never reads as either
+   halal or not halal. */
+.chip-unknown {
+  background: transparent;
+  color: var(--ink-2);
+  border: 1px dashed var(--ink-3);
+}
+
+/* When a search matches several companies ("tata", "hdfc"): one button per
+   company, each with its answer, so the reader can pick the one they meant. */
+.sc-picks { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+.sc-picks li { margin: 0; }
+.sc-picks button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: var(--tap);
+  padding: 0.4rem 0.25rem;
+  font: inherit;
+  color: var(--ink);
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+.sc-picks li:last-child button { border-bottom: 0; }
+.sc-picks button:hover { background: var(--bone); }
+.sc-picks .sc-sym { color: var(--ink-3); font-family: var(--font-mono); font-size: 0.8rem; }
+
 
 /* 24. STOP THE GENOCIDE ====================================================
    The searchable boycott list on /stop-the-genocide/, its highlighted
