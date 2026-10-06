@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FAF7F0">
+
+<!-- ==================================================================
+     PER-PAGE BLOCK — only these six lines differ from page to page.
+     ================================================================== -->
+
+<title>Loan EMI calculator: how much interest you really pay | Purevesting</title>
+<meta name="description" content="Loan EMI calculator: see your EMI, the total interest and how much of every rupee you repay is interest. Typical home, car, education, personal loan and credit card rates.">
+<link rel="canonical" href="https://purevesting.com/loan-calculator/">
+<meta property="og:title" content="How much does a loan really cost?">
+<meta property="og:description" content="Your EMI, the total interest, and an interest meter. Typical home, car, education, personal loan and credit card rates.">
+<meta property="og:url" content="https://purevesting.com/loan-calculator/">
+
+<!-- ================ END PER-PAGE BLOCK ============================== -->
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Purevesting">
+<meta property="og:image" content="https://purevesting.com/assets/og/loan-calculator.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="en_IN">
+
+<!-- STRUCTURED DATA — a summary of this page written for Google (JSON-LD).
+     Visitors never see it. When you change this page's "Last updated"
+     date, change "dateModified" below to the same date (year-month-day). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://purevesting.com/loan-calculator/#page",
+      "name": "Loan EMI calculator",
+      "description": "Loan EMI calculator: see your EMI, the total interest and how much of every rupee you repay is interest. Typical home, car, education, personal loan and credit card rates.",
+      "url": "https://purevesting.com/loan-calculator/",
+      "image": "https://purevesting.com/assets/og/loan-calculator.jpg",
+      "datePublished": "2026-10-06",
+      "dateModified": "2026-10-06",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://purevesting.com/#website"
+      },
+      "publisher": {
+        "@id": "https://purevesting.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://purevesting.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Loan calculator"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="/assets/site.css">
+
+<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- THE APP — lets phones install the site from the browser (see /app/). -->
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Purevesting">
+
+<script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+
+<!-- ==================================================================
+     HEADER — identical in every page. Never edit this per page.
+     ================================================================== -->
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-logo" href="/">
+      <img src="/assets/img/logo.svg" width="28" height="28" alt="">
+      Purevesting
+    </a>
+    <!-- THE MENUS. On a phone only the four plain links show, exactly as
+         before. On a computer, pointing at one opens its list (the
+         "nav-menu"), and "Tools" appears as a fifth. Every link is plain
+         HTML, so Google reads them all. To add a page, add one line to
+         the right list — on every page, so the header stays identical. -->
+    <nav class="site-nav" aria-label="Main">
+      <div class="nav-item">
+        <a href="/instruments/">Instruments</a>
+        <div class="nav-menu">
+          <a href="/instruments/epf/">Is EPF halal?</a>
+          <a href="/instruments/ppf/">Is PPF halal?</a>
+          <a href="/instruments/nps/">Is NPS halal?</a>
+          <a href="/instruments/sukanya-samriddhi/">Is Sukanya Samriddhi halal?</a>
+          <a href="/instruments/digital-gold/">Is digital gold halal?</a>
+          <a href="/instruments/">All instruments, checked</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/compare/shariah-mutual-funds/">Compare</a>
+        <div class="nav-menu">
+          <a href="/compare/shariah-mutual-funds/">India's six Shariah mutual funds</a>
+          <a href="/halal-stocks/">How many Indian stocks are halal?</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/methodology/">Methodology</a>
+        <div class="nav-menu">
+          <a href="/methodology/">How a stock is screened</a>
+          <a href="/methodology/#disagree">Why halal stock lists disagree</a>
+          <a href="/corrections/">Corrections log</a>
+          <a href="/about/">About Purevesting</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/newsletter/">Newsletter</a>
+        <div class="nav-menu">
+          <a href="/newsletter/">HalalEdge, the weekly email</a>
+          <a href="/ask/">Ask a question</a>
+          <a href="/app/">Install the app</a>
+        </div>
+      </div>
+      <div class="nav-item nav-desktop">
+        <a href="/#tools">Tools</a>
+        <div class="nav-menu">
+          <a href="/sip-calculator/">SIP and lump-sum calculator</a>
+          <a href="/loan-calculator/">Loan and EMI calculator</a>
+          <a href="/purification-calculator/">Purification calculator</a>
+          <a href="/app/">Install the app</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ======================= END HEADER =============================== -->
+
+
+<main>
+
+  <section class="section">
+    <div class="wrap">
+
+      <h1>How much does a loan <span class="t-danger">really cost</span>?</h1>
+
+      <p class="standfirst">Put in a loan and see what it takes back: the
+        monthly EMI, the total interest, and how much of every rupee you
+        repay is interest. Interest on a loan is what Islamic finance calls
+        riba — this page shows its real size.</p>
+
+      <div class="byline">
+        <img src="/assets/img/byline-96.webp"
+             srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
+             width="48" height="48" alt="Moin Ali Syed">
+        <div>
+          <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
+          <div class="meta">Founder, Purevesting</div>
+          <div class="meta">Last updated <time datetime="2026-10-06">6 October 2026</time> · 3 min read</div>
+        </div>
+      </div>
+
+      <!-- THE CALCULATOR. The buttons fill in a typical loan; the boxes can
+           be changed freely. Without JavaScript the boxes stay hidden and
+           the results below are already written out for the home loan
+           button (₹30 lakh at 8.5% for 20 years). The typical rates are
+           listed in the note under the results — change them there AND in
+           the script at the bottom of this page. -->
+      <div class="grid-switch presets" role="group" aria-label="Pick a typical loan">
+        <button type="button" class="switch-btn" data-preset="home" aria-pressed="true">Home loan</button>
+        <button type="button" class="switch-btn" data-preset="car" aria-pressed="false">Car loan</button>
+        <button type="button" class="switch-btn" data-preset="education" aria-pressed="false">Education loan</button>
+        <button type="button" class="switch-btn" data-preset="personal" aria-pressed="false">Personal loan</button>
+        <button type="button" class="switch-btn" data-preset="card" aria-pressed="false">Credit card dues</button>
+      </div>
+
+      <div class="calc-fields">
+        <p class="calc-hint" id="calc-hint" aria-live="polite">Pick a loan above, or change any number.</p>
+        <div>
+          <label for="in-amount">Loan amount (₹)</label>
+          <input id="in-amount" type="number" value="3000000" min="1" step="10000" inputmode="numeric">
+        </div>
+        <div>
+          <label for="in-rate">Interest rate per year (%)</label>
+          <input id="in-rate" type="number" value="8.5" min="0" max="60" step="0.5" inputmode="decimal">
+          <input id="sl-rate" type="range" value="8.5" min="1" max="50" step="0.5" aria-label="Interest rate per year (%)">
+        </div>
+        <div>
+          <label for="in-years">Years to repay</label>
+          <input id="in-years" type="number" value="20" min="1" max="30" step="1" inputmode="numeric">
+          <input id="sl-years" type="range" value="20" min="1" max="30" step="1" aria-label="Years to repay">
+        </div>
+      </div>
+
+      <div class="calc-result loan-result" aria-live="polite">
+
+        <!-- THE INTEREST METER: how much interest you pay, against what you
+             borrowed. It fills completely at 200%. -->
+        <div class="meter">
+          <svg viewBox="0 0 200 112" width="200" height="112" aria-hidden="true" focusable="false">
+            <path class="meter-track" d="M 14 100 A 86 86 0 0 1 186 100" pathLength="100"/>
+            <path class="meter-fill" id="meter-fill" d="M 14 100 A 86 86 0 0 1 186 100" pathLength="100"
+                  style="stroke-dashoffset:45.9"/>
+          </svg>
+          <p class="meter-figure"><span class="num" id="r-ratio">108%</span></p>
+          <p class="meter-label" id="r-ratio-words">You pay ₹108 in interest for every ₹100 you borrow</p>
+        </div>
+
+        <div class="calc-stat">
+          <span class="calc-label">Monthly EMI</span>
+          <span class="calc-value num" id="r-emi">₹26,035</span>
+        </div>
+        <div class="calc-stat">
+          <span class="calc-label">You borrow</span>
+          <span class="calc-value num" id="r-borrow">₹30,00,000</span>
+        </div>
+        <div class="calc-stat calc-danger">
+          <span class="calc-label">Interest you pay</span>
+          <span class="calc-value num" id="r-interest">₹32,48,327</span>
+        </div>
+        <div class="calc-stat calc-main">
+          <span class="calc-label" id="lbl-total">You pay back in 20 years</span>
+          <span class="calc-value num" id="r-total">₹62,48,327</span>
+          <span class="calc-words" id="r-words">about ₹62.5 lakh</span>
+        </div>
+        <div class="split-bar" aria-hidden="true">
+          <span class="split-loan" id="bar-loan" style="width:48%"></span>
+          <span class="split-interest" id="bar-int" style="width:52%"></span>
+        </div>
+        <p class="split-key"><span><span class="key key-loan"></span>What you borrowed</span>
+           <span><span class="key key-interest"></span>Interest — <span id="r-share">52%</span> of everything you repay</span></p>
+      </div>
+
+      <p class="source-note">
+        The buttons use typical rates, for illustration only — your lender's
+        rate will differ: home loan 8.5% over 20 years; car loan 9.5% over
+        5; education loan 10.5% over 7; personal loan 13% over 5; credit
+        card dues about 42% a year (3.5% a month) over 2. The EMI is worked
+        out the standard way, with the yearly rate divided by twelve each
+        month; processing fees, insurance and penalties are not included, and
+        they make a loan cost more.
+      </p>
+
+    </div>
+  </section>
+
+
+  <section class="section reveal">
+    <div class="wrap">
+
+      <h2 id="year-by-year">Year by year</h2>
+
+      <p id="r-first-year">In the first year, ₹2,52,709 of the ₹3,12,416 you pay is interest — 81%. An EMI pays the interest first, so the loan itself shrinks slowly at the start.</p>
+
+      <div class="table-scroll">
+        <table data-src="none">
+          <caption class="visually-hidden">Each year of the loan: what you pay, how much of it is interest, and what is left to pay</caption>
+          <thead>
+            <tr>
+              <th scope="col">Year</th>
+              <th scope="col" class="num">You pay</th>
+              <th scope="col" class="num">Of which interest</th>
+              <th scope="col" class="num">Still owed</th>
+            </tr>
+          </thead>
+          <tbody id="year-rows">
+            <tr><td>Year 1</td><td class="num">₹3,12,416</td><td class="num">₹2,52,709</td><td class="num">₹29,40,293</td></tr>
+            <tr><td>Year 2</td><td class="num">₹3,12,416</td><td class="num">₹2,47,432</td><td class="num">₹28,75,309</td></tr>
+            <tr><td>Year 3</td><td class="num">₹3,12,416</td><td class="num">₹2,41,688</td><td class="num">₹28,04,580</td></tr>
+            <tr><td>Year 4</td><td class="num">₹3,12,416</td><td class="num">₹2,35,436</td><td class="num">₹27,27,600</td></tr>
+            <tr><td>Year 5</td><td class="num">₹3,12,416</td><td class="num">₹2,28,632</td><td class="num">₹26,43,815</td></tr>
+            <tr><td>Year 6</td><td class="num">₹3,12,416</td><td class="num">₹2,21,226</td><td class="num">₹25,52,625</td></tr>
+            <tr><td>Year 7</td><td class="num">₹3,12,416</td><td class="num">₹2,13,166</td><td class="num">₹24,53,374</td></tr>
+            <tr><td>Year 8</td><td class="num">₹3,12,416</td><td class="num">₹2,04,393</td><td class="num">₹23,45,351</td></tr>
+            <tr><td>Year 9</td><td class="num">₹3,12,416</td><td class="num">₹1,94,844</td><td class="num">₹22,27,779</td></tr>
+            <tr><td>Year 10</td><td class="num">₹3,12,416</td><td class="num">₹1,84,452</td><td class="num">₹20,99,815</td></tr>
+            <tr><td>Year 11</td><td class="num">₹3,12,416</td><td class="num">₹1,73,141</td><td class="num">₹19,60,540</td></tr>
+            <tr><td>Year 12</td><td class="num">₹3,12,416</td><td class="num">₹1,60,831</td><td class="num">₹18,08,954</td></tr>
+            <tr><td>Year 13</td><td class="num">₹3,12,416</td><td class="num">₹1,47,432</td><td class="num">₹16,43,969</td></tr>
+            <tr><td>Year 14</td><td class="num">₹3,12,416</td><td class="num">₹1,32,849</td><td class="num">₹14,64,402</td></tr>
+            <tr><td>Year 15</td><td class="num">₹3,12,416</td><td class="num">₹1,16,977</td><td class="num">₹12,68,962</td></tr>
+            <tr><td>Year 16</td><td class="num">₹3,12,416</td><td class="num">₹99,701</td><td class="num">₹10,56,247</td></tr>
+            <tr><td>Year 17</td><td class="num">₹3,12,416</td><td class="num">₹80,899</td><td class="num">₹8,24,730</td></tr>
+            <tr><td>Year 18</td><td class="num">₹3,12,416</td><td class="num">₹60,435</td><td class="num">₹5,72,749</td></tr>
+            <tr><td>Year 19</td><td class="num">₹3,12,416</td><td class="num">₹38,163</td><td class="num">₹2,98,495</td></tr>
+            <tr><td>Year 20</td><td class="num">₹3,12,416</td><td class="num">₹13,921</td><td class="num">₹0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="source-note">
+        Worked out from the numbers above. A real loan's rate can change
+        over its life if it is a floating rate.
+      </p>
+
+    </div>
+  </section>
+
+
+  <section class="section reveal">
+    <div class="wrap">
+
+      <h2 id="why">Why this page looks alarming</h2>
+
+      <div class="grid grid-2">
+
+        <div class="card">
+          <h3>Because the cost is real</h3>
+          <p>An EMI looks small next to the price of a house or a car. Added
+             up over the years, the interest can be as large as the loan
+             itself — or larger. The red on this page is that number.</p>
+        </div>
+
+        <div class="card">
+          <h3>Short and expensive, or long and slow</h3>
+          <p>A credit card or a personal loan charges a high rate for a short
+             time; a home loan a lower rate for a very long time. Try both
+             buttons and compare the meter.</p>
+        </div>
+
+        <div class="card">
+          <h3>Halal ways to borrow</h3>
+          <p>Interest-free and Islamic financing options in India — what
+             exists, who offers it, and how it is structured — are being
+             researched for a page of their own.</p>
+        </div>
+
+        <div class="card">
+          <h3>Already have a loan?</h3>
+          <p>This page doesn't tell anyone what to do with theirs. If you
+             have a question about getting out of interest, send it through
+             the <a href="/ask/">Ask page</a>.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ==================================================================
+     FOOTER — identical in every page. Never edit this per page.
+     ================================================================== -->
+
+<footer class="site-footer">
+  <div class="wrap">
+
+    <h2>HalalEdge by Purevesting</h2>
+    <p>One email a week on Shariah screening in Indian markets. Data and
+       methodology, never recommendations.</p>
+
+    <!-- Signing up happens on the newsletter page, so nobody has to type
+         their email twice. The second button leads to /app/, which shows
+         how to install the site on a phone. -->
+    <p class="subscribe"><a class="btn" href="/newsletter/">Subscribe to HalalEdge</a>
+       <a class="btn btn-quiet" href="/app/">Install the app</a></p>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/instruments/">Instruments</a>
+      <a href="/compare/shariah-mutual-funds/">Compare</a>
+      <a href="/halal-stocks/">Halal stocks</a>
+      <a href="/methodology/">Methodology</a>
+      <a href="/sip-calculator/">SIP calculator</a>
+      <a href="/loan-calculator/">Loan calculator</a>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/corrections/">Corrections</a>
+      <a href="/ask/">Ask a question</a>
+      <a href="https://www.youtube.com/channel/UCY_rjMlDGOAXyhC-aC_aQCA" rel="me">YouTube</a>
+      <a href="https://www.instagram.com/purevesting/" rel="me">Instagram</a>
+      <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
+    </nav>
+
+    <!-- What Purevesting is, in one line. The same words open the About
+         page and sit in the home page's structured data, so Google and
+         its AI answers describe the site the same way everywhere. -->
+    <p class="footer-about"><strong>Purevesting</strong> is a startup building
+       India's one-stop destination for halal finance — every figure sourced,
+       every Shariah position attributed. <a href="/about/">About Purevesting</a></p>
+
+    <p class="disclaimer">
+      Educational content, not investment advice. Purevesting is not
+      registered with SEBI as a research analyst or investment adviser.
+      Nothing here is a recommendation to buy, sell or hold any security,
+      fund or product. Shariah positions are quoted from the bodies that
+      issued them and are not rulings by Purevesting — for your own situation,
+      ask a qualified scholar. Figures carry a source and a date — check them
+      against the source before acting on anything.
+    </p>
+
+  </div>
+</footer>
+
+<!-- ======================= END FOOTER =============================== -->
+
+<script src="/assets/site.js"></script>
+<script src="/assets/share-card.js"></script>
+
+<!-- ==================================================================
+     CALCULATOR SCRIPT — used on this page only.
+     EMI = amount x m x (1 + m)^months / ((1 + m)^months - 1), where m is
+     the yearly rate / 12 / 100. TYPICAL holds the buttons' loans: change
+     a number here AND in the note under the results.
+     ================================================================== -->
+<script>
+(function () {
+  var TYPICAL = {
+    home:      { amount: 3000000, rate: 8.5,  years: 20 },
+    car:       { amount: 800000,  rate: 9.5,  years: 5 },
+    education: { amount: 1000000, rate: 10.5, years: 7 },
+    personal:  { amount: 500000,  rate: 13,   years: 5 },
+    card:      { amount: 100000,  rate: 42,   years: 2 }
+  };
+  var amount = document.getElementById('in-amount');
+  var rate = document.getElementById('in-rate'), rateSl = document.getElementById('sl-rate');
+  var years = document.getElementById('in-years'), yearsSl = document.getElementById('sl-years');
+  var hint = document.getElementById('calc-hint');
+  var buttons = document.querySelectorAll('[data-preset]');
+  if (!amount || !rate || !years) return;
+  var HINT_OK = hint.textContent;
+  var HINT_BAD = 'Each box needs a number: an amount above zero, a rate of 0 to 60, and 1 to 30 years.';
+
+  function inr(x) { return '₹' + Math.round(x).toLocaleString('en-IN'); }
+  function words(x) {
+    if (x >= 1e7) return 'about ₹' + (x / 1e7).toFixed(2) + ' crore';
+    if (x >= 1e5) return 'about ₹' + (x / 1e5).toFixed(1) + ' lakh';
+    return 'about ' + inr(x);
+  }
+  function set(id, text) { document.getElementById(id).textContent = text; }
+
+  function update() {
+    var p = parseFloat(amount.value), r = parseFloat(rate.value), y = parseInt(years.value, 10);
+    var ok = p > 0 && r >= 0 && r <= 60 && y >= 1 && y <= 30;
+    hint.textContent = ok ? HINT_OK : HINT_BAD;
+    if (!ok) return;
+    var m = r / 12 / 100, n = y * 12;
+    var emi = m === 0 ? p / n : p * m * Math.pow(1 + m, n) / (Math.pow(1 + m, n) - 1);
+    var total = emi * n, interest = total - p;
+    var ratio = Math.round(interest / p * 100);
+    set('r-emi', inr(emi));
+    set('r-borrow', inr(p));
+    set('r-interest', inr(interest));
+    set('r-total', inr(total));
+    set('r-words', words(total));
+    set('lbl-total', 'You pay back in ' + y + (y === 1 ? ' year' : ' years'));
+    set('r-ratio', ratio + '%');
+    set('r-ratio-words', 'You pay ₹' + ratio + ' in interest for every ₹100 you borrow');
+    document.getElementById('meter-fill').style.strokeDashoffset = (100 - Math.min(ratio, 200) / 2).toFixed(1);
+    var share = Math.round(interest / total * 100);
+    set('r-share', share + '%');
+    document.getElementById('bar-loan').style.width = (100 - share) + '%';
+    document.getElementById('bar-int').style.width = share + '%';
+
+    var bal = p, rows = '', first = null;
+    for (var k = 1; k <= y; k++) {
+      var paid = 0, intr = 0;
+      for (var j = 0; j < 12; j++) { var i = bal * m; bal -= emi - i; paid += emi; intr += i; }
+      if (!first) first = [paid, intr];
+      rows += '<tr><td>Year ' + k + '</td><td class="num">' + inr(paid) + '</td><td class="num">' +
+              inr(intr) + '</td><td class="num">' + inr(Math.max(bal, 0)) + '</td></tr>';
+    }
+    document.getElementById('year-rows').innerHTML = rows;
+    set('r-first-year', 'In the first year, ' + inr(first[1]) + ' of the ' + inr(first[0]) +
+        ' you pay is interest — ' + Math.round(first[1] / first[0] * 100) +
+        '%. An EMI pays the interest first, so the loan itself shrinks slowly at the start.');
+  }
+
+  function press(key) {
+    for (var k = 0; k < buttons.length; k++) {
+      buttons[k].setAttribute('aria-pressed', buttons[k].getAttribute('data-preset') === key ? 'true' : 'false');
+    }
+  }
+  for (var b = 0; b < buttons.length; b++) {
+    buttons[b].addEventListener('click', function () {
+      var key = this.getAttribute('data-preset'), t = TYPICAL[key];
+      amount.value = t.amount; rate.value = rateSl.value = t.rate; years.value = yearsSl.value = t.years;
+      press(key);
+      update();
+    });
+  }
+  function sync(box, slider) {
+    box.addEventListener('input', function () { if (slider) slider.value = box.value; press(null); update(); });
+    if (slider) slider.addEventListener('input', function () { box.value = slider.value; press(null); update(); });
+  }
+  sync(amount, null); sync(rate, rateSl); sync(years, yearsSl);
+})();
+</script>
+
+<!-- Visitor counting: Cloudflare Web Analytics is switched on in the
+     Cloudflare dashboard ("automatic setup") and adds its script to every
+     page by itself. Nothing needs pasting here. -->
+
+</body>
+</html>

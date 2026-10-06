@@ -95,6 +95,12 @@
   /* --- Amber: a highlighter, never a fill --- */
   --amber:  #F5A524;
 
+  /* --- Red: ONLY for the cost of a loan, on /loan-calculator/ (MAS,
+     6 Oct). Never on investment figures. --- */
+  --danger:      #C2362B;
+  --danger-tint: #FCE4E1;
+  --danger-ink:  #8F2219;
+
   /* --- Derived tokens (mine, not in your list — change freely) ---
      Your tokens have no colour for text on the forest footer, and no softer
      amber for the wash behind a highlighted word. These fill those gaps. */
@@ -1482,6 +1488,70 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 .key-in   { background: var(--green-tint); border: 1px solid var(--line); }
 .key-gain { background: var(--green); }
+
+
+/* The loan calculator: the interest in red, the loan itself in grey. */
+.t-danger { color: var(--danger); }
+
+.loan-result .calc-main .calc-value { color: var(--ink); }
+
+.calc-danger .calc-label { color: var(--danger-ink); font-weight: 600; }
+.calc-danger .calc-value { color: var(--danger); font-size: 1.45rem; }
+
+.split-loan     { background: var(--line); }
+.split-interest { background: var(--danger); }
+.key-loan       { background: var(--line); }
+.key-interest   { background: var(--danger); }
+
+/* The interest meter: a half-circle that fills with red as the interest
+   grows, full at twice the loan. */
+.meter {
+  padding-bottom: 0.9rem;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.meter svg {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.meter-track,
+.meter-fill {
+  fill: none;
+  stroke-width: 18;
+}
+
+.meter-track { stroke: var(--danger-tint); }
+
+.meter-fill {
+  stroke: var(--danger);
+  stroke-dasharray: 100 100;
+  transition: stroke-dashoffset 300ms ease;
+}
+
+.meter-figure {
+  margin: -3.1rem 0 0;
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--danger);
+  max-width: none;
+}
+
+.meter-figure .num { font-size: 1em; }
+
+.meter-label {
+  max-width: 22rem;
+  margin: 0.6rem auto 0;
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
 
 
 /* ==========================================================================
