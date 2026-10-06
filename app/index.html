@@ -98,11 +98,54 @@ window.addEventListener('beforeinstallprompt', function (event) {
       <img src="/assets/img/logo.svg" width="28" height="28" alt="">
       Purevesting
     </a>
+    <!-- THE MENUS. On a phone only the four plain links show, exactly as
+         before. On a computer, pointing at one opens its list (the
+         "nav-menu"), and "Tools" appears as a fifth. Every link is plain
+         HTML, so Google reads them all. To add a page, add one line to
+         the right list — on every page, so the header stays identical. -->
     <nav class="site-nav" aria-label="Main">
-      <a href="/instruments/">Instruments</a>
-      <a href="/compare/shariah-mutual-funds/">Compare</a>
-      <a href="/methodology/">Methodology</a>
-      <a href="/newsletter/">Newsletter</a>
+      <div class="nav-item">
+        <a href="/instruments/">Instruments</a>
+        <div class="nav-menu">
+          <a href="/instruments/epf/">Is EPF halal?</a>
+          <a href="/instruments/ppf/">Is PPF halal?</a>
+          <a href="/instruments/nps/">Is NPS halal?</a>
+          <a href="/instruments/sukanya-samriddhi/">Is Sukanya Samriddhi halal?</a>
+          <a href="/instruments/digital-gold/">Is digital gold halal?</a>
+          <a href="/instruments/">All instruments, checked</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/compare/shariah-mutual-funds/">Compare</a>
+        <div class="nav-menu">
+          <a href="/compare/shariah-mutual-funds/">India's six Shariah mutual funds</a>
+          <a href="/halal-stocks/">How many Indian stocks are halal?</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/methodology/">Methodology</a>
+        <div class="nav-menu">
+          <a href="/methodology/">How a stock is screened</a>
+          <a href="/methodology/#disagree">Why halal stock lists disagree</a>
+          <a href="/corrections/">Corrections log</a>
+          <a href="/about/">About Purevesting</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/newsletter/">Newsletter</a>
+        <div class="nav-menu">
+          <a href="/newsletter/">HalalEdge, the weekly email</a>
+          <a href="/ask/">Ask a question</a>
+          <a href="/app/">Install the app</a>
+        </div>
+      </div>
+      <div class="nav-item nav-desktop">
+        <a href="/#tools">Tools</a>
+        <div class="nav-menu">
+          <a href="/purification-calculator/">Purification calculator</a>
+          <a href="/app/">Install the app</a>
+        </div>
+      </div>
     </nav>
   </div>
 </header>

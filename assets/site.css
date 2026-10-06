@@ -417,6 +417,14 @@ input:focus-visible {
 
 .site-nav a:hover { color: var(--ink); }
 
+/* The drop-down lists (added 6 Oct). On a phone the wrapper around each
+   link disappears ("display: contents"), so the four links sit exactly as
+   before, and the lists and the computer-only "Tools" link stay hidden.
+   Section 15 switches the lists on for screens with a mouse. */
+.nav-item { display: contents; }
+.nav-menu,
+.nav-item.nav-desktop { display: none; }
+
 
 /* 8. FOOTER ===============================================================
    The one dark area of the site. Holds the newsletter form, the navigation
@@ -848,6 +856,9 @@ td:first-child { font-weight: 600; }
   }
   .site-nav a { font-size: 0.95rem; }
 
+  /* "Tools" joins the menu once there is room for it. */
+  .nav-item.nav-desktop { display: contents; }
+
   .site-footer .wrap {
     padding-top: 3.5rem;
     padding-bottom: 3.5rem;
@@ -856,6 +867,59 @@ td:first-child { font-weight: 600; }
 
 @media (min-width: 64em) {          /* laptops and up */
   .grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Drop-down lists: only on a wide screen with a mouse, where pointing is
+   possible. Pointing at a menu word — or tabbing to it with the keyboard —
+   opens its list underneath. The word itself is still a normal link. */
+@media (min-width: 46em) and (hover: hover) {
+  .nav-item,
+  .nav-item.nav-desktop {
+    display: block;
+    position: relative;
+  }
+
+  .nav-item > a::after {               /* the small arrow after each word */
+    content: "";
+    width: 0.38em;
+    height: 0.38em;
+    margin-left: 0.4em;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: translateY(-0.15em) rotate(45deg);
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: -0.75rem;
+    z-index: 30;
+    min-width: 16rem;
+    padding: 0.4rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 10px 28px rgba(26, 24, 20, 0.12);
+  }
+
+  /* The last two open towards the left, so they never run off screen. */
+  .nav-item:nth-last-child(-n+2) .nav-menu { left: auto; right: -0.75rem; }
+
+  .nav-item:hover > .nav-menu,
+  .nav-item:focus-within > .nav-menu { display: block; }
+
+  .site-nav .nav-menu a {
+    display: flex;
+    min-height: 40px;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--ink);
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  .site-nav .nav-menu a:hover { background: var(--bone); color: var(--green-deep); }
 }
 
 
