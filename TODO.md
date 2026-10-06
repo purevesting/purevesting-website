@@ -3,7 +3,8 @@
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 6 October 2026 (MAS's ideas added)
+Last updated: 6 October 2026 (menus, topic panels, SIP and loan calculators,
+screener and "Stop the genocide" built — steps 1 to 6)
 
 ---
 
@@ -91,6 +92,22 @@ decision only he can make.
       airplane mode and open them again — they should still work, with a
       "You're offline" note at the bottom. Then tell people about it: say
       "purevesting.com/app" in videos and put it in the Instagram bio.
+- [ ] **11. Ask Tech for Palestine before the boycott list gets big
+      attention.** The /stop-the-genocide/ list is copied from their open
+      dataset on GitHub (it credits them and links back), but the dataset has
+      no licence file, so permission isn't written down anywhere. Open an
+      issue on their GitHub repository, or email them, saying Purevesting
+      shows their list with credit and asking if that's fine. If they say no,
+      tell the website chat and the list comes down.
+- [ ] **12. A lawyer's look at /stop-the-genocide/.** The page only repeats
+      what the dataset says, in the dataset's words, with its sources ("listed
+      by Tech for Palestine because…"), never a Purevesting verdict of its
+      own. Even so, naming companies carries some risk: ask a lawyer to read
+      the page once.
+- [ ] **13. boycottisrael.org — send the right link.** That address is
+      parked (checked 6 Oct: it forwards to a "domain for sale" style page),
+      so the page doesn't link it. If MAS meant a different site, send its
+      exact address and it can be added under "More lists and research".
 
 ---
 
@@ -129,6 +146,14 @@ Each one says what to send or change, and where.
         og:title, and the page's "Last updated" date and dateModified;
       - the preview images don't show the count, so they never need
         remaking for this.
+      - **the screener**: in the website chat, say "run the screener
+        update". It runs `python3 scripts/update_screener.py`, which
+        downloads NSE's two lists and rewrites /screener/ and the home
+        page's screener box with the new date. The counts it prints must
+        match the factsheet (204 of 501 for 30 Sep 2026). If NSE renames a
+        company (as Zomato became Eternal), add the old name to the `ALSO`
+        list in the script at the bottom of screener/index.html so people
+        searching the old name still find it.
 
 ### Every quarter
 
@@ -149,46 +174,55 @@ Each one says what to send or change, and where.
       notice. Re-open the three terms pages linked under the gold page's
       structure table and check the free periods (2 / 5 / 5 years) and the
       10-year delivery rule.
+- [ ] **The "Stop the genocide" list.** Check
+      github.com/TechForPalestine/boycott-israeli-consumer-goods-dataset for
+      new changes (last changed 19 Feb 2024 when copied on 6 Oct 2026). If it
+      changed, say "run the boycott update" in the website chat: it runs
+      `python3 scripts/update_boycott.py` and updates the page's counts, the
+      "copied on" date and the "Last updated" date.
+- [ ] **Typical loan rates on the loan calculator.** The five quick-pick
+      buttons (home 8.5%, car 9.5%, education 10.5%, personal 13%, credit
+      card 42% a year) are rough typical rates, labelled as such, not quotes.
+      Once or twice a year, check they still look typical; change them in
+      the `TYPICAL` list in the script at the bottom of
+      loan-calculator/index.html, and in the note under the results that
+      lists them (the comment above the calculator says the same).
 
 ---
 
 ## 0c. MAS's ideas — decided 6 Oct
 
-### Build next (Claude can do all of this now)
+### Built 6 Oct (steps 1 to 6, each pushed to main as its own commit)
 
-- [ ] **Menus in the header, by topic.** Each topic opens a short menu:
-      on a computer it opens on hover, on a phone on a tap (MAS, 6 Oct:
-      hover is a bonus for computer users, as long as a tap works too).
-      Built with `<details>`, so every link stays in the HTML for Google
-      and it works without JavaScript. Must still fit a 360px phone.
-- [ ] **Topic panels at the top of the home page — only what exists**
-      (MAS, 6 Oct): **Invest** (halal stocks, Shariah mutual funds, digital
-      gold, how screening works), **Save and retire** (EPF, PPF, NPS,
-      Sukanya Samriddhi), **Tools** (screener, SIP calculator, loan
-      calculator, purification calculator, the app). New panels — Loans,
-      Zakat — only once their pages exist. Keep adding as pages are built.
-- [ ] **Screener, version 1, at the top of the home page and in the
-      header.** Type a company: it says whether the company is in NSE's
-      Nifty500 Shariah index, with the date of NSE's list. A company in the
-      Nifty 500 but not in the Shariah index: "not in NSE's Shariah index".
-      Anything else: "not screened yet — coming soon". Data: NSE's monthly
-      list of the index's companies (a CSV from niftyindices.com).
-      **Needs:** web access for this session (niftyindices.com is blocked
-      now — see the note at the end of this section), or MAS downloads the
-      CSV and sends it here. Then it becomes a monthly job in section 0b.
-- [ ] **SIP calculator** (`/sip-calculator/`) with a **lump-sum switch**:
-      monthly amount (or one-time amount), yearly return, years. Shows
-      amount put in, estimated value, gain, year by year. Starts at **12% a
-      year** (MAS, 6 Oct), and says plainly the reader chooses it and it is
-      an illustration, not a forecast. It does not say which fund earned
-      what: tying the starting rate to a real fund's past return would read
-      as a promise. **Colours: the brand greens** (MAS, 6 Oct).
-- [ ] **Loan / EMI calculator** (`/loan-calculator/`): loan amount,
-      interest rate, years. Shows the EMI, the total interest and the total
-      paid back, and how much of each year's payments is interest. The
-      interest is drawn in a **warning red** (MAS, 6 Oct: loans should look
-      as costly as they are) — a new colour added only for this, never used
-      on investment figures.
+- [x] ~~**Menus in the header, by topic.**~~ DONE (step 1). On a computer,
+      hovering (or tabbing to) Instruments, Compare, Methodology or
+      Newsletter opens a short menu; a new **Tools** menu and a highlighted
+      **Stop the genocide** link show on computers only. Phones and tablets
+      keep exactly the old header: a tap goes to the topic's page. Nothing
+      was removed. All the menu links are plain links in the HTML of every
+      page, so Google sees them and they work without JavaScript.
+- [x] ~~**Topic panels on the home page — only what exists.**~~ DONE
+      (step 2). "Start here" right under the opening: **Invest**, **Save and
+      retire**, **Tools**, **Learn and ask**. Add a panel (Loans, Zakat…)
+      only once its pages exist.
+- [x] ~~**SIP calculator**~~ DONE (step 3): /sip-calculator/, monthly SIP or
+      one-time lump sum, starts at ₹5,000 a month, 12% a year, 10 years;
+      brand greens; year-by-year table; says plainly it's an illustration.
+- [x] ~~**Loan calculator**~~ DONE (step 4): /loan-calculator/, with quick
+      picks for home, car, education, personal and credit-card loans
+      (typical rates, labelled as rough), an **interest meter** that fills
+      as interest grows against the loan, and the interest drawn in warning
+      red. The red is used only on this page.
+- [x] ~~**Screener, version 1**~~ DONE (step 5): /screener/ plus a search
+      box at the top of the home page. All 501 Nifty 500 companies: 204 are
+      in NSE's Nifty500 Shariah index, 297 aren't; anything outside the
+      Nifty 500 shows "not screened yet — coming soon". Data as of NSE's
+      30 Sep 2026 list. Monthly refresh: section 0b.
+- [x] ~~**"Stop the genocide" page**~~ DONE (step 6): /stop-the-genocide/,
+      426 entries from Tech for Palestine's dataset, searchable, each with
+      the dataset's reason and sources; highlighted link in the computer
+      menu, a card on the home page, a footer link. Open points for MAS:
+      items 11 to 13 in section 0.
 - Colour note: the brief's rule — never colour a real fund's returns —
   still holds for every table of real data. The calculators only colour
   the reader's own made-up numbers, which is not a verdict on any product.
@@ -219,24 +253,6 @@ Each one says what to send or change, and where.
       registration and what it may pay; ask a lawyer; consider getting an
       ARN (the NISM V-A exam). Every paid link labelled as paid, on the page
       (section 6).
-- [ ] **"Stop the genocide" page** — its own highlighted page. Data
-      options found 6 Oct:
-      - **Tech for Palestine's dataset** (GitHub,
-        `TechForPalestine/boycott-israeli-consumer-goods-dataset`): 101
-        companies and 883 brands as files, each with a status (avoid /
-        neutral / support), the reason and footnoted sources. Mostly global
-        consumer brands (Adidas, Airbnb, Amazon…). BUT it was last updated
-        February 2024, and it has no licence file — so ask them before
-        republishing it.
-      - **BDNAASH**: no API (MAS, 6 Oct).
-      - **boycottisrael.org**: MAS likes its descriptions — check its terms
-        and whether it offers data.
-      Rules for the page: each company shown with the list that names it,
-      that list's stated reason and its source link; no Purevesting verdict
-      of its own; wording like "listed by … because …", not "supports
-      genocide" in Purevesting's own voice; a lawyer's view before it goes
-      live. A saved copy of the data in the repo, refreshed monthly — no
-      live API needed.
 - [ ] **Portfolio checker** (later, MAS's idea): a reader loads the
       holdings file from their broker app (Zerodha, Groww…) and the page
       checks each holding against NSE's Shariah list (and later MAS's own
@@ -246,12 +262,13 @@ Each one says what to send or change, and where.
 
 ### Web access for this session (MAS asked, 6 Oct)
 
-This session can use GitHub but no other websites (niftyindices.com and
-others are refused). To change it: in the Claude Code app, open the
-cloud environment menu in the session's title bar → Edit → **Network
-access** → choose a broader level, or **Custom** and add the sites (for
-example `niftyindices.com`, `www.niftyindices.com`, `nseindia.com`),
-keeping the default package list. Steps:
+Turned on by MAS on 6 Oct: the session can now reach niftyindices.com and
+other sites. nseindia.com itself still refuses scripts (NSE blocks them, not
+the session), so the screener uses niftyindices.com's files instead. MAS
+asked to keep web use to what's necessary, because it costs credits. If a
+new session can't reach a site: in the Claude Code app, open the cloud
+environment's settings → **Network access** → a broader level, or
+**Custom** with the sites added. Steps:
 https://code.claude.com/docs/en/cloud-environments#network-access
 
 ---
