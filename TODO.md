@@ -3,7 +3,7 @@
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 6 October 2026
+Last updated: 6 October 2026 (MAS's ideas added)
 
 ---
 
@@ -149,6 +149,98 @@ Each one says what to send or change, and where.
       notice. Re-open the three terms pages linked under the gold page's
       structure table and check the free periods (2 / 5 / 5 years) and the
       10-year delivery rule.
+
+---
+
+## 0c. MAS's ideas for the next round (6 Oct)
+
+Five ideas MAS gave on 6 Oct, with what each needs and who does it.
+Suggested order: 5 and 2 together (one piece of work), then 3, then 1,
+then 4 only after the checks listed under it.
+
+- [ ] **1. Put the screener at the top.** TO CONFIRM WITH MAS what
+      "screener" means here. Most likely: a **"Check a stock" box** — type
+      a company's name and see whether it is on NSE's Shariah list —
+      placed at the top of the home page and in the header.
+      - Version 1 (free): a lookup against NSE's own list of the Nifty500
+        Shariah index's companies, which NSE publishes every month as a
+        file. Fits the site: one source, one date, no verdict of our own
+        ("on NSE's list as of 30 Sep 2026"), and it fills the home page's
+        "Check what I already hold — soon" line.
+      - Needs: the monthly file. Either a session with web access fetches
+        it, or MAS downloads it from niftyindices.com each month and sends
+        it (becomes a monthly job in section 0b).
+      - Not version 1: a screener that works out each company's ratios
+        itself — that needs paid company data, the same reason the grid's
+        per-rule switches were dropped (section 9).
+      - Who: Claude builds it; MAS confirms the meaning and supplies the
+        file if web access stays off.
+
+- [ ] **2. Panels by topic at the top of the home page.** Someone landing
+      on a halal finance site should first see the areas of money, not one
+      list of instruments. Proposed panels (MAS to confirm names and
+      order):
+      - **Invest** — halal stocks, Shariah mutual funds, gold, methodology;
+      - **Save and retire** — EPF, PPF, NPS, Sukanya Samriddhi;
+      - **Loans and debt** — home loans, EMIs, credit cards, education
+        loans (all "soon": no pages yet);
+      - **Zakat and purification** — the purification calculator; zakat
+        ("soon");
+      - **Tools** — the screener (idea 1), the SIP calculator (idea 3), the
+        purification calculator, the app.
+      Each panel is plain links in the HTML, so Google reads them. The
+      panels can be built straight away with the pages that exist; the
+      Loans and Zakat pages need sourced rulings, so they need a session
+      with web access (section 4, "Pages worth adding next").
+      Who: Claude, after MAS confirms the panel names.
+
+- [ ] **3. SIP calculator.** Monthly amount, a yearly return the reader
+      chooses, and a number of years; it shows the total put in, the
+      estimated value and the gain, year by year. Its own page
+      (`/sip-calculator/` — "SIP calculator" is one of the most searched
+      money phrases in India) plus a small version on the home page.
+      Rules it must keep:
+      - the reader picks the return; the page never suggests one from a
+        fund's past returns, and says plainly that it is an illustration,
+        not a forecast or a promise;
+      - figures never coloured, same as everywhere else;
+      - a link to the compare page for the six Shariah funds, with no
+        "use this fund" anywhere.
+      Optional extras: a yearly step-up, and the effect of the expense
+      ratio. MAS to decide the starting return shown in the box (suggested:
+      10%, labelled "you choose — not a forecast").
+      Who: Claude, fully — no data or accounts needed.
+
+- [ ] **4. A boycott page using BDNAASH's data.** Strong demand from the
+      audience, but the riskiest idea on this list, for three reasons:
+      - **Legal:** naming companies — especially Indian-listed ones — as
+        "supporting genocide" invites defamation claims. Get a lawyer's
+        view before it goes live.
+      - **The site's own rule:** the brief says no "buy this" and no
+        "avoid this". A boycott list is an "avoid this" list, so it can only
+        fit if every entry is attributed to the list that holds it, with
+        that list's stated reason and evidence link, and Purevesting adds
+        no verdict — the same way Shariah rulings are quoted, not issued.
+      - **The data:** bdnaash.com is a third party. Check whether it offers
+        an API at all, and whether its terms allow republishing its list.
+        A key for a paid API can't sit in a public web page; it would need
+        a small Cloudflare Worker (free tier) or a monthly saved copy of
+        the list.
+      Needs from MAS: BDNAASH's API details and written permission (or its
+      terms), the legal view, and a decision on wording. Who: Claude
+      builds it once those are in hand.
+
+- [ ] **5. A dropdown menu under "Instruments".** Instruments opens a
+      short menu — EPF, PPF, NPS, digital gold, Sukanya Samriddhi, all
+      instruments — and best done together with idea 2, so the header has
+      one menu per panel (Invest, Save and retire, Loans, Tools). Rules:
+      - it must open on a **tap** as well as on hover (phones have no
+        hover — a rule in the brief), and by keyboard;
+      - the links stay in the HTML, built with `<details>`, so it works
+        without JavaScript and Google still reads every link;
+      - the header must still fit a 360px phone.
+      Who: Claude, fully. One script changes the header on every page,
+      so it stays identical everywhere.
 
 ---
 
