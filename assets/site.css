@@ -1045,6 +1045,15 @@ td:first-child { font-weight: 600; }
 
 .route-list span { color: var(--ink-3); }   /* not built yet, so not a link */
 
+/* The home page's topic panels: a short line under each title. */
+.panel .meta { margin: -0.35rem 0 0.5rem; }
+
+@media (min-width: 64em) {
+  .panels { grid-template-columns: repeat(4, 1fr); }
+  .panels .card { padding: 1.4rem 1.25rem; }
+  .panels .route-list { font-size: 0.95rem; }
+}
+
 /* .soon — the small tag on a page that does not exist yet. */
 .soon {
   margin-left: auto;
