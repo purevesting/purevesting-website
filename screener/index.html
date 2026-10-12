@@ -41,7 +41,7 @@
       "url": "https://purevesting.com/screener/",
       "image": "https://purevesting.com/assets/og/screener.jpg",
       "datePublished": "2026-10-06",
-      "dateModified": "2026-10-06",
+      "dateModified": "2026-10-12",
       "inLanguage": "en-IN",
       "isPartOf": {
         "@id": "https://purevesting.com/#website"
@@ -170,6 +170,24 @@
 
       <h1>Is your stock <span class="t-green">halal</span>?</h1>
 
+      <!-- THE SEARCH, straight under the heading, with its answer right
+           under it; the introduction and byline follow. Needs JavaScript,
+           so it stays hidden without it; the full list below is readable
+           either way. A search from the home page arrives here as ?q=...,
+           and the script fills it in. -->
+      <div class="screener-search" role="search">
+        <label for="sc-q">Company name or NSE symbol</label>
+        <input id="sc-q" type="search" autocomplete="off" spellcheck="false"
+               placeholder="e.g. Infosys, TCS, Zomato">
+        <div class="grid-switch" role="group" aria-label="Show">
+          <button type="button" class="switch-btn" data-show="all" aria-pressed="true">All</button>
+          <button type="button" class="switch-btn" data-show="in" aria-pressed="false">Halal</button>
+          <button type="button" class="switch-btn" data-show="out" aria-pressed="false">Not halal</button>
+        </div>
+      </div>
+
+      <div class="screener-result" id="sc-result" aria-live="polite" hidden></div>
+
       <p class="standfirst">Type a company — its name, its NSE symbol or the
         name you know it by — and see if it is halal. The answer comes from
         NSE's Nifty500 Shariah index, which TASIS screens. As of
@@ -185,25 +203,9 @@
         <div>
           <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
           <div class="meta">Founder, Purevesting</div>
-          <div class="meta">Last updated <time datetime="2026-10-06">6 October 2026</time> · 3 min read</div>
+          <div class="meta">Last updated <time datetime="2026-10-12">12 October 2026</time> · 3 min read</div>
         </div>
       </div>
-
-      <!-- THE SEARCH. Needs JavaScript, so it stays hidden without it; the
-           full list below is readable either way. A search from the home
-           page arrives here as ?q=..., and the script fills it in. -->
-      <div class="screener-search" role="search">
-        <label for="sc-q">Company name or NSE symbol</label>
-        <input id="sc-q" type="search" autocomplete="off" spellcheck="false"
-               placeholder="e.g. Infosys, TCS, Zomato">
-        <div class="grid-switch" role="group" aria-label="Show">
-          <button type="button" class="switch-btn" data-show="all" aria-pressed="true">All</button>
-          <button type="button" class="switch-btn" data-show="in" aria-pressed="false">Halal</button>
-          <button type="button" class="switch-btn" data-show="out" aria-pressed="false">Not halal</button>
-        </div>
-      </div>
-
-      <div class="screener-result" id="sc-result" aria-live="polite" hidden></div>
 
     </div>
   </section>

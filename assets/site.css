@@ -1626,14 +1626,26 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
    ========================================================================== */
 
 .screener-box {
-  max-width: 40rem;
+  max-width: 46rem;
   margin: 1.5rem 0 0;
-  padding: 1.1rem;
+  padding: 1rem;
   background: var(--white);
   border: 1px solid var(--line);
   border-left: 4px solid var(--green);
   border-radius: var(--radius-sm);
 }
+
+/* The box is the first thing under the home page's heading and badge
+   (MAS, 12 Oct): the badge already leaves room under itself, and the one
+   sentence under the box needs a little air. */
+.hero-badge + .screener-box { margin-top: 0; }
+.screener-box + .standfirst { margin: 1.5rem 0 0; }
+
+/* Taller box and button than a normal form, so they are easy to hit with
+   a thumb. */
+.screener-box input,
+.screener-box .btn { min-height: 52px; }
+.screener-box .btn { padding: 0 1.3rem; font-size: 1.05rem; }
 
 .screener-box label,
 .screener-search label {
@@ -1676,6 +1688,9 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 .screener-result p { margin: 0 0 0.5rem; }
 .screener-result p:last-child { margin: 0; }
+
+/* On /screener/ the introduction comes after the search and its answer. */
+.screener-result + .standfirst { margin-top: 1.5rem; }
 
 /* The third answer — "Don't know yet", for a company outside the Nifty 500
    that hasn't been screened. Dashed and empty, so it never reads as either

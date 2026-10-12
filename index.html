@@ -201,15 +201,10 @@
 
       <p class="hero-badge">Don't compromise on ethics</p>
 
-      <p class="standfirst">Purevesting is a startup building India's
-        one-stop destination for halal finance — all of your money, not just
-        the stock market: mutual funds, EPF, PPF, gold, insurance, and the
-        debt you carry. Every page shows the working, names the Shariah
-        authority behind every position, and puts a source and a date on
-        every figure.</p>
-
-      <!-- THE SCREENER BOX. A plain form: it sends the name to /screener/,
-           which shows the answer, so it works even without JavaScript.
+      <!-- THE SCREENER BOX, first thing under the heading. A plain form: it
+           sends the name to /screener/, which shows the answer, so it works
+           even without JavaScript. No autofocus, on purpose: on a phone it
+           would pop the keyboard up over the page.
            scripts/update_screener.py keeps the date and count current. -->
       <form class="screener-box" action="/screener/" method="get" role="search">
         <label for="home-q">Is your stock halal? Type its name or NSE symbol</label>
@@ -221,6 +216,12 @@
           Nifty 500 · NSE's list as of <time datetime="2026-09-30" data-screener-date>30 September 2026</time>
           · <a href="/screener/">see them all</a></p>
       </form>
+
+      <!-- ONE SENTENCE: word for word the start of the description in the
+           structured data at the top of this page, which the About page
+           and the footer repeat. Change them together, or not at all. -->
+      <p class="standfirst">Purevesting is a startup building India's
+        one-stop destination for halal finance.</p>
 
     </div>
   </section>
