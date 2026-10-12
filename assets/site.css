@@ -1249,6 +1249,10 @@ td:first-child { font-weight: 600; }
   font-weight: 600;
 }
 
+/* The one line under each form saying what happens to what is sent, with
+   a link to /privacy/. Tucked up close under the form it belongs to. */
+.form-note { margin-top: -0.75rem; }
+
 
 /* 20. TAPPABLE FIGURES ====================================================
    /assets/site.js turns each sourced figure into a button: tap it and its
