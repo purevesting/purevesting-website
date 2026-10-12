@@ -10,9 +10,16 @@ Reads Tech for Palestine's open dataset
 keeps every company and brand it marks "avoid", groups brands that share
 an owner or the same reason, and rewrites the list in
 stop-the-genocide/index.html (between the "BOYCOTT LIST" markers) plus the
-counts. Every entry keeps the dataset's own words and its footnoted
-sources. Needs PyYAML (pip install pyyaml) and, without --from, git.
+counts. Needs PyYAML (pip install pyyaml) and, without --from, git.
 Not published on the site (scripts/ is in .assetsignore).
+
+WHAT AN ENTRY SHOWS (MAS, 12 Oct 2026): the company and brand names, the
+dataset's reason tags and the source links it cites, under "Listed by
+Tech for Palestine". The dataset's own paragraphs are NOT copied: they
+tell readers what to do ("don't buy…", "don't work for…"), which the site
+never does, and they are the dataset's own wording, which has no licence.
+The page links the dataset once, at the top, for its full wording. Keep
+it that way when changing this script.
 """
 import glob, html, os, re, subprocess, sys, tempfile, collections
 from urllib.parse import urlparse
@@ -34,21 +41,10 @@ def get_dataset(local):
     subprocess.run(['git', 'clone', '-q', '--depth', '1', REPO, d], check=True)
     return d
 
-def split_text(md):
-    """Dataset text -> (paragraphs as safe HTML, list of source URLs)."""
-    md = md or ''
-    urls = re.findall(r'^\[\^\d+\]:\s*(\S+)', md, flags=re.M)
-    body = re.sub(r'^\[\^\d+\]:.*$', '', md, flags=re.M)
-    body = re.sub(r'\[\^\d+\]', '', body)
-    body = re.sub(r'\[([^\]]+)\]\((https?://[^)]+)\)', r'\1', body)
-    paras = [p.strip() for p in body.split('\n\n') if p.strip()]
-    out = []
-    for p in paras:
-        p = html.escape(re.sub(r'\s+', ' ', p))
-        p = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', p)
-        p = p.replace('*', '')
-        out.append(p)
-    return out, urls
+def source_urls(md):
+    """Dataset text -> the source URLs in its footnotes. Only the links are
+    used: the text itself is never copied onto the page (see the top)."""
+    return re.findall(r'^\[\^\d+\]:\s*(\S+)', md or '', flags=re.M)
 
 def source_links(urls):
     seen, links = set(), []
@@ -118,20 +114,21 @@ def render(entries):
     for e in entries:
         brands = sorted(set(e['brands']), key=str.lower)
         names = ' '.join([e['title']] + brands).lower()
-        paras, urls = [], []
+        urls = []
         for t in e['texts']:
-            p, u = split_text(t)
-            paras += p
-            urls += u
+            urls += source_urls(t)
         count = f'<span class="bc-count">{len(brands)} brand{"s" if len(brands) != 1 else ""}</span>' if brands else ''
         tags = ''.join(f'<span class="bc-tag">{REASON_WORDS.get(r, r)}</span>' for r in sorted(e['reasons']))
-        body = ''.join(f'<p>{p}</p>' for p in paras) or '<p>No reason text in the dataset.</p>'
+        by = ('<p class="bc-by">Listed by Tech for Palestine for:</p>'
+              f'<p class="bc-reasons">{tags}</p>' if tags else
+              '<p class="bc-by">Listed by Tech for Palestine, with no reason tagged.</p>')
         brand_line = (f'<p class="bc-brands"><strong>Brands listed:</strong> {html.escape(", ".join(brands))}</p>' if brands else '')
         links = source_links(urls)
-        src = f'<p class="source-note">Sources cited by the dataset: {", ".join(links)}</p>' if links else ''
+        src = (f'<p class="source-note">Sources cited by the dataset: {", ".join(links)}</p>' if links else
+               '<p class="source-note">The dataset cites no sources for this entry.</p>')
         out.append(f'          <details class="bc-entry" data-names="{html.escape(names)}">'
-                   f'<summary><span class="bc-name">{html.escape(e["title"])}</span>{count}{tags}</summary>'
-                   f'<div class="bc-body">{body}{brand_line}{src}</div></details>')
+                   f'<summary><span class="bc-name">{html.escape(e["title"])}</span>{count}</summary>'
+                   f'<div class="bc-body">{by}{brand_line}{src}</div></details>')
     return out
 
 def write(rows, n_entries, n_companies, n_brands):

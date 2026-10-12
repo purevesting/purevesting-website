@@ -1822,6 +1822,11 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .bc-body p { margin: 0 0 0.6rem; max-width: none; }
 .bc-body p:last-child { margin-bottom: 0; }
 .bc-brands { font-size: 0.88rem; }
+
+/* Inside an entry (12 Oct): "Listed by Tech for Palestine for:", then the
+   dataset's reason tags under it. */
+.bc-body .bc-by { margin-bottom: 0.35rem; font-weight: 600; color: var(--ink); }
+.bc-reasons { display: flex; flex-wrap: wrap; gap: 0.3rem 0.4rem; }
 .bc-body .source-note { margin-top: 0.4rem; }
 
 /* The highlighted menu item: wide screens only, a soft amber pill. */
