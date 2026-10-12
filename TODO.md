@@ -289,6 +289,22 @@ https://code.claude.com/docs/en/cloud-environments#network-access
 Every figure on the site is supposed to carry a source link and an "as of"
 date. These are the places that don't yet.
 
+- [ ] **Do next: /halal-stocks/ still gives NSE's old 3% income limit
+      (found 12 Oct).** NSE's current methodology — Methodology Document
+      for Equity Indices, September 2026, section 34
+      (niftyindices.com/Methodology/Method_NIFTY_Equity_Indices.pdf) — sets
+      interest income plus returns from interest-based investments at up to
+      2.5% of total income, with no assumed 7.5% return; the January 2020
+      document said 3%. Debt (25%) and cash (90%) are unchanged. The
+      methodology page was corrected and logged on 12 Oct (step 6), but
+      the step only covered that page, so two others still cite the old
+      document: /halal-stocks/ ("What gets a company through": the list
+      says 3%, and two source notes cite the January 2020 document) and
+      /purification-calculator/ (its sources line cites the January 2020
+      document for NSE's purification wording, which is unchanged — only
+      the link and date need changing). Fix /halal-stocks/ the same way and
+      log it in the corrections log.
+
 - [ ] **Compare page — ShariahCap Advisors for Taurus and Quantum (6 Oct).**
       Restored as MAS set it on 17 Sep (the 2 Oct "None named" change was
       undone; logged on /corrections/). It now rests on ShariahCap's own site
