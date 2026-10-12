@@ -399,37 +399,82 @@ input:focus-visible {
   transform: translateY(0.18em);
 }
 
-/* On a phone the four links get a row of their own under the logo, spread
-   evenly across it. Slightly smaller text is what lets all four fit on one
-   row even on a 360px phone. Section 15 puts them back beside the logo on
-   wider screens. */
+/* On a phone the five menu words get a row of their own under the logo,
+   spread evenly across it, on one line. Slightly smaller text is what lets
+   all five fit even on a 360px phone. If they ever don't fit (a narrower
+   phone, or text made bigger in the phone's settings), this row scrolls
+   sideways by itself — the page never does. Section 15 puts the words
+   back beside the logo on wider screens. */
 .site-nav {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0 0.5rem;
   width: 100%;
   justify-content: space-between;
+  overflow-x: auto;
+  scrollbar-width: none;       /* no scroll bar drawn under the words */
 }
+
+.site-nav::-webkit-scrollbar { display: none; }
 
 .site-nav a {
   display: inline-flex;
+  flex: none;                  /* a word never squashes or breaks */
   align-items: center;
   min-height: var(--tap);
   font-size: 0.8125rem;        /* 13px on phones; 15px from tablets up */
   font-weight: 600;
   color: var(--ink-2);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .site-nav a:hover { color: var(--ink); }
 
-/* The drop-down lists (added 6 Oct). On a phone the wrapper around each
-   link disappears ("display: contents"), so the four links sit exactly as
-   before, and the lists and the computer-only "Tools" link stay hidden.
-   Section 15 switches the lists on for screens with a mouse. */
+/* In a row that can scroll, an outline drawn outside a link would be cut
+   off, so on a phone the keyboard outline sits just inside the link. */
+.site-nav a:focus-visible { outline-offset: -2px; }
+
+/* The drop-down lists. On a phone the wrapper around each word disappears
+   ("display: contents"), so the five words sit in one row, and the lists
+   and the computer-only items stay hidden: a tap opens the word's own
+   page. Section 15 switches the lists on for screens with a mouse. */
 .nav-item { display: contents; }
 .nav-menu,
 .nav-item.nav-desktop { display: none; }
+
+/* The green "Subscribe" pill on a phone, at the right end of the logo
+   row. The pill is drawn small (the ::before), but the link around it is
+   a full 44px tall, so it is easy to tap. On wider screens it hides and
+   its copy in the menu shows instead (section 15). */
+.pill-phone {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 0.8rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.pill-phone::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 34px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: var(--green-deep);
+}
+
+.pill-phone:hover::before { background: var(--green-ink); }
 
 
 /* 8. FOOTER ===============================================================
@@ -854,16 +899,31 @@ td:first-child { font-weight: 600; }
 
   .grid-2 { grid-template-columns: 1fr 1fr; }
 
-  /* Wide enough for the menu to sit beside the logo again. */
+  /* Wide enough for the menu to sit beside the logo again. It no longer
+     needs to scroll, and must not: the drop-down lists hang below it. */
   .site-nav {
     width: auto;
     gap: 0 1.1rem;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    overflow: visible;
   }
   .site-nav a { font-size: 0.95rem; }
+  .site-nav a:focus-visible { outline-offset: 2px; }
 
-  /* "Tools" joins the menu once there is room for it. */
+  /* The Subscribe pill moves from the logo row into the menu, just before
+     "Stop the genocide": the same shape as that pill, in green. */
+  .pill-phone { display: none; }
   .nav-item.nav-desktop { display: contents; }
+  .site-nav .nav-subscribe > a {
+    padding: 0 0.8rem;
+    color: var(--white);
+    background: var(--green-deep);
+    border-radius: 999px;
+    min-height: 34px;
+    align-self: center;
+  }
+  .site-nav .nav-subscribe > a:hover { color: var(--white); background: var(--green-ink); }
 
   .site-footer .wrap {
     padding-top: 3.5rem;
@@ -885,7 +945,8 @@ td:first-child { font-weight: 600; }
     position: relative;
   }
 
-  .nav-item > a::after {               /* the small arrow after each word */
+  .nav-item > a:not(:only-child)::after {   /* the small arrow after each
+                                               word that has a list */
     content: "";
     width: 0.38em;
     height: 0.38em;
@@ -908,8 +969,9 @@ td:first-child { font-weight: 600; }
     box-shadow: 0 10px 28px rgba(26, 24, 20, 0.12);
   }
 
-  /* The last two open towards the left, so they never run off screen. */
-  .nav-item:nth-last-child(-n+2) .nav-menu { left: auto; right: -0.75rem; }
+  /* The last two lists (Tools and Learn — the two pills after them have
+     none) open towards the left, so they never run off screen. */
+  .nav-item:nth-last-child(-n+4) .nav-menu { left: auto; right: -0.75rem; }
 
   .nav-item:hover > .nav-menu,
   .nav-item:focus-within > .nav-menu { display: block; }

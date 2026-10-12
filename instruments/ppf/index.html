@@ -122,12 +122,19 @@
       <img src="/assets/img/logo.svg" width="28" height="28" alt="">
       Purevesting
     </a>
-    <!-- THE MENUS. On a phone only the four plain links show, exactly as
-         before. On a computer, pointing at one opens its list (the
-         "nav-menu"), and "Tools" appears as a fifth. Every link is plain
-         HTML, so Google reads them all. To add a page, add one line to
-         the right list — on every page, so the header stays identical. -->
+    <!-- THE SUBSCRIBE PILL for phones: the right end of the logo row. On a
+         computer it hides, and its copy in the menu below, just before
+         "Stop the genocide", shows instead. -->
+    <a class="pill-phone" href="/newsletter/">Subscribe</a>
+    <!-- THE MENU: the same five words on every screen, in this order —
+         Screener, Instruments, Compare, Tools, Learn. On a phone they sit
+         in one row under the logo, and a tap opens the word's own page (no
+         drop-downs). On a computer, pointing at a word (or tabbing to it)
+         opens its list, the "nav-menu". Every link is plain HTML, so
+         Google reads them all. To add a page, add one line to the right
+         list — on every page, so the header stays identical. -->
     <nav class="site-nav" aria-label="Main">
+      <div class="nav-item"><a href="/screener/">Screener</a></div>
       <div class="nav-item">
         <a href="/instruments/">Instruments</a>
         <div class="nav-menu">
@@ -142,38 +149,33 @@
       <div class="nav-item">
         <a href="/compare/shariah-mutual-funds/">Compare</a>
         <div class="nav-menu">
-          <a href="/screener/">Is my stock halal? The screener</a>
           <a href="/compare/shariah-mutual-funds/">India's six Shariah mutual funds</a>
           <a href="/halal-stocks/">How many Indian stocks are halal?</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/methodology/">Methodology</a>
-        <div class="nav-menu">
-          <a href="/methodology/">How a stock is screened</a>
-          <a href="/methodology/#disagree">Why halal stock lists disagree</a>
-          <a href="/corrections/">Corrections log</a>
-          <a href="/about/">About Purevesting</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <a href="/newsletter/">Newsletter</a>
-        <div class="nav-menu">
-          <a href="/newsletter/">HalalEdge, the weekly email</a>
-          <a href="/ask/">Ask a question</a>
-          <a href="/app/">Install the app</a>
-        </div>
-      </div>
-      <div class="nav-item nav-desktop">
-        <a href="/#tools">Tools</a>
+        <a href="/tools/">Tools</a>
         <div class="nav-menu">
           <a href="/screener/">Halal stock screener</a>
           <a href="/sip-calculator/">SIP and lump-sum calculator</a>
           <a href="/loan-calculator/">Loan and EMI calculator</a>
           <a href="/purification-calculator/">Purification calculator</a>
           <a href="/app/">Install the app</a>
+          <a href="/tools/">All tools</a>
         </div>
       </div>
+      <div class="nav-item">
+        <a href="/learn/">Learn</a>
+        <div class="nav-menu">
+          <a href="/methodology/">How a stock is screened</a>
+          <a href="/methodology/#disagree">Why halal stock lists disagree</a>
+          <a href="/newsletter/">HalalEdge, the weekly email</a>
+          <a href="/ask/">Ask a question</a>
+          <a href="/about/">About Purevesting</a>
+          <a href="/corrections/">Corrections log</a>
+        </div>
+      </div>
+      <div class="nav-item nav-desktop nav-subscribe"><a href="/newsletter/">Subscribe</a></div>
       <div class="nav-item nav-highlight"><a href="/stop-the-genocide/">Stop the genocide</a></div>
     </nav>
   </div>
@@ -600,13 +602,17 @@
       <a href="/compare/shariah-mutual-funds/">Compare</a>
       <a href="/halal-stocks/">Halal stocks</a>
       <a href="/screener/">Screener</a>
+      <a href="/tools/">Tools</a>
       <a href="/methodology/">Methodology</a>
+      <a href="/learn/">Learn</a>
       <a href="/sip-calculator/">SIP calculator</a>
       <a href="/loan-calculator/">Loan calculator</a>
       <a href="/newsletter/">Newsletter</a>
       <a href="/corrections/">Corrections</a>
       <a href="/ask/">Ask a question</a>
       <a href="/stop-the-genocide/">Stop the genocide</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/disclaimer/">Disclaimer</a>
       <a href="https://www.youtube.com/channel/UCY_rjMlDGOAXyhC-aC_aQCA" rel="me">YouTube</a>
       <a href="https://www.instagram.com/purevesting/" rel="me">Instagram</a>
       <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
