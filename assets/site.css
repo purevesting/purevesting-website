@@ -1753,6 +1753,29 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 }
 
 
+/* 25. HUB PAGES ============================================================
+   /tools/: one card per tool, and the whole card is the link, so it is
+   easy to tap. The underline every other link gets is switched off here,
+   or the whole card would be underlined; the green title says "link".
+   ========================================================================== */
+
+.card-link {
+  display: block;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+.card-link h3 { color: var(--green-deep); }
+.card-link p,
+.card-soon p { margin: 0; }
+.card-link:hover { border-color: var(--green); }
+.card-link:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
+
+/* A tool that is still being built: no link, quieter text. */
+.card-soon { color: var(--ink-3); }
+.card-soon h3 { color: var(--ink-2); }
+
+
 /* ==========================================================================
    DARK MODE GOES HERE LATER.
    It is a copy of the :root block from section 2 with different values,
