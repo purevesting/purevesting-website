@@ -1555,6 +1555,21 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .key-in   { background: var(--green-tint); border: 1px solid var(--line); }
 .key-gain { background: var(--green); }
 
+/* The SIP calculator's return buttons (MAS, 12 Oct): two past index
+   returns and "Your own guess". Their labels are long, so on a phone a
+   button may take two lines. Above the return box, a small tag says what
+   the number in it is (above, so the three boxes stay level). */
+.rate-picks { margin-top: 0.6rem; }
+.rate-picks .switch-btn { line-height: 1.3; text-align: left; }
+.rate-picks + .source-note { margin-top: 0.5rem; }
+
+.calc-tag {
+  display: block;
+  margin: -0.2rem 0 0.35rem;
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+
 
 /* The loan calculator: the interest in red, the loan itself in grey. */
 .t-danger { color: var(--danger); }

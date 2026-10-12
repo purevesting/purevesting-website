@@ -162,6 +162,17 @@ Each one says what to send or change, and where.
       and five years before, Direct plan Growth. Update fund sizes and
       expense ratios at the same time, re-check the row order and the
       "nearly nine times" sentence under "How to read this table".
+- [ ] **When the compare page's index rows change, change the SIP
+      calculator's too (added 12 Oct).** The two quick-pick buttons on
+      /sip-calculator/ use the compare page's index table (#index-returns):
+      Nifty500 Shariah 5.52% and Nifty 500 9.04% a year over the last 5
+      years, as of 30 Sep 2026. Whenever those rows change, change these
+      too, in `sip-calculator/index.html`: both buttons, the starting value
+      of the "Return per year" box and its slider, the source note under
+      the buttons, the results written out for the starting numbers, and
+      the first card under "What this does" (the comment above the buttons
+      lists them). Ask the website chat to recompute the written-out
+      results.
 - [ ] **Small savings rates.** Around 31 Mar, 30 Jun, 30 Sep and 31 Dec the
       Ministry of Finance announces the next quarter's rates. Open the
       Department of Economic Affairs link on the PPF page, then update the

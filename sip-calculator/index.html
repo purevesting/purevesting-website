@@ -41,7 +41,7 @@
       "url": "https://purevesting.com/sip-calculator/",
       "image": "https://purevesting.com/assets/og/sip-calculator.jpg",
       "datePublished": "2026-10-06",
-      "dateModified": "2026-10-06",
+      "dateModified": "2026-10-12",
       "inLanguage": "en-IN",
       "isPartOf": {
         "@id": "https://purevesting.com/#website"
@@ -181,19 +181,43 @@
         <div>
           <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
           <div class="meta">Founder, Purevesting</div>
-          <div class="meta">Last updated <time datetime="2026-10-06">6 October 2026</time> · 3 min read</div>
+          <div class="meta">Last updated <time datetime="2026-10-12">12 October 2026</time> · 3 min read</div>
         </div>
       </div>
 
-      <!-- THE CALCULATOR. The boxes and the switch need JavaScript, so they
+      <!-- THE CALCULATOR. The boxes and the buttons need JavaScript, so they
            stay hidden without it; the results below are already written out
-           for the starting numbers (₹5,000 a month, 12%, 10 years), so the
-           page reads correctly either way. The script at the bottom of this
-           page does the sums. -->
+           for the starting numbers (₹5,000 a month, 5.52%, 10 years), so
+           the page reads correctly either way. The script at the bottom of
+           this page does the sums. -->
       <div class="grid-switch" role="group" aria-label="How you invest">
         <button type="button" class="switch-btn" data-mode="sip" aria-pressed="true">Monthly SIP</button>
         <button type="button" class="switch-btn" data-mode="lump" aria-pressed="false">Lump sum</button>
       </div>
+
+      <!-- THE RETURN TO START FROM (MAS, 12 Oct). The two index figures are
+           the ones in the compare page's index table
+           (/compare/shariah-mutual-funds/#index-returns), with the same
+           source and date. When those rows change, change both buttons,
+           the starting value of the "Return per year" box and its slider,
+           the source note under the buttons, the results written out
+           below, and the first card under "What this does" (TODO.md, 0b). -->
+      <div class="grid-switch rate-picks" role="group" aria-label="Yearly return to start from">
+        <button type="button" class="switch-btn" data-rate="5.52" aria-pressed="true">Nifty500 Shariah, last 5 years: <span class="num">5.52%</span>&nbsp;a&nbsp;year</button>
+        <button type="button" class="switch-btn" data-rate="9.04" aria-pressed="false">Nifty 500, last 5 years: <span class="num">9.04%</span>&nbsp;a&nbsp;year</button>
+        <button type="button" class="switch-btn" data-rate="own" aria-pressed="false">Your own guess</button>
+      </div>
+
+      <p class="source-note rate-source" id="rate-source">
+        The two index figures are each index's total return a year over the
+        last five years, dividends counted — a past return, not a forecast.
+        Sources:
+        <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">Nifty500 Shariah factsheet</a>
+        and
+        <a href="https://www.niftyindices.com/Factsheet/ind_nifty_500.pdf">Nifty 500 factsheet</a>,
+        NSE Indices — as of <time datetime="2026-09-30">30 September 2026</time>,
+        as on the <a href="/compare/shariah-mutual-funds/#index-returns">fund comparison</a>.
+      </p>
 
       <div class="calc-fields">
         <p class="calc-hint" id="calc-hint" aria-live="polite">Change any number and the results update.</p>
@@ -203,8 +227,9 @@
         </div>
         <div>
           <label for="in-rate">Return per year (%)</label>
-          <input id="in-rate" type="number" value="12" min="0" max="50" step="0.5" inputmode="decimal">
-          <input id="sl-rate" type="range" value="12" min="1" max="30" step="0.5" aria-label="Return per year (%)">
+          <span class="calc-tag" id="rate-tag">A past return, not a forecast</span>
+          <input id="in-rate" type="number" value="5.52" min="0" max="50" step="0.01" inputmode="decimal" aria-describedby="rate-tag">
+          <input id="sl-rate" type="range" value="5.5" min="1" max="30" step="0.5" aria-label="Return per year (%)">
         </div>
         <div>
           <label for="in-years">Years</label>
@@ -216,20 +241,20 @@
       <div class="calc-result" aria-live="polite">
         <div class="calc-stat">
           <span class="calc-label" id="lbl-put">You put in</span>
-          <span class="calc-value num" id="r-put">₹6,00,000</span>
+          <span class="calc-value num" id="r-put" data-src="none">₹6,00,000</span>
         </div>
         <div class="calc-stat">
           <span class="calc-label">Estimated growth</span>
-          <span class="calc-value num" id="r-gain">₹5,61,695</span>
+          <span class="calc-value num" id="r-gain" data-src="none">₹2,02,071</span>
         </div>
         <div class="calc-stat calc-main">
           <span class="calc-label" id="lbl-total">Estimated value after 10 years</span>
-          <span class="calc-value num" id="r-total">₹11,61,695</span>
-          <span class="calc-words" id="r-words">about ₹11.6 lakh</span>
+          <span class="calc-value num" id="r-total" data-src="none">₹8,02,071</span>
+          <span class="calc-words" id="r-words">about ₹8.0 lakh</span>
         </div>
         <div class="split-bar" aria-hidden="true">
-          <span class="split-in" id="bar-in" style="width:52%"></span>
-          <span class="split-gain" id="bar-gain" style="width:48%"></span>
+          <span class="split-in" id="bar-in" style="width:75%"></span>
+          <span class="split-gain" id="bar-gain" style="width:25%"></span>
         </div>
         <p class="split-key"><span><span class="key key-in"></span>What you put in</span>
            <span><span class="key key-gain"></span>Estimated growth</span></p>
@@ -263,16 +288,16 @@
             </tr>
           </thead>
           <tbody id="year-rows">
-            <tr><td>Year 1</td><td class="num">₹60,000</td><td class="num">₹64,047</td></tr>
-            <tr><td>Year 2</td><td class="num">₹1,20,000</td><td class="num">₹1,36,216</td></tr>
-            <tr><td>Year 3</td><td class="num">₹1,80,000</td><td class="num">₹2,17,538</td></tr>
-            <tr><td>Year 4</td><td class="num">₹2,40,000</td><td class="num">₹3,09,174</td></tr>
-            <tr><td>Year 5</td><td class="num">₹3,00,000</td><td class="num">₹4,12,432</td></tr>
-            <tr><td>Year 6</td><td class="num">₹3,60,000</td><td class="num">₹5,28,785</td></tr>
-            <tr><td>Year 7</td><td class="num">₹4,20,000</td><td class="num">₹6,59,895</td></tr>
-            <tr><td>Year 8</td><td class="num">₹4,80,000</td><td class="num">₹8,07,633</td></tr>
-            <tr><td>Year 9</td><td class="num">₹5,40,000</td><td class="num">₹9,74,108</td></tr>
-            <tr><td>Year 10</td><td class="num">₹6,00,000</td><td class="num">₹11,61,695</td></tr>
+            <tr><td>Year 1</td><td class="num">₹60,000</td><td class="num">₹61,825</td></tr>
+            <tr><td>Year 2</td><td class="num">₹1,20,000</td><td class="num">₹1,27,150</td></tr>
+            <tr><td>Year 3</td><td class="num">₹1,80,000</td><td class="num">₹1,96,173</td></tr>
+            <tr><td>Year 4</td><td class="num">₹2,40,000</td><td class="num">₹2,69,105</td></tr>
+            <tr><td>Year 5</td><td class="num">₹3,00,000</td><td class="num">₹3,46,166</td></tr>
+            <tr><td>Year 6</td><td class="num">₹3,60,000</td><td class="num">₹4,27,590</td></tr>
+            <tr><td>Year 7</td><td class="num">₹4,20,000</td><td class="num">₹5,13,623</td></tr>
+            <tr><td>Year 8</td><td class="num">₹4,80,000</td><td class="num">₹6,04,529</td></tr>
+            <tr><td>Year 9</td><td class="num">₹5,40,000</td><td class="num">₹7,00,580</td></tr>
+            <tr><td>Year 10</td><td class="num">₹6,00,000</td><td class="num">₹8,02,071</td></tr>
           </tbody>
         </table>
       </div>
@@ -295,10 +320,11 @@
       <div class="grid grid-2">
 
         <div class="card">
-          <h3>The return is your guess, not a promise</h3>
-          <p>The box starts at 12% a year only so there is something to see.
-             No fund promises a return, and past returns don't decide future
-             ones. Try a lower number too.</p>
+          <h3>The return is a guess, not a promise</h3>
+          <p>The box starts at <span class="num" data-src="rate-source">5.52%</span> a year: what the Nifty500 Shariah index
+             returned a year over the last five years. That is a past return,
+             not a forecast. No fund promises a return, and past returns
+             don't decide future ones. Try other numbers too.</p>
         </div>
 
         <div class="card">
@@ -403,6 +429,9 @@
      SIP: value = amount x ((1 + m)^months - 1) / m x (1 + m), where m is
      the yearly return / 12 / 100 (one payment at the start of each month).
      Lump sum: value = amount x (1 + yearly return / 100)^years.
+     The return buttons (data-rate) put an index's past return in the
+     box; "Your own guess" leaves the number to the reader. Their figures
+     are in the HTML above, not here: change them there.
      ================================================================== -->
 <script>
 (function () {
@@ -410,8 +439,23 @@
   var rate = document.getElementById('in-rate'), rateSl = document.getElementById('sl-rate');
   var years = document.getElementById('in-years'), yearsSl = document.getElementById('sl-years');
   var hint = document.getElementById('calc-hint');
-  var buttons = document.querySelectorAll('.switch-btn');
+  var buttons = document.querySelectorAll('[data-mode]');
+  var picks = document.querySelectorAll('[data-rate]');
+  var tag = document.getElementById('rate-tag');
   if (!amount || !rate || !years) return;
+
+  var TAG_PAST = 'A past return, not a forecast';
+  var TAG_OWN = 'Your own guess — no fund promises a return';
+  var ownPick = document.querySelector('[data-rate="own"]');
+
+  // Marks one return button as chosen, and says under the box what the
+  // number is: an index's past return, or the reader's own guess.
+  function choose(btn) {
+    for (var k = 0; k < picks.length; k++) {
+      picks[k].setAttribute('aria-pressed', picks[k] === btn ? 'true' : 'false');
+    }
+    if (tag) tag.textContent = btn === ownPick ? TAG_OWN : TAG_PAST;
+  }
 
   var mode = 'sip';
   var saved = { sip: 5000, lump: 100000 };   // each mode keeps its own amount
@@ -452,14 +496,30 @@
       rows += '<tr><td>Year ' + k + '</td><td class="num">' + inr(putIn(p, k)) +
               '</td><td class="num">' + inr(value(p, r, k)) + '</td></tr>';
     }
-    document.getElementById('year-rows').innerHTML = rows;
+    var body = document.getElementById('year-rows');
+    body.innerHTML = rows;
+    if (window.pvFigures) window.pvFigures(body);   // new HTML: same rules
   }
 
-  function sync(box, slider) {
-    box.addEventListener('input', function () { if (slider) slider.value = box.value; update(); });
-    if (slider) slider.addEventListener('input', function () { box.value = slider.value; update(); });
+  // Typing a return, or moving its slider, makes it the reader's own guess.
+  function sync(box, slider, edited) {
+    box.addEventListener('input', function () { if (slider) slider.value = box.value; if (edited) edited(); update(); });
+    if (slider) slider.addEventListener('input', function () { box.value = slider.value; if (edited) edited(); update(); });
   }
-  sync(amount, null); sync(rate, rateSl); sync(years, yearsSl);
+  sync(amount, null); sync(rate, rateSl, function () { choose(ownPick); }); sync(years, yearsSl);
+
+  for (var q = 0; q < picks.length; q++) {
+    picks[q].addEventListener('click', function () {
+      choose(this);
+      if (this === ownPick) {          // the box is the reader's to fill in
+        rate.focus();
+        try { rate.select(); } catch (e) {}
+        return;
+      }
+      rate.value = rateSl.value = this.getAttribute('data-rate');
+      update();
+    });
+  }
 
   for (var b = 0; b < buttons.length; b++) {
     buttons[b].addEventListener('click', function () {
