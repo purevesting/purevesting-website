@@ -1,10 +1,16 @@
 # Purevesting website — open items
 
+**Phase 1 closed on 12 October 2026.** What that session built is in
+section 0c ("Built 12 Oct"); what it noticed but left alone is in
+section 0d.
+
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 6 October 2026 (menus, topic panels, SIP and loan calculators,
-screener and "Stop the genocide" built — steps 1 to 6)
+Last updated: 12 October 2026 (phase 1 closed: privacy, disclaimer and
+"page not found" pages, /tools/ and /learn/, one menu for every screen,
+the screener first, sourced SIP start, the boycott list trimmed to names,
+reasons and sources, two missing sources — steps 1 to 7)
 
 ---
 
@@ -187,10 +193,13 @@ Each one says what to send or change, and where.
       10-year delivery rule.
 - [ ] **The "Stop the genocide" list.** Check
       github.com/TechForPalestine/boycott-israeli-consumer-goods-dataset for
-      new changes (last changed 19 Feb 2024 when copied on 6 Oct 2026). If it
-      changed, say "run the boycott update" in the website chat: it runs
+      new changes (last changed 19 Feb 2024 when copied on 6 Oct 2026;
+      checked again 12 Oct 2026, unchanged). If it changed, say "run the
+      boycott update" in the website chat: it runs
       `python3 scripts/update_boycott.py` and updates the page's counts, the
-      "copied on" date and the "Last updated" date.
+      "copied on" date and the "Last updated" date. Since 12 Oct the script
+      writes only names, reason tags and source links — never the dataset's
+      paragraphs (the top of the script says why).
 - [ ] **Typical loan rates on the loan calculator.** The five quick-pick
       buttons (home 8.5%, car 9.5%, education 10.5%, personal 13%, credit
       card 42% a year) are rough typical rates, labelled as such, not quotes.
@@ -212,6 +221,7 @@ Each one says what to send or change, and where.
       keep exactly the old header: a tap goes to the topic's page. Nothing
       was removed. All the menu links are plain links in the HTML of every
       page, so Google sees them and they work without JavaScript.
+      REPLACED 12 Oct by one menu for every screen size (below).
 - [x] ~~**Topic panels on the home page — only what exists.**~~ DONE
       (step 2). "Start here" right under the opening: **Invest**, **Save and
       retire**, **Tools**, **Learn and ask**. Add a panel (Loans, Zakat…)
@@ -219,6 +229,7 @@ Each one says what to send or change, and where.
 - [x] ~~**SIP calculator**~~ DONE (step 3): /sip-calculator/, monthly SIP or
       one-time lump sum, starts at ₹5,000 a month, 12% a year, 10 years;
       brand greens; year-by-year table; says plainly it's an illustration.
+      Since 12 Oct it starts on a sourced past return, 5.52% (below).
 - [x] ~~**Loan calculator**~~ DONE (step 4): /loan-calculator/, with quick
       picks for home, car, education, personal and credit-card loans
       (typical rates, labelled as rough), an **interest meter** that fills
@@ -233,10 +244,73 @@ Each one says what to send or change, and where.
       426 entries from Tech for Palestine's dataset, searchable, each with
       the dataset's reason and sources; highlighted link in the computer
       menu, a card on the home page, a footer link. Open points for MAS:
-      items 11 to 13 in section 0.
+      items 11 to 13 in section 0. Since 12 Oct each entry shows names,
+      reason tags and source links only (below).
 - Colour note: the brief's rule — never colour a real fund's returns —
   still holds for every table of real data. The calculators only colour
   the reader's own made-up numbers, which is not a verdict on any product.
+
+### Built 12 Oct — phase 1 closed (steps 1 to 7, each pushed to main as its own commit)
+
+- [x] ~~**Privacy, disclaimer and "page not found" (step 1).**~~ DONE.
+      /privacy/ says in plain words what can leave a reader's phone and
+      why: the /ask/ forms (Web3Forms), the newsletter box (Beehiiv), the
+      three YouTube pictures on the home page, Cloudflare (hosting, and
+      visit counting without cookies), and the pages the app saves on the
+      phone; that nothing is sold; and how to ask for deletion. Written
+      from what the code does — if a page starts loading something from
+      another website, add it there. /disclaimer/: the footer disclaimer in
+      full, plus Shariah positions quoted not issued, calculators as
+      illustrations, figures changing after their date, outside links not
+      endorsements; nothing about MAS's own investments (his call, 12 Oct).
+      404.html answers any address that doesn't exist (wrangler.jsonc:
+      "not_found_handling"); hidden from Google, kept out of the sitemap.
+      One line under each form on /ask/ and /newsletter/ links to /privacy/.
+- [x] ~~**/tools/ and /learn/ (step 2).**~~ DONE. /tools/: one card per
+      tool, plus "Check what I already hold — soon". /learn/: three groups
+      of links. The home page's Tools panel heading links to /tools/ (its
+      id="tools" stays, so old links still land there).
+- [x] ~~**One menu for every screen size (step 3).**~~ DONE. Screener ·
+      Instruments · Compare · Tools · Learn, on phones and computers; a
+      green Subscribe pill (phones: the logo row; computers: just before
+      "Stop the genocide"); no drop-downs on phones. The five words fit on
+      one line at 360px and 390px; on a narrower phone that row scrolls by
+      itself, never the page. Footer: Tools, Learn, Privacy and Disclaimer
+      added. To add a page to a menu: one line in the right list, on every
+      page — the header must stay identical everywhere.
+- [x] ~~**The screener first (step 4).**~~ DONE. Home page: the box right
+      under the heading and badge, bigger and easier to tap, no autofocus;
+      the long paragraph is now the one sentence the structured data uses.
+      /screener/: the search and its answer straight under the heading,
+      the introduction and byline below. Both on the first screen at
+      390×844.
+- [x] ~~**The SIP calculator's starting rate (step 5a).**~~ DONE. Quick
+      picks: "Nifty500 Shariah, last 5 years: 5.52% a year", "Nifty 500,
+      last 5 years: 9.04% a year" (the compare page's index table, same
+      sources and date) and "Your own guess"; starts on 5.52%, labelled "a
+      past return, not a forecast". Keeping them in step: section 0b.
+- [x] ~~**"Stop the genocide": names, reasons and sources only (step
+      5b).**~~ DONE. Each entry: the company and brand names, then "Listed
+      by Tech for Palestine for:" with the dataset's reason tags, and the
+      sources it cites. The dataset's paragraphs are gone (they told
+      readers what to do, and were its unlicensed wording); the page links
+      the dataset once for its full wording. scripts/update_boycott.py
+      writes the same, so an update can't bring them back. Search still
+      finds all 901 names.
+- [x] ~~**Two missing sources (step 6).**~~ DONE. The compare page's launch
+      years now have sources, and the methodology page now cites NSE's
+      current methodology, whose income limit is 2.5% — corrected and
+      logged. Details in section 1.
+- [x] ~~**Tidy-up (step 7).**~~ DONE. The six long titles shortened and
+      every description cut to 160 characters or fewer, search phrase
+      first; index-old.html deleted (git keeps its history). Final check:
+      no broken links inside the site; every page fits at 360px and 390px
+      with nothing sliding sideways; header and footer identical on all 27
+      pages; every JSON-LD block parses; the sitemap lists every page
+      except /offline/ and 404.html. Links to other sites: section 0d.
+- Dates: a page's "Last updated" date changed only when its own content,
+  title or description changed — not for the new menu and footer, which
+  changed on every page (same as the 6 Oct menu batch).
 
 ### Later (needs research, data or decisions first)
 
@@ -281,6 +355,64 @@ new session can't reach a site: in the Claude Code app, open the cloud
 environment's settings → **Network access** → a broader level, or
 **Custom** with the sites added. Steps:
 https://code.claude.com/docs/en/cloud-environments#network-access
+
+---
+
+## 0d. Noticed on 12 Oct — not changed
+
+The 12 Oct session did only what its brief listed. These turned up along
+the way; each needs a decision, or a session of its own.
+
+- [ ] **NSE's income limit on /halal-stocks/** — the first item in
+      section 1 (do this one next).
+- [ ] **Five titles are still 61–63 characters.** Step 7 shortened the six
+      it listed. Also over 60: EPF (63), /instruments/ (61), PPF (61),
+      /newsletter/ (63) and the SIP calculator (63). Shorter versions,
+      search phrase first: "Is EPF halal? What scholars say, and where
+      they differ" (54); "Is it halal? Indian financial instruments, one
+      by one" (53); "Is PPF halal? What Deoband ruled, and why it
+      differs" (52); "HalalEdge: a free weekly email on halal investing
+      in India" (58); "SIP calculator with lump sum: free, year by year"
+      (48). Say "shorten the other five titles" to have it done.
+- [ ] **Dead source links on /stop-the-genocide/ (checked 12 Oct).** Seven
+      sources the dataset cites no longer open (page not found, or a broken
+      certificate on the other site), under 17 entries: Adidas, Bershka,
+      Diesel Frangrances, Giorgio Armani Beauty, Indigo Books, Loreal,
+      Massimo Dutti, Mugler Beauty, Oracle, Prada Beauty, Pret-a-manger,
+      Pull&Bear, Ralph Lauren Frangrances, Sudocrem, Viktor & Rolf Beauty,
+      YSL Beauty and Zara. They are the dataset's own links, so they stay
+      as copied; if Tech for Palestine fixes them, the next "run the
+      boycott update" brings the new ones. The 134 links to
+      buyisraelitech.com couldn't be checked from the session at all (that
+      site's security certificate fails the session's checks): open one or
+      two in a browser.
+- [ ] **Two government links couldn't be checked from the session**, for
+      the same certificate reason: the Department of Economic Affairs'
+      small savings page (dea.gov.in, on the PPF and Sukanya pages) and the
+      Sukanya scheme rules (nsiindia.gov.in). Open each once in a browser.
+      About 60 other outside links (Reuters, Instagram, Bloomberg, Value
+      Research and others) refuse automated checks; that is normal for big
+      sites and doesn't mean they're broken. Every other outside link
+      opened, and every link inside the site works.
+- [ ] **/ask/ still has its own "What happens to what you send" section**
+      at the bottom, which now repeats /privacy/. It could link to
+      /privacy/, or shrink to one line.
+- [ ] **Home page: the "Learn and ask" panel heading** could link to
+      /learn/, the way the Tools panel heading now links to /tools/.
+- [ ] **Disclaimer — MAS's own investments.** MAS chose on 12 Oct to leave
+      this out for now. If he later wants a line (for example, that he may
+      hold some of what the site covers), it goes on /disclaimer/.
+- [ ] **Boycott entries that no longer say who owns a brand.** A few
+      brands are entries of their own because their owner was named only
+      in the dataset's paragraphs (AERIN, owned by Estee Lauder, is one).
+      With the paragraphs gone, those entries don't say who owns them. The
+      dataset also records owners in a structured field ("stakeholders"),
+      which the script could use to add "Owned by …" without copying any
+      of the dataset's wording.
+- [ ] **A computer window between 736 and about 767 pixels wide** (with a
+      mouse): the header menu drops under the logo instead of sitting
+      beside it. Harmless and rare — phones and tablets are fine; a slightly
+      smaller gap between the menu words would fix it.
 
 ---
 
@@ -386,13 +518,15 @@ date. These are the places that don't yet.
       said — corrected and logged. Contributions: Code on Social Security,
       2020, section 16(1)(a) (the labour codes replaced the EPF Act on
       21 Nov 2025). Malaysia: KWSP's Simpanan Shariah page.
-- [ ] **Compare page — the "Launched" column has no source link (found
-      5 Oct).** Every other figure on the page has one. Add each fund's
-      inception date from its own factsheet or scheme information document
-      (or one source that lists all six), then remove `data-src="none"` from
-      the column's heading so the years become tappable like the rest. Web
-      search agrees with the years shown (e.g. Tata Ethical 1996), but the
-      5 Oct session couldn't open the documents to link them.
+- [x] ~~**Compare page — the "Launched" column has no source link (found
+      5 Oct).**~~ DONE 12 Oct. All six years were right. Tata Ethical Fund:
+      its own scheme information document (28 Nov 2025) says the new fund
+      offer opened 9 April 1996. The other five: AMFI's scheme data file,
+      which lists each scheme's launch date (Taurus 19 Feb 2009, Nippon ETF
+      4 Feb 2009, Quantum 2 Dec 2024, The Wealth Company 24 Sep 2025, UTI
+      5 Feb 2026) — AMFI gives Tata only as 2013, when today's plans began.
+      The column heading now points at the new note (`data-src="src-launched"`),
+      so the years are tappable like the rest.
 - [ ] **PPF page — open the scheme rules link once (added 5 Oct).** The
       deposit limits and the lock-in now cite the Public Provident Fund
       Scheme, 2019, as published by India Post. The 5 Oct session found it
@@ -516,11 +650,17 @@ date. These are the places that don't yet.
       text — AAOIFI publishes its Shari'ah Standards as a book — and cite it
       with clause numbers. File: `methodology/index.html`, search for
       `FILL IN`.
-- [ ] **Methodology page — confirm NSE's methodology is the latest.** The
-      NSE document the page links is dated January 2020. Check niftyindices.com
-      for a newer version. If any limit changed, update step 2 AND the worked
-      example (the 25% is also written into the small script at the bottom
-      of the page).
+- [x] ~~**Methodology page — confirm NSE's methodology is the latest.**~~
+      DONE 12 Oct. It wasn't: niftyindices.com now points all three Shariah
+      indices to its "Methodology Document for Equity Indices", September
+      2026, section 34. One limit changed — interest income plus returns
+      from interest-based investments is now up to 2.5% of total income (it
+      was 3%, with an assumed 7.5% return). Debt (25% of total assets) and
+      cash (90%) are unchanged, so the worked example and its script's 25%
+      stand. Step 2, its source note and its quote were updated, every NSE
+      link on the page now points to the current document, and the change
+      is in the corrections log. Still to do on other pages: the first item
+      in this section.
 - [ ] **Methodology page — find Dow Jones's announcement of its September
       2026 change.** The page says the Dow Jones Islamic Market indices went
       from a 33% debt limit to two limits under 30% on 18 September 2026. That
@@ -782,13 +922,17 @@ Things MAS flagged while reviewing pages. Both done.
       5. **Purevesting GPT** — once MAS sends the link (section 0).
 - [ ] When each page goes live: turn its greyed-out "soon" line on the home
       page into a real link, turn its row on `/instruments/` into a link,
-      uncomment its link in the header nav if it is a top-level section, and
-      add it to `sitemap.xml` (the file explains how).
+      add it to the right list in the header menu (and the footer, if it is
+      a main page) on every page, and add it to `sitemap.xml` (the file
+      explains how).
 - [x] ~~**Header nav.**~~ DONE 24 Sep. Every page now shows Instruments |
       Compare | Methodology | Newsletter in the header, and the same four in
       the footer. The compare page and `_template.html` got the missing
       "Shariah positions are quoted…" sentence in the same batch, so the
-      header and footer are now identical on every page.
+      header and footer are now identical on every page. Menu REPLACED
+      12 Oct — section 0c.
+- [x] ~~`/privacy/`, `/disclaimer/`, `/tools/`, `/learn/` and the "page not
+      found" page (`404.html`)~~ — built 12 Oct (section 0c).
 
 ## 5. Analytics and tracking
 
@@ -886,7 +1030,9 @@ here, which needs building before the first sponsor conversation, not after.
       1200×630 JPG in `assets/og/`, named after its address (e.g.
       `instruments-epf.jpg`), all under 80 KB. They are made from
       `og-template.html` (never published): ask the website chat to make
-      one for each new page. The home page keeps `default.jpg`.
+      one for each new page. The home page keeps `default.jpg`. The four
+      pages of 12 Oct have theirs too (privacy, disclaimer, tools, learn);
+      the "page not found" page uses `default.jpg`.
 - [x] ~~Eventually, a different preview image per page type rather than one
       default for everything.
 
@@ -905,7 +1051,8 @@ here, which needs building before the first sponsor conversation, not after.
       not found". If you ever want this TODO public, delete its line from
       `.assetsignore`. CHECKED 24 Sep after the push: TODO.md, README.md,
       index-old.html, _template.html and the .git folder all give "page not
-      found" on a fresh request.
+      found" on a fresh request. (index-old.html was deleted on 12 Oct; git
+      keeps its history.)
 - [x] ~~Fill the Beehiiv publication address~~ — DONE 30 Sep: every sign-up
       form (the footer on every page, and the top of `/newsletter/`) now
       goes to https://halaledge.beehiiv.com/subscribe.
