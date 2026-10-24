@@ -176,6 +176,7 @@
         <div class="nav-menu">
           <a href="/methodology/">How a stock is screened</a>
           <a href="/methodology/#disagree">Why halal stock lists disagree</a>
+          <a href="/videos/">All Purevesting videos</a>
           <a href="/newsletter/">HalalEdge, the weekly email</a>
           <a href="/ask/">Ask a question</a>
           <a href="/about/">About Purevesting</a>
@@ -383,30 +384,17 @@
 
       <h2>Recent videos</h2>
 
-      <!-- THE THREE VIDEO CARDS. Each card needs the video's ID (the part
-           after watch?v= or shorts/ in its YouTube address) in the link and
-           in the picture address, plus its title. For now these are three
-           existing videos; swap in the flagship videos when they are
-           published (TODO.md). A Short links to youtube.com/shorts/ID. -->
-
-      <div class="grid grid-3">
-
-        <a class="card card-video" href="https://www.youtube.com/watch?v=EO-RzRqjx-0">
-          <img src="https://i.ytimg.com/vi/EO-RzRqjx-0/hqdefault.jpg" width="480" height="360" alt="">
-          <h3>Halal (ethical) investing kya hai? Simple guide for Muslims and beginners</h3>
-        </a>
-
-        <a class="card card-video" href="https://www.youtube.com/watch?v=IH1sXYOKS4Y">
-          <img src="https://i.ytimg.com/vi/IH1sXYOKS4Y/hqdefault.jpg" width="480" height="360" alt="">
-          <h3>Muslims ne banaya tha duniya ka pehla bank — bina riba ke</h3>
-        </a>
-
-        <a class="card card-video" href="https://www.youtube.com/shorts/nYe6bu2rPmE">
-          <img src="https://i.ytimg.com/vi/nYe6bu2rPmE/hqdefault.jpg" width="480" height="360" alt="">
-          <h3>Zakat basics: sab kuch jo aapko jan'na chahiye</h3>
-        </a>
-
+      <!-- THE VIDEO CARDS: the newest three from /videos/list.js, drawn
+           by /assets/videos.js. To show a new video, add its link at the
+           top of /videos/list.js — nothing to change here. The line inside
+           the box shows only if the list can't be read (or without
+           JavaScript). -->
+      <div class="grid grid-3" data-videos="3">
+        <p class="meta">Watch the videos on
+          <a href="https://www.youtube.com/channel/UCY_rjMlDGOAXyhC-aC_aQCA">Purevesting's YouTube channel</a>.</p>
       </div>
+
+      <p class="more-link"><a href="/videos/">See all videos &rarr;</a></p>
 
     </div>
   </section>
@@ -422,7 +410,7 @@
         <div>
           <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
           <div class="meta">Founder, Purevesting</div>
-          <div class="meta">Last updated <time datetime="2026-10-12">12 October 2026</time></div>
+          <div class="meta">Last updated <time datetime="2026-10-24">24 October 2026</time></div>
           <div class="meta">Corrected <time datetime="2026-10-01">1 October 2026</time> · <a href="/corrections/#log">see the corrections log</a></div>
         </div>
       </div>
@@ -459,6 +447,7 @@
       <a href="/tools/">Tools</a>
       <a href="/methodology/">Methodology</a>
       <a href="/learn/">Learn</a>
+      <a href="/videos/">Videos</a>
       <a href="/sip-calculator/">SIP calculator</a>
       <a href="/loan-calculator/">Loan calculator</a>
       <a href="/newsletter/">Newsletter</a>
@@ -496,6 +485,8 @@
 
 <script src="/assets/site.js"></script>
 <script src="/assets/share-card.js"></script>
+<script src="/videos/list.js"></script>
+<script src="/assets/videos.js"></script>
 
 <script>
 /* THE GRID SWITCH (home page only).

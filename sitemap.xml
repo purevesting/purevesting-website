@@ -6,7 +6,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://purevesting.com/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-24</lastmod>
   </url>
   <url>
     <loc>https://purevesting.com/about/</loc>
@@ -86,7 +86,7 @@
   </url>
   <url>
     <loc>https://purevesting.com/privacy/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-24</lastmod>
   </url>
   <url>
     <loc>https://purevesting.com/disclaimer/</loc>
@@ -98,6 +98,10 @@
   </url>
   <url>
     <loc>https://purevesting.com/learn/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-24</lastmod>
+  </url>
+  <url>
+    <loc>https://purevesting.com/videos/</loc>
+    <lastmod>2026-10-24</lastmod>
   </url>
 </urlset>

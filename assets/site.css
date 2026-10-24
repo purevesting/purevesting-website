@@ -1145,6 +1145,31 @@ td:first-child { font-weight: 600; }
   margin: 0;
 }
 
+/* Video cards are drawn from /videos/list.js by /assets/videos.js (24 Oct).
+   A Short gets a small label above its title. */
+.video-tag {
+  display: inline-block;
+  margin: 0 0 0.4rem;
+  padding: 0.1em 0.6em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--forest-text);
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+}
+
+/* "See all videos →" under the home page's three cards. */
+.more-link { margin: 1rem 0 0; font-weight: 600; }
+.more-link a { display: inline-flex; align-items: center; min-height: var(--tap); }
+
+/* /videos/: two cards across on a tablet, three on a laptop. */
+@media (min-width: 46em) {
+  .grid-3.video-all { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 64em) {
+  .grid-3.video-all { grid-template-columns: repeat(3, 1fr); }
+}
+
 @media (min-width: 46em) {
   .screen-grid {
     grid-template-columns: repeat(50, 1fr);   /* 50 across, 10 rows */

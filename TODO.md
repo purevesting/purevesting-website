@@ -124,12 +124,14 @@ Each one says what to send or change, and where.
 
 ### Every month
 
-- [ ] **Refresh the three video cards on the home page.** Send the links of
-      the three videos to show (the newest flagship videos, or whichever
-      three matter most that month) in the website chat. Each card needs
-      the video's address, its thumbnail and its exact title — the comment
-      above the cards in `index.html` explains the format. The same three
-      go on the /about/ page's "Watch" list if they replace one there.
+- [ ] **New video? One line in `videos/list.js` (since 24 Oct).** Every
+      time a video goes up, add a line at the TOP of that file: the link,
+      a `|`, then the title (the top of the file shows an example). The
+      home page shows the newest three, and /videos/ shows every one —
+      nothing else to change. To feature an older video on the home page,
+      move its line to the top. The list was filled on 24 Oct with the 15
+      newest uploads from the channel's feed plus two older ones; videos
+      older than that can be added at the bottom.
 - [ ] **NSE factsheet figures.** NSE replaces its factsheets at the same web
       address at the start of each month. DONE for 30 September 2026 (in the
       1 Oct batch): 204 of the 501 companies pass (the Nifty 500 listed 501
