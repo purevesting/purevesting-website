@@ -178,46 +178,49 @@
 
       <h1>Stop the <span class="mark">genocide</span></h1>
 
-      <!-- A list page: no byline (README.md). Where the list comes from is
-           said once here, in plain words; the dataset is named and linked
-           in Sources at the bottom. -->
+      <!-- A list page: no byline (README.md). One short line, then the
+           search first and the long list behind one button (MAS, 6 Nov
+           2026, part 3). Where the list comes from is said once, right
+           under the search, in plain words; the dataset is named and
+           linked in Sources at the bottom. -->
       <p class="standfirst">In September 2025, a UN commission of inquiry
         found that Israel has committed genocide in Gaza. Boycott campaigns
-        ask people not to buy from companies tied to it. Check if a brand you
-        buy is on this list, which comes from an open boycott dataset.</p>
-
-      <p class="meta">The dataset was last updated in February 2024, so some
-        entries may be out of date. Seen a change? Write to
-        <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>.</p>
-
-    </div>
-  </section>
-
-
-  <section class="section">
-    <div class="wrap">
-
-      <h2 id="list">The list</h2>
-
-      <p data-src="src-bc-list"><span class="num" data-bc-entries>426</span> entries, covering
-         <span class="num" data-bc-companies>101</span> companies and
-         <span class="num" data-bc-brands>860</span> brands, A to Z.</p>
+        ask people not to buy from companies tied to it.</p>
 
       <!-- THE SEARCH. Needs JavaScript, so it stays hidden without it; the
-           whole list below is readable either way. -->
+           list below opens either way. The answer shows under it, big:
+           "On the boycott list", with the entries that match, or "Not on
+           this list". -->
       <div class="screener-search" role="search">
-        <label for="bc-q">Search a brand or a company</label>
+        <label for="bc-q">Is a brand you buy on the boycott list?</label>
         <input id="bc-q" type="search" autocomplete="off" spellcheck="false"
                placeholder="e.g. Pepsi, Nestlé, Puma">
-        <p class="meta" id="bc-count" aria-live="polite"></p>
       </div>
 
-      <!-- THE LIST is written by scripts/update_boycott.py from Tech for
-           Palestine's dataset. Don't edit it by hand: run the script. Each
-           entry shows names, reason tags ("Why it's listed:") and source
-           links only — never the dataset's own paragraphs (MAS, 12 Oct; the
-           script explains why). -->
-      <div class="bc-list" id="bc-list">
+      <div class="sc-answer bc-answer" id="bc-result" aria-live="polite" hidden></div>
+
+      <p class="meta bc-about">This list comes from an open boycott dataset,
+        last updated in February 2024, so some entries may be out of date.
+        Seen a change? Write to
+        <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>.</p>
+
+      <!-- THE LIST, behind one button. It is a <details>, so every name is
+           in the page and it opens without JavaScript. The entries are
+           written by scripts/update_boycott.py from Tech for Palestine's
+           dataset — don't edit them by hand: run the script. Each entry
+           shows names, reason tags ("Why it's listed:") and source links
+           only — never the dataset's own paragraphs (MAS, 12 Oct; the
+           script explains why). The script also rewrites the three counts
+           (data-bc-…). -->
+      <details class="list-toggle" id="list">
+        <summary><span>See all <span class="num" data-bc-entries>426</span> entries</span></summary>
+        <div class="list-body">
+
+          <p class="meta list-count" data-src="src-bc-list"><span class="num" data-bc-entries>426</span> entries, covering
+            <span class="num" data-bc-companies>101</span> companies and
+            <span class="num" data-bc-brands>860</span> brands, A to Z.</p>
+
+          <div class="bc-list" id="bc-list">
           <!-- BOYCOTT LIST START -->
           <details class="bc-entry" data-names="8fig"><summary><span class="bc-name">8fig</span></summary><div class="bc-body"><p class="bc-by">Why it's listed:</p><p class="bc-reasons"><span class="bc-tag">Operations or investment in Israel</span></p><p class="source-note">Sources: <a href="https://buyisraelitech.com/database/8fig" rel="nofollow">buyisraelitech.com</a></p></div></details>
           <details class="bc-entry" data-names="a.team"><summary><span class="bc-name">A.Team</span></summary><div class="bc-body"><p class="bc-by">Why it's listed:</p><p class="bc-reasons"><span class="bc-tag">Operations or investment in Israel</span></p><p class="source-note">Sources: <a href="https://buyisraelitech.com/database/ateam" rel="nofollow">buyisraelitech.com</a></p></div></details>
@@ -646,7 +649,10 @@
           <details class="bc-entry" data-names="zesty"><summary><span class="bc-name">Zesty</span></summary><div class="bc-body"><p class="bc-by">Why it's listed:</p><p class="bc-reasons"><span class="bc-tag">Operations or investment in Israel</span></p><p class="source-note">Sources: <a href="https://buyisraelitech.com/database/zesty" rel="nofollow">buyisraelitech.com</a></p></div></details>
           <details class="bc-entry" data-names="zwitsal"><summary><span class="bc-name">Zwitsal</span></summary><div class="bc-body"><p class="bc-by">Why it's listed:</p><p class="bc-reasons"><span class="bc-tag">Operations or investment in Israel</span></p><p class="source-note">Sources: <a href="https://www.unilever.com/news/press-and-media/press-releases/2022/unilever-reaches-new-business-arrangement-for-ben-jerrys-in-israel/" rel="nofollow">unilever.com</a></p></div></details>
           <!-- BOYCOTT LIST END -->
-      </div>
+          </div>
+
+        </div>
+      </details>
 
     </div>
   </section>
@@ -766,33 +772,66 @@
 <script src="/assets/share-card.js"></script>
 
 <!-- ==================================================================
-     SEARCH SCRIPT — used on this page only. Hides the entries that don't
-     match what you type, and opens them when only a few are left.
+     SEARCH SCRIPT — used on this page only. Finds the entries that match
+     what you type and shows them under the search, with the answer big:
+     "On the boycott list" or "Not on this list" (MAS, 6 Nov 2026, part 3).
+     The full list, behind its button, is never filtered: it stays A to Z.
      ================================================================== -->
 <script>
 (function () {
   var box = document.getElementById('bc-q');
-  var count = document.getElementById('bc-count');
-  var entries = Array.prototype.slice.call(document.querySelectorAll('.bc-entry'));
-  if (!box || !count || !entries.length) return;
+  var result = document.getElementById('bc-result');
+  var entries = Array.prototype.slice.call(document.querySelectorAll('#bc-list .bc-entry'));
+  if (!box || !result || !entries.length) return;
+
+  var SHOW = 8;   // entries shown under the search, at most
 
   function norm(t) {
     return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
   }
+  function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
   var keys = entries.map(function (e) { return ' ' + norm(e.getAttribute('data-names')) + ' '; });
+
+  // The big answer: a drawn mark and the words, like the screener's.
+  // "On the list" is amber, the page's own colour; "Not on this list" is
+  // dashed and grey.
+  function big(on, words) {
+    var mark = on
+      ? '<path d="M6 21V4"/><path d="M6 4h11.5l-2.5 4 2.5 4H6"/>'
+      : '<path d="M7.5 12h9"/>';
+    return '<p class="sc-verdict ' + (on ? 'is-listed' : 'is-unknown') + '"><span class="sc-mark" aria-hidden="true">' +
+           '<svg viewBox="0 0 24 24">' + mark + '</svg></span>' + words + '</p>';
+  }
 
   box.addEventListener('input', function () {
     var q = norm(box.value), shown = [];
+    if (!q) { result.hidden = true; result.innerHTML = ''; return; }
     entries.forEach(function (e, i) {
-      var hit = !q || keys[i].indexOf(' ' + q) >= 0 || (q.length > 3 && keys[i].indexOf(q) >= 0);
-      e.hidden = !hit;
-      if (hit) shown.push(e);
-      if (!q) e.open = false;
+      if (keys[i].indexOf(' ' + q) >= 0 || (q.length > 3 && keys[i].indexOf(q) >= 0)) shown.push(e);
     });
-    if (q && shown.length <= 3) shown.forEach(function (e) { e.open = true; });
-    count.textContent = !q ? '' : shown.length
-      ? shown.length + (shown.length === 1 ? ' entry matches.' : ' entries match.')
-      : 'Not in this list. That only means this dataset doesn\'t name it — check the other lists below.';
+    result.hidden = false;
+    if (!shown.length) {
+      result.innerHTML = big(false, 'Not on this list') +
+        '<p class="sc-date">That only means this dataset doesn\'t name “' + esc(box.value.trim()) +
+        '” — check the other lists below.</p>';
+      return;
+    }
+    // A few matches: the big answer, and each entry open. Many (a short
+    // search like "la"): how many, and the first few, closed.
+    result.innerHTML = shown.length <= 3
+      ? big(true, 'On the boycott list')
+      : '<p class="sc-lead">' + shown.length + ' entries match “' + esc(box.value.trim()) + '”.</p>';
+    var list = document.createElement('div');
+    list.className = 'bc-list';
+    shown.slice(0, SHOW).forEach(function (e) {
+      var copy = e.cloneNode(true);
+      copy.open = shown.length <= 3;
+      list.appendChild(copy);
+    });
+    result.appendChild(list);
+    if (shown.length > SHOW) {
+      result.insertAdjacentHTML('beforeend', '<p class="meta">Showing ' + SHOW + '. Type more of the name to find the rest.</p>');
+    }
   });
 })();
 </script>

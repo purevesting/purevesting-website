@@ -2952,6 +2952,16 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 .bc-list { display: grid; gap: 0.5rem; }
 
+/* The search's answer (MAS, 6 Nov 2026, part 3): the screener's big
+   answer card (section 24), with an amber flag for "On the boycott list"
+   — amber is this page's colour — and the matching entries under it. */
+.sc-verdict.is-listed { color: var(--ink); }
+.sc-verdict.is-listed .sc-mark { color: #8A5A00; background: var(--amber-soft); }
+.bc-answer .sc-verdict { font-size: clamp(1.9rem, 8.5vw, 2.6rem); }
+.bc-answer .bc-list { margin-top: 0.5rem; }
+.bc-answer .bc-entry { box-shadow: none; }
+.bc-about { max-width: 40rem; margin: 1rem 0 0; }
+
 .bc-entry {
   background: var(--white);
   border: 1px solid var(--line);
