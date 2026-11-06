@@ -277,15 +277,15 @@
           </thead>
           <tbody>
             <tr>
-              <td>Dividend method <span class="cell-note">A slice of your dividend. Used by a big US index company's Shariah indices</span></td>
+              <td>Dividend method <span class="cell-note">A slice of your dividend. Used by a big US index company's Shariah indices</span><span class="cell-bar" aria-hidden="true"><span id="b-div" style="--to: 3"></span></span></td>
               <td class="num" id="r-div">₹7.20</td>
             </tr>
             <tr>
-              <td>Year-end method <span class="cell-note">Your share of the year's interest, if you still held the shares at the company's year-end. The international Shariah standard's method</span></td>
+              <td>Year-end method <span class="cell-note">Your share of the year's interest, if you still held the shares at the company's year-end. The international Shariah standard's method</span><span class="cell-bar" aria-hidden="true"><span id="b-aaoifi" style="--to: 100"></span></span></td>
               <td class="num" id="r-aaoifi">₹240.00</td>
             </tr>
             <tr>
-              <td>Months-held method <span class="cell-note">The same, scaled to the months you held them. Adopted by the Shariah board that screens NSE's indices</span></td>
+              <td>Months-held method <span class="cell-note">The same, scaled to the months you held them. Adopted by the Shariah board that screens NSE's indices</span><span class="cell-bar" aria-hidden="true"><span id="b-mod" style="--to: 100"></span></span></td>
               <td class="num" id="r-mod">₹240.00</td>
             </tr>
           </tbody>
@@ -602,6 +602,12 @@
     out.div.textContent    = rupees(dividendBased);
     out.aaoifi.textContent = rupees(aaoifi);
     out.mod.textContent    = rupees(modified);
+    // The small bar under each method: its amount against the biggest.
+    var most = Math.max(dividendBased, aaoifi, modified) || 1;
+    [['b-div', dividendBased], ['b-aaoifi', aaoifi], ['b-mod', modified]].forEach(function (b) {
+      var bar = document.getElementById(b[0]);
+      if (bar) bar.style.setProperty('--to', Math.round(b[1] / most * 1000) / 10);
+    });
     if (hint.textContent !== HINT_OK) hint.textContent = HINT_OK;
   }
 

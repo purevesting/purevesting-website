@@ -31,7 +31,7 @@ UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.3
 N500_URL = 'https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv'
 SHARIAH_URL = 'https://liveindexsa.niftyindices.com/jsonfiles/Sector/SectorialIndexDataNIFTY500%20SHARIAH_Sector.js'
 # Pages with a grid of squares (between "GRID START" and "GRID END").
-GRID_PAGES = ['index.html']
+GRID_PAGES = ['index.html', os.path.join('halal-stocks', 'index.html')]
 
 def fetch(url):
     with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=40) as r:

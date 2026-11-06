@@ -246,6 +246,36 @@
         </div>
       </details>
 
+      <!-- A chart instead of a table (README.md, "The look"): one row per
+           bar, --to is the bar's length in % of the track (--from too, for
+           a range). The words and numbers stay real text. -->
+      <div class="bars" data-src="src-example">
+        <div class="bar-row" style="--to: 65">
+          <span class="bar-label">What the bar is <small>a short note under it</small></span>
+          <span class="bar-value num">65%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- A blue band for rhythm: cream, then blue, then cream — never two in
+       a row. Cards with a 24px line icon on top. -->
+  <section class="section band reveal">
+    <div class="wrap">
+
+      <h2 id="second">What people do</h2>
+
+      <div class="grid grid-2">
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12h8"/></svg></span>
+          <h3>A short heading</h3>
+          <p>One or two short sentences.</p>
+        </div>
+      </div>
+
       <!-- The end of every article: one friendly line. -->
       <p class="ask-line">Still have a doubt? <a href="/ask/">Ask me</a></p>
 

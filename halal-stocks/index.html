@@ -214,7 +214,7 @@
        THE NUMBER
        ============================================================ -->
 
-  <section class="section reveal">
+  <section class="section band reveal">
     <div class="wrap" data-src="src-hs-share">
 
       <h2 id="number">The number, by companies and by value</h2>
@@ -225,42 +225,98 @@
          smaller share of the index, because the companies the screen removes
          are, on average, the bigger ones.</p>
 
-      <div class="table-scroll">
-        <table>
-          <caption class="visually-hidden">Share of the Nifty 500 that passes NSE's Shariah screen, by number of companies and by market value</caption>
-          <thead>
-            <tr>
-              <th scope="col">Counted by</th>
-              <th scope="col" class="num">Share that passes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Number of companies <span class="cell-note">204 of 501</span></td>
-              <td class="num">40.7%</td>
-            </tr>
-            <tr>
-              <td>Market value <span class="cell-note">Each company weighted by the value of its freely traded shares</span></td>
-              <td class="num">31.4%</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- THE SQUARES, with the two ways of counting. The two figures are
+           written out in full, so they read without JavaScript; the switch
+           (hidden without it) redraws the squares. EVERY MONTH: the two
+           figures, and VALUE_SQUARES in the script at the bottom of this
+           page; scripts/update_screener.py redraws the squares and the
+           204 / 501 in this card. -->
+      <div class="grid-card">
+
+        <div class="stat-pair">
+          <p class="stat is-active" data-stat="count">
+            <span class="big-num num" data-count>40.7%</span>
+            <span class="stat-words">of the companies pass:
+              <span class="num" data-screener-in>204</span> of
+              <span class="num" data-screener-all>501</span></span>
+          </p>
+          <p class="stat" data-stat="value">
+            <span class="big-num num" data-count>31.4%</span>
+            <span class="stat-words">of the market value passes, with each
+              company weighted by the value of its freely traded shares</span>
+          </p>
+        </div>
+
+        <div class="grid-switch" role="group" aria-label="Draw the squares by">
+          <button type="button" class="switch-btn" data-view="count" aria-pressed="true">By companies</button>
+          <button type="button" class="switch-btn" data-view="value" aria-pressed="false">By market value</button>
+        </div>
+
+        <!-- One square per company, A to Z, filled if it passes ("by market
+             value": each square is an equal slice of the market's value).
+             Written by scripts/update_screener.py: do not hand-edit between
+             the markers. -->
+        <div class="screen-grid" aria-hidden="true">
+      <!-- GRID START -->
+      <i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i>
+      <i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i>
+      <i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i>
+      <i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i>
+      <i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i>
+      <i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i>
+      <i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i>
+      <i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i>
+      <i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i>
+      <i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i>
+      <i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i>
+      <i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i>
+      <i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i>
+      <i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i>
+      <i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i>
+      <i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i>
+      <i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i>
+      <i></i>
+      <!-- GRID END -->
+        </div>
+
+        <ul class="legend">
+          <li><span class="swatch swatch-green"></span>Passes</li>
+          <li><span class="swatch swatch-off"></span>Doesn't pass</li>
+        </ul>
+
       </div>
 
       <p>Banks, insurers and lenders (financial services) are the Nifty 500's
-         biggest sector, and the screen removes them for what they do: they
-         are <span class="num">30.58%</span> of the Nifty 500 and
-         <span class="num">0.18%</span> of the Shariah index. The
-         <a href="/">home page</a> draws all 501 companies as squares, and the
-         <a href="/methodology/#market">methodology page</a> shows the sectors
-         that remain.</p>
+         biggest sector, and the screen removes them for what they do.</p>
+
+      <!-- Financial services' share of each index, as two bars. -->
+      <div class="bars">
+        <div class="bar-row" style="--to: 30.58">
+          <span class="bar-label">Financial services in the Nifty 500</span>
+          <span class="bar-value num">30.58%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+        <div class="bar-row" style="--to: 0.18">
+          <span class="bar-label">Financial services in the Shariah index</span>
+          <span class="bar-value num">0.18%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+      </div>
+
+      <p>The <a href="/methodology/#market">methodology page</a> shows the
+         sectors that remain.</p>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       WHAT GETS A COMPANY THROUGH
+       WHAT GETS A COMPANY THROUGH — the two questions as two steps,
+       and the three limits as bars (each bar is the most a company
+       may have).
        ============================================================ -->
 
   <section class="section reveal">
@@ -268,21 +324,46 @@
 
       <h2 id="screen">What gets a company through</h2>
 
-      <p>NSE's screen asks two questions, in order. First, the business: a
-         company that is "primarily into" conventional finance, alcohol,
-         pork, tobacco, gambling, narcotic drugs, or the kinds of
-         entertainment and hospitality its rules name is out, whatever its
-         numbers. Second, the money: a company that passes the first test
-         must also stay under these limits.</p>
+      <p>NSE's screen asks two questions, in order.</p>
 
-      <ul data-src="src-hs-method">
-        <li>Interest-based debt: up to <span class="num">25%</span> of total
-            assets</li>
-        <li>Interest income, plus returns from interest-based investments:
-            up to <span class="num">2.5%</span> of total income</li>
-        <li>Money owed to the company plus cash and bank balances: up to
-            <span class="num">90%</span> of total assets</li>
-      </ul>
+      <div class="step-cards">
+
+        <div class="step">
+          <span class="step-n" aria-hidden="true">1</span>
+          <h3>The business</h3>
+          <p>A company that is "primarily into" conventional finance,
+             alcohol, pork, tobacco, gambling, narcotic drugs, or the kinds
+             of entertainment and hospitality its rules name is out, whatever
+             its numbers.</p>
+        </div>
+
+        <div class="step">
+          <span class="step-n" aria-hidden="true">2</span>
+          <h3>The money</h3>
+          <p>A company that passes the first test must also stay under these
+             limits.</p>
+          <div class="bars" data-src="src-hs-method">
+            <div class="bar-row" style="--to: 25">
+              <span class="bar-label">Interest-based debt <small>of total assets</small></span>
+              <span class="bar-value">up to <span class="num">25%</span></span>
+              <span class="bar-track"><span class="bar"></span></span>
+            </div>
+            <div class="bar-row" style="--to: 2.5">
+              <span class="bar-label">Interest income, plus returns from
+                interest-based investments <small>of total income</small></span>
+              <span class="bar-value">up to <span class="num">2.5%</span></span>
+              <span class="bar-track"><span class="bar"></span></span>
+            </div>
+            <div class="bar-row" style="--to: 90">
+              <span class="bar-label">Money owed to the company plus cash and
+                bank balances <small>of total assets</small></span>
+              <span class="bar-value">up to <span class="num">90%</span></span>
+              <span class="bar-track"><span class="bar"></span></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
       <p>Some other screens, including the international Shariah standard,
          measure debt against the company's market value instead of its
@@ -298,14 +379,15 @@
        GOOD TO KNOW
        ============================================================ -->
 
-  <section class="section reveal">
+  <section class="section band reveal">
     <div class="wrap">
 
       <h2 id="meaning">Good to know</h2>
 
       <div class="grid grid-2">
 
-        <div class="card">
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 6.5h10M10 12h10M10 17.5h10"/><path d="M4 6.5l1.2 1.2L7.5 5.4M4 12l1.2 1.2 2.3-2.3M4 17.5l1.2 1.2 2.3-2.3"/></svg></span>
           <h3>It is one screen's list</h3>
           <p>The 204 are the companies NSE's screen lets through. Apps and
              other index makers use their own limits, so their lists differ —
@@ -314,7 +396,8 @@
              disagree</a>.</p>
         </div>
 
-        <div class="card">
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg></span>
           <h3>It changes every month</h3>
           <p>NSE reviews its Shariah indices every month and removes any
              company its Shariah board finds no longer compliant. A company
@@ -322,7 +405,8 @@
              time.</p>
         </div>
 
-        <div class="card">
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5s6.5 6.6 6.5 11a6.5 6.5 0 0 1-13 0c0-4.4 6.5-11 6.5-11z"/><path d="M9 14.5a3 3 0 0 0 3 3"/></svg></span>
           <h3>Some income still needs purifying</h3>
           <p>The limits allow a small share of interest income; they don't
              make it clean. NSE's rules expect investors to give away their
@@ -408,7 +492,8 @@
               which is 1.83% of the Nifty 500 and 5.83% of the Shariah index:
               both indices weight each company by the value of its freely
               traded shares, so 1.83 ÷ 5.83 is the Shariah index's share of
-              the whole.</li>
+              the whole. The squares: the same two lists of companies the
+              <a href="/screener/">screener</a> uses, from the same date.</li>
             <li id="src-hs-method">The screen, the monthly review and
               purification:
               <a href="https://www.niftyindices.com/Methodology/Method_NIFTY_Equity_Indices.pdf">NSE Indices, methodology document for equity indices</a>
@@ -490,6 +575,47 @@
 
 <script src="/assets/site.js"></script>
 <script src="/assets/share-card.js"></script>
+
+<script>
+/* THE GRID SWITCH (this page only; on the home page until 6 Nov 2026).
+   "By market value": the companies that pass are about 31.4% of the
+   Nifty 500's value (Infosys is 1.83% of the Nifty 500 and 5.83% of the
+   Shariah index, 30 Sep 2026; 1.83 / 5.83 = 0.314). 31.4% of 501 squares
+   is 157, so the switch greys out 47 of the 204 filled squares, spread
+   evenly. EVERY MONTH: update VALUE_SQUARES and the two figures above the
+   squares with the new factsheets — and the line in the Sources part at
+   the bottom of the page. */
+(function () {
+  var grid = document.querySelector('.screen-grid');
+  var buttons = document.querySelectorAll('.switch-btn[data-view]');
+  var stats = document.querySelectorAll('[data-stat]');
+  if (!grid || buttons.length !== 2) return;
+
+  var VALUE_SQUARES = 157;
+  var on = grid.querySelectorAll('i.on');
+  var dim = on.length - VALUE_SQUARES;
+  for (var k = 0; k < dim; k++) {
+    on[Math.floor((k + 0.5) * on.length / dim)].classList.add('dim');
+  }
+
+  function show(view) {
+    grid.classList.toggle('by-value', view === 'value');
+    for (var i = 0; i < buttons.length; i++) {
+      var pressed = buttons[i].getAttribute('data-view') === view;
+      buttons[i].setAttribute('aria-pressed', pressed ? 'true' : 'false');
+    }
+    for (var j = 0; j < stats.length; j++) {
+      stats[j].classList.toggle('is-active', stats[j].getAttribute('data-stat') === view);
+    }
+  }
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function () {
+      show(this.getAttribute('data-view'));
+    });
+  }
+})();
+</script>
 
 <!-- Visitor counting: Cloudflare Web Analytics is switched on in the
      Cloudflare dashboard ("automatic setup") and adds its script to every

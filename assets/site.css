@@ -1676,6 +1676,7 @@ td:first-child { font-weight: 600; }
 
 /* --- The 500 squares: a white card on the blue band --- */
 .grid-card {
+  margin: 1.25rem 0 1.5rem;
   padding: 1.25rem;
   background: var(--white);
   border: 1px solid var(--sky-soft);
@@ -1907,6 +1908,16 @@ td:first-child { font-weight: 600; }
 .ask-text .ask-actions { grid-column: 1 / -1; margin-top: 0; }
 .ask-text p:last-child { margin-bottom: 0; }
 
+/* /ask/: the same photo beside the page's opening line. */
+.ask-intro {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.ask-intro .standfirst { margin: 0; }
+.ask-intro .ask-photo { flex: none; margin-left: 6px; }
+
 /* --- The newsletter: a white card on the blue band --- */
 .news-card {
   display: grid;
@@ -2050,8 +2061,19 @@ td:first-child { font-weight: 600; }
 .bar-scale {
   display: flex;
   justify-content: space-between;
-  margin-top: -0.4rem;
+  margin: -0.4rem 0 0;
   font-size: 0.75rem;
+  color: var(--ink-3);
+  max-width: none;
+}
+
+/* A few words above a chart saying what the bars measure. */
+.bars-title {
+  margin: 0 0 -0.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--ink-3);
 }
 
@@ -2114,9 +2136,81 @@ td:first-child { font-weight: 600; }
 .js .screen-grid.pre-fill i.on { background: var(--line); }
 .screen-grid.is-filled i.on { transition-delay: var(--d, 0ms); }
 
-/* The "by market value" view dims some of the filled squares (the page's
-   script picks which). */
-.screen-grid.by-value i.dim { background: var(--sky-soft); transition-delay: 0ms; }
+/* "By market value" (/halal-stocks/): each square is an equal slice of the
+   market's value, so some of the filled squares go grey (the page's script
+   picks which). */
+.screen-grid.by-value i.dim { background: var(--line); transition-delay: 0ms; }
+
+/* Two big figures side by side above the squares (/halal-stocks/): by
+   companies and by market value. The one the squares show is marked. */
+.stat-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.stat {
+  margin: 0;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+.stat.is-active { border-color: var(--sky); background: var(--sky-tint); }
+
+.stat .big-num {
+  display: block;
+  font-size: 2rem;
+  line-height: 1.05;
+  color: var(--green-deep);
+}
+
+.stat-words {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+/* STEP CARDS — a short process drawn as numbered cards (/halal-stocks/:
+   the business, then the money). Each card is a .step. */
+.step-cards {
+  display: grid;
+  gap: 1rem;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.step {
+  position: relative;
+  padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.step h3 { margin: 0.6rem 0 0.4rem; }
+.step > p:last-child, .step > .bars:last-child { margin-bottom: 0; }
+
+.step-n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  font-weight: 800;
+  color: var(--white);
+  background: var(--sky-deep);
+}
+
+@media (min-width: 46em) {
+  .stat .big-num { font-size: 2.75rem; }
+  .stat { padding: 1rem 1.25rem; }
+  .step-cards { grid-template-columns: 0.8fr 1.2fr; align-items: start; }
+}
 
 @media (min-width: 46em) {
   .screen-grid {
@@ -2183,6 +2277,28 @@ td:first-child { font-weight: 600; }
 
 @media (min-width: 46em) {
   .js .calc-fields { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* .cell-bar — a small bar inside a table cell (the purification
+   calculator: each method's amount against the biggest). */
+.cell-bar {
+  display: block;
+  height: 10px;
+  margin-top: 0.55rem;
+  max-width: 16rem;
+  border-radius: 5px;
+  background: var(--sky-soft);
+  overflow: hidden;
+}
+
+.cell-bar > span {
+  display: block;
+  height: 100%;
+  width: calc(var(--to, 0) * 1%);
+  min-width: 3px;
+  border-radius: 5px;
+  background: var(--sky);
+  transition: width 300ms var(--ease);
 }
 
 /* .cell-note — a smaller second line inside a table cell, under the
@@ -2872,6 +2988,51 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .card-soon p { margin: 0; }
 .card-link:hover { border-color: var(--sky); box-shadow: var(--shadow); }
 .card-link:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
+
+/* /instruments/: one card per instrument — its icon and name, where the
+   rulings land, and who decides you hold it. The whole card is the link. */
+.inst-cards {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0 0;
+}
+
+.inst {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.6rem 0.9rem;
+}
+
+.inst-name {
+  margin: 0;
+  font-size: 1.45rem;
+  color: var(--green-deep);
+}
+
+.inst p { grid-column: 1 / -1; color: var(--ink-2); font-size: 0.95rem; }
+.card-link.inst:hover .inst-name { text-decoration: underline; text-underline-offset: 4px; }
+
+.inst-who {
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.88rem;
+}
+
+.inst-who span {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--sky-deep);
+}
+
+@media (min-width: 46em) {
+  .inst-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 64em) {
+  .inst-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 
 /* A tool that is still being built: no link, quieter text. */
 .card-soon { color: var(--ink-3); }

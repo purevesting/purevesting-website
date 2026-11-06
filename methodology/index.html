@@ -487,26 +487,51 @@
          <a href="/">home page</a>. What is left is not a smaller copy of the
          market. It is a differently shaped one.</p>
 
-      <div class="table-scroll">
-        <table>
-          <caption class="visually-hidden">Sector weights in the Nifty500 Shariah index</caption>
-          <thead>
-            <tr>
-              <th scope="col">Sector</th>
-              <th scope="col" class="num">Share of index</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Information technology</td><td class="num">17.39%</td></tr>
-            <tr><td>Healthcare</td><td class="num">16.06%</td></tr>
-            <tr><td>Capital goods</td><td class="num">14.20%</td></tr>
-            <tr><td>Fast-moving consumer goods</td><td class="num">8.54%</td></tr>
-            <tr><td>Consumer services</td><td class="num">8.41%</td></tr>
-            <tr><td>The other eleven sectors combined</td><td class="num">35.09%</td></tr>
-            <tr><td>Financial services</td><td class="num">0.18%</td></tr>
-            <tr><td>Power</td><td class="num">0.13%</td></tr>
-          </tbody>
-        </table>
+      <!-- Sector weights in the Nifty500 Shariah index, as bars. Each bar's
+           length is its share against the biggest row (35.09%), so the
+           small sectors still show; the figure beside it is the share. -->
+      <div class="bars" data-src="src-market" role="group" aria-label="Sector weights in the Nifty500 Shariah index">
+        <p class="bars-title">Share of the Shariah index</p>
+        <div class="bar-row" style="--to: 49.6">
+          <span class="bar-label">Information technology</span>
+          <span class="bar-value num">17.39%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+        <div class="bar-row" style="--to: 45.8">
+          <span class="bar-label">Healthcare</span>
+          <span class="bar-value num">16.06%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+        <div class="bar-row" style="--to: 40.5">
+          <span class="bar-label">Capital goods</span>
+          <span class="bar-value num">14.20%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+        <div class="bar-row" style="--to: 24.3">
+          <span class="bar-label">Fast-moving consumer goods</span>
+          <span class="bar-value num">8.54%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+        <div class="bar-row" style="--to: 24.0">
+          <span class="bar-label">Consumer services</span>
+          <span class="bar-value num">8.41%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+        <div class="bar-row" style="--to: 100.0">
+          <span class="bar-label">The other eleven sectors combined</span>
+          <span class="bar-value num">35.09%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+        <div class="bar-row" style="--to: 0.5">
+          <span class="bar-label">Financial services</span>
+          <span class="bar-value num">0.18%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+        <div class="bar-row" style="--to: 0.4">
+          <span class="bar-label">Power</span>
+          <span class="bar-value num">0.13%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
       </div>
 
       <p>Three things stand out. Financial services all but disappear, at

@@ -247,39 +247,31 @@
          of Financial Services in the Ministry of Finance. It gives ranges,
          not fixed numbers, so the actual split moves within them.</p>
 
-      <div class="table-scroll table-stack">
-        <table data-src="src-epf-bands">
-          <caption class="visually-hidden">EPFO's investment pattern for new money</caption>
-          <thead>
-            <tr>
-              <th scope="col">Where it goes</th>
-              <th scope="col" class="num">Share of new money</th>
-              <th scope="col">What that is</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Government securities</td>
-              <td class="num" data-label="Share of new money">45–65%</td>
-              <td data-label="What that is">Loans to the central and state governments, paying interest</td>
-            </tr>
-            <tr>
-              <td>Other debt instruments</td>
-              <td class="num" data-label="Share of new money">20–45%</td>
-              <td data-label="What that is">Bonds of public sector undertakings and highly rated companies, paying interest</td>
-            </tr>
-            <tr>
-              <td>Equity</td>
-              <td class="num" data-label="Share of new money">5–15%</td>
-              <td data-label="What that is">Exchange-traded funds tracking broad market indices</td>
-            </tr>
-            <tr>
-              <td>Short-term debt</td>
-              <td class="num" data-label="Share of new money">Up to 5%</td>
-              <td data-label="What that is">Short-dated interest-bearing instruments</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- EPFO's investment pattern for new money, drawn as ranges: each
+           bar runs from the lowest to the highest share allowed. -->
+      <div class="bars" data-src="src-epf-bands" role="group" aria-label="EPFO's investment pattern for new money">
+        <p class="bars-title">Share of new money</p>
+        <div class="bar-row" style="--from: 45; --to: 65">
+          <span class="bar-label">Government securities <small>Loans to the central and state governments, paying interest</small></span>
+          <span class="bar-value num">45–65%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+        <div class="bar-row" style="--from: 20; --to: 45">
+          <span class="bar-label">Other debt instruments <small>Bonds of public sector undertakings and highly rated companies, paying interest</small></span>
+          <span class="bar-value num">20–45%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+        <div class="bar-row" style="--from: 5; --to: 15">
+          <span class="bar-label">Equity <small>Exchange-traded funds tracking broad market indices</small></span>
+          <span class="bar-value num">5–15%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+        <div class="bar-row" style="--to: 5">
+          <span class="bar-label">Short-term debt <small>Short-dated interest-bearing instruments</small></span>
+          <span class="bar-value num">Up to 5%</span>
+          <span class="bar-track"><span class="bar"></span></span>
+        </div>
+        <p class="bar-scale" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></p>
       </div>
 
       <p>Most of the money is <span class="mark">lent at interest</span>.
@@ -506,14 +498,15 @@
        WHAT PEOPLE DO
        ============================================================ -->
 
-  <section class="section reveal">
+  <section class="section band reveal">
     <div class="wrap">
 
       <h2 id="practice">What people do</h2>
 
       <div class="grid grid-2">
 
-        <div class="card">
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.5"/><path d="M6.5 9.5h.01M17.5 15.5h.01"/></svg></span>
           <h3>Take it as pay</h3>
           <p>Following the fatwas from India and Sri Lanka, they treat the
              credit on the compulsory part as pay for their service and use
@@ -521,7 +514,8 @@
              given away.</p>
         </div>
 
-        <div class="card">
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M5 12.5v8h14v-8M12 8.5v12"/><path d="M12 8.5C10.5 5.5 7 5 7 7.2 7 8.5 12 8.5 12 8.5zM12 8.5c1.5-3 5-3.5 5-1.3 0 1.3-5 1.3-5 1.3z"/></svg></span>
           <h3>Give the interest away</h3>
           <p>Following the view that the credit is riba, they find the
              interest in their yearly statement and give it away, without
@@ -530,7 +524,8 @@
              refused.</p>
         </div>
 
-        <div class="card">
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12h8"/></svg></span>
           <h3>Stop or avoid VPF</h3>
           <p>Because the fatwas agree more closely against the voluntary
              top-up, some people pay only the compulsory amount into EPF and
@@ -538,7 +533,8 @@
              voluntary parts are two different questions.</p>
         </div>
 
-        <div class="card">
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19V6.5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H8.5z"/><path d="M10.2 8.6a2 2 0 1 1 2.5 1.9c-.4.1-.7.5-.7.9v.4"/><path d="M12 13.4h.01"/></svg></span>
           <h3>Ask before you touch the balance</h3>
           <p>EPF has withdrawal rules, tax effects and a linked pension, so
              leaving it is not only a Shariah question. The scholars above
