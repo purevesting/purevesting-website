@@ -14,11 +14,12 @@ counts. Needs PyYAML (pip install pyyaml) and, without --from, git.
 Not published on the site (scripts/ is in .assetsignore).
 
 WHAT AN ENTRY SHOWS (MAS, 12 Oct 2026): the company and brand names, the
-dataset's reason tags and the source links it cites, under "Listed by
-Tech for Palestine". The dataset's own paragraphs are NOT copied: they
-tell readers what to do ("don't buy…", "don't work for…"), which the site
-never does, and they are the dataset's own wording, which has no licence.
-The page links the dataset once, at the top, for its full wording. Keep
+dataset's reason tags under "Why it's listed:" (since 6 Nov 2026; before,
+"Listed by Tech for Palestine for:"), and the source links it cites. The
+dataset's own paragraphs are NOT copied: they tell readers what to do
+("don't buy…", "don't work for…"), which the site never does, and they
+are the dataset's own wording, which has no licence. The page names and
+links the dataset once, in its Sources part, for its full wording. Keep
 it that way when changing this script.
 """
 import glob, html, os, re, subprocess, sys, tempfile, collections
@@ -119,13 +120,13 @@ def render(entries):
             urls += source_urls(t)
         count = f'<span class="bc-count">{len(brands)} brand{"s" if len(brands) != 1 else ""}</span>' if brands else ''
         tags = ''.join(f'<span class="bc-tag">{REASON_WORDS.get(r, r)}</span>' for r in sorted(e['reasons']))
-        by = ('<p class="bc-by">Listed by Tech for Palestine for:</p>'
+        by = ('<p class="bc-by">Why it\'s listed:</p>'
               f'<p class="bc-reasons">{tags}</p>' if tags else
-              '<p class="bc-by">Listed by Tech for Palestine, with no reason tagged.</p>')
+              '<p class="bc-by">No reason given in the list.</p>')
         brand_line = (f'<p class="bc-brands"><strong>Brands listed:</strong> {html.escape(", ".join(brands))}</p>' if brands else '')
         links = source_links(urls)
-        src = (f'<p class="source-note">Sources cited by the dataset: {", ".join(links)}</p>' if links else
-               '<p class="source-note">The dataset cites no sources for this entry.</p>')
+        src = (f'<p class="source-note">Sources: {", ".join(links)}</p>' if links else
+               '<p class="source-note">No sources given in the list.</p>')
         out.append(f'          <details class="bc-entry" data-names="{html.escape(names)}">'
                    f'<summary><span class="bc-name">{html.escape(e["title"])}</span>{count}</summary>'
                    f'<div class="bc-body">{by}{brand_line}{src}</div></details>')
