@@ -9,11 +9,11 @@
      PER-PAGE BLOCK — only these six lines differ from page to page.
      ================================================================== -->
 
-<title>Purevesting — halal finance and investing in India</title>
-<meta name="description" content="Purevesting is a startup building India's one-stop destination for halal finance: Shariah funds compared, EPF, PPF, NPS and gold checked, every figure sourced.">
+<title>Purevesting — halal investing, saving and borrowing in India</title>
+<meta name="description" content="Purevesting is a startup building India's one-stop destination for halal finance: investing, saving and borrowing. Check if your stock is halal, free.">
 <link rel="canonical" href="https://purevesting.com/">
 <meta property="og:title" content="Purevesting: halal finance in India, made better">
-<meta property="og:description" content="India's one-stop destination for halal finance, in the making: 204 of the Nifty 500 pass a Shariah screen, six Shariah funds compared, EPF, PPF and gold checked.">
+<meta property="og:description" content="Halal investing, saving and borrowing in India: 204 of the Nifty 500 pass a Shariah screen, six Shariah funds compared, EPF, PPF and gold checked.">
 <meta property="og:url" content="https://purevesting.com/">
 
 <!-- ================ END PER-PAGE BLOCK ============================== -->
@@ -59,7 +59,7 @@
         "height": 512
       },
       "image": "https://purevesting.com/assets/og/default.jpg",
-      "description": "Purevesting is a startup building India's one-stop destination for halal finance. It checks stocks, mutual funds, EPF, PPF, NPS, gold and the interest hidden in loans against Shariah screening standards, with every figure sourced and every Shariah position attributed to the body that holds it. Educational content, not investment advice.",
+      "description": "Purevesting is a startup building India's one-stop destination for halal finance: investing, saving and borrowing. It checks stocks, mutual funds, EPF, PPF, NPS, gold and the interest hidden in loans against Shariah screening standards, with every figure sourced.",
       "slogan": "Halal finance in India, made better",
       "email": "salam@purevesting.com",
       "areaServed": {
@@ -222,7 +222,8 @@
            structured data at the top of this page, which the About page
            and the footer repeat. Change them together, or not at all. -->
       <p class="standfirst">Purevesting is a startup building India's
-        one-stop destination for halal finance.</p>
+        one-stop destination for halal finance: investing, saving and
+        borrowing.</p>
 
     </div>
   </section>
@@ -291,12 +292,10 @@
 
       </div>
 
-      <p class="meta">Items marked "soon" are being written.</p>
-
       <!-- The highlighted card for /stop-the-genocide/ (MAS, 6 Oct). -->
       <a class="highlight-card" href="/stop-the-genocide/"><strong>Stop the
-         genocide.</strong> Check whether a brand you buy is on the boycott
-         lists — with each listing's reason and sources.
+         genocide.</strong> Check if a brand you buy is on the boycott
+         list, and why.
          <span class="go">See the list &rarr;</span></a>
 
     </div>
@@ -309,7 +308,9 @@
 
       <h2>How much of the market passes</h2>
 
-      <p class="screen-stat" id="screen-stat" aria-live="polite">
+      <!-- data-src: tapping a figure shows its line in the Sources part
+           at the bottom of the page. -->
+      <p class="screen-stat" id="screen-stat" aria-live="polite" data-src="src-grid">
         <span class="num" data-count>204</span> of the <span class="num">501</span> companies
         in the Nifty 500 pass NSE's Shariah screen.
       </p>
@@ -353,26 +354,17 @@
       <i class="on"></i>
       </div>
 
-      <p class="source-note">
-        Each square is one company in the Nifty 500. Filled squares pass.
-        Squares are not in index order. In the market-value view, each square
-        stands for an equal slice of the index's value instead.<br>
-        By market value, the companies that pass come to about 31% of the
-        Nifty 500. That is worked out from Infosys, which is 1.83% of the
-        Nifty 500 and 5.83% of the Shariah index: both indices weight each
-        company by the value of its freely traded shares, so 1.83 ÷ 5.83 is
-        the Shariah index's share of the whole.<br>
-        Sources: <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">Nifty500 Shariah</a>
-        and <a href="https://www.niftyindices.com/Factsheet/ind_nifty_500.pdf">Nifty 500</a>
-        factsheets, NSE Indices — as of <time datetime="2026-09-30">30 September 2026</time>.
-      </p>
+      <p class="meta">Each square is one company, and filled squares pass.
+        By market value, each square is an equal slice of the market's
+        value instead.</p>
 
-      <p class="meta">Over 1 year and 5 years the Nifty500 Shariah index is
-        behind the Nifty 500, as of <time datetime="2026-09-30">30 September
-        2026</time>. The two hold different businesses: financial services,
-        the Nifty 500's biggest sector, all but disappear from the Shariah
-        index. <a href="/compare/shariah-mutual-funds/#index-returns">See both
-        indices, with sources</a>.</p>
+      <p class="meta">Over the last 1 and 5 years, NSE's Shariah index has
+        done worse than the Nifty 500 (to <time datetime="2026-09-30">30
+        September 2026</time>). The two hold different businesses: banks,
+        insurers and lenders, the Nifty 500's biggest sector, are almost
+        absent from the Shariah index.
+        <a href="/compare/shariah-mutual-funds/#index-returns">See both, side
+        by side</a>.</p>
 
     </div>
   </section>
@@ -400,20 +392,26 @@
   </section>
 
 
-  <!-- ===== BYLINE ===== -->
+  <!-- ===== SOURCES — one closed list (README.md, rule 5). The id is what
+       the grid's figures point at (data-src). EVERY MONTH: the date, and
+       the two weights behind the 31%. ===== -->
   <section class="section">
     <div class="wrap">
-      <div class="byline">
-        <img src="/assets/img/byline-96.webp"
-             srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
-             width="48" height="48" alt="Moin Ali Syed">
-        <div>
-          <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
-          <div class="meta">Founder, Purevesting</div>
-          <div class="meta">Last updated <time datetime="2026-10-24">24 October 2026</time></div>
-          <div class="meta">Corrected <time datetime="2026-10-01">1 October 2026</time> · <a href="/corrections/#log">see the corrections log</a></div>
+      <details class="source sources" id="sources">
+        <summary>Sources</summary>
+        <div class="source-body">
+          <ul>
+            <li id="src-grid">The 204, the 501 and the 31%:
+              <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">Nifty500 Shariah</a>
+              and <a href="https://www.niftyindices.com/Factsheet/ind_nifty_500.pdf">Nifty 500</a>
+              factsheets, NSE Indices — as of <time datetime="2026-09-30">30 September 2026</time>.
+              The 31% is worked out from Infosys, which is 1.83% of the
+              Nifty 500 and 5.83% of the Shariah index: both indices weight
+              each company by the value of its freely traded shares, so
+              1.83 ÷ 5.83 is the Shariah index's share of the whole.</li>
+          </ul>
         </div>
-      </div>
+      </details>
     </div>
   </section>
 
@@ -491,7 +489,8 @@
    Shariah index, 30 Sep 2026; 1.83 / 5.83 = 0.314). 31.4% of 501 squares
    is 157, so the switch dims 47 of the 204 filled squares, spread evenly.
    EVERY MONTH: update VALUE_SQUARES and the 31% wording with the new
-   factsheets — and the sentence in the source note above the grid. */
+   factsheets — and the 31% line in the Sources part at the bottom of the
+   page. */
 (function () {
   var grid = document.querySelector('.screen-grid');
   var stat = document.getElementById('screen-stat');
