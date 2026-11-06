@@ -1,5 +1,9 @@
 # Purevesting website — open items
 
+**Writing rules: see the top of README.md (set by MAS, 6 November 2026).**
+They replace any older rule in this file that says otherwise. Each old
+rule they replace is marked **REPLACED 6 Nov** below.
+
 **Phase 1 closed on 12 October 2026.** What that session built is in
 section 0c ("Built 12 Oct"); what it noticed but left alone is in
 section 0d.
@@ -76,6 +80,9 @@ decision only he can make.
       YouTube channel description and the channel's links. Also add the
       relevant purevesting.com page link to each video's description — links
       from YouTube are the easiest way for Google to connect the two.
+      (6 Nov: the footer and the About page now go on "…halal finance:
+      investing, saving and borrowing", because Purevesting covers all of
+      finance, not only investing. The bios can say the same.)
 - [ ] **8. Purevesting GPT: send the link.** Google's AI answer lists
       "Purevesting GPT" (it read that on Instagram), but the site never
       mentions it. If it is live, send the link in the website chat and it
@@ -109,7 +116,12 @@ decision only he can make.
       what the dataset says, in the dataset's words, with its sources ("listed
       by Tech for Palestine because…"), never a Purevesting verdict of its
       own. Even so, naming companies carries some risk: ask a lawyer to read
-      the page once.
+      the page once. **Since 6 Nov** each entry says "Why it's listed:"
+      instead of "Listed by Tech for Palestine for:", and the "we add no
+      judgement of our own" note is gone (README rule 4). The page still
+      says at the top that the list comes from an open boycott dataset, and
+      its Sources part names and links Tech for Palestine. Show the lawyer
+      this version.
 - [ ] **13. boycottisrael.org — send the right link.** That address is
       parked (checked 6 Oct: it forwards to a "domain for sale" style page),
       so the page doesn't link it. If MAS meant a different site, send its
@@ -265,6 +277,8 @@ Each one says what to send or change, and where.
       full, plus Shariah positions quoted not issued, calculators as
       illustrations, figures changing after their date, outside links not
       endorsements; nothing about MAS's own investments (his call, 12 Oct).
+      (**REPLACED 6 Nov:** the footer now has one short line; /disclaimer/
+      is the one page that says it all.)
       404.html answers any address that doesn't exist (wrangler.jsonc:
       "not_found_handling"); hidden from Google, kept out of the sitemap.
       One line under each form on /ask/ and /newsletter/ links to /privacy/.
@@ -285,16 +299,22 @@ Each one says what to send or change, and where.
       the long paragraph is now the one sentence the structured data uses.
       /screener/: the search and its answer straight under the heading,
       the introduction and byline below. Both on the first screen at
-      390×844.
+      390×844. (The byline is **REPLACED 6 Nov**: tools pages carry no
+      name line.)
 - [x] ~~**The SIP calculator's starting rate (step 5a).**~~ DONE. Quick
       picks: "Nifty500 Shariah, last 5 years: 5.52% a year", "Nifty 500,
       last 5 years: 9.04% a year" (the compare page's index table, same
       sources and date) and "Your own guess"; starts on 5.52%, labelled "a
       past return, not a forecast". Keeping them in step: section 0b.
+      (The label is **REPLACED 6 Nov**: just "A past return", or "Your own
+      guess" — README rule 4.)
 - [x] ~~**"Stop the genocide": names, reasons and sources only (step
       5b).**~~ DONE. Each entry: the company and brand names, then "Listed
       by Tech for Palestine for:" with the dataset's reason tags, and the
-      sources it cites. The dataset's paragraphs are gone (they told
+      sources it cites. (**REPLACED 6 Nov:** each entry now says "Why it's
+      listed:"; the top of the page says the list comes from an open
+      boycott dataset, and its Sources part names and links Tech for
+      Palestine — README rules 4 and 5.) The dataset's paragraphs are gone (they told
       readers what to do, and were its unlicensed wording); the page links
       the dataset once for its full wording. scripts/update_boycott.py
       writes the same, so an update can't bring them back. Search still
@@ -372,8 +392,9 @@ the way; each needs a decision, or a session of its own.
       /newsletter/ (63) and the SIP calculator (63). Shorter versions,
       search phrase first: "Is EPF halal? What scholars say, and where
       they differ" (54); "Is it halal? Indian financial instruments, one
-      by one" (53); "Is PPF halal? What Deoband ruled, and why it
-      differs" (52); "HalalEdge: a free weekly email on halal investing
+      by one" (53); ~~"Is PPF halal? What Deoband ruled, and why it
+      differs" (52)~~ — REPLACED 6 Nov: never name a madrasa (README
+      rule 1), so the PPF title no longer names one; "HalalEdge: a free weekly email on halal investing
       in India" (58); "SIP calculator with lump sum: free, year by year"
       (48). Say "shorten the other five titles" to have it done.
 - [ ] **Dead source links on /stop-the-genocide/ (checked 12 Oct).** Seven
@@ -721,6 +742,10 @@ In the order they matter, from the original plan.
       more than five columns (the compare page's returns table has six) get
       no button. When a source note is too long for the picture, it keeps
       the part from "Source" onwards.
+      **REPLACED 6 Nov (MAS):** the button now sits only under the main
+      answer of a page (the first answer box), never under a table, and the
+      picture no longer says "not investment advice". The table-drawing
+      code is still in the file, unused, in case it is wanted again.
 - [x] ~~**Installable site — the "app" (MAS, 6 Oct)**~~ — DONE 6 Oct, free.
       People install it from the browser: Chrome on Android shows an
       Install button on /app/ (or in its own menu); an iPhone uses Safari's
@@ -767,6 +792,8 @@ In the order they matter, from the original plan.
       something shorter on the card with `data-share-text`, and a table
       with several source notes under it gets every source on the card.
       The card always uses the page's own row order (fund size).
+      **REPLACED 6 Nov:** tables get no share button any more (see the item
+      above), and the "What each fund is" table is gone from the page.
 - [x] ~~**Tap a number to see its source and date**~~ — DONE 5 Oct, on every
       page, by `assets/site.js` (section 2 of that file explains it). Each
       figure takes the source note nearest to it; `data-src` points a
@@ -774,6 +801,10 @@ In the order they matter, from the original plan.
       `data-src="none"` marks something that isn't a sourced figure (the
       calculators' answers). Without JavaScript the figures are plain text
       and nothing changes.
+      **Changed 6 Nov:** the source notes moved into one closed "Sources"
+      part at the bottom of each page (README rule 5). Each line in it has
+      an id, and the figures point at it with `data-src` — on the figure,
+      its table, or now also the paragraph or section around it.
 - [x] ~~**Count-up**~~ — DONE 5 Oct: the home page's 204 counts up once, but
       only if it starts below the screen's edge; a number already on screen
       never animates. Mark any other whole number with `data-count`.
@@ -786,6 +817,10 @@ In the order they matter, from the original plan.
       position to read the exact wording it was issued in. Note the constraint:
       `<details>` cannot go inside a `<p>`, so a source chip sits between
       paragraphs, not mid-sentence.
+      **REPLACED 6 Nov in part:** the chips ("What the fatwa says") stay,
+      but no longer say who issued the fatwa (README rule 1); the link to
+      each fatwa is in the page's closed Sources part. The same `<details>`
+      also makes the closed "Read more" and "Sources" parts.
 - [x] ~~**Corrections log**~~ — built 30 Sep at `/corrections/`, linked in
       the footer of every page and from the "Found something wrong here?"
       line on every instrument page and the methodology page. First entries
@@ -793,9 +828,13 @@ In the order they matter, from the original plan.
       and 2 Oct (compare: ShariahCap; digital gold: storage), each with a
       "Corrected" line under the page's "Last updated" date. For the next:
       (1) fix the page; (2) add a card at the top of the log (the page has
-      a ready-made example block to copy); (3) put a "Corrected on [date]"
+      a ready-made example block to copy); ~~(3) put a "Corrected on [date]"
       line next to the corrected page's "Last updated" date, linking to
-      the log.
+      the log.~~
+      **REPLACED 6 Nov (MAS):** pages no longer carry a "Corrected · see the
+      corrections log" line or a "Found something wrong here?" box. Steps 1
+      and 2 stay; the log is still linked from the footer and the Learn
+      menu.
 - [x] ~~**Purification calculator**~~ — built 30 Sep as its own page,
       `/purification-calculator/`, rather than inside the instrument pages:
       people search for it by name, and a page of its own can be shared.
@@ -811,6 +850,9 @@ In the order they matter, from the original plan.
       simple spam robots. The question form says plainly that personal "should
       I buy this" questions can't be answered, and that questions may be
       answered publicly without the asker's name.
+      **REPLACED 6 Nov in part:** the "can't be answered… not registered to
+      give it" note is gone (README rule 4); the line saying questions may
+      be answered publicly, without a name, stays.
 - [x] ~~**Connect the two forms to Web3Forms.**~~ DONE 2 Oct: MAS made the
       Web3Forms account with salam@purevesting.com, and its access key is in
       both forms in `ask/index.html`. The key is meant to be public — it only
@@ -932,7 +974,8 @@ Things MAS flagged while reviewing pages. Both done.
       the footer. The compare page and `_template.html` got the missing
       "Shariah positions are quoted…" sentence in the same batch, so the
       header and footer are now identical on every page. Menu REPLACED
-      12 Oct — section 0c.
+      12 Oct — section 0c. Footer disclaimer **REPLACED 6 Nov (MAS)** by one
+      short line; the full wording lives on /disclaimer/ only.
 - [x] ~~`/privacy/`, `/disclaimer/`, `/tools/`, `/learn/` and the "page not
       found" page (`404.html`)~~ — built 12 Oct (section 0c).
 
