@@ -852,7 +852,8 @@
 
      HOW IT RECOGNISES A COMPANY. It tries, best first:
        1. the exact NSE symbol or full name ("INFY", "Infosys Ltd"),
-          or a name in the ALSO list below ("Zomato", "SBI", "L&T");
+          or a name in the ALSO list below ("Zomato", "SBI", "L&T") —
+          and for an old name, the answer adds "(Zomato is now Eternal)";
        2. the initials ("TCS", "ONGC", "IRCTC");
        3. the start of the name or symbol ("asian pa", "HDFCB");
        4. every word you typed at the start of a word in the name, in any
@@ -891,11 +892,37 @@
     hpcl: 'HINDPETRO', iocl: 'IOC', indianoil: 'IOC', maggi: 'NESTLEIND',
     parachute: 'MARICO', daawat: 'LTFOODS', tatatea: 'TATACONSUM', tatasalt: 'TATACONSUM',
     mahindra: 'M&M', ruchisoya: 'PATANJALI', adanitransmission: 'ADANIENSOL',
-    mothersonsumi: 'MOTHERSON', jspl: 'JINDALSTEL', jindalsteelandpower: 'JINDALSTEL',
+    mothersonsumi: 'MOTHERSON', jspl: 'JINDALSTEL',
     gmrinfra: 'GMRAIRPORT', itdcementation: 'CEMPRO', amiorganics: 'ACUTAAS',
     suvenpharma: 'COHANCE', indiabullshousing: 'SAMMAANCAP', ibhfl: 'SAMMAANCAP',
     piramalenterprises: 'PIRAMALFIN', mazagon: 'MAZDOCK', mazagondock: 'MAZDOCK',
-    pw: 'PWL', cpplus: 'CPPLUS', medanta: 'MEDANTA', firstcry: 'FIRSTCRY'
+    pw: 'PWL', cpplus: 'CPPLUS', medanta: 'MEDANTA', firstcry: 'FIRSTCRY',
+    // Companies' full old names (6 Nov 2026). "and" is dropped before a
+    // name is looked up, so "Jindal Steel and Power" is jindalsteelpower.
+    ruchisoyaindustries: 'PATANJALI', mothersonsumisystems: 'MOTHERSON',
+    gmrinfrastructure: 'GMRAIRPORT', itdcementationindia: 'CEMPRO',
+    suvenpharmaceuticals: 'COHANCE', indiabullshousingfinance: 'SAMMAANCAP',
+    ltinfotech: 'LTM', larsentoubroinfotech: 'LTM', jindalsteelpower: 'JINDALSTEL'
+  };
+
+  // OLD NAMES (MAS, 6 Nov 2026): when someone searches a company's old
+  // name, the answer says so — "(Zomato is now Eternal)". Each key here
+  // must also be in ALSO above. Brands and short forms (Blinkit, SBI) are
+  // not old names, so they are not here. A company that merged into
+  // another says "is now part of". When NSE renames a company, add its old
+  // name to ALSO and here.
+  var OLD_NAMES = {
+    zomato: 'Zomato', ruchisoya: 'Ruchi Soya', ruchisoyaindustries: 'Ruchi Soya Industries',
+    adanitransmission: 'Adani Transmission', mothersonsumi: 'Motherson Sumi',
+    mothersonsumisystems: 'Motherson Sumi Systems', gmrinfra: 'GMR Infra',
+    gmrinfrastructure: 'GMR Infrastructure', itdcementation: 'ITD Cementation',
+    itdcementationindia: 'ITD Cementation India', amiorganics: 'Ami Organics',
+    suvenpharma: 'Suven Pharma', suvenpharmaceuticals: 'Suven Pharmaceuticals',
+    indiabullshousing: 'Indiabulls Housing', indiabullshousingfinance: 'Indiabulls Housing Finance',
+    ibhfl: 'IBHFL', piramalenterprises: 'Piramal Enterprises', ltimindtree: 'LTIMindtree',
+    lti: 'LTI', ltinfotech: 'L&T Infotech', larsentoubroinfotech: 'Larsen & Toubro Infotech',
+    mindtree: ['Mindtree', 'is now part of'], jspl: 'JSPL', jindalsteelpower: 'Jindal Steel & Power',
+    hindustanlever: 'Hindustan Lever'
   };
 
   // Words that are never part of the answer: legal endings, and the words
@@ -981,10 +1008,20 @@
       ? '<span class="chip chip-pass">&#10003; Halal</span>'
       : '<span class="chip chip-fail">&#10007; Not halal</span>';
   }
-  function verdict(r, typed, guessed) {
+  // "(Zomato is now Eternal)": the old name as written in OLD_NAMES, and
+  // the company's NSE name without "Ltd." or "Limited".
+  function renamed(r, q) {
+    var old = q.alias === r.sym && OLD_NAMES[q.c];
+    if (!old) return '';
+    var was = typeof old === 'string' ? old : old[0];
+    var now = typeof old === 'string' ? 'is now' : old[1];
+    var name = r.name.replace(/\s+(ltd\.?|limited)$/i, '');
+    return '<p class="sc-renamed">(' + esc(was) + ' ' + now + ' ' + esc(name) + ')</p>';
+  }
+  function verdict(r, typed, guessed, q) {
     var who = '<strong>' + esc(r.name) + '</strong> (' + esc(r.sym) + ')';
     var lead = guessed ? '<p class="meta">Closest match for “' + esc(typed) + '”:</p>' : '';
-    return lead + '<p>' + chip(r) + '</p>' + (r.inIndex
+    return lead + '<p>' + chip(r) + '</p>' + renamed(r, q) + (r.inIndex
       ? '<p>' + who + ' is halal: it is in NSE\'s Shariah list, the Nifty500 Shariah index, as of ' + esc(asOf) + '.</p>'
       : '<p>' + who + ' is not halal: it did not pass the Shariah screen for NSE\'s Shariah list, the Nifty500 Shariah index, as of ' + esc(asOf) + '.</p>');
   }
@@ -1037,7 +1074,7 @@
     }
     var top = matches[0], rest = matches.slice(1);
     if (!rest.length || top.s > rest[0].s) {
-      result.innerHTML = verdict(top.r, typed, top.s < 60) + (rest.length
+      result.innerHTML = verdict(top.r, typed, top.s < 60, q) + (rest.length
         ? '<p class="meta">Also matching:</p>' + picks(rest.slice(0, 5)) : '');
     } else {
       result.innerHTML = '<p>' + matches.length + ' companies match “' + esc(typed) + '”. Which one?</p>' +
