@@ -88,7 +88,7 @@ def write(rows, as_of, n_in, n_all):
     s = re.sub(r'(data-screener-all>)\d+', rf'\g<1>{n_all}', s)
     open(h, 'w', encoding='utf-8').write(s)
     print(f'Done: {n_in} of {n_all} companies in the Nifty500 Shariah index, as of {text}.')
-    print('Check these against NSE\'s factsheet, then update the page\'s "Last updated" date and push.')
+    print('Check these against NSE\'s factsheet, then set "dateModified" in the screener page\'s structured data to today, and push.')
 
 if __name__ == '__main__':
     local = sys.argv[2] if len(sys.argv) > 2 and sys.argv[1] == '--from' else None
