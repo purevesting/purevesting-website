@@ -2,11 +2,16 @@
    PUREVESTING — SHARE CARDS
    Save at:  /assets/share-card.js
 
-   Puts a "Share as image" button under every answer box and every table.
-   Tapping it draws a picture of that box or table — logo, heading, the
-   content, its source and the page address — 1080 pixels wide, the size
-   WhatsApp and Instagram use. On a phone it opens the share sheet. On a
-   computer, which can't share files, the picture downloads instead.
+   Puts a "Share as image" button under the main answer of a page — the
+   first answer box (<div class="answer">) — and nowhere else (MAS,
+   6 Nov 2026: not under tables). Tapping it draws a picture of the answer
+   — logo, heading, the answer, its date and the page address — 1080
+   pixels wide, the size WhatsApp and Instagram use. On a phone it opens
+   the share sheet. On a computer, which can't share files, the picture
+   downloads instead.
+
+   The code that draws a table (section 4) is kept, unused, in case table
+   cards are wanted again: start-up (section 6) no longer calls it.
 
    Nothing here is needed to read the site. With JavaScript switched off
    the buttons never appear, and everything else works as normal.
@@ -17,7 +22,7 @@
      3. Text helpers — measuring and wrapping text to a width
      4. Drawing — the card itself, and the table inside it
      5. Sharing — share sheet on phones, download everywhere else
-     6. Start-up — waits for the fonts and logo, then adds the buttons
+     6. Start-up — waits for the fonts and logo, then adds the button
    ========================================================================== */
 
 (function () {
@@ -26,8 +31,8 @@
   // Very old browsers can't draw or share the card, so they get no buttons.
   if (!window.Promise || !document.fonts || !window.HTMLCanvasElement) return;
 
-  // Pages with no answer box and no table have nothing to share.
-  if (!document.querySelector('.answer, .table-scroll')) return;
+  // Pages with no answer box have nothing to share.
+  if (!document.querySelector('.answer')) return;
 
 
   /* 1. SETTINGS ========================================================== */
@@ -313,7 +318,7 @@
     var titleH = titleLines.length * titleSize * 1.12, gapAfterTitle = 40;
     var gapAfterBody = 36;
     var sourceH = sourceLines.length * sourceSize * 1.45;
-    var footerH = 26 * 1.4 + 8 + 22 * 1.4;    // address line + disclaimer line
+    var footerH = 26 * 1.4;                   // the address line
 
     var height = PAD + brandH + gapAfterBrand + titleH + gapAfterTitle +
                  body.height + gapAfterBody + sourceH + 24 + footerH + PAD;
@@ -392,7 +397,7 @@
     L.body.draw(ctx, PAD, y);
     y += L.body.height + L.gapAfterBody;
 
-    // Source, then the page address and the disclaimer pinned to the bottom
+    // Source, then the page address pinned to the bottom
     ctx.font = font(400, L.sourceSize, FONT.body);
     ctx.fillStyle = C.ink3;
     L.sourceLines.forEach(function (line) {
@@ -410,9 +415,6 @@
     ctx.font = font(700, 26, FONT.body);
     ctx.fillStyle = C.greenDeep;
     ctx.fillText(card.address, PAD, footerY);
-    ctx.font = font(400, 22, FONT.body);
-    ctx.fillStyle = C.ink3;
-    ctx.fillText('Educational content, not investment advice.', PAD, footerY + 26 * 1.4 + 8);
 
     return canvas;
   }
@@ -690,58 +692,20 @@
     after.parentNode.insertBefore(row, after.nextSibling);
   }
 
+  // One button, under the page's main answer: the first answer box. No
+  // other answer box and no table gets one (MAS, 6 Nov 2026).
   function start() {
-    var address = pageAddress();
-    var updated = lastUpdated();
-    var count = 0;
-
-    // Answer boxes
-    document.querySelectorAll('.answer').forEach(function (box) {
-      var n = ++count;
-      addButton(box, function () {
-        share({
-          titlePieces: headingPieces(),
-          titleSize: 60,
-          scales: ANSWER_SCALES,
-          body: answerBody(textOf(box)),
-          source: updated,
-          address: address
-        }, fileName(n));
-      });
-    });
-
-    // Tables. The button goes under the table's first source line if it
-    // has one. A table whose columns can't fit side by side on the card,
-    // even at the smallest text size, gets no button.
-    var measure = document.createElement('canvas').getContext('2d');
-    document.querySelectorAll('.table-scroll').forEach(function (wrapEl) {
-      var table = wrapEl.querySelector('table');
-      // data-share="none" on a table: no button (the screener's 501 rows).
-      if (!table || table.getAttribute('data-share') === 'none') return;
-      var data = readTable(table);
-      if (!tableIsShareable(data)) return;
-      if (!tableBody(data).body(measure, TABLE_SCALES[TABLE_SCALES.length - 1]).fits) return;
-      // Every source note directly under the table, collected before any
-      // button is added between them.
-      var notes = [];
-      for (var el = wrapEl.nextElementSibling;
-           el && el.classList.contains('source-note');
-           el = el.nextElementSibling) notes.push(el);
-      var n = ++count;
-      addButton(notes[0] || wrapEl, function () {
-        // Read the table at the moment of the tap, so a calculator's
-        // current numbers are what go on the card.
-        var t = tableBody(readTable(table));
-        share({
-          title: tableTitle(table),
-          titleSize: 46,
-          scales: TABLE_SCALES,
-          body: t.body,
-          fitRows: t.fitRows,
-          source: notes.length ? tableSource(notes) : updated,
-          address: address
-        }, fileName(n));
-      });
+    var box = document.querySelector('.answer');
+    if (!box) return;
+    addButton(box, function () {
+      share({
+        titlePieces: headingPieces(),
+        titleSize: 60,
+        scales: ANSWER_SCALES,
+        body: answerBody(textOf(box)),
+        source: lastUpdated(),
+        address: pageAddress()
+      }, fileName(1));
     });
   }
 

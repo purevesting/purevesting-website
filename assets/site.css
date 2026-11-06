@@ -802,6 +802,26 @@ td:first-child { font-weight: 600; }
   min-height: var(--tap);
 }
 
+/* .sources — the one closed "Sources" part at the bottom of a page (MAS,
+   6 Nov 2026), built on the same <details> as a source chip. Its links
+   sit inside sentences, so they stay ordinary inline links. */
+.sources ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.sources li { margin-bottom: 0.5rem; }
+.sources li:last-child { margin-bottom: 0; }
+
+.sources .source-body a {
+  display: inline;
+  min-height: 0;
+}
+
+/* A closed "Read more" (same <details>) can hold a few paragraphs or a
+   list; the last one shouldn't add space at the bottom of the box. */
+.source .source-body > :last-child { margin-bottom: 0; }
+
 
 /* .visually-hidden — text only a screen reader hears. Used for the label on
    the newsletter input, which has a visible placeholder but still needs a
@@ -1247,9 +1267,10 @@ td:first-child { font-weight: 600; }
 
 
 /* 18. SHARE BUTTON ========================================================
-   The "Share as image" button under every answer box and table. It is
-   added by /assets/share-card.js, so it only appears when JavaScript
-   works — which is what draws the picture in the first place.
+   The "Share as image" button under a page's main answer (only there,
+   since 6 Nov 2026). It is added by /assets/share-card.js, so it only
+   appears when JavaScript works — which is what draws the picture in the
+   first place.
    ========================================================================== */
 
 .share-row {

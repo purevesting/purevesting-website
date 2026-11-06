@@ -60,19 +60,20 @@
    again to close it. With JavaScript off nothing changes: the figure is
    plain text, and the source note is where it always was.
 
-   WHICH NOTE BELONGS TO WHICH FIGURE — normally you don't need to do
-   anything: a figure takes the first source note after its table or
-   paragraph, in the same part of the page (or, if there is none before
-   the next heading, the nearest one above it). To point a figure at
-   something else, add data-src to the figure, to its column's <th>, or to
-   its whole <table>:
-     data-src="some-id"  use the element with id="some-id" — for a note
-                         that covers several sources when a column only
-                         needs one of them (see the compare page)
+   WHICH NOTE BELONGS TO WHICH FIGURE — since 6 Nov 2026 the sources sit
+   in one closed "Sources" part at the bottom of each page, one line per
+   source, each with an id (README.md). Point a figure at its line with
+   data-src — on the figure itself, its column's <th>, its whole <table>,
+   or any element around it (a paragraph, a list, a section):
+     data-src="some-id"  use the element with id="some-id"
      data-src="none"     not a sourced figure (a calculator's answer, say),
                          so it stays plain text
-   A note with no link and no date in it isn't a source, so a figure that
-   would get one of those stays plain text too.
+   The nearest one wins: the figure's own, then its cell's, its column's,
+   its table's, then the closest element around it. A figure with no
+   data-src still takes a source note right after its table or paragraph,
+   in the same part of the page, if there is one. A note with no link and
+   no date in it isn't a source, so a figure that would get one of those
+   stays plain text too.
    ========================================================================== */
 
 (function () {
@@ -93,6 +94,10 @@
       id = th && th.getAttribute('data-src');
     }
     if (!id && table) id = table.getAttribute('data-src');
+    if (!id) {                     // a paragraph, list or section around it
+      var around = fig.closest('[data-src]');
+      if (around) id = around.getAttribute('data-src');
+    }
     return id;
   }
 
