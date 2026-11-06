@@ -280,7 +280,7 @@
          they differ most: not only in the number, but in what the number is
          measured against.</p>
 
-      <div class="table-scroll">
+      <div class="table-scroll table-stack">
         <!-- Each column heading points at its line in Sources (data-src). -->
         <table>
           <caption class="visually-hidden">Shariah screening limits under the international Shariah standard and NSE's Shariah indices</caption>
@@ -294,23 +294,23 @@
           <tbody>
             <tr>
               <td>Interest-bearing debt</td>
-              <td>Up to <span class="num">30%</span> of the market value of the company's shares</td>
-              <td>Up to <span class="num">25%</span> of total assets</td>
+              <td data-label="International standard">Up to <span class="num">30%</span> of the market value of the company's shares</td>
+              <td data-label="NSE">Up to <span class="num">25%</span> of total assets</td>
             </tr>
             <tr>
               <td>Interest-bearing deposits and investments</td>
-              <td>Up to <span class="num">30%</span> of the market value of the company's shares</td>
-              <td>No separate limit — counted in the income test below</td>
+              <td data-label="International standard">Up to <span class="num">30%</span> of the market value of the company's shares</td>
+              <td data-label="NSE">No separate limit — counted in the income test below</td>
             </tr>
             <tr>
               <td>Income from non-permissible sources</td>
-              <td>Under <span class="num">5%</span> of total income</td>
-              <td>Interest income, plus returns from interest-based investments: up to <span class="num">2.5%</span> of total income</td>
+              <td data-label="International standard">Under <span class="num">5%</span> of total income</td>
+              <td data-label="NSE">Interest income, plus returns from interest-based investments: up to <span class="num">2.5%</span> of total income</td>
             </tr>
             <tr>
               <td>Cash and money owed to the company</td>
-              <td>No test</td>
-              <td>Receivables plus cash and bank balances: up to <span class="num">90%</span> of total assets</td>
+              <td data-label="International standard">No test</td>
+              <td data-label="NSE">Receivables plus cash and bank balances: up to <span class="num">90%</span> of total assets</td>
             </tr>
           </tbody>
         </table>
@@ -391,7 +391,7 @@
         </div>
       </div>
 
-      <div class="table-scroll" aria-live="polite">
+      <div class="table-scroll table-stack" aria-live="polite">
         <table data-src="none">
           <caption class="visually-hidden">The example company's debt measured under two Shariah screening standards</caption>
           <thead>
@@ -404,13 +404,13 @@
           <tbody>
             <tr>
               <td>International standard <span class="cell-note">Debt up to 30% of market value</span></td>
-              <td class="num" id="r-aaoifi">22.0%</td>
-              <td><span class="chip chip-pass" id="c-aaoifi">&#10003; Within</span></td>
+              <td class="num" id="r-aaoifi" data-label="This company">22.0%</td>
+              <td data-label="Result"><span class="chip chip-pass" id="c-aaoifi">&#10003; Within</span></td>
             </tr>
             <tr>
               <td>NSE <span class="cell-note">Debt up to 25% of total assets</span></td>
-              <td class="num" id="r-nse">27.5%</td>
-              <td><span class="chip chip-fail" id="c-nse">&#10007; Over</span></td>
+              <td class="num" id="r-nse" data-label="This company">27.5%</td>
+              <td data-label="Result"><span class="chip chip-fail" id="c-nse">&#10007; Over</span></td>
             </tr>
           </tbody>
         </table>

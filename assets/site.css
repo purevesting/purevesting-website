@@ -5,34 +5,47 @@
    Every page links to this one file. There is no build step: this is plain
    CSS the browser reads directly.
 
+   THE LOOK (MAS, 6 Nov 2026 — the rules are in README.md): cream, green
+   and sky blue; fewer words, more drawings; light animation that switches
+   off for people who ask for less motion; two fonts; phone first.
+
    CONTENTS
      1.  Fonts
      2.  Tokens — colour, type, spacing. Edit here first.
      3.  Base
-     4.  Layout
+     4.  Layout — the wrap, sections and blue bands
      5.  Typography
      6.  Links and buttons
      7.  Header
      8.  Footer
-     9.  Cards
-     10. Tables
+     9.  Cards, icons and tiles
+     10. Tables — and how they become cards on a phone
      11. Chips: passes / fails
-     12. Answer box, contents list, byline, sources
+     12. Answer box, contents, byline, Read more, Sources, the ask line
      13. Newsletter form
      14. Motion
      15. Bigger screens
+     16. Home page pieces
+     17. Charts: bars and squares
+     18. Worked example (methodology)
+     19. Share button
+     20. Question and feedback forms
+     21. Tappable figures
+     22. The app
+     23. Calculators — SIP and loan
+     24. Screener
+     25. Stop the genocide
+     26. Hub pages
    ========================================================================== */
 
 
 /* 1. FONTS ================================================================
-   The font files live in your own repo at /assets/fonts/ rather than loading
-   from Google's servers. Three reasons: the browser makes one less
-   connection (worth roughly 200ms on a slow in-app browser), you can
-   preload them, and the files never change under you.
+   Two fonts (MAS, 6 Nov 2026): Bricolage Grotesque for headings, Plus
+   Jakarta Sans for text and numbers. Both live in /assets/fonts/ rather
+   than on Google's servers: one less connection for the browser, they can
+   be preloaded, and the files never change under you.
 
-   Three files, not four: Bricolage and Plus Jakarta are "variable" fonts —
-   one file holds every weight from 200 to 800, so 400, 600 and 800 all come
-   out of a single download.
+   Both are "variable" fonts — one file holds every weight from 200 to 800.
    ========================================================================== */
 
 @font-face {
@@ -51,19 +64,11 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'DM Mono';
-  src: url('/assets/fonts/dm-mono-latin-400.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 
 /* 2. TOKENS ===============================================================
    Every colour and font is named once here, then referenced below as
    var(--name). Change a value here and it changes everywhere it is used.
-   This is the block to edit when you want the site to look different.
+   README.md lists them with what each is for.
 
    Dark mode later is a copy of this block with different values inside a
    media query — that is the whole reason nothing below holds a hex code.
@@ -74,9 +79,9 @@
   color-scheme: light;   /* stops Android Chrome force-inverting the site */
 
   /* --- Surfaces --- */
-  --bone:   #FAF7F0;   /* the page */
-  --white:  #FFFFFF;   /* cards and data tables */
-  --forest: #123B30;   /* footer and video cards ONLY, nowhere else */
+  --bone:   #FAF7F0;   /* the cream page */
+  --white:  #FFFFFF;   /* cards, tables, the search box */
+  --forest: #123B30;   /* the footer and the videos band ONLY */
 
   /* --- Text --- */
   --ink:    #1A1814;   /* body text */
@@ -86,14 +91,25 @@
   /* --- Lines --- */
   --line:   #E7E1D4;
 
-  /* --- Green: the brand, and "passes the screen". Never "good returns". --- */
-  --green:       #0E9E6E;   /* chips, graphics, icons, large headings */
-  --green-deep:  #0A7F58;   /* white text on green, and green text links */
+  /* --- Green: the brand, buttons, links and "Halal". Never "good
+     returns". --- */
+  --green:       #0E9E6E;   /* "Halal", passing squares, green drawings */
+  --green-deep:  #0A7F58;   /* buttons, and green text links */
   --green-tint:  #D7F2E6;   /* background of a "passes" chip */
-  --green-ink:   #0A5B41;   /* text sitting on green-tint */
+  --green-ink:   #0A5B41;   /* text on green-tint, and links on a blue band */
+
+  /* --- Sky blue: the third colour (MAS, 6 Nov 2026). Section bands,
+     icons and info parts. Checked against the green for colour-blind
+     readers (they stay far apart) and for contrast. --- */
+  --sky:       #2A9AE0;   /* drawings and chart bars */
+  --sky-deep:  #0B6FAA;   /* blue icons and small blue words */
+  --sky-ink:   #0C4766;   /* headings and text on a blue band */
+  --sky-tint:  #E4F2FB;   /* blue bands and info boxes */
+  --sky-soft:  #C8E6F8;   /* lines on a blue band, empty chart tracks */
 
   /* --- Amber: a highlighter, never a fill --- */
   --amber:  #F5A524;
+  --amber-soft: #FDE1AE;  /* the highlighter wash behind a word */
 
   /* --- Red: ONLY for the cost of a loan, on /loan-calculator/ (MAS,
      6 Oct). Never on investment figures. --- */
@@ -101,29 +117,30 @@
   --danger-tint: #FCE4E1;
   --danger-ink:  #8F2219;
 
-  /* --- Derived tokens (mine, not in your list — change freely) ---
-     Your tokens have no colour for text on the forest footer, and no softer
-     amber for the wash behind a highlighted word. These fill those gaps. */
+  /* --- Text on the dark forest areas --- */
   --forest-text:   #F2EFE6;   /* text on --forest */
   --forest-text-2: #A9BDB5;   /* secondary text on --forest */
-  --amber-soft:    #FDE1AE;   /* the highlighter wash behind a word */
 
   /* --- Fonts ---
      Fallbacks come after each comma. If a font file fails to load, the
-     browser walks down the list instead of showing nothing. No serif. */
+     browser walks down the list instead of showing nothing. */
   --font-display: 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-body:    'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono:    'DM Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
-  /* --- Spacing and shape ---
+  /* --- Spacing, shape and depth ---
      rem = a multiple of the browser's base text size, normally 16px. Using
      rem instead of px means the layout respects a reader who has made their
      text larger. */
   --wrap:      64rem;     /* widest the content ever gets */
   --section:   3rem;      /* vertical air between big blocks */
-  --radius:    12px;
-  --radius-sm: 8px;
+  --radius:    18px;      /* cards, tables, boxes */
+  --radius-sm: 12px;      /* smaller boxes inside them */
   --tap:       44px;      /* minimum height of anything tappable */
+  --shadow-sm: 0 1px 2px rgba(12, 71, 102, 0.05), 0 2px 10px rgba(12, 71, 102, 0.05);
+  --shadow:    0 2px 6px rgba(12, 71, 102, 0.06), 0 12px 32px rgba(12, 71, 102, 0.10);
+
+  /* --- Motion: quick, and settling gently at the end --- */
+  --ease:  cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 
@@ -135,6 +152,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;   /* stop iOS inflating text sideways */
+  -webkit-tap-highlight-color: transparent;  /* buttons show their own tap */
 }
 
 body {
@@ -155,9 +173,14 @@ img {
   height: auto;
 }
 
+svg { flex-shrink: 0; }
+
+::selection { background: var(--sky-soft); color: var(--ink); }
+
 
 /* 4. LAYOUT ===============================================================
-   Two classes do nearly all the layout work on this site.
+   Two classes do nearly all the layout work on this site, plus the blue
+   band that gives a page its rhythm.
    ========================================================================== */
 
 /* .wrap — centres content, caps its width, keeps it off the screen edge.
@@ -182,6 +205,33 @@ img {
   padding-top: 0;
 }
 
+/* .band — a full-width sky-blue section (README.md, "The look"). Use it to
+   give a page rhythm: cream, then blue, then cream. Never two in a row.
+   A band has its own colour, so the sections either side of it keep their
+   full padding. .band-deep is the dark forest one (the home page's
+   videos). */
+.band {
+  background: var(--sky-tint);
+}
+
+.band-deep {
+  background: var(--forest);
+  color: var(--forest-text);
+}
+
+.section + .band,
+.band + .section,
+.section + .band-deep,
+.band-deep + .section {
+  padding-top: var(--section);
+}
+
+/* Text on a blue band: headings in the deepest blue, links in the darker
+   green so they stay easy to read on blue. */
+.band h2,
+.band h3 { color: var(--sky-ink); }
+.band a:not(.btn):not(.tile):not(.card) { color: var(--green-ink); }
+
 /* .grid — a stack on mobile. Add .grid-2 or .grid-3 alongside it and
    section 15 turns it into that many columns once the screen is wide. */
 .grid {
@@ -191,8 +241,8 @@ img {
 
 
 /* 5. TYPOGRAPHY ===========================================================
-   Bricolage Grotesque 800 for H1 and H2 only. Plus Jakarta Sans for H3 and
-   everything else. DM Mono for figures. The sizes here are the 390px phone
+   Bricolage Grotesque 800 for H1 and H2. Plus Jakarta Sans for H3 and
+   everything else, numbers included. The sizes here are the 390px phone
    sizes; section 15 scales them up.
    ========================================================================== */
 
@@ -201,36 +251,35 @@ h1, h2 {
   font-weight: 800;
   letter-spacing: -0.02em;
   margin: 0 0 0.5em;
+  text-wrap: balance;
 }
 
 h1 {
   font-size: 2.25rem;
-  line-height: 1.0;
+  line-height: 1.02;
 }
 
 h2 {
   font-size: 1.625rem;
-  line-height: 1.05;
+  line-height: 1.08;
   margin-top: 2.5rem;    /* for an H2 that follows text inside a section */
 }
 
 /* An H2 that OPENS a section doesn't need that top margin — the section's
-   own padding already provides the space, and the two together left a big
-   empty band above every heading. Headings mid-section keep their margin. */
+   own padding already provides the space. Headings mid-section keep it. */
 .wrap > h2:first-child,
 .wrap > h3:first-child {
   margin-top: 0;
 }
 
-/* Same idea at the other end: the last thing in a section shouldn't add its
-   own bottom margin on top of the section's padding. */
+/* The last thing in a section adds no bottom margin of its own. */
 .wrap > *:last-child {
   margin-bottom: 0;
 }
 
 h3, h4 {
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.3;
   margin: 2rem 0 0.5em;
 }
@@ -250,17 +299,30 @@ p {
   max-width: 34em;
 }
 
-/* .t-green — a large heading in brand green. Only ever on H1 or H2: this
+/* .t-green — a large heading word in brand green. Only on H1 or H2: this
    green is not readable at small sizes. */
 .t-green { color: var(--green); }
 
 /* .muted — secondary text anywhere. */
 .muted { color: var(--ink-2); }
 
-/* .meta — dates, captions, read time. */
+/* .meta — dates, captions. */
 .meta {
   font-size: 0.85rem;
   color: var(--ink-3);
+}
+
+/* .eyebrow — a few words above a heading, in blue. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sky-deep);
 }
 
 /* .mark — the amber highlighter. A wash behind a word, not a filled box,
@@ -271,21 +333,28 @@ p {
 }
 
 /* .num — wrap every figure: <span class="num">6.36%</span>
-   tabular-nums makes every digit the same width, so figures stacked in a
-   column line up under each other.
+   Same-width digits (tabular-nums), so figures stacked in a column line up
+   under each other. Plus Jakarta Sans has them; no third font needed.
 
    Deliberately carries NO colour rule, and must never be given one.
    Colouring 12.25% green and 2.80% red is a verdict written in CSS. */
 .num {
-  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
-  font-size: 0.95em;
+}
+
+/* .big-num — one big number on its own (a headline figure). Ordinary
+   proportional digits look better at this size than same-width ones. */
+.big-num {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-variant-numeric: proportional-nums;
+  letter-spacing: -0.03em;
 }
 
 
 /* 6. LINKS AND BUTTONS ====================================================
-   Everything tappable is at least 44px tall, and nothing depends on hover,
-   because a phone has no hover.
+   Everything tappable is at least 44px tall, nothing depends on hover
+   (a phone has no hover), and every button gives way a little when tapped.
    ========================================================================== */
 
 a {
@@ -303,31 +372,54 @@ a:hover { text-decoration-thickness: 2px; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   min-height: var(--tap);
   padding: 0.6rem 1.35rem;
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 1.2;
   color: var(--white);
   background: var(--green-deep);
   border: 1px solid var(--green-deep);
   border-radius: 999px;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 120ms ease, background-color 120ms ease;
+  box-shadow: 0 1px 2px rgba(10, 91, 65, 0.18), 0 4px 12px rgba(10, 127, 88, 0.18);
+  transition: transform 120ms var(--ease), background-color 150ms ease, box-shadow 150ms ease;
 }
 
-.btn:hover  { background: var(--green-ink); }
-.btn:active { transform: scale(0.98); }      /* tap feedback, works on touch */
+.btn:hover { background: var(--green-ink); text-decoration: none; }
+.btn svg { width: 20px; height: 20px; }
 
 /* .btn-quiet — the same shape, outlined instead of filled. */
 .btn-quiet {
   color: var(--green-deep);
-  background: transparent;
+  background: var(--white);
   border-color: var(--line);
+  box-shadow: none;
 }
 
-.btn-quiet:hover { background: var(--white); }
+.btn-quiet:hover { background: var(--white); border-color: var(--green); }
+
+/* .btn-light — a white button on a dark or blue band. */
+.btn-light {
+  color: var(--forest);
+  background: var(--white);
+  border-color: var(--white);
+  box-shadow: none;
+}
+
+.btn-light:hover { background: var(--bone); }
+
+/* The tap: anything pressable gives way a little under the thumb. */
+.btn:active,
+.tile:active,
+.card-link:active,
+.switch-btn:active,
+.share-btn:active,
+.toc li a:active,
+.chip-link:active { transform: scale(0.97); }
 
 /* Keyboard users must be able to see where they are. Do not remove. */
 a:focus-visible,
@@ -341,9 +433,9 @@ input:focus-visible {
 
 
 /* 7. HEADER ===============================================================
-   Pasted identically into every page. The nav wraps onto a second line by
-   itself on a narrow phone — no menu button, no JavaScript, so Google and
-   a screen reader always see the links.
+   Pasted identically into every page. No menu button and no JavaScript
+   needed: Google and a screen reader always see the links. site.js only
+   marks the menu word for the page you are on.
    ========================================================================== */
 
 .site-header {
@@ -357,11 +449,11 @@ input:focus-visible {
   align-items: center;
   gap: 0 1.25rem;
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
 }
 
-/* The icon is your real logo file, /assets/img/logo.svg. The word
-   "Purevesting" next to it is still live text, not part of the image, so it
+/* The icon is the real logo file, /assets/img/logo.svg. The word
+   "Purevesting" next to it is live text, not part of the image, so it
    stays sharp and Google can read it. */
 .site-logo {
   display: inline-flex;
@@ -374,20 +466,18 @@ input:focus-visible {
   letter-spacing: -0.03em;
   color: var(--ink);
   text-decoration: none;
-  margin-right: auto;          /* pushes the nav to the far side */
+  margin-right: auto;          /* pushes the menu to the far side */
 }
 
 .site-logo img {
   width: 28px;
   height: 28px;
-  flex-shrink: 0;              /* never lets the nav squash the icon */
+  flex-shrink: 0;              /* never lets the menu squash the icon */
 }
 
-/* The green dot after the wordmark, back from the first preview (MAS).
-   Drawn here rather than in the HTML, so the header stays identical on
-   every page. The negative margin cancels most of the gap above, so the
-   dot sits right after the "g"; translateY moves it from the middle of the
-   line down onto the baseline, like a full stop. */
+/* The green dot after the wordmark, sitting on the baseline like a full
+   stop (MAS). Drawn here rather than in the HTML, so the header stays
+   identical on every page. */
 .site-logo::after {
   content: "";
   flex-shrink: 0;
@@ -400,15 +490,14 @@ input:focus-visible {
 }
 
 /* On a phone the five menu words get a row of their own under the logo,
-   spread evenly across it, on one line. Slightly smaller text is what lets
-   all five fit even on a 360px phone. If they ever don't fit (a narrower
-   phone, or text made bigger in the phone's settings), this row scrolls
-   sideways by itself — the page never does. Section 15 puts the words
-   back beside the logo on wider screens. */
+   spread across it, on one line. If they ever don't fit (a narrower phone,
+   or text made bigger in the phone's settings), this row scrolls sideways
+   by itself — the page never does. Section 15 puts the words beside the
+   logo on wider screens. */
 .site-nav {
   display: flex;
   flex-wrap: nowrap;
-  gap: 0 0.5rem;
+  gap: 0 0.25rem;
   width: 100%;
   justify-content: space-between;
   overflow-x: auto;
@@ -418,12 +507,13 @@ input:focus-visible {
 .site-nav::-webkit-scrollbar { display: none; }
 
 .site-nav a {
+  position: relative;
   display: inline-flex;
   flex: none;                  /* a word never squashes or breaks */
   align-items: center;
   min-height: var(--tap);
   font-size: 0.8125rem;        /* 13px on phones; 15px from tablets up */
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink-2);
   text-decoration: none;
   white-space: nowrap;
@@ -431,14 +521,30 @@ input:focus-visible {
 
 .site-nav a:hover { color: var(--ink); }
 
+/* The word for the page you are on (site.js marks it): darker, with a
+   short blue bar under it. */
+.site-nav a[aria-current="page"],
+.site-nav .is-current > a:first-child { color: var(--ink); }
+
+.site-nav .is-current > a:first-child::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--sky);
+}
+
 /* In a row that can scroll, an outline drawn outside a link would be cut
    off, so on a phone the keyboard outline sits just inside the link. */
 .site-nav a:focus-visible { outline-offset: -2px; }
 
 /* The drop-down lists. On a phone the wrapper around each word disappears
-   ("display: contents"), so the five words sit in one row, and the lists
-   and the computer-only items stay hidden: a tap opens the word's own
-   page. Section 15 switches the lists on for screens with a mouse. */
+   ("display: contents"), so the words sit in one row, and the lists and
+   the computer-only items stay hidden: a tap opens the word's own page.
+   Section 15 switches the lists on for screens with a mouse. */
 .nav-item { display: contents; }
 .nav-menu,
 .nav-item.nav-desktop { display: none; }
@@ -453,9 +559,9 @@ input:focus-visible {
   display: inline-flex;
   align-items: center;
   min-height: var(--tap);
-  padding: 0 0.8rem;
+  padding: 0 0.85rem;
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--white);
   text-decoration: none;
   white-space: nowrap;
@@ -478,8 +584,8 @@ input:focus-visible {
 
 
 /* 8. FOOTER ===============================================================
-   The one dark area of the site. Holds the newsletter form, the navigation
-   and the disclaimer that must appear on every page.
+   The one dark area at the bottom of every page: what Purevesting is, the
+   newsletter sign-up, a few links, and the one disclaimer line.
    ========================================================================== */
 
 .site-footer {
@@ -491,7 +597,7 @@ input:focus-visible {
 
 .site-footer .wrap {
   padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
 }
 
 .site-footer h2 {
@@ -507,9 +613,8 @@ input:focus-visible {
 
 .site-footer a:hover { text-decoration: underline; }
 
-/* The footer's Subscribe button keeps its button colours: the general
-   footer-link rule above would otherwise turn its text cream and
-   underline it on hover. */
+/* The footer's buttons keep their button colours: the general footer-link
+   rule above would otherwise turn their text cream. */
 .site-footer .btn { color: var(--white); }
 .site-footer .btn:hover { text-decoration: none; }
 
@@ -527,7 +632,7 @@ input:focus-visible {
   font-weight: 600;
 }
 
-/* The one line saying what Purevesting is, just above the disclaimer. */
+/* The one line saying what Purevesting is. */
 .footer-about {
   max-width: 44em;
   margin: 0 0 1.25rem;
@@ -550,17 +655,24 @@ input:focus-visible {
   line-height: 1.6;
 }
 
+.disclaimer a { text-decoration: underline; text-underline-offset: 3px; }
 
-/* 9. CARDS ================================================================ */
+
+/* 9. CARDS, ICONS AND TILES =============================================== */
 
 .card {
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .card h3 { margin-top: 0; }
+.card > :last-child { margin-bottom: 0; }
+
+/* A card on a blue band gets a blue edge instead of the cream one. */
+.band .card { border-color: var(--sky-soft); }
 
 /* .card-video — the only place other than the footer where dark is allowed.
    The whole card is a link, so the underline that every other link gets has
@@ -574,22 +686,121 @@ input:focus-visible {
 
 .card-video a { color: var(--forest-text); }
 
+/* .icon — a small line drawing in a light blue circle (README.md, "The
+   look"): <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+   …</svg></span>. The drawing uses stroke="currentColor", so this colour
+   is the colour of its lines. */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  color: var(--sky-deep);
+  background: var(--sky-tint);
+}
+
+.icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* On a blue band the circle is white, so it still shows. */
+.band .icon { background: var(--white); }
+
+/* A green icon — only where it means "Halal", or sits on a button. */
+.icon-green { color: var(--green-deep); background: var(--green-tint); }
+
+/* .card-icon — a card with an icon at its top (hub pages, "What people
+   do"). */
+.card-icon > .icon { margin-bottom: 0.75rem; }
+
+/* .tile — a big tappable question with its icon (home page, hub pages).
+   The whole tile is the link. */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  min-height: 8.25rem;
+  padding: 1rem;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  transition: transform 150ms var(--ease), box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.tile:hover {
+  border-color: var(--sky);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.tile-q {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+/* The small arrow in the corner of a tile. */
+.tile-go {
+  position: absolute;
+  right: 0.85rem;
+  top: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--sky);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 150ms var(--ease);
+}
+
+.tile:hover .tile-go { transform: translateX(3px); }
+
 
 /* 10. TABLES ==============================================================
    Markup shape — the scroll box is what stops a wide table dragging the
-   whole page sideways on a phone:
+   whole page sideways:
 
      <div class="table-scroll">
        <table> ... </table>
      </div>
+
+   On a phone, a table whose box also has "table-stack" turns into a stack
+   of small cards, one per row, each cell with its column's name above it
+   (data-label on each <td>). So nothing slides sideways. On a computer it
+   stays a normal table.
    ========================================================================== */
 
 .table-scroll {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  margin: 0 0 1.5rem;
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
 }
 
 table {
@@ -606,10 +817,13 @@ th, td {
   border-bottom: 1px solid var(--line);
 }
 
+/* The heading row: blue, so the table reads at a glance. */
 th {
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--ink-3);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--sky-ink);
+  background: var(--sky-tint);
+  border-bottom-color: var(--sky-soft);
   white-space: nowrap;      /* stops column headings breaking mid-word */
 }
 
@@ -618,7 +832,6 @@ tbody tr:last-child td { border-bottom: 0; }
 /* Figures go right-aligned so decimal points line up down the column.
    Put class="num" on the <th> as well as on each <td>. */
 th.num, td.num {
-  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   text-align: right;
   white-space: nowrap;
@@ -646,9 +859,111 @@ td:first-child { font-weight: 600; }
   box-shadow: 1px 0 0 var(--line);
 }
 
+.table-scroll thead th:first-child { background: var(--sky-tint); }
+
 /* Wide enough that a fund's name wraps onto two or three lines on a phone,
    not five — the figures beside it scroll instead. */
 .table-scroll tbody tr:not(.fig-row) > td:first-child { min-width: 9rem; }
+
+/* THE PHONE VERSION: a stack of cards. */
+@media (max-width: 45.99em) {
+
+  .table-stack {
+    overflow: visible;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .table-stack table,
+  .table-stack tbody,
+  .table-stack tr,
+  .table-stack td {
+    display: block;
+    width: 100%;
+  }
+
+  /* The heading row is still there for screen readers, just not drawn:
+     each cell carries its heading with it instead. */
+  .table-stack thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .table-stack tbody { display: grid; gap: 0.6rem; }
+
+  .table-stack tbody tr {
+    padding: 0.85rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .table-stack td,
+  .table-stack tbody tr:not(.fig-row) > td:first-child {
+    position: static;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: none;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .table-stack td + td {
+    margin-top: 0.55rem;
+    padding-top: 0.55rem;
+    border-top: 1px solid var(--line);
+  }
+
+  /* The column's name above each cell, in small blue letters. */
+  .table-stack td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 0.1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--sky-deep);
+  }
+
+  /* The first cell is the card's title, so it needs no label. */
+  .table-stack td:first-child { font-size: 1rem; font-weight: 700; }
+  .table-stack td:first-child::before { display: none; }
+
+  .table-stack td.num > button.fig {
+    display: inline;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  /* A tapped figure's source opens under its card. */
+  .table-stack tr.fig-row {
+    margin-top: -0.35rem;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .table-stack tr.fig-row .fig-pop { position: static; max-width: none; margin: 0; }
+
+  /* A table of figures only (the calculators' year by year) stays a table
+     on a phone, just tighter, so its columns fit side by side. */
+  .table-compact table { font-size: 0.8rem; }
+  .table-compact th,
+  .table-compact td { padding: 0.55rem 0.5rem; }
+  .table-compact th { white-space: normal; }
+  .table-compact tbody tr:not(.fig-row) > td:first-child { min-width: 0; position: static; box-shadow: none; }
+  .table-compact thead th:first-child { position: static; box-shadow: none; }
+}
 
 
 /* 11. CHIPS: PASSES / FAILS ===============================================
@@ -661,10 +976,10 @@ td:first-child { font-weight: 600; }
   display: inline-flex;
   align-items: center;
   gap: 0.35em;
-  padding: 0.2em 0.6em;
+  padding: 0.25em 0.7em;
   border-radius: 999px;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
 }
 
@@ -673,8 +988,8 @@ td:first-child { font-weight: 600; }
   color: var(--green-ink);
 }
 
-/* Fail is deliberately neutral, not red. There is no red in this palette,
-   and "fails a screening rule" is not the same thing as "bad". */
+/* Fail is deliberately neutral, not red. "Fails a screening rule" is not
+   the same thing as "bad". */
 .chip-fail {
   background: var(--bone);
   color: var(--ink-2);
@@ -682,57 +997,102 @@ td:first-child { font-weight: 600; }
 }
 
 
-/* 12. ANSWER BOX, CONTENTS, BYLINE, SOURCES =============================== */
+/* 12. ANSWER BOX, CONTENTS, BYLINE, READ MORE, SOURCES, THE ASK LINE ====== */
 
-/* .answer — the three-sentence real answer, sitting above everything else
-   on an instrument page. The green edge marks it as the site's answer. */
+/* .answer — the real answer in 2 or 3 short lines, right under the H1. A
+   white card with the green edge that marks the site's answer. */
 .answer {
+  position: relative;
   background: var(--white);
   border: 1px solid var(--line);
-  border-left: 4px solid var(--green);
-  border-radius: var(--radius-sm);
-  padding: 1.25rem;
+  border-radius: var(--radius);
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
   margin: 1.5rem 0;
+  box-shadow: var(--shadow);
+  max-width: 44rem;
 }
 
+.answer::before {              /* the green edge */
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  bottom: 1rem;
+  width: 5px;
+  border-radius: 0 5px 5px 0;
+  background: var(--green);
+}
+
+.answer p { font-size: 1.05rem; }
 .answer p:last-child { margin-bottom: 0; }
 
-/* .toc — the contents list, on any page over roughly 800 words. */
+/* .toc — "On this page": the sections as blue chips, easy to tap. */
 .toc {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 1rem 0;
   margin: 1.5rem 0;
+  padding: 0;
+}
+
+.toc > strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
 }
 
 .toc ol {
-  margin: 0.25rem 0 0;
-  padding-left: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-/* Contents links are navigation, not prose, so they get a real tap target.
-   Inline links inside a paragraph deliberately do NOT — stretching those to
-   44px would pull the lines of text apart. */
 .toc li a {
   display: inline-flex;
   align-items: center;
   min-height: var(--tap);
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--sky-ink);
+  background: var(--sky-tint);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background-color 150ms ease, transform 120ms var(--ease);
 }
 
-/* .byline — photo, name, and the last-updated date. */
+.toc li a:hover { background: var(--sky-soft); }
+
+/* .byline — MAS's photo, name and the date, nothing else (README.md), as
+   a small white pill. The photo has a sky-blue ring. */
 .byline {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  margin: 1.5rem 0;
+  margin: 0.25rem 0 1.5rem;
+  padding: 0.35rem 1.1rem 0.35rem 0.35rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  line-height: 1.35;
 }
 
 .byline img {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   flex-shrink: 0;
+  box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--sky);
+  margin: 2px;
 }
+
+.byline .meta { font-size: 0.8rem; }
 
 /* The name in a byline links to the About page — Google looks for a page
    about the person behind the writing. It keeps the text colour, with a
@@ -742,22 +1102,29 @@ td:first-child { font-weight: 600; }
   text-decoration-color: var(--line);
 }
 
-/* The About page's bigger version of the byline photo. */
+/* The About page's bigger version: no pill, a bigger photo. */
+.byline.founder {
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+
 .founder img {
   width: 96px;
   height: 96px;
 }
 
-/* .source-note — the sources line under a table or a figure. */
+/* .source-note — a sources line under a table or a figure. */
 .source-note {
   font-size: 0.82rem;
   color: var(--ink-3);
   margin-top: 0.6rem;
 }
 
-/* .source — a tappable source chip. Tap it and the exact wording of the
-   source opens underneath. Built on <details> and <summary>, which open on
-   tap with no JavaScript at all — so it still works with JavaScript off.
+/* .source — "Read more", "What the fatwa says" and the Sources part: a
+   blue info part that opens on tap. Built on <details> and <summary>,
+   which open with no JavaScript at all.
 
    It sits between paragraphs, never inside one: <details> is not allowed
    inside a <p>, and putting it there produces broken HTML. */
@@ -769,30 +1136,43 @@ td:first-child { font-weight: 600; }
 .source summary {
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
   min-height: var(--tap);        /* tappable on a phone */
   list-style: none;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--green-deep);
-  text-decoration: underline dotted;
-  text-underline-offset: 3px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--sky-deep);
 }
 
 .source summary::-webkit-details-marker { display: none; }
 
-.source[open] > summary { font-weight: 600; }
+/* The + in a blue circle before each one; it turns into × when open. */
+.source summary::before {
+  content: "";
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--sky-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B6FAA' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M12 6.5v11M6.5 12h11'/%3E%3C/svg%3E") center / 0.95rem no-repeat;
+  transition: transform 200ms var(--ease), background-color 150ms ease;
+}
+
+.source summary:hover::before { background-color: var(--sky-soft); }
+.source[open] > summary::before { transform: rotate(45deg); }
 
 .source .source-body {
   display: block;
-  margin: 0.5rem 0;
-  padding: 0.6rem 0.8rem;
-  background: var(--white);
-  border: 1px solid var(--line);
+  margin: 0.35rem 0 0.75rem;
+  padding: 0.85rem 1rem;
+  background: var(--sky-tint);
   border-radius: var(--radius-sm);
-  font-size: 0.82rem;
-  color: var(--ink-2);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--sky-ink);
 }
+
+.source .source-body a { color: var(--green-ink); }
 
 /* The "Read the fatwa" link at the end of each chip is what gets tapped
    most on a phone, so it gets a full-size tap target too. */
@@ -803,29 +1183,86 @@ td:first-child { font-weight: 600; }
 }
 
 /* .sources — the one closed "Sources" part at the bottom of a page (MAS,
-   6 Nov 2026), built on the same <details> as a source chip. Its links
-   sit inside sentences, so they stay ordinary inline links. */
+   6 Nov 2026): a white box with a blue book icon. Its links sit inside
+   sentences, so they stay ordinary inline links. */
+.sources {
+  max-width: 46rem;
+  margin: 0;
+  padding: 0.25rem 1rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.sources > summary { color: var(--ink-2); }
+
+.sources > summary::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B6FAA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4.5A1.5 1.5 0 0 1 6.5 3H18v15H6.5A1.5 1.5 0 0 0 5 19.5z'/%3E%3Cpath d='M5 19.5A1.5 1.5 0 0 0 6.5 21H18'/%3E%3Cpath d='M9 7.5h5'/%3E%3C/svg%3E");
+  background-size: 0.95rem;
+}
+
+.sources[open] > summary::before { transform: none; background-color: var(--sky-soft); }
+
+.sources > .source-body {
+  margin: 0 0 0.85rem;
+  background: none;
+  padding: 0.25rem 0 0;
+  color: var(--ink-2);
+}
+
 .sources ul {
   margin: 0;
   padding-left: 1.1rem;
 }
 
-.sources li { margin-bottom: 0.5rem; }
+.sources li { margin-bottom: 0.6rem; }
 .sources li:last-child { margin-bottom: 0; }
 
 .sources .source-body a {
   display: inline;
   min-height: 0;
+  color: var(--green-deep);
 }
 
 /* A closed "Read more" (same <details>) can hold a few paragraphs or a
    list; the last one shouldn't add space at the bottom of the box. */
 .source .source-body > :last-child { margin-bottom: 0; }
 
+/* .ask-line — "Still have a doubt? Ask me", the friendly line at the end
+   of every article: a blue bubble with MAS's photo. */
+.ask-line {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: 34rem;
+  margin: 2rem 0 0;
+  padding: 0.7rem 1.1rem 0.7rem 0.7rem;
+  font-weight: 700;
+  color: var(--sky-ink);
+  background: var(--sky-tint);
+  border-radius: 999px;
+}
 
-/* .visually-hidden — text only a screen reader hears. Used for the label on
-   the newsletter input, which has a visible placeholder but still needs a
-   real label to be accessible. */
+.ask-line::before {
+  content: "";
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--white) url("/assets/img/byline-96.webp") center / cover no-repeat;
+  box-shadow: 0 0 0 2px var(--white);
+}
+
+.ask-line a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  color: var(--green-ink);
+}
+
+.band .ask-line { background: var(--white); }
+
+/* .visually-hidden — text only a screen reader hears. */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -860,8 +1297,7 @@ td:first-child { font-weight: 600; }
 
 .subscribe .btn { flex: 0 0 auto; }
 
-/* The small print right under a sign-up form (the newsletter page's
-   privacy line) needs a little air above it. */
+/* The small print right under a sign-up form needs a little air above it. */
 .subscribe + p { margin-top: 0.6rem; }
 
 /* The Beehiiv form on /newsletter/ arrives a moment after the page loads.
@@ -871,15 +1307,24 @@ td:first-child { font-weight: 600; }
 
 
 /* 14. MOTION ==============================================================
-   Everything is visible by default. The .js class is added to <html> by one
-   line of JavaScript, so if JavaScript fails or is switched off, nothing
-   hides and nothing animates. Text never waits on an animation.
+   Light and quick (README.md, "The look"). Everything is visible by
+   default: the .js class is added to <html> by one line of JavaScript, so
+   if JavaScript fails or is switched off, nothing hides and nothing
+   animates. Text never waits on an animation.
+
+   - A section marked "reveal" fades up the first time it scrolls into
+     view, and its cards, tiles and bars rise one after another (site.js
+     numbers them: --i).
+   - Bars and squares fill in when they scroll into view (section 17).
+   - Numbers marked data-count count up (site.js).
+   - Buttons give way a little when tapped (section 6).
+   All of it switches off when the phone asks for less motion.
    ========================================================================== */
 
 .js .reveal {
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 200ms ease-out, transform 200ms ease-out;
+  transform: translateY(14px);
+  transition: opacity 350ms var(--ease), transform 350ms var(--ease);
 }
 
 .js .reveal.is-visible {
@@ -887,13 +1332,40 @@ td:first-child { font-weight: 600; }
   transform: none;
 }
 
-/* Some people set their phone to reduce motion. Honour it. */
+.js .reveal :is(.card, .tile, .bar-row, .step) {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 400ms var(--ease), transform 400ms var(--ease),
+              box-shadow 200ms ease, border-color 200ms ease;
+  transition-delay: calc(80ms + var(--i, 0) * 60ms);
+}
+
+.js .reveal.is-visible :is(.card, .tile, .bar-row, .step) {
+  opacity: 1;
+  transform: none;
+}
+
+/* Once risen, a tile lifts on hover without waiting for its delay. */
+.js .reveal.is-visible .tile:hover { transform: translateY(-2px); transition-delay: 0s; }
+.js .reveal.is-visible .tile:active { transform: scale(0.97); transition-delay: 0s; }
+
+/* Some people set their phone to reduce motion. Honour it everywhere. */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
   }
-  .js .reveal { opacity: 1; transform: none; }
+  .js .reveal,
+  .js .reveal :is(.card, .tile, .bar-row, .step) { opacity: 1; transform: none; }
+}
+
+/* A printout shows everything. */
+@media print {
+  .js .reveal,
+  .js .reveal :is(.card, .tile, .bar-row, .step) { opacity: 1; transform: none; }
 }
 
 
@@ -915,12 +1387,19 @@ td:first-child { font-weight: 600; }
   .standfirst { font-size: 1.25rem; }
 
   .card   { padding: 1.75rem; }
-  .answer { padding: 1.75rem; }
+  .answer { padding: 1.6rem 1.75rem 1.6rem 2rem; }
+  .answer p { font-size: 1.12rem; }
 
   .grid-2 { grid-template-columns: 1fr 1fr; }
 
+  .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .tile { min-height: 9.5rem; padding: 1.25rem; }
+  .tile-q { font-size: 1.1rem; }
+
   /* Wide enough for the menu to sit beside the logo again. It no longer
      needs to scroll, and must not: the drop-down lists hang below it. */
+  .site-header .wrap { padding-bottom: 0.5rem; }
+
   .site-nav {
     width: auto;
     gap: 0 1.1rem;
@@ -931,23 +1410,23 @@ td:first-child { font-weight: 600; }
   .site-nav a { font-size: 0.95rem; }
   .site-nav a:focus-visible { outline-offset: 2px; }
 
-  /* The Subscribe pill moves from the logo row into the menu, just before
-     "Stop the genocide": the same shape as that pill, in green. */
+  /* The Subscribe pill moves from the logo row into the menu. */
   .pill-phone { display: none; }
   .nav-item.nav-desktop { display: contents; }
   .site-nav .nav-subscribe > a {
-    padding: 0 0.8rem;
+    padding: 0 0.9rem;
     color: var(--white);
     background: var(--green-deep);
     border-radius: 999px;
-    min-height: 34px;
+    min-height: 36px;
     align-self: center;
   }
   .site-nav .nav-subscribe > a:hover { color: var(--white); background: var(--green-ink); }
+  .site-nav .nav-subscribe > a::before { display: none; }
 
   .site-footer .wrap {
     padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
+    padding-bottom: 2.5rem;
   }
 }
 
@@ -986,11 +1465,11 @@ td:first-child { font-weight: 600; }
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
-    box-shadow: 0 10px 28px rgba(26, 24, 20, 0.12);
+    box-shadow: var(--shadow);
   }
 
-  /* The last two lists (Tools and Learn — the two pills after them have
-     none) open towards the left, so they never run off screen. */
+  /* The lists near the right end open towards the left, so they never run
+     off screen. */
   .nav-item:nth-last-child(-n+4) .nav-menu { left: auto; right: -0.75rem; }
 
   .nav-item:hover > .nav-menu,
@@ -1003,11 +1482,11 @@ td:first-child { font-weight: 600; }
     font-size: 0.92rem;
     font-weight: 600;
     color: var(--ink);
-    border-radius: 6px;
+    border-radius: 8px;
     white-space: nowrap;
   }
 
-  .site-nav .nav-menu a:hover { background: var(--bone); color: var(--green-deep); }
+  .site-nav .nav-menu a:hover { background: var(--sky-tint); color: var(--sky-ink); }
 }
 
 
@@ -1016,10 +1495,7 @@ td:first-child { font-weight: 600; }
    of the file stays general.
    ========================================================================== */
 
-/* --- The hero tagline badge ---
-   Amber block behind dark text, sitting under the H1. Dark text, not white:
-   white on amber is unreadable, and amber is a highlighter here, not a
-   large fill, so it stays small. */
+/* --- The hero tagline badge --- */
 .hero-badge {
   display: inline-block;
   margin: 0 0 1.25rem;
@@ -1031,39 +1507,6 @@ td:first-child { font-weight: 600; }
   font-weight: 700;
   letter-spacing: -0.01em;
   max-width: none;
-}
-
-/* --- The screen grid ---
-   500 small squares, one per company in the Nifty 500. Filled = passes.
-   It is plain HTML: one <i> tag per company inside <div class="screen-grid">.
-   CSS decides how many go on a row, so it reflows on any screen width. */
-
-.screen-grid {
-  display: grid;
-  grid-template-columns: repeat(25, 1fr);   /* 25 across, so 20 rows of 25 */
-  gap: 2px;
-  margin: 1.25rem 0 1rem;
-  max-width: 34rem;
-}
-
-.screen-grid i {
-  display: block;
-  aspect-ratio: 1 / 1;            /* keeps every square square */
-  border-radius: 1px;
-  background: var(--line);        /* does not pass */
-}
-
-.screen-grid i.on {
-  background: var(--green);       /* passes the screen */
-}
-
-/* The "by market value" view dims some of the filled squares (the home
-   page's script picks which). Fades rather than snaps, unless the reader
-   has asked for less motion. */
-.screen-grid i { transition: background-color 300ms ease; }
-.screen-grid.by-value i.dim { background: var(--line); }
-@media (prefers-reduced-motion: reduce) {
-  .screen-grid i { transition: none; }
 }
 
 /* The two buttons above the grid: by companies / by market value. Hidden
@@ -1079,18 +1522,19 @@ td:first-child { font-weight: 600; }
 .switch-btn {
   min-height: var(--tap);
   padding: 0 1rem;
-  font: 600 0.9rem var(--font-body);
-  color: var(--green-deep);
-  background: transparent;
+  font: 700 0.9rem var(--font-body);
+  color: var(--sky-ink);
+  background: var(--white);
   border: 1px solid var(--line);
   border-radius: 999px;
   cursor: pointer;
+  transition: transform 120ms var(--ease), background-color 150ms ease;
 }
-.switch-btn:hover { background: var(--white); }
+.switch-btn:hover { border-color: var(--sky); }
 .switch-btn[aria-pressed="true"] {
   color: var(--white);
-  background: var(--green-deep);
-  border-color: var(--green-deep);
+  background: var(--sky-deep);
+  border-color: var(--sky-deep);
 }
 
 /* The big number above the grid. */
@@ -1104,13 +1548,9 @@ td:first-child { font-weight: 600; }
   max-width: none;
 }
 
-.screen-stat .num {
-  font-family: var(--font-mono);
-  font-size: 1em;
-}
+.screen-stat .num { font-variant-numeric: proportional-nums; }
 
-/* --- The two entry routes --- */
-
+/* --- The topic panels' link lists --- */
 .route-list {
   list-style: none;
   margin: 0;
@@ -1172,14 +1612,14 @@ td:first-child { font-weight: 600; }
   margin: 0 0 0.4rem;
   padding: 0.1em 0.6em;
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--forest-text);
   background: rgba(255, 255, 255, 0.14);
   border-radius: 999px;
 }
 
 /* "See all videos →" under the home page's three cards. */
-.more-link { margin: 1rem 0 0; font-weight: 600; }
+.more-link { margin: 1rem 0 0; font-weight: 700; }
 .more-link a { display: inline-flex; align-items: center; min-height: var(--tap); }
 
 /* /videos/: two cards across on a tablet, three on a laptop. */
@@ -1191,16 +1631,162 @@ td:first-child { font-weight: 600; }
 }
 
 @media (min-width: 46em) {
-  .screen-grid {
-    grid-template-columns: repeat(50, 1fr);   /* 50 across, 10 rows */
-    max-width: 44rem;
-  }
   .screen-stat { font-size: 2rem; }
 }
 
 
-/* 17. WORKED EXAMPLE ======================================================
-   The three number boxes on the methodology page. They only work with
+/* 17. CHARTS: BARS AND SQUARES ===========================================
+   Drawn with plain HTML and CSS, so the words and numbers are real text
+   (they read without JavaScript, to screen readers, and still show their
+   source when tapped). The bar itself is only the drawing.
+
+   BARS — README.md, "How the look is built":
+     <div class="bars">
+       <div class="bar-row" style="--to: 65">          (or --from: 45 too)
+         <span class="bar-label">Government securities</span>
+         <span class="bar-value num">45–65%</span>
+         <span class="bar-track"><span class="bar"></span></span>
+       </div>
+     </div>
+   --to (and --from, for a range) are percentages of the track, 0 to 100.
+   Bars are at most 24px thick with rounded ends (the chart rules in
+   README.md); one colour per chart. They fill in from the left when they
+   scroll into view.
+   ========================================================================== */
+
+.bars {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 40rem;
+  margin: 1.25rem 0;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 0.15rem 1rem;
+}
+
+.bar-label { font-weight: 600; font-size: 0.95rem; line-height: 1.35; }
+.bar-label small { display: block; font-weight: 400; font-size: 0.8rem; color: var(--ink-3); }
+
+.bar-value {
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.bar-track {
+  grid-column: 1 / -1;
+  position: relative;
+  height: 14px;
+  border-radius: 7px;
+  background: var(--sky-soft);
+  overflow: hidden;
+}
+
+.band .bar-track { background: var(--white); }
+
+.bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--from, 0) * 1%);
+  width: calc((var(--to, 0) - var(--from, 0)) * 1%);
+  min-width: 4px;
+  border-radius: 7px;
+  background: var(--sky);
+  transform-origin: left center;
+  transition: transform 700ms var(--ease);
+  transition-delay: calc(150ms + var(--i, 0) * 80ms);
+}
+
+/* A green bar: only where the bar means "Halal" / "passes". */
+.bar-green .bar { background: var(--green); }
+
+/* The scale under a chart: 0% … 100%. */
+.bar-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -0.4rem;
+  font-size: 0.75rem;
+  color: var(--ink-3);
+}
+
+/* Before a chart scrolls into view (site.js), its bars wait at zero. */
+.js .pre-fill .bar { transform: scaleX(0); }
+
+/* A small legend under a chart: a swatch, then its words. */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+}
+
+.legend li { display: inline-flex; align-items: center; gap: 0.45rem; }
+
+.swatch {
+  display: inline-block;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 3px;
+  background: var(--sky);
+}
+
+.swatch-green { background: var(--green); }
+.swatch-off   { background: var(--line); }
+.swatch-dim   { background: var(--sky-soft); }
+
+/* --- THE SQUARES ---
+   One small square per company in the Nifty 500. Filled = passes. It is
+   plain HTML: one <i> tag per company inside <div class="screen-grid">.
+   CSS decides how many go on a row, so it reflows on any screen width. */
+
+.screen-grid {
+  display: grid;
+  grid-template-columns: repeat(25, 1fr);   /* 25 across on a phone */
+  gap: 2px;
+  margin: 1.25rem 0 0.5rem;
+  max-width: 34rem;
+}
+
+.screen-grid i {
+  display: block;
+  aspect-ratio: 1 / 1;            /* keeps every square square */
+  border-radius: 2px;
+  background: var(--line);        /* does not pass */
+  transition: background-color 300ms ease;
+}
+
+.screen-grid i.on {
+  background: var(--green);       /* passes the screen */
+}
+
+/* The squares fill in, in a sweep from the top left, when the grid scrolls
+   into view (site.js gives each square its moment: --d). */
+.js .screen-grid.pre-fill i.on { background: var(--line); }
+.screen-grid.is-filled i.on { transition-delay: var(--d, 0ms); }
+
+/* The "by market value" view dims some of the filled squares (the page's
+   script picks which). */
+.screen-grid.by-value i.dim { background: var(--sky-soft); transition-delay: 0ms; }
+
+@media (min-width: 46em) {
+  .screen-grid {
+    grid-template-columns: repeat(50, 1fr);   /* 50 across, 10 rows */
+    max-width: 44rem;
+  }
+}
+
+
+/* 18. WORKED EXAMPLE ======================================================
+   The number boxes on the methodology page. They only work with
    JavaScript, so they stay hidden until the .js class is on <html> — the
    table under them already shows the answer for the starting numbers,
    so nothing is missing without them.
@@ -1224,7 +1810,7 @@ td:first-child { font-weight: 600; }
 }
 
 /* Each label-and-box pair. Pushing its contents to the bottom keeps the
-   three boxes level when one label wraps onto two lines and another doesn't. */
+   boxes level when one label wraps onto two lines and another doesn't. */
 .calc-fields > div {
   display: flex;
   flex-direction: column;
@@ -1241,23 +1827,25 @@ td:first-child { font-weight: 600; }
 .calc-fields input {
   width: 100%;
   min-height: var(--tap);
-  padding: 0.5rem 0.75rem;
-  font-family: var(--font-mono);
+  padding: 0.5rem 0.85rem;
+  font-family: var(--font-body);
+  font-variant-numeric: tabular-nums;
   font-size: 1rem;             /* 16px or more stops iPhones zooming in */
+  font-weight: 600;
   color: var(--ink);
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
 }
 
+.calc-fields input:focus { border-color: var(--sky); }
+
 @media (min-width: 46em) {
   .js .calc-fields { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* .cell-note — a smaller second line inside a table cell, under the
-   cell's main text. Used for each screen's limit in the example's results
-   table, which keeps that table to three columns so the result is on
-   screen on a phone without scrolling sideways. */
+   cell's main text. */
 .cell-note {
   display: block;
   font-weight: 400;
@@ -1266,7 +1854,7 @@ td:first-child { font-weight: 600; }
 }
 
 
-/* 18. SHARE BUTTON ========================================================
+/* 19. SHARE BUTTON ========================================================
    The "Share as image" button under a page's main answer (only there,
    since 6 Nov 2026). It is added by /assets/share-card.js, so it only
    appears when JavaScript works — which is what draws the picture in the
@@ -1283,22 +1871,31 @@ td:first-child { font-weight: 600; }
 .share-btn {
   display: inline-flex;
   align-items: center;
+  gap: 0.45rem;
   min-height: var(--tap);
   padding: 0 1rem;
   font-family: var(--font-body);
   font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--green-deep);
-  background: transparent;
+  font-weight: 700;
+  color: var(--sky-ink);
+  background: var(--white);
   border: 1px solid var(--line);
   border-radius: 999px;
   cursor: pointer;
+  transition: transform 120ms var(--ease), border-color 150ms ease;
 }
 
-.share-btn:hover { background: var(--white); }
+.share-btn::before {               /* a small "share" arrow */
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B6FAA' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 15V3M7.5 7.5 12 3l4.5 4.5'/%3E%3Cpath d='M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.share-btn:hover { border-color: var(--sky); }
 
 
-/* 19. QUESTION AND FEEDBACK FORMS =========================================
+/* 20. QUESTION AND FEEDBACK FORMS =========================================
    The two forms on /ask/. Each box is full width on a phone and capped at
    a comfortable reading width on bigger screens.
    ========================================================================== */
@@ -1328,7 +1925,7 @@ td:first-child { font-weight: 600; }
 .form-stack textarea {
   width: 100%;
   min-height: var(--tap);
-  padding: 0.6rem 0.8rem;
+  padding: 0.65rem 0.9rem;
   font-family: var(--font-body);
   font-size: 1rem;              /* 16px or more stops iPhones zooming in */
   color: var(--ink);
@@ -1342,6 +1939,9 @@ td:first-child { font-weight: 600; }
   line-height: 1.5;
   resize: vertical;
 }
+
+.form-stack textarea:focus,
+.form-stack input:focus { border-color: var(--sky); }
 
 .form-stack textarea:focus-visible,
 .form-stack input:focus-visible {
@@ -1362,7 +1962,7 @@ td:first-child { font-weight: 600; }
 .form-note { margin-top: -0.75rem; }
 
 
-/* 20. TAPPABLE FIGURES ====================================================
+/* 21. TAPPABLE FIGURES ====================================================
    /assets/site.js turns each sourced figure into a button: tap it and its
    source and date open underneath. Without JavaScript none of this
    exists and the figures are plain text.
@@ -1399,24 +1999,25 @@ td.num > button.fig {
   text-align: right;
 }
 
-/* The panel that opens: a small white box, like a source chip's. */
+/* The panel that opens: a small blue box, like a Read more's. */
 .fig-pop {
   display: block;
   max-width: 34rem;
   margin: 0.35rem 0 0.75rem;
-  padding: 0.6rem 0.8rem;
-  background: var(--white);
-  border: 1px solid var(--line);
+  padding: 0.65rem 0.85rem;
+  background: var(--sky-tint);
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
   font-size: 0.82rem;
   font-weight: 400;
   line-height: 1.55;
   letter-spacing: normal;
-  color: var(--ink-2);
+  color: var(--sky-ink);
   text-align: left;
   white-space: normal;
 }
+
+.fig-pop a { color: var(--green-ink); }
 
 /* Under a table row: a full-width row of its own. On a phone a wide table
    scrolls sideways, so the panel holds still at the left edge and stays
@@ -1424,7 +2025,7 @@ td.num > button.fig {
 .fig-row td {
   padding: 0 0.9rem 0.75rem;
   font-weight: 400;
-  background: var(--bone);
+  background: var(--white);
 }
 
 .fig-row .fig-pop {
@@ -1437,9 +2038,9 @@ td.num > button.fig {
 tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 
-/* 21. THE APP =============================================================
-   The pieces that make the site installable: the offline note, the /app/
-   page's install box, and the footer's second button.
+/* 22. THE APP =============================================================
+   The pieces that make the site installable: the offline note and the
+   /app/ page's install box.
    ========================================================================== */
 
 /* The note pinned to the bottom of the screen when a page is a saved copy
@@ -1459,7 +2060,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: 0 4px 18px rgba(26, 24, 20, 0.12);
+  box-shadow: var(--shadow);
   font-size: 0.85rem;
   line-height: 1.45;
   color: var(--ink-2);
@@ -1472,7 +2073,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   flex-shrink: 0;
   min-height: var(--tap);
   padding: 0 0.9rem;
-  font: 600 0.85rem var(--font-body);
+  font: 700 0.85rem var(--font-body);
   color: var(--green-deep);
   background: transparent;
   border: 1px solid var(--line);
@@ -1489,8 +2090,8 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   padding: 1.25rem;
   background: var(--white);
   border: 1px solid var(--line);
-  border-left: 4px solid var(--green);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 .js .install-box { display: block; }
@@ -1503,8 +2104,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .steps { padding-left: 1.3rem; }
 .steps li { margin-bottom: 0.5rem; }
 
-/* The footer's second button, "Install the app": outlined, in the footer's
-   own light text, so it sits beside the green Subscribe button. */
+/* An outlined button on the dark footer. */
 .site-footer .btn-quiet {
   color: var(--forest-text);
   background: transparent;
@@ -1514,7 +2114,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .site-footer .btn-quiet:hover { background: rgba(255, 255, 255, 0.08); }
 
 
-/* 22. CALCULATORS — SIP and loan ==========================================
+/* 23. CALCULATORS — SIP and loan ==========================================
    The result boxes of /sip-calculator/ and /loan-calculator/. These two
    are the only places on the site where results carry colour, and only
    because they are the reader's own made-up numbers, not a real product's:
@@ -1539,6 +2139,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 .calc-stat {
@@ -1550,15 +2151,15 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 }
 
 .calc-label { color: var(--ink-2); font-size: 0.95rem; }
-.calc-value { font-size: 1.15rem; }
+.calc-value { font-size: 1.15rem; font-weight: 700; }
 
 .calc-main {
   padding-top: 0.8rem;
   border-top: 1px solid var(--line);
 }
 
-.calc-main .calc-label { color: var(--ink); font-weight: 600; }
-.calc-main .calc-value { font-size: 1.65rem; color: var(--green-deep); }
+.calc-main .calc-label { color: var(--ink); font-weight: 700; }
+.calc-main .calc-value { font-size: 1.75rem; font-weight: 800; color: var(--green-deep); font-variant-numeric: proportional-nums; letter-spacing: -0.02em; }
 
 .calc-words {
   flex-basis: 100%;
@@ -1570,11 +2171,14 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 /* The bar under the results: what you put in, and what it grew by. */
 .split-bar {
   display: flex;
+  gap: 2px;
   height: 14px;
   overflow: hidden;
   border-radius: 7px;
   background: var(--line);
 }
+
+.split-bar > span { transition: width 300ms var(--ease); }
 
 .split-in   { background: var(--green-tint); }
 .split-gain { background: var(--green); }
@@ -1604,7 +2208,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 /* The SIP calculator's return buttons (MAS, 12 Oct): two past index
    returns and "Your own guess". Their labels are long, so on a phone a
    button may take two lines. Above the return box, a small tag says what
-   the number in it is (above, so the three boxes stay level). */
+   the number in it is (above, so the boxes stay level). */
 .rate-picks { margin-top: 0.6rem; }
 .rate-picks .switch-btn { line-height: 1.3; text-align: left; }
 .rate-picks + .source-note { margin-top: 0.5rem; }
@@ -1622,7 +2226,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 .loan-result .calc-main .calc-value { color: var(--ink); }
 
-.calc-danger .calc-label { color: var(--danger-ink); font-weight: 600; }
+.calc-danger .calc-label { color: var(--danger-ink); font-weight: 700; }
 .calc-danger .calc-value { color: var(--danger); font-size: 1.45rem; }
 
 .split-loan     { background: var(--line); }
@@ -1651,6 +2255,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .meter-fill {
   fill: none;
   stroke-width: 18;
+  stroke-linecap: round;
 }
 
 .meter-track { stroke: var(--danger-tint); }
@@ -1658,20 +2263,21 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .meter-fill {
   stroke: var(--danger);
   stroke-dasharray: 100 100;
-  transition: stroke-dashoffset 300ms ease;
+  transition: stroke-dashoffset 400ms var(--ease);
 }
 
 .meter-figure {
   margin: -3.1rem 0 0;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 2.1rem;
   font-weight: 800;
+  letter-spacing: -0.03em;
   line-height: 1;
   color: var(--danger);
   max-width: none;
 }
 
-.meter-figure .num { font-size: 1em; }
+.meter-figure .num { font-variant-numeric: proportional-nums; }
 
 .meter-label {
   max-width: 22rem;
@@ -1681,7 +2287,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 }
 
 
-/* 23. SCREENER ==============================================================
+/* 24. SCREENER ==============================================================
    The "check your stock" box at the top of the home page (a plain form,
    so it works without JavaScript) and the search on /screener/.
    ========================================================================== */
@@ -1692,13 +2298,11 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   padding: 1rem;
   background: var(--white);
   border: 1px solid var(--line);
-  border-left: 4px solid var(--green);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
-/* The box is the first thing under the home page's heading and badge
-   (MAS, 12 Oct): the badge already leaves room under itself, and the one
-   sentence under the box needs a little air. */
+/* The box is the first thing under the home page's heading and badge. */
 .hero-badge + .screener-box { margin-top: 0; }
 .screener-box + .standfirst { margin: 1.5rem 0 0; }
 
@@ -1712,7 +2316,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .screener-search label {
   display: block;
   margin-bottom: 0.5rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .screener-row { display: flex; gap: 0.5rem; }
@@ -1732,23 +2336,32 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   border-radius: 999px;
 }
 
+.screener-box input:focus,
+.screener-search input:focus { border-color: var(--sky); background: var(--white); }
+
 .screener-box .meta { margin: 0.6rem 0 0; }
 
 .screener-search { display: none; max-width: 40rem; margin: 1.25rem 0 0; }
 .js .screener-search { display: block; }
+.screener-search input { min-height: 52px; padding-left: 1.2rem; background: var(--white); box-shadow: var(--shadow-sm); }
 .screener-search .grid-switch { margin-top: 0.75rem; }
 
 .screener-result {
   max-width: 40rem;
   margin: 1rem 0 0;
-  padding: 1rem 1.1rem;
+  padding: 1.1rem 1.2rem;
   background: var(--white);
   border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 .screener-result p { margin: 0 0 0.5rem; }
 .screener-result p:last-child { margin: 0; }
+.screener-result .chip { font-size: 0.95rem; padding: 0.35em 0.9em; }
+
+/* "(Zomato is now Eternal)" — for a search by a company's old name. */
+.sc-renamed { font-weight: 600; color: var(--sky-ink); }
 
 /* On /screener/ the introduction comes after the search and its answer. */
 .screener-result + .standfirst { margin-top: 1.5rem; }
@@ -1783,11 +2396,25 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   cursor: pointer;
 }
 .sc-picks li:last-child button { border-bottom: 0; }
-.sc-picks button:hover { background: var(--bone); }
-.sc-picks .sc-sym { color: var(--ink-3); font-family: var(--font-mono); font-size: 0.8rem; }
+.sc-picks button:hover { background: var(--sky-tint); }
+.sc-picks .sc-sym { color: var(--ink-3); font-size: 0.8rem; }
+
+/* The list of all companies on a phone: name, symbol and the answer.
+   The industry and the weight show from tablets up, so the table never
+   slides sideways on a phone. */
+@media (max-width: 45.99em) {
+  #sc-table th:nth-child(3), #sc-table td:nth-child(3),
+  #sc-table th:nth-child(5), #sc-table td:nth-child(5) { display: none; }
+  #sc-table th, #sc-table td { padding: 0.6rem 0.5rem; }
+  #sc-table th { white-space: normal; }
+  #sc-table .chip { padding: 0.2em 0.55em; font-size: 0.75rem; }
+  #sc-table tbody tr:not(.fig-row) > td:first-child { min-width: 0; position: static; box-shadow: none; }
+  #sc-table thead th:first-child { position: static; box-shadow: none; }
+  #sc-table td:nth-child(2) { font-size: 0.78rem; color: var(--ink-3); word-break: break-all; }
+}
 
 
-/* 24. STOP THE GENOCIDE ====================================================
+/* 25. STOP THE GENOCIDE ====================================================
    The searchable boycott list on /stop-the-genocide/, its highlighted
    links (the menu item on wide screens, the home page card), and the note
    saying whose list it is.
@@ -1813,7 +2440,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 }
 
 .highlight-card strong { color: var(--ink); }
-.highlight-card .go { color: var(--green-deep); font-weight: 600; white-space: nowrap; }
+.highlight-card .go { color: var(--green-deep); font-weight: 700; white-space: nowrap; }
 
 .bc-list { display: grid; gap: 0.5rem; }
 
@@ -1839,23 +2466,22 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .bc-entry > summary::after {          /* + when closed, − when open */
   content: "+";
   margin-left: auto;
-  font-weight: 600;
-  color: var(--green-deep);
+  font-weight: 700;
+  color: var(--sky-deep);
 }
 
 .bc-entry[open] > summary::after { content: "\2212"; }
 .bc-entry[open] > summary { border-bottom: 1px solid var(--line); }
 
-.bc-name { font-weight: 600; }
+.bc-name { font-weight: 700; }
 .bc-count { font-size: 0.8rem; color: var(--ink-3); }
 
 .bc-tag {
   padding: 0.15em 0.55em;
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--ink-2);
-  background: var(--bone);
-  border: 1px solid var(--line);
+  color: var(--sky-ink);
+  background: var(--sky-tint);
   border-radius: 999px;
 }
 
@@ -1869,8 +2495,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .bc-body p:last-child { margin-bottom: 0; }
 .bc-brands { font-size: 0.88rem; }
 
-/* Inside an entry (12 Oct): "Listed by Tech for Palestine for:", then the
-   dataset's reason tags under it. */
+/* Inside an entry: "Why it's listed:", then the dataset's reason tags. */
 .bc-body .bc-by { margin-bottom: 0.35rem; font-weight: 600; color: var(--ink); }
 .bc-reasons { display: flex; flex-wrap: wrap; gap: 0.3rem 0.4rem; }
 .bc-body .source-note { margin-top: 0.4rem; }
@@ -1881,14 +2506,15 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 @media (min-width: 64em) {
   .nav-item.nav-highlight { display: contents; }
   .site-nav .nav-highlight > a {
-    padding: 0 0.8rem;
+    padding: 0 0.9rem;
     color: var(--ink);
     background: var(--amber-soft);
     border-radius: 999px;
-    min-height: 34px;
+    min-height: 36px;
     align-self: center;
   }
-  .nav-highlight > a::after { display: none; }
+  .nav-highlight > a::after,
+  .site-nav .nav-highlight > a::before { display: none; }
 }
 
 @media (min-width: 64em) and (hover: hover) {
@@ -1896,22 +2522,24 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 }
 
 
-/* 25. HUB PAGES ============================================================
-   /tools/: one card per tool, and the whole card is the link, so it is
-   easy to tap. The underline every other link gets is switched off here,
-   or the whole card would be underlined; the green title says "link".
+/* 26. HUB PAGES ============================================================
+   /tools/ and /learn/: one card per page, and the whole card is the link,
+   so it is easy to tap. The underline every other link gets is switched
+   off here, or the whole card would be underlined; the green title says
+   "link".
    ========================================================================== */
 
 .card-link {
   display: block;
   color: var(--ink-2);
   text-decoration: none;
+  transition: transform 150ms var(--ease), box-shadow 200ms ease, border-color 200ms ease;
 }
 
 .card-link h3 { color: var(--green-deep); }
 .card-link p,
 .card-soon p { margin: 0; }
-.card-link:hover { border-color: var(--green); }
+.card-link:hover { border-color: var(--sky); box-shadow: var(--shadow); }
 .card-link:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
 
 /* A tool that is still being built: no link, quieter text. */
@@ -1923,5 +2551,6 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
    DARK MODE GOES HERE LATER.
    It is a copy of the :root block from section 2 with different values,
    wrapped in @media (prefers-color-scheme: dark). Nothing else changes,
-   because nothing below section 2 contains a hex code.
+   because nothing below section 2 contains a hex code (the small drawings
+   inside url(…) are the one exception: their colour is written into them).
    ========================================================================== */

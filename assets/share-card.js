@@ -59,8 +59,8 @@
   var FONT = {                // the fonts from site.css
     display: '"Bricolage Grotesque", "Plus Jakarta Sans", sans-serif',
     body:    '"Plus Jakarta Sans", system-ui, sans-serif',
-    mono:    '"DM Mono", ui-monospace, monospace'
-  };
+    mono:    '"Plus Jakarta Sans", system-ui, sans-serif'   // numbers: the
+  };                          // same font as the text (two fonts, 6 Nov 2026)
 
   function font(weight, size, family) {
     return weight + ' ' + Math.round(size) + 'px ' + family;
@@ -716,7 +716,6 @@
     document.fonts.load('400 30px "Plus Jakarta Sans"'),
     document.fonts.load('600 30px "Plus Jakarta Sans"'),
     document.fonts.load('700 30px "Plus Jakarta Sans"'),
-    document.fonts.load('400 30px "DM Mono"'),
     new Promise(function (resolve) {
       LOGO.onload = LOGO.onerror = resolve;
       LOGO.src = '/assets/img/logo.svg';

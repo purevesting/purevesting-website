@@ -241,7 +241,7 @@
 
       <h3>The three asset classes</h3>
 
-      <div class="table-scroll">
+      <div class="table-scroll table-stack">
         <table data-src="src-nps-classes">
           <caption class="visually-hidden">The three NPS asset classes and what each invests in</caption>
           <thead>
@@ -254,18 +254,18 @@
           <tbody>
             <tr>
               <td>E — Equity</td>
-              <td>Shares of large listed companies, with at least <span class="num">90%</span> of the money in the top <span class="num">200</span> of the Nifty 250 index</td>
-              <td>No — it is ownership, not a loan</td>
+              <td data-label="What it holds">Shares of large listed companies, with at least <span class="num">90%</span> of the money in the top <span class="num">200</span> of the Nifty 250 index</td>
+              <td data-label="Pays a fixed return (interest)?">No — it is ownership, not a loan</td>
             </tr>
             <tr>
               <td>C — Corporate bonds</td>
-              <td>Debt issued by companies and public sector undertakings</td>
-              <td>Yes</td>
+              <td data-label="What it holds">Debt issued by companies and public sector undertakings</td>
+              <td data-label="Pays a fixed return (interest)?">Yes</td>
             </tr>
             <tr>
               <td>G — Government securities</td>
-              <td>Loans to the central and state governments</td>
-              <td>Yes</td>
+              <td data-label="What it holds">Loans to the central and state governments</td>
+              <td data-label="Pays a fixed return (interest)?">Yes</td>
             </tr>
           </tbody>
         </table>
@@ -494,7 +494,7 @@
          it there? NPS can be either, depending on how you joined — so which
          row you are in is likely to matter.</p>
 
-      <div class="table-scroll">
+      <div class="table-scroll table-stack">
         <table>
           <caption class="visually-hidden">How different NPS subscribers joined, and whether they chose to</caption>
           <thead>
@@ -507,23 +507,23 @@
           <tbody>
             <tr>
               <td>Central or state government employee who joined after the old pension scheme closed</td>
-              <td>No — new government staff are enrolled in it</td>
-              <td>Nearest to <a href="/instruments/epf/">compulsory EPF</a></td>
+              <td data-label="Did you choose?">No — new government staff are enrolled in it</td>
+              <td data-label="Closest comparison">Nearest to <a href="/instruments/epf/">compulsory EPF</a></td>
             </tr>
             <tr>
               <td>Corporate NPS through an employer, deducted from salary</td>
-              <td>Partly — the employer set it up, you opted in</td>
-              <td>Between the two</td>
+              <td data-label="Did you choose?">Partly — the employer set it up, you opted in</td>
+              <td data-label="Closest comparison">Between the two</td>
             </tr>
             <tr>
               <td>You opened it yourself for the tax deduction</td>
-              <td>Yes, entirely</td>
-              <td>Nearest to <a href="/instruments/ppf/">PPF</a></td>
+              <td data-label="Did you choose?">Yes, entirely</td>
+              <td data-label="Closest comparison">Nearest to <a href="/instruments/ppf/">PPF</a></td>
             </tr>
             <tr>
               <td>Tier II account</td>
-              <td>Yes — it is an optional savings account on top</td>
-              <td>Nearest to PPF, with no lock-in</td>
+              <td data-label="Did you choose?">Yes — it is an optional savings account on top</td>
+              <td data-label="Closest comparison">Nearest to PPF, with no lock-in</td>
             </tr>
           </tbody>
         </table>

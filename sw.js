@@ -28,7 +28,7 @@
    v2), so phones that already have the app replace their saved copies.
    ========================================================================== */
 
-var VERSION = 'v1';
+var VERSION = 'v2';
 var STATIC = 'pv-static-' + VERSION;   // the stylesheet, scripts, fonts, images
 var PAGES  = 'pv-pages-' + VERSION;    // pages, saved as people open them
 var OFFLINE_URL = '/offline/';
@@ -43,7 +43,6 @@ var PRECACHE = [
   '/assets/share-card.js',
   '/assets/fonts/bricolage-grotesque-latin-wght.woff2',
   '/assets/fonts/plus-jakarta-sans-latin-wght.woff2',
-  '/assets/fonts/dm-mono-latin-400.woff2',
   '/assets/img/logo.svg',
   '/assets/img/byline-96.webp'
 ];

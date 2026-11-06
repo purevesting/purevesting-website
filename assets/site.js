@@ -5,19 +5,56 @@
    Deliberately small. The site works completely without it: every number,
    every table and every link is in the HTML. This file only adds polish.
 
-   It does five things:
-     1. Fades sections in as you scroll to them.
+   It does seven things:
+     0. The menu — marks the menu word for the page you are on.
+     1. Fades sections in as you scroll to them; their cards rise one
+        after another.
+     1b. Fills charts in — bars grow and squares light up — as they scroll
+        into view.
      2. Tappable figures — tap a number to see its source and date.
-     3. Count-up — one marked number counts up once, if it scrolls into view.
+     3. Count-up — marked numbers count up once, if they scroll into view.
      4. The app — switches on /sw.js, which lets the site install like an
         app and keeps opened pages for reading offline.
      5. The offline note — says so when a page is a saved copy.
+
+   All the movement is light and quick, and none of it happens when the
+   reader's phone asks for less motion (README.md, "The look").
    ========================================================================== */
+
+var pvCalm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+/* 0. THE MENU ==============================================================
+   The header is identical on every page, so the page itself can't say
+   which menu word is "here". This finds the word whose page, or one of
+   whose drop-down pages, is the page you are on, and marks it.
+   ========================================================================== */
+
+(function () {
+
+  var here = location.pathname.replace(/index\.html$/, '');
+  if (here === '/') return;
+  var items = document.querySelectorAll('.site-nav .nav-item');
+  for (var i = 0; i < items.length; i++) {
+    var links = items[i].querySelectorAll('a[href]');
+    for (var j = 0; j < links.length; j++) {
+      if (links[j].getAttribute('href') === here) {
+        items[i].classList.add('is-current');
+        var top = items[i].querySelector('a');
+        if (top && top.getAttribute('href') === here) top.setAttribute('aria-current', 'page');
+        return;
+      }
+    }
+  }
+
+})();
 
 
 /* 1. FADE-IN ===============================================================
    Every element marked <section class="section reveal"> fades and rises
-   into place the first time it scrolls into view.
+   into place the first time it scrolls into view, and the cards, tiles and
+   bars inside it rise one after another: each gets its place in the queue
+   as --i, which the CSS turns into a short delay.
    ========================================================================== */
 
 (function () {
@@ -26,7 +63,7 @@
   if (items.length === 0) return;
 
   // If the reader has asked their phone to reduce motion, do nothing at all.
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (pvCalm) return;
 
   // Some older in-app browsers do not have IntersectionObserver. If so, show
   // everything immediately rather than leaving it invisible.
@@ -36,6 +73,16 @@
     }
     return;
   }
+
+  // Number the cards in each group, so they rise in turn (at most 8 steps,
+  // so a long list never keeps anyone waiting).
+  items.forEach(function (section) {
+    section.querySelectorAll('.card, .tile, .bar-row, .step').forEach(function (el) {
+      var key = el.parentNode;
+      var n = (key.pvCount = (key.pvCount || 0) + 1) - 1;
+      el.style.setProperty('--i', Math.min(n, 8));
+    });
+  });
 
   // IntersectionObserver tells us when an element scrolls into view.
   var watcher = new IntersectionObserver(function (entries) {
@@ -48,6 +95,59 @@
   }, { rootMargin: '0px 0px -10% 0px' });
 
   items.forEach(function (item) { watcher.observe(item); });
+
+})();
+
+
+/* 1b. CHARTS FILL IN =======================================================
+   Bar charts (<div class="bars">) and the grid of squares
+   (<div class="screen-grid">) start empty and fill in when they scroll
+   into view: bars grow from the left, squares light up in a sweep from the
+   top-left corner. A chart already on screen when the page opens fills in
+   at once, without waiting. Without JavaScript, or with less motion asked
+   for, they are simply full.
+   ========================================================================== */
+
+(function () {
+
+  var charts = document.querySelectorAll('.bars, .screen-grid');
+  if (!charts.length || pvCalm || !('IntersectionObserver' in window)) return;
+
+  // Each square's moment in the sweep: squares on the same diagonal light
+  // up together, the whole sweep taking about 0.9 seconds.
+  function plan(grid) {
+    var squares = grid.querySelectorAll('i');
+    var across = getComputedStyle(grid).gridTemplateColumns.split(' ').length || 25;
+    var down = Math.ceil(squares.length / across);
+    var step = 900 / (across + down);
+    for (var k = 0; k < squares.length; k++) {
+      var d = Math.round(((k % across) + Math.floor(k / across)) * step);
+      squares[k].style.setProperty('--d', d + 'ms');
+    }
+  }
+
+  var watcher = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var chart = entry.target;
+      watcher.unobserve(chart);
+      if (chart.classList.contains('screen-grid')) plan(chart);
+      // two frames: the browser draws the empty chart before it fills
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          chart.classList.remove('pre-fill');
+          chart.classList.add('is-filled');
+        });
+      });
+    });
+  }, { rootMargin: '0px 0px -12% 0px' });
+
+  charts.forEach(function (chart) {
+    var box = chart.getBoundingClientRect();
+    if (box.top < window.innerHeight && box.bottom > 0) return;   // on screen: leave it
+    chart.classList.add('pre-fill');
+    watcher.observe(chart);
+  });
 
 })();
 
@@ -264,7 +364,9 @@
 
 /* 3. COUNT-UP ==============================================================
    A number marked data-count — <span class="num" data-count>204</span> —
-   counts up from zero once, when it scrolls into view. Whole numbers only.
+   counts up from zero once, when it scrolls into view. Whole numbers and
+   decimals both work ("40.7%" counts up with one decimal), and whatever
+   sits around the number ("₹", "%") stays put.
 
    It never runs on a number that is already on screen when the page
    opens: text a reader can see never waits on an animation. Its box keeps
@@ -275,18 +377,28 @@
 
   var items = document.querySelectorAll('[data-count]');
   if (items.length === 0) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (pvCalm) return;
   if (!('IntersectionObserver' in window) || !window.requestAnimationFrame) return;
 
-  var DURATION = 700;   // milliseconds
+  var DURATION = 900;   // milliseconds
 
   function run(el) {
     var node = el;                                 // the text itself, even
     while (node.firstChild) node = node.firstChild; // inside a figure button
     if (node.nodeType !== 3) return;
     var finalText = node.nodeValue;
-    var target = parseInt(finalText.replace(/[^\d]/g, ''), 10);
+    var m = finalText.match(/^([^\d]*)([\d,]*\.?\d+)(.*)$/);
+    if (!m) return;
+    var digits = m[2].replace(/,/g, '');
+    var target = parseFloat(digits);
     if (!(target > 0)) return;
+    var places = digits.indexOf('.') < 0 ? 0 : digits.length - digits.indexOf('.') - 1;
+    var commas = m[2].indexOf(',') >= 0;
+    function show(v) {
+      var s = v.toFixed(places);
+      if (commas) s = Number(s).toLocaleString('en-IN', { minimumFractionDigits: places, maximumFractionDigits: places });
+      return m[1] + s + m[3];
+    }
 
     el.style.display = 'inline-block';
     el.style.minWidth = el.getBoundingClientRect().width + 'px';
@@ -297,7 +409,7 @@
       if (start === null) start = now;
       var t = Math.min(1, (now - start) / DURATION);
       var eased = 1 - Math.pow(1 - t, 3);          // fast, then settling
-      node.nodeValue = t < 1 ? String(Math.round(target * eased)) : finalText;
+      node.nodeValue = t < 1 ? show(target * eased) : finalText;
       if (t < 1) {
         window.requestAnimationFrame(step);
       } else {
