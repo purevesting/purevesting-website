@@ -10,7 +10,7 @@
      ================================================================== -->
 
 <title>SIP calculator with lump sum — free, year by year | Purevesting</title>
-<meta name="description" content="Free SIP calculator with a lump-sum option: see what a monthly SIP or one-time investment could grow to, year by year. An illustration, not a forecast.">
+<meta name="description" content="Free SIP calculator with a lump-sum option: see what a monthly SIP or one-time investment could grow to, year by year, starting from a real past return.">
 <link rel="canonical" href="https://purevesting.com/sip-calculator/">
 <meta property="og:title" content="SIP and lump-sum calculator">
 <meta property="og:description" content="See what a monthly SIP or one lump sum could grow to, year by year. You choose the return.">
@@ -37,11 +37,11 @@
       "@type": "WebPage",
       "@id": "https://purevesting.com/sip-calculator/#page",
       "name": "SIP and lump-sum calculator",
-      "description": "Free SIP calculator with a lump-sum option: see what a monthly SIP or one-time investment could grow to, year by year. An illustration, not a forecast.",
+      "description": "Free SIP calculator with a lump-sum option: see what a monthly SIP or one-time investment could grow to, year by year, starting from a real past return.",
       "url": "https://purevesting.com/sip-calculator/",
       "image": "https://purevesting.com/assets/og/sip-calculator.jpg",
       "datePublished": "2026-10-06",
-      "dateModified": "2026-10-12",
+      "dateModified": "2026-11-06",
       "inLanguage": "en-IN",
       "isPartOf": {
         "@id": "https://purevesting.com/#website"
@@ -171,20 +171,9 @@
 
       <h1>SIP and lump-sum <span class="t-green">calculator</span></h1>
 
-      <p class="standfirst">See what a monthly SIP — or one lump sum — could
-        grow to. You choose the yearly return and the number of years; the
-        page does the arithmetic. It is an illustration, not a forecast.</p>
-
-      <div class="byline">
-        <img src="/assets/img/byline-96.webp"
-             srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
-             width="48" height="48" alt="Moin Ali Syed">
-        <div>
-          <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
-          <div class="meta">Founder, Purevesting</div>
-          <div class="meta">Last updated <time datetime="2026-10-12">12 October 2026</time> · 3 min read</div>
-        </div>
-      </div>
+      <!-- A tools page: one short line, no byline (README.md). -->
+      <p class="standfirst">See what a monthly SIP, or one lump sum, could
+        grow to, year by year.</p>
 
       <!-- THE CALCULATOR. The boxes and the buttons need JavaScript, so they
            stay hidden without it; the results below are already written out
@@ -201,24 +190,13 @@
            (/compare/shariah-mutual-funds/#index-returns), with the same
            source and date. When those rows change, change both buttons,
            the starting value of the "Return per year" box and its slider,
-           the source note under the buttons, the results written out
-           below, and the first card under "What this does" (TODO.md, 0b). -->
+           the results written out below, and the index line in Sources at
+           the bottom of the page (TODO.md, 0b). -->
       <div class="grid-switch rate-picks" role="group" aria-label="Yearly return to start from">
         <button type="button" class="switch-btn" data-rate="5.52" aria-pressed="true">Nifty500 Shariah, last 5 years: <span class="num">5.52%</span>&nbsp;a&nbsp;year</button>
         <button type="button" class="switch-btn" data-rate="9.04" aria-pressed="false">Nifty 500, last 5 years: <span class="num">9.04%</span>&nbsp;a&nbsp;year</button>
         <button type="button" class="switch-btn" data-rate="own" aria-pressed="false">Your own guess</button>
       </div>
-
-      <p class="source-note rate-source" id="rate-source">
-        The two index figures are each index's total return a year over the
-        last five years, dividends counted — a past return, not a forecast.
-        Sources:
-        <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">Nifty500 Shariah factsheet</a>
-        and
-        <a href="https://www.niftyindices.com/Factsheet/ind_nifty_500.pdf">Nifty 500 factsheet</a>,
-        NSE Indices — as of <time datetime="2026-09-30">30 September 2026</time>,
-        as on the <a href="/compare/shariah-mutual-funds/#index-returns">fund comparison</a>.
-      </p>
 
       <div class="calc-fields">
         <p class="calc-hint" id="calc-hint" aria-live="polite">Change any number and the results update.</p>
@@ -228,7 +206,7 @@
         </div>
         <div>
           <label for="in-rate">Return per year (%)</label>
-          <span class="calc-tag" id="rate-tag">A past return, not a forecast</span>
+          <span class="calc-tag" id="rate-tag">A past return</span>
           <input id="in-rate" type="number" value="5.52" min="0" max="50" step="0.01" inputmode="decimal" aria-describedby="rate-tag">
           <input id="sl-rate" type="range" value="5.5" min="1" max="30" step="0.5" aria-label="Return per year (%)">
         </div>
@@ -261,13 +239,27 @@
            <span><span class="key key-gain"></span>Estimated growth</span></p>
       </div>
 
-      <p class="source-note">
-        How it is worked out: a SIP is treated as one payment at the start
-        of every month, growing at the yearly return divided by twelve each
-        month — the method most Indian SIP calculators use. A lump sum grows
-        at the yearly return once a year. Costs such as the fund's expense
-        ratio and any tax are not taken off.
-      </p>
+      <details class="source">
+        <summary>Read more</summary>
+        <div class="source-body">
+          <p>How it is worked out: a SIP is treated as one payment at the
+             start of every month, growing at the yearly return divided by
+             twelve each month — the method most Indian SIP calculators use.
+             A lump sum grows at the yearly return once a year.</p>
+          <p>Costs such as the fund's expense ratio, taken from your money
+             every year, and any tax on gains are not taken off, so the real
+             result is smaller. Real returns go up and down from year to
+             year, and some years are negative.</p>
+          <p>A SIP is a way of buying, not a product: a standing instruction
+             to buy units of a fund every month. The Shariah question is about
+             the fund it buys — India's six Shariah funds are
+             <a href="/compare/shariah-mutual-funds/">compared side by side</a>.
+             Shariah-screened funds can still earn a little interest, which
+             many investors give away: the
+             <a href="/purification-calculator/">purification calculator</a>
+             works it out.</p>
+        </div>
+      </details>
 
     </div>
   </section>
@@ -303,57 +295,30 @@
         </table>
       </div>
 
-      <p class="source-note">
-        Worked out with the numbers above — an illustration, not a forecast.
-        Real returns go up and down from year to year, and some years are
-        negative.
-      </p>
-
     </div>
   </section>
 
 
-  <section class="section reveal">
+  <!-- SOURCES — one closed list (README.md, rule 5). When the compare
+       page's index rows change, change this line and the two buttons
+       (TODO.md, 0b). -->
+  <section class="section">
     <div class="wrap">
-
-      <h2 id="read-this">What this does and doesn't tell you</h2>
-
-      <div class="grid grid-2">
-
-        <div class="card">
-          <h3>The return is a guess, not a promise</h3>
-          <p>The box starts at <span class="num" data-src="rate-source">5.52%</span> a year: what the Nifty500 Shariah index
-             returned a year over the last five years. That is a past return,
-             not a forecast. No fund promises a return, and past returns
-             don't decide future ones. Try other numbers too.</p>
+      <details class="source sources" id="sources">
+        <summary>Sources</summary>
+        <div class="source-body">
+          <ul>
+            <li id="src-sip-rates">The two index returns on the buttons: each
+              index's total return a year over the last five years,
+              dividends counted —
+              <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">Nifty500 Shariah factsheet</a>
+              and
+              <a href="https://www.niftyindices.com/Factsheet/ind_nifty_500.pdf">Nifty 500 factsheet</a>,
+              NSE Indices — as of <time datetime="2026-09-30">30 September 2026</time>,
+              as on the <a href="/compare/shariah-mutual-funds/#index-returns">fund comparison</a>.</li>
+          </ul>
         </div>
-
-        <div class="card">
-          <h3>A SIP is a way of buying, not a product</h3>
-          <p>A SIP is a standing instruction to buy units of a fund every
-             month. The Shariah questions are about the fund it buys — which
-             is why India's six Shariah funds are
-             <a href="/compare/shariah-mutual-funds/">compared side by side</a>,
-             with their real past returns and their sources.</p>
-        </div>
-
-        <div class="card">
-          <h3>Costs come off every year</h3>
-          <p>Every fund charges an expense ratio, taken from your money each
-             year, and gains can be taxed. Both make the real result smaller
-             than this page shows.</p>
-        </div>
-
-        <div class="card">
-          <h3>Purification is separate</h3>
-          <p>Shariah-screened funds can still earn a little interest, which
-             many investors give away. The
-             <a href="/purification-calculator/">purification calculator</a>
-             works that out.</p>
-        </div>
-
-      </div>
-
+      </details>
     </div>
   </section>
 
@@ -442,8 +407,8 @@
   var tag = document.getElementById('rate-tag');
   if (!amount || !rate || !years) return;
 
-  var TAG_PAST = 'A past return, not a forecast';
-  var TAG_OWN = 'Your own guess — no fund promises a return';
+  var TAG_PAST = 'A past return';
+  var TAG_OWN = 'Your own guess';
   var ownPick = document.querySelector('[data-rate="own"]');
 
   // Marks one return button as chosen, and says under the box what the

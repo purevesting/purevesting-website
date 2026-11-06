@@ -41,7 +41,7 @@
       "url": "https://purevesting.com/loan-calculator/",
       "image": "https://purevesting.com/assets/og/loan-calculator.jpg",
       "datePublished": "2026-10-06",
-      "dateModified": "2026-10-12",
+      "dateModified": "2026-11-06",
       "inLanguage": "en-IN",
       "isPartOf": {
         "@id": "https://purevesting.com/#website"
@@ -171,28 +171,17 @@
 
       <h1>How much does a loan <span class="t-danger">really cost</span>?</h1>
 
-      <p class="standfirst">Put in a loan and see what it takes back: the
-        monthly EMI, the total interest, and how much of every rupee you
-        repay is interest. Interest on a loan is what Islamic finance calls
-        riba — this page shows its real size.</p>
-
-      <div class="byline">
-        <img src="/assets/img/byline-96.webp"
-             srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
-             width="48" height="48" alt="Moin Ali Syed">
-        <div>
-          <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
-          <div class="meta">Founder, Purevesting</div>
-          <div class="meta">Last updated <time datetime="2026-10-12">12 October 2026</time> · 3 min read</div>
-        </div>
-      </div>
+      <!-- A tools page: one short line, no byline (README.md). -->
+      <p class="standfirst">See your monthly EMI, the total interest, and how
+        much of every rupee you repay is interest. Interest on a loan is what
+        Islamic finance calls riba: this shows its real size.</p>
 
       <!-- THE CALCULATOR. The buttons fill in a typical loan; the boxes can
            be changed freely. Without JavaScript the boxes stay hidden and
            the results below are already written out for the home loan
            button (₹30 lakh at 8.5% for 20 years). The typical rates are
-           listed in the note under the results — change them there AND in
-           the script at the bottom of this page. -->
+           listed in the "Read more" under the results — change them there
+           AND in the script at the bottom of this page. -->
       <div class="grid-switch presets" role="group" aria-label="Pick a typical loan">
         <button type="button" class="switch-btn" data-preset="home" aria-pressed="true">Home loan</button>
         <button type="button" class="switch-btn" data-preset="car" aria-pressed="false">Car loan</button>
@@ -258,15 +247,20 @@
            <span><span class="key key-interest"></span>Interest — <span id="r-share">52%</span> of everything you repay</span></p>
       </div>
 
-      <p class="source-note">
-        The buttons use typical rates, for illustration only — your lender's
-        rate will differ: home loan 8.5% over 20 years; car loan 9.5% over
-        5; education loan 10.5% over 7; personal loan 13% over 5; credit
-        card dues about 42% a year (3.5% a month) over 2. The EMI is worked
-        out the standard way, with the yearly rate divided by twelve each
-        month; processing fees, insurance and penalties are not included, and
-        they make a loan cost more.
-      </p>
+      <details class="source">
+        <summary>Read more</summary>
+        <div class="source-body">
+          <p>The buttons use typical rates; your lender's rate will differ:
+             home loan 8.5% over 20 years; car loan 9.5% over 5; education
+             loan 10.5% over 7; personal loan 13% over 5; credit card dues
+             about 42% a year (3.5% a month) over 2.</p>
+          <p>The EMI is worked out the standard way, with the yearly rate
+             divided by twelve each month. Processing fees, insurance and
+             penalties are not included, and they make a loan cost more. A
+             real loan's rate can change over its life if it is a floating
+             rate.</p>
+        </div>
+      </details>
 
     </div>
   </section>
@@ -315,10 +309,6 @@
         </table>
       </div>
 
-      <p class="source-note">
-        Worked out from the numbers above. A real loan's rate can change
-        over its life if it is a floating rate.
-      </p>
 
     </div>
   </section>
@@ -327,39 +317,12 @@
   <section class="section reveal">
     <div class="wrap">
 
-      <h2 id="why">Why this page looks alarming</h2>
+      <p>Interest-free and Islamic ways to borrow in India — what exists, who
+         offers it and how it works — are being researched for a page of
+         their own.</p>
 
-      <div class="grid grid-2">
-
-        <div class="card">
-          <h3>Because the cost is real</h3>
-          <p>An EMI looks small next to the price of a house or a car. Added
-             up over the years, the interest can be as large as the loan
-             itself — or larger. The red on this page is that number.</p>
-        </div>
-
-        <div class="card">
-          <h3>Short and expensive, or long and slow</h3>
-          <p>A credit card or a personal loan charges a high rate for a short
-             time; a home loan a lower rate for a very long time. Try both
-             buttons and compare the meter.</p>
-        </div>
-
-        <div class="card">
-          <h3>Halal ways to borrow</h3>
-          <p>Interest-free and Islamic financing options in India — what
-             exists, who offers it, and how it is structured — are being
-             researched for a page of their own.</p>
-        </div>
-
-        <div class="card">
-          <h3>Already have a loan?</h3>
-          <p>This page doesn't tell anyone what to do with theirs. If you
-             have a question about getting out of interest, send it through
-             the <a href="/ask/">Ask page</a>.</p>
-        </div>
-
-      </div>
+      <p class="ask-line">Already have a loan and want to get out of
+         interest? <a href="/ask/">Ask me</a></p>
 
     </div>
   </section>
@@ -433,7 +396,7 @@
      CALCULATOR SCRIPT — used on this page only.
      EMI = amount x m x (1 + m)^months / ((1 + m)^months - 1), where m is
      the yearly rate / 12 / 100. TYPICAL holds the buttons' loans: change
-     a number here AND in the note under the results.
+     a number here AND in the "Read more" under the results.
      ================================================================== -->
 <script>
 (function () {
