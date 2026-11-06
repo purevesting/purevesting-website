@@ -10,7 +10,7 @@
      ================================================================== -->
 
 <title>Halal stock screener: is my stock Shariah compliant?</title>
-<meta name="description" content="Halal stock screener for India: type a company's name or NSE symbol and see if it is halal, from NSE's Nifty500 Shariah index, screened by TASIS.">
+<meta name="description" content="Halal stock screener for India: type a company's name or NSE symbol and see if it is halal, from NSE's Nifty500 Shariah index. Free.">
 <link rel="canonical" href="https://purevesting.com/screener/">
 <meta property="og:title" content="Is your stock halal? The Purevesting screener">
 <meta property="og:description" content="Type any Nifty 500 company and see if it is halal — from NSE's Nifty500 Shariah index, sourced, dated, free.">
@@ -37,11 +37,11 @@
       "@type": "WebPage",
       "@id": "https://purevesting.com/screener/#page",
       "name": "Halal stock screener",
-      "description": "Halal stock screener for India: type a company's name or NSE symbol and see if it is halal, from NSE's Nifty500 Shariah index, screened by TASIS.",
+      "description": "Halal stock screener for India: type a company's name or NSE symbol and see if it is halal, from NSE's Nifty500 Shariah index. Free.",
       "url": "https://purevesting.com/screener/",
       "image": "https://purevesting.com/assets/og/screener.jpg",
       "datePublished": "2026-10-06",
-      "dateModified": "2026-10-12",
+      "dateModified": "2026-11-06",
       "inLanguage": "en-IN",
       "isPartOf": {
         "@id": "https://purevesting.com/#website"
@@ -172,7 +172,8 @@
       <h1>Is your stock <span class="t-green">halal</span>?</h1>
 
       <!-- THE SEARCH, straight under the heading, with its answer right
-           under it; the introduction and byline follow. Needs JavaScript,
+           under it; one short line follows (a tools page: no byline).
+           Needs JavaScript,
            so it stays hidden without it; the full list below is readable
            either way. A search from the home page arrives here as ?q=...,
            and the script fills it in. -->
@@ -189,24 +190,28 @@
 
       <div class="screener-result" id="sc-result" aria-live="polite" hidden></div>
 
-      <p class="standfirst">Type a company — its name, its NSE symbol or the
-        name you know it by — and see if it is halal. The answer comes from
-        NSE's Nifty500 Shariah index, which TASIS screens. As of
+      <!-- scripts/update_screener.py rewrites the date and the two counts
+           (data-screener-…). data-src: tapping a count shows its source. -->
+      <p class="standfirst" data-src="src-screener">The answer comes from NSE's
+        Shariah list, the Nifty500 Shariah index. As of
         <time datetime="2026-09-30" data-screener-date>30 September 2026</time>,
         <span class="num" data-screener-in>204</span> of the
         <span class="num" data-screener-all>501</span> Nifty 500 companies are
         halal.</p>
 
-      <div class="byline">
-        <img src="/assets/img/byline-96.webp"
-             srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
-             width="48" height="48" alt="Moin Ali Syed">
-        <div>
-          <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
-          <div class="meta">Founder, Purevesting</div>
-          <div class="meta">Last updated <time datetime="2026-10-12">12 October 2026</time> · 3 min read</div>
+      <details class="source">
+        <summary>Read more</summary>
+        <div class="source-body">
+          <p>"Halal" means the company is in NSE's Shariah index: at the last
+             monthly review, its business, its debt, its interest income and
+             its cash were all within the Shariah limits.
+             <a href="/methodology/">How the screen works</a>.</p>
+          <p>Answers can change at each monthly review. A halal company can
+             still earn a little interest, which you give away: the
+             <a href="/purification-calculator/">purification calculator</a>
+             works it out.</p>
         </div>
-      </div>
+      </details>
 
     </div>
   </section>
@@ -220,7 +225,7 @@
       <p class="meta" id="sc-count">Sorted A to Z.</p>
 
       <div class="table-scroll">
-        <table id="sc-table" data-share="none">
+        <table id="sc-table" data-src="src-screener">
           <caption class="visually-hidden">Every Nifty 500 company, and whether it is halal according to NSE's Nifty500 Shariah index</caption>
           <thead>
             <tr>
@@ -739,62 +744,30 @@
         </table>
       </div>
 
-      <p class="source-note">
-        Sources: NSE Indices — the
-        <a href="https://www.niftyindices.com/indices/equity/thematic-indices/nifty500-shariah">Nifty500 Shariah index</a>
-        (its companies and weights, from the index page's sector data, and
-        its <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">factsheet</a>)
-        and the
-        <a href="https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv">Nifty 500 list of companies</a>
-        — as of <time datetime="2026-09-30" data-screener-date>30 September 2026</time>.
-        "Weight" is the company's share of the Shariah index.
-      </p>
-
     </div>
   </section>
 
 
-  <section class="section reveal">
+  <!-- SOURCES — one closed list (README.md, rule 5). The table and the
+       counts point at it with data-src. scripts/update_screener.py keeps
+       its date current. -->
+  <section class="section">
     <div class="wrap">
-
-      <h2 id="read-this">What the answer means</h2>
-
-      <div class="grid grid-2">
-
-        <div class="card">
-          <h3>&#10003; Halal</h3>
-          <p>The company is in NSE's Nifty500 Shariah index: its business,
-             its borrowing, its interest income and its cash-like assets were
-             all inside the Shariah limits at the last monthly review, as
-             screened by TASIS. <a href="/methodology/">How the screen
-             works</a>.</p>
+      <details class="source sources" id="sources">
+        <summary>Sources</summary>
+        <div class="source-body">
+          <ul>
+            <li id="src-screener">NSE Indices — the
+              <a href="https://www.niftyindices.com/indices/equity/thematic-indices/nifty500-shariah">Nifty500 Shariah index</a>
+              (its companies and weights, from the index page's sector data,
+              and its <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">factsheet</a>)
+              and the
+              <a href="https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv">Nifty 500 list of companies</a>
+              — as of <time datetime="2026-09-30" data-screener-date>30 September 2026</time>.
+              "Weight" is the company's share of the Shariah index.</li>
+          </ul>
         </div>
-
-        <div class="card">
-          <h3>&#10007; Not halal</h3>
-          <p>The company is in the Nifty 500 but did not pass the same
-             screen at the last review — because of what it does (banks,
-             alcohol, tobacco…) or because its debt, interest income or cash
-             were over the limits. Answers can change at the next monthly
-             review.</p>
-        </div>
-
-        <div class="card">
-          <h3>? Don't know yet</h3>
-          <p>The company isn't in the Nifty 500, so it hasn't been screened
-             here yet — it may or may not be halal. Smaller companies and new
-             listings will be added as Purevesting screens them.</p>
-        </div>
-
-        <div class="card">
-          <h3>Not a recommendation</h3>
-          <p>Halal or not, this page says nothing about whether a share is
-             worth buying. Halal companies can still need
-             <a href="/purification-calculator/">purification</a>.</p>
-        </div>
-
-      </div>
-
+      </details>
     </div>
   </section>
 
@@ -1004,8 +977,8 @@
     var who = '<strong>' + esc(r.name) + '</strong> (' + esc(r.sym) + ')';
     var lead = guessed ? '<p class="meta">Closest match for “' + esc(typed) + '”:</p>' : '';
     return lead + '<p>' + chip(r) + '</p>' + (r.inIndex
-      ? '<p>' + who + ' is halal: it is in NSE\'s Nifty500 Shariah index, screened by TASIS, as of ' + esc(asOf) + '.</p>'
-      : '<p>' + who + ' is not halal: it did not pass the Shariah screen for NSE\'s Nifty500 Shariah index, screened by TASIS, as of ' + esc(asOf) + '.</p>');
+      ? '<p>' + who + ' is halal: it is in NSE\'s Shariah list, the Nifty500 Shariah index, as of ' + esc(asOf) + '.</p>'
+      : '<p>' + who + ' is not halal: it did not pass the Shariah screen for NSE\'s Shariah list, the Nifty500 Shariah index, as of ' + esc(asOf) + '.</p>');
   }
   function picks(list) {
     return '<ul class="sc-picks">' + list.map(function (m) {
