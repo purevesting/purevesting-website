@@ -11,9 +11,11 @@ section 0d.
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 12 October 2026 (phase 1 closed: privacy, disclaimer and
-"page not found" pages, /tools/ and /learn/, one menu for every screen,
-the screener first, sourced SIP start, the boycott list trimmed to names,
+Last updated: 6 November 2026 (part 1 of 4: the cuts — every page
+rewritten to MAS's writing rules in README.md; see section 0e). Before
+that, 12 October 2026 (phase 1 closed: privacy, disclaimer and "page not
+found" pages, /tools/ and /learn/, one menu for every screen, the
+screener first, sourced SIP start, the boycott list trimmed to names,
 reasons and sources, two missing sources — steps 1 to 7)
 
 ---
@@ -153,23 +155,26 @@ Each one says what to send or change, and where.
       - home page: the count, the two meta descriptions, the grid (one square
         per company), the "as of" date;
       - home page market-value switch: Infosys's weight in each factsheet,
-        the "about 31%" wording (twice: source note and script), and
+        the "about 31%" wording (twice: the 31% line in the Sources part
+        at the bottom of the page, and the script), and
         VALUE_SQUARES in the script at the bottom of the page (share × number
         of squares);
       - methodology page: the "204" mentions and the sector table;
-      - purification calculator: the "204 figure" line;
       - home page: the og:description (it quotes the count);
       - /halal-stocks/: the answer box, the "501" and "204" in the first
         section, the table (40.7% = count ÷ companies; 31.4% = Infosys's
         weight in the Nifty 500 ÷ its weight in the Shariah index), the
-        financial services figures, every "as of" date, the meta and
-        og:title, and the page's "Last updated" date and dateModified;
+        financial services figures, every "as of" date (the Sources part
+        at the bottom has them), the meta and og:title, and the page's
+        "Last updated" date and dateModified;
       - the preview images don't show the count, so they never need
         remaking for this.
       - **the screener**: in the website chat, say "run the screener
         update". It runs `python3 scripts/update_screener.py`, which
         downloads NSE's two lists and rewrites /screener/ and the home
-        page's screener box with the new date. The counts it prints must
+        page's screener box with the new date (including the date in the
+        screener's Sources part). Then set the screener page's
+        dateModified to the day of the update. The counts it prints must
         match the factsheet (204 of 501 for 30 Sep 2026). If NSE renames a
         company (as Zomato became Eternal), add the old name to the `ALSO`
         list in the script at the bottom of screener/index.html so people
@@ -180,31 +185,34 @@ Each one says what to send or change, and where.
 - [ ] **The compare page's returns table.** After each quarter-end, redo it
       the same way: one end date for every fund, the same date one, three
       and five years before, Direct plan Growth. Update fund sizes and
-      expense ratios at the same time, re-check the row order and the
-      "nearly nine times" sentence under "How to read this table".
+      expense ratios at the same time, re-check the row order (largest
+      fund first), and change the "Returns to …" line under the table and
+      the dates in the page's Sources part. (The "nearly nine times"
+      sentence went with "How to read this table" on 6 Nov.)
 - [ ] **When the compare page's index rows change, change the SIP
       calculator's too (added 12 Oct).** The two quick-pick buttons on
       /sip-calculator/ use the compare page's index table (#index-returns):
       Nifty500 Shariah 5.52% and Nifty 500 9.04% a year over the last 5
       years, as of 30 Sep 2026. Whenever those rows change, change these
       too, in `sip-calculator/index.html`: both buttons, the starting value
-      of the "Return per year" box and its slider, the source note under
-      the buttons, the results written out for the starting numbers, and
-      the first card under "What this does" (the comment above the buttons
-      lists them). Ask the website chat to recompute the written-out
-      results.
+      of the "Return per year" box and its slider, the results written out
+      for the starting numbers, and the index line in the Sources part at
+      the bottom (the comment above the buttons lists them; the source
+      note under the buttons and the "What this does" cards went on 6 Nov).
+      Ask the website chat to recompute the written-out results.
 - [ ] **Small savings rates.** Around 31 Mar, 30 Jun, 30 Sep and 31 Dec the
       Ministry of Finance announces the next quarter's rates. Open the
-      Department of Economic Affairs link on the PPF page, then update the
-      rate, the quarter and the "Last updated" date on the PPF and Sukanya
+      Department of Economic Affairs link (in the PPF page's Sources part),
+      then update the rate in the table, the quarter in the Sources part,
+      and the "Last updated" date and dateModified on the PPF and Sukanya
       pages (and their dates in `sitemap.xml`).
 
 ### Every few months
 
 - [ ] **Digital gold storage terms.** Providers change these without
-      notice. Re-open the three terms pages linked under the gold page's
-      structure table and check the free periods (2 / 5 / 5 years) and the
-      10-year delivery rule.
+      notice. Re-open the three terms pages linked in the gold page's
+      Sources part and check the free periods (2 / 5 / 5 years) and the
+      10-year delivery rule (now also a sentence under the table).
 - [ ] **The "Stop the genocide" list.** Check
       github.com/TechForPalestine/boycott-israeli-consumer-goods-dataset for
       new changes (last changed 19 Feb 2024 when copied on 6 Oct 2026;
@@ -219,8 +227,9 @@ Each one says what to send or change, and where.
       card 42% a year) are rough typical rates, labelled as such, not quotes.
       Once or twice a year, check they still look typical; change them in
       the `TYPICAL` list in the script at the bottom of
-      loan-calculator/index.html, and in the note under the results that
-      lists them (the comment above the calculator says the same).
+      loan-calculator/index.html, and in the closed "Read more" under the
+      results that lists them (the comment above the calculator says the
+      same).
 
 ---
 
@@ -417,9 +426,10 @@ the way; each needs a decision, or a session of its own.
       Research and others) refuse automated checks; that is normal for big
       sites and doesn't mean they're broken. Every other outside link
       opened, and every link inside the site works.
-- [ ] **/ask/ still has its own "What happens to what you send" section**
+- [x] ~~**/ask/ still has its own "What happens to what you send" section**
       at the bottom, which now repeats /privacy/. It could link to
-      /privacy/, or shrink to one line.
+      /privacy/, or shrink to one line.~~ DONE 6 Nov: it is one line now,
+      "Rather write directly? Email me at salam@purevesting.com".
 - [ ] **Home page: the "Learn and ask" panel heading** could link to
       /learn/, the way the Tools panel heading now links to /tools/.
 - [ ] **Disclaimer — MAS's own investments.** MAS chose on 12 Oct to leave
@@ -436,6 +446,75 @@ the way; each needs a decision, or a session of its own.
       mouse): the header menu drops under the logo instead of sitting
       beside it. Harmless and rare — phones and tablets are fine; a slightly
       smaller gap between the menu words would fix it.
+
+---
+
+## 0e. Part 1 of 4 — the cuts (6 Nov 2026)
+
+MAS's brief: the site read like a research paper written for AI. Part 1
+removed the unnecessary stuff from every page, following the writing
+rules now at the top of README.md. No fact, figure or fatwa wording was
+changed. Part 2 is the design; parts 3 and 4 are for MAS to set.
+
+### Done (one commit per page or group of pages, pushed to main)
+
+- [x] Writing rules at the top of README.md; the old rules here they
+      replace are marked REPLACED 6 Nov.
+- [x] Every page: the footer's disclaimer is one short line (the full
+      text is on /disclaimer/ only); the footer, About page, home page and
+      app description say Purevesting covers investing, saving and
+      borrowing; "Share as image" only under the main answer, and the
+      picture no longer carries the disclaimer; sources moved into one
+      closed "Sources" part at the bottom of each page (tapping a figure
+      still shows its source); no "min read", "Corrected · see the
+      corrections log" lines or "Found something wrong here?" boxes.
+- [x] Articles (the five instruments, mutual funds, halal stocks,
+      methodology): the answer first in 2–3 short sentences; byline =
+      photo, name, date; "Still have a doubt? Ask me" at the end. Tools,
+      hub and legal pages have no name line (Privacy and Disclaimer keep a
+      date line).
+- [x] No madrasa, school of thought, mufti, Shariah board, standard-setter
+      or index company is named in page text, titles, descriptions or
+      link-preview images: "a fatwa from India", "a Shariah board", "the
+      international Shariah standard", "a big US index company". Each
+      fatwa's exact words stay in its closed box. Two quotes had a name
+      replaced in square brackets ("[the standard's]", "[year-end]"), and
+      one NSE quote now starts after the sentence naming its Shariah
+      adviser.
+- [x] Cut, as MAS listed: the mutual funds page's "What each fund is"
+      table, intro, Shariah board note, Nippon note, launch-dates note and
+      "How to read this table"; "What every instrument page contains";
+      the screener's "What the answer means"; every "not a recommendation
+      / not a ruling / question for your scholar" line outside the footer
+      and /disclaimer/. Facts that sat in long notes became one short
+      sentence in the text, or a closed "Read more".
+- [x] Ten link-preview images remade with the new words (PPF's said
+      "What Deoband ruled"; Sukanya's named Jamiat Ulama-i-Hind and TASIS).
+
+### Noticed on 6 Nov — not changed
+
+- [ ] /halal-stocks/ still gives NSE's old 3% income limit, and the
+      purification calculator still cites NSE's January 2020 document —
+      both in section 1. Part 1 changed no facts, so both wait for that job.
+- [ ] **Retake the three app screenshots** in `assets/img/app/` (shown on
+      Android's install sheet) after part 2: they show the old pages and
+      the old menu, with "Corrected" lines and "8 min read".
+- [ ] Wide tables still scroll sideways on a phone (mutual funds
+      returns, methodology limits, gold formats, EPF, NPS, the
+      instruments summary): part 2.
+- [ ] The byline photo stays on articles: MAS asked for "only my name and
+      the date", and the photo is design — decide in part 2.
+- [ ] Searching "Zomato" in the screener answers "Eternal Ltd. (ETERNAL)
+      is halal…". For names in the `ALSO` list, the answer could add
+      "(Zomato is now Eternal)".
+- [ ] The Sources parts describe fatwas, boards and index companies
+      instead of naming them, but their links still go to those sites, so
+      the web address shows the name. If even that should go, the only fix
+      is dropping those links — which README rule 5 ("sources stay") rules
+      out. MAS's call.
+- [ ] The rewording was not logged in /corrections/: the log's own rule
+      (now written on that page) is that rewording which keeps the facts
+      the same isn't logged.
 
 ---
 
@@ -523,7 +602,8 @@ date. These are the places that don't yet.
       uses the Nifty 500 Shariah TRI as its benchmark, and names no board, so
       the page says "None named" (2 Oct). Still worth checking its scheme
       information document for a Shariah board; if one is named, change the
-      chip and the source note.
+      answer box and the line in the page's Sources part (since 6 Nov the
+      board table and its chips are gone, and boards are never named).
 - [x] ~~**Compare page — Taurus and Quantum: ShariahCap has no source
       link.**~~ CORRECTED 2 Oct. Neither fund's own documents name
       ShariahCap or any other Shariah board: Taurus's scheme information
