@@ -45,25 +45,33 @@
     return videos;
   }
 
+  // One card: the video's picture (cropped to 16:9, so YouTube's black
+  // bars don't show) with a play button on it, a "Short" tag for Shorts,
+  // then the title.
   function card(v) {
     var a = document.createElement('a');
     a.className = 'card card-video';
     a.href = v.url;
 
+    var thumb = document.createElement('span');
+    thumb.className = 'thumb';
     var img = document.createElement('img');
     img.src = 'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg';
     img.width = 480;
     img.height = 360;
     img.alt = '';
     img.loading = 'lazy';
-    a.appendChild(img);
+    thumb.appendChild(img);
+    thumb.insertAdjacentHTML('beforeend',
+      '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>');
 
     if (v.isShort) {
       var tag = document.createElement('span');
       tag.className = 'video-tag';
       tag.textContent = 'Short';
-      a.appendChild(tag);
+      thumb.appendChild(tag);
     }
+    a.appendChild(thumb);
 
     var h = document.createElement('h3');
     h.textContent = v.title;   // text only, so a title can never break the page
@@ -78,7 +86,11 @@
     var want = box.getAttribute('data-videos');
     var list = want === 'all' ? videos : videos.slice(0, parseInt(want, 10) || 3);
     box.textContent = '';
-    list.forEach(function (v) { box.appendChild(card(v)); });
+    list.forEach(function (v, i) {
+      var c = card(v);
+      c.style.setProperty('--i', Math.min(i, 8));   // they rise in turn
+      box.appendChild(c);
+    });
     if (window.pvFigures) window.pvFigures(box);   // the site's rule for new HTML
   });
 

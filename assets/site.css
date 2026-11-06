@@ -645,6 +645,7 @@ input:focus-visible {
 /* The home page has its own sign-up just above the footer, so there this
    one stands aside. (A browser too old for :has() simply shows both.) */
 body:has(.home-news) .footer-news { display: none; }
+body:has(.home-news) .footer-nav { margin-top: 0; }
 
 /* A few links: two columns on a phone, one row on a computer. */
 .footer-nav {
@@ -771,8 +772,6 @@ body:has(.home-news) .footer-news { display: none; }
   stroke-linejoin: round;
 }
 
-/* On a blue band the circle is white, so it still shows. */
-.band .icon { background: var(--white); }
 
 /* A green icon — only where it means "Halal", or sits on a button. */
 .icon-green { color: var(--green-deep); background: var(--green-tint); }
@@ -1453,6 +1452,8 @@ td:first-child { font-weight: 600; }
 
   .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
   .tile { min-height: 9.5rem; padding: 1.25rem; }
+  .tile .icon { width: 3.25rem; height: 3.25rem; }
+  .tile .icon svg { width: 1.75rem; height: 1.75rem; }
   .tile-q { font-size: 1.1rem; }
 
   /* Wide enough for the menu to sit beside the logo again. It no longer
@@ -1548,26 +1549,163 @@ td:first-child { font-weight: 600; }
 
 
 /* 16. HOME PAGE PIECES ===================================================
-   Styles used only by the home page. Kept together at the end so the rest
-   of the file stays general.
+   The home page (MAS, 6 Nov 2026): the headline, one short line and the
+   stock search; the question tiles; the 500 squares; the videos; "Ask
+   me"; the newsletter. The tiles' own style is in section 9 (the hub pages
+   use them too). The switch buttons and the big number are also used on
+   /halal-stocks/ and the calculators.
    ========================================================================== */
 
-/* --- The hero tagline badge --- */
-.hero-badge {
-  display: inline-block;
+/* --- The top of the page: a soft blue glow behind the headline --- */
+.hero {
+  padding: 2rem 0 0.5rem;
+  background: radial-gradient(34rem 22rem at 100% 0%, var(--sky-tint), rgba(228, 242, 251, 0) 72%);
+}
+
+.hero .wrap {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 2.55rem;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.hero-line {
   margin: 0 0 1.25rem;
-  padding: 0.35rem 0.85rem;
-  background: var(--amber);
-  color: var(--ink);
-  border-radius: 999px;
+  font-size: 1.1rem;
+  color: var(--ink-2);
+  max-width: 30em;
+}
+
+.hero-search { margin: 0; }
+.hero-search label { font-size: 1.05rem; }
+.hero-search input::placeholder { color: var(--ink-3); }
+
+/* "Try Infosys · Zomato · Reliance": tap one to see an answer at once. */
+.try {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.75rem 0 0;
   font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  color: var(--ink-3);
   max-width: none;
 }
 
-/* The two buttons above the grid: by companies / by market value. Hidden
-   without JavaScript, because they do nothing without it. */
+.try a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0 0.85rem;
+  font-weight: 700;
+  color: var(--sky-ink);
+  background: var(--sky-tint);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background-color 150ms ease, transform 120ms var(--ease);
+}
+
+.try a:hover { background: var(--sky-soft); }
+.try a:active { transform: scale(0.96); }
+
+/* The drawing beside the headline: on wider screens only, so on a phone
+   the search stays on the first screen. Its two cards rise in once. */
+.hero-art { display: none; }
+
+.art { display: block; width: 100%; height: auto; overflow: visible; }
+.art .c-tint  { fill: var(--sky-tint); }
+.art .c-soft  { fill: var(--sky-soft); }
+.art .c-sky   { fill: var(--sky); }
+.art .c-white { fill: var(--white); }
+.art .c-bone  { fill: var(--bone); }
+.art .c-line  { fill: var(--line); }
+.art .c-line2 { fill: #E9E3D7; }
+.art .c-green { fill: var(--green); }
+.art .c-gtint { fill: var(--green-tint); }
+.art .card-s  { stroke: var(--line); stroke-width: 1.5; filter: drop-shadow(0 10px 18px rgba(12, 71, 102, 0.12)); }
+.art .s-sky,
+.art .s-green { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.art .s-sky   { stroke: var(--sky-deep); }
+.art .s-green { stroke: var(--green-ink); }
+.art .t-art   { font: 700 15px var(--font-body); fill: var(--green-ink); }
+
+.art-a, .art-b, .art-c { animation: art-in 700ms var(--ease) both; }
+.art-b { animation-delay: 120ms; }
+.art-c { animation-delay: 240ms; }
+
+@keyframes art-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* --- The "Stop the genocide" card under the tiles: an amber edge. --- */
+.cause {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 1rem 0 0;
+  padding: 0.75rem 1rem;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--amber);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  line-height: 1.4;
+  transition: transform 120ms var(--ease), box-shadow 200ms ease;
+}
+
+.cause:hover { box-shadow: var(--shadow); }
+.cause:active { transform: scale(0.98); }
+.cause .go { color: var(--green-deep); font-weight: 700; white-space: nowrap; }
+.cause { display: grid; grid-template-columns: auto 1fr; }
+.cause .go { grid-column: 2; margin-top: -0.4rem; }
+
+@media (min-width: 46em) {
+  .cause { grid-template-columns: auto 1fr auto; }
+  .cause .go { grid-column: auto; margin-top: 0; }
+}
+.cause .go::after { content: " \2192"; }
+.icon-amber { color: #8A5A00; background: var(--amber-soft); }
+
+/* --- The 500 squares: a white card on the blue band --- */
+.grid-card {
+  padding: 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--sky-soft);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.grid-card h2 { margin: 0 0 0.75rem; color: var(--ink); }
+
+.screen-stat .big-num {
+  display: block;
+  font-size: 3.25rem;
+  line-height: 1;
+  color: var(--green-deep);
+}
+
+.screen-words {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink-2);
+}
+
+.grid-card .more-link { margin-top: 0.5rem; }
+
+/* --- The two switch buttons (by companies / by market value, and the
+   calculators' quick picks) --- */
 .grid-switch {
   display: none;
   flex-wrap: wrap;
@@ -1594,7 +1732,7 @@ td:first-child { font-weight: 600; }
   border-color: var(--sky-deep);
 }
 
-/* The big number above the grid. */
+/* The big number above a grid of squares. */
 .screen-stat {
   font-family: var(--font-display);
   font-weight: 800;
@@ -1607,77 +1745,189 @@ td:first-child { font-weight: 600; }
 
 .screen-stat .num { font-variant-numeric: proportional-nums; }
 
-/* --- The topic panels' link lists --- */
-.route-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+/* --- The videos: a dark band, cards you can swipe on a phone --- */
+.band-deep h2 { color: var(--forest-text); }
+.band-deep .eyebrow { color: var(--sky-soft); }
+.band-deep .more-link a { color: var(--forest-text); }
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-bottom: 1.25rem;
 }
 
-.route-list li {
-  border-bottom: 1px solid var(--line);
+.section-head h2 { margin: 0; }
+.section-head .btn svg { width: 22px; height: 22px; }
+
+.video-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 82%;
+  gap: 0.9rem;
+  margin: 0 -1.25rem;
+  padding: 0.25rem 1.25rem 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 1.25rem;
+  scrollbar-width: none;
 }
 
-.route-list li:last-child { border-bottom: 0; }
+.video-row::-webkit-scrollbar { display: none; }
+.video-row > * { scroll-snap-align: start; }
+.video-row > .meta { color: var(--forest-text-2); }
+.video-row > .meta a { color: var(--forest-text); }
 
-.route-list a,
-.route-list span {
+/* One video card: the picture with a play button, then the title. Dark
+   (forest), the one place besides the footer where dark is allowed. */
+.card-video {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 0.6rem 0.6rem 1rem;
+  color: var(--forest-text);
+  background: var(--forest);
+  border: 1px solid var(--forest);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: transform 150ms var(--ease), background-color 200ms ease;
+}
+
+.band-deep .card-video {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+
+.card-video:hover { transform: translateY(-2px); }
+.band-deep .card-video:hover { background: rgba(255, 255, 255, 0.1); }
+.card-video a { color: var(--forest-text); }
+
+.card-video .thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: #0E2F26;
+}
+
+.card-video .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
   display: flex;
   align-items: center;
-  min-height: var(--tap);
-  padding: 0.5rem 0;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin: -1.625rem 0 0 -1.625rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  transition: transform 150ms var(--ease);
 }
 
-.route-list span { color: var(--ink-3); }   /* not built yet, so not a link */
-
-/* The home page's topic panels: a short line under each title. */
-.panel .meta { margin: -0.35rem 0 0.5rem; }
-
-@media (min-width: 64em) {
-  .panels { grid-template-columns: repeat(4, 1fr); }
-  .panels .card { padding: 1.4rem 1.25rem; }
-  .panels .route-list { font-size: 0.95rem; }
-}
-
-/* .soon — the small tag on a page that does not exist yet. */
-.soon {
-  margin-left: auto;
-  padding-left: 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--ink-3);
-  white-space: nowrap;
-}
-
-/* --- Video cards --- */
-
-.card-video img {
-  width: 100%;
-  border-radius: var(--radius-sm);
-  margin-bottom: 0.75rem;
-}
+.play svg { width: 1.3rem; height: 1.3rem; margin-left: 3px; fill: var(--forest); }
+.card-video:hover .play { transform: scale(1.08); }
 
 .card-video h3 {
+  margin: 0 0.35rem;
   font-size: 1rem;
-  margin: 0;
+  line-height: 1.35;
 }
 
-/* Video cards are drawn from /videos/list.js by /assets/videos.js (24 Oct).
-   A Short gets a small label above its title. */
+/* A Short gets a small label on its picture. */
 .video-tag {
-  display: inline-block;
-  margin: 0 0 0.4rem;
-  padding: 0.1em 0.6em;
+  position: absolute;
+  left: 0.55rem;
+  top: 0.55rem;
+  padding: 0.15em 0.65em;
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--forest-text);
-  background: rgba(255, 255, 255, 0.14);
+  color: var(--forest);
+  background: var(--white);
   border-radius: 999px;
 }
 
-/* "See all videos →" under the home page's three cards. */
+/* "See all videos →" under the cards. */
 .more-link { margin: 1rem 0 0; font-weight: 700; }
 .more-link a { display: inline-flex; align-items: center; min-height: var(--tap); }
+
+/* --- "Ask me": MAS's photo, with a blue speech bubble --- */
+.ask-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem 1.1rem;
+  align-items: start;
+  padding: 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.ask-photo { position: relative; padding-top: 0.25rem; }
+
+.ask-photo img {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--white), 0 0 0 6px var(--sky);
+}
+
+.ask-photo::after {               /* the speech bubble with a "?" */
+  content: "";
+  position: absolute;
+  right: -0.7rem;
+  top: -0.35rem;
+  width: 1.85rem;
+  height: 1.6rem;
+  border-radius: 0.8rem 0.8rem 0.8rem 0.2rem;
+  background: var(--sky) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 9a3 3 0 1 1 4 2.8c-.6.3-1 .8-1 1.5v.7'/%3E%3Cpath d='M12 18h.01'/%3E%3C/svg%3E") center / 1rem no-repeat;
+  box-shadow: 0 0 0 3px var(--white);
+}
+
+.ask-text h2 { margin: 0 0 0.4rem; font-size: 1.5rem; }
+.ask-text p { color: var(--ink-2); }
+.ask-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0 0; }
+
+/* On a phone the buttons take the card's full width under the photo. */
+.ask-text { display: contents; }
+.ask-text h2 { grid-column: 2; align-self: center; }
+.ask-text p,
+.ask-text .ask-actions { grid-column: 1 / -1; margin-top: 0; }
+.ask-text p:last-child { margin-bottom: 0; }
+
+/* --- The newsletter: a white card on the blue band --- */
+.news-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--sky-soft);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.news-card .icon { width: 3.25rem; height: 3.25rem; }
+.news-card h2 { margin: 0 0 0.35rem; font-size: 1.45rem; color: var(--ink); }
+.news-card p { margin: 0; color: var(--ink-2); }
+.news-card > div { display: contents; }
+.news-card > div > h2 { grid-column: 2; margin: 0; }
+.news-card > div > p,
+.news-card > .btn { grid-column: 1 / -1; }
+.news-card > .btn { justify-self: start; }
 
 /* /videos/: two cards across on a tablet, three on a laptop. */
 @media (min-width: 46em) {
@@ -1688,7 +1938,41 @@ td:first-child { font-weight: 600; }
 }
 
 @media (min-width: 46em) {
+  .hero { padding: 3.25rem 0 1rem; }
+  .hero .wrap { grid-template-columns: 1.2fr 0.8fr; gap: 3rem; }
+  .hero h1 { font-size: 3.6rem; }
+  .hero-line { font-size: 1.25rem; }
+  .hero-art { display: block; }
+
   .screen-stat { font-size: 2rem; }
+  .grid-card { padding: 2rem 2.25rem; }
+  .screen-stat .big-num { display: inline; font-size: 4rem; vertical-align: -0.12em; margin-right: 0.35rem; }
+  .screen-words { display: inline; font-size: 1.2rem; }
+
+  .video-row {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .ask-card { grid-template-columns: auto 1fr; gap: 2rem; padding: 2rem 2.25rem; align-items: center; }
+  .ask-photo img { width: 8rem; height: 8rem; }
+  .ask-photo::after { width: 2.4rem; height: 2.1rem; background-size: 1.3rem; right: -0.6rem; top: 0; }
+  .ask-text { display: block; }
+  .ask-text h2 { font-size: 2rem; }
+  .ask-text p { margin-bottom: 1rem; }
+
+  .news-card { grid-template-columns: auto 1fr auto; padding: 1.75rem 2rem; gap: 1.5rem; }
+  .news-card .icon { width: 4rem; height: 4rem; }
+  .news-card .icon svg { width: 1.9rem; height: 1.9rem; }
+  .news-card > div { display: block; }
+  .news-card > .btn { grid-column: auto; }
+}
+
+@media (min-width: 64em) {
+  .hero h1 { font-size: 4.1rem; }
 }
 
 
@@ -2351,8 +2635,6 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   box-shadow: var(--shadow);
 }
 
-/* The box is the first thing under the home page's heading and badge. */
-.hero-badge + .screener-box { margin-top: 0; }
 .screener-box + .standfirst { margin: 1.5rem 0 0; }
 
 /* Taller box and button than a normal form, so they are easy to hit with
@@ -2594,6 +2876,56 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 /* A tool that is still being built: no link, quieter text. */
 .card-soon { color: var(--ink-3); }
 .card-soon h3 { color: var(--ink-2); }
+
+/* .soon — the small tag on a page that does not exist yet. */
+.soon {
+  margin-left: auto;
+  padding-left: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+/* .route-list — a short list of links ("Related" at the end of a page,
+   /learn/, the "page not found" page): one link per line, each a full
+   44px tall, with a small blue arrow. */
+.route-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 40rem;
+}
+
+.route-list li { border-bottom: 1px solid var(--line); }
+.route-list li:last-child { border-bottom: 0; }
+
+.route-list a,
+.route-list span {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: var(--tap);
+  padding: 0.55rem 0;
+}
+
+.route-list a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.route-list a:hover { text-decoration: underline; }
+
+.route-list a::after {
+  content: "";
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  margin-left: auto;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232A9AE0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.route-list span { color: var(--ink-3); }   /* not built yet, so not a link */
 
 
 /* ==========================================================================

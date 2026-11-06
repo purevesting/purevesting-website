@@ -201,194 +201,227 @@
 
 <main>
 
-  <!-- ===== HERO ===== -->
-  <section class="section">
+  <!-- ===== THE TOP: the headline, one short line, and the stock search
+       (MAS, 6 Nov 2026). ===== -->
+  <section class="hero">
     <div class="wrap">
 
-      <h1>Halal finance in India, <span class="t-green">made better</span></h1>
+      <div class="hero-text">
+        <h1>Halal finance in India, <span class="t-green">made better</span></h1>
 
-      <p class="hero-badge">Don't compromise on ethics</p>
+        <!-- ONE SHORT LINE. The longer sentence with the same words is in
+             the structured data at the top of this page, the About page
+             and the footer. -->
+        <p class="hero-line">India's one-stop destination for halal
+          investing, saving and borrowing.</p>
 
-      <!-- THE SCREENER BOX, first thing under the heading. A plain form: it
-           sends the name to /screener/, which shows the answer, so it works
-           even without JavaScript. No autofocus, on purpose: on a phone it
-           would pop the keyboard up over the page.
-           scripts/update_screener.py keeps the date and count current. -->
-      <form class="screener-box" action="/screener/" method="get" role="search">
-        <label for="home-q">Is your stock halal? Type its name or NSE symbol</label>
-        <div class="screener-row">
-          <input id="home-q" name="q" type="search" placeholder="e.g. Infosys or TCS" autocomplete="off" spellcheck="false">
-          <button class="btn" type="submit">Check</button>
-        </div>
-        <p class="meta">Covers the <span data-screener-all>501</span> companies in the
-          Nifty 500 · NSE's list as of <time datetime="2026-09-30" data-screener-date>30 September 2026</time>
-          · <a href="/screener/">see them all</a></p>
-      </form>
+        <!-- THE STOCK SEARCH. A plain form: it sends the name to /screener/,
+             which shows the answer, so it works even without JavaScript.
+             No autofocus, on purpose: on a phone it would pop the keyboard
+             up over the page. The "Try" names open the screener with that
+             name filled in. scripts/update_screener.py keeps the count and
+             the date current. -->
+        <form class="screener-box hero-search" action="/screener/" method="get" role="search">
+          <label for="home-q">Is your stock halal?</label>
+          <div class="screener-row">
+            <input id="home-q" name="q" type="search" placeholder="Type a company" autocomplete="off" spellcheck="false">
+            <button class="btn" type="submit">Check</button>
+          </div>
+          <p class="try"><span>Try</span>
+            <a href="/screener/?q=Infosys">Infosys</a>
+            <a href="/screener/?q=Zomato">Zomato</a>
+            <a href="/screener/?q=Reliance">Reliance</a></p>
+          <p class="meta">All <span data-screener-all>501</span> Nifty 500 companies · NSE's list as of
+            <time datetime="2026-09-30" data-screener-date>30 September 2026</time></p>
+        </form>
+      </div>
 
-      <!-- ONE SENTENCE: word for word the start of the description in the
-           structured data at the top of this page, which the About page
-           and the footer repeat. Change them together, or not at all. -->
-      <p class="standfirst">Purevesting is a startup building India's
-        one-stop destination for halal finance: investing, saving and
-        borrowing.</p>
+      <!-- A small drawing for wider screens: a search with its answer, a
+           chart, and a few of the squares from further down the page. -->
+      <div class="hero-art" aria-hidden="true">
+        <svg class="art" viewBox="0 0 420 360">
+          <circle class="c-tint" cx="236" cy="178" r="158"/>
+          <circle class="c-soft" cx="378" cy="58" r="24"/>
+          <circle class="c-soft" cx="58" cy="306" r="13"/>
+          <g class="art-a">
+            <rect class="c-white card-s" x="212" y="34" width="174" height="130" rx="18"/>
+            <rect class="c-line" x="232" y="54" width="62" height="8" rx="4"/>
+            <rect class="c-sky" x="236" y="112" width="18" height="32" rx="4"/>
+            <rect class="c-sky" x="264" y="98" width="18" height="46" rx="4"/>
+            <rect class="c-sky" x="292" y="86" width="18" height="58" rx="4"/>
+            <rect class="c-sky" x="320" y="72" width="18" height="72" rx="4"/>
+            <rect class="c-line" x="232" y="146" width="134" height="2" rx="1"/>
+          </g>
+          <g class="art-b">
+            <rect class="c-white card-s" x="30" y="146" width="276" height="152" rx="20"/>
+            <rect class="c-bone" x="50" y="166" width="236" height="40" rx="20"/>
+            <circle class="s-sky" cx="73" cy="184" r="7.5"/>
+            <path class="s-sky" d="M78.5 189.5l6 6"/>
+            <rect class="c-line" x="94" y="182" width="88" height="8" rx="4"/>
+            <rect class="c-gtint" x="50" y="224" width="104" height="32" rx="16"/>
+            <path class="s-green" d="M64 240.5l5.5 5.5 10-11"/>
+            <text class="t-art" x="88" y="246">Halal</text>
+            <rect class="c-line" x="50" y="270" width="190" height="8" rx="4"/>
+          </g>
+          <g class="art-c">
+            <rect class="c-green" x="322" y="206" width="20" height="20" rx="4"/>
+            <rect class="c-line2" x="346" y="206" width="20" height="20" rx="4"/>
+            <rect class="c-green" x="370" y="206" width="20" height="20" rx="4"/>
+            <rect class="c-line2" x="322" y="230" width="20" height="20" rx="4"/>
+            <rect class="c-green" x="346" y="230" width="20" height="20" rx="4"/>
+            <rect class="c-green" x="370" y="230" width="20" height="20" rx="4"/>
+            <rect class="c-green" x="322" y="254" width="20" height="20" rx="4"/>
+            <rect class="c-line2" x="346" y="254" width="20" height="20" rx="4"/>
+            <rect class="c-line2" x="370" y="254" width="20" height="20" rx="4"/>
+          </g>
+        </svg>
+      </div>
 
     </div>
   </section>
 
 
-  <!-- ===== THE TOPIC PANELS =====
-       One panel per area of money. Every line is a plain link; a line
-       with "soon" is a page being written — turn it into a link when the
-       page goes live. Add a new panel only when it has pages to show. -->
-  <section class="section" id="start">
+  <!-- ===== THE QUESTIONS: one big tile per question people ask, each
+       opening a page that answers it (MAS, 6 Nov 2026). To add one, copy a
+       tile; its drawing is a 24px line icon (README.md, "The look").
+       id="start" and id="tools" stay, so old links to /#start and /#tools
+       still land here. ===== -->
+  <section class="section reveal" id="start">
     <div class="wrap">
 
-      <h2>Start here</h2>
+      <h2>What's your question?</h2>
 
-      <div class="grid grid-2 panels">
+      <div class="tiles" id="tools">
 
-        <div class="card panel">
-          <h3>Invest</h3>
-          <p class="meta">Stocks, mutual funds and gold</p>
-          <ul class="route-list">
-            <li><a href="/screener/">Is my stock halal? The screener</a></li>
-            <li><a href="/halal-stocks/">How many Indian stocks are halal?</a></li>
-            <li><a href="/compare/shariah-mutual-funds/">India's six Shariah mutual funds, compared</a></li>
-            <li><a href="/methodology/">How a stock is screened, step by step</a></li>
-            <li><a href="/instruments/digital-gold/">Is digital gold halal?</a></li>
-            <li><span>Is a mutual fund SIP halal?<span class="soon">soon</span></span></li>
-          </ul>
-        </div>
+        <a class="tile" href="/screener/">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 16.5l5-5 4 4 7.5-7.5"/><path d="M15 8h5v5"/><path d="M3.5 20.5h17"/></svg></span>
+          <span class="tile-q">Is my stock halal?</span>
+          <svg class="tile-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
 
-        <div class="card panel">
-          <h3>Save and retire</h3>
-          <p class="meta">What comes with a job, and what you open for tax</p>
-          <ul class="route-list">
-            <li><a href="/instruments/epf/">Is EPF halal?</a></li>
-            <li><a href="/instruments/ppf/">Is PPF halal?</a></li>
-            <li><a href="/instruments/nps/">Is NPS halal?</a></li>
-            <li><a href="/instruments/sukanya-samriddhi/">Is Sukanya Samriddhi halal?</a></li>
-            <li><a href="/instruments/">All instruments, checked</a></li>
-          </ul>
-        </div>
+        <a class="tile" href="/compare/shariah-mutual-funds/">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5H12z"/><path d="M15 3.9A8.5 8.5 0 0 1 20.1 9H15z"/></svg></span>
+          <span class="tile-q">Halal mutual funds</span>
+          <svg class="tile-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
 
-        <!-- id="tools" stays, so old links to /#tools still land here. -->
-        <div class="card panel" id="tools">
-          <h3><a href="/tools/">Tools</a></h3>
-          <p class="meta">Work it out for your own money</p>
-          <ul class="route-list">
-            <li><a href="/screener/">Halal stock screener</a></li>
-            <li><a href="/sip-calculator/">SIP and lump-sum calculator</a></li>
-            <li><a href="/loan-calculator/">Loan calculator: what interest really costs</a></li>
-            <li><a href="/purification-calculator/">Purification calculator</a></li>
-            <li><a href="/app/">Install Purevesting on your phone</a></li>
-            <li><span>Check what I already hold<span class="soon">soon</span></span></li>
-          </ul>
-        </div>
+        <a class="tile" href="/instruments/">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5z"/><path d="M5.5 10.5v7M10 10.5v7M14 10.5v7M18.5 10.5v7"/><path d="M3.5 20.5h17"/></svg></span>
+          <span class="tile-q">Is EPF, PPF or NPS halal?</span>
+          <svg class="tile-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
 
-        <div class="card panel">
-          <h3>Learn and ask</h3>
-          <p class="meta">How this site works, and how to reach it</p>
-          <ul class="route-list">
-            <li><a href="/newsletter/">HalalEdge, the weekly email</a></li>
-            <li><a href="/ask/">Ask your own question</a></li>
-            <li><a href="/about/">About Purevesting</a></li>
-            <li><a href="/corrections/">Corrections, in public</a></li>
-          </ul>
-        </div>
+        <a class="tile" href="/instruments/digital-gold/">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 20 5 15h6l1.5 5z"/><path d="M11.5 20l1.5-5h6l1.5 5z"/><path d="M7.5 13 9 8h6l1.5 5z"/></svg></span>
+          <span class="tile-q">Is digital gold halal?</span>
+          <svg class="tile-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+
+        <a class="tile" href="/loan-calculator/">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.5 5.5l-13 13"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg></span>
+          <span class="tile-q">What does my loan really cost?</span>
+          <svg class="tile-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+
+        <a class="tile" href="/purification-calculator/">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5s6.5 6.6 6.5 11a6.5 6.5 0 0 1-13 0c0-4.4 6.5-11 6.5-11z"/><path d="M9 14.5a3 3 0 0 0 3 3"/></svg></span>
+          <span class="tile-q">How much should I purify?</span>
+          <svg class="tile-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
 
       </div>
 
       <!-- The highlighted card for /stop-the-genocide/ (MAS, 6 Oct). -->
-      <a class="highlight-card" href="/stop-the-genocide/"><strong>Stop the
-         genocide.</strong> Check if a brand you buy is on the boycott
-         list, and why.
-         <span class="go">See the list &rarr;</span></a>
+      <a class="cause" href="/stop-the-genocide/">
+        <span class="icon icon-amber" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8.5h14l-1 11.5H6z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></svg></span>
+        <span><strong>Stop the genocide.</strong> Is a brand you buy on the
+          boycott list?</span>
+        <span class="go">See the list</span>
+      </a>
 
     </div>
   </section>
 
 
-  <!-- ===== THE SCREEN GRID ===== -->
-  <section class="section">
+  <!-- ===== THE 500 SQUARES, with one short line (MAS, 6 Nov 2026). The
+       full picture, with the "by market value" view, is on /halal-stocks/.
+       EVERY MONTH: scripts/update_screener.py redraws the squares and
+       rewrites the two counts (data-screener-in / -all) from NSE's lists;
+       check them against the factsheet. ===== -->
+  <section class="section band reveal" id="market">
     <div class="wrap">
+      <div class="grid-card">
 
-      <h2>How much of the market passes</h2>
+        <h2>How much of the market is halal?</h2>
 
-      <!-- data-src: tapping a figure shows its line in the Sources part
-           at the bottom of the page. -->
-      <p class="screen-stat" id="screen-stat" aria-live="polite" data-src="src-grid">
-        <span class="num" data-count>204</span> of the <span class="num">501</span> companies
-        in the Nifty 500 pass NSE's Shariah screen.
-      </p>
+        <!-- data-src: tapping a figure shows its line in Sources. The 204
+             counts up when it scrolls into view. -->
+        <p class="screen-stat" data-src="src-grid">
+          <span class="big-num num" data-count data-screener-in>204</span>
+          <span class="screen-words">of the <span class="num" data-screener-all>501</span>
+            companies in the Nifty 500 pass NSE's Shariah screen.</span>
+        </p>
 
-      <!-- THE SWITCH. Two buttons that redraw the grid: by companies (the
-           default, and all that shows without JavaScript) or by market
-           value. They stay hidden until the small script at the bottom of
-           this page runs. -->
-      <div class="grid-switch" role="group" aria-label="Count the grid by">
-        <button type="button" class="switch-btn" data-view="count" aria-pressed="true">By companies</button>
-        <button type="button" class="switch-btn" data-view="value" aria-pressed="false">By market value</button>
+        <!-- One square per company, in A-to-Z order, filled if it passes.
+             aria-hidden hides it from screen readers, because the sentence
+             above already says the same in words. Written by
+             scripts/update_screener.py: do not hand-edit between the
+             markers. -->
+        <div class="screen-grid" aria-hidden="true">
+      <!-- GRID START -->
+      <i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i>
+      <i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i>
+      <i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i>
+      <i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i>
+      <i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i>
+      <i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i>
+      <i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i>
+      <i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i>
+      <i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i>
+      <i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i>
+      <i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i>
+      <i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i>
+      <i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i>
+      <i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i>
+      <i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i>
+      <i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i>
+      <i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i>
+      <i></i>
+      <!-- GRID END -->
+        </div>
+
+        <ul class="legend">
+          <li><span class="swatch swatch-green"></span>Passes</li>
+          <li><span class="swatch swatch-off"></span>Doesn't pass</li>
+        </ul>
+
+        <p class="more-link"><a href="/halal-stocks/">See the full picture &rarr;</a></p>
+
       </div>
-
-      <!-- The grid below is one <i> tag per company — 501 in September
-           2026, because that month's Nifty 500 factsheet lists 501
-           constituents. class="on" means
-           that company passes. It is generated, so do not hand-edit it.
-           aria-hidden hides it from screen readers, because the sentence
-           above already says the same thing in words. -->
-      <div class="screen-grid" aria-hidden="true">
-      <i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i>
-      <i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i>
-      <i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i>
-      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i>
-      <i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i>
-      <i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i>
-      <i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i>
-      <i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i>
-      <i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i>
-      <i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i>
-      <i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i>
-      <i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i>
-      <i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i>
-      <i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i>
-      <i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i>
-      <i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i>
-      <i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i>
-      <i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i>
-      <i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i>
-      <i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i>
-      <i class="on"></i>
-      </div>
-
-      <p class="meta">Each square is one company, and filled squares pass.
-        By market value, each square is an equal slice of the market's
-        value instead.</p>
-
-      <p class="meta">Over the last 1 and 5 years, NSE's Shariah index has
-        done worse than the Nifty 500 (to <time datetime="2026-09-30">30
-        September 2026</time>). The two hold different businesses: banks,
-        insurers and lenders, the Nifty 500's biggest sector, are almost
-        absent from the Shariah index.
-        <a href="/compare/shariah-mutual-funds/#index-returns">See both, side
-        by side</a>.</p>
-
     </div>
   </section>
 
 
-  <!-- ===== RECENT VIDEOS ===== -->
-  <section class="section reveal">
+  <!-- ===== MY VIDEOS. The newest three from /videos/list.js, drawn by
+       /assets/videos.js: to show a new video, add its link at the top of
+       /videos/list.js — nothing to change here. The line inside the box
+       shows only if the list can't be read (or without JavaScript). On a
+       phone the cards sit in a row you can swipe. ===== -->
+  <section class="section band-deep reveal" id="videos">
     <div class="wrap">
 
-      <h2>Recent videos</h2>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">On YouTube</p>
+          <h2>Halal money, explained simply</h2>
+        </div>
+        <a class="btn btn-light" href="https://www.youtube.com/channel/UCY_rjMlDGOAXyhC-aC_aQCA?sub_confirmation=1" rel="me"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m10.2 9.3 4.6 2.7-4.6 2.7z" fill="currentColor"/></svg>Subscribe</a>
+      </div>
 
-      <!-- THE VIDEO CARDS: the newest three from /videos/list.js, drawn
-           by /assets/videos.js. To show a new video, add its link at the
-           top of /videos/list.js — nothing to change here. The line inside
-           the box shows only if the list can't be read (or without
-           JavaScript). -->
-      <div class="grid grid-3" data-videos="3">
+      <div class="video-row" data-videos="3">
         <p class="meta">Watch the videos on
           <a href="https://www.youtube.com/channel/UCY_rjMlDGOAXyhC-aC_aQCA">Purevesting's YouTube channel</a>.</p>
       </div>
@@ -399,23 +432,61 @@
   </section>
 
 
+  <!-- ===== ASK ME: in MAS's own words from /ask/, with his photo. ===== -->
+  <section class="section reveal" id="ask">
+    <div class="wrap">
+      <div class="ask-card">
+        <div class="ask-photo">
+          <img src="/assets/img/byline-192.webp" width="192" height="192" alt="Moin Ali Syed">
+        </div>
+        <div class="ask-text">
+          <h2>Got a doubt? Ask me</h2>
+          <p>I'm Moin Ali Syed, and I run Purevesting. Ask me about halal
+            investing, saving or borrowing. I read every message, and your
+            questions shape the next videos, emails and pages.</p>
+          <p class="ask-actions">
+            <a class="btn" href="/ask/">Ask me a question</a>
+            <a class="btn btn-quiet" href="mailto:salam@purevesting.com">salam@purevesting.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== THE NEWSLETTER SIGN-UP. Signing up happens on /newsletter/
+       (Beehiiv's own box), so nobody types their email twice. Because
+       this page has its own, the footer's sign-up hides here. ===== -->
+  <section class="section band home-news reveal">
+    <div class="wrap">
+      <div class="news-card">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7.5 8 5.5 8-5.5"/></svg></span>
+        <div>
+          <h2>HalalEdge, one email a week</h2>
+          <p>Each issue takes one real question — a stock screen, a savings
+            scheme, a calculation — and works through it, with the
+            sources. Free, and never a sales pitch.</p>
+        </div>
+        <a class="btn" href="/newsletter/">Subscribe free</a>
+      </div>
+    </div>
+  </section>
+
+
   <!-- ===== SOURCES — one closed list (README.md, rule 5). The id is what
-       the grid's figures point at (data-src). EVERY MONTH: the date, and
-       the two weights behind the 31%. ===== -->
+       the grid's figures point at (data-src). EVERY MONTH: the date. ===== -->
   <section class="section">
     <div class="wrap">
       <details class="source sources" id="sources">
         <summary>Sources</summary>
         <div class="source-body">
           <ul>
-            <li id="src-grid">The 204, the 501 and the 31%:
+            <li id="src-grid">The 204 and the 501:
               <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">Nifty500 Shariah</a>
               and <a href="https://www.niftyindices.com/Factsheet/ind_nifty_500.pdf">Nifty 500</a>
               factsheets, NSE Indices — as of <time datetime="2026-09-30">30 September 2026</time>.
-              The 31% is worked out from Infosys, which is 1.83% of the
-              Nifty 500 and 5.83% of the Shariah index: both indices weight
-              each company by the value of its freely traded shares, so
-              1.83 ÷ 5.83 is the Shariah index's share of the whole.</li>
+              The squares: the same two lists of companies the
+              <a href="/screener/">screener</a> uses, from the same date.</li>
           </ul>
         </div>
       </details>
@@ -490,51 +561,6 @@
 <script src="/videos/list.js"></script>
 <script src="/assets/videos.js"></script>
 
-<script>
-/* THE GRID SWITCH (home page only).
-   "By market value": the companies that pass are about 31.4% of the
-   Nifty 500's value (Infosys is 1.83% of the Nifty 500 and 5.83% of the
-   Shariah index, 30 Sep 2026; 1.83 / 5.83 = 0.314). 31.4% of 501 squares
-   is 157, so the switch dims 47 of the 204 filled squares, spread evenly.
-   EVERY MONTH: update VALUE_SQUARES and the 31% wording with the new
-   factsheets — and the 31% line in the Sources part at the bottom of the
-   page. */
-(function () {
-  var grid = document.querySelector('.screen-grid');
-  var stat = document.getElementById('screen-stat');
-  var buttons = document.querySelectorAll('.switch-btn');
-  if (!grid || !stat || buttons.length !== 2) return;
-
-  var VALUE_SQUARES = 157;
-  var on = grid.querySelectorAll('i.on');
-  var dim = on.length - VALUE_SQUARES;
-  for (var k = 0; k < dim; k++) {
-    on[Math.floor((k + 0.5) * on.length / dim)].classList.add('dim');
-  }
-
-  var words = {
-    count: stat.innerHTML,
-    value: 'By market value, the companies that pass make up about ' +
-           '<span class="num">31%</span> of the Nifty 500.'
-  };
-
-  function show(view) {
-    grid.classList.toggle('by-value', view === 'value');
-    stat.innerHTML = words[view];
-    if (window.pvFigures) window.pvFigures(stat);   // new figure: tappable too
-    for (var i = 0; i < buttons.length; i++) {
-      var pressed = buttons[i].getAttribute('data-view') === view;
-      buttons[i].setAttribute('aria-pressed', pressed ? 'true' : 'false');
-    }
-  }
-
-  for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', function () {
-      show(this.getAttribute('data-view'));
-    });
-  }
-})();
-</script>
 
 <!-- Visitor counting: Cloudflare Web Analytics is switched on in the
      Cloudflare dashboard ("automatic setup") and adds its script to every

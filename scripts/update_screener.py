@@ -13,6 +13,11 @@ What it does:
      marked "Halal"; a Nifty 500 company that isn't, "Not halal" (MAS,
      6 Oct). Anything outside the Nifty 500 shows "Don't know yet" when
      searched — that part is in the page's own script.
+  3. Redraws the grid of squares — one per company, A to Z, filled if it
+     is in the Shariah index — between the "GRID START" and "GRID END"
+     markers on each page in GRID_PAGES, and rewrites the counts marked
+     data-screener-in (in the index) and data-screener-all (all
+     companies) on those pages. (Since 6 Nov 2026.)
 
 It needs web access (niftyindices.com). It prints the counts at the end:
 check they match NSE's factsheet before pushing. Not published on the
@@ -25,6 +30,8 @@ UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.3
       'Referer': 'https://www.niftyindices.com/'}
 N500_URL = 'https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv'
 SHARIAH_URL = 'https://liveindexsa.niftyindices.com/jsonfiles/Sector/SectorialIndexDataNIFTY500%20SHARIAH_Sector.js'
+# Pages with a grid of squares (between "GRID START" and "GRID END").
+GRID_PAGES = ['index.html']
 
 def fetch(url):
     with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=40) as r:
@@ -52,7 +59,7 @@ def build(n500_text, shariah_text):
     missing = [s for s in weight if s not in known]
     if missing:
         sys.exit(f'Stopped: Shariah companies missing from the Nifty 500 list: {missing}')
-    rows = []
+    rows, squares = [], []
     for c in sorted(companies, key=lambda c: c['Company Name'].strip().lower()):
         sym, name, ind = c['Symbol'].strip(), c['Company Name'].strip(), c['Industry'].strip()
         if sym in weight:
@@ -65,9 +72,15 @@ def build(n500_text, shariah_text):
             row_cls = 'out'
         rows.append(f'            <tr class="sc-{row_cls}"><td>{html.escape(name)}</td><td>{html.escape(sym)}</td>'
                     f'<td>{html.escape(ind)}</td><td>{status}</td><td class="num">{w}</td></tr>')
-    return rows, as_of, len(weight), len(companies)
+        squares.append(sym in weight)
+    return rows, squares, as_of, len(weight), len(companies)
 
-def write(rows, as_of, n_in, n_all):
+def grid(squares):
+    """The squares, 25 to a line: <i class="on"></i> passes, <i></i> doesn't."""
+    return '\n'.join('      ' + ''.join('<i class="on"></i>' if x else '<i></i>' for x in squares[k:k + 25])
+                     for k in range(0, len(squares), 25))
+
+def write(rows, squares, as_of, n_in, n_all):
     iso = as_of.isoformat()
     text = f'{as_of.day} {as_of.strftime("%B %Y")}'
     p = os.path.join(ROOT, 'screener', 'index.html')
@@ -81,16 +94,23 @@ def write(rows, as_of, n_in, n_all):
     s = re.sub(r'<span class="num" data-screener-in>\d+</span>', f'<span class="num" data-screener-in>{n_in}</span>', s)
     s = re.sub(r'<span class="num" data-screener-all>\d+</span>', f'<span class="num" data-screener-all>{n_all}</span>', s)
     open(p, 'w', encoding='utf-8').write(s)
-    h = os.path.join(ROOT, 'index.html')
-    s = open(h, encoding='utf-8').read()
-    s = re.sub(r'<time datetime="[0-9-]+" data-screener-date>[^<]*</time>',
-               f'<time datetime="{iso}" data-screener-date>{text}</time>', s)
-    s = re.sub(r'(data-screener-all>)\d+', rf'\g<1>{n_all}', s)
-    open(h, 'w', encoding='utf-8').write(s)
+    for page in GRID_PAGES:
+        h = os.path.join(ROOT, page)
+        s = open(h, encoding='utf-8').read()
+        s = re.sub(r'<time datetime="[0-9-]+" data-screener-date>[^<]*</time>',
+                   f'<time datetime="{iso}" data-screener-date>{text}</time>', s)
+        s = re.sub(r'(data-screener-all>)\d+', rf'\g<1>{n_all}', s)
+        s = re.sub(r'(data-screener-in>)\d+', rf'\g<1>{n_in}', s)
+        s, n = re.subn(r'(<!-- GRID START -->\n).*?(\n[ \t]*<!-- GRID END -->)',
+                       lambda m: m.group(1) + grid(squares) + m.group(2), s, flags=re.S)
+        if n != 1:
+            sys.exit(f'Stopped: could not find the GRID markers in {page}.')
+        open(h, 'w', encoding='utf-8').write(s)
     print(f'Done: {n_in} of {n_all} companies in the Nifty500 Shariah index, as of {text}.')
     print('Check these against NSE\'s factsheet, then set "dateModified" in the screener page\'s structured data to today, and push.')
+    print('The squares are redrawn on: ' + ', '.join(GRID_PAGES) + '.')
 
 if __name__ == '__main__':
     local = sys.argv[2] if len(sys.argv) > 2 and sys.argv[1] == '--from' else None
-    rows, as_of, n_in, n_all = build(*load(local))
-    write(rows, as_of, n_in, n_all)
+    rows, squares, as_of, n_in, n_all = build(*load(local))
+    write(rows, squares, as_of, n_in, n_all)

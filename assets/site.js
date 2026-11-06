@@ -400,9 +400,15 @@ var pvCalm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: re
       return m[1] + s + m[3];
     }
 
-    el.style.display = 'inline-block';
-    el.style.minWidth = el.getBoundingClientRect().width + 'px';
-    el.style.textAlign = 'right';
+    // A number in a line of text keeps its final width while it counts, so
+    // the words after it don't move. A number on a line of its own needs
+    // nothing: nothing sits beside it.
+    var inLine = getComputedStyle(el).display !== 'block';
+    if (inLine) {
+      el.style.display = 'inline-block';
+      el.style.minWidth = el.getBoundingClientRect().width + 'px';
+      el.style.textAlign = 'right';
+    }
 
     var start = null;
     function step(now) {
