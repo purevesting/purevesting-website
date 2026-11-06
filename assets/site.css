@@ -38,6 +38,7 @@
      26. Hub pages
      27. A long list behind one button
      28. A video on the same topic
+     29. Mutual fund cards
    ========================================================================== */
 
 
@@ -2064,6 +2065,27 @@ td:first-child { font-weight: 600; }
 /* A green bar: only where the bar means "Halal" / "passes". */
 .bar-green .bar { background: var(--green); }
 
+/* A chart with a zero line in the middle (returns that can be negative):
+   class="bars bars-zero". A negative bar sits left of the line and grows
+   from it (bar-row-left on its row, or bar-left on the bar). */
+.bars-zero .bar-track::after,
+.ret-track::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 1px);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--ink-3);
+  opacity: 0.55;
+}
+
+.bar-row-left .bar,
+.bar-left { transform-origin: right center; }
+
+/* The second thing in a chart that compares two (README.md, "Charts"). */
+.bar-b .bar { background: var(--sky-deep); }
+
 /* The scale under a chart: 0% … 100%. */
 .bar-scale {
   display: flex;
@@ -3284,6 +3306,115 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 @media (min-width: 46em) {
   .video-pick { grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1.1rem; }
   .video-pick-title { font-size: 1.05rem; }
+}
+
+
+/* 29. MUTUAL FUND CARDS ===================================================
+   /compare/shariah-mutual-funds/ (MAS, 6 Nov 2026, part 3): one card per
+   fund — its name; index or active, Shariah board yes or no, and its size
+   as three small facts; then its returns as small bars, all one colour,
+   on the same scale on every card (0 in the middle). A fund that is too
+   new for a return says so instead of a bar.
+   ========================================================================== */
+
+.fund-cards {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0 1.25rem;
+}
+
+.fund-card h3 { margin: 0 0 0.75rem; font-size: 1.1rem; }
+
+.fund-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin: 0 0 1rem;
+}
+
+.fund-facts > div {
+  padding: 0.45rem 0.55rem 0.5rem;
+  background: var(--sky-tint);
+  border-radius: var(--radius-sm);
+}
+
+.ff-k {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--sky-deep);
+}
+
+.ff-v {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.ff-v .chip { padding: 0.1em 0.55em; font-size: 0.78rem; }
+.ff-v .chip-fail { background: var(--white); }
+
+/* A tapped figure's source opens under the facts or the bars, full width. */
+.fund-facts > .fig-pop { grid-column: 1 / -1; margin: 0; }
+.ret-bars > .fig-pop { margin: 0.35rem 0 0; }
+
+/* The returns: label, figure, and a small bar from the zero line. */
+.ret-bars { gap: 0.35rem; margin: 0; max-width: none; }
+
+.ret-row {
+  display: grid;
+  grid-template-columns: 3.9rem 4.1rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 1.75rem;
+}
+
+.ret-label { font-size: 0.82rem; color: var(--ink-2); }
+.ret-value { font-size: 0.92rem; font-weight: 700; text-align: right; white-space: nowrap; }
+
+.ret-track {
+  position: relative;
+  height: 12px;
+  border-radius: 6px;
+  background: var(--sky-tint);
+  overflow: hidden;
+}
+
+.ret-track .bar { border-radius: 6px; min-width: 3px; }
+
+.ret-none { font-size: 0.8rem; color: var(--ink-3); }
+.ret-bars > p.ret-none { margin: 0.25rem 0 0; font-size: 0.88rem; }
+
+/* The expense ratios under "Read more": name, then figure. */
+.cost-list { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+.cost-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--sky-soft);
+}
+.cost-list li:last-child { border-bottom: 0; }
+.cost-list .num { font-weight: 700; }
+
+/* The index chart: a white card on the blue band. */
+.idx-card { max-width: 40rem; margin: 1.25rem 0 0.75rem; }
+.idx-card .bars { margin: 0; }
+.band .idx-card .bar-track { background: var(--sky-tint); }
+.idx-card .bars-title { margin-top: 0.4rem; }
+.idx-card .bars-title:first-child { margin-top: 0; }
+
+@media (min-width: 46em) {
+  .fund-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fund-card { padding: 1.4rem; }
+}
+
+@media (min-width: 64em) {
+  .fund-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 

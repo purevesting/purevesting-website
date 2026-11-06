@@ -310,10 +310,12 @@ var pvCalm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: re
   }
 
   // A figure in the text opens its panel at the end of its paragraph (or
-  // list item), so the sentence it sits in is never split in two. One
-  // panel per paragraph: tapping another figure in it swaps.
+  // list item), so the sentence it sits in is never split in two. In a
+  // small chart or a row of facts (marked class="fig-host": the fund
+  // cards), it opens under the whole thing instead of inside one narrow
+  // box. One panel per paragraph: tapping another figure in it swaps.
   function toggleInText(btn, fig) {
-    var block = fig.closest('p, li') || fig.parentNode;
+    var block = fig.closest('p, li, .fig-host') || fig.parentNode;
     var last = block.lastElementChild;
     var open = last && last.classList.contains('fig-pop') ? last : null;
     var same = open && open.pvButton === btn;
