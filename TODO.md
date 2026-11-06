@@ -11,9 +11,12 @@ section 0d.
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 6 November 2026 (part 1 of 4: the cuts — every page
-rewritten to MAS's writing rules in README.md; see section 0e). Before
-that, 12 October 2026 (phase 1 closed: privacy, disclaimer and "page not
+Last updated: 6 November 2026, later the same day (part 2 of 4: the
+look — sky blue, drawings, light motion, two fonts, the new menu, footer
+and home page; the look's rules are in README.md under the writing
+rules; see section 0f). Earlier on 6 November: part 1 of 4, the cuts —
+every page rewritten to MAS's writing rules (section 0e). Before that,
+12 October 2026 (phase 1 closed: privacy, disclaimer and "page not
 found" pages, /tools/ and /learn/, one menu for every screen, the
 screener first, sourced SIP start, the boycott list trimmed to names,
 reasons and sources, two missing sources — steps 1 to 7)
@@ -149,36 +152,43 @@ Each one says what to send or change, and where.
 - [ ] **NSE factsheet figures.** NSE replaces its factsheets at the same web
       address at the start of each month. DONE for 30 September 2026 (in the
       1 Oct batch): 204 of the 501 companies pass (the Nifty 500 listed 501
-      that month, so the grid has 501 squares). Each month, from the two
-      factsheets (Nifty500 Shariah, and Nifty 500 at
-      niftyindices.com/Factsheet/ind_nifty_500.pdf), update:
-      - home page: the count, the two meta descriptions, the grid (one square
-        per company), the "as of" date;
-      - home page market-value switch: Infosys's weight in each factsheet,
-        the "about 31%" wording (twice: the 31% line in the Sources part
-        at the bottom of the page, and the script), and
-        VALUE_SQUARES in the script at the bottom of the page (share × number
-        of squares);
-      - methodology page: the "204" mentions and the sector table;
-      - home page: the og:description (it quotes the count);
-      - /halal-stocks/: the answer box, the "501" and "204" in the first
-        section, the table (40.7% = count ÷ companies; 31.4% = Infosys's
-        weight in the Nifty 500 ÷ its weight in the Shariah index), the
-        financial services figures, every "as of" date (the Sources part
-        at the bottom has them), the meta and og:title, and the page's
-        "Last updated" date and dateModified;
+      that month, so the grid has 501 squares). **Due now:** the October
+      factsheet (dated 30 October 2026) was already up on 6 Nov — it still
+      lists 204 companies, but the weights and dates change. Each month,
+      from the two factsheets (Nifty500 Shariah, and Nifty 500 at
+      niftyindices.com/Factsheet/ind_nifty_500.pdf), update (changed
+      6 Nov, part 2):
+      - home page: the og:description (it quotes the count), and the date
+        in the Sources part at the bottom.
+        The big 204, the 501, the squares and the date in the search box
+        are rewritten by the screener update (last item);
+      - /halal-stocks/ (the "by market value" switch lives here since
+        6 Nov): the answer box, the "501" and "204" in the first section's
+        paragraph, the two big figures above the squares (40.7% = count ÷
+        companies; 31.4% = Infosys's weight in the Nifty 500 ÷ its weight in
+        the Shariah index), VALUE_SQUARES in the script at the bottom of the
+        page (31.4% × number of squares), the financial services figures
+        (two bars: change each number and the `--to` in its style), every
+        "as of" date (the Sources part at the bottom has them), the meta and
+        og:title, and the page's "Last updated" date and dateModified;
+      - methodology page: the "204" mentions and the sector chart (each
+        bar: its figure, and `--to` = its share ÷ the biggest share × 100,
+        as the comment above the chart says);
       - the preview images don't show the count, so they never need
         remaking for this.
       - **the screener**: in the website chat, say "run the screener
         update". It runs `python3 scripts/update_screener.py`, which
         downloads NSE's two lists and rewrites /screener/ and the home
-        page's screener box with the new date (including the date in the
-        screener's Sources part). Then set the screener page's
-        dateModified to the day of the update. The counts it prints must
-        match the factsheet (204 of 501 for 30 Sep 2026). If NSE renames a
-        company (as Zomato became Eternal), add the old name to the `ALSO`
-        list in the script at the bottom of screener/index.html so people
-        searching the old name still find it.
+        page's search box with the new date (including the date in the
+        screener's Sources part) and, since 6 Nov, redraws the squares —
+        one per company, A to Z — on the home page and /halal-stocks/,
+        with their two counts. Then set the screener page's dateModified
+        to the day of the update. The counts it prints must match the
+        factsheet (204 of 501 for 30 Sep 2026). If NSE renames a company
+        (as Zomato became Eternal), add the old name to the `ALSO` list in
+        the script at the bottom of screener/index.html so people searching
+        the old name still find it, and to `OLD_NAMES` just below it so the
+        answer says "(Zomato is now Eternal)".
 
 ### Every quarter
 
@@ -248,7 +258,9 @@ Each one says what to send or change, and where.
 - [x] ~~**Topic panels on the home page — only what exists.**~~ DONE
       (step 2). "Start here" right under the opening: **Invest**, **Save and
       retire**, **Tools**, **Learn and ask**. Add a panel (Loans, Zakat…)
-      only once its pages exist.
+      only once its pages exist. **REPLACED 6 Nov (part 2)** by six
+      question tiles with icons; the link lists and the "soon" items are
+      gone (MAS).
 - [x] ~~**SIP calculator**~~ DONE (step 3): /sip-calculator/, monthly SIP or
       one-time lump sum, starts at ₹5,000 a month, 12% a year, 10 years;
       brand greens; year-by-year table; says plainly it's an illustration.
@@ -302,7 +314,10 @@ Each one says what to send or change, and where.
       one line at 360px and 390px; on a narrower phone that row scrolls by
       itself, never the page. Footer: Tools, Learn, Privacy and Disclaimer
       added. To add a page to a menu: one line in the right list, on every
-      page — the header must stay identical everywhere.
+      page — the header must stay identical everywhere. **REPLACED 6 Nov
+      (part 2):** the words are now Stocks · Mutual funds · EPF & more ·
+      Tools · Learn (one line from 320px up), and the footer is short —
+      section 0f.
 - [x] ~~**The screener first (step 4).**~~ DONE. Home page: the box right
       under the heading and badge, bigger and easier to tap, no autofocus;
       the long paragraph is now the one sentence the structured data uses.
@@ -430,8 +445,9 @@ the way; each needs a decision, or a session of its own.
       at the bottom, which now repeats /privacy/. It could link to
       /privacy/, or shrink to one line.~~ DONE 6 Nov: it is one line now,
       "Rather write directly? Email me at salam@purevesting.com".
-- [ ] **Home page: the "Learn and ask" panel heading** could link to
-      /learn/, the way the Tools panel heading now links to /tools/.
+- [x] ~~**Home page: the "Learn and ask" panel heading** could link to
+      /learn/, the way the Tools panel heading now links to /tools/.~~
+      Gone with the panels (6 Nov, part 2).
 - [ ] **Disclaimer — MAS's own investments.** MAS chose on 12 Oct to leave
       this out for now. If he later wants a line (for example, that he may
       hold some of what the site covers), it goes on /disclaimer/.
@@ -442,10 +458,10 @@ the way; each needs a decision, or a session of its own.
       dataset also records owners in a structured field ("stakeholders"),
       which the script could use to add "Owned by …" without copying any
       of the dataset's wording.
-- [ ] **A computer window between 736 and about 767 pixels wide** (with a
+- [x] ~~**A computer window between 736 and about 767 pixels wide** (with a
       mouse): the header menu drops under the logo instead of sitting
-      beside it. Harmless and rare — phones and tablets are fine; a slightly
-      smaller gap between the menu words would fix it.
+      beside it.~~ FIXED 6 Nov (part 2): a smaller gap between the menu
+      words below 1024px; the menu sits beside the logo from 736px up.
 
 ---
 
@@ -496,25 +512,128 @@ changed. Part 2 is the design; parts 3 and 4 are for MAS to set.
 - [x] ~~/halal-stocks/ still gives NSE's old 3% income limit, and the
       purification calculator still cites NSE's January 2020 document~~ —
       both DONE 6 Nov, after part 1 (section 1).
-- [ ] **Retake the three app screenshots** in `assets/img/app/` (shown on
-      Android's install sheet) after part 2: they show the old pages and
-      the old menu, with "Corrected" lines and "8 min read".
-- [ ] Wide tables still scroll sideways on a phone (mutual funds
-      returns, methodology limits, gold formats, EPF, NPS, the
-      instruments summary): part 2.
-- [ ] The byline photo stays on articles: MAS asked for "only my name and
-      the date", and the photo is design — decide in part 2.
-- [ ] Searching "Zomato" in the screener answers "Eternal Ltd. (ETERNAL)
-      is halal…". For names in the `ALSO` list, the answer could add
-      "(Zomato is now Eternal)".
-- [ ] The Sources parts describe fatwas, boards and index companies
-      instead of naming them, but their links still go to those sites, so
-      the web address shows the name. If even that should go, the only fix
-      is dropping those links — which README rule 5 ("sources stay") rules
-      out. MAS's call.
+- [x] ~~**Retake the three app screenshots** in `assets/img/app/`~~ DONE
+      6 Nov (part 2): all four retaken from the new pages.
+- [x] ~~Wide tables still scroll sideways on a phone~~ DONE 6 Nov (part
+      2): they turn into small cards on a phone, or became charts and
+      cards; no table slides sideways at 360px.
+- [x] ~~The byline photo stays on articles~~ — MAS, 6 Nov: keep the photo
+      next to the name, styled in the new look. Done (part 2).
+- [x] ~~Searching "Zomato" in the screener~~ DONE 6 Nov (part 2): the
+      answer adds "(Zomato is now Eternal)" — section 0f.
+- [x] ~~The Sources parts' links still show the names in their web
+      addresses~~ — MAS, 6 Nov: keep the source links at the bottom as
+      they are.
 - [ ] The rewording was not logged in /corrections/: the log's own rule
       (now written on that page) is that rewording which keeps the facts
       the same isn't logged.
+
+---
+
+## 0f. Part 2 of 4 — the look (6 Nov 2026)
+
+MAS's brief: make the site look youthful, interesting and professional;
+it looked flat — the same cream and green everywhere, like a research
+paper. The rules are in README.md, under the writing rules ("The look").
+Part 2 changed how things look and are arranged, not what they say: no
+fact, figure or fatwa wording changed (checked by script — every number
+in each page's old text is still on the page).
+
+### Done (one commit per step, pushed to main)
+
+- [x] First, the two fact items from section 1: NSE's 2.5% income limit
+      on /halal-stocks/ (logged in /corrections/) and the current NSE
+      document on the purification calculator.
+- [x] README.md: the look rules, the colours with their names, and the
+      class names that build them. (README.md is plain UTF-8 now; it was
+      still UTF-16, so GitHub couldn't show its changes.)
+- [x] The new look, in `assets/site.css`: sky blue (`--sky` #2A9AE0,
+      `--sky-deep` #0B6FAA, `--sky-ink` #0C4766, `--sky-tint` #E4F2FB,
+      `--sky-soft` #C8E6F8), checked against the green for colour-blind
+      readers and for contrast; two fonts (DM Mono gone); blue bands,
+      icons, tiles and bar charts; the answer as a white card with a green
+      edge; the byline as a pill with MAS's photo in a blue ring; "On this
+      page" as blue chips; Read more and Sources as blue info parts;
+      "Still have a doubt? Ask me" as a bubble with MAS's photo. Light
+      motion — cards rise, bars and squares fill, numbers count up,
+      buttons give way on a tap — all off when a phone asks for less.
+- [x] Menu: Stocks · Mutual funds · EPF & more · Tools · Learn, on one
+      line from 320px up; the word for the page you are on is marked.
+      Footer: the newsletter sign-up, 11 links (was 21), YouTube,
+      Instagram and email, the line on what Purevesting is, and the one
+      disclaimer line.
+- [x] Home page, as MAS listed it: headline, one short line, the stock
+      search ("Try Infosys · Zomato · Reliance"); six question tiles with
+      icons; the 500 squares (filling in, 204 counting up) linking to
+      /halal-stocks/; the videos (bigger pictures with a play button, a
+      row you can swipe on a phone, Subscribe); "Got a doubt? Ask me" with
+      MAS's photo; the newsletter sign-up.
+- [x] The squares now follow the screener's A-to-Z list, and
+      `scripts/update_screener.py` redraws them every month on the home
+      page and /halal-stocks/ (between the GRID markers), with their
+      counts.
+- [x] Inner pages: /halal-stocks/ shows the squares with the "by
+      companies / by market value" switch, financial services as two bars,
+      and the screen as two steps with its limits as bars; EPF's "where the
+      money goes" is a range chart; the methodology page's sectors are a
+      bar chart; the purification calculator has a live bar per method;
+      /instruments/ is one card per instrument; /learn/ is tiles; icons on
+      /tools/ and on the "What people do", "Good to know", About,
+      newsletter and app cards; blue bands for rhythm; MAS's photo on
+      /ask/. Wide tables become small cards on a phone.
+- [x] Screener: "(Zomato is now Eternal)" for old names (`OLD_NAMES` in
+      the screener's script). Six full old names that wrongly answered
+      "Don't know yet" now find their company.
+- [x] The four app screenshots retaken; the home picture's label in
+      `manifest.json` updated.
+- [x] Checked: every page at 360px, 390px and 1280px — nothing slides
+      sideways, no script errors; with less motion asked for, everything
+      shows at once; every link and anchor inside the site works; every
+      JSON-LD block parses; header and footer identical on all 28 files.
+
+### Decided along the way — say if you want any of these the other way
+
+- The "Stop the genocide" card stays on the home page, under the tiles:
+  it wasn't one of the "Start here" link lists or "soon" items.
+- The "by market value" switch moved from the home page to
+  /halal-stocks/, because the home page now has "one short line"; its 31%
+  lives there.
+- "Stocks" in the menu opens the screener, which answers "Is my stock
+  halal?" and lists all 501 companies; /halal-stocks/ is in its list.
+- Words that are mine, not MAS's: the home page's short line ("India's
+  one-stop destination for halal investing, saving and borrowing"), the
+  tiles heading ("What's your question?"), the videos heading ("Halal
+  money, explained simply") and "I'm Moin Ali Syed, and I run
+  Purevesting" before MAS's own words from /ask/. Change any of them.
+- The footer no longer lists Home, Halal stocks, Methodology, the two
+  calculators, Newsletter, Corrections and Disclaimer on their own: each
+  is one tap away (logo, menu, /learn/, /tools/, or the disclaimer line).
+- Pages' "Last updated" dates were not changed for the new look (the same
+  rule as for the menu batches): only what a page says moves its date.
+
+### Noticed on 6 Nov (part 2) — not changed
+
+- [ ] **The October NSE factsheets are out** (dated 30 Oct 2026; still
+      204 companies): the monthly update in section 0b is due.
+- [ ] /tools/ still has its "Check what I already hold — soon" card. The
+      "soon" items were removed from the home page as asked; say if this
+      one should go too.
+- [ ] The screener sends "Jio" to Jio Financial Services (JIOFIN). Someone
+      typing "Jio" may mean Reliance Jio, the phone company, which belongs
+      to Reliance Industries. The answer names the company it found, so it
+      isn't wrong — but "jio" could point to RELIANCE instead, or to
+      neither. MAS's call.
+- [ ] The link-preview images (`assets/og/`) and the "Share as image"
+      picture still use the old cream-and-green look, without blue. They
+      work as they are; remaking them is a small job for later
+      (`og-template.html` no longer uses DM Mono).
+- [ ] The two fonts don't contain ₹ or →, so those come from the phone's
+      own font, as before. A font file with ₹ added would make prices look
+      more even.
+- [ ] Charts that could come next: the compare page's index returns (two
+      indices, 1 and 5 years), NPS's three asset classes, the gold formats.
+      The compare page's fund returns stay a table on purpose: a chart of
+      them reads as a ranking (section 3, "Not built, on purpose").
 
 ---
 
@@ -801,7 +920,9 @@ In the order they matter, from the original plan.
       indices weight companies by free-float market value (the Shariah
       index's only caps are 33% per stock and 62% for the top three, far
       above Infosys), so 1.83 ÷ 5.83 is the Shariah index's share of the
-      whole. This takes the place of the market-cap treemap.
+      whole. This takes the place of the market-cap treemap. **Moved 6 Nov
+      (part 2)** to /halal-stocks/, above its two figures; the home page
+      keeps the squares with one short line.
 - The per-rule switches for the screen grid were dropped (MAS, 5 Oct) —
   see section 9.
 - [ ] **Quarterly movement in the screen grid.** Show companies entering and
@@ -888,6 +1009,8 @@ In the order they matter, from the original plan.
 - [x] ~~**Count-up**~~ — DONE 5 Oct: the home page's 204 counts up once, but
       only if it starts below the screen's edge; a number already on screen
       never animates. Mark any other whole number with `data-count`.
+      Since 6 Nov (part 2) decimals count up too ("40.7%" on
+      /halal-stocks/), and bars and squares fill in the same way.
 - Not built, on purpose (5 Oct): **table sorting** — six rows fit on one
   screen, and sorting by return is the one view the compliance rules
   warn against (a shared screenshot of it reads as a ranking); and the
@@ -913,8 +1036,8 @@ In the order they matter, from the original plan.
       the log.~~
       **REPLACED 6 Nov (MAS):** pages no longer carry a "Corrected · see the
       corrections log" line or a "Found something wrong here?" box. Steps 1
-      and 2 stay; the log is still linked from the footer and the Learn
-      menu.
+      and 2 stay; the log is linked from the Learn menu, /learn/ and
+      /about/ (since 6 Nov, part 2, no longer from the shorter footer).
 - [x] ~~**Purification calculator**~~ — built 30 Sep as its own page,
       `/purification-calculator/`, rather than inside the instrument pages:
       people search for it by name, and a page of its own can be shared.
