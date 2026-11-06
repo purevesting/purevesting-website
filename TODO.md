@@ -394,8 +394,8 @@ https://code.claude.com/docs/en/cloud-environments#network-access
 The 12 Oct session did only what its brief listed. These turned up along
 the way; each needs a decision, or a session of its own.
 
-- [ ] **NSE's income limit on /halal-stocks/** — the first item in
-      section 1 (do this one next).
+- [x] ~~**NSE's income limit on /halal-stocks/**~~ — DONE 6 Nov
+      (section 1).
 - [ ] **Five titles are still 61–63 characters.** Step 7 shortened the six
       it listed. Also over 60: EPF (63), /instruments/ (61), PPF (61),
       /newsletter/ (63) and the SIP calculator (63). Shorter versions,
@@ -493,9 +493,9 @@ changed. Part 2 is the design; parts 3 and 4 are for MAS to set.
 
 ### Noticed on 6 Nov — not changed
 
-- [ ] /halal-stocks/ still gives NSE's old 3% income limit, and the
-      purification calculator still cites NSE's January 2020 document —
-      both in section 1. Part 1 changed no facts, so both wait for that job.
+- [x] ~~/halal-stocks/ still gives NSE's old 3% income limit, and the
+      purification calculator still cites NSE's January 2020 document~~ —
+      both DONE 6 Nov, after part 1 (section 1).
 - [ ] **Retake the three app screenshots** in `assets/img/app/` (shown on
       Android's install sheet) after part 2: they show the old pages and
       the old menu, with "Corrected" lines and "8 min read".
@@ -523,21 +523,21 @@ changed. Part 2 is the design; parts 3 and 4 are for MAS to set.
 Every figure on the site is supposed to carry a source link and an "as of"
 date. These are the places that don't yet.
 
-- [ ] **Do next: /halal-stocks/ still gives NSE's old 3% income limit
-      (found 12 Oct).** NSE's current methodology — Methodology Document
-      for Equity Indices, September 2026, section 34
-      (niftyindices.com/Methodology/Method_NIFTY_Equity_Indices.pdf) — sets
-      interest income plus returns from interest-based investments at up to
-      2.5% of total income, with no assumed 7.5% return; the January 2020
-      document said 3%. Debt (25%) and cash (90%) are unchanged. The
-      methodology page was corrected and logged on 12 Oct (step 6), but
-      the step only covered that page, so two others still cite the old
-      document: /halal-stocks/ ("What gets a company through": the list
-      says 3%, and two source notes cite the January 2020 document) and
-      /purification-calculator/ (its sources line cites the January 2020
-      document for NSE's purification wording, which is unchanged — only
-      the link and date need changing). Fix /halal-stocks/ the same way and
-      log it in the corrections log.
+- [x] ~~**Do next: /halal-stocks/ still gives NSE's old 3% income limit
+      (found 12 Oct).**~~ DONE 6 Nov. Checked against NSE's Methodology
+      Document for Equity Indices, September 2026, section 34
+      (niftyindices.com/Methodology/Method_NIFTY_Equity_Indices.pdf):
+      interest income plus returns from interest-based investments up to
+      2.5% of total income, with no assumed 7.5% return; debt (25%) and
+      cash (90%) unchanged; the purification sentence word for word the
+      same. /halal-stocks/ now says 2.5%, and its Sources line cites that
+      document for the screen and purification, plus the Nifty500 Shariah
+      factsheet for the monthly review (the new document says "monthly"
+      only in its Nifty Shariah 25 list; the factsheet says "Monthly
+      shariah compliance screening" for the Nifty500 Shariah). Logged in
+      the corrections log. /purification-calculator/'s NSE line now points
+      to the same document; its wording didn't change, so that one is a
+      routine source update and not logged.
 
 - [ ] **Compare page — ShariahCap Advisors for Taurus and Quantum (6 Oct).**
       Restored as MAS set it on 17 Sep (the 2 Oct "None named" change was
@@ -762,8 +762,8 @@ date. These are the places that don't yet.
       cash (90%) are unchanged, so the worked example and its script's 25%
       stand. Step 2, its source note and its quote were updated, every NSE
       link on the page now points to the current document, and the change
-      is in the corrections log. Still to do on other pages: the first item
-      in this section.
+      is in the corrections log. /halal-stocks/ and the purification
+      calculator followed on 6 Nov (the first item in this section).
 - [ ] **Methodology page — find Dow Jones's announcement of its September
       2026 change.** The page says the Dow Jones Islamic Market indices went
       from a 33% debt limit to two limits under 30% on 18 September 2026. That
