@@ -36,6 +36,8 @@
      24. Screener
      25. Stop the genocide
      26. Hub pages
+     27. A long list behind one button
+     28. A video on the same topic
    ========================================================================== */
 
 
@@ -1597,21 +1599,26 @@ td:first-child { font-weight: 600; }
   max-width: none;
 }
 
-.try a {
+.try a,
+.try button {
   display: inline-flex;
   align-items: center;
   min-height: 2.5rem;
   padding: 0 0.85rem;
-  font-weight: 700;
+  font: 700 0.85rem var(--font-body);
   color: var(--sky-ink);
   background: var(--sky-tint);
+  border: 0;
   border-radius: 999px;
   text-decoration: none;
+  cursor: pointer;
   transition: background-color 150ms ease, transform 120ms var(--ease);
 }
 
-.try a:hover { background: var(--sky-soft); }
-.try a:active { transform: scale(0.96); }
+.try a:hover,
+.try button:hover { background: var(--sky-soft); }
+.try a:active,
+.try button:active { transform: scale(0.96); }
 
 /* The drawing beside the headline: on wider screens only, so on a phone
    the search stays on the first screen. Its two cards rise in once. */
@@ -2791,31 +2798,87 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .screener-search { display: none; max-width: 40rem; margin: 1.25rem 0 0; }
 .js .screener-search { display: block; }
 .screener-search input { min-height: 52px; padding-left: 1.2rem; background: var(--white); box-shadow: var(--shadow-sm); }
-.screener-search .grid-switch { margin-top: 0.75rem; }
 
-.screener-result {
+/* THE ANSWER, BIG (MAS, 6 Nov 2026, part 3): a drawn mark and the word —
+   ✓ Halal, ✗ Not halal or ? Don't know yet — then the company's name and
+   only a small date. "Not halal" is grey, never red, and every answer
+   carries its word, so it never depends on colour alone. */
+.sc-answer {
   max-width: 40rem;
   margin: 1rem 0 0;
-  padding: 1.1rem 1.2rem;
+  padding: 1.15rem 1.25rem 1.25rem;
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  animation: answer-in 300ms var(--ease) both;
 }
 
-.screener-result p { margin: 0 0 0.5rem; }
-.screener-result p:last-child { margin: 0; }
-.screener-result .chip { font-size: 0.95rem; padding: 0.35em 0.9em; }
+.sc-answer[hidden] { display: none; }
+.sc-answer p { margin: 0 0 0.5rem; }
+.sc-answer > :last-child { margin-bottom: 0; }
+
+@keyframes answer-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.sc-verdict {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 10vw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.sc-answer p.sc-verdict { margin-bottom: 0.75rem; }
+
+.sc-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+}
+
+.sc-mark svg {
+  width: 1.9rem;
+  height: 1.9rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sc-verdict.is-in { color: var(--green-deep); }
+.sc-verdict.is-in .sc-mark { color: var(--white); background: var(--green); }
+
+.sc-verdict.is-out { color: var(--ink-2); }
+.sc-verdict.is-out .sc-mark { color: var(--ink-2); background: var(--bone); border: 2px solid var(--line); }
+
+/* "Don't know yet": dashed and empty, so it never reads as either answer. */
+.sc-verdict.is-unknown { color: var(--ink-2); }
+.sc-verdict.is-unknown .sc-mark { color: var(--ink-2); border: 2px dashed var(--ink-3); }
+
+.sc-company { font-size: 1.1rem; line-height: 1.35; }
+.sc-sym { color: var(--ink-3); font-size: 0.8rem; font-weight: 600; }
+.sc-date { font-size: 0.85rem; color: var(--ink-3); }
+.sc-lead { font-weight: 700; }
+.sc-also { margin-top: 1rem; font-size: 0.85rem; color: var(--ink-3); }
 
 /* "(Zomato is now Eternal)" — for a search by a company's old name. */
 .sc-renamed { font-weight: 600; color: var(--sky-ink); }
 
-/* On /screener/ the introduction comes after the search and its answer. */
-.screener-result + .standfirst { margin-top: 1.5rem; }
-
-/* The third answer — "Don't know yet", for a company outside the Nifty 500
-   that hasn't been screened. Dashed and empty, so it never reads as either
-   halal or not halal. */
+/* The third answer's chip in a list — "Don't know yet". Dashed and empty,
+   so it never reads as either halal or not halal. */
 .chip-unknown {
   background: transparent;
   color: var(--ink-2);
@@ -2844,20 +2907,18 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 }
 .sc-picks li:last-child button { border-bottom: 0; }
 .sc-picks button:hover { background: var(--sky-tint); }
-.sc-picks .sc-sym { color: var(--ink-3); font-size: 0.8rem; }
 
-/* The list of all companies on a phone: name, symbol and the answer.
-   The industry and the weight show from tablets up, so the table never
-   slides sideways on a phone. */
+/* The list of all companies: two columns, the company and the answer
+   (MAS, 6 Nov 2026, part 3), so it fits any phone without sliding. */
+#sc-table td:first-child { font-weight: 600; }
+#sc-table td:last-child,
+#sc-table th:last-child { width: 1%; white-space: nowrap; }
+
 @media (max-width: 45.99em) {
-  #sc-table th:nth-child(3), #sc-table td:nth-child(3),
-  #sc-table th:nth-child(5), #sc-table td:nth-child(5) { display: none; }
-  #sc-table th, #sc-table td { padding: 0.6rem 0.5rem; }
-  #sc-table th { white-space: normal; }
-  #sc-table .chip { padding: 0.2em 0.55em; font-size: 0.75rem; }
+  #sc-table th, #sc-table td { padding: 0.6rem 0.75rem; }
+  #sc-table .chip { padding: 0.2em 0.6em; font-size: 0.75rem; }
   #sc-table tbody tr:not(.fig-row) > td:first-child { min-width: 0; position: static; box-shadow: none; }
   #sc-table thead th:first-child { position: static; box-shadow: none; }
-  #sc-table td:nth-child(2) { font-size: 0.78rem; color: var(--ink-3); word-break: break-all; }
 }
 
 
@@ -3087,6 +3148,133 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 }
 
 .route-list span { color: var(--ink-3); }   /* not built yet, so not a link */
+
+
+/* 27. A LONG LIST BEHIND ONE BUTTON =======================================
+   The screener's 501 companies and the boycott list (MAS, 6 Nov 2026,
+   part 3): the answer comes first, the whole list opens with one button.
+   It is a <details>, so the list is in the page — Google reads every name —
+   and it opens without JavaScript.
+     <details class="list-toggle"><summary>See all …</summary>
+       <div class="list-body"> … </div></details>
+   ========================================================================== */
+
+.list-toggle {
+  max-width: 46rem;
+  margin: 1.5rem 0;
+}
+
+.list-toggle > summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-width: min(100%, 20rem);
+  min-height: 3.25rem;
+  padding: 0.6rem 1.5rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--green-deep);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  list-style: none;
+  cursor: pointer;
+  transition: transform 120ms var(--ease), border-color 150ms ease;
+}
+
+.list-toggle > summary::-webkit-details-marker { display: none; }
+.list-toggle > summary:hover { border-color: var(--green); }
+.list-toggle > summary:active { transform: scale(0.97); }
+
+/* A small arrow: down when closed, up when open. */
+.list-toggle > summary::after {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-0.15em) rotate(45deg);
+  transition: transform 200ms var(--ease);
+}
+
+.list-toggle[open] > summary::after { transform: translateY(0.12em) rotate(225deg); }
+
+.list-body { margin-top: 1rem; }
+.list-body > .grid-switch { margin: 0 0 0.75rem; }
+.list-body .list-count { margin: 0 0 0.75rem; }
+
+
+/* 28. A VIDEO ON THE SAME TOPIC ===========================================
+   Near the top of a page that has one (MAS, 6 Nov 2026, part 3): the
+   video's picture with a play button, its length and its title. The whole
+   card is a plain link to YouTube; no player loads on the site, and the
+   picture comes from YouTube's image server (the privacy page says so).
+   ========================================================================== */
+
+.video-pick {
+  display: grid;
+  grid-template-columns: 7.25rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.9rem;
+  max-width: 32rem;
+  margin: 1.5rem 0;
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  transition: transform 150ms var(--ease), box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.band .video-pick { border-color: var(--sky-soft); }
+.video-pick:hover { border-color: var(--sky); box-shadow: var(--shadow); }
+.video-pick:active { transform: scale(0.98); }
+
+.video-pick .thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--forest);
+}
+
+.video-pick .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.video-pick .play {
+  width: 2.1rem;
+  height: 2.1rem;
+  margin: -1.05rem 0 0 -1.05rem;
+}
+
+.video-pick .play svg { width: 0.9rem; height: 0.9rem; margin-left: 2px; }
+.video-pick:hover .play { transform: scale(1.08); }
+
+.video-pick-kicker {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--sky-deep);
+}
+
+.video-pick-title {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+@media (min-width: 46em) {
+  .video-pick { grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1.1rem; }
+  .video-pick-title { font-size: 1.05rem; }
+}
 
 
 /* ==========================================================================

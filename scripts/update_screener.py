@@ -12,7 +12,11 @@ What it does:
      the home page's screener box. A company in the Shariah index is
      marked "Halal"; a Nifty 500 company that isn't, "Not halal" (MAS,
      6 Oct). Anything outside the Nifty 500 shows "Don't know yet" when
-     searched — that part is in the page's own script.
+     searched — that part is in the page's own script. Since 6 Nov 2026
+     (part 3) the table has two columns, the company and the answer; the
+     NSE symbol sits on each row as data-sym, for the search. The counts
+     marked data-screener-in, data-screener-out and data-screener-all are
+     rewritten too.
   3. Redraws the grid of squares — one per company, A to Z, filled if it
      is in the Shariah index — between the "GRID START" and "GRID END"
      markers on each page in GRID_PAGES, and rewrites the counts marked
@@ -61,17 +65,17 @@ def build(n500_text, shariah_text):
         sys.exit(f'Stopped: Shariah companies missing from the Nifty 500 list: {missing}')
     rows, squares = [], []
     for c in sorted(companies, key=lambda c: c['Company Name'].strip().lower()):
-        sym, name, ind = c['Symbol'].strip(), c['Company Name'].strip(), c['Industry'].strip()
+        sym, name = c['Symbol'].strip(), c['Company Name'].strip()
         if sym in weight:
             status = '<span class="chip chip-pass">&#10003; Halal</span>'
-            w = f'{weight[sym]:.2f}%'
             row_cls = 'in'
         else:
             status = '<span class="chip chip-fail">&#10007; Not halal</span>'
-            w = '—'
             row_cls = 'out'
-        rows.append(f'            <tr class="sc-{row_cls}"><td>{html.escape(name)}</td><td>{html.escape(sym)}</td>'
-                    f'<td>{html.escape(ind)}</td><td>{status}</td><td class="num">{w}</td></tr>')
+        # Two columns (MAS, 6 Nov 2026, part 3): the company and the answer.
+        # The symbol rides along as data-sym, so the search still finds it.
+        rows.append(f'                <tr class="sc-{row_cls}" data-sym="{html.escape(sym)}"><td>{html.escape(name)}</td>'
+                    f'<td>{status}</td></tr>')
         squares.append(sym in weight)
     return rows, squares, as_of, len(weight), len(companies)
 
@@ -91,8 +95,9 @@ def write(rows, squares, as_of, n_in, n_all):
         sys.exit('Stopped: could not find the SCREENER ROWS markers in screener/index.html.')
     s = re.sub(r'<time datetime="[0-9-]+" data-screener-date>[^<]*</time>',
                f'<time datetime="{iso}" data-screener-date>{text}</time>', s)
-    s = re.sub(r'<span class="num" data-screener-in>\d+</span>', f'<span class="num" data-screener-in>{n_in}</span>', s)
-    s = re.sub(r'<span class="num" data-screener-all>\d+</span>', f'<span class="num" data-screener-all>{n_all}</span>', s)
+    s = re.sub(r'(data-screener-in>)\d+', rf'\g<1>{n_in}', s)
+    s = re.sub(r'(data-screener-out>)\d+', rf'\g<1>{n_all - n_in}', s)
+    s = re.sub(r'(data-screener-all>)\d+', rf'\g<1>{n_all}', s)
     open(p, 'w', encoding='utf-8').write(s)
     for page in GRID_PAGES:
         h = os.path.join(ROOT, page)

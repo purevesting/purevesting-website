@@ -178,33 +178,576 @@
 
       <h1>Is your stock <span class="t-green">halal</span>?</h1>
 
-      <!-- THE SEARCH, straight under the heading, with its answer right
-           under it; one short line follows (a tools page: no byline).
-           Needs JavaScript,
-           so it stays hidden without it; the full list below is readable
-           either way. A search from the home page arrives here as ?q=...,
-           and the script fills it in. -->
+      <!-- THE SEARCH, straight under the heading, then its answer, big
+           (MAS, 6 Nov 2026, part 3): ✓ Halal, ✗ Not halal or ? Don't know
+           yet, the company's name, and only a small date. A tools page: no
+           byline. The search needs JavaScript, so it stays hidden without
+           it; the list below opens either way. A search from the home page
+           arrives here as ?q=..., and the script fills it in. -->
       <div class="screener-search" role="search">
         <label for="sc-q">Company name or NSE symbol</label>
         <input id="sc-q" type="search" autocomplete="off" spellcheck="false"
                placeholder="e.g. Infosys, TCS, Zomato">
-        <div class="grid-switch" role="group" aria-label="Show">
-          <button type="button" class="switch-btn" data-show="all" aria-pressed="true">All</button>
-          <button type="button" class="switch-btn" data-show="in" aria-pressed="false">Halal</button>
-          <button type="button" class="switch-btn" data-show="out" aria-pressed="false">Not halal</button>
-        </div>
+        <p class="try"><span>Try</span>
+          <button type="button" data-try="Infosys">Infosys</button>
+          <button type="button" data-try="Zomato">Zomato</button>
+          <button type="button" data-try="Reliance">Reliance</button></p>
       </div>
 
-      <div class="screener-result" id="sc-result" aria-live="polite" hidden></div>
+      <div class="sc-answer" id="sc-result" aria-live="polite" hidden></div>
 
-      <!-- scripts/update_screener.py rewrites the date and the two counts
+      <!-- EVERY COMPANY, behind one button (MAS, 6 Nov 2026, part 3): two
+           columns, the company and the answer, with the All / Halal / Not
+           halal buttons inside. It is a <details>, so every company name
+           is in the page for Google, and it opens without JavaScript.
+           scripts/update_screener.py rewrites the rows (between the
+           "SCREENER ROWS" markers), the date and the counts
            (data-screener-…). data-src: tapping a count shows its source. -->
-      <p class="standfirst" data-src="src-screener">The answer comes from NSE's
-        Shariah list, the Nifty500 Shariah index. As of
-        <time datetime="2026-09-30" data-screener-date>30 September 2026</time>,
-        <span class="num" data-screener-in>204</span> of the
-        <span class="num" data-screener-all>501</span> Nifty 500 companies are
-        halal.</p>
+      <details class="list-toggle" id="list">
+        <summary><span>See all <span class="num" data-screener-all>501</span> companies</span></summary>
+        <div class="list-body">
+
+          <div class="grid-switch" role="group" aria-label="Show">
+            <button type="button" class="switch-btn" data-show="all" aria-pressed="true">All</button>
+            <button type="button" class="switch-btn" data-show="in" aria-pressed="false">Halal</button>
+            <button type="button" class="switch-btn" data-show="out" aria-pressed="false">Not halal</button>
+          </div>
+
+          <p class="meta list-count" data-src="src-screener">As of
+            <time datetime="2026-09-30" data-screener-date>30 September 2026</time>:
+            <span class="num" data-screener-in>204</span> halal and
+            <span class="num" data-screener-out>297</span> not halal, A to Z.</p>
+
+          <div class="table-scroll sc-table-box">
+            <table id="sc-table" data-src="src-screener">
+              <caption class="visually-hidden">Every Nifty 500 company, and whether it is halal according to NSE's Nifty500 Shariah index</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Company</th>
+                  <th scope="col">Halal?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- SCREENER ROWS START -->
+                <tr class="sc-out" data-sym="360ONE"><td>360 ONE WAM Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="AADHARHFC"><td>Aadhar Housing Finance Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="AARTIIND"><td>Aarti Industries Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="AAVAS"><td>Aavas Financiers Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ABB"><td>ABB India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ABBOTINDIA"><td>Abbott India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ACC"><td>ACC Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="ACMESOLAR"><td>ACME Solar Holdings Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ACE"><td>Action Construction Equipment Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="ACUTAAS"><td>Acutaas Chemicals Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="ADANIENSOL"><td>Adani Energy Solutions Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ADANIENT"><td>Adani Enterprises Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ADANIGREEN"><td>Adani Green Energy Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ADANIPORTS"><td>Adani Ports and Special Economic Zone Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ADANIPOWER"><td>Adani Power Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ATGL"><td>Adani Total Gas Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ABCAPITAL"><td>Aditya Birla Capital Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ABREL"><td>Aditya Birla Real Estate Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ABSLAMC"><td>Aditya Birla Sun Life AMC Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="CPPLUS"><td>Aditya Infotech Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="AEGISLOG"><td>Aegis Logistics Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="AEGISVOPAK"><td>Aegis Vopak Terminals Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="AETHER"><td>Aether Industries Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="AFCONS"><td>Afcons Infrastructure Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="AFFLE"><td>Affle 3i Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="AIAENG"><td>AIA Engineering Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="AJANTPHARM"><td>Ajanta Pharmaceuticals Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="ALKEM"><td>Alkem Laboratories Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="ABDL"><td>Allied Blenders and Distillers Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ARE&amp;M"><td>Amara Raja Energy &amp; Mobility Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="AMBER"><td>Amber Enterprises India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="AMBUJACEM"><td>Ambuja Cements Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="ANANDRATHI"><td>Anand Rathi Wealth Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ANANTRAJ"><td>Anant Raj Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="ANGELONE"><td>Angel One Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ANTHEM"><td>Anthem Biosciences Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ANURAS"><td>Anupam Rasayan India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="APARINDS"><td>Apar Industries Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="APLAPOLLO"><td>APL Apollo Tubes Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="APOLLOHOSP"><td>Apollo Hospitals Enterprise Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="APOLLOTYRE"><td>Apollo Tyres Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="APTUS"><td>Aptus Value Housing Finance India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ASAHIINDIA"><td>Asahi India Glass Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ASHOKLEY"><td>Ashok Leyland Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ASIANPAINT"><td>Asian Paints Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="ASTERDM"><td>Aster DM Quality Care Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="ASTRAL"><td>Astral Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="ATHERENERG"><td>Ather Energy Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ATUL"><td>Atul Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="AUBANK"><td>AU Small Finance Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="AUROPHARMA"><td>Aurobindo Pharma Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="AIIL"><td>Authum Investment &amp; Infrastructure Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="AVANTIFEED"><td>Avanti Feeds Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="DMART"><td>Avenue Supermarts Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="AWL"><td>AWL Agri Business Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="AXISBANK"><td>Axis Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="AZAD"><td>Azad Engineering Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="BAGMANE"><td>Bagmane Prime Office REIT</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="BAJAJ-AUTO"><td>Bajaj Auto Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="BAJFINANCE"><td>Bajaj Finance Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="BAJAJFINSV"><td>Bajaj Finserv Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="BAJAJHLDNG"><td>Bajaj Holdings &amp; Investment Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="BAJAJHFL"><td>Bajaj Housing Finance Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="BALKRISIND"><td>Balkrishna Industries Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="BALRAMCHIN"><td>Balrampur Chini Mills Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="BANDHANBNK"><td>Bandhan Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="BANKBARODA"><td>Bank of Baroda</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="BANKINDIA"><td>Bank of India</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="MAHABANK"><td>Bank of Maharashtra</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="BATAINDIA"><td>Bata India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="BELRISE"><td>Belrise Industries Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="BEML"><td>BEML Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="BERGEPAINT"><td>Berger Paints India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="BHARATCOAL"><td>Bharat Coking Coal Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="BDL"><td>Bharat Dynamics Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="BEL"><td>Bharat Electronics Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="BHARATFORG"><td>Bharat Forge Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="BHEL"><td>Bharat Heavy Electricals Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="BPCL"><td>Bharat Petroleum Corporation Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="BHARTIARTL"><td>Bharti Airtel Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="BHARTIHEXA"><td>Bharti Hexacom Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="GROWW"><td>Billionbrains Garage Ventures Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="BIOCON"><td>Biocon Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="BSOFT"><td>Birlasoft Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="BBOX"><td>Black Box Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="BLS"><td>BLS International Services Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="BLUESTARCO"><td>Blue Star Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="BOSCHLTD"><td>Bosch Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="FIRSTCRY"><td>Brainbees Solutions Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="BRIGADE"><td>Brigade Enterprises Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="BRITANNIA"><td>Britannia Industries Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="BIRET"><td>Brookfield India Real Estate Trust</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="BSE"><td>BSE Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="CANFINHOME"><td>Can Fin Homes Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="CANBK"><td>Canara Bank</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="CANHLIFE"><td>Canara HSBC Life Insurance Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="CAPLIPOINT"><td>Caplin Point Laboratories Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="CGCL"><td>Capri Global Capital Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="CARBORUNIV"><td>Carborundum Universal Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="CARTRADE"><td>Cartrade Tech Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="CASTROLIND"><td>Castrol India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="CCL"><td>CCL Products (I) Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="CEATLTD"><td>Ceat Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="CEMPRO"><td>Cemindia Projects Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="CENTRALBK"><td>Central Bank of India</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="CDSL"><td>Central Depository Services (India) Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="CMPDI"><td>Central Mine Planning &amp; Design Institute Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="CESC"><td>CESC Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="CGPOWER"><td>CG Power and Industrial Solutions Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="CHAMBLFERT"><td>Chambal Fertilizers &amp; Chemicals Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="CHENNPETRO"><td>Chennai Petroleum Corporation Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="CHOICEIN"><td>Choice International Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="CHOLAHLDNG"><td>Cholamandalam Financial Holdings Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="CHOLAFIN"><td>Cholamandalam Investment and Finance Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="CIEINDIA"><td>CIE Automotive India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="CIPLA"><td>Cipla Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="CUB"><td>City Union Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="CLEANMAX"><td>Clean Max Enviro Energy Solutions Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="CLEAN"><td>Clean Science and Technology Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="COALINDIA"><td>Coal India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="COCHINSHIP"><td>Cochin Shipyard Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="COFORGE"><td>Coforge Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="COHANCE"><td>Cohance Lifesciences Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="COLPAL"><td>Colgate Palmolive (India) Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="CAMS"><td>Computer Age Management Services Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="CONCORDBIO"><td>Concord Biotech Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="CONCOR"><td>Container Corporation of India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="COROMANDEL"><td>Coromandel International Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="CRAFTSMAN"><td>Craftsman Automation Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="CREDITACC"><td>CreditAccess Grameen Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="CRISIL"><td>CRISIL Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="CROMPTON"><td>Crompton Greaves Consumer Electricals Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="CUMMINSIND"><td>Cummins India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="CUPID"><td>Cupid Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="CYIENT"><td>Cyient Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="DABUR"><td>Dabur India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="DALBHARAT"><td>Dalmia Bharat Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="DATAPATTNS"><td>Data Patterns (India) Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="DEEPAKFERT"><td>Deepak Fertilisers &amp; Petrochemicals Corp. Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="DEEPAKNTR"><td>Deepak Nitrite Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="DELHIVERY"><td>Delhivery Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="DEVYANI"><td>Devyani International Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="DIVISLAB"><td>Divi&#x27;s Laboratories Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="DIXON"><td>Dixon Technologies (India) Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="DLF"><td>DLF Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="DOMS"><td>DOMS Industries Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="LALPATHLAB"><td>Dr. Lal Path Labs Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="DRREDDY"><td>Dr. Reddy&#x27;s Laboratories Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="DUMMYHEG"><td>Dummy HEG Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="EIDPARRY"><td>E.I.D. Parry (India) Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ECLERX"><td>eClerx Services Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="EICHERMOT"><td>Eicher Motors Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="EIHOTEL"><td>EIH Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ELECON"><td>Elecon Engineering Co. Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ELGIEQUIP"><td>Elgi Equipments Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="EMAMILTD"><td>Emami Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="EMBASSY"><td>EMBASSY OFFICE PARKS REIT</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="EMCURE"><td>Emcure Pharmaceuticals Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="EMMVEE"><td>Emmvee Photovoltaic Power Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ENDURANCE"><td>Endurance Technologies Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="ENGINERSIN"><td>Engineers India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ESCORTS"><td>Escorts Kubota Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ETERNAL"><td>Eternal Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="EXIDEIND"><td>Exide Industries Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="FEDERALBNK"><td>Federal Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="FACT"><td>Fertilisers and Chemicals Travancore Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="FINCABLES"><td>Finolex Cables Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="FSL"><td>Firstsource Solutions Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="FIVESTAR"><td>Five-Star Business Finance Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="FORCEMOT"><td>Force Motors Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="FORTIS"><td>Fortis Healthcare Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="FRACTAL"><td>Fractal Analytics Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="NYKAA"><td>FSN E-Commerce Ventures Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="GABRIEL"><td>Gabriel India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="GAIL"><td>GAIL (India) Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="GALLANTT"><td>Gallantt Ispat Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="GRSE"><td>Garden Reach Shipbuilders &amp; Engineers Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="GVT&amp;D"><td>GE Vernova T&amp;D India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="GICRE"><td>General Insurance Corporation of India</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="GILLETTE"><td>Gillette India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="GLAND"><td>Gland Pharma Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="GLAXO"><td>Glaxosmithkline Pharmaceuticals Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="GLENMARK"><td>Glenmark Pharmaceuticals Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="MEDANTA"><td>Global Health Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="GMRAIRPORT"><td>GMR Airports Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="GPIL"><td>Godawari Power &amp; Ispat Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="GODFRYPHLP"><td>Godfrey Phillips India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="GODREJCP"><td>Godrej Consumer Products Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="GODREJIND"><td>Godrej Industries Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="GODREJPROP"><td>Godrej Properties Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="GRANULES"><td>Granules India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="GRAPHITE"><td>Graphite India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="GRASIM"><td>Grasim Industries Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="GRAVITA"><td>Gravita India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="GESHIP"><td>Great Eastern Shipping Co. Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="FLUOROCHEM"><td>Gujarat Fluorochemicals Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="GMDCLTD"><td>Gujarat Mineral Development Corporation Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="HAVELLS"><td>Havells India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="HBLENGINE"><td>HBL Engineering Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="HCLTECH"><td>HCL Technologies Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="HDBFS"><td>HDB Financial Services Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="HDFCAMC"><td>HDFC Asset Management Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="HDFCBANK"><td>HDFC Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="HDFCLIFE"><td>HDFC Life Insurance Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="HEGAM"><td>HEG Advanced Materials Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="HEROMOTOCO"><td>Hero MotoCorp Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="HEXT"><td>Hexaware Technologies Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="HFCL"><td>HFCL Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="HSCL"><td>Himadri Speciality Chemical Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="HINDALCO"><td>Hindalco Industries Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="HAL"><td>Hindustan Aeronautics Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="HINDCOPPER"><td>Hindustan Copper Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="HINDPETRO"><td>Hindustan Petroleum Corporation Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="HINDUNILVR"><td>Hindustan Unilever Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="HINDZINC"><td>Hindustan Zinc Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="POWERINDIA"><td>Hitachi Energy India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="HOMEFIRST"><td>Home First Finance Company India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="HONASA"><td>Honasa Consumer Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="HONAUT"><td>Honeywell Automation India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="HUDCO"><td>Housing &amp; Urban Development Corporation Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="HYUNDAI"><td>Hyundai Motor India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="ICICIBANK"><td>ICICI Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ICICIGI"><td>ICICI Lombard General Insurance Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ICICIAMC"><td>ICICI Prudential Asset Management Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ICICIPRULI"><td>ICICI Prudential Life Insurance Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="IDBI"><td>IDBI Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="IDFCFIRSTB"><td>IDFC First Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="IFCI"><td>IFCI Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="IIFL"><td>IIFL Finance Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="INDIACEM"><td>India Cements Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="INDIAMART"><td>Indiamart Intermesh Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="INDIANB"><td>Indian Bank</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="IEX"><td>Indian Energy Exchange Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="INDHOTEL"><td>Indian Hotels Co. Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="IOC"><td>Indian Oil Corporation Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="IOB"><td>Indian Overseas Bank</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="IRCTC"><td>Indian Railway Catering And Tourism Corporation Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="IRFC"><td>Indian Railway Finance Corporation Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="IREDA"><td>Indian Renewable Energy Development Agency Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="IGL"><td>Indraprastha Gas Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="INDUSTOWER"><td>Indus Towers Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="INDUSINDBK"><td>IndusInd Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="NAUKRI"><td>Info Edge (India) Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="INFY"><td>Infosys Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="INOXINDIA"><td>INOX India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="INOXWIND"><td>Inox Wind Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="INTELLECT"><td>Intellect Design Arena Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="INDIGO"><td>InterGlobe Aviation Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="IGIL"><td>International Gemological Institute Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="IKS"><td>Inventurus Knowledge Solutions Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="IPCALAB"><td>Ipca Laboratories Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="IRB"><td>IRB Infrastructure Developers Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="IRCON"><td>IRCON International Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ITCHOTELS"><td>ITC Hotels Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ITC"><td>ITC Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ITI"><td>ITI Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="JKCEMENT"><td>J.K. Cement Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="JAINREC"><td>Jain Resource Recycling Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="JPPOWER"><td>Jaiprakash Power Ventures Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="J&amp;KBANK"><td>Jammu &amp; Kashmir Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="JBMA"><td>JBM Auto Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="JINDALSAW"><td>Jindal Saw Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="JSL"><td>Jindal Stainless Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="JINDALSTEL"><td>Jindal Steel Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="JIOFIN"><td>Jio Financial Services Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="JKTYRE"><td>JK Tyre &amp; Industries Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="JMFINANCIL"><td>JM Financial Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="JSWCEMENT"><td>JSW Cement Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="JSWENERGY"><td>JSW Energy Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="JSWINFRA"><td>JSW Infrastructure Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="JSWSTEEL"><td>JSW Steel Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="JUBLFOOD"><td>Jubilant Foodworks Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="JUBLINGREA"><td>Jubilant Ingrevia Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="JWL"><td>Jupiter Wagons Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="JYOTICNC"><td>Jyoti CNC Automation Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="KPRMILL"><td>K.P.R. Mill Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="KAJARIACER"><td>Kajaria Ceramics Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="KPIL"><td>Kalpataru Projects International Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="KALYANKJIL"><td>Kalyan Jewellers India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="KARURVYSYA"><td>Karur Vysya Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="KAYNES"><td>Kaynes Technology India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="KEC"><td>Kec International Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="KEI"><td>KEI Industries Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="KFINTECH"><td>Kfin Technologies Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="KIRLOSBROS"><td>Kirloskar Brothers Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="KIRLOSENG"><td>Kirloskar Oil Eng Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="KOTAKBANK"><td>Kotak Mahindra Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="KPITTECH"><td>KPIT Technologies Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="KIMS"><td>Krishna Institute of Medical Sciences Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="KSB"><td>KSB Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="LTF"><td>L&amp;T Finance Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="LTTS"><td>L&amp;T Technology Services Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="LT"><td>Larsen &amp; Toubro Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="LAURUSLABS"><td>Laurus Labs Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="LEMONTREE"><td>Lemon Tree Hotels Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="LENSKART"><td>Lenskart Solutions Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="LGEINDIA"><td>LG Electronics India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="LICHSGFIN"><td>LIC Housing Finance Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="LICI"><td>Life Insurance Corporation of India</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="LINDEINDIA"><td>Linde India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="LLOYDSME"><td>Lloyds Metals And Energy Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="LODHA"><td>Lodha Developers Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="LTFOODS"><td>LT Foods Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="LTM"><td>LTM Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="LUPIN"><td>Lupin Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="MGL"><td>Mahanagar Gas Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="M&amp;MFIN"><td>Mahindra &amp; Mahindra Financial Services Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="M&amp;M"><td>Mahindra &amp; Mahindra Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="MANAPPURAM"><td>Manappuram Finance Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="MRPL"><td>Mangalore Refinery &amp; Petrochemicals Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="MANKIND"><td>Mankind Pharma Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="MARICO"><td>Marico Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="MARUTI"><td>Maruti Suzuki India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="MFSL"><td>Max Financial Services Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="MAXHEALTH"><td>Max Healthcare Institute Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="MAZDOCK"><td>Mazagoan Dock Shipbuilders Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="MEESHO"><td>Meesho Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="MINDACORP"><td>Minda Corporation Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="MMTC"><td>MMTC Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="MSUMI"><td>Motherson Sumi Wiring India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="MOTILALOFS"><td>Motilal Oswal Financial Services Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="MPHASIS"><td>MphasiS Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="MRF"><td>MRF Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="MTARTECH"><td>MTAR Technologies Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="MCX"><td>Multi Commodity Exchange of India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="MUTHOOTFIN"><td>Muthoot Finance Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="NH"><td>Narayana Hrudayalaya Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="NATCOPHARM"><td>NATCO Pharma Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="NATIONALUM"><td>National Aluminium Co. Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="NAVA"><td>Nava Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="NAVINFLUOR"><td>Navin Fluorine International Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="NBCC"><td>NBCC (India) Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="NCC"><td>NCC Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="NESTLEIND"><td>Nestle India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="NETWEB"><td>Netweb Technologies India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="NEULANDLAB"><td>Neuland Laboratories Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="NHPC"><td>NHPC Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="NAM-INDIA"><td>Nippon Life India Asset Management Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="NLCINDIA"><td>NLC India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="NMDC"><td>NMDC Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="NSLNISP"><td>NMDC Steel Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="NTPCGREEN"><td>NTPC Green Energy Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="NTPC"><td>NTPC Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="NUVAMA"><td>Nuvama Wealth Management Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="NUVOCO"><td>Nuvoco Vistas Corporation Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="OBEROIRLTY"><td>Oberoi Realty Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ONGC"><td>Oil &amp; Natural Gas Corporation Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="OIL"><td>Oil India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="OLAELEC"><td>Ola Electric Mobility Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="OLECTRA"><td>Olectra Greentech Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="PAYTM"><td>One 97 Communications Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ONESOURCE"><td>Onesource Specialty Pharma Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="OFSS"><td>Oracle Financial Services Software Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="PAGEIND"><td>Page Industries Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="PARADEEP"><td>Paradeep Phosphates Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="PATANJALI"><td>Patanjali Foods Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="POLICYBZR"><td>PB Fintech Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PCBL"><td>PCBL Chemical Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="PERSISTENT"><td>Persistent Systems Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="PETRONET"><td>Petronet LNG Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="PGEL"><td>PG Electroplast Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="PHOENIXLTD"><td>Phoenix Mills Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PWL"><td>Physicswallah Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PIIND"><td>PI Industries Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="PIDILITIND"><td>Pidilite Industries Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="PINELABS"><td>Pine Labs Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PIRAMALFIN"><td>Piramal Finance Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PPLPHARMA"><td>Piramal Pharma Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PNBHOUSING"><td>PNB Housing Finance Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="POLYMED"><td>Poly Medicure Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="POLYCAB"><td>Polycab India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="POONAWALLA"><td>Poonawalla Fincorp Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PFC"><td>Power Finance Corporation Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="POWERGRID"><td>Power Grid Corporation of India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PREMIERENE"><td>Premier Energies Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PRESTIGE"><td>Prestige Estates Projects Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PFOCUS"><td>Prime Focus Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PRIVISCL"><td>Privi Speciality Chemicals Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PTCIL"><td>PTC Industries Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PNB"><td>Punjab National Bank</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="PVRINOX"><td>PVR INOX Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="RRKABEL"><td>R R Kabel Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="RADICO"><td>Radico Khaitan Ltd</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="RVNL"><td>Rail Vikas Nigam Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="RAILTEL"><td>Railtel Corporation Of India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="RAINBOW"><td>Rainbow Childrens Medicare Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="RKFORGE"><td>Ramkrishna Forgings Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="RBLBANK"><td>RBL Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="RECLTD"><td>REC Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="REDINGTON"><td>Redington Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="RELIANCE"><td>Reliance Industries Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="RPOWER"><td>Reliance Power Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="RHIM"><td>RHI MAGNESITA INDIA LTD.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="RITES"><td>RITES Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="RUBICON"><td>Rubicon Research Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="SAGILITY"><td>Sagility Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="SAILIFE"><td>Sai Life Sciences Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="SAMMAANCAP"><td>Sammaan Capital Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="MOTHERSON"><td>Samvardhana Motherson International Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="SANSERA"><td>Sansera Engineering Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="SARDAEN"><td>Sarda Energy and Minerals Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="SBICARD"><td>SBI Cards and Payment Services Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="SBILIFE"><td>SBI Life Insurance Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="SCHAEFFLER"><td>Schaeffler India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="SCHNEIDER"><td>Schneider Electric Infrastructure Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="SCI"><td>Shipping Corporation of India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="SHREECEM"><td>Shree Cement Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="SHRIRAMFIN"><td>Shriram Finance Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="SHYAMMETL"><td>Shyam Metalics and Energy Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="ENRIN"><td>Siemens Energy India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="SIEMENS"><td>Siemens Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="SIGNATURE"><td>Signatureglobal (India) Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="SJVN"><td>SJVN Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="SOBHA"><td>Sobha Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="SOLARINDS"><td>Solar Industries India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="SONACOMS"><td>Sona BLW Precision Forgings Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="SHRIPISTON"><td>SPR Auto Technologies Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="SRF"><td>SRF Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="STARHEALTH"><td>Star Health and Allied Insurance Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="SBIN"><td>State Bank of India</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="SAIL"><td>Steel Authority of India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="STLTECH"><td>Sterlite Technologies Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="SUMICHEM"><td>Sumitomo Chemical India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="SUNPHARMA"><td>Sun Pharmaceutical Industries Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="SUNTV"><td>Sun TV Network Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="SUNDARMFIN"><td>Sundaram Finance Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="SUPREMEIND"><td>Supreme Industries Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="SUZLON"><td>Suzlon Energy Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="SWANCORP"><td>Swan Corp Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="SWIGGY"><td>Swiggy Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="SYNGENE"><td>Syngene International Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="SYRMA"><td>Syrma SGS Technology Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="TATACAP"><td>Tata Capital Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="TATACHEM"><td>Tata Chemicals Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="TATACOMM"><td>Tata Communications Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="TCS"><td>Tata Consultancy Services Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="TATACONSUM"><td>Tata Consumer Products Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="TATAELXSI"><td>Tata Elxsi Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="TATAINVEST"><td>Tata Investment Corporation Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="TMCV"><td>Tata Motors Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="TMPV"><td>Tata Motors Passenger Vehicles Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="TATAPOWER"><td>Tata Power Co. Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="TATASTEEL"><td>Tata Steel Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="TATATECH"><td>Tata Technologies Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="TTML"><td>Tata Teleservices (Maharashtra) Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="TBOTEK"><td>TBO Tek Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="TDPOWERSYS"><td>TD Power Systems Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="TECHM"><td>Tech Mahindra Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="TECHNOE"><td>Techno Electric &amp; Engineering Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="TEGA"><td>Tega Industries Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="TEJASNET"><td>Tejas Networks Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="TENNIND"><td>Tenneco Clean Air India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="THANGAMAYL"><td>Thangamayil Jewellery Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="NIACL"><td>The New India Assurance Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="RAMCOCEM"><td>The Ramco Cements Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="THERMAX"><td>Thermax Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="TIMKEN"><td>Timken India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="TITAGARH"><td>Titagarh Rail Systems Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="TITAN"><td>Titan Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="TORNTPHARM"><td>Torrent Pharmaceuticals Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="TORNTPOWER"><td>Torrent Power Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="TARIL"><td>Transformers And Rectifiers (India) Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="TRENT"><td>Trent Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="TRIDENT"><td>Trident Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="TRITURBINE"><td>Triveni Turbine Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="TIINDIA"><td>Tube Investments of India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="TVSMOTOR"><td>TVS Motor Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="UCOBANK"><td>UCO Bank</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ULTRACEMCO"><td>UltraTech Cement Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="UNIONBANK"><td>Union Bank of India</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="UBL"><td>United Breweries Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="UNITDSPR"><td>United Spirits Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="UNOMINDA"><td>UNO Minda Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="UPL"><td>UPL Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="URBANCO"><td>Urban Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="USHAMART"><td>Usha Martin Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="UTIAMC"><td>UTI Asset Management Company Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="VTL"><td>Vardhman Textiles Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="VBL"><td>Varun Beverages Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="VAML"><td>Vedanta Aluminium Metal Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="VISL"><td>Vedanta Iron and Steel Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="VEDL"><td>Vedanta Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="VOGL"><td>Vedanta Oil and Gas Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="VEDPOWER"><td>Vedanta Power Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="VIJAYA"><td>Vijaya Diagnostic Centre Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="VMM"><td>Vishal Mega Mart Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="IDEA"><td>Vodafone Idea Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="VOLTAS"><td>Voltas Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="WAAREEENER"><td>Waaree Energies Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="WELCORP"><td>Welspun Corp Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="WELSPUNLIV"><td>Welspun Living Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-in" data-sym="WHIRLPOOL"><td>Whirlpool of India Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="WIPRO"><td>Wipro Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="WOCKPHARMA"><td>Wockhardt Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="YESBANK"><td>Yes Bank Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ZEEL"><td>Zee Entertainment Enterprises Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ZENTEC"><td>Zen Technologies Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ZENSARTECH"><td>Zensar Technolgies Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-out" data-sym="ZFCVINDIA"><td>ZF Commercial Vehicle Control Systems India Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <tr class="sc-in" data-sym="ZYDUSLIFE"><td>Zydus Lifesciences Ltd.</td><td><span class="chip chip-pass">&#10003; Halal</span></td></tr>
+                <tr class="sc-out" data-sym="ZYDUSWELL"><td>Zydus Wellness Ltd.</td><td><span class="chip chip-fail">&#10007; Not halal</span></td></tr>
+                <!-- SCREENER ROWS END -->
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </details>
+
+      <!-- A VIDEO ON THE SAME TOPIC, near the top (MAS, 6 Nov 2026, part 3).
+           A plain link to YouTube with the video's picture: no player
+           loads here (the privacy page says so). -->
+      <a class="video-pick" href="https://www.youtube.com/watch?v=slddWZuMqew">
+        <span class="thumb"><img src="https://i.ytimg.com/vi/slddWZuMqew/hqdefault.jpg" width="480" height="360" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span></span>
+        <span class="video-pick-text">
+          <span class="video-pick-kicker">Video · 13 min</span>
+          <span class="video-pick-title">Same Stock, Opposite Answer for Halal Stocks</span>
+        </span>
+      </a>
 
       <details class="source">
         <summary>Read more</summary>
@@ -224,538 +767,7 @@
   </section>
 
 
-  <section class="section">
-    <div class="wrap">
-
-      <h2 id="list">All <span class="num" data-screener-all>501</span> Nifty 500 companies</h2>
-
-      <p class="meta" id="sc-count">Sorted A to Z.</p>
-
-      <div class="table-scroll">
-        <table id="sc-table" data-src="src-screener">
-          <caption class="visually-hidden">Every Nifty 500 company, and whether it is halal according to NSE's Nifty500 Shariah index</caption>
-          <thead>
-            <tr>
-              <th scope="col">Company</th>
-              <th scope="col">NSE symbol</th>
-              <th scope="col">Industry</th>
-              <th scope="col">Halal?</th>
-              <th scope="col" class="num">Weight in the Shariah index</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- SCREENER ROWS START -->
-            <tr class="sc-out"><td>360 ONE WAM Ltd.</td><td>360ONE</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Aadhar Housing Finance Ltd.</td><td>AADHARHFC</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Aarti Industries Ltd.</td><td>AARTIIND</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Aavas Financiers Ltd.</td><td>AAVAS</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>ABB India Ltd.</td><td>ABB</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Abbott India Ltd.</td><td>ABBOTINDIA</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>ACC Ltd.</td><td>ACC</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.12%</td></tr>
-            <tr class="sc-out"><td>ACME Solar Holdings Ltd.</td><td>ACMESOLAR</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Action Construction Equipment Ltd.</td><td>ACE</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.08%</td></tr>
-            <tr class="sc-in"><td>Acutaas Chemicals Ltd.</td><td>ACUTAAS</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.28%</td></tr>
-            <tr class="sc-out"><td>Adani Energy Solutions Ltd.</td><td>ADANIENSOL</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Adani Enterprises Ltd.</td><td>ADANIENT</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Adani Green Energy Ltd.</td><td>ADANIGREEN</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Adani Ports and Special Economic Zone Ltd.</td><td>ADANIPORTS</td><td>Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Adani Power Ltd.</td><td>ADANIPOWER</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Adani Total Gas Ltd.</td><td>ATGL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Aditya Birla Capital Ltd.</td><td>ABCAPITAL</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Aditya Birla Real Estate Ltd.</td><td>ABREL</td><td>Realty</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Aditya Birla Sun Life AMC Ltd.</td><td>ABSLAMC</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Aditya Infotech Ltd.</td><td>CPPLUS</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.17%</td></tr>
-            <tr class="sc-out"><td>Aegis Logistics Ltd.</td><td>AEGISLOG</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Aegis Vopak Terminals Ltd.</td><td>AEGISVOPAK</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Aether Industries Ltd.</td><td>AETHER</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Afcons Infrastructure Ltd.</td><td>AFCONS</td><td>Construction</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.06%</td></tr>
-            <tr class="sc-out"><td>Affle 3i Ltd.</td><td>AFFLE</td><td>Information Technology</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>AIA Engineering Ltd.</td><td>AIAENG</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Ajanta Pharmaceuticals Ltd.</td><td>AJANTPHARM</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.27%</td></tr>
-            <tr class="sc-in"><td>Alkem Laboratories Ltd.</td><td>ALKEM</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.52%</td></tr>
-            <tr class="sc-out"><td>Allied Blenders and Distillers Ltd.</td><td>ABDL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Amara Raja Energy &amp; Mobility Ltd.</td><td>ARE&amp;M</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.15%</td></tr>
-            <tr class="sc-in"><td>Amber Enterprises India Ltd.</td><td>AMBER</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.24%</td></tr>
-            <tr class="sc-in"><td>Ambuja Cements Ltd.</td><td>AMBUJACEM</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.39%</td></tr>
-            <tr class="sc-out"><td>Anand Rathi Wealth Ltd.</td><td>ANANDRATHI</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Anant Raj Ltd.</td><td>ANANTRAJ</td><td>Realty</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.15%</td></tr>
-            <tr class="sc-out"><td>Angel One Ltd.</td><td>ANGELONE</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Anthem Biosciences Ltd.</td><td>ANTHEM</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Anupam Rasayan India Ltd.</td><td>ANURAS</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Apar Industries Ltd.</td><td>APARINDS</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.54%</td></tr>
-            <tr class="sc-in"><td>APL Apollo Tubes Ltd.</td><td>APLAPOLLO</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.66%</td></tr>
-            <tr class="sc-out"><td>Apollo Hospitals Enterprise Ltd.</td><td>APOLLOHOSP</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Apollo Tyres Ltd.</td><td>APOLLOTYRE</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.22%</td></tr>
-            <tr class="sc-out"><td>Aptus Value Housing Finance India Ltd.</td><td>APTUS</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Asahi India Glass Ltd.</td><td>ASAHIINDIA</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Ashok Leyland Ltd.</td><td>ASHOKLEY</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Asian Paints Ltd.</td><td>ASIANPAINT</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.80%</td></tr>
-            <tr class="sc-in"><td>Aster DM Quality Care Ltd.</td><td>ASTERDM</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.31%</td></tr>
-            <tr class="sc-in"><td>Astral Ltd.</td><td>ASTRAL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.28%</td></tr>
-            <tr class="sc-out"><td>Ather Energy Ltd.</td><td>ATHERENERG</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Atul Ltd.</td><td>ATUL</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.16%</td></tr>
-            <tr class="sc-out"><td>AU Small Finance Bank Ltd.</td><td>AUBANK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Aurobindo Pharma Ltd.</td><td>AUROPHARMA</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.77%</td></tr>
-            <tr class="sc-out"><td>Authum Investment &amp; Infrastructure Ltd.</td><td>AIIL</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Avanti Feeds Ltd.</td><td>AVANTIFEED</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Avenue Supermarts Ltd.</td><td>DMART</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.02%</td></tr>
-            <tr class="sc-out"><td>AWL Agri Business Ltd.</td><td>AWL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Axis Bank Ltd.</td><td>AXISBANK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Azad Engineering Ltd.</td><td>AZAD</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Bagmane Prime Office REIT</td><td>BAGMANE</td><td>Realty</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Bajaj Auto Ltd.</td><td>BAJAJ-AUTO</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Bajaj Finance Ltd.</td><td>BAJFINANCE</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Bajaj Finserv Ltd.</td><td>BAJAJFINSV</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Bajaj Holdings &amp; Investment Ltd.</td><td>BAJAJHLDNG</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Bajaj Housing Finance Ltd.</td><td>BAJAJHFL</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Balkrishna Industries Ltd.</td><td>BALKRISIND</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.28%</td></tr>
-            <tr class="sc-out"><td>Balrampur Chini Mills Ltd.</td><td>BALRAMCHIN</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Bandhan Bank Ltd.</td><td>BANDHANBNK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Bank of Baroda</td><td>BANKBARODA</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Bank of India</td><td>BANKINDIA</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Bank of Maharashtra</td><td>MAHABANK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Bata India Ltd.</td><td>BATAINDIA</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.07%</td></tr>
-            <tr class="sc-out"><td>Belrise Industries Ltd.</td><td>BELRISE</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>BEML Ltd.</td><td>BEML</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Berger Paints India Ltd.</td><td>BERGEPAINT</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.22%</td></tr>
-            <tr class="sc-in"><td>Bharat Coking Coal Ltd.</td><td>BHARATCOAL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.03%</td></tr>
-            <tr class="sc-out"><td>Bharat Dynamics Ltd.</td><td>BDL</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Bharat Electronics Ltd.</td><td>BEL</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Bharat Forge Ltd.</td><td>BHARATFORG</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Bharat Heavy Electricals Ltd.</td><td>BHEL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.01%</td></tr>
-            <tr class="sc-in"><td>Bharat Petroleum Corporation Ltd.</td><td>BPCL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.01%</td></tr>
-            <tr class="sc-out"><td>Bharti Airtel Ltd.</td><td>BHARTIARTL</td><td>Telecommunication</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Bharti Hexacom Ltd.</td><td>BHARTIHEXA</td><td>Telecommunication</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.18%</td></tr>
-            <tr class="sc-out"><td>Billionbrains Garage Ventures Ltd.</td><td>GROWW</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Biocon Ltd.</td><td>BIOCON</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.43%</td></tr>
-            <tr class="sc-in"><td>Birlasoft Ltd.</td><td>BSOFT</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.07%</td></tr>
-            <tr class="sc-in"><td>Black Box Ltd.</td><td>BBOX</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.06%</td></tr>
-            <tr class="sc-out"><td>BLS International Services Ltd.</td><td>BLS</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Blue Star Ltd.</td><td>BLUESTARCO</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.33%</td></tr>
-            <tr class="sc-out"><td>Bosch Ltd.</td><td>BOSCHLTD</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Brainbees Solutions Ltd.</td><td>FIRSTCRY</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.07%</td></tr>
-            <tr class="sc-out"><td>Brigade Enterprises Ltd.</td><td>BRIGADE</td><td>Realty</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Britannia Industries Ltd.</td><td>BRITANNIA</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.94%</td></tr>
-            <tr class="sc-out"><td>Brookfield India Real Estate Trust</td><td>BIRET</td><td>Realty</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>BSE Ltd.</td><td>BSE</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Can Fin Homes Ltd.</td><td>CANFINHOME</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Canara Bank</td><td>CANBK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Canara HSBC Life Insurance Company Ltd.</td><td>CANHLIFE</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Caplin Point Laboratories Ltd.</td><td>CAPLIPOINT</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Capri Global Capital Ltd.</td><td>CGCL</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Carborundum Universal Ltd.</td><td>CARBORUNIV</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.24%</td></tr>
-            <tr class="sc-out"><td>Cartrade Tech Ltd.</td><td>CARTRADE</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Castrol India Ltd.</td><td>CASTROLIND</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.16%</td></tr>
-            <tr class="sc-out"><td>CCL Products (I) Ltd.</td><td>CCL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Ceat Ltd.</td><td>CEATLTD</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.11%</td></tr>
-            <tr class="sc-in"><td>Cemindia Projects Ltd.</td><td>CEMPRO</td><td>Construction</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.11%</td></tr>
-            <tr class="sc-out"><td>Central Bank of India</td><td>CENTRALBK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Central Depository Services (India) Ltd.</td><td>CDSL</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Central Mine Planning &amp; Design Institute Ltd.</td><td>CMPDI</td><td>Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>CESC Ltd.</td><td>CESC</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>CG Power and Industrial Solutions Ltd.</td><td>CGPOWER</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.97%</td></tr>
-            <tr class="sc-in"><td>Chambal Fertilizers &amp; Chemicals Ltd.</td><td>CHAMBLFERT</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.10%</td></tr>
-            <tr class="sc-in"><td>Chennai Petroleum Corporation Ltd.</td><td>CHENNPETRO</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.11%</td></tr>
-            <tr class="sc-out"><td>Choice International Ltd.</td><td>CHOICEIN</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Cholamandalam Financial Holdings Ltd.</td><td>CHOLAHLDNG</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Cholamandalam Investment and Finance Company Ltd.</td><td>CHOLAFIN</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>CIE Automotive India Ltd.</td><td>CIEINDIA</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.08%</td></tr>
-            <tr class="sc-in"><td>Cipla Ltd.</td><td>CIPLA</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.26%</td></tr>
-            <tr class="sc-out"><td>City Union Bank Ltd.</td><td>CUB</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Clean Max Enviro Energy Solutions Ltd.</td><td>CLEANMAX</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Clean Science and Technology Ltd.</td><td>CLEAN</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Coal India Ltd.</td><td>COALINDIA</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Cochin Shipyard Ltd.</td><td>COCHINSHIP</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Coforge Ltd.</td><td>COFORGE</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.01%</td></tr>
-            <tr class="sc-in"><td>Cohance Lifesciences Ltd.</td><td>COHANCE</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.12%</td></tr>
-            <tr class="sc-in"><td>Colgate Palmolive (India) Ltd.</td><td>COLPAL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.39%</td></tr>
-            <tr class="sc-out"><td>Computer Age Management Services Ltd.</td><td>CAMS</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Concord Biotech Ltd.</td><td>CONCORDBIO</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.08%</td></tr>
-            <tr class="sc-out"><td>Container Corporation of India Ltd.</td><td>CONCOR</td><td>Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Coromandel International Ltd.</td><td>COROMANDEL</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.35%</td></tr>
-            <tr class="sc-out"><td>Craftsman Automation Ltd.</td><td>CRAFTSMAN</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>CreditAccess Grameen Ltd.</td><td>CREDITACC</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>CRISIL Ltd.</td><td>CRISIL</td><td>Financial Services</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.18%</td></tr>
-            <tr class="sc-in"><td>Crompton Greaves Consumer Electricals Ltd.</td><td>CROMPTON</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.22%</td></tr>
-            <tr class="sc-in"><td>Cummins India Ltd.</td><td>CUMMINSIND</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.07%</td></tr>
-            <tr class="sc-out"><td>Cupid Ltd.</td><td>CUPID</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Cyient Ltd.</td><td>CYIENT</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.14%</td></tr>
-            <tr class="sc-out"><td>Dabur India Ltd.</td><td>DABUR</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Dalmia Bharat Ltd.</td><td>DALBHARAT</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.22%</td></tr>
-            <tr class="sc-out"><td>Data Patterns (India) Ltd.</td><td>DATAPATTNS</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Deepak Fertilisers &amp; Petrochemicals Corp. Ltd.</td><td>DEEPAKFERT</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Deepak Nitrite Ltd.</td><td>DEEPAKNTR</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.17%</td></tr>
-            <tr class="sc-out"><td>Delhivery Ltd.</td><td>DELHIVERY</td><td>Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Devyani International Ltd.</td><td>DEVYANI</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Divi&#x27;s Laboratories Ltd.</td><td>DIVISLAB</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Dixon Technologies (India) Ltd.</td><td>DIXON</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.91%</td></tr>
-            <tr class="sc-out"><td>DLF Ltd.</td><td>DLF</td><td>Realty</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>DOMS Industries Ltd.</td><td>DOMS</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.08%</td></tr>
-            <tr class="sc-out"><td>Dr. Lal Path Labs Ltd.</td><td>LALPATHLAB</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Dr. Reddy&#x27;s Laboratories Ltd.</td><td>DRREDDY</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.25%</td></tr>
-            <tr class="sc-in"><td>Dummy HEG Ltd.</td><td>DUMMYHEG</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.06%</td></tr>
-            <tr class="sc-out"><td>E.I.D. Parry (India) Ltd.</td><td>EIDPARRY</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>eClerx Services Ltd.</td><td>ECLERX</td><td>Services</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.12%</td></tr>
-            <tr class="sc-out"><td>Eicher Motors Ltd.</td><td>EICHERMOT</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>EIH Ltd.</td><td>EIHOTEL</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Elecon Engineering Co. Ltd.</td><td>ELECON</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Elgi Equipments Ltd.</td><td>ELGIEQUIP</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.22%</td></tr>
-            <tr class="sc-in"><td>Emami Ltd.</td><td>EMAMILTD</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.12%</td></tr>
-            <tr class="sc-out"><td>EMBASSY OFFICE PARKS REIT</td><td>EMBASSY</td><td>Realty</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Emcure Pharmaceuticals Ltd.</td><td>EMCURE</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.13%</td></tr>
-            <tr class="sc-out"><td>Emmvee Photovoltaic Power Ltd.</td><td>EMMVEE</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Endurance Technologies Ltd.</td><td>ENDURANCE</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.16%</td></tr>
-            <tr class="sc-out"><td>Engineers India Ltd.</td><td>ENGINERSIN</td><td>Construction</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Escorts Kubota Ltd.</td><td>ESCORTS</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Eternal Ltd.</td><td>ETERNAL</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">3.85%</td></tr>
-            <tr class="sc-in"><td>Exide Industries Ltd.</td><td>EXIDEIND</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.31%</td></tr>
-            <tr class="sc-out"><td>Federal Bank Ltd.</td><td>FEDERALBNK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Fertilisers and Chemicals Travancore Ltd.</td><td>FACT</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Finolex Cables Ltd.</td><td>FINCABLES</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.18%</td></tr>
-            <tr class="sc-out"><td>Firstsource Solutions Ltd.</td><td>FSL</td><td>Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Five-Star Business Finance Ltd.</td><td>FIVESTAR</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Force Motors Ltd.</td><td>FORCEMOT</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.14%</td></tr>
-            <tr class="sc-in"><td>Fortis Healthcare Ltd.</td><td>FORTIS</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.67%</td></tr>
-            <tr class="sc-in"><td>Fractal Analytics Ltd.</td><td>FRACTAL</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.06%</td></tr>
-            <tr class="sc-out"><td>FSN E-Commerce Ventures Ltd.</td><td>NYKAA</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Gabriel India Ltd.</td><td>GABRIEL</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.13%</td></tr>
-            <tr class="sc-in"><td>GAIL (India) Ltd.</td><td>GAIL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.76%</td></tr>
-            <tr class="sc-in"><td>Gallantt Ispat Ltd.</td><td>GALLANTT</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.03%</td></tr>
-            <tr class="sc-out"><td>Garden Reach Shipbuilders &amp; Engineers Ltd.</td><td>GRSE</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>GE Vernova T&amp;D India Ltd.</td><td>GVT&amp;D</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.86%</td></tr>
-            <tr class="sc-out"><td>General Insurance Corporation of India</td><td>GICRE</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Gillette India Ltd.</td><td>GILLETTE</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.09%</td></tr>
-            <tr class="sc-out"><td>Gland Pharma Ltd.</td><td>GLAND</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Glaxosmithkline Pharmaceuticals Ltd.</td><td>GLAXO</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Glenmark Pharmaceuticals Ltd.</td><td>GLENMARK</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.58%</td></tr>
-            <tr class="sc-in"><td>Global Health Ltd.</td><td>MEDANTA</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.20%</td></tr>
-            <tr class="sc-out"><td>GMR Airports Ltd.</td><td>GMRAIRPORT</td><td>Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Godawari Power &amp; Ispat Ltd.</td><td>GPIL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.09%</td></tr>
-            <tr class="sc-out"><td>Godfrey Phillips India Ltd.</td><td>GODFRYPHLP</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Godrej Consumer Products Ltd.</td><td>GODREJCP</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.57%</td></tr>
-            <tr class="sc-out"><td>Godrej Industries Ltd.</td><td>GODREJIND</td><td>Diversified</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Godrej Properties Ltd.</td><td>GODREJPROP</td><td>Realty</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Granules India Ltd.</td><td>GRANULES</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.21%</td></tr>
-            <tr class="sc-out"><td>Graphite India Ltd.</td><td>GRAPHITE</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Grasim Industries Ltd.</td><td>GRASIM</td><td>Construction Materials</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Gravita India Ltd.</td><td>GRAVITA</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.08%</td></tr>
-            <tr class="sc-out"><td>Great Eastern Shipping Co. Ltd.</td><td>GESHIP</td><td>Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Gujarat Fluorochemicals Ltd.</td><td>FLUOROCHEM</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.31%</td></tr>
-            <tr class="sc-out"><td>Gujarat Mineral Development Corporation Ltd.</td><td>GMDCLTD</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Havells India Ltd.</td><td>HAVELLS</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.42%</td></tr>
-            <tr class="sc-out"><td>HBL Engineering Ltd.</td><td>HBLENGINE</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>HCL Technologies Ltd.</td><td>HCLTECH</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">2.15%</td></tr>
-            <tr class="sc-out"><td>HDB Financial Services Ltd.</td><td>HDBFS</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>HDFC Asset Management Company Ltd.</td><td>HDFCAMC</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>HDFC Bank Ltd.</td><td>HDFCBANK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>HDFC Life Insurance Company Ltd.</td><td>HDFCLIFE</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>HEG Advanced Materials Ltd.</td><td>HEGAM</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.03%</td></tr>
-            <tr class="sc-in"><td>Hero MotoCorp Ltd.</td><td>HEROMOTOCO</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.13%</td></tr>
-            <tr class="sc-in"><td>Hexaware Technologies Ltd.</td><td>HEXT</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.12%</td></tr>
-            <tr class="sc-in"><td>HFCL Ltd.</td><td>HFCL</td><td>Telecommunication</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.39%</td></tr>
-            <tr class="sc-out"><td>Himadri Speciality Chemical Ltd.</td><td>HSCL</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Hindalco Industries Ltd.</td><td>HINDALCO</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">2.26%</td></tr>
-            <tr class="sc-out"><td>Hindustan Aeronautics Ltd.</td><td>HAL</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Hindustan Copper Ltd.</td><td>HINDCOPPER</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.30%</td></tr>
-            <tr class="sc-out"><td>Hindustan Petroleum Corporation Ltd.</td><td>HINDPETRO</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Hindustan Unilever Ltd.</td><td>HINDUNILVR</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">2.77%</td></tr>
-            <tr class="sc-in"><td>Hindustan Zinc Ltd.</td><td>HINDZINC</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.45%</td></tr>
-            <tr class="sc-out"><td>Hitachi Energy India Ltd.</td><td>POWERINDIA</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Home First Finance Company India Ltd.</td><td>HOMEFIRST</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Honasa Consumer Ltd.</td><td>HONASA</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Honeywell Automation India Ltd.</td><td>HONAUT</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Housing &amp; Urban Development Corporation Ltd.</td><td>HUDCO</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Hyundai Motor India Ltd.</td><td>HYUNDAI</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.48%</td></tr>
-            <tr class="sc-out"><td>ICICI Bank Ltd.</td><td>ICICIBANK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>ICICI Lombard General Insurance Company Ltd.</td><td>ICICIGI</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>ICICI Prudential Asset Management Company Ltd.</td><td>ICICIAMC</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>ICICI Prudential Life Insurance Company Ltd.</td><td>ICICIPRULI</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>IDBI Bank Ltd.</td><td>IDBI</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>IDFC First Bank Ltd.</td><td>IDFCFIRSTB</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>IFCI Ltd.</td><td>IFCI</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>IIFL Finance Ltd.</td><td>IIFL</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>India Cements Ltd.</td><td>INDIACEM</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.03%</td></tr>
-            <tr class="sc-out"><td>Indiamart Intermesh Ltd.</td><td>INDIAMART</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Indian Bank</td><td>INDIANB</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Indian Energy Exchange Ltd.</td><td>IEX</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Indian Hotels Co. Ltd.</td><td>INDHOTEL</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Indian Oil Corporation Ltd.</td><td>IOC</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.84%</td></tr>
-            <tr class="sc-out"><td>Indian Overseas Bank</td><td>IOB</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Indian Railway Catering And Tourism Corporation Ltd.</td><td>IRCTC</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Indian Railway Finance Corporation Ltd.</td><td>IRFC</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Indian Renewable Energy Development Agency Ltd.</td><td>IREDA</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Indraprastha Gas Ltd.</td><td>IGL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.17%</td></tr>
-            <tr class="sc-in"><td>Indus Towers Ltd.</td><td>INDUSTOWER</td><td>Telecommunication</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.80%</td></tr>
-            <tr class="sc-out"><td>IndusInd Bank Ltd.</td><td>INDUSINDBK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Info Edge (India) Ltd.</td><td>NAUKRI</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Infosys Ltd.</td><td>INFY</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">5.83%</td></tr>
-            <tr class="sc-in"><td>INOX India Ltd.</td><td>INOXINDIA</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.08%</td></tr>
-            <tr class="sc-in"><td>Inox Wind Ltd.</td><td>INOXWIND</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.11%</td></tr>
-            <tr class="sc-out"><td>Intellect Design Arena Ltd.</td><td>INTELLECT</td><td>Information Technology</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>InterGlobe Aviation Ltd.</td><td>INDIGO</td><td>Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>International Gemological Institute Ltd.</td><td>IGIL</td><td>Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Inventurus Knowledge Solutions Ltd.</td><td>IKS</td><td>Information Technology</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Ipca Laboratories Ltd.</td><td>IPCALAB</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.44%</td></tr>
-            <tr class="sc-out"><td>IRB Infrastructure Developers Ltd.</td><td>IRB</td><td>Construction</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>IRCON International Ltd.</td><td>IRCON</td><td>Construction</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>ITC Hotels Ltd.</td><td>ITCHOTELS</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>ITC Ltd.</td><td>ITC</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>ITI Ltd.</td><td>ITI</td><td>Telecommunication</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.04%</td></tr>
-            <tr class="sc-out"><td>J.K. Cement Ltd.</td><td>JKCEMENT</td><td>Construction Materials</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Jain Resource Recycling Ltd.</td><td>JAINREC</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Jaiprakash Power Ventures Ltd.</td><td>JPPOWER</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Jammu &amp; Kashmir Bank Ltd.</td><td>J&amp;KBANK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>JBM Auto Ltd.</td><td>JBMA</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Jindal Saw Ltd.</td><td>JINDALSAW</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.11%</td></tr>
-            <tr class="sc-in"><td>Jindal Stainless Ltd.</td><td>JSL</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.39%</td></tr>
-            <tr class="sc-in"><td>Jindal Steel Ltd.</td><td>JINDALSTEL</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.70%</td></tr>
-            <tr class="sc-out"><td>Jio Financial Services Ltd.</td><td>JIOFIN</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>JK Tyre &amp; Industries Ltd.</td><td>JKTYRE</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>JM Financial Ltd.</td><td>JMFINANCIL</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>JSW Cement Ltd.</td><td>JSWCEMENT</td><td>Construction Materials</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>JSW Energy Ltd.</td><td>JSWENERGY</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>JSW Infrastructure Ltd.</td><td>JSWINFRA</td><td>Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>JSW Steel Ltd.</td><td>JSWSTEEL</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Jubilant Foodworks Ltd.</td><td>JUBLFOOD</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Jubilant Ingrevia Ltd.</td><td>JUBLINGREA</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.09%</td></tr>
-            <tr class="sc-in"><td>Jupiter Wagons Ltd.</td><td>JWL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.05%</td></tr>
-            <tr class="sc-in"><td>Jyoti CNC Automation Ltd.</td><td>JYOTICNC</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.15%</td></tr>
-            <tr class="sc-out"><td>K.P.R. Mill Ltd.</td><td>KPRMILL</td><td>Textiles</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Kajaria Ceramics Ltd.</td><td>KAJARIACER</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.17%</td></tr>
-            <tr class="sc-in"><td>Kalpataru Projects International Ltd.</td><td>KPIL</td><td>Construction</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.26%</td></tr>
-            <tr class="sc-out"><td>Kalyan Jewellers India Ltd.</td><td>KALYANKJIL</td><td>Consumer Durables</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Karur Vysya Bank Ltd.</td><td>KARURVYSYA</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Kaynes Technology India Ltd.</td><td>KAYNES</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Kec International Ltd.</td><td>KEC</td><td>Construction</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.08%</td></tr>
-            <tr class="sc-in"><td>KEI Industries Ltd.</td><td>KEI</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.46%</td></tr>
-            <tr class="sc-out"><td>Kfin Technologies Ltd.</td><td>KFINTECH</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Kirloskar Brothers Ltd.</td><td>KIRLOSBROS</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.07%</td></tr>
-            <tr class="sc-out"><td>Kirloskar Oil Eng Ltd.</td><td>KIRLOSENG</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Kotak Mahindra Bank Ltd.</td><td>KOTAKBANK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>KPIT Technologies Ltd.</td><td>KPITTECH</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.14%</td></tr>
-            <tr class="sc-out"><td>Krishna Institute of Medical Sciences Ltd.</td><td>KIMS</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>KSB Ltd.</td><td>KSB</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.07%</td></tr>
-            <tr class="sc-out"><td>L&amp;T Finance Ltd.</td><td>LTF</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>L&amp;T Technology Services Ltd.</td><td>LTTS</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.15%</td></tr>
-            <tr class="sc-out"><td>Larsen &amp; Toubro Ltd.</td><td>LT</td><td>Construction</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Laurus Labs Ltd.</td><td>LAURUSLABS</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.28%</td></tr>
-            <tr class="sc-out"><td>Lemon Tree Hotels Ltd.</td><td>LEMONTREE</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Lenskart Solutions Ltd.</td><td>LENSKART</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.83%</td></tr>
-            <tr class="sc-out"><td>LG Electronics India Ltd.</td><td>LGEINDIA</td><td>Consumer Durables</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>LIC Housing Finance Ltd.</td><td>LICHSGFIN</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Life Insurance Corporation of India</td><td>LICI</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Linde India Ltd.</td><td>LINDEINDIA</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.22%</td></tr>
-            <tr class="sc-out"><td>Lloyds Metals And Energy Ltd.</td><td>LLOYDSME</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Lodha Developers Ltd.</td><td>LODHA</td><td>Realty</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.56%</td></tr>
-            <tr class="sc-in"><td>LT Foods Ltd.</td><td>LTFOODS</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.09%</td></tr>
-            <tr class="sc-in"><td>LTM Ltd.</td><td>LTM</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.62%</td></tr>
-            <tr class="sc-in"><td>Lupin Ltd.</td><td>LUPIN</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.82%</td></tr>
-            <tr class="sc-in"><td>Mahanagar Gas Ltd.</td><td>MGL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.10%</td></tr>
-            <tr class="sc-out"><td>Mahindra &amp; Mahindra Financial Services Ltd.</td><td>M&amp;MFIN</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Mahindra &amp; Mahindra Ltd.</td><td>M&amp;M</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Manappuram Finance Ltd.</td><td>MANAPPURAM</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Mangalore Refinery &amp; Petrochemicals Ltd.</td><td>MRPL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Mankind Pharma Ltd.</td><td>MANKIND</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.47%</td></tr>
-            <tr class="sc-in"><td>Marico Ltd.</td><td>MARICO</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.69%</td></tr>
-            <tr class="sc-out"><td>Maruti Suzuki India Ltd.</td><td>MARUTI</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Max Financial Services Ltd.</td><td>MFSL</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Max Healthcare Institute Ltd.</td><td>MAXHEALTH</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.15%</td></tr>
-            <tr class="sc-out"><td>Mazagoan Dock Shipbuilders Ltd.</td><td>MAZDOCK</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Meesho Ltd.</td><td>MEESHO</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Minda Corporation Ltd.</td><td>MINDACORP</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.09%</td></tr>
-            <tr class="sc-out"><td>MMTC Ltd.</td><td>MMTC</td><td>Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Motherson Sumi Wiring India Ltd.</td><td>MSUMI</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.14%</td></tr>
-            <tr class="sc-out"><td>Motilal Oswal Financial Services Ltd.</td><td>MOTILALOFS</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>MphasiS Ltd.</td><td>MPHASIS</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.47%</td></tr>
-            <tr class="sc-in"><td>MRF Ltd.</td><td>MRF</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.42%</td></tr>
-            <tr class="sc-out"><td>MTAR Technologies Ltd.</td><td>MTARTECH</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Multi Commodity Exchange of India Ltd.</td><td>MCX</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Muthoot Finance Ltd.</td><td>MUTHOOTFIN</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Narayana Hrudayalaya Ltd.</td><td>NH</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>NATCO Pharma Ltd.</td><td>NATCOPHARM</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>National Aluminium Co. Ltd.</td><td>NATIONALUM</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Nava Ltd.</td><td>NAVA</td><td>Power</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.13%</td></tr>
-            <tr class="sc-in"><td>Navin Fluorine International Ltd.</td><td>NAVINFLUOR</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.50%</td></tr>
-            <tr class="sc-in"><td>NBCC (India) Ltd.</td><td>NBCC</td><td>Construction</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.13%</td></tr>
-            <tr class="sc-in"><td>NCC Ltd.</td><td>NCC</td><td>Construction</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.09%</td></tr>
-            <tr class="sc-in"><td>Nestle India Ltd.</td><td>NESTLEIND</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.56%</td></tr>
-            <tr class="sc-in"><td>Netweb Technologies India Ltd.</td><td>NETWEB</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.15%</td></tr>
-            <tr class="sc-in"><td>Neuland Laboratories Ltd.</td><td>NEULANDLAB</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.31%</td></tr>
-            <tr class="sc-out"><td>NHPC Ltd.</td><td>NHPC</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Nippon Life India Asset Management Ltd.</td><td>NAM-INDIA</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>NLC India Ltd.</td><td>NLCINDIA</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>NMDC Ltd.</td><td>NMDC</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>NMDC Steel Ltd.</td><td>NSLNISP</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.08%</td></tr>
-            <tr class="sc-out"><td>NTPC Green Energy Ltd.</td><td>NTPCGREEN</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>NTPC Ltd.</td><td>NTPC</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Nuvama Wealth Management Ltd.</td><td>NUVAMA</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Nuvoco Vistas Corporation Ltd.</td><td>NUVOCO</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.06%</td></tr>
-            <tr class="sc-out"><td>Oberoi Realty Ltd.</td><td>OBEROIRLTY</td><td>Realty</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Oil &amp; Natural Gas Corporation Ltd.</td><td>ONGC</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.46%</td></tr>
-            <tr class="sc-out"><td>Oil India Ltd.</td><td>OIL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Ola Electric Mobility Ltd.</td><td>OLAELEC</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Olectra Greentech Ltd.</td><td>OLECTRA</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.08%</td></tr>
-            <tr class="sc-out"><td>One 97 Communications Ltd.</td><td>PAYTM</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Onesource Specialty Pharma Ltd.</td><td>ONESOURCE</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Oracle Financial Services Software Ltd.</td><td>OFSS</td><td>Information Technology</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Page Industries Ltd.</td><td>PAGEIND</td><td>Textiles</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.38%</td></tr>
-            <tr class="sc-out"><td>Paradeep Phosphates Ltd.</td><td>PARADEEP</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Patanjali Foods Ltd.</td><td>PATANJALI</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.21%</td></tr>
-            <tr class="sc-out"><td>PB Fintech Ltd.</td><td>POLICYBZR</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>PCBL Chemical Ltd.</td><td>PCBL</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Persistent Systems Ltd.</td><td>PERSISTENT</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.95%</td></tr>
-            <tr class="sc-in"><td>Petronet LNG Ltd.</td><td>PETRONET</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.35%</td></tr>
-            <tr class="sc-in"><td>PG Electroplast Ltd.</td><td>PGEL</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.13%</td></tr>
-            <tr class="sc-out"><td>Phoenix Mills Ltd.</td><td>PHOENIXLTD</td><td>Realty</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Physicswallah Ltd.</td><td>PWL</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>PI Industries Ltd.</td><td>PIIND</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Pidilite Industries Ltd.</td><td>PIDILITIND</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.76%</td></tr>
-            <tr class="sc-out"><td>Pine Labs Ltd.</td><td>PINELABS</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Piramal Finance Ltd.</td><td>PIRAMALFIN</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Piramal Pharma Ltd.</td><td>PPLPHARMA</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>PNB Housing Finance Ltd.</td><td>PNBHOUSING</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Poly Medicure Ltd.</td><td>POLYMED</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Polycab India Ltd.</td><td>POLYCAB</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.71%</td></tr>
-            <tr class="sc-out"><td>Poonawalla Fincorp Ltd.</td><td>POONAWALLA</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Power Finance Corporation Ltd.</td><td>PFC</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Power Grid Corporation of India Ltd.</td><td>POWERGRID</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Premier Energies Ltd.</td><td>PREMIERENE</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Prestige Estates Projects Ltd.</td><td>PRESTIGE</td><td>Realty</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Prime Focus Ltd.</td><td>PFOCUS</td><td>Media Entertainment &amp; Publication</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Privi Speciality Chemicals Ltd.</td><td>PRIVISCL</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>PTC Industries Ltd.</td><td>PTCIL</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Punjab National Bank</td><td>PNB</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>PVR INOX Ltd.</td><td>PVRINOX</td><td>Media Entertainment &amp; Publication</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>R R Kabel Ltd.</td><td>RRKABEL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.14%</td></tr>
-            <tr class="sc-out"><td>Radico Khaitan Ltd</td><td>RADICO</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Rail Vikas Nigam Ltd.</td><td>RVNL</td><td>Construction</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.19%</td></tr>
-            <tr class="sc-in"><td>Railtel Corporation Of India Ltd.</td><td>RAILTEL</td><td>Telecommunication</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.04%</td></tr>
-            <tr class="sc-out"><td>Rainbow Childrens Medicare Ltd.</td><td>RAINBOW</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Ramkrishna Forgings Ltd.</td><td>RKFORGE</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>RBL Bank Ltd.</td><td>RBLBANK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>REC Ltd.</td><td>RECLTD</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Redington Ltd.</td><td>REDINGTON</td><td>Services</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.40%</td></tr>
-            <tr class="sc-out"><td>Reliance Industries Ltd.</td><td>RELIANCE</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Reliance Power Ltd.</td><td>RPOWER</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>RHI MAGNESITA INDIA LTD.</td><td>RHIM</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.04%</td></tr>
-            <tr class="sc-out"><td>RITES Ltd.</td><td>RITES</td><td>Construction</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Rubicon Research Ltd.</td><td>RUBICON</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.10%</td></tr>
-            <tr class="sc-in"><td>Sagility Ltd.</td><td>SAGILITY</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.16%</td></tr>
-            <tr class="sc-in"><td>Sai Life Sciences Ltd.</td><td>SAILIFE</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.35%</td></tr>
-            <tr class="sc-out"><td>Sammaan Capital Ltd.</td><td>SAMMAANCAP</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Samvardhana Motherson International Ltd.</td><td>MOTHERSON</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.20%</td></tr>
-            <tr class="sc-in"><td>Sansera Engineering Ltd.</td><td>SANSERA</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.33%</td></tr>
-            <tr class="sc-out"><td>Sarda Energy and Minerals Ltd.</td><td>SARDAEN</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>SBI Cards and Payment Services Ltd.</td><td>SBICARD</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>SBI Life Insurance Company Ltd.</td><td>SBILIFE</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Schaeffler India Ltd.</td><td>SCHAEFFLER</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.26%</td></tr>
-            <tr class="sc-in"><td>Schneider Electric Infrastructure Ltd.</td><td>SCHNEIDER</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.12%</td></tr>
-            <tr class="sc-in"><td>Shipping Corporation of India Ltd.</td><td>SCI</td><td>Services</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.08%</td></tr>
-            <tr class="sc-out"><td>Shree Cement Ltd.</td><td>SHREECEM</td><td>Construction Materials</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Shriram Finance Ltd.</td><td>SHRIRAMFIN</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Shyam Metalics and Energy Ltd.</td><td>SHYAMMETL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.12%</td></tr>
-            <tr class="sc-in"><td>Siemens Energy India Ltd.</td><td>ENRIN</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.47%</td></tr>
-            <tr class="sc-in"><td>Siemens Ltd.</td><td>SIEMENS</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.55%</td></tr>
-            <tr class="sc-out"><td>Signatureglobal (India) Ltd.</td><td>SIGNATURE</td><td>Realty</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>SJVN Ltd.</td><td>SJVN</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Sobha Ltd.</td><td>SOBHA</td><td>Realty</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Solar Industries India Ltd.</td><td>SOLARINDS</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Sona BLW Precision Forgings Ltd.</td><td>SONACOMS</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.62%</td></tr>
-            <tr class="sc-out"><td>SPR Auto Technologies Ltd.</td><td>SHRIPISTON</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>SRF Ltd.</td><td>SRF</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.60%</td></tr>
-            <tr class="sc-out"><td>Star Health and Allied Insurance Company Ltd.</td><td>STARHEALTH</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>State Bank of India</td><td>SBIN</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Steel Authority of India Ltd.</td><td>SAIL</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.44%</td></tr>
-            <tr class="sc-out"><td>Sterlite Technologies Ltd.</td><td>STLTECH</td><td>Telecommunication</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Sumitomo Chemical India Ltd.</td><td>SUMICHEM</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Sun Pharmaceutical Industries Ltd.</td><td>SUNPHARMA</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">3.19%</td></tr>
-            <tr class="sc-out"><td>Sun TV Network Ltd.</td><td>SUNTV</td><td>Media Entertainment &amp; Publication</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Sundaram Finance Ltd.</td><td>SUNDARMFIN</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Supreme Industries Ltd.</td><td>SUPREMEIND</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.37%</td></tr>
-            <tr class="sc-in"><td>Suzlon Energy Ltd.</td><td>SUZLON</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.80%</td></tr>
-            <tr class="sc-out"><td>Swan Corp Ltd.</td><td>SWANCORP</td><td>Chemicals</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Swiggy Ltd.</td><td>SWIGGY</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.62%</td></tr>
-            <tr class="sc-in"><td>Syngene International Ltd.</td><td>SYNGENE</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.12%</td></tr>
-            <tr class="sc-in"><td>Syrma SGS Technology Ltd.</td><td>SYRMA</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.23%</td></tr>
-            <tr class="sc-out"><td>Tata Capital Ltd.</td><td>TATACAP</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Tata Chemicals Ltd.</td><td>TATACHEM</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.16%</td></tr>
-            <tr class="sc-out"><td>Tata Communications Ltd.</td><td>TATACOMM</td><td>Telecommunication</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Tata Consultancy Services Ltd.</td><td>TCS</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">3.48%</td></tr>
-            <tr class="sc-in"><td>Tata Consumer Products Ltd.</td><td>TATACONSUM</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.03%</td></tr>
-            <tr class="sc-out"><td>Tata Elxsi Ltd.</td><td>TATAELXSI</td><td>Information Technology</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Tata Investment Corporation Ltd.</td><td>TATAINVEST</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Tata Motors Ltd.</td><td>TMCV</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.46%</td></tr>
-            <tr class="sc-in"><td>Tata Motors Passenger Vehicles Ltd.</td><td>TMPV</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.98%</td></tr>
-            <tr class="sc-out"><td>Tata Power Co. Ltd.</td><td>TATAPOWER</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Tata Steel Ltd.</td><td>TATASTEEL</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Tata Technologies Ltd.</td><td>TATATECH</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.20%</td></tr>
-            <tr class="sc-out"><td>Tata Teleservices (Maharashtra) Ltd.</td><td>TTML</td><td>Telecommunication</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>TBO Tek Ltd.</td><td>TBOTEK</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.10%</td></tr>
-            <tr class="sc-in"><td>TD Power Systems Ltd.</td><td>TDPOWERSYS</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.30%</td></tr>
-            <tr class="sc-in"><td>Tech Mahindra Ltd.</td><td>TECHM</td><td>Information Technology</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.61%</td></tr>
-            <tr class="sc-out"><td>Techno Electric &amp; Engineering Company Ltd.</td><td>TECHNOE</td><td>Construction</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Tega Industries Ltd.</td><td>TEGA</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.06%</td></tr>
-            <tr class="sc-out"><td>Tejas Networks Ltd.</td><td>TEJASNET</td><td>Telecommunication</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Tenneco Clean Air India Ltd.</td><td>TENNIND</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.09%</td></tr>
-            <tr class="sc-out"><td>Thangamayil Jewellery Ltd.</td><td>THANGAMAYL</td><td>Consumer Durables</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>The New India Assurance Company Ltd.</td><td>NIACL</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>The Ramco Cements Ltd.</td><td>RAMCOCEM</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.18%</td></tr>
-            <tr class="sc-in"><td>Thermax Ltd.</td><td>THERMAX</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.22%</td></tr>
-            <tr class="sc-in"><td>Timken India Ltd.</td><td>TIMKEN</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.19%</td></tr>
-            <tr class="sc-in"><td>Titagarh Rail Systems Ltd.</td><td>TITAGARH</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.11%</td></tr>
-            <tr class="sc-out"><td>Titan Company Ltd.</td><td>TITAN</td><td>Consumer Durables</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Torrent Pharmaceuticals Ltd.</td><td>TORNTPHARM</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Torrent Power Ltd.</td><td>TORNTPOWER</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Transformers And Rectifiers (India) Ltd.</td><td>TARIL</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.05%</td></tr>
-            <tr class="sc-in"><td>Trent Ltd.</td><td>TRENT</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">1.45%</td></tr>
-            <tr class="sc-in"><td>Trident Ltd.</td><td>TRIDENT</td><td>Textiles</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.05%</td></tr>
-            <tr class="sc-out"><td>Triveni Turbine Ltd.</td><td>TRITURBINE</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Tube Investments of India Ltd.</td><td>TIINDIA</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.42%</td></tr>
-            <tr class="sc-out"><td>TVS Motor Company Ltd.</td><td>TVSMOTOR</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>UCO Bank</td><td>UCOBANK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>UltraTech Cement Ltd.</td><td>ULTRACEMCO</td><td>Construction Materials</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">2.15%</td></tr>
-            <tr class="sc-out"><td>Union Bank of India</td><td>UNIONBANK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>United Breweries Ltd.</td><td>UBL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>United Spirits Ltd.</td><td>UNITDSPR</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>UNO Minda Ltd.</td><td>UNOMINDA</td><td>Automobile and Auto Components</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.35%</td></tr>
-            <tr class="sc-in"><td>UPL Ltd.</td><td>UPL</td><td>Chemicals</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.50%</td></tr>
-            <tr class="sc-out"><td>Urban Company Ltd.</td><td>URBANCO</td><td>Consumer Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Usha Martin Ltd.</td><td>USHAMART</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.15%</td></tr>
-            <tr class="sc-out"><td>UTI Asset Management Company Ltd.</td><td>UTIAMC</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Vardhman Textiles Ltd.</td><td>VTL</td><td>Textiles</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.09%</td></tr>
-            <tr class="sc-out"><td>Varun Beverages Ltd.</td><td>VBL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Vedanta Aluminium Metal Ltd.</td><td>VAML</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Vedanta Iron and Steel Ltd.</td><td>VISL</td><td>Metals &amp; Mining</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Vedanta Ltd.</td><td>VEDL</td><td>Metals &amp; Mining</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.76%</td></tr>
-            <tr class="sc-out"><td>Vedanta Oil and Gas Ltd.</td><td>VOGL</td><td>Oil Gas &amp; Consumable Fuels</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Vedanta Power Ltd.</td><td>VEDPOWER</td><td>Power</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Vijaya Diagnostic Centre Ltd.</td><td>VIJAYA</td><td>Healthcare</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Vishal Mega Mart Ltd.</td><td>VMM</td><td>Consumer Services</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.47%</td></tr>
-            <tr class="sc-out"><td>Vodafone Idea Ltd.</td><td>IDEA</td><td>Telecommunication</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Voltas Ltd.</td><td>VOLTAS</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.41%</td></tr>
-            <tr class="sc-out"><td>Waaree Energies Ltd.</td><td>WAAREEENER</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Welspun Corp Ltd.</td><td>WELCORP</td><td>Capital Goods</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.59%</td></tr>
-            <tr class="sc-in"><td>Welspun Living Ltd.</td><td>WELSPUNLIV</td><td>Textiles</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.12%</td></tr>
-            <tr class="sc-in"><td>Whirlpool of India Ltd.</td><td>WHIRLPOOL</td><td>Consumer Durables</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.11%</td></tr>
-            <tr class="sc-out"><td>Wipro Ltd.</td><td>WIPRO</td><td>Information Technology</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Wockhardt Ltd.</td><td>WOCKPHARMA</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.29%</td></tr>
-            <tr class="sc-out"><td>Yes Bank Ltd.</td><td>YESBANK</td><td>Financial Services</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Zee Entertainment Enterprises Ltd.</td><td>ZEEL</td><td>Media Entertainment &amp; Publication</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Zen Technologies Ltd.</td><td>ZENTEC</td><td>Capital Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>Zensar Technolgies Ltd.</td><td>ZENSARTECH</td><td>Information Technology</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-out"><td>ZF Commercial Vehicle Control Systems India Ltd.</td><td>ZFCVINDIA</td><td>Automobile and Auto Components</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <tr class="sc-in"><td>Zydus Lifesciences Ltd.</td><td>ZYDUSLIFE</td><td>Healthcare</td><td><span class="chip chip-pass">&#10003; Halal</span></td><td class="num">0.48%</td></tr>
-            <tr class="sc-out"><td>Zydus Wellness Ltd.</td><td>ZYDUSWELL</td><td>Fast Moving Consumer Goods</td><td><span class="chip chip-fail">&#10007; Not halal</span></td><td class="num">—</td></tr>
-            <!-- SCREENER ROWS END -->
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- SOURCES — one closed list (README.md, rule 5). The table and the
+  <!-- SOURCES — one closed list (README.md, rule 5). The list and the
        counts point at it with data-src. scripts/update_screener.py keeps
        its date current. -->
   <section class="section">
@@ -766,12 +778,11 @@
           <ul>
             <li id="src-screener">NSE Indices — the
               <a href="https://www.niftyindices.com/indices/equity/thematic-indices/nifty500-shariah">Nifty500 Shariah index</a>
-              (its companies and weights, from the index page's sector data,
-              and its <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">factsheet</a>)
+              (its companies, from the index page's sector data, and its
+              <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">factsheet</a>)
               and the
               <a href="https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv">Nifty 500 list of companies</a>
-              — as of <time datetime="2026-09-30" data-screener-date>30 September 2026</time>.
-              "Weight" is the company's share of the Shariah index.</li>
+              — as of <time datetime="2026-09-30" data-screener-date>30 September 2026</time>.</li>
           </ul>
         </div>
       </details>
@@ -846,9 +857,11 @@
 
 <!-- ==================================================================
      SCREENER SCRIPT — used on this page only.
-     Reads the table itself (so there is one copy of the data: the table),
-     then finds the company you typed and gives one of three answers:
-     Halal, Not halal, or Don't know yet (outside the Nifty 500).
+     Reads the table itself (so there is one copy of the data: the table;
+     each row's NSE symbol is its data-sym), then finds the company you
+     typed and gives one of three answers, big: Halal, Not halal, or Don't
+     know yet (outside the Nifty 500). The All / Halal / Not halal buttons
+     inside the list show or hide its rows.
 
      HOW IT RECOGNISES A COMPANY. It tries, best first:
        1. the exact NSE symbol or full name ("INFY", "Infosys Ltd"),
@@ -866,7 +879,6 @@
 (function () {
   var box = document.getElementById('sc-q');
   var result = document.getElementById('sc-result');
-  var count = document.getElementById('sc-count');
   var table = document.getElementById('sc-table');
   if (!box || !result || !table) return;
 
@@ -970,7 +982,7 @@
   }
 
   var rows = Array.prototype.map.call(table.tBodies[0].rows, function (tr) {
-    var name = tr.cells[0].textContent, sym = tr.cells[1].textContent;
+    var name = tr.cells[0].textContent, sym = tr.getAttribute('data-sym') || '';
     return {
       tr: tr, name: name, sym: sym, inIndex: tr.classList.contains('sc-in'),
       symC: sym.toLowerCase().replace(/[^a-z0-9]/g, ''),
@@ -1018,12 +1030,24 @@
     var name = r.name.replace(/\s+(ltd\.?|limited)$/i, '');
     return '<p class="sc-renamed">(' + esc(was) + ' ' + now + ' ' + esc(name) + ')</p>';
   }
+
+  // THE BIG ANSWER: a drawn mark and the word — never colour alone, and
+  // "Not halal" is grey, never red (README.md, "The look").
+  var MARK = {
+    in: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    out: '<path d="M7.5 7.5l9 9M16.5 7.5l-9 9"/>',
+    unknown: '<path d="M9 9a3 3 0 1 1 4 2.8c-.6.3-1 .8-1 1.5v.7"/><path d="M12 18h.01"/>'
+  };
+  function big(kind, word) {
+    return '<p class="sc-verdict is-' + kind + '"><span class="sc-mark" aria-hidden="true">' +
+           '<svg viewBox="0 0 24 24">' + MARK[kind] + '</svg></span>' + word + '</p>';
+  }
   function verdict(r, typed, guessed, q) {
-    var who = '<strong>' + esc(r.name) + '</strong> (' + esc(r.sym) + ')';
-    var lead = guessed ? '<p class="meta">Closest match for “' + esc(typed) + '”:</p>' : '';
-    return lead + '<p>' + chip(r) + '</p>' + renamed(r, q) + (r.inIndex
-      ? '<p>' + who + ' is halal: it is in NSE\'s Shariah list, the Nifty500 Shariah index, as of ' + esc(asOf) + '.</p>'
-      : '<p>' + who + ' is not halal: it did not pass the Shariah screen for NSE\'s Shariah list, the Nifty500 Shariah index, as of ' + esc(asOf) + '.</p>');
+    var lead = guessed ? '<p class="sc-lead">Closest match for “' + esc(typed) + '”:</p>' : '';
+    return lead + big(r.inIndex ? 'in' : 'out', r.inIndex ? 'Halal' : 'Not halal') +
+      '<p class="sc-company"><strong>' + esc(r.name) + '</strong> <span class="sc-sym">' + esc(r.sym) + '</span></p>' +
+      renamed(r, q) +
+      '<p class="sc-date">' + (r.inIndex ? 'In' : 'Not in') + ' NSE\'s Shariah list, as of ' + esc(asOf) + '</p>';
   }
   function picks(list) {
     return '<ul class="sc-picks">' + list.map(function (m) {
@@ -1032,16 +1056,17 @@
     }).join('') + '</ul>';
   }
 
-  var show = 'all';
   function update() {
     var typed = box.value.trim();
     var cleaned = typed.replace(/^(nse|bse)\s*:\s*/i, '').replace(/\.(ns|bo)$/i, '');
     var q = { c: compact(cleaned), w: words(cleaned) };
     q.alias = ALSO[q.c] || null;
 
+    if (!q.c) { result.hidden = true; result.innerHTML = ''; return; }
+
     var matches = [];
     rows.forEach(function (r) {
-      var s = q.c ? score(r, q) : 0;
+      var s = score(r, q);
       if (s) matches.push({ r: r, s: s });
     });
     // A company found by a slip of spelling is only shown when nothing
@@ -1054,32 +1079,22 @@
       return b.s - a.s || a.r.nameC.length - b.r.nameC.length || a.r.name.localeCompare(b.r.name);
     });
 
-    var found = {};
-    matches.forEach(function (m) { found[m.r.sym] = true; });
-    var shown = 0;
-    rows.forEach(function (r) {
-      var visible = (!q.c || found[r.sym]) && (show === 'all' || (show === 'in') === r.inIndex);
-      r.tr.hidden = !visible;
-      if (visible) shown++;
-    });
-    count.textContent = shown + (shown === 1 ? ' company' : ' companies') + ' shown.';
-
-    if (!q.c) { result.hidden = true; return; }
     result.hidden = false;
     if (!matches.length) {
-      result.innerHTML = '<p><span class="chip chip-unknown">? Don\'t know yet</span></p><p><strong>' + esc(typed) +
-        '</strong> isn\'t in the Nifty 500, so it hasn\'t been screened here yet — it may or may not be halal. ' +
+      result.innerHTML = big('unknown', 'Don\'t know yet') +
+        '<p class="sc-company"><strong>' + esc(typed) + '</strong></p>' +
+        '<p class="sc-date">Not in the Nifty 500, so not screened here yet: it may or may not be halal. ' +
         'More companies are coming soon. Check the spelling, or try the NSE symbol.</p>';
       return;
     }
     var top = matches[0], rest = matches.slice(1);
     if (!rest.length || top.s > rest[0].s) {
       result.innerHTML = verdict(top.r, typed, top.s < 60, q) + (rest.length
-        ? '<p class="meta">Also matching:</p>' + picks(rest.slice(0, 5)) : '');
+        ? '<p class="sc-also">Also matching:</p>' + picks(rest.slice(0, 5)) : '');
     } else {
-      result.innerHTML = '<p>' + matches.length + ' companies match “' + esc(typed) + '”. Which one?</p>' +
+      result.innerHTML = '<p class="sc-lead">' + matches.length + ' companies match “' + esc(typed) + '”. Which one?</p>' +
         picks(matches.slice(0, 10)) +
-        (matches.length > 10 ? '<p class="meta">The list below shows all ' + matches.length + '.</p>' : '');
+        (matches.length > 10 ? '<p class="meta">Showing 10. Type more of the name to find the rest.</p>' : '');
     }
   }
 
@@ -1094,14 +1109,25 @@
   });
 
   box.addEventListener('input', update);
+
+  // "Try Infosys · Zomato · Reliance": fills the box and answers at once.
+  document.querySelectorAll('[data-try]').forEach(function (t) {
+    t.addEventListener('click', function () {
+      box.value = t.getAttribute('data-try');
+      update();
+    });
+  });
+
+  // THE LIST'S BUTTONS: All, Halal or Not halal.
   var buttons = document.querySelectorAll('[data-show]');
   for (var b = 0; b < buttons.length; b++) {
     buttons[b].addEventListener('click', function () {
-      show = this.getAttribute('data-show');
+      var show = this.getAttribute('data-show');
       for (var k = 0; k < buttons.length; k++) buttons[k].setAttribute('aria-pressed', buttons[k] === this ? 'true' : 'false');
-      update();
+      rows.forEach(function (r) { r.tr.hidden = !(show === 'all' || (show === 'in') === r.inIndex); });
     });
   }
+
   var fromHome = new URLSearchParams(location.search).get('q');
   if (fromHome) { box.value = fromHome; update(); }
 })();

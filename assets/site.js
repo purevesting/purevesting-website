@@ -16,6 +16,8 @@
      4. The app — switches on /sw.js, which lets the site install like an
         app and keeps opened pages for reading offline.
      5. The offline note — says so when a page is a saved copy.
+     6. Links into a closed part — opens it (a "See all" list, a Read
+        more), so a link like /screener/#list lands on something open.
 
    All the movement is light and quick, and none of it happens when the
    reader's phone asks for less motion (README.md, "The look").
@@ -504,5 +506,31 @@ var pvCalm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: re
   if (!navigator.onLine) show();
   window.addEventListener('offline', show);
   window.addEventListener('online', hide);
+
+})();
+
+
+/* 6. LINKS INTO A CLOSED PART ==============================================
+   Long lists and "Read more" parts are closed <details> (README.md). When
+   a link points at something inside one — /screener/#list, say — this
+   opens it, and every closed part around it, then shows it. Without
+   JavaScript the part stays closed and opens with a tap, as always.
+   ========================================================================== */
+
+(function () {
+
+  function openTo() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    var el = id && document.getElementById(id);
+    if (!el) return;
+    var opened = false;
+    for (var p = el; p; p = p.parentElement) {
+      if (p.tagName === 'DETAILS' && !p.open) { p.open = true; opened = true; }
+    }
+    if (opened) el.scrollIntoView();
+  }
+
+  openTo();
+  window.addEventListener('hashchange', openTo);
 
 })();
