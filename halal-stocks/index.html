@@ -182,56 +182,25 @@
 
       <h1>How many Indian stocks are <span class="t-green">halal</span>?</h1>
 
-      <!-- THE ANSWER BOX: the answer in 2 or 3 short lines, before
-           anything else on the page (README.md, writing rules).
+      <!-- THE ANSWER BOX, in two short lines, then straight away the
+           graphic (MAS, 6 Nov 2026, part 3: "lead with the graphic").
            EVERY MONTH: the count, the date and the two shares change with
            NSE's factsheets — see "Monthly to-do" in TODO.md. -->
       <div class="answer">
         <p>204 of the 501 companies in the Nifty 500 pass NSE's Shariah
            screen, as of 30 September 2026: about 41% of the companies, and
-           about 31% of the Nifty 500's value. A company passes if its main
-           business is halal and its debt, interest income, and cash and money
-           owed to it stay under fixed limits, checked every month. Other
-           screens set different limits, so a stock can pass one list and fail
-           another.</p>
+           about 31% of the Nifty 500's value.</p>
       </div>
-
-      <div class="byline">
-        <img src="/assets/img/byline-96.webp"
-             srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
-             width="48" height="48" alt="Moin Ali Syed">
-        <div>
-          <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
-          <div class="meta">Last updated <time datetime="2026-11-06">6 November 2026</time></div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       THE NUMBER
-       ============================================================ -->
-
-  <section class="section band reveal">
-    <div class="wrap" data-src="src-hs-share">
-
-      <h2 id="number">The number, by companies and by value</h2>
-
-      <p>Of the <span class="num">501</span> companies in the Nifty 500 at
-         the end of September 2026, <span class="num">204</span> pass NSE's
-         Shariah screen. Counted by market value, those that pass are a
-         smaller share of the index, because the companies the screen removes
-         are, on average, the bigger ones.</p>
 
       <!-- THE SQUARES, with the two ways of counting. The two figures are
            written out in full, so they read without JavaScript; the switch
-           (hidden without it) redraws the squares. EVERY MONTH: the two
-           figures, and VALUE_SQUARES in the script at the bottom of this
-           page; scripts/update_screener.py redraws the squares and the
-           204 / 501 in this card. -->
-      <div class="grid-card">
+           (hidden without it) redraws the squares. "Market value" weighs
+           each company by the value of its freely traded shares (the
+           Sources line says how). EVERY MONTH: the two figures, and
+           VALUE_SQUARES in the script at the bottom of this page;
+           scripts/update_screener.py redraws the squares and the 204 / 501
+           in this card. -->
+      <div class="grid-card" data-src="src-hs-share">
 
         <div class="stat-pair">
           <p class="stat is-active" data-stat="count">
@@ -242,8 +211,7 @@
           </p>
           <p class="stat" data-stat="value">
             <span class="big-num num" data-count>31.4%</span>
-            <span class="stat-words">of the market value passes, with each
-              company weighted by the value of its freely traded shares</span>
+            <span class="stat-words">of the market value passes</span>
           </p>
         </div>
 
@@ -289,10 +257,43 @@
 
       </div>
 
-      <p>Banks, insurers and lenders (financial services) are the Nifty 500's
+      <div class="byline">
+        <img src="/assets/img/byline-96.webp"
+             srcset="/assets/img/byline-96.webp 1x, /assets/img/byline-192.webp 2x"
+             width="48" height="48" alt="Moin Ali Syed">
+        <div>
+          <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
+          <div class="meta">Last updated <time datetime="2026-11-06">6 November 2026</time></div>
+        </div>
+      </div>
+
+      <!-- A VIDEO ON THE SAME TOPIC, near the top (MAS, 6 Nov 2026,
+           part 3). A plain link to YouTube with its picture. -->
+      <a class="video-pick" href="https://www.youtube.com/shorts/fFQd_-wK3wQ">
+        <span class="thumb"><img src="https://i.ytimg.com/vi/fFQd_-wK3wQ/hqdefault.jpg" width="480" height="360" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span></span>
+        <span class="video-pick-text">
+          <span class="video-pick-kicker">Short · 52 sec</span>
+          <span class="video-pick-title">Only 13 Nifty 50 stocks are halal?</span>
+        </span>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       WHY LESS OF THE VALUE PASSES — financial services, as two bars.
+       ============================================================ -->
+
+  <section class="section band reveal">
+    <div class="wrap" data-src="src-hs-share">
+
+      <h2 id="number">Why less of the value passes</h2>
+
+      <p>The companies the screen removes are, on average, the bigger ones.
+         Banks, insurers and lenders (financial services) are the Nifty 500's
          biggest sector, and the screen removes them for what they do.</p>
 
-      <!-- Financial services' share of each index, as two bars. -->
       <div class="bars">
         <div class="bar-row" style="--to: 30.58">
           <span class="bar-label">Financial services in the Nifty 500</span>
@@ -316,7 +317,7 @@
   <!-- ============================================================
        WHAT GETS A COMPANY THROUGH — the two questions as two steps,
        and the three limits as bars (each bar is the most a company
-       may have).
+       may have). The id "screen" is linked from the corrections log.
        ============================================================ -->
 
   <section class="section reveal">
@@ -341,7 +342,7 @@
           <span class="step-n" aria-hidden="true">2</span>
           <h3>The money</h3>
           <p>A company that passes the first test must also stay under these
-             limits.</p>
+             limits, checked every month.</p>
           <div class="bars" data-src="src-hs-method">
             <div class="bar-row" style="--to: 25">
               <span class="bar-label">Interest-based debt <small>of total assets</small></span>
@@ -365,11 +366,17 @@
 
       </div>
 
-      <p>Some other screens, including the international Shariah standard,
-         measure debt against the company's market value instead of its
-         assets, and one big index company averages that value over 24
-         months. The <a href="/methodology/">methodology page</a> puts them
-         side by side, with an example you can change.</p>
+      <details class="source">
+        <summary>Read more: other screens</summary>
+        <div class="source-body">
+          <p>Some other screens, including the international Shariah
+             standard, measure debt against the company's market value
+             instead of its assets, and one big index company averages that
+             value over 24 months. The <a href="/methodology/">methodology
+             page</a> puts them side by side, with an example you can
+             change.</p>
+        </div>
+      </details>
 
     </div>
   </section>
@@ -390,9 +397,10 @@
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 6.5h10M10 12h10M10 17.5h10"/><path d="M4 6.5l1.2 1.2L7.5 5.4M4 12l1.2 1.2 2.3-2.3M4 17.5l1.2 1.2 2.3-2.3"/></svg></span>
           <h3>It is one screen's list</h3>
           <p>The 204 are the companies NSE's screen lets through. Apps and
-             other index makers use their own limits, so their lists differ —
-             usually because the methods differ, not because anyone made a
-             mistake. <a href="/methodology/#disagree">Why halal stock lists
+             other index makers set different limits, so a stock can pass one
+             list and fail another — usually because the methods differ, not
+             because anyone made a mistake.
+             <a href="/methodology/#disagree">Why halal stock lists
              disagree</a>.</p>
         </div>
 
@@ -422,7 +430,7 @@
 
 
   <!-- ============================================================
-       WHERE TO SEE THE COMPANIES
+       WHERE TO SEE THE COMPANIES — as links, not paragraphs.
        ============================================================ -->
 
   <section class="section reveal">
@@ -430,19 +438,12 @@
 
       <h2 id="list">Where to see the companies</h2>
 
-      <p>To check one company, use the <a href="/screener/">screener</a>:
-         all 501 Nifty 500 companies, each marked halal or not halal from
-         NSE's index. NSE publishes the Nifty500 Shariah index's full list of
-         companies on <a href="https://www.niftyindices.com/">niftyindices.com</a>,
-         and its monthly
-         <a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">factsheet</a>
-         shows the count, the sector weights and the ten largest
-         holdings.</p>
-
-      <p>Of India's six Shariah mutual funds, one tracks this index: the UTI
-         Nifty500 Shariah Index Fund. The
-         <a href="/compare/shariah-mutual-funds/">compare page</a> has all six
-         side by side.</p>
+      <ul class="route-list">
+        <li><a href="/screener/">Check one company in the screener: all 501, each halal or not halal</a></li>
+        <li><a href="https://www.niftyindices.com/">NSE's full list of the Shariah index's companies, on niftyindices.com</a></li>
+        <li><a href="https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf">NSE's monthly factsheet: the count, the sector weights and the ten largest holdings</a></li>
+        <li><a href="/compare/shariah-mutual-funds/">The one Shariah mutual fund that tracks this index: the UTI Nifty500 Shariah Index Fund</a></li>
+      </ul>
 
       <p class="ask-line">Still have a doubt? <a href="/ask/">Ask me</a></p>
 
