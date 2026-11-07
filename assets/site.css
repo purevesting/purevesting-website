@@ -39,6 +39,7 @@
      27. A long list behind one button
      28. A video on the same topic
      29. Mutual fund cards
+     30. The two-step drawing, and the worked example's limits
    ========================================================================== */
 
 
@@ -1234,6 +1235,10 @@ td:first-child { font-weight: 600; }
 }
 
 .source .source-body a { color: var(--green-ink); }
+
+/* On a blue band, the circle and the box turn white so they still show. */
+.band .source > summary::before { background-color: var(--white); }
+.band .source > .source-body { background: var(--white); }
 
 /* The "Read the fatwa" link at the end of each chip is what gets tapped
    most on a phone, so it gets a full-size tap target too. */
@@ -3416,6 +3421,182 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 @media (min-width: 64em) {
   .fund-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+
+/* 30. THE TWO-STEP DRAWING ================================================
+   /methodology/ (MAS, 6 Nov 2026, part 3: "a simple two-step drawing
+   instead of long paragraphs"). Plain HTML, so every word is real text:
+     <ol class="flow">
+       <li class="flow-node">        a pill: an icon and "A company"
+       <li class="step flow-step">   a step: its number, what it checks,
+                                     and its way out ("✗ Out")
+       <li class="flow-pass-on">     the arrow down, with what gets through
+       <li class="flow-node flow-end">  the green pill at the end
+   A blue line with arrowheads joins them down the left side.
+   ========================================================================== */
+
+.flow {
+  display: grid;
+  max-width: 42rem;
+  margin: 1.25rem 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.flow > li { position: relative; }
+
+/* Between two parts with no words in between: a short line and arrow. */
+.flow > li + li:not(.flow-pass-on):not(.flow-pass-on + li) { margin-top: 1.75rem; }
+.flow > li + li:not(.flow-pass-on):not(.flow-pass-on + li)::before,
+.flow-pass-on::before {
+  content: "";
+  position: absolute;
+  left: calc(1.6rem - 1px);
+  top: -1.75rem;
+  height: calc(1.75rem - 7px);
+  width: 2px;
+  background: var(--sky);
+}
+
+.flow > li + li:not(.flow-pass-on):not(.flow-pass-on + li)::after,
+.flow-pass-on::after {
+  content: "";
+  position: absolute;
+  left: calc(1.6rem - 6px);
+  top: -8px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 7px solid var(--sky);
+}
+
+/* The arrow with words: what gets through to the next part. */
+.flow-pass-on {
+  padding: 0.85rem 0 0.85rem 2.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--sky-ink);
+}
+
+.flow-pass-on::before { top: 0; height: calc(100% - 7px); }
+.flow-pass-on::after { top: auto; bottom: 0; }
+
+/* The two ends: pills. */
+.flow-node {
+  display: inline-flex;
+  justify-self: start;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.4rem 1.2rem 0.4rem 0.4rem;
+  font-weight: 700;
+  background: var(--white);
+  border: 1px solid var(--sky-soft);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+}
+
+.flow-node .icon { width: 2.4rem; height: 2.4rem; }
+.flow-node .icon svg { width: 1.35rem; height: 1.35rem; }
+.flow-end { color: var(--green-ink); background: var(--green-tint); border-color: transparent; }
+.flow-end .icon { background: var(--white); }
+
+/* A step. */
+.flow-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; }
+.flow-head h3 { margin: 0; font-size: 1.15rem; }
+.flow-step p { margin-bottom: 0.6rem; }
+.flow-step .bars { margin: 0.75rem 0; }
+
+.flow-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flow-chips li {
+  padding: 0.3em 0.8em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink-2);
+  background: var(--bone);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.flow-note { font-size: 0.88rem; color: var(--ink-2); }
+
+/* Each step's way out, at its foot. */
+.step .flow-out {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding-top: 0.8rem;
+  max-width: none;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  border-top: 1px dashed var(--line);
+}
+
+/* THE WORKED EXAMPLE'S LIMITS: one bar per screen — the example
+   company's debt, on a scale of 0% to 50% — with a dark mark where the
+   limit is. The chip beside it says Within or Over in words. */
+.limit-card { display: grid; gap: 1.1rem; max-width: 40rem; margin: 1rem 0 1.25rem; }
+
+.limit-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.limit-name { font-weight: 700; line-height: 1.3; }
+.limit-name small { display: block; font-size: 0.8rem; font-weight: 400; color: var(--ink-3); }
+
+.limit-meter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 0.55rem;
+}
+
+.limit-track {
+  position: relative;
+  height: 14px;
+  border-radius: 7px;
+  background: var(--sky-tint);
+}
+
+.limit-track .bar { transition: width 300ms var(--ease); }
+
+.limit-line {
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  left: calc(var(--at, 0) * 1%);
+  width: 3px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+.limit-value { min-width: 3.5rem; font-size: 1.1rem; font-weight: 800; text-align: right; }
+.limit-card .legend { margin: 0; }
+.swatch-limit { width: 3px; height: 0.95rem; border-radius: 2px; background: var(--ink); }
+
+/* "Three things stand out" (the market section): a big figure on each. */
+.stand-out { margin-top: 1.5rem; }
+.stand-num { margin: 0 0 0.35rem; }
+.stand-num .big-num { font-size: 2.2rem; line-height: 1; color: var(--sky-deep); }
+.stand-out h3 { margin: 0.2rem 0 0.35rem; font-size: 1.05rem; }
+.stand-out .card p:last-child { color: var(--ink-2); font-size: 0.95rem; }
+
+/* A grid of cards with a line of text after it. */
+.grid-then-text { margin-bottom: 1.5rem; }
 
 
 /* ==========================================================================

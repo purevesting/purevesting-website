@@ -217,129 +217,183 @@
         </div>
       </div>
 
-      <nav class="toc" aria-label="Contents">
-        <strong>On this page</strong>
-        <ol>
-          <li><a href="#step-1">Step 1: what the company does</a></li>
-          <li><a href="#step-2">Step 2: how it borrows and keeps its cash</a></li>
-          <li><a href="#try-it">Try it: one company, two screens</a></li>
-          <li><a href="#purification">What happens to the small leftover income</a></li>
-          <li><a href="#market">What the screen does to the real market</a></li>
-          <li><a href="#disagree">Why halal stock lists disagree</a></li>
-        </ol>
-      </nav>
+      <!-- A VIDEO ON THE SAME TOPIC, near the top (MAS, 6 Nov 2026,
+           part 3). A plain link to YouTube with its picture. -->
+      <a class="video-pick" href="https://www.youtube.com/watch?v=slddWZuMqew">
+        <span class="thumb"><img src="https://i.ytimg.com/vi/slddWZuMqew/hqdefault.jpg" width="480" height="360" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span></span>
+        <span class="video-pick-text">
+          <span class="video-pick-kicker">Video · 13 min</span>
+          <span class="video-pick-title">Same Stock, Opposite Answer for Halal Stocks</span>
+        </span>
+      </a>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       STEP 1 — BUSINESS ACTIVITY
+       THE TWO STEPS, AS ONE DRAWING (MAS, 6 Nov 2026, part 3: "a simple
+       two-step drawing instead of long paragraphs"). Every company goes
+       in at the top; step 1 and step 2 each have a way out; what is left
+       is on NSE's list. It is plain HTML, so every word is real text.
+       The ids "step-1" and "step-2" are linked from the corrections log
+       — keep them. The detail that was in the paragraphs is under the
+       three closed "Read more" parts below the drawing.
        ============================================================ -->
 
-  <section class="section reveal">
-    <div class="wrap" data-src="src-step1">
-
-      <h2 id="step-1">Step 1: what the company does</h2>
-
-      <p>First, the main business. If the business itself is haram, nothing
-         else matters: the company is out. NSE screens out a company that is,
-         in its words, "primarily into" any of these:</p>
-
-      <ul>
-        <li>Conventional financial services — banks, insurance companies,
-            finance and investment companies, stock broking</li>
-        <li>Pork, alcohol and tobacco</li>
-        <li>Gambling and narcotic drugs</li>
-        <li>Film and other entertainment "where vulgarity, promiscuity is a
-            part and parcel of the business"</li>
-        <li>Hotels and restaurants providing non-halal products or
-            entertainment</li>
-      </ul>
-
-      <p>Other screens draw the edges of this list differently. A big US
-         index company's list, for instance, also names recreational cannabis, and
-         weapons used for purposes other than defence. But conventional
-         finance, alcohol, pork, gambling and tobacco are on both lists.</p>
-
-      <p>Note the word <em>primarily</em>: a company whose main business is
-         halal is not screened out just because a small part of what it does
-         is not. The international Shariah standard and that index company
-         put a number on how small — under <span class="num">5%</span> of
-         what the company earns. NSE's rules don't give one.</p>
-
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       STEP 2 — FINANCIAL RATIOS
-       ============================================================ -->
-
-  <section class="section reveal">
+  <section class="section band reveal">
     <div class="wrap">
 
-      <h2 id="step-2">Step 2: how it borrows and keeps its cash</h2>
+      <h2 id="steps">The check, in two steps</h2>
 
-      <p>Almost every company borrows at some point and keeps cash in a bank.
-         A screen that removed every company touching interest would remove
-         nearly all of them, so the screens set limits instead. This is where
-         they differ most: not only in the number, but in what the number is
-         measured against.</p>
+      <ol class="flow">
 
-      <div class="table-scroll table-stack">
-        <!-- Each column heading points at its line in Sources (data-src). -->
-        <table>
-          <caption class="visually-hidden">Shariah screening limits under the international Shariah standard and NSE's Shariah indices</caption>
-          <thead>
-            <tr>
-              <th scope="col">Test</th>
-              <th scope="col" data-src="src-intl">International standard</th>
-              <th scope="col" data-src="src-nse">NSE</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Interest-bearing debt</td>
-              <td data-label="International standard">Up to <span class="num">30%</span> of the market value of the company's shares</td>
-              <td data-label="NSE">Up to <span class="num">25%</span> of total assets</td>
-            </tr>
-            <tr>
-              <td>Interest-bearing deposits and investments</td>
-              <td data-label="International standard">Up to <span class="num">30%</span> of the market value of the company's shares</td>
-              <td data-label="NSE">No separate limit — counted in the income test below</td>
-            </tr>
-            <tr>
-              <td>Income from non-permissible sources</td>
-              <td data-label="International standard">Under <span class="num">5%</span> of total income</td>
-              <td data-label="NSE">Interest income, plus returns from interest-based investments: up to <span class="num">2.5%</span> of total income</td>
-            </tr>
-            <tr>
-              <td>Cash and money owed to the company</td>
-              <td data-label="International standard">No test</td>
-              <td data-label="NSE">Receivables plus cash and bank balances: up to <span class="num">90%</span> of total assets</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <li class="flow-node">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20.5V6.5L12 3l8 3.5v14"/><path d="M2.5 20.5h19"/><path d="M8.5 9.5h2M13.5 9.5h2M8.5 13h2M13.5 13h2M10.5 20.5v-3.5h3v3.5"/></svg></span>
+          A company
+        </li>
+
+        <li class="step flow-step" id="step-1" data-src="src-step1">
+          <div class="flow-head"><span class="step-n" aria-hidden="true">1</span>
+            <h3>What the company does</h3></div>
+          <p>Its main business must be halal. NSE screens out a company that is
+             "primarily into":</p>
+          <ul class="flow-chips">
+            <li>Conventional finance</li>
+            <li>Alcohol</li>
+            <li>Pork</li>
+            <li>Tobacco</li>
+            <li>Gambling</li>
+            <li>Narcotic drugs</li>
+            <li>Vulgar films and entertainment</li>
+            <li>Non-halal hotels and restaurants</li>
+          </ul>
+          <p class="flow-out"><span class="chip chip-fail">&#10007; Out</span>
+             whatever its numbers</p>
+        </li>
+
+        <li class="flow-pass-on">Halal business</li>
+
+        <li class="step flow-step" id="step-2">
+          <div class="flow-head"><span class="step-n" aria-hidden="true">2</span>
+            <h3>How it borrows and keeps its cash</h3></div>
+          <p>It must stay under NSE's three limits:</p>
+          <div class="bars" data-src="src-nse">
+            <div class="bar-row" style="--to: 25">
+              <span class="bar-label">Interest-based debt <small>of total assets</small></span>
+              <span class="bar-value">up to <span class="num">25%</span></span>
+              <span class="bar-track"><span class="bar"></span></span>
+            </div>
+            <div class="bar-row" style="--to: 2.5">
+              <span class="bar-label">Interest income, plus returns from
+                interest-based investments <small>of total income</small></span>
+              <span class="bar-value">up to <span class="num">2.5%</span></span>
+              <span class="bar-track"><span class="bar"></span></span>
+            </div>
+            <div class="bar-row" style="--to: 90">
+              <span class="bar-label">Receivables plus cash and bank balances
+                <small>of total assets</small></span>
+              <span class="bar-value">up to <span class="num">90%</span></span>
+              <span class="bar-track"><span class="bar"></span></span>
+            </div>
+          </div>
+          <p class="flow-note" data-src="src-intl">The international standard
+             measures debt against market value instead: up to
+             <span class="num">30%</span>.</p>
+          <p class="flow-out"><span class="chip chip-fail">&#10007; Out</span>
+             if it is over any one</p>
+        </li>
+
+        <li class="flow-pass-on">Under every limit</li>
+
+        <li class="flow-node flow-end">
+          <span class="icon icon-green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          On NSE's Shariah list
+        </li>
+
+      </ol>
+
+      <details class="source" data-src="src-step1">
+        <summary>Read more: step 1 in full</summary>
+        <div class="source-body">
+          <p>NSE's list, in its words: conventional financial services —
+             banks, insurance companies, finance and investment companies,
+             stock broking; pork, alcohol and tobacco; gambling and narcotic
+             drugs; film and other entertainment "where vulgarity,
+             promiscuity is a part and parcel of the business"; hotels and
+             restaurants providing non-halal products or entertainment.</p>
+          <p>Note the word <em>primarily</em>: a company whose main business
+             is halal is not screened out just because a small part of what
+             it does is not. The international Shariah standard and a big US
+             index company put a number on how small — under
+             <span class="num">5%</span> of what the company earns. NSE's
+             rules don't give one.</p>
+          <p>Other screens draw the edges of this list differently. That
+             index company's list, for instance, also names recreational
+             cannabis, and weapons used for purposes other than defence. But
+             conventional finance, alcohol, pork, gambling and tobacco are on
+             both lists.</p>
+        </div>
+      </details>
 
       <details class="source">
-        <summary>What the sources say</summary>
-        <span class="source-body">
-          On the international standard: "interest-bearing debt and
-          interest-bearing deposits must each not exceed 30% of the firm's
-          market capitalisation, and income from non-permissible activities
-          must remain below 5% of total income."
-          — A 2025 research paper that cites the standard.
-          <br><br>
-          On NSE: "Interest based-debt should be less than or equal to 25% of
-          Total Assets … Interest income plus returns from interest-based
-          investments should be less than or equal to 2.5% of the total
-          income … Receivables plus cash and bank balances should be less
-          than or equal to 90% of Total Assets."
-          — NSE Indices, methodology document for equity indices, September
-          2026, section 34.
-        </span>
+        <summary>Read more: step 2, the two sets of limits</summary>
+        <div class="source-body">
+          <p>Almost every company borrows at some point and keeps cash in a
+             bank. A screen that removed every company touching interest
+             would remove nearly all of them, so the screens set limits
+             instead. This is where they differ most: not only in the number,
+             but in what the number is measured against.</p>
+
+          <div class="table-scroll table-stack">
+            <!-- Each column heading points at its line in Sources (data-src). -->
+            <table>
+              <caption class="visually-hidden">Shariah screening limits under the international Shariah standard and NSE's Shariah indices</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Test</th>
+                  <th scope="col" data-src="src-intl">International standard</th>
+                  <th scope="col" data-src="src-nse">NSE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Interest-bearing debt</td>
+                  <td data-label="International standard">Up to <span class="num">30%</span> of the market value of the company's shares</td>
+                  <td data-label="NSE">Up to <span class="num">25%</span> of total assets</td>
+                </tr>
+                <tr>
+                  <td>Interest-bearing deposits and investments</td>
+                  <td data-label="International standard">Up to <span class="num">30%</span> of the market value of the company's shares</td>
+                  <td data-label="NSE">No separate limit — counted in the income test below</td>
+                </tr>
+                <tr>
+                  <td>Income from non-permissible sources</td>
+                  <td data-label="International standard">Under <span class="num">5%</span> of total income</td>
+                  <td data-label="NSE">Interest income, plus returns from interest-based investments: up to <span class="num">2.5%</span> of total income</td>
+                </tr>
+                <tr>
+                  <td>Cash and money owed to the company</td>
+                  <td data-label="International standard">No test</td>
+                  <td data-label="NSE">Receivables plus cash and bank balances: up to <span class="num">90%</span> of total assets</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>On the international standard: "interest-bearing debt and
+             interest-bearing deposits must each not exceed 30% of the firm's
+             market capitalisation, and income from non-permissible activities
+             must remain below 5% of total income." — A 2025 research paper
+             that cites the standard.</p>
+          <p>On NSE: "Interest based-debt should be less than or equal to 25%
+             of Total Assets … Interest income plus returns from
+             interest-based investments should be less than or equal to 2.5%
+             of the total income … Receivables plus cash and bank balances
+             should be less than or equal to 90% of Total Assets." — NSE
+             Indices, methodology document for equity indices, September
+             2026, section 34.</p>
+        </div>
       </details>
 
       <details class="source" data-src="src-33">
@@ -365,12 +419,14 @@
 
 
   <!-- ============================================================
-       TRY IT — WORKED EXAMPLE
-       The table below is written out in full for the default numbers,
-       so the example reads correctly even with JavaScript switched off.
-       The small script at the bottom of this page only makes the three
-       inputs live. (Its ids still say "aaoifi" for the international
-       standard's row; visitors never see them.)
+       TRY IT — WORKED EXAMPLE, as two bars against their limits.
+       The bars and figures are written out in full for the default
+       numbers, so the example reads correctly even with JavaScript
+       switched off. The small script at the bottom of this page only
+       makes the three inputs live. Scale: 0% to 50%, so a bar's --to is
+       the figure × 2 and a limit's --at is the limit × 2. (The ids still
+       say "aaoifi" for the international standard's row; visitors never
+       see them.)
        ============================================================ -->
 
   <section class="section reveal">
@@ -383,7 +439,7 @@
          interest. Here is how its debt alone looks under each screen.</p>
 
       <div class="calc-fields">
-        <p class="calc-hint" id="calc-hint" aria-live="polite">Change any of the three numbers and the table below updates.</p>
+        <p class="calc-hint" id="calc-hint" aria-live="polite">Change any of the three numbers and the bars below update.</p>
         <div>
           <label for="in-mcap">Market value of all its shares (₹ crore)</label>
           <input id="in-mcap" type="number" value="10000" min="0" step="100" inputmode="decimal">
@@ -398,35 +454,36 @@
         </div>
       </div>
 
-      <div class="table-scroll table-stack" aria-live="polite">
-        <table data-src="none">
-          <caption class="visually-hidden">The example company's debt measured under two Shariah screening standards</caption>
-          <thead>
-            <tr>
-              <th scope="col">Screen</th>
-              <th scope="col" class="num">This company</th>
-              <th scope="col">Result</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>International standard <span class="cell-note">Debt up to 30% of market value</span></td>
-              <td class="num" id="r-aaoifi" data-label="This company">22.0%</td>
-              <td data-label="Result"><span class="chip chip-pass" id="c-aaoifi">&#10003; Within</span></td>
-            </tr>
-            <tr>
-              <td>NSE <span class="cell-note">Debt up to 25% of total assets</span></td>
-              <td class="num" id="r-nse" data-label="This company">27.5%</td>
-              <td data-label="Result"><span class="chip chip-fail" id="c-nse">&#10007; Over</span></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="card limit-card" aria-live="polite">
+        <div class="limit-row">
+          <div class="limit-head">
+            <span class="limit-name">International standard <small>Debt up to 30% of market value</small></span>
+            <span class="chip chip-pass" id="c-aaoifi">&#10003; Within</span>
+          </div>
+          <div class="limit-meter">
+            <span class="limit-track"><span class="bar" id="b-aaoifi" style="--to: 44"></span><span class="limit-line" style="--at: 60"></span></span>
+            <span class="limit-value num" id="r-aaoifi" data-src="none">22.0%</span>
+          </div>
+        </div>
+        <div class="limit-row">
+          <div class="limit-head">
+            <span class="limit-name">NSE <small>Debt up to 25% of total assets</small></span>
+            <span class="chip chip-fail" id="c-nse">&#10007; Over</span>
+          </div>
+          <div class="limit-meter">
+            <span class="limit-track"><span class="bar" id="b-nse" style="--to: 55"></span><span class="limit-line" style="--at: 50"></span></span>
+            <span class="limit-value num" id="r-nse" data-src="none">27.5%</span>
+          </div>
+        </div>
+        <ul class="legend">
+          <li><span class="swatch"></span>This company's debt</li>
+          <li><span class="swatch swatch-limit"></span>The limit</li>
+        </ul>
       </div>
 
       <p>The same ₹2,200 crore of debt is within one limit and over the other.
-         Now change the market value and watch which row moves: the
-         international standard's does, NSE's doesn't. That is the real
-         difference — under a market-value test,
+         Now change the market value: the international standard's bar
+         moves, NSE's doesn't. Under a market-value test,
          <span class="mark">a falling share price alone</span> can push a
          company over the limit, even if nothing about the business has
          changed. NSE's test never looks at the share price.</p>
@@ -439,15 +496,17 @@
        PURIFICATION
        ============================================================ -->
 
-  <section class="section reveal">
+  <section class="section band reveal">
     <div class="wrap">
 
       <h2 id="purification">What happens to the small leftover income</h2>
 
       <p>A company that passes can still earn a little from something haram —
          most often, interest on its bank balance. The limits in step 2 allow
-         that small share; they don't make it clean. You are expected to give
-         away your share of it. This is called purification.</p>
+         that small share; they don't make it clean. If you own a tiny slice
+         of the company, you are responsible for the same tiny slice of its
+         interest income, and you give that amount to charity without
+         expecting reward. This is called purification.</p>
 
       <details class="source">
         <summary>What NSE's rules say</summary>
@@ -460,11 +519,7 @@
         </span>
       </details>
 
-      <p>In plain words: if you own a tiny slice of a company, you are
-         responsible for the same tiny slice of its interest income, and you
-         give that amount to charity without expecting reward.</p>
-
-      <p>There is more than one way to work out that slice, and the answers
+      <p>There is more than one way to work out your slice, and the answers
          can be far apart. The <a href="/purification-calculator/">purification
          calculator</a> shows the three common methods side by side for any
          company.</p>
@@ -534,26 +589,39 @@
         </div>
       </div>
 
-      <p>Three things stand out. Financial services all but disappear, at
-         <span class="num">0.18%</span> of the index — step 1 removes banks,
-         insurers and lenders outright. Power barely appears either, at
-         <span class="num">0.13%</span>. Power is not on step 1's list, so its
-         near-absence comes from the money tests in step 2: power plants are
-         usually built with borrowed money. And what remains leans heavily on
-         a few sectors: the four IT companies in the index's top ten —
-         Infosys, TCS, HCL Technologies and Tech Mahindra — make up
-         <span class="num">13.07%</span> of it between them.</p>
+      <!-- Three things stand out, as three small cards. -->
+      <div class="grid grid-3 stand-out">
+        <div class="card">
+          <p class="stand-num"><span class="big-num num">0.18%</span></p>
+          <h3>Financial services all but disappear</h3>
+          <p>Step 1 removes banks, insurers and lenders outright.</p>
+        </div>
+        <div class="card">
+          <p class="stand-num"><span class="big-num num">0.13%</span></p>
+          <h3>Power barely appears</h3>
+          <p>Power is not on step 1's list: its near-absence comes from the
+             money tests in step 2. Power plants are usually built with
+             borrowed money.</p>
+        </div>
+        <div class="card">
+          <p class="stand-num"><span class="big-num num">13.07%</span></p>
+          <h3>A few sectors carry a lot</h3>
+          <p>The four IT companies in the index's top ten — Infosys, TCS,
+             HCL Technologies and Tech Mahindra — make up this much of it
+             between them.</p>
+        </div>
+      </div>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       WHY LISTS DISAGREE — the id "disagree" is linked from the menu and
-       other pages; keep it.
+       WHY LISTS DISAGREE — five small cards instead of a table. The id
+       "disagree" is linked from the menu and other pages; keep it.
        ============================================================ -->
 
-  <section class="section reveal">
+  <section class="section band reveal">
     <div class="wrap">
 
       <h2 id="disagree">Why halal stock lists disagree</h2>
@@ -562,38 +630,49 @@
          reason is not that one of them made a mistake. They are using
          different methods, each correctly.</p>
 
-      <div class="table-scroll">
-        <table>
-          <caption class="visually-hidden">The main reasons Shariah screens reach different results</caption>
-          <thead>
-            <tr>
-              <th scope="col">Where methods differ</th>
-              <th scope="col">What it changes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>What debt is measured against</td>
-              <td>Market value moves with the share price every day; total assets move only when the company reports</td>
-            </tr>
-            <tr>
-              <td>The limit itself</td>
-              <td>NSE allows 25%; the international standard and the big US index company allow 30%. On the same yardstick, a company at 27% would pass one and fail the other</td>
-            </tr>
-            <tr>
-              <td>Averaging</td>
-              <td>Some index companies average market value over 24 months, some over 36; a screen that uses a single day's figure moves with every swing in the share price</td>
-            </tr>
-            <tr>
-              <td>Extra tests</td>
-              <td>NSE adds a test on cash plus money owed to the company; the big US index company adds one on cash plus interest-bearing securities. A company can pass the debt test and fail one of these</td>
-            </tr>
-            <tr>
-              <td>How often the list is updated</td>
-              <td>NSE reviews its Shariah indices every month and removes any company its Shariah board finds non-compliant; others work to their own schedules, so two lists checked on the same day can reflect different months</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="grid grid-2 grid-then-text">
+
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v16M5 20h14"/><path d="M5 8h14"/><path d="M5 8l-2.5 6a2.6 2.6 0 0 0 5 0zM19 8l-2.5 6a2.6 2.6 0 0 0 5 0z"/></svg></span>
+          <h3>What debt is measured against</h3>
+          <p>Market value moves with the share price every day; total assets
+             move only when the company reports.</p>
+        </div>
+
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 17a8 8 0 1 1 15 0"/><path d="M12 13l3.5-4"/><path d="M12 13h.01"/></svg></span>
+          <h3>The limit itself</h3>
+          <p>NSE allows 25%; the international standard and the big US index
+             company allow 30%. On the same yardstick, a company at 27% would
+             pass one and fail the other.</p>
+        </div>
+
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M7.5 15.5l2.5-2 2.5 1.5 4-3"/></svg></span>
+          <h3>Averaging</h3>
+          <p>Some index companies average market value over 24 months, some
+             over 36; a screen that uses a single day's figure moves with every
+             swing in the share price.</p>
+        </div>
+
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 6.5h10M10 12h10M10 17.5h6"/><path d="M4 6.5h2M4 12h2M17.5 17.5h4M19.5 15.5v4"/></svg></span>
+          <h3>Extra tests</h3>
+          <p>NSE adds a test on cash plus money owed to the company; the big
+             US index company adds one on cash plus interest-bearing
+             securities. A company can pass the debt test and fail one of
+             these.</p>
+        </div>
+
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 0 1-13.1 5"/><path d="M4.5 12a7.5 7.5 0 0 1 13.1-5"/><path d="M17.6 3v4h-4M6.4 21v-4h4"/></svg></span>
+          <h3>How often the list is updated</h3>
+          <p>NSE reviews its Shariah indices every month and removes any
+             company its Shariah board finds non-compliant; others work to
+             their own schedules, so two lists checked on the same day can
+             reflect different months.</p>
+        </div>
+
       </div>
 
       <p>This site uses NSE's list because the exchange publishes it every
@@ -752,10 +831,10 @@
 
 <!-- ==================================================================
      WORKED EXAMPLE SCRIPT — used on this page only.
-     The table above already shows the answer for the default numbers,
+     The bars above already show the answer for the default numbers,
      so the page is complete without this. It only makes the three
      inputs live: each time a number changes, it recalculates the debt
-     ratio under each standard and swaps the result chip.
+     ratio under each standard, moves its bar and swaps the result chip.
      ================================================================== -->
 <script>
 (function () {
@@ -788,6 +867,7 @@
       var base  = parseFloat(s.base.value);
       var cell  = document.getElementById('r-' + s.id);
       var chip  = document.getElementById('c-' + s.id);
+      var bar   = document.getElementById('b-' + s.id);
 
       // Empty, zero or negative numbers can't give a meaningful ratio:
       // show a dash and an empty result until the box is fixed.
@@ -796,6 +876,7 @@
         cell.textContent = '—';
         chip.className   = '';
         chip.textContent = '';
+        bar.style.setProperty('--to', 0);
         return;
       }
 
@@ -804,11 +885,12 @@
       var pct    = d * 100 / base;
       var within = pct <= s.limit + 1e-9;
 
-      // Kept to one short word each, so the results table fits a phone
-      // screen without scrolling sideways.
+      // One short word each. The bar's scale runs from 0% to 50%, so its
+      // length is the figure × 2, and it stops at the end of the track.
       cell.textContent = pct.toFixed(1) + '%';
       chip.className   = within ? 'chip chip-pass' : 'chip chip-fail';
       chip.textContent = within ? '✓ Within' : '✗ Over';
+      bar.style.setProperty('--to', Math.min(pct, 50) * 2);
     });
 
     // Only touch the line when its message actually changes, so a screen
