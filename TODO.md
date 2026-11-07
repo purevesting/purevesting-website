@@ -11,10 +11,13 @@ section 0d.
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 6 November 2026, later the same day (part 2 of 4: the
-look — sky blue, drawings, light motion, two fonts, the new menu, footer
-and home page; the look's rules are in README.md under the writing
-rules; see section 0f). Earlier on 6 November: part 1 of 4, the cuts —
+Last updated: 7 November 2026 (part 3 of 4: fewer words, more
+graphics — the screener's big answer, the long lists behind one button,
+the fund cards, the two-step drawing, the calculators on one screen, a
+video near the top where one fits; see section 0g). Before that, on
+6 November: part 2 of 4, the look — sky blue, drawings, light motion,
+two fonts, the new menu, footer and home page (the look's rules are in
+README.md under the writing rules; section 0f); and part 1 of 4, the cuts —
 every page rewritten to MAS's writing rules (section 0e). Before that,
 12 October 2026 (phase 1 closed: privacy, disclaimer and "page not
 found" pages, /tools/ and /learn/, one menu for every screen, the
@@ -163,8 +166,8 @@ Each one says what to send or change, and where.
         The big 204, the 501, the squares and the date in the search box
         are rewritten by the screener update (last item);
       - /halal-stocks/ (the "by market value" switch lives here since
-        6 Nov): the answer box, the "501" and "204" in the first section's
-        paragraph, the two big figures above the squares (40.7% = count ÷
+        6 Nov): the answer box, the two big figures above the squares
+        (since part 3 they sit straight under the answer; 40.7% = count ÷
         companies; 31.4% = Infosys's weight in the Nifty 500 ÷ its weight in
         the Shariah index), VALUE_SQUARES in the script at the bottom of the
         page (31.4% × number of squares), the financial services figures
@@ -182,7 +185,10 @@ Each one says what to send or change, and where.
         page's search box with the new date (including the date in the
         screener's Sources part) and, since 6 Nov, redraws the squares —
         one per company, A to Z — on the home page and /halal-stocks/,
-        with their two counts. Then set the screener page's dateModified
+        with their two counts. Since part 3 the screener's list has two
+        columns (the company and the answer; the NSE symbol rides on each
+        row for the search), and the script also writes the "not halal"
+        count. Then set the screener page's dateModified
         to the day of the update. The counts it prints must match the
         factsheet (204 of 501 for 30 Sep 2026). If NSE renames a company
         (as Zomato became Eternal), add the old name to the `ALSO` list in
@@ -192,24 +198,32 @@ Each one says what to send or change, and where.
 
 ### Every quarter
 
-- [ ] **The compare page's returns table.** After each quarter-end, redo it
-      the same way: one end date for every fund, the same date one, three
-      and five years before, Direct plan Growth. Update fund sizes and
-      expense ratios at the same time, re-check the row order (largest
-      fund first), and change the "Returns to …" line under the table and
-      the dates in the page's Sources part. (The "nearly nine times"
-      sentence went with "How to read this table" on 6 Nov.)
-- [ ] **When the compare page's index rows change, change the SIP
+- [ ] **The compare page's returns — six fund cards since part 3.** After
+      each quarter-end, redo them the same way: one end date for every
+      fund, the same date one, three and five years before, Direct plan
+      Growth. In each card change the figure and its bar: the bar's
+      `--from` and `--to` are 50 ± (return ÷ 15 × 50), so a loss goes left
+      of the middle (the comment above the cards says the same). If any
+      return goes beyond ±15%, widen the scale for every card, never one.
+      A fund with no 1-year return yet says "Too new". Update fund sizes
+      (in the cards) and expense ratios (under "Read more: what each fund
+      costs") at the same time, re-check the card order (largest fund
+      first), and change the "Returns to …" line above the cards and the
+      dates in the page's Sources part. (The "nearly nine times" sentence
+      went with "How to read this table" on 6 Nov.)
+- [ ] **When the compare page's index figures change, change the SIP
       calculator's too (added 12 Oct).** The two quick-pick buttons on
-      /sip-calculator/ use the compare page's index table (#index-returns):
-      Nifty500 Shariah 5.52% and Nifty 500 9.04% a year over the last 5
-      years, as of 30 Sep 2026. Whenever those rows change, change these
-      too, in `sip-calculator/index.html`: both buttons, the starting value
-      of the "Return per year" box and its slider, the results written out
-      for the starting numbers, and the index line in the Sources part at
-      the bottom (the comment above the buttons lists them; the source
-      note under the buttons and the "What this does" cards went on 6 Nov).
-      Ask the website chat to recompute the written-out results.
+      /sip-calculator/ use the compare page's index chart (#index-returns,
+      a chart since part 3: each bar's `--from` and `--to` are
+      50 ± (return ÷ 10 × 50)): Nifty500 Shariah 5.52% and Nifty 500
+      9.04% a year over the last 5 years, as of 30 Sep 2026. Whenever
+      those change, change these too, in `sip-calculator/index.html`: both
+      buttons, the starting value of the "Return a year" box and its
+      slider, the answer written out for the starting numbers (the value,
+      its chart's ten columns and the year-by-year table under "Read
+      more"), and the index line in the Sources part at the bottom (the
+      comment above the buttons lists them). Ask the website chat to
+      recompute the written-out answer.
 - [ ] **Small savings rates.** Around 31 Mar, 30 Jun, 30 Sep and 31 Dec the
       Ministry of Finance announces the next quarter's rates. Open the
       Department of Economic Affairs link (in the PPF page's Sources part),
@@ -237,9 +251,9 @@ Each one says what to send or change, and where.
       card 42% a year) are rough typical rates, labelled as such, not quotes.
       Once or twice a year, check they still look typical; change them in
       the `TYPICAL` list in the script at the bottom of
-      loan-calculator/index.html, and in the closed "Read more" under the
-      results that lists them (the comment above the calculator says the
-      same).
+      loan-calculator/index.html, and in the closed "Read more: the typical
+      rates, and what is left out" under the answer (the comment above the
+      calculator says the same).
 
 ---
 
@@ -630,10 +644,124 @@ in each page's old text is still on the page).
 - [ ] The two fonts don't contain ₹ or →, so those come from the phone's
       own font, as before. A font file with ₹ added would make prices look
       more even.
-- [ ] Charts that could come next: the compare page's index returns (two
-      indices, 1 and 5 years), NPS's three asset classes, the gold formats.
-      The compare page's fund returns stay a table on purpose: a chart of
-      them reads as a ranking (section 3, "Not built, on purpose").
+- [ ] Charts that could come next: NPS's three asset classes, the gold
+      formats. (Done in part 3: the compare page's index returns, as a
+      chart; and its fund returns, as small bars on each fund's card — MAS
+      asked for them, 6 Nov. They stay in fund-size order, one colour, one
+      scale for every card, so they don't read as a ranking.)
+
+---
+
+## 0g. Part 3 of 4 — fewer words, more graphics (6–7 Nov 2026)
+
+MAS's brief (6 Nov): give these pages the new look, with fewer words and
+more graphics; no table should need sideways scrolling on a phone; where
+there is a video on the same topic, show it near the top. Part 3 changed
+how things are shown and arranged, not what they say: no fact, figure or
+fatwa wording changed (checked by script — every number in each page's
+old text is still on the page, except the screener's weight column,
+which MAS asked to drop).
+
+### Done (one commit per page, pushed to main)
+
+- [x] **Screener:** the answer first and big — a drawn mark and the word
+      (✓ Halal, ✗ Not halal in grey, ? Don't know yet), the company's name
+      and only a small date; "Try Infosys · Zomato · Reliance" under the
+      box. All 501 companies behind one button, "See all 501 companies"
+      (a `<details>`, so every name is still in the page for Google), with
+      two columns, the company and the answer, and All / Halal / Not halal
+      inside. A link to /screener/#list opens it (site.js, part 6).
+      `scripts/update_screener.py` writes the new rows (checked: fed the
+      same data, it rewrites the page with no difference).
+- [x] **Privacy:** the video pictures now also show on the screener, halal
+      stocks, methodology and mutual funds pages and the purification
+      calculator; the page says so (its date moved to 6 Nov).
+- [x] **Stop the genocide:** one short line, then the search; the answer
+      under it, big — "On the boycott list" (an amber flag) with the
+      matching entries open, or "Not on this list". The source line once,
+      under the search. All 426 entries behind "See all 426 entries".
+      `scripts/update_boycott.py` unchanged (checked).
+- [x] **Mutual funds:** the page starts with the six funds as cards: Type
+      (Active / Index), Shariah board (✓ Yes / ✗ No), Size, and the 1-, 3-
+      and 5-year returns as small bars, one colour, one scale for every
+      card, 0 in the middle. Expense ratios under "Read more: what each
+      fund costs". The index comparison is a small chart (two blues). The
+      app's install-sheet picture of the page retaken.
+- [x] **How many stocks are halal:** a two-line answer, then straight away
+      the squares with the two big figures and the switch; the byline
+      after them. "Why less of the value passes" (financial services as
+      two bars). Other screens' limits under "Read more"; "Where to see
+      the companies" is four links.
+- [x] **How a stock is checked:** a two-step drawing — a company goes in;
+      step 1 (what it does: NSE's list as short words) and step 2 (how it
+      borrows and keeps its cash: NSE's three limits as bars) each have a
+      way out ("✗ Out"); what gets through ends on NSE's Shariah list. The
+      old paragraphs are word for word under three closed "Read more"s.
+      "Try it" is two bars against their limits; "Three things stand out"
+      three cards; "Why halal stock lists disagree" five cards.
+- [x] **SIP, loan and purification calculators:** the boxes and the answer
+      on the first screen of a 390×844 phone, the answer drawn — the SIP
+      as one column per year (put in, and growth), the loan as the
+      interest meter with the four amounts, purification as three bars.
+      The year-by-year tables and the three purification methods are
+      under "Read more". On a computer the boxes and the answer sit side
+      by side.
+- [x] **Videos near the top:** the screener and the methodology page show
+      "Same Stock, Opposite Answer for Halal Stocks"; /halal-stocks/
+      "Only 13 Nifty 50 stocks are halal?"; the mutual funds page "Is
+      Sensex halal or not?"; the purification calculator "Invested in
+      haram stocks? Do this!". Each is a small card linking to YouTube
+      (no player loads). No video fits the SIP or loan calculator or the
+      boycott list, so they have none.
+- [x] Checked: every page at 360px, 390px and 1280px — nothing slides
+      sideways, and no table needs sideways scrolling, with every "Read
+      more" and list opened; no script errors; every link and anchor
+      inside the site works; every JSON-LD block parses; header and footer
+      identical on all 27 pages.
+
+### Decided along the way — say if you want any of these the other way
+
+- **Mutual funds:** the Sensex Short sits right after the six cards, not
+  at the top, because the page starts with the funds — and the video is
+  about a close topic (a Sensex index fund) rather than the six funds.
+- **Purification calculator:** its answer box became the opening line, as
+  the template has it for tools pages (and as on the SIP and loan
+  calculators); that made the room for the boxes and the bars. So it has
+  no "Share as image" button any more.
+- **SIP calculator:** no opening line, so it all fits; the heading says
+  what it is.
+- **Screener:** the weight in the Shariah index (and the symbol and
+  industry) no longer show anywhere, as two columns were asked for. The
+  weight could come back as one small line in the answer ("5.83% of the
+  Shariah index") if wanted.
+- **"On this page" chips** are gone from the methodology page and the
+  purification calculator: the drawing and the "Read more"s replace them.
+- **Words:** the screener says "In NSE's Shariah list, as of …" / "Not in
+  NSE's Shariah list, as of …" under the big answer; the boycott search
+  says "On the boycott list" / "Not on this list"; the fund cards say
+  "Too new: no 1-year return yet."; the drawing's steps are "What the
+  company does" and "How it borrows and keeps its cash", ending "On NSE's
+  Shariah list". Change any of them.
+- **Dates:** pages' "Last updated" dates were not moved for part 3 (it
+  changed how things are shown, not what they say), except the privacy
+  page, whose content changed.
+
+### Noticed on 6–7 Nov (part 3) — not changed
+
+- [ ] `videos/list.js` calls the long video "Same Stock, Opposite Answer
+      for Halal Stocks"; on YouTube it is now "One Number Can Make a Halal
+      Stock Haram". The site uses the list's title everywhere (the video
+      cards on pages are written from it). Change the line in the list,
+      and the two cards on /screener/ and /methodology/, if the new title
+      should show.
+- [ ] On a small 360×800 phone, the last line of the SIP and purification
+      answers sits just under the first screen (their big figures and
+      charts are on it); on the loan calculator at 390×844, "about ₹62.5
+      lakh" and the borrowed / interest bar are just under it (the meter
+      and the four amounts are on it).
+- [ ] Still open from part 2: the October NSE factsheets (the monthly job
+      is due), the "soon" card on /tools/, "Jio" in the screener, the
+      preview images' old look, ₹ not in the fonts.
 
 ---
 

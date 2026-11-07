@@ -133,6 +133,20 @@ Never colour a real fund's returns.
 - **Motion** never hides anything for long and never moves text someone is
   reading: a number already on screen when the page opens never counts up.
 
+Added by MAS on 6 November 2026 (part 3):
+
+- **The answer first and big; a long list behind one button.** The
+  screener shows ✓ Halal, ✗ Not halal or ? Don't know yet, big, with only
+  a small date; its 501 companies, and the boycott list, open with one
+  "See all" button. The list stays in the page, so Google reads it.
+- **No table may need sideways scrolling on a phone.** A table becomes
+  cards on a phone, or a chart, or goes under a "Read more".
+- **Calculators:** the boxes and the answer, drawn as a chart, on the
+  first screen of a phone; tables and long explanations under "Read
+  more".
+- **A video on the same topic goes near the top**, as a small card that
+  links to YouTube. Only where one really fits.
+
 ### How the look is built in the HTML
 
 Copy from `index.html`, `halal-stocks/` and `_template.html`.
@@ -152,6 +166,20 @@ Copy from `index.html`, `halal-stocks/` and `_template.html`.
   and give each cell its column's name: `<td data-label="Share of new money">`.
 - Rising cards: put `reveal` on the section (`<section class="section reveal">`);
   its cards and tiles rise one after another.
+- A long list behind one button (copy from `screener/`):
+  `<details class="list-toggle"><summary><span>See all …</span></summary>
+  <div class="list-body">…</div></details>`. A link to its id opens it.
+- A video near the top (copy from `screener/`): `<a class="video-pick">`
+  with the video's picture, its length and its title.
+- Bars that can go below zero (copy from `compare/shariah-mutual-funds/`):
+  `<div class="bars bars-zero">`, with 0 in the middle (`--from: 50`) and
+  `bar-row-left` on a row whose figure is negative.
+- A tapped figure in a small chart or a row of facts opens its source
+  under the whole thing, not inside one narrow box: put `fig-host` on it.
+- A calculator (copy from `sip-calculator/`): `<section class="section
+  calc-page">`, then `<div class="calc-layout">` holding the boxes
+  (`calc-fields calc-inline`, with a `calc-row` per box or a `calc-pair`
+  for two side by side) and the answer (`calc-result`).
 
 ## Other files
 
