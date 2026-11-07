@@ -3680,6 +3680,17 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .calc-split p { margin: 0; }
 .calc-split .calc-label { display: flex; align-items: center; font-size: 0.85rem; color: var(--ink-2); }
 .calc-split .calc-value { display: block; font-size: 1.1rem; }
+.calc-split .calc-words { display: block; text-align: left; font-size: 0.8rem; }
+
+/* The loan's answer: the meter a little smaller, so it all fits. */
+.calc-layout .meter { padding-bottom: 0.75rem; }
+.calc-layout .meter svg { max-width: 180px; }
+.calc-layout .meter-figure { margin-top: -2.7rem; font-size: 1.9rem; }
+
+/* The loan's five typical-loan buttons: small, so they take two rows. */
+.calc-inputs > .presets { gap: 0.4rem; }
+.calc-inputs > .presets .switch-btn { min-height: 2.4rem; padding: 0 0.8rem; font-size: 0.84rem; }
+.calc-layout .meter-label { margin-top: 0.45rem; }
 
 /* THE SIP'S CHART: one column per year, as tall as that year's value —
    what you put in at the bottom, what it grew by on top. Two greens,

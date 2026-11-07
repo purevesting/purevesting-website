@@ -173,89 +173,138 @@
 
 <main>
 
-  <section class="section">
+  <section class="section calc-page">
     <div class="wrap">
 
       <h1>How much does a loan <span class="t-danger">really cost</span>?</h1>
 
       <!-- A tools page: one short line, no byline (README.md). -->
-      <p class="standfirst">See your monthly EMI, the total interest, and how
-        much of every rupee you repay is interest. Interest on a loan is what
-        Islamic finance calls riba: this shows its real size.</p>
+      <p class="standfirst">Interest on a loan is what Islamic finance calls
+        riba. This shows its real size.</p>
 
-      <!-- THE CALCULATOR. The buttons fill in a typical loan; the boxes can
-           be changed freely. Without JavaScript the boxes stay hidden and
-           the results below are already written out for the home loan
-           button (₹30 lakh at 8.5% for 20 years). The typical rates are
-           listed in the "Read more" under the results — change them there
-           AND in the script at the bottom of this page. -->
-      <div class="grid-switch presets" role="group" aria-label="Pick a typical loan">
-        <button type="button" class="switch-btn" data-preset="home" aria-pressed="true">Home loan</button>
-        <button type="button" class="switch-btn" data-preset="car" aria-pressed="false">Car loan</button>
-        <button type="button" class="switch-btn" data-preset="education" aria-pressed="false">Education loan</button>
-        <button type="button" class="switch-btn" data-preset="personal" aria-pressed="false">Personal loan</button>
-        <button type="button" class="switch-btn" data-preset="card" aria-pressed="false">Credit card dues</button>
+      <!-- THE CALCULATOR: the boxes and the answer, drawn, on the first
+           screen of a phone (MAS, 6 Nov 2026, part 3). The buttons fill in
+           a typical loan; the boxes can be changed freely. Without
+           JavaScript the boxes stay hidden and the answer is already
+           written out for the home loan button (₹30 lakh at 8.5% for 20
+           years). The typical rates are listed in "Read more" under the
+           answer — change them there AND in the script at the bottom of
+           this page. -->
+      <div class="calc-layout">
+
+        <div class="calc-inputs">
+
+          <div class="grid-switch presets" role="group" aria-label="Pick a typical loan">
+            <button type="button" class="switch-btn" data-preset="home" aria-pressed="true">Home loan</button>
+            <button type="button" class="switch-btn" data-preset="car" aria-pressed="false">Car loan</button>
+            <button type="button" class="switch-btn" data-preset="education" aria-pressed="false">Education loan</button>
+            <button type="button" class="switch-btn" data-preset="personal" aria-pressed="false">Personal loan</button>
+            <button type="button" class="switch-btn" data-preset="card" aria-pressed="false">Credit card dues</button>
+          </div>
+
+          <div class="calc-fields calc-inline">
+            <div class="calc-row">
+              <label for="in-amount">Loan amount (₹)</label>
+              <input id="in-amount" type="number" value="3000000" min="1" step="10000" inputmode="numeric">
+            </div>
+            <div class="calc-pair">
+              <div>
+                <label for="in-rate">Interest a year (%)</label>
+                <input id="in-rate" type="number" value="8.5" min="0" max="60" step="0.5" inputmode="decimal">
+                <input id="sl-rate" type="range" value="8.5" min="1" max="50" step="0.5" aria-label="Interest a year (%)">
+              </div>
+              <div>
+                <label for="in-years">Years to repay</label>
+                <input id="in-years" type="number" value="20" min="1" max="30" step="1" inputmode="numeric">
+                <input id="sl-years" type="range" value="20" min="1" max="30" step="1" aria-label="Years to repay">
+              </div>
+            </div>
+            <p class="calc-hint" id="calc-hint" aria-live="polite"></p>
+          </div>
+
+        </div>
+
+        <div class="calc-result loan-result" aria-live="polite">
+
+          <!-- THE INTEREST METER: how much interest you pay, against what you
+               borrowed. It fills completely at 200%. -->
+          <div class="meter">
+            <svg viewBox="0 0 200 112" width="200" height="112" aria-hidden="true" focusable="false">
+              <path class="meter-track" d="M 14 100 A 86 86 0 0 1 186 100" pathLength="100"/>
+              <path class="meter-fill" id="meter-fill" d="M 14 100 A 86 86 0 0 1 186 100" pathLength="100"
+                    style="stroke-dashoffset:45.9"/>
+            </svg>
+            <p class="meter-figure"><span class="num" id="r-ratio">108%</span></p>
+            <p class="meter-label" id="r-ratio-words">You pay ₹108 in interest for every ₹100 you borrow</p>
+          </div>
+
+          <div class="calc-split">
+            <p><span class="calc-label">Monthly EMI</span>
+               <span class="calc-value num" id="r-emi">₹26,035</span></p>
+            <p class="calc-danger"><span class="calc-label">Interest you pay</span>
+               <span class="calc-value num" id="r-interest">₹32,48,327</span></p>
+            <p><span class="calc-label">You borrow</span>
+               <span class="calc-value num" id="r-borrow">₹30,00,000</span></p>
+            <p><span class="calc-label" id="lbl-total">You pay back in 20 years</span>
+               <span class="calc-value num" id="r-total">₹62,48,327</span>
+               <span class="calc-words" id="r-words">about ₹62.5 lakh</span></p>
+          </div>
+
+          <div class="split-bar" aria-hidden="true">
+            <span class="split-loan" id="bar-loan" style="width:48%"></span>
+            <span class="split-interest" id="bar-int" style="width:52%"></span>
+          </div>
+          <p class="split-key"><span><span class="key key-loan"></span>What you borrowed</span>
+             <span><span class="key key-interest"></span>Interest — <span id="r-share">52%</span> of everything you repay</span></p>
+        </div>
+
       </div>
 
-      <div class="calc-fields">
-        <p class="calc-hint" id="calc-hint" aria-live="polite">Pick a loan above, or change any number.</p>
-        <div>
-          <label for="in-amount">Loan amount (₹)</label>
-          <input id="in-amount" type="number" value="3000000" min="1" step="10000" inputmode="numeric">
+      <details class="source" id="year-by-year">
+        <summary>Read more: year by year</summary>
+        <div class="source-body">
+          <p id="r-first-year">In the first year, ₹2,52,709 of the ₹3,12,416 you pay is interest — 81%. An EMI pays the interest first, so the loan itself shrinks slowly at the start.</p>
+          <div class="table-scroll table-compact">
+            <table data-src="none">
+              <caption class="visually-hidden">Each year of the loan: what you pay, how much of it is interest, and what is left to pay</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Year</th>
+                  <th scope="col" class="num">You pay</th>
+                  <th scope="col" class="num">Of which interest</th>
+                  <th scope="col" class="num">Still owed</th>
+                </tr>
+              </thead>
+              <tbody id="year-rows">
+                <tr><td>Year 1</td><td class="num">₹3,12,416</td><td class="num">₹2,52,709</td><td class="num">₹29,40,293</td></tr>
+                <tr><td>Year 2</td><td class="num">₹3,12,416</td><td class="num">₹2,47,432</td><td class="num">₹28,75,309</td></tr>
+                <tr><td>Year 3</td><td class="num">₹3,12,416</td><td class="num">₹2,41,688</td><td class="num">₹28,04,580</td></tr>
+                <tr><td>Year 4</td><td class="num">₹3,12,416</td><td class="num">₹2,35,436</td><td class="num">₹27,27,600</td></tr>
+                <tr><td>Year 5</td><td class="num">₹3,12,416</td><td class="num">₹2,28,632</td><td class="num">₹26,43,815</td></tr>
+                <tr><td>Year 6</td><td class="num">₹3,12,416</td><td class="num">₹2,21,226</td><td class="num">₹25,52,625</td></tr>
+                <tr><td>Year 7</td><td class="num">₹3,12,416</td><td class="num">₹2,13,166</td><td class="num">₹24,53,374</td></tr>
+                <tr><td>Year 8</td><td class="num">₹3,12,416</td><td class="num">₹2,04,393</td><td class="num">₹23,45,351</td></tr>
+                <tr><td>Year 9</td><td class="num">₹3,12,416</td><td class="num">₹1,94,844</td><td class="num">₹22,27,779</td></tr>
+                <tr><td>Year 10</td><td class="num">₹3,12,416</td><td class="num">₹1,84,452</td><td class="num">₹20,99,815</td></tr>
+                <tr><td>Year 11</td><td class="num">₹3,12,416</td><td class="num">₹1,73,141</td><td class="num">₹19,60,540</td></tr>
+                <tr><td>Year 12</td><td class="num">₹3,12,416</td><td class="num">₹1,60,831</td><td class="num">₹18,08,954</td></tr>
+                <tr><td>Year 13</td><td class="num">₹3,12,416</td><td class="num">₹1,47,432</td><td class="num">₹16,43,969</td></tr>
+                <tr><td>Year 14</td><td class="num">₹3,12,416</td><td class="num">₹1,32,849</td><td class="num">₹14,64,402</td></tr>
+                <tr><td>Year 15</td><td class="num">₹3,12,416</td><td class="num">₹1,16,977</td><td class="num">₹12,68,962</td></tr>
+                <tr><td>Year 16</td><td class="num">₹3,12,416</td><td class="num">₹99,701</td><td class="num">₹10,56,247</td></tr>
+                <tr><td>Year 17</td><td class="num">₹3,12,416</td><td class="num">₹80,899</td><td class="num">₹8,24,730</td></tr>
+                <tr><td>Year 18</td><td class="num">₹3,12,416</td><td class="num">₹60,435</td><td class="num">₹5,72,749</td></tr>
+                <tr><td>Year 19</td><td class="num">₹3,12,416</td><td class="num">₹38,163</td><td class="num">₹2,98,495</td></tr>
+                <tr><td>Year 20</td><td class="num">₹3,12,416</td><td class="num">₹13,921</td><td class="num">₹0</td></tr>
+                
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div>
-          <label for="in-rate">Interest rate per year (%)</label>
-          <input id="in-rate" type="number" value="8.5" min="0" max="60" step="0.5" inputmode="decimal">
-          <input id="sl-rate" type="range" value="8.5" min="1" max="50" step="0.5" aria-label="Interest rate per year (%)">
-        </div>
-        <div>
-          <label for="in-years">Years to repay</label>
-          <input id="in-years" type="number" value="20" min="1" max="30" step="1" inputmode="numeric">
-          <input id="sl-years" type="range" value="20" min="1" max="30" step="1" aria-label="Years to repay">
-        </div>
-      </div>
-
-      <div class="calc-result loan-result" aria-live="polite">
-
-        <!-- THE INTEREST METER: how much interest you pay, against what you
-             borrowed. It fills completely at 200%. -->
-        <div class="meter">
-          <svg viewBox="0 0 200 112" width="200" height="112" aria-hidden="true" focusable="false">
-            <path class="meter-track" d="M 14 100 A 86 86 0 0 1 186 100" pathLength="100"/>
-            <path class="meter-fill" id="meter-fill" d="M 14 100 A 86 86 0 0 1 186 100" pathLength="100"
-                  style="stroke-dashoffset:45.9"/>
-          </svg>
-          <p class="meter-figure"><span class="num" id="r-ratio">108%</span></p>
-          <p class="meter-label" id="r-ratio-words">You pay ₹108 in interest for every ₹100 you borrow</p>
-        </div>
-
-        <div class="calc-stat">
-          <span class="calc-label">Monthly EMI</span>
-          <span class="calc-value num" id="r-emi">₹26,035</span>
-        </div>
-        <div class="calc-stat">
-          <span class="calc-label">You borrow</span>
-          <span class="calc-value num" id="r-borrow">₹30,00,000</span>
-        </div>
-        <div class="calc-stat calc-danger">
-          <span class="calc-label">Interest you pay</span>
-          <span class="calc-value num" id="r-interest">₹32,48,327</span>
-        </div>
-        <div class="calc-stat calc-main">
-          <span class="calc-label" id="lbl-total">You pay back in 20 years</span>
-          <span class="calc-value num" id="r-total">₹62,48,327</span>
-          <span class="calc-words" id="r-words">about ₹62.5 lakh</span>
-        </div>
-        <div class="split-bar" aria-hidden="true">
-          <span class="split-loan" id="bar-loan" style="width:48%"></span>
-          <span class="split-interest" id="bar-int" style="width:52%"></span>
-        </div>
-        <p class="split-key"><span><span class="key key-loan"></span>What you borrowed</span>
-           <span><span class="key key-interest"></span>Interest — <span id="r-share">52%</span> of everything you repay</span></p>
-      </div>
+      </details>
 
       <details class="source">
-        <summary>Read more</summary>
+        <summary>Read more: the typical rates, and what is left out</summary>
         <div class="source-body">
           <p>The buttons use typical rates; your lender's rate will differ:
              home loan 8.5% over 20 years; car loan 9.5% over 5; education
@@ -268,54 +317,6 @@
              rate.</p>
         </div>
       </details>
-
-    </div>
-  </section>
-
-
-  <section class="section reveal">
-    <div class="wrap">
-
-      <h2 id="year-by-year">Year by year</h2>
-
-      <p id="r-first-year">In the first year, ₹2,52,709 of the ₹3,12,416 you pay is interest — 81%. An EMI pays the interest first, so the loan itself shrinks slowly at the start.</p>
-
-      <div class="table-scroll table-compact">
-        <table data-src="none">
-          <caption class="visually-hidden">Each year of the loan: what you pay, how much of it is interest, and what is left to pay</caption>
-          <thead>
-            <tr>
-              <th scope="col">Year</th>
-              <th scope="col" class="num">You pay</th>
-              <th scope="col" class="num">Of which interest</th>
-              <th scope="col" class="num">Still owed</th>
-            </tr>
-          </thead>
-          <tbody id="year-rows">
-            <tr><td>Year 1</td><td class="num">₹3,12,416</td><td class="num">₹2,52,709</td><td class="num">₹29,40,293</td></tr>
-            <tr><td>Year 2</td><td class="num">₹3,12,416</td><td class="num">₹2,47,432</td><td class="num">₹28,75,309</td></tr>
-            <tr><td>Year 3</td><td class="num">₹3,12,416</td><td class="num">₹2,41,688</td><td class="num">₹28,04,580</td></tr>
-            <tr><td>Year 4</td><td class="num">₹3,12,416</td><td class="num">₹2,35,436</td><td class="num">₹27,27,600</td></tr>
-            <tr><td>Year 5</td><td class="num">₹3,12,416</td><td class="num">₹2,28,632</td><td class="num">₹26,43,815</td></tr>
-            <tr><td>Year 6</td><td class="num">₹3,12,416</td><td class="num">₹2,21,226</td><td class="num">₹25,52,625</td></tr>
-            <tr><td>Year 7</td><td class="num">₹3,12,416</td><td class="num">₹2,13,166</td><td class="num">₹24,53,374</td></tr>
-            <tr><td>Year 8</td><td class="num">₹3,12,416</td><td class="num">₹2,04,393</td><td class="num">₹23,45,351</td></tr>
-            <tr><td>Year 9</td><td class="num">₹3,12,416</td><td class="num">₹1,94,844</td><td class="num">₹22,27,779</td></tr>
-            <tr><td>Year 10</td><td class="num">₹3,12,416</td><td class="num">₹1,84,452</td><td class="num">₹20,99,815</td></tr>
-            <tr><td>Year 11</td><td class="num">₹3,12,416</td><td class="num">₹1,73,141</td><td class="num">₹19,60,540</td></tr>
-            <tr><td>Year 12</td><td class="num">₹3,12,416</td><td class="num">₹1,60,831</td><td class="num">₹18,08,954</td></tr>
-            <tr><td>Year 13</td><td class="num">₹3,12,416</td><td class="num">₹1,47,432</td><td class="num">₹16,43,969</td></tr>
-            <tr><td>Year 14</td><td class="num">₹3,12,416</td><td class="num">₹1,32,849</td><td class="num">₹14,64,402</td></tr>
-            <tr><td>Year 15</td><td class="num">₹3,12,416</td><td class="num">₹1,16,977</td><td class="num">₹12,68,962</td></tr>
-            <tr><td>Year 16</td><td class="num">₹3,12,416</td><td class="num">₹99,701</td><td class="num">₹10,56,247</td></tr>
-            <tr><td>Year 17</td><td class="num">₹3,12,416</td><td class="num">₹80,899</td><td class="num">₹8,24,730</td></tr>
-            <tr><td>Year 18</td><td class="num">₹3,12,416</td><td class="num">₹60,435</td><td class="num">₹5,72,749</td></tr>
-            <tr><td>Year 19</td><td class="num">₹3,12,416</td><td class="num">₹38,163</td><td class="num">₹2,98,495</td></tr>
-            <tr><td>Year 20</td><td class="num">₹3,12,416</td><td class="num">₹13,921</td><td class="num">₹0</td></tr>
-          </tbody>
-        </table>
-      </div>
-
 
     </div>
   </section>
@@ -421,7 +422,7 @@
   var hint = document.getElementById('calc-hint');
   var buttons = document.querySelectorAll('[data-preset]');
   if (!amount || !rate || !years) return;
-  var HINT_OK = hint.textContent;
+  var HINT_OK = '';   // the line under the boxes is empty while every box is fine
   var HINT_BAD = 'Each box needs a number: an amount above zero, a rate of 0 to 60, and 1 to 30 years.';
 
   function inr(x) { return '₹' + Math.round(x).toLocaleString('en-IN'); }
