@@ -173,86 +173,138 @@
 
 <main>
 
-  <section class="section">
+  <section class="section calc-page">
     <div class="wrap">
 
-      <h1>SIP and lump-sum <span class="t-green">calculator</span></h1>
+      <h1>SIP and <span class="nowrap">lump-sum</span> <span class="t-green">calculator</span></h1>
 
-      <!-- A tools page: one short line, no byline (README.md). -->
-      <p class="standfirst">See what a monthly SIP, or one lump sum, could
-        grow to, year by year.</p>
+      <!-- A tools page: no byline (README.md). No opening line either
+           (MAS, 6 Nov 2026, part 3): the heading says what it is, and the
+           boxes and the answer must fit on a phone's first screen. -->
 
-      <!-- THE CALCULATOR. The boxes and the buttons need JavaScript, so they
-           stay hidden without it; the results below are already written out
-           for the starting numbers (₹5,000 a month, 5.52%, 10 years), so
-           the page reads correctly either way. The script at the bottom of
-           this page does the sums. -->
-      <div class="grid-switch" role="group" aria-label="How you invest">
-        <button type="button" class="switch-btn" data-mode="sip" aria-pressed="true">Monthly SIP</button>
-        <button type="button" class="switch-btn" data-mode="lump" aria-pressed="false">Lump sum</button>
+      <!-- THE CALCULATOR: the boxes and the answer, drawn, on the first
+           screen of a phone (MAS, 6 Nov 2026, part 3). The boxes and the
+           buttons need JavaScript, so they stay hidden without it; the
+           answer, its chart and the year-by-year table are already written
+           out for the starting numbers (₹5,000 a month, 5.52%, 10 years),
+           so the page reads correctly either way. The script at the bottom
+           of this page does the sums. -->
+      <div class="calc-layout">
+
+        <div class="calc-inputs">
+
+          <div class="grid-switch calc-modes" role="group" aria-label="How you invest">
+            <button type="button" class="switch-btn" data-mode="sip" aria-pressed="true">Monthly SIP</button>
+            <button type="button" class="switch-btn" data-mode="lump" aria-pressed="false">Lump sum</button>
+          </div>
+
+          <div class="calc-fields calc-inline">
+            <div class="calc-row">
+              <label for="in-amount" id="lbl-amount">Monthly amount (₹)</label>
+              <input id="in-amount" type="number" value="5000" min="1" step="500" inputmode="numeric">
+            </div>
+            <div class="calc-pair">
+              <div>
+                <label for="in-rate">Return a year (%)</label>
+                <span class="calc-tag" id="rate-tag">A past return</span>
+                <input id="in-rate" type="number" value="5.52" min="0" max="50" step="0.01" inputmode="decimal" aria-describedby="rate-tag">
+                <input id="sl-rate" type="range" value="5.5" min="1" max="30" step="0.5" aria-label="Return a year (%)">
+              </div>
+              <div>
+                <label for="in-years">Years</label>
+                <input id="in-years" type="number" value="10" min="1" max="50" step="1" inputmode="numeric">
+                <input id="sl-years" type="range" value="10" min="1" max="40" step="1" aria-label="Years">
+              </div>
+            </div>
+            <!-- THE RETURN TO START FROM (MAS, 12 Oct). The two index figures
+                 are the ones in the compare page's index chart
+                 (/compare/shariah-mutual-funds/#index-returns), with the
+                 same source and date. When those change, change both
+                 buttons, the starting value of the "Return a year" box and
+                 its slider, the answer, its chart and the table written out
+                 below, and the index line in Sources at the bottom of the
+                 page (TODO.md, 0b). -->
+            <div class="rate-picks">
+              <div class="grid-switch" role="group" aria-labelledby="rate-picks-label">
+                <span class="rate-picks-label" id="rate-picks-label">Last 5 years, a year:</span>
+                <button type="button" class="switch-btn" data-rate="5.52" aria-pressed="true">Nifty500 Shariah <span class="num">5.52%</span></button>
+                <button type="button" class="switch-btn" data-rate="9.04" aria-pressed="false">Nifty 500 <span class="num">9.04%</span></button>
+                <button type="button" class="switch-btn" data-rate="own" aria-pressed="false">Your own guess</button>
+              </div>
+            </div>
+            <p class="calc-hint" id="calc-hint" aria-live="polite"></p>
+          </div>
+
+        </div>
+
+        <!-- THE ANSWER, drawn: the value at the end, big, and one column
+             per year — what you put in, and what it grew by. -->
+        <div class="calc-result" aria-live="polite">
+          <div class="calc-stat calc-main">
+            <span class="calc-label" id="lbl-total">Estimated value after 10 years</span>
+            <span class="calc-value num" id="r-total" data-src="none">₹8,02,071</span>
+            <span class="calc-words" id="r-words">about ₹8.0 lakh</span>
+          </div>
+          <div class="growth-chart" id="gc" aria-hidden="true">
+            <span class="gc-col"><span class="gc-gain" style="--h: 0.2"></span><span class="gc-put" style="--h: 7.5"></span></span>
+            <span class="gc-col"><span class="gc-gain" style="--h: 0.9"></span><span class="gc-put" style="--h: 15"></span></span>
+            <span class="gc-col"><span class="gc-gain" style="--h: 2"></span><span class="gc-put" style="--h: 22.4"></span></span>
+            <span class="gc-col"><span class="gc-gain" style="--h: 3.6"></span><span class="gc-put" style="--h: 29.9"></span></span>
+            <span class="gc-col"><span class="gc-gain" style="--h: 5.8"></span><span class="gc-put" style="--h: 37.4"></span></span>
+            <span class="gc-col"><span class="gc-gain" style="--h: 8.4"></span><span class="gc-put" style="--h: 44.9"></span></span>
+            <span class="gc-col"><span class="gc-gain" style="--h: 11.7"></span><span class="gc-put" style="--h: 52.4"></span></span>
+            <span class="gc-col"><span class="gc-gain" style="--h: 15.5"></span><span class="gc-put" style="--h: 59.8"></span></span>
+            <span class="gc-col"><span class="gc-gain" style="--h: 20"></span><span class="gc-put" style="--h: 67.3"></span></span>
+            <span class="gc-col"><span class="gc-gain" style="--h: 25.2"></span><span class="gc-put" style="--h: 74.8"></span></span>
+          </div>
+          <p class="gc-axis" aria-hidden="true"><span>Year 1</span><span id="gc-last">Year 10</span></p>
+          <div class="calc-split">
+            <p><span class="calc-label"><span class="key key-in"></span><span id="lbl-put">You put in</span></span>
+               <span class="calc-value num" id="r-put" data-src="none">₹6,00,000</span></p>
+            <p><span class="calc-label"><span class="key key-gain"></span>Estimated growth</span>
+               <span class="calc-value num" id="r-gain" data-src="none">₹2,02,071</span></p>
+          </div>
+        </div>
+
       </div>
 
-      <!-- THE RETURN TO START FROM (MAS, 12 Oct). The two index figures are
-           the ones in the compare page's index table
-           (/compare/shariah-mutual-funds/#index-returns), with the same
-           source and date. When those rows change, change both buttons,
-           the starting value of the "Return per year" box and its slider,
-           the results written out below, and the index line in Sources at
-           the bottom of the page (TODO.md, 0b). -->
-      <div class="grid-switch rate-picks" role="group" aria-label="Yearly return to start from">
-        <button type="button" class="switch-btn" data-rate="5.52" aria-pressed="true">Nifty500 Shariah, last 5 years: <span class="num">5.52%</span>&nbsp;a&nbsp;year</button>
-        <button type="button" class="switch-btn" data-rate="9.04" aria-pressed="false">Nifty 500, last 5 years: <span class="num">9.04%</span>&nbsp;a&nbsp;year</button>
-        <button type="button" class="switch-btn" data-rate="own" aria-pressed="false">Your own guess</button>
-      </div>
-
-      <div class="calc-fields">
-        <p class="calc-hint" id="calc-hint" aria-live="polite">Change any number and the results update.</p>
-        <div>
-          <label for="in-amount" id="lbl-amount">Monthly amount (₹)</label>
-          <input id="in-amount" type="number" value="5000" min="1" step="500" inputmode="numeric">
+      <details class="source" id="year-by-year">
+        <summary>Read more: year by year</summary>
+        <div class="source-body">
+          <div class="table-scroll table-compact">
+            <table data-src="none">
+              <caption class="visually-hidden">What the investment could be worth at the end of each year</caption>
+              <thead>
+                <tr>
+                  <th scope="col">After</th>
+                  <th scope="col" class="num">You put in</th>
+                  <th scope="col" class="num">Estimated value</th>
+                </tr>
+              </thead>
+              <tbody id="year-rows">
+                <tr><td>Year 1</td><td class="num">₹60,000</td><td class="num">₹61,825</td></tr>
+                <tr><td>Year 2</td><td class="num">₹1,20,000</td><td class="num">₹1,27,150</td></tr>
+                <tr><td>Year 3</td><td class="num">₹1,80,000</td><td class="num">₹1,96,173</td></tr>
+                <tr><td>Year 4</td><td class="num">₹2,40,000</td><td class="num">₹2,69,105</td></tr>
+                <tr><td>Year 5</td><td class="num">₹3,00,000</td><td class="num">₹3,46,166</td></tr>
+                <tr><td>Year 6</td><td class="num">₹3,60,000</td><td class="num">₹4,27,590</td></tr>
+                <tr><td>Year 7</td><td class="num">₹4,20,000</td><td class="num">₹5,13,623</td></tr>
+                <tr><td>Year 8</td><td class="num">₹4,80,000</td><td class="num">₹6,04,529</td></tr>
+                <tr><td>Year 9</td><td class="num">₹5,40,000</td><td class="num">₹7,00,580</td></tr>
+                <tr><td>Year 10</td><td class="num">₹6,00,000</td><td class="num">₹8,02,071</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div>
-          <label for="in-rate">Return per year (%)</label>
-          <span class="calc-tag" id="rate-tag">A past return</span>
-          <input id="in-rate" type="number" value="5.52" min="0" max="50" step="0.01" inputmode="decimal" aria-describedby="rate-tag">
-          <input id="sl-rate" type="range" value="5.5" min="1" max="30" step="0.5" aria-label="Return per year (%)">
-        </div>
-        <div>
-          <label for="in-years">Years</label>
-          <input id="in-years" type="number" value="10" min="1" max="50" step="1" inputmode="numeric">
-          <input id="sl-years" type="range" value="10" min="1" max="40" step="1" aria-label="Years">
-        </div>
-      </div>
-
-      <div class="calc-result" aria-live="polite">
-        <div class="calc-stat">
-          <span class="calc-label" id="lbl-put">You put in</span>
-          <span class="calc-value num" id="r-put" data-src="none">₹6,00,000</span>
-        </div>
-        <div class="calc-stat">
-          <span class="calc-label">Estimated growth</span>
-          <span class="calc-value num" id="r-gain" data-src="none">₹2,02,071</span>
-        </div>
-        <div class="calc-stat calc-main">
-          <span class="calc-label" id="lbl-total">Estimated value after 10 years</span>
-          <span class="calc-value num" id="r-total" data-src="none">₹8,02,071</span>
-          <span class="calc-words" id="r-words">about ₹8.0 lakh</span>
-        </div>
-        <div class="split-bar" aria-hidden="true">
-          <span class="split-in" id="bar-in" style="width:75%"></span>
-          <span class="split-gain" id="bar-gain" style="width:25%"></span>
-        </div>
-        <p class="split-key"><span><span class="key key-in"></span>What you put in</span>
-           <span><span class="key key-gain"></span>Estimated growth</span></p>
-      </div>
+      </details>
 
       <details class="source">
-        <summary>Read more</summary>
+        <summary>Read more: how it is worked out</summary>
         <div class="source-body">
-          <p>How it is worked out: a SIP is treated as one payment at the
-             start of every month, growing at the yearly return divided by
-             twelve each month — the method most Indian SIP calculators use.
-             A lump sum grows at the yearly return once a year.</p>
+          <p>A SIP is treated as one payment at the start of every month,
+             growing at the yearly return divided by twelve each month — the
+             method most Indian SIP calculators use. A lump sum grows at the
+             yearly return once a year.</p>
           <p>Costs such as the fund's expense ratio, taken from your money
              every year, and any tax on gains are not taken off, so the real
              result is smaller. Real returns go up and down from year to
@@ -267,40 +319,6 @@
              works it out.</p>
         </div>
       </details>
-
-    </div>
-  </section>
-
-
-  <section class="section reveal">
-    <div class="wrap">
-
-      <h2 id="year-by-year">Year by year</h2>
-
-      <div class="table-scroll table-compact">
-        <table data-src="none">
-          <caption class="visually-hidden">What the investment could be worth at the end of each year</caption>
-          <thead>
-            <tr>
-              <th scope="col">After</th>
-              <th scope="col" class="num">You put in</th>
-              <th scope="col" class="num">Estimated value</th>
-            </tr>
-          </thead>
-          <tbody id="year-rows">
-            <tr><td>Year 1</td><td class="num">₹60,000</td><td class="num">₹61,825</td></tr>
-            <tr><td>Year 2</td><td class="num">₹1,20,000</td><td class="num">₹1,27,150</td></tr>
-            <tr><td>Year 3</td><td class="num">₹1,80,000</td><td class="num">₹1,96,173</td></tr>
-            <tr><td>Year 4</td><td class="num">₹2,40,000</td><td class="num">₹2,69,105</td></tr>
-            <tr><td>Year 5</td><td class="num">₹3,00,000</td><td class="num">₹3,46,166</td></tr>
-            <tr><td>Year 6</td><td class="num">₹3,60,000</td><td class="num">₹4,27,590</td></tr>
-            <tr><td>Year 7</td><td class="num">₹4,20,000</td><td class="num">₹5,13,623</td></tr>
-            <tr><td>Year 8</td><td class="num">₹4,80,000</td><td class="num">₹6,04,529</td></tr>
-            <tr><td>Year 9</td><td class="num">₹5,40,000</td><td class="num">₹7,00,580</td></tr>
-            <tr><td>Year 10</td><td class="num">₹6,00,000</td><td class="num">₹8,02,071</td></tr>
-          </tbody>
-        </table>
-      </div>
 
     </div>
   </section>
@@ -430,8 +448,10 @@
 
   var mode = 'sip';
   var saved = { sip: 5000, lump: 100000 };   // each mode keeps its own amount
-  var HINT_OK = hint.textContent;
+  // The line under the boxes is empty while every box is fine.
+  var HINT_OK = '';
   var HINT_BAD = 'Each box needs a number: an amount above zero, a return of 0 to 50, and 1 to 50 years.';
+  var chart = document.getElementById('gc');
 
   function inr(x) { return '₹' + Math.round(x).toLocaleString('en-IN'); }
   function words(x) {
@@ -459,14 +479,19 @@
     set('r-total', inr(total));
     set('r-words', words(total));
     set('lbl-total', 'Estimated value after ' + y + (y === 1 ? ' year' : ' years'));
-    var share = total > 0 ? Math.round(put / total * 100) : 100;
-    document.getElementById('bar-in').style.width = share + '%';
-    document.getElementById('bar-gain').style.width = (100 - share) + '%';
-    var rows = '';
+    set('gc-last', 'Year ' + y);
+    // The chart: one column per year, as tall as that year's value
+    // against the last year's — what you put in below, the growth on top.
+    var rows = '', cols = '';
+    function h(x) { return total > 0 ? Math.round(x / total * 1000) / 10 : 0; }
     for (var k = 1; k <= y; k++) {
-      rows += '<tr><td>Year ' + k + '</td><td class="num">' + inr(putIn(p, k)) +
-              '</td><td class="num">' + inr(value(p, r, k)) + '</td></tr>';
+      var v = value(p, r, k), pk = putIn(p, k);
+      rows += '<tr><td>Year ' + k + '</td><td class="num">' + inr(pk) +
+              '</td><td class="num">' + inr(v) + '</td></tr>';
+      cols += '<span class="gc-col"><span class="gc-gain" style="--h: ' + h(v - pk) + '"></span>' +
+              '<span class="gc-put" style="--h: ' + h(pk) + '"></span></span>';
     }
+    if (chart) chart.innerHTML = cols;
     var body = document.getElementById('year-rows');
     body.innerHTML = rows;
     if (window.pvFigures) window.pvFigures(body);   // new HTML: same rules
