@@ -3687,6 +3687,20 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .calc-layout .meter svg { max-width: 180px; }
 .calc-layout .meter-figure { margin-top: -2.7rem; font-size: 1.9rem; }
 
+/* THE PURIFICATION CALCULATOR'S ANSWER: one bar per method, one colour,
+   each as long as its amount against the biggest. */
+.pur-result .bars-title { margin: 0; }
+.pur-result .bars { gap: 0.75rem; margin: 0; }
+.pur-bars .bar {
+  transition: transform 700ms var(--ease), width 300ms var(--ease);
+  transition-delay: calc(150ms + var(--i, 0) * 80ms), 0ms;
+}
+.pur-note { margin: -0.25rem 0 1rem; font-size: 0.9rem; color: var(--ink-2); }
+.calc-start { margin: 0; font-size: 0.85rem; color: var(--ink-3); }
+
+/* Words only for readers without JavaScript, who don't see the boxes. */
+.js .no-js-only { display: none; }
+
 /* The loan's five typical-loan buttons: small, so they take two rows. */
 .calc-inputs > .presets { gap: 0.4rem; }
 .calc-inputs > .presets .switch-btn { min-height: 2.4rem; padding: 0 0.8rem; font-size: 0.84rem; }

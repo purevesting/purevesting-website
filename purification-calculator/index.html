@@ -188,236 +188,201 @@
 
 <main>
 
-  <section class="section">
+  <section class="section calc-page">
     <div class="wrap">
 
       <h1>How much should you give away to <span class="t-green">purify</span> your shares?</h1>
 
-      <!-- THE ANSWER BOX: the answer in 2 or 3 short lines, before
-           anything else on the page (README.md, writing rules). A tools
-           page: no byline. -->
-      <div class="answer">
-        <p>When a halal company earns some interest, you are expected to give
-           away your share of it to charity: this is called purification.
-           There are three common ways to work out your share, and they can
-           differ a lot. One takes a slice of your dividend; the other two
-           take your share of all the interest the company earned that
-           year.</p>
+      <!-- A tools page: one short line, no byline (README.md). Since 6 Nov
+           2026 (part 3) it is a line, not an answer box, like the SIP and
+           loan calculators', so the boxes and the answer fit on a phone's
+           first screen: the answer is the three bars. -->
+      <p class="standfirst">When a halal company earns some interest, you are
+        expected to give away your share of it to charity: this is
+        purification. Three common ways to work it out can differ a lot.</p>
+
+      <!-- THE CALCULATOR: the six boxes and the answer, drawn as three
+           bars, on the first screen of a phone (MAS, 6 Nov 2026, part 3).
+           The bars and amounts are written out in full for the starting
+           numbers, so the page reads correctly even with JavaScript
+           switched off (the boxes need it, so they stay hidden; the line
+           under them says what the starting numbers are). The small script
+           at the bottom of this page only makes the six boxes live. (Its
+           ids still say "aaoifi" and "mod" for the year-end and months-held
+           rows; visitors never see them.) -->
+      <div class="calc-layout" id="calculator">
+
+        <div class="calc-inputs">
+          <p class="no-js-only">Take a made-up company. This year it earned
+             ₹10,000 crore in total, ₹120 crore of it as interest. It has 50
+             crore shares and paid a dividend of ₹6 a share. You held 100 of
+             its shares for the whole year.</p>
+          <div class="calc-fields calc-inline">
+            <p class="calc-start">A made-up company's year, to start. Put in your own.</p>
+            <div class="calc-pair">
+              <div>
+                <label for="in-interest">Interest income (₹ cr)</label>
+                <input id="in-interest" type="number" value="120" min="0" step="any" inputmode="decimal">
+              </div>
+              <div>
+                <label for="in-total">Total income (₹ cr)</label>
+                <input id="in-total" type="number" value="10000" min="0" step="any" inputmode="decimal">
+              </div>
+            </div>
+            <div class="calc-pair">
+              <div>
+                <label for="in-shares">Total shares (crore)</label>
+                <input id="in-shares" type="number" value="50" min="0" step="any" inputmode="decimal">
+              </div>
+              <div>
+                <label for="in-dps">Dividend a share (₹)</label>
+                <input id="in-dps" type="number" value="6" min="0" step="any" inputmode="decimal">
+              </div>
+            </div>
+            <div class="calc-pair">
+              <div>
+                <label for="in-held">Shares you hold</label>
+                <input id="in-held" type="number" value="100" min="0" step="1" inputmode="numeric">
+              </div>
+              <div>
+                <label for="in-months">Months held (0–12)</label>
+                <input id="in-months" type="number" value="12" min="0" max="12" step="1" inputmode="numeric">
+              </div>
+            </div>
+            <p class="calc-hint" id="calc-hint" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <!-- THE ANSWER, drawn: one bar per method, all one colour, each as
+             long as its amount against the biggest. -->
+        <div class="calc-result pur-result" aria-live="polite">
+          <p class="bars-title">You would give</p>
+          <div class="bars pur-bars" data-src="none">
+            <div class="bar-row">
+              <span class="bar-label">Dividend method</span>
+              <span class="bar-value num" id="r-div">₹7.20</span>
+              <span class="bar-track"><span class="bar" id="b-div" style="--to: 3"></span></span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Year-end method</span>
+              <span class="bar-value num" id="r-aaoifi">₹240.00</span>
+              <span class="bar-track"><span class="bar" id="b-aaoifi" style="--to: 100"></span></span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Months-held method</span>
+              <span class="bar-value num" id="r-mod">₹240.00</span>
+              <span class="bar-track"><span class="bar" id="b-mod" style="--to: 100"></span></span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <nav class="toc" aria-label="Contents">
-        <strong>On this page</strong>
-        <ol>
-          <li><a href="#calculator">Work it out for your shares</a></li>
-          <li><a href="#methods">The three methods, and who uses them</a></li>
-          <li><a href="#numbers">Where to find the numbers</a></li>
-        </ol>
-      </nav>
+      <p class="pur-note">This covers the interest the company earned, not
+         profit you make from selling shares.</p>
 
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       THE CALCULATOR
-       The table below is written out in full for the starting
-       numbers, so the page reads correctly even with JavaScript
-       switched off. The small script at the bottom of this page
-       only makes the six boxes live. (The script's ids still say
-       "aaoifi" and "mod" for the year-end and months-held rows;
-       visitors never see them.)
-       ============================================================ -->
-
-  <section class="section reveal">
-    <div class="wrap">
-
-      <h2 id="calculator">Work it out for your shares</h2>
-
-      <p>Take a made-up company. This year it earned ₹10,000 crore in total,
-         ₹120 crore of it as interest. It has 50 crore shares and paid a
-         dividend of ₹6 a share. You held 100 of its shares for the whole
-         year.</p>
-
-      <div class="calc-fields">
-        <p class="calc-hint" id="calc-hint" aria-live="polite">Put in any company's numbers and the table below updates.</p>
-        <div>
-          <label for="in-interest">Company's interest income (₹ crore)</label>
-          <input id="in-interest" type="number" value="120" min="0" step="any" inputmode="decimal">
-        </div>
-        <div>
-          <label for="in-total">Company's total income (₹ crore)</label>
-          <input id="in-total" type="number" value="10000" min="0" step="any" inputmode="decimal">
-        </div>
-        <div>
-          <label for="in-shares">Company's total shares (crore)</label>
-          <input id="in-shares" type="number" value="50" min="0" step="any" inputmode="decimal">
-        </div>
-        <div>
-          <label for="in-dps">Dividend per share for the year (₹)</label>
-          <input id="in-dps" type="number" value="6" min="0" step="any" inputmode="decimal">
-        </div>
-        <div>
-          <label for="in-held">Shares you hold</label>
-          <input id="in-held" type="number" value="100" min="0" step="1" inputmode="numeric">
-        </div>
-        <div>
-          <label for="in-months">Months you held them (0 to 12)</label>
-          <input id="in-months" type="number" value="12" min="0" max="12" step="1" inputmode="numeric">
-        </div>
-      </div>
-
-      <div class="table-scroll" aria-live="polite">
-        <table data-src="none">
-          <caption class="visually-hidden">The amount to give away under three purification methods</caption>
-          <thead>
-            <tr>
-              <th scope="col">Method</th>
-              <th scope="col" class="num">You would give</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Dividend method <span class="cell-note">A slice of your dividend. Used by a big US index company's Shariah indices</span><span class="cell-bar" aria-hidden="true"><span id="b-div" style="--to: 3"></span></span></td>
-              <td class="num" id="r-div">₹7.20</td>
-            </tr>
-            <tr>
-              <td>Year-end method <span class="cell-note">Your share of the year's interest, if you still held the shares at the company's year-end. The international Shariah standard's method</span><span class="cell-bar" aria-hidden="true"><span id="b-aaoifi" style="--to: 100"></span></span></td>
-              <td class="num" id="r-aaoifi">₹240.00</td>
-            </tr>
-            <tr>
-              <td>Months-held method <span class="cell-note">The same, scaled to the months you held them. Adopted by the Shariah board that screens NSE's indices</span><span class="cell-bar" aria-hidden="true"><span id="b-mod" style="--to: 100"></span></span></td>
-              <td class="num" id="r-mod">₹240.00</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p>This covers the interest the company earned, not profit you make
-         from selling shares.</p>
-
-      <p>With the starting numbers, the dividend method asks for ₹7.20 and
-         the other two for ₹240 — <span class="mark">over 30 times
-         more</span>. The dividend method only purifies the part of the
-         interest that reached you as a dividend. The other two count your
-         share of all of it, paid out or not.</p>
-
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       THE THREE METHODS — no Shariah board, standard-setter or index
-       company is named (README.md). The links are in Sources.
-       ============================================================ -->
-
-  <section class="section reveal">
-    <div class="wrap">
-
-      <h2 id="methods">The three methods, and who uses them</h2>
-
-      <p>The three formulas below are as set out by the Shariah board that
-         screens NSE's Shariah indices.</p>
-
-      <h3>1. Dividend method</h3>
-
-      <p><strong>Interest income ÷ total income × dividend per share × shares
-         you hold.</strong> A big US index company publishes this for its
-         Shariah indices as the "dividend purification ratio". The Shariah
-         board points out two weak spots: it gives away only a small part of
-         the company's interest income, and in a year with no dividend,
-         nothing at all.</p>
-
-      <details class="source">
-        <summary>What the sources say</summary>
-        <span class="source-body">
-          "Dividends * (Non-Permissible Revenue / Total Income) … This ratio is
-          provided to investors for purification purposes and is not a
-          compliance ratio."
-          — The index company's Shariah index rules, September 2026 edition.
-          <br><br>
-          "It can be demonstrated that this method, in effect, leads to the
-          purging of only a small part of the total interest income (from as
-          little as under 5% to about 10% of the total interest income in the
-          best case scenarios) … Also, in the event a company does not pay a
-          dividend in a particular year, the interest income of that year is
-          not purged at all."
-          — The Shariah board, "Methodology of purging interest income".
+      <!-- A VIDEO ON THE SAME TOPIC, near the top (MAS, 6 Nov 2026,
+           part 3). A plain link to YouTube with its picture. -->
+      <a class="video-pick" href="https://www.youtube.com/shorts/pwPK3-5w0fo">
+        <span class="thumb"><img src="https://i.ytimg.com/vi/pwPK3-5w0fo/hqdefault.jpg" width="480" height="360" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span></span>
+        <span class="video-pick-text">
+          <span class="video-pick-kicker">Short · 47 sec</span>
+          <span class="video-pick-title">Invested in haram stocks? Do this!</span>
         </span>
+      </a>
+
+      <!-- THE THREE METHODS — no Shariah board, standard-setter or index
+           company is named (README.md). The links are in Sources. -->
+      <details class="source" id="methods">
+        <summary>Read more: the three methods, and who uses them</summary>
+        <div class="source-body">
+          <p>The dividend method takes a slice of your dividend. The year-end
+             method takes your share of the year's interest, if you still held
+             the shares at the company's year-end. The months-held method is the
+             same, scaled to the months you held them.</p>
+          <p>With the starting numbers, the dividend method asks for ₹7.20 and
+             the other two for ₹240 — <span class="mark">over 30 times
+             more</span>. The dividend method only purifies the part of the
+             interest that reached you as a dividend. The other two count your
+             share of all of it, paid out or not. The three formulas below are
+             as set out by the Shariah board that screens NSE's Shariah
+             indices.</p>
+
+          <p><strong>1. Dividend method: interest income ÷ total income ×
+             dividend per share × shares you hold.</strong> A big US index
+             company publishes this for its Shariah indices as the "dividend
+             purification ratio". The Shariah board points out two weak spots:
+             it gives away only a small part of the company's interest income,
+             and in a year with no dividend, nothing at all.</p>
+          <p>"Dividends * (Non-Permissible Revenue / Total Income) … This ratio
+             is provided to investors for purification purposes and is not a
+             compliance ratio." — The index company's Shariah index rules,
+             September 2026 edition.</p>
+          <p>"It can be demonstrated that this method, in effect, leads to the
+             purging of only a small part of the total interest income (from as
+             little as under 5% to about 10% of the total interest income in the
+             best case scenarios) … Also, in the event a company does not pay a
+             dividend in a particular year, the interest income of that year is
+             not purged at all." — The Shariah board, "Methodology of purging
+             interest income".</p>
+
+          <p><strong>2. Year-end method: interest income ÷ the company's total
+             shares × shares you hold at the company's year-end.</strong> This
+             is the international Shariah standard's method. It counts your
+             share of all the interest the company earned that year, whether it
+             paid a dividend or not. The Shariah board's objection: it puts the
+             whole year's purification on whoever happens to hold the shares on
+             the last day of the company's financial year.</p>
+          <p>"there appears to be a tenuous justification for laying the
+             responsibility of purging the interest for the entire year solely
+             and entirely on the person who is found to be holding the shares at
+             the time of closing of the financial year." — The Shariah
+             board.</p>
+
+          <p><strong>3. Months-held method — the one NSE's Shariah board uses:
+             the year-end amount × months you held the shares ÷ 12.</strong> It
+             spreads the purification over the time you actually held the
+             shares, so selling just before the year-end doesn't avoid it, and
+             buying just before doesn't load you with the whole year. The
+             Shariah board says it has adopted this version, and calls it
+             "logical and equitable".</p>
+          <p>"This method requires the purging of impure (interest) income
+             earned per share of a company held by an investor pro-rated over
+             the period for which the investor held those shares in his
+             portfolio … The modified [year-end] method of purification is
+             logical and equitable." — The Shariah board, "Methodology of
+             purging interest income".
+             <!-- The square brackets replace the standard-setter's name. --></p>
+
+          <p>NSE's own rules ask investors to purge "the pro rata portion of
+             interest income accrued on their holding of shares", which reads
+             closest to the second and third methods.</p>
+        </div>
       </details>
 
-      <h3>2. Year-end method</h3>
-
-      <p><strong>Interest income ÷ the company's total shares × shares you
-         hold at the company's year-end.</strong> This is the international
-         Shariah standard's method. It counts your share of all the interest
-         the company earned that year, whether it paid a dividend or not. The
-         Shariah board's objection: it puts the whole year's purification on
-         whoever happens to hold the shares on the last day of the company's
-         financial year.</p>
-
-      <h3>3. Months-held method — the one NSE's Shariah board uses</h3>
-
-      <p><strong>The year-end amount × months you held the shares ÷
-         12.</strong> It spreads the purification over the time you actually
-         held the shares, so selling just before the year-end doesn't avoid
-         it, and buying just before doesn't load you with the whole year. The
-         Shariah board says it has adopted this version, and calls it
-         "logical and equitable".</p>
-
-      <details class="source">
-        <summary>What the Shariah board says</summary>
-        <span class="source-body">
-          On the year-end method: "there appears to be a tenuous justification
-          for laying the responsibility of purging the interest for the entire
-          year solely and entirely on the person who is found to be holding the
-          shares at the time of closing of the financial year."
-          <br><br>
-          On the months-held method: "This method requires the purging of
-          impure (interest) income earned per share of a company held by an
-          investor pro-rated over the period for which the investor held those
-          shares in his portfolio … The modified [year-end] method of
-          purification is logical and equitable."
-          <!-- The square brackets replace the standard-setter's name. -->
-          — The Shariah board, "Methodology of purging interest income".
-        </span>
+      <details class="source" id="numbers">
+        <summary>Read more: where to find the numbers</summary>
+        <div class="source-body">
+          <ol>
+            <li><strong>Total income and interest income</strong> — in the
+                company's annual report, in the statement of profit and loss.
+                "Total income" has a line of its own. Interest income sits inside
+                "Other income": open the note that line points to. Take both
+                figures from the same statement — reports usually have a
+                standalone and a consolidated version.</li>
+            <li><strong>Total shares</strong> — the "Equity share capital" note
+                in the same annual report gives the number of shares.</li>
+            <li><strong>Dividend per share</strong> — the dividend declared for
+                that year, in the annual report or the company's announcement to
+                the stock exchange.</li>
+            <li><strong>Your shares and months held</strong> — your broker's
+                holdings statement.</li>
+          </ol>
+          <p>Enter money in ₹ crore, as most Indian annual reports print it. If a
+             report prints ₹ lakh or ₹ million instead, convert first: 1 crore is
+             100 lakh, or 10 million.</p>
+        </div>
       </details>
-
-      <p>NSE's own rules ask investors to purge "the pro rata portion of
-         interest income accrued on their holding of shares", which reads
-         closest to the second and third methods.</p>
-
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       WHERE TO FIND THE NUMBERS
-       ============================================================ -->
-
-  <section class="section reveal">
-    <div class="wrap">
-
-      <h2 id="numbers">Where to find the numbers</h2>
-
-      <ol>
-        <li><strong>Total income and interest income</strong> — in the
-            company's annual report, in the statement of profit and loss.
-            "Total income" has a line of its own. Interest income sits inside
-            "Other income": open the note that line points to. Take both
-            figures from the same statement — reports usually have a
-            standalone and a consolidated version.</li>
-        <li><strong>Total shares</strong> — the "Equity share capital" note
-            in the same annual report gives the number of shares.</li>
-        <li><strong>Dividend per share</strong> — the dividend declared for
-            that year, in the annual report or the company's announcement to
-            the stock exchange.</li>
-        <li><strong>Your shares and months held</strong> — your broker's
-            holdings statement.</li>
-      </ol>
-
-      <p>Enter money in ₹ crore, as most Indian annual reports print it. If a
-         report prints ₹ lakh or ₹ million instead, convert first: 1 crore is
-         100 lakh, or 10 million.</p>
 
       <p class="ask-line">Still have a doubt? <a href="/ask/">Ask me</a></p>
 
@@ -542,10 +507,11 @@
 
 <!-- ==================================================================
      CALCULATOR SCRIPT — used on this page only.
-     The table above already shows the answer for the starting numbers,
+     The bars above already show the answer for the starting numbers,
      so the page is complete without this. It only makes the six boxes
      live: each time a number changes, it works out the three amounts
-     again. Formulas are TASIS's, as quoted on the page.
+     again and redraws the bars. Formulas are the Shariah board's, as
+     quoted on the page.
      ================================================================== -->
 <script>
 (function () {
@@ -568,7 +534,7 @@
 
   // The line above the boxes swaps to the second message while any box
   // holds something that can't be worked out, and back again after.
-  var HINT_OK  = hint.textContent;
+  var HINT_OK  = '';   // the line under the boxes is empty while every box is fine
   var HINT_BAD = 'Each box needs a number of zero or more. Total income and ' +
                  'total shares must be above zero, and months can be 0 to 12.';
 
