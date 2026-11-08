@@ -24,7 +24,7 @@
    ========================================================================== */
 
 window.PV_VIDEOS = `
-https://youtu.be/slddWZuMqew | Same Stock, Opposite Answer for Halal Stocks
+https://youtu.be/slddWZuMqew | One Number Can Make a Halal Stock Haram
 https://www.youtube.com/shorts/LIMUJcDTdu4 | FD & RD: halal or not? What every Muslim must know
 https://www.youtube.com/shorts/pwPK3-5w0fo | Invested in haram stocks? Do this!
 https://www.youtube.com/shorts/dk3aXayWY9Y | Kya Muslim NPS me invest kar sakte hai? Is it halal?
