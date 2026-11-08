@@ -134,6 +134,45 @@ decision only he can make.
       parked (checked 6 Oct: it forwards to a "domain for sale" style page),
       so the page doesn't link it. If MAS meant a different site, send its
       exact address and it can be added under "More lists and research".
+- [ ] **14. Switch on the automatic reply for /ask/ (added 8 Nov, part 4).**
+      MAS asked that someone who sends a question gets an automatic email
+      back. The simplest way is Web3Forms' own **Autoresponder**: the forms
+      on /ask/ already go through Web3Forms, and they already have the box
+      it needs (named `email`), so **nothing on the site has to change**.
+      But it is a paid feature: it needs the Pro plan (checked 8 Nov: about
+      US$149 a year, shown as $12 a month paid yearly — check the price on
+      web3forms.com/pricing before paying). Steps:
+      1. Go to **app.web3forms.com** and log in with salam@purevesting.com.
+      2. Upgrade to a plan whose list includes **Autoresponder** (Pro or
+         higher; the free plan doesn't have it).
+      3. Open the form whose access key starts **c8aa73dd** (the one /ask/
+         uses) → **Settings** → **Autoresponder** → switch it on.
+      4. Fill in: **From Name**: Purevesting. **Subject**: Got your message
+         — Purevesting. **Intro text** (change any words you like):
+         "Assalamu alaikum, and thank you for writing to Purevesting. Your
+         message has reached me, and I read every one. If you left your
+         email for a reply, I'll write back from salam@purevesting.com.
+         Good questions may be answered in a video, the newsletter or on
+         the site, but never with your name. — Moin Ali Syed".
+         **Show a copy of their message**: Yes. **Logo**:
+         https://purevesting.com/assets/img/logo-512.png
+      5. Save. Test it on the live site (it doesn't work on a test copy):
+         send a question on purevesting.com/ask/ with a personal email
+         address (not salam@), and look in that inbox, and in spam.
+      6. Then tell the website chat **"the auto-reply is on"**: it adds one
+         sentence to /privacy/#forms (Web3Forms then also sends you one
+         email) and changes the line under the email box to say you'll get
+         a short note that it arrived.
+      Good to know: the feedback form uses the same key, so people who
+      send feedback get the note too — the wording above fits both. Only
+      people who type an email address get it (the box is optional).
+      Not used, and why: **Zoho Mail's out-of-office reply** answers the
+      sender of each email, and Web3Forms' emails come from Web3Forms'
+      address, not the asker's — so the reply would never reach them.
+      **FormSubmit** (formsubmit.co) has a free auto-reply, but not for
+      messages sent without leaving the page, and it makes every visitor
+      pass a "not a robot" page on its site first; the forms would need
+      rewiring. Say "use FormSubmit instead" if the price matters more.
 
 ---
 
