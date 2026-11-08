@@ -183,21 +183,8 @@
         sold.</p>
 
       <!-- A legal page: no name line (README.md), but the date stays — the
-           "When this page changes" part below promises it. -->
+           "When this page changes" card below promises it. -->
       <p class="meta">Last updated <time datetime="2026-11-08">8 November 2026</time></p>
-
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       WRITTEN FROM WHAT THE CODE DOES (12 Oct 2026). If a page starts
-       loading something from another website, or a new form or
-       service is added, add a section here and change the dates.
-       ============================================================ -->
-
-  <section class="section reveal">
-    <div class="wrap">
 
       <h2 id="short">In short</h2>
 
@@ -214,25 +201,125 @@
   </section>
 
 
-  <section class="section reveal">
+  <!-- ============================================================
+       WRITTEN FROM WHAT THE CODE DOES (12 Oct 2026; shorter since
+       8 Nov 2026, part 4): one card per topic, one plain line on show,
+       the full words under its "Read more". Each card keeps its old
+       address (/privacy/#forms, #newsletter …: the Ask and newsletter
+       pages link to them). If a page starts loading something from
+       another website, or a new form or service is added, add it here
+       and change the dates.
+       ============================================================ -->
+
+  <section class="section band reveal">
     <div class="wrap">
 
-      <h2 id="forms">Questions and feedback</h2>
+      <h2 id="leaves">What leaves your phone, and why</h2>
 
-      <p>The two forms on the <a href="/ask/">Ask a question</a> page send
-         what you type: your question or feedback and, only if you fill them
-         in, your name, your email address and the page you mean.</p>
+      <div class="grid grid-2">
 
-      <p>They go through <a href="https://web3forms.com/">Web3Forms</a>, a
-         form service, which emails them on to Purevesting's inbox,
-         salam@purevesting.com. That is so your message can be read and, if
-         you left an email address, answered. A good question may be
-         answered in public — in a video, the newsletter or on a page — but
-         never with your name.</p>
+        <div class="card card-icon" id="forms">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19V6.5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H8.5z"/><path d="M10.2 8.6a2 2 0 1 1 2.5 1.9c-.4.1-.7.5-.7.9v.4"/><path d="M12 13.4h.01"/></svg></span>
+          <h3>Questions and feedback</h3>
+          <p>Only what you type in the Ask forms, sent through Web3Forms to salam@purevesting.com, so it can be read and answered.</p>
+          <details class="source">
+            <summary>Read more</summary>
+            <div class="source-body">
+            <p>The two forms on the <a href="/ask/">Ask a question</a> page send
+               what you type: your question or feedback and, only if you fill them
+               in, your name, your email address and the page you mean.</p>
 
-      <p>If you write to <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
-         directly, your message and address sit in the same inbox, and are
-         used only to reply.</p>
+            <p>They go through <a href="https://web3forms.com/">Web3Forms</a>, a
+               form service, which emails them on to Purevesting's inbox,
+               salam@purevesting.com. That is so your message can be read and, if
+               you left an email address, answered. A good question may be
+               answered in public — in a video, the newsletter or on a page — but
+               never with your name.</p>
+
+            <p>If you write to <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
+               directly, your message and address sit in the same inbox, and are
+               used only to reply.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="card card-icon" id="newsletter">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7.5 8 5.5 8-5.5"/></svg></span>
+          <h3>The newsletter</h3>
+          <p>Your email address, given to Beehiiv when you sign up, to send you one email a week.</p>
+          <details class="source">
+            <summary>Read more</summary>
+            <div class="source-body">
+            <p>The sign-up box on the <a href="/newsletter/">newsletter page</a>
+               is the form of Beehiiv, the service that sends HalalEdge. It takes
+               your email address, to send you the newsletter: one email a week,
+               with an unsubscribe link in every issue.</p>
+
+            <p>The box loads from Beehiiv's servers, so Beehiiv also sees that you
+               opened that page. Beehiiv offers a second script that tracks where
+               each sign-up came from; Purevesting leaves it out on purpose. What
+               Beehiiv keeps is set out in
+               <a href="https://www.beehiiv.com/privacy">Beehiiv's privacy policy</a>.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="card card-icon" id="youtube">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="m10.2 9.3 4.6 2.7-4.6 2.7z"/></svg></span>
+          <h3>Video pictures</h3>
+          <p>Fetched from YouTube's image server, which sees your internet address. No YouTube player loads.</p>
+          <details class="source">
+            <summary>Read more</summary>
+            <div class="source-body">
+            <p>The home page and the <a href="/videos/">videos page</a> show a
+               picture for each video, and some other pages show one for a video
+               on the same topic — the screener, the halal stocks, methodology,
+               mutual funds, NPS and digital gold pages, and the purification
+               calculator. Your
+               browser fetches those pictures from YouTube's image server,
+               i.ytimg.com. Like any server, it receives your internet (IP) address
+               and your browser's details with the request.</p>
+
+            <p>The pictures are there so you can see which video each card opens.
+               No YouTube player is loaded on the site, and nothing plays unless
+               you tap a card, which opens YouTube itself. YouTube is part of
+               Google: <a href="https://policies.google.com/privacy">Google's
+               privacy policy</a>.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="card card-icon" id="cloudflare">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 18.5h10a4 4 0 0 0 .5-8 5.5 5.5 0 0 0-10.6 1.5A3.3 3.3 0 0 0 7 18.5z"/></svg></span>
+          <h3>Delivering pages and counting visits</h3>
+          <p>Cloudflare hosts the site, and counts visits as totals, without cookies.</p>
+          <details class="source">
+            <summary>Read more</summary>
+            <div class="source-body">
+            <p>Cloudflare hosts the site. Like any web host, its servers see each
+               request — your internet address and the address of the page — so
+               that they can deliver the page.</p>
+
+            <p>A search typed into the screener box on the home page travels to
+               the screener page as part of that address (for example
+               purevesting.com/screener/?q=infosys). The search itself runs on
+               your phone, against the list inside the page; Purevesting keeps no
+               record of it.</p>
+
+            <p>Cloudflare Web Analytics counts visits: which pages are read, which
+               site a visit came from, and the country, device and browser, as
+               totals. It uses no cookies, stores nothing on your phone and
+               doesn't single out individual visitors
+               (<a href="https://www.cloudflare.com/web-analytics/">Cloudflare's
+               own description</a>). The counts show which pages people use, so
+               the site can get better.
+               <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's
+               privacy policy</a>.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
 
     </div>
   </section>
@@ -241,142 +328,101 @@
   <section class="section reveal">
     <div class="wrap">
 
-      <h2 id="newsletter">The newsletter</h2>
+      <h2 id="stays">What stays on your phone</h2>
 
-      <p>The sign-up box on the <a href="/newsletter/">newsletter page</a>
-         is the form of Beehiiv, the service that sends HalalEdge. It takes
-         your email address, to send you the newsletter: one email a week,
-         with an unsubscribe link in every issue.</p>
+      <div class="grid grid-2">
 
-      <p>The box loads from Beehiiv's servers, so Beehiiv also sees that you
-         opened that page. Beehiiv offers a second script that tracks where
-         each sign-up came from; Purevesting leaves it out on purpose. What
-         Beehiiv keeps is set out in
-         <a href="https://www.beehiiv.com/privacy">Beehiiv's privacy policy</a>.</p>
+        <div class="card card-icon" id="saved">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 16.5v-9M8.5 13 12 16.5 15.5 13"/><path d="M5 19.5h14"/></svg></span>
+          <h3>Pages saved on your phone</h3>
+          <p>Copies of the pages you open, kept in your browser so they work offline. Never sent anywhere.</p>
+          <details class="source">
+            <summary>Read more</summary>
+            <div class="source-body">
+            <p>Once you have visited, the site keeps copies of the pages you open,
+               with its own style, script, font and image files, in your browser's
+               storage on your phone or computer. If you install the
+               <a href="/app/">app</a>, it uses the same copies. They are there so
+               those pages still open without internet, and open faster.</p>
 
-    </div>
-  </section>
+            <p>The copies stay on your device and are never sent anywhere. To
+               delete them, clear this site's data in your browser's settings, or
+               uninstall the app.</p>
+            </div>
+          </details>
+        </div>
 
+        <div class="card card-icon" id="on-your-phone">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span>
+          <h3>Calculators, searches and share images</h3>
+          <p>Worked out on your phone, and never sent anywhere.</p>
+          <details class="source">
+            <summary>Read more</summary>
+            <div class="source-body">
+            <p>What you type into the SIP, loan and purification calculators, and
+               into the search on the <a href="/screener/">screener page</a>
+               itself, is worked out on your phone and never sent anywhere.</p>
 
-  <section class="section reveal">
-    <div class="wrap">
+            <p>"Share as image" draws its picture on your phone and hands it to
+               your phone's share menu (on a computer, it downloads). It isn't
+               uploaded anywhere.</p>
+            </div>
+          </details>
+        </div>
 
-      <h2 id="youtube">Video pictures</h2>
+      </div>
 
-      <p>The home page and the <a href="/videos/">videos page</a> show a
-         picture for each video, and some other pages show one for a video
-         on the same topic — the screener, the halal stocks, methodology,
-         mutual funds, NPS and digital gold pages, and the purification
-         calculator. Your
-         browser fetches those pictures from YouTube's image server,
-         i.ytimg.com. Like any server, it receives your internet (IP) address
-         and your browser's details with the request.</p>
+      <h2 id="your-say">Nothing sold, and your say</h2>
 
-      <p>The pictures are there so you can see which video each card opens.
-         No YouTube player is loaded on the site, and nothing plays unless
-         you tap a card, which opens YouTube itself. YouTube is part of
-         Google: <a href="https://policies.google.com/privacy">Google's
-         privacy policy</a>.</p>
+      <div class="grid grid-2">
 
-    </div>
-  </section>
+        <div class="card card-icon" id="delete">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 7h15M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13"/></svg></span>
+          <h3>Asking for deletion</h3>
+          <p>Email salam@purevesting.com with what to delete.</p>
+          <details class="source">
+            <summary>Read more</summary>
+            <div class="source-body">
+            <p>Email <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
+               and say what to delete — a question or feedback you sent, or your
+               address on the newsletter list — with the name or email address you
+               used, so it can be found. It will be deleted from Purevesting's
+               inbox and, for the newsletter, from Beehiiv's list of subscribers.
+               To stop the newsletter, the unsubscribe link in any issue works at
+               any time.</p>
+            </div>
+          </details>
+        </div>
 
-
-  <section class="section reveal">
-    <div class="wrap">
-
-      <h2 id="cloudflare">Delivering pages and counting visits</h2>
-
-      <p>Cloudflare hosts the site. Like any web host, its servers see each
-         request — your internet address and the address of the page — so
-         that they can deliver the page.</p>
-
-      <p>A search typed into the screener box on the home page travels to
-         the screener page as part of that address (for example
-         purevesting.com/screener/?q=infosys). The search itself runs on
-         your phone, against the list inside the page; Purevesting keeps no
-         record of it.</p>
-
-      <p>Cloudflare Web Analytics counts visits: which pages are read, which
-         site a visit came from, and the country, device and browser, as
-         totals. It uses no cookies, stores nothing on your phone and
-         doesn't single out individual visitors
-         (<a href="https://www.cloudflare.com/web-analytics/">Cloudflare's
-         own description</a>). The counts show which pages people use, so
-         the site can get better.
-         <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's
-         privacy policy</a>.</p>
-
-    </div>
-  </section>
-
-
-  <section class="section reveal">
-    <div class="wrap">
-
-      <h2 id="saved">Pages saved on your phone</h2>
-
-      <p>Once you have visited, the site keeps copies of the pages you open,
-         with its own style, script, font and image files, in your browser's
-         storage on your phone or computer. If you install the
-         <a href="/app/">app</a>, it uses the same copies. They are there so
-         those pages still open without internet, and open faster.</p>
-
-      <p>The copies stay on your device and are never sent anywhere. To
-         delete them, clear this site's data in your browser's settings, or
-         uninstall the app.</p>
-
-    </div>
-  </section>
+        <div class="card card-icon" id="sold">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4.5"/></svg></span>
+          <h3>Nothing is sold</h3>
+            <p>Purevesting doesn't sell, rent or trade anything about you. There
+         are no adverts on the site and no advertising trackers.</p>
 
 
-  <section class="section reveal">
-    <div class="wrap">
+        </div>
 
-      <h2 id="on-your-phone">Calculators, searches and share images</h2>
-
-      <p>What you type into the SIP, loan and purification calculators, and
-         into the search on the <a href="/screener/">screener page</a>
-         itself, is worked out on your phone and never sent anywhere.</p>
-
-      <p>"Share as image" draws its picture on your phone and hands it to
-         your phone's share menu (on a computer, it downloads). It isn't
-         uploaded anywhere.</p>
-
-    </div>
-  </section>
-
-
-  <section class="section reveal">
-    <div class="wrap">
-
-      <h2 id="links">Links to other sites</h2>
-
-      <p>A link to another site — YouTube, Instagram, Beehiiv, NSE, a fund
+        <div class="card card-icon" id="links">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+          <h3>Links to other sites</h3>
+            <p>A link to another site — YouTube, Instagram, Beehiiv, NSE, a fund
          house — takes you to that site, and its own privacy policy applies
          there.</p>
 
-      <h2 id="sold">Nothing is sold</h2>
 
-      <p>Purevesting doesn't sell, rent or trade anything about you. There
-         are no adverts on the site and no advertising trackers.</p>
+        </div>
 
-      <h2 id="delete">Asking for deletion</h2>
-
-      <p>Email <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
-         and say what to delete — a question or feedback you sent, or your
-         address on the newsletter list — with the name or email address you
-         used, so it can be found. It will be deleted from Purevesting's
-         inbox and, for the newsletter, from Beehiiv's list of subscribers.
-         To stop the newsletter, the unsubscribe link in any issue works at
-         any time.</p>
-
-      <h2 id="changes">When this page changes</h2>
-
-      <p>If the site starts using another service, it will be added here,
+        <div class="card card-icon" id="changes">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/><path d="M19.5 4.5v4h-4"/></svg></span>
+          <h3>When this page changes</h3>
+            <p>If the site starts using another service, it will be added here,
          and the "Last updated" date at the top will change. What the site
          promises about its content is on the
          <a href="/disclaimer/">disclaimer</a> page.</p>
+        </div>
+
+      </div>
 
     </div>
   </section>

@@ -1274,9 +1274,12 @@ td:first-child { font-weight: 600; }
 
 .source .source-body a { color: var(--green-ink); }
 
-/* On a blue band, the circle and the box turn white so they still show. */
+/* On a blue band, the circle and the box turn white so they still show
+   — except inside a white card on the band, where they stay blue. */
 .band .source > summary::before { background-color: var(--white); }
 .band .source > .source-body { background: var(--white); }
+.band .card .source > summary::before { background-color: var(--sky-tint); }
+.band .card .source > .source-body { background: var(--sky-tint); }
 
 /* The "Read the fatwa" link at the end of each chip is what gets tapped
    most on a phone, so it gets a full-size tap target too. */
@@ -4126,6 +4129,14 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 /* A short line or two after the cards. */
 .after-cards { margin-top: 1.25rem; }
+
+/* THE CORRECTIONS LOG (/corrections/): one short card per fix — its date
+   and page, what changed in one line, and the full "what was wrong / what
+   it says now" under the card's own Read more. */
+.fix-log { gap: 0.75rem; }
+.fix .meta { margin: 0 0 0.3rem; }
+.fix h3 { margin: 0 0 0.15rem; font-size: 1.02rem; line-height: 1.35; }
+.fix .source { margin: 0; }
 
 /* ICON CARDS ON A PHONE (every page with them: "What people do", Tools,
    About, the app…): the icon sits beside the title instead of above it,

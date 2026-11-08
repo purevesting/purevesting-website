@@ -41,7 +41,7 @@
       "url": "https://purevesting.com/disclaimer/",
       "image": "https://purevesting.com/assets/og/disclaimer.jpg",
       "datePublished": "2026-10-12",
-      "dateModified": "2026-11-06",
+      "dateModified": "2026-11-08",
       "inLanguage": "en-IN",
       "isPartOf": {
         "@id": "https://purevesting.com/#website"
@@ -182,25 +182,13 @@
         doesn't tell anyone what to do with their money.</p>
 
       <!-- A legal page: no name line (README.md), but the date stays. -->
-      <p class="meta">Last updated <time datetime="2026-11-06">6 November 2026</time></p>
+      <p class="meta">Last updated <time datetime="2026-11-08">8 November 2026</time></p>
 
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       THE DISCLAIMER, IN FULL (MAS, 6 Nov 2026). This page is the one
-       place that says it all. The footer of every page carries only its
-       first sentence, as one short line that links here — never repeat
-       it anywhere else on the site (README.md, writing rules).
-       ============================================================ -->
-
-  <section class="section reveal">
-    <div class="wrap">
-
-      <h2 id="every-page">The disclaimer</h2>
-
-      <div class="card">
+      <!-- THE DISCLAIMER, IN FULL (MAS, 6 Nov 2026). This page is the one
+           place that says it all. The footer of every page carries only
+           its first sentence, as one short line that links here — never
+           repeat it anywhere else on the site (README.md, writing rules). -->
+      <div class="card" id="every-page">
         <p>Educational content, not investment advice. Purevesting is not
            registered with SEBI as a research analyst or investment adviser.
            Nothing here is a recommendation to buy, sell or hold any security,
@@ -211,71 +199,122 @@
            before acting on anything.</p>
       </div>
 
-      <p>The first sentence sits at the foot of every page on the site.</p>
-
     </div>
   </section>
 
 
-  <section class="section reveal">
+  <!-- ============================================================
+       WHAT IT MEANS, PART BY PART — five icon cards on a blue band
+       (MAS, 8 Nov 2026, part 4: much shorter): one plain line each, the
+       full words under its "Read more". Each card keeps its old address
+       (#advice, #shariah, #calculators, #dates, #links).
+       ============================================================ -->
+
+  <section class="section band reveal">
     <div class="wrap">
 
-      <h2 id="advice">Not investment advice</h2>
+      <h2 id="what-it-means">What that means</h2>
 
-      <p>Purevesting is not registered with SEBI, the Securities and Exchange
-         Board of India, as a research analyst or an investment adviser. So
-         nothing on this site — no page, table or calculator — is a
-         recommendation to buy, sell or hold any share, fund or other
-         product.</p>
+      <div class="grid grid-2">
 
-      <p>Tables list products in a fixed order and never rank them. Personal
-         questions like "should I buy this share?" aren't answered, because
-         answering them would be investment advice. Whether something suits
-         you depends on your own money and plans; a SEBI-registered
-         investment adviser can advise on that.</p>
+        <div class="card card-icon" id="advice">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12h8"/></svg></span>
+          <h3>Not investment advice</h3>
+          <p>No page, table or calculator is a recommendation to buy, sell or hold anything.</p>
+          <details class="source">
+            <summary>Read more</summary>
+            <div class="source-body">
+            <p>Purevesting is not registered with SEBI, the Securities and Exchange
+               Board of India, as a research analyst or an investment adviser. So
+               nothing on this site — no page, table or calculator — is a
+               recommendation to buy, sell or hold any share, fund or other
+               product.</p>
 
-      <h2 id="shariah">Shariah answers are quoted, not issued</h2>
+            <p>Tables list products in a fixed order and never rank them. Personal
+               questions like "should I buy this share?" aren't answered, because
+               answering them would be investment advice. Whether something suits
+               you depends on your own money and plans; a SEBI-registered
+               investment adviser can advise on that.</p>
+            </div>
+          </details>
+        </div>
 
-      <p>Every Shariah answer on the site is quoted from a fatwa, a Shariah
-         board or a screening standard, with a link to it in the page's
-         Sources. None of them is a ruling by Purevesting, and where scholars
-         differ, Purevesting doesn't pick a side.</p>
+        <div class="card card-icon" id="shariah">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H12v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H12v16h6.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg></span>
+          <h3>Shariah answers are quoted, not issued</h3>
+          <p>Quoted from fatwas, Shariah boards and standards — never a ruling by Purevesting.</p>
+          <details class="source">
+            <summary>Read more</summary>
+            <div class="source-body">
+            <p>Every Shariah answer on the site is quoted from a fatwa, a Shariah
+               board or a screening standard, with a link to it in the page's
+               Sources. None of them is a ruling by Purevesting, and where scholars
+               differ, Purevesting doesn't pick a side.</p>
 
-      <p>The <a href="/screener/">screener</a> works the same way: its
-         "Halal" and "Not halal" come from NSE's Nifty500 Shariah index, not
-         from a judgement of Purevesting's own. For your own situation, ask a
-         qualified scholar.</p>
+            <p>The <a href="/screener/">screener</a> works the same way: its
+               "Halal" and "Not halal" come from NSE's Nifty500 Shariah index, not
+               from a judgement of Purevesting's own. For your own situation, ask a
+               qualified scholar.</p>
+            </div>
+          </details>
+        </div>
 
-      <h2 id="calculators">The calculators are illustrations</h2>
+        <div class="card card-icon" id="calculators">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7h7"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01M8.5 15h.01M12 15h.01M15.5 15v2.5"/></svg></span>
+          <h3>The calculators are illustrations</h3>
+          <p>They show what your numbers would lead to: not forecasts or quotes.</p>
+          <details class="source">
+            <summary>Read more</summary>
+            <div class="source-body">
+            <p>The SIP, loan and purification calculators show what the numbers you
+               type in would lead to. They are illustrations, not forecasts or
+               quotes: real investments don't grow at a steady rate, a real loan's
+               cost depends on the lender's terms, and scholars differ on how to
+               work out purification. A number a calculator starts on is there to
+               begin from, not a prediction.</p>
+            </div>
+          </details>
+        </div>
 
-      <p>The SIP, loan and purification calculators show what the numbers you
-         type in would lead to. They are illustrations, not forecasts or
-         quotes: real investments don't grow at a steady rate, a real loan's
-         cost depends on the lender's terms, and scholars differ on how to
-         work out purification. A number a calculator starts on is there to
-         begin from, not a prediction.</p>
+        <div class="card card-icon" id="dates">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span>
+          <h3>Figures can change after their date</h3>
+          <p>Every figure has a source and a date, and can change after it.</p>
+          <details class="source">
+            <summary>Read more</summary>
+            <div class="source-body">
+            <p>Every figure on the site carries its source and the date it was
+               checked. After that date it can change: index lists are revised
+               every month, fund prices every day, small savings rates every
+               quarter, and rulings can be revisited. Past returns, like those on
+               the fund comparison, don't tell you future returns. Check a figure
+               against its source, which is linked, before acting on it.</p>
 
-      <h2 id="dates">Figures can change after their date</h2>
+            <p>When a mistake is found, it is fixed and recorded in the
+               <a href="/corrections/">corrections log</a>. To report one, use the
+               <a href="/ask/#feedback">feedback form</a>.</p>
+            </div>
+          </details>
+        </div>
 
-      <p>Every figure on the site carries its source and the date it was
-         checked. After that date it can change: index lists are revised
-         every month, fund prices every day, small savings rates every
-         quarter, and rulings can be revisited. Past returns, like those on
-         the fund comparison, don't tell you future returns. Check a figure
-         against its source, which is linked, before acting on it.</p>
+        <div class="card card-icon" id="links">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+          <h3>Outside links are not endorsements</h3>
+          <p>A link to another site is not an endorsement.</p>
+          <details class="source">
+            <summary>Read more</summary>
+            <div class="source-body">
+            <p>Links to other sites — fund houses, NSE, government pages, fatwas,
+               YouTube, the newsletter service — are there so you can check a source
+               or reach a service. A link doesn't mean Purevesting endorses that
+               site, its products or its views, and Purevesting has no say over what
+               those sites publish or do. How the site handles your own details is
+               on the <a href="/privacy/">privacy</a> page.</p>
+            </div>
+          </details>
+        </div>
 
-      <p>When a mistake is found, it is fixed and recorded in the
-         <a href="/corrections/">corrections log</a>. To report one, use the
-         <a href="/ask/#feedback">feedback form</a>.</p>
-
-      <h2 id="links">Outside links are not endorsements</h2>
-
-      <p>Links to other sites — fund houses, NSE, government pages, fatwas,
-         YouTube, the newsletter service — are there so you can check a source
-         or reach a service. A link doesn't mean Purevesting endorses that
-         site, its products or its views, and Purevesting has no say over what
-         those sites publish or do. How the site handles your own details is
-         on the <a href="/privacy/">privacy</a> page.</p>
+      </div>
 
     </div>
   </section>
