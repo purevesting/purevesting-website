@@ -852,6 +852,14 @@ body:has(.home-news) .footer-nav { margin-top: 0; }
   text-wrap: balance;
 }
 
+/* A small grey line under a tile's question: the tool's name (/tools/). */
+.tile-sub {
+  margin-top: -0.45rem;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--ink-3);
+}
+
 /* The small arrow in the corner of a tile. */
 .tile-go {
   position: absolute;
@@ -1983,7 +1991,34 @@ td:first-child { font-weight: 600; }
 .news-card > .btn { grid-column: 1 / -1; }
 .news-card > .btn { justify-self: start; }
 
-/* /videos/: two cards across on a tablet, three on a laptop. */
+/* /videos/: every video as a white card (MAS, 8 Nov 2026, part 4: the
+   new look, much shorter). On a phone each is a short row — the picture
+   on the left, the title beside it — so the whole list stays short; two
+   cards across on a tablet, three on a laptop. */
+.video-all .card-video {
+  color: var(--ink);
+  background: var(--white);
+  border-color: var(--line);
+  box-shadow: var(--shadow-sm);
+}
+
+.video-all .card-video:hover { border-color: var(--sky); }
+
+@media (max-width: 45.99em) {
+  .video-all { gap: 0.6rem; }
+  .video-all .card-video {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.45rem 0.9rem 0.45rem 0.45rem;
+  }
+  .video-all .card-video .thumb { flex: none; width: 8.25rem; }
+  .video-all .card-video h3 { margin: 0; font-size: 0.95rem; }
+  .video-all .play { width: 2.1rem; height: 2.1rem; margin: -1.05rem 0 0 -1.05rem; }
+  .video-all .play svg { width: 0.9rem; height: 0.9rem; margin-left: 2px; }
+  .video-all .video-tag { left: 0.35rem; top: 0.35rem; font-size: 0.65rem; }
+}
+
 @media (min-width: 46em) {
   .grid-3.video-all { grid-template-columns: repeat(2, 1fr); }
 }

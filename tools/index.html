@@ -42,7 +42,7 @@
       "url": "https://purevesting.com/tools/",
       "image": "https://purevesting.com/assets/og/tools.jpg",
       "datePublished": "2026-10-12",
-      "dateModified": "2026-11-06",
+      "dateModified": "2026-11-08",
       "inLanguage": "en-IN",
       "isPartOf": {
         "@id": "https://purevesting.com/#website"
@@ -215,69 +215,44 @@
       <h1>Halal finance tools and calculators <span class="t-green">for India</span></h1>
 
       <!-- A hub page: one short line, no byline (README.md). -->
-      <p class="standfirst">Check a stock, see what a SIP could grow to and
-        what a loan really costs, and work out purification. Free, with
-        nothing to sign up for.</p>
+      <p class="standfirst">Free, with nothing to sign up for.</p>
 
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       THE TOOLS. One card per tool; the whole card is the link. To add
-       a tool, copy a card, and add it to the Tools menu in the header
-       of every page and to the list in the structured data above. A
-       tool still being built gets a "card-soon" card with no link.
-       ============================================================ -->
-
-  <section class="section reveal">
-    <div class="wrap">
-
-      <h2 id="all">Pick a tool</h2>
-
-      <div class="grid grid-2">
-
-        <a class="card card-link card-icon" href="/screener/">
+      <!-- THE TOOLS, as question tiles like the home page's (MAS, 8 Nov
+           2026, part 4): the question each tool answers, its name under
+           it. The whole tile is the link. To add a tool: copy a tile, and
+           add it to the Tools menu on every page and to the list in the
+           structured data at the top of this page. -->
+      <div class="tiles tool-tiles">
+        <a class="tile" href="/screener/">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></svg></span>
-          <h3>Halal stock screener</h3>
-          <p>Type a company's name or NSE symbol and see if it is halal,
-             from NSE's Nifty500 Shariah index.</p>
+          <span class="tile-q">Is my stock halal?</span>
+          <span class="tile-sub">Halal stock screener</span>
+          <svg class="tile-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
         </a>
-
-        <a class="card card-link card-icon" href="/sip-calculator/">
+        <a class="tile" href="/sip-calculator/">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7"/><path d="M3 20.5h18"/></svg></span>
-          <h3>SIP and lump-sum calculator</h3>
-          <p>See what a monthly SIP or one lump sum could grow to, year by
-             year.</p>
+          <span class="tile-q">What could my SIP grow to?</span>
+          <span class="tile-sub">SIP and lump-sum calculator</span>
+          <svg class="tile-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
         </a>
-
-        <a class="card card-link card-icon" href="/loan-calculator/">
+        <a class="tile" href="/loan-calculator/">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.5 5.5l-13 13"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg></span>
-          <h3>Loan and EMI calculator</h3>
-          <p>See your EMI, the total interest, and how much of every rupee
-             you repay is interest.</p>
+          <span class="tile-q">What does my loan really cost?</span>
+          <span class="tile-sub">Loan and EMI calculator</span>
+          <svg class="tile-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
         </a>
-
-        <a class="card card-link card-icon" href="/purification-calculator/">
+        <a class="tile" href="/purification-calculator/">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5s6.5 6.6 6.5 11a6.5 6.5 0 0 1-13 0c0-4.4 6.5-11 6.5-11z"/><path d="M9 14.5a3 3 0 0 0 3 3"/></svg></span>
-          <h3>Purification calculator</h3>
-          <p>Work out how much to give away from your share income, with
-             three methods side by side.</p>
+          <span class="tile-q">How much should I purify?</span>
+          <span class="tile-sub">Purification calculator</span>
+          <svg class="tile-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
         </a>
-
-        <a class="card card-link card-icon" href="/app/">
+        <a class="tile" href="/app/">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span>
-          <h3>Install the app</h3>
-          <p>Put Purevesting on your phone's home screen: free, no app store,
-             and pages you've opened work offline.</p>
+          <span class="tile-q">Purevesting on my phone</span>
+          <span class="tile-sub">Install the app: free, works offline</span>
+          <svg class="tile-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
         </a>
-
-        <div class="card card-soon card-icon">
-          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7h7"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01M8.5 15h.01M12 15h.01M15.5 15v2.5"/></svg></span>
-          <h3>Check what I already hold<span class="soon">soon</span></h3>
-          <p>Check every share you own against the screener in one go.</p>
-        </div>
-
       </div>
 
     </div>
