@@ -42,7 +42,7 @@
       "mainEntityOfPage": "https://purevesting.com/instruments/digital-gold/",
       "image": "https://purevesting.com/assets/og/instruments-digital-gold.jpg",
       "datePublished": "2026-09-24",
-      "dateModified": "2026-11-06",
+      "dateModified": "2026-11-08",
       "inLanguage": "en-IN",
       "author": {
         "@type": "Person",
@@ -194,19 +194,34 @@
 
 <main>
 
+  <!-- ============================================================
+       THE ANSWER, DRAWN (MAS, 8 Nov 2026, part 4): what the Shariah
+       standard asks, next to what Indian apps show (site.css, section
+       32). data-share-text is the same answer in sentences, for the
+       "Share as image" picture. No name for the standard-setter or the
+       analysis site (README.md): "the Shariah standard on gold", "a 2026
+       analysis".
+       ============================================================ -->
+
   <section class="section">
     <div class="wrap">
 
       <h1>Is <span class="t-green">digital gold</span> halal?</h1>
 
-      <!-- THE ANSWER BOX: the answer in 2 or 3 short lines, before
-           anything else on the page (README.md, writing rules). -->
-      <div class="answer">
-        <p>The question is not interest but possession. The Shariah standard
-           on gold says you must get it on the spot: in your hand, or as a
-           specific, numbered bar set aside for you that same day. Indian
-           digital gold apps don't show that, and a 2026 analysis found this
-           raises Shariah concerns.</p>
+      <div class="answer answer-parts" data-share-text="The question is not interest but possession. The Shariah standard on gold says you must get it on the spot: in your hand, or as a specific, numbered bar set aside for you that same day. Indian digital gold apps don't show that, and a 2026 analysis found this raises Shariah concerns.">
+        <p class="parts-lead">The question is possession, not interest.</p>
+        <div class="part">
+          <p class="part-what">The Shariah standard on gold</p>
+          <p class="part-word"><span class="v-mark v-yes" aria-hidden="true"></span>Gold on the spot</p>
+          <p class="part-why">In your hand, or a specific, numbered bar set
+             aside for you that same day.</p>
+        </div>
+        <div class="part">
+          <p class="part-what">Indian digital gold apps</p>
+          <p class="part-word"><span class="v-mark v-note" aria-hidden="true"></span>Raise concerns</p>
+          <p class="part-why">They don't show that, and a 2026 analysis found
+             this raises Shariah concerns.</p>
+        </div>
       </div>
 
       <div class="byline">
@@ -215,27 +230,31 @@
              width="48" height="48" alt="Moin Ali Syed">
         <div>
           <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
-          <div class="meta">Last updated <time datetime="2026-11-06">6 November 2026</time></div>
+          <div class="meta">Last updated <time datetime="2026-11-08">8 November 2026</time></div>
         </div>
       </div>
 
-      <nav class="toc" aria-label="Contents">
-        <strong>On this page</strong>
-        <ol>
-          <li><a href="#how-it-works">How digital gold works</a></li>
-          <li><a href="#standards">What scholars say</a></li>
-          <li><a href="#test">The possession test, point by point</a></li>
-          <li><a href="#formats">Digital gold next to other ways to hold gold</a></li>
-          <li><a href="#practice">What people do</a></li>
-        </ol>
-      </nav>
+      <!-- A VIDEO ON THE SAME TOPIC, near the top (MAS, part 3 and 4): on
+           buying gold on the spot, and what goes wrong with instalment
+           schemes and digital gold apps. A plain link to YouTube with its
+           picture: no player loads here (the privacy page says so). -->
+      <a class="video-pick" href="https://www.youtube.com/shorts/fNwefBr3kcA">
+        <span class="thumb"><img src="https://i.ytimg.com/vi/fNwefBr3kcA/hqdefault.jpg" width="480" height="360" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span></span>
+        <span class="video-pick-text">
+          <span class="video-pick-kicker">Short · 1 min</span>
+          <span class="video-pick-title">Dhanteras pe gold lene se pehle ye dekh lo!</span>
+        </span>
+      </a>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       HOW IT WORKS
+       HOW DIGITAL GOLD WORKS, AS A DRAWING: your money → where it goes
+       → what you get. data-src: tapping a figure shows its line in
+       Sources. EVERY FEW MONTHS: re-open the three providers' terms
+       (TODO.md, 0b).
        ============================================================ -->
 
   <section class="section reveal">
@@ -243,75 +262,73 @@
 
       <h2 id="how-it-works">How digital gold works</h2>
 
-      <p>When you buy gold on PhonePe, Google Pay, Paytm or a jeweller's app,
-         the app is not the seller. It passes your order to one of a few
-         companies — MMTC-PAMP, SafeGold and Augmont — which keep physical
-         gold in insured vaults and record how many grams are yours.</p>
+      <ol class="money-path">
+        <li class="step">
+          <div class="mp-head">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span>
+            <h3>Your money</h3>
+          </div>
+          <p>You buy on PhonePe, Google Pay, Paytm or a jeweller's app, from
+             as little as <span class="num" data-src="src-gold-providers">₹1</span>,
+             plus <span class="num" data-src="src-gold-gst">3%</span> GST
+             that isn't refunded when you sell.</p>
+        </li>
+        <li class="step">
+          <div class="mp-head">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 7.5 12 3.5l8.5 4v9L12 20.5l-8.5-4z"/><path d="M3.5 7.5 12 11.5l8.5-4M12 11.5v9"/></svg></span>
+            <h3>Where it goes</h3>
+          </div>
+          <p>The app is not the seller. It passes your order to MMTC-PAMP,
+             SafeGold or Augmont, which keep physical gold in insured vaults —
+             their own or a vault company's — with an independent trustee
+             appointed to act for customers.</p>
+        </li>
+        <li class="step" data-src="src-gold-providers">
+          <div class="mp-head">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 20 5 15h6l1.5 5z"/><path d="M11.5 20l1.5-5h6l1.5 5z"/><path d="M7.5 13 9 8h6l1.5 5z"/></svg></span>
+            <h3>What you get</h3>
+          </div>
+          <p>A quantity in grams, recorded in your account — often a small
+             fraction of a gram, <span class="mark">not tied to any specific
+             bar</span>.</p>
+          <p>Coins or bars only later, above a minimum (from
+             <span class="num">0.5</span> g at SafeGold), with a charge for
+             minting and delivery.</p>
+        </li>
+      </ol>
 
-      <div class="table-scroll">
-        <!-- data-src: tapping a figure in a row shows that row's line in
-             Sources. Keep the ids. -->
-        <table>
-          <caption class="visually-hidden">How digital gold in India is bought and held</caption>
-          <thead>
-            <tr>
-              <th scope="col">How it works</th>
-              <th scope="col">Detail</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Who holds the gold</td>
-              <td>The provider, in insured vaults — its own or a vault company's — with an independent trustee appointed to act for customers</td>
-            </tr>
-            <tr>
-              <td>What you hold</td>
-              <td>A quantity in grams, recorded in your account — often a small fraction of a gram</td>
-            </tr>
-            <tr>
-              <td>Smallest purchase</td>
-              <td data-src="src-gold-providers">As little as <span class="num">₹1</span> (SafeGold) or <span class="num">₹10</span> (Augmont)</td>
-            </tr>
-            <tr>
-              <td>Tax on purchase</td>
-              <td data-src="src-gold-gst"><span class="num">3%</span> GST, added to the price you pay and not refunded when you sell</td>
-            </tr>
-            <tr>
-              <td>Physical delivery</td>
-              <td data-src="src-gold-providers">Available as coins or bars above a minimum (from <span class="num">0.5</span> g at SafeGold), with a charge that covers minting and delivery</td>
-            </tr>
-            <tr>
-              <td>Storage</td>
-              <td data-src="src-gold-storage">Free for a set time — <span class="num">2</span> years at SafeGold, <span class="num">5</span> at MMTC-PAMP and Augmont. After that, storage is charged for, and the charge can come out of your gold. MMTC-PAMP can also buy your gold back, at its sell-back price, once the <span class="num">5</span> years are up</td>
-            </tr>
-            <tr>
-              <td>Regulated by</td>
-              <td>Neither SEBI nor RBI</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p>Augmont's terms also say you must take delivery of your gold within
-         10 years of buying it.</p>
-
-      <h3>What SEBI has said about it</h3>
-
-      <p>In November 2025, SEBI warned that digital gold is outside its
-         rules: it is not a security, nor a regulated commodity contract, and
-         none of SEBI's investor protections apply to it.
-         That is not a Shariah point, but it matters for the same reason
-         possession does: if the company fails, what you actually own decides
-         what you get back.</p>
+      <details class="source">
+        <summary>Read more: storage, delivery and who regulates it</summary>
+        <div class="source-body">
+          <p data-src="src-gold-storage">Storage is free for a set time —
+             <span class="num">2</span> years at SafeGold,
+             <span class="num">5</span> at MMTC-PAMP and Augmont. After that,
+             storage is charged for, and the charge can come out of your gold.
+             MMTC-PAMP can also buy your gold back, at its sell-back price,
+             once the <span class="num">5</span> years are up. Augmont's terms
+             also say you must take delivery of your gold within 10 years of
+             buying it.</p>
+          <p data-src="src-gold-providers">The smallest purchase is
+             <span class="num">₹1</span> at SafeGold and
+             <span class="num">₹10</span> at Augmont. Digital gold is
+             regulated by neither SEBI nor RBI.</p>
+          <p>In November 2025, SEBI warned that digital gold is outside its
+             rules: it is not a security, nor a regulated commodity contract,
+             and none of SEBI's investor protections apply to it. That is not
+             a Shariah point, but it matters for the same reason possession
+             does: if the company fails, what you actually own decides what
+             you get back.</p>
+        </div>
+      </details>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       WHAT SCHOLARS SAY
-       No name for the standard-setter or the analysis site (README.md):
-       "the Shariah standard on gold", "a 2026 analysis". The links are in
+       WHAT SCHOLARS SAY — the standard and the analysis, one card
+       each, with their exact words under "What … says". No name for the
+       standard-setter or the analysis site (README.md). The links are in
        Sources.
        ============================================================ -->
 
@@ -320,210 +337,204 @@
 
       <h2 id="standards">What scholars say</h2>
 
-      <p>Gold is different from EPF, PPF and NPS, where the question is
-         interest. Gold pays no interest. The Shariah question about it is
-         <span class="mark">possession, not interest</span>, because gold is
-         one of the six things whose exchange the hadith on riba sets rules
-         for.</p>
+      <p>Gold pays no interest. The Shariah question about it is possession,
+         because gold is one of the six things whose exchange the hadith on
+         riba sets rules for.</p>
 
-      <h3>The Shariah standard on gold: on the spot, and a specific bar</h3>
+      <div class="grid grid-2">
 
-      <p>In November 2016, the body whose Shariah standards most Islamic
-         banks and finance companies follow issued a standard just for
-         gold. Two of its conditions
-         decide the digital gold question.</p>
+        <div class="card fatwa">
+          <h3>The Shariah standard on gold, 2016</h3>
+          <ul class="says">
+            <li><span class="v-mark v-yes" aria-hidden="true"></span><span><strong>Same sitting:</strong> gold and money handed over together — physically, or by the gold becoming legally yours on the spot</span></li>
+            <li><span class="v-mark v-yes" aria-hidden="true"></span><span><strong>Legally yours:</strong> a specific bar, told apart by its serial number, set aside for you — or a certificate for one, issued the same day</span></li>
+            <li><span class="v-mark v-no" aria-hidden="true"></span><span><strong>Gold set aside for no one</strong> (unallocated): not to be sold unless it is physically handed over</span></li>
+          </ul>
+          <p>Issued in November 2016 by the body whose Shariah standards most
+             Islamic banks and finance companies follow. These two conditions
+             decide the digital gold question.</p>
+          <details class="source">
+            <summary>What the standard says</summary>
+            <span class="source-body">
+              Clause 3/2/1: "In case of sale of gold for gold, or silver or
+              currencies, the two counter-values must be delivered during the
+              contracting session, physically or constructively."
+              Clause 3/4: "Constructive possession is realized by allocation of the
+              ingot and by enabling the buyer to dispose of it, or by holding a
+              certificate that represents ownership of a specified ingot that is
+              distinguishable (an allocated ingot) from others, by serial numbers or
+              other distinct marks from other ingots, provided the certificate is
+              issued the day the contract is concluded … it is not permissible to
+              sell an unspecified ingot (technically known in the market as
+              unallocated ingot) without physical possession."
+              Clause 3/5/4: "Ingots stored in a warehouse and not distinguishable by
+              serial numbers are considered unallocated and are thus subject to the
+              Shari'ah rulings for joint ownership."
+              — Shari'ah Standard No. 57, Gold and Its Trading Controls, issued
+              19 November 2016.
+            </span>
+          </details>
+        </div>
 
-      <p>First, when you buy gold with money, both sides must be handed over
-         in the same sitting — physically, or by the gold becoming legally
-         yours on the spot. No delivery later. Second, "legally yours" has an exact
-         meaning: a specific bar, told apart from others by its serial
-         number, must be set aside for you, or you must hold a certificate for
-         such a bar issued the same day. Gold not set aside for anyone
-         (unallocated gold) may not be sold unless it is physically handed
-         over.</p>
+        <div class="card fatwa">
+          <h3>A 2026 analysis</h3>
+          <ul class="says">
+            <li><span class="v-mark v-note" aria-hidden="true"></span><span><strong>Digital gold:</strong> raises Shariah concerns about possession</span></li>
+            <li><span class="v-mark v-no" aria-hidden="true"></span><span><strong>Sovereign Gold Bonds:</strong> not Shariah-compliant, because of their fixed interest</span></li>
+          </ul>
+          <p>Published in March 2026, it checked India's gold market against
+             this standard: you buy small units that stay with the company,
+             without separate ownership records or a clear right to delivery
+             straight away. It is an analysis by one author, not a fatwa.</p>
+          <details class="source">
+            <summary>What the analysis says</summary>
+            <span class="source-body">
+              On digital gold: "investors purchase fractional gold units that remain
+              under the platform's custody without a clear right to immediate
+              delivery, contravening [the standard's] requirement for qabḍ
+              (possession)."
+              On Sovereign Gold Bonds: they "involve fixed interest payments and cash
+              settlement, rendering them non-compliant with Sharīʿah principles."
+              <!-- Checked word for word against the article, 1 Oct 2026. The
+                   square brackets replace the standard-setter's name. -->
+              — Analysis published 26 March 2026, updated 6 April 2026.
+            </span>
+          </details>
+        </div>
+
+      </div>
+
+      <p class="after-cards">No fatwa was found saying Indian digital gold,
+         as sold today, meets the possession rule. If you know of one, send it
+         to <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>
+         and I'll add it.</p>
 
       <details class="source">
-        <summary>What the standard says</summary>
-        <span class="source-body">
-          Clause 3/2/1: "In case of sale of gold for gold, or silver or
-          currencies, the two counter-values must be delivered during the
-          contracting session, physically or constructively."
-          Clause 3/4: "Constructive possession is realized by allocation of the
-          ingot and by enabling the buyer to dispose of it, or by holding a
-          certificate that represents ownership of a specified ingot that is
-          distinguishable (an allocated ingot) from others, by serial numbers or
-          other distinct marks from other ingots, provided the certificate is
-          issued the day the contract is concluded … it is not permissible to
-          sell an unspecified ingot (technically known in the market as
-          unallocated ingot) without physical possession."
-          Clause 3/5/4: "Ingots stored in a warehouse and not distinguishable by
-          serial numbers are considered unallocated and are thus subject to the
-          Shari'ah rulings for joint ownership."
-          — Shari'ah Standard No. 57, Gold and Its Trading Controls, issued
-          19 November 2016.
-        </span>
+        <summary>Read more: the possession test, point by point</summary>
+        <div class="source-body">
+          <div class="table-scroll table-stack">
+            <table>
+              <caption class="visually-hidden">The gold standard's conditions set against what public information shows about Indian digital gold</caption>
+              <thead>
+                <tr>
+                  <th scope="col">What the standard requires</th>
+                  <th scope="col">What public information on Indian digital gold shows</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Gold and money exchanged in the same session (3/2/1)</td>
+                  <td data-label="What public information shows">Gold is credited to your account when you pay. Whether bars are bought and set aside that same day is not stated publicly.</td>
+                </tr>
+                <tr>
+                  <td>A specific bar, identified by serial number, allocated to you (3/4)</td>
+                  <td data-label="What public information shows">Your holding is a quantity in grams, often a fraction of a gram. It is not shown tied to any specific bar.</td>
+                </tr>
+                <tr>
+                  <td>Or a certificate for a specified bar, issued the same day (3/4)</td>
+                  <td data-label="What public information shows">No such certificate is described in the public information reviewed.</td>
+                </tr>
+                <tr>
+                  <td>Unallocated gold not sold without physical possession (3/4)</td>
+                  <td data-label="What public information shows">Physical delivery exists, but only later, as minted coins, above a minimum, and with charges.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>A provider that does set aside specific, numbered bars and gives
+             a same-day certificate would be in a different position under
+             this standard. That is what to ask before buying.</p>
+        </div>
       </details>
-
-      <h3>A 2026 analysis: Indian apps raise concerns</h3>
-
-      <p>An analysis published in March 2026 checked India's gold market
-         against this standard. On digital gold, it found that you buy small
-         units that stay with the company, without separate ownership records
-         or a clear right to delivery straight away — and that this raises
-         Shariah concerns about possession. It was firmer on Sovereign Gold
-         Bonds: their fixed interest makes them not Shariah-compliant. It is
-         an analysis by one author, not a fatwa.</p>
-
-      <details class="source">
-        <summary>What the analysis says</summary>
-        <span class="source-body">
-          On digital gold: "investors purchase fractional gold units that remain
-          under the platform's custody without a clear right to immediate
-          delivery, contravening [the standard's] requirement for qabḍ
-          (possession)."
-          On Sovereign Gold Bonds: they "involve fixed interest payments and cash
-          settlement, rendering them non-compliant with Sharīʿah principles."
-          <!-- Checked word for word against the article, 1 Oct 2026. The
-               square brackets replace the standard-setter's name. -->
-          — Analysis published 26 March 2026, updated 6 April 2026.
-        </span>
-      </details>
-
-      <h3>No fatwa found that says otherwise</h3>
-
-      <p>No fatwa was found saying Indian digital gold, as sold today, meets
-         the possession rule. If you know of one, send it to
-         <a href="mailto:salam@purevesting.com">salam@purevesting.com</a> and
-         I'll add it.</p>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       THE TEST, POINT BY POINT
+       FOUR WAYS TO HOLD GOLD — one card each (it was a five-column
+       table): what you own, who regulates it, whether it pays interest,
+       and the Shariah question it raises.
        ============================================================ -->
 
   <section class="section reveal">
     <div class="wrap">
 
-      <h2 id="test">The possession test, point by point</h2>
+      <h2 id="formats">Four ways to hold gold</h2>
 
-      <div class="table-scroll table-stack">
-        <table>
-          <caption class="visually-hidden">The gold standard's conditions set against what public information shows about Indian digital gold</caption>
-          <thead>
-            <tr>
-              <th scope="col">What the standard requires</th>
-              <th scope="col">What public information on Indian digital gold shows</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Gold and money exchanged in the same session (3/2/1)</td>
-              <td data-label="What public information on Indian digital gold shows">Gold is credited to your account when you pay. Whether bars are bought and set aside that same day is not stated publicly.</td>
-            </tr>
-            <tr>
-              <td>A specific bar, identified by serial number, allocated to you (3/4)</td>
-              <td data-label="What public information on Indian digital gold shows">Your holding is a quantity in grams, often a fraction of a gram. It is not shown tied to any specific bar.</td>
-            </tr>
-            <tr>
-              <td>Or a certificate for a specified bar, issued the same day (3/4)</td>
-              <td data-label="What public information on Indian digital gold shows">No such certificate is described in the public information reviewed.</td>
-            </tr>
-            <tr>
-              <td>Unallocated gold not sold without physical possession (3/4)</td>
-              <td data-label="What public information on Indian digital gold shows">Physical delivery exists, but only later, as minted coins, above a minimum, and with charges.</td>
-            </tr>
-          </tbody>
-        </table>
+      <p>Each raises a different Shariah question, and one of them isn't
+         really gold at all.</p>
+
+      <div class="grid grid-2" data-src="src-gold-sgb">
+
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 20 5 15h6l1.5 5z"/><path d="M11.5 20l1.5-5h6l1.5 5z"/><path d="M7.5 13 9 8h6l1.5 5z"/></svg></span>
+          <h3>Physical gold</h3>
+          <dl class="fact-list">
+            <div class="wide"><dt>What you own</dt><dd>The metal itself, in your hands</dd></div>
+            <div><dt>Regulated by</dt><dd>Purity hallmarking by BIS</dd></div>
+            <div><dt>Pays interest?</dt><dd>No</dd></div>
+            <div class="wide"><dt>The Shariah question</dt><dd>Spot exchange and possession at the counter</dd></div>
+          </dl>
+        </div>
+
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span>
+          <h3>Digital gold</h3>
+          <dl class="fact-list">
+            <div class="wide"><dt>What you own</dt><dd>A recorded quantity in shared, trustee-held vaults</dd></div>
+            <div><dt>Regulated by</dt><dd>Neither SEBI nor RBI</dd></div>
+            <div><dt>Pays interest?</dt><dd>No</dd></div>
+            <div class="wide"><dt>The Shariah question</dt><dd>Whether that recorded quantity counts as possession — see above</dd></div>
+          </dl>
+        </div>
+
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 16.5l5-5 4 4 7.5-7.5"/><path d="M15 8h5v5"/><path d="M3.5 20.5h17"/></svg></span>
+          <h3>Gold ETF</h3>
+          <dl class="fact-list">
+            <div class="wide"><dt>What you own</dt><dd>Units of a fund that holds physical gold</dd></div>
+            <div><dt>Regulated by</dt><dd>SEBI</dd></div>
+            <div><dt>Pays interest?</dt><dd>No</dd></div>
+            <div class="wide"><dt>The Shariah question</dt><dd>The standard applies its gold rules to funds that hold only gold (10/3), so possession is again the question</dd></div>
+          </dl>
+        </div>
+
+        <div class="card card-icon">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 12h5M10 15.5h5"/></svg></span>
+          <h3>Sovereign Gold Bond</h3>
+          <dl class="fact-list">
+            <div class="wide"><dt>What you own</dt><dd>A loan to the Government of India, repaid at the gold price</dd></div>
+            <div><dt>Regulated by</dt><dd>RBI, for the Government of India</dd></div>
+            <div><dt>Pays interest?</dt><dd>Yes — <span class="num">2.5%</span> a year on the amount invested</dd></div>
+            <div class="wide"><dt>The Shariah question</dt><dd>Interest on a loan — a different question from possession entirely</dd></div>
+          </dl>
+        </div>
+
       </div>
 
-      <p>A provider that does set aside specific, numbered bars and gives a
-         same-day certificate would be in a different position under this
-         standard. That is what to ask before buying.</p>
+      <details class="source after-cards">
+        <summary>Read more: Sovereign Gold Bonds</summary>
+        <div class="source-body" data-src="src-gold-sgb">
+          <p>The government hasn't issued new Sovereign Gold Bonds since
+             February 2024; in July 2025 it told the Rajya Sabha that new
+             issues were paused for prudent debt management. Bonds already
+             issued keep paying 2.5% a year, credited twice a year, and can be
+             sold on the stock exchange if held in demat form.</p>
+          <p>They are often called the "safest" way to hold gold: backed by
+             the government, no storage worry, no GST. But an SGB is not gold
+             you own. It is money lent to the government, repaid at whatever
+             gold is worth at the end, with interest paid along the way. The
+             gold price only measures the loan; it is not what you hold.</p>
+        </div>
+      </details>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       OTHER GOLD FORMATS
-       ============================================================ -->
-
-  <section class="section reveal">
-    <div class="wrap">
-
-      <h2 id="formats">Digital gold next to other ways to hold gold</h2>
-
-      <p>The four common ways to hold gold raise different Shariah
-         questions, and one of them isn't really gold at all.</p>
-
-      <div class="table-scroll table-stack">
-        <table data-src="src-gold-sgb">
-          <caption class="visually-hidden">Four ways to hold gold in India and the Shariah question each raises</caption>
-          <thead>
-            <tr>
-              <th scope="col">Format</th>
-              <th scope="col">What you actually own</th>
-              <th scope="col">Regulated by</th>
-              <th scope="col">Pays interest?</th>
-              <th scope="col">The Shariah question</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Physical gold</td>
-              <td data-label="What you actually own">The metal itself, in your hands</td>
-              <td data-label="Regulated by">Purity hallmarking by BIS</td>
-              <td data-label="Pays interest?">No</td>
-              <td data-label="The Shariah question">Spot exchange and possession at the counter</td>
-            </tr>
-            <tr>
-              <td>Digital gold</td>
-              <td data-label="What you actually own">A recorded quantity in shared, trustee-held vaults</td>
-              <td data-label="Regulated by">Neither SEBI nor RBI</td>
-              <td data-label="Pays interest?">No</td>
-              <td data-label="The Shariah question">Whether that recorded quantity counts as possession — see above</td>
-            </tr>
-            <tr>
-              <td>Gold ETF</td>
-              <td data-label="What you actually own">Units of a fund that holds physical gold</td>
-              <td data-label="Regulated by">SEBI</td>
-              <td data-label="Pays interest?">No</td>
-              <td data-label="The Shariah question">The standard applies its gold rules to funds that hold only gold (10/3), so possession is again the question</td>
-            </tr>
-            <tr>
-              <td>Sovereign Gold Bond</td>
-              <td data-label="What you actually own">A loan to the Government of India, repaid at the gold price</td>
-              <td data-label="Regulated by">RBI, for the Government of India</td>
-              <td data-label="Pays interest?">Yes — <span class="num">2.5%</span> a year on the amount invested</td>
-              <td data-label="The Shariah question">Interest on a loan — a different question from possession entirely</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p>The government hasn't issued new Sovereign Gold Bonds since February
-         2024; in July 2025 it told the Rajya Sabha that new issues were
-         paused for prudent debt management. Bonds already issued keep paying
-         2.5% a year, credited twice a year, and can be sold on the stock
-         exchange if held in demat form.</p>
-
-      <h3>Why the SGB row matters</h3>
-
-      <p>Sovereign Gold Bonds are often called the "safest" way to hold gold:
-         backed by the government, no storage worry, no GST. But an SGB is not
-         gold you own. It is money lent to the government, repaid at whatever
-         gold is worth at the end, with interest paid along the way. The gold
-         price only measures the loan; it is not what you hold.</p>
-
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       WHAT PEOPLE DO
+       WHAT PEOPLE DO — icon cards on a blue band.
        ============================================================ -->
 
   <section class="section band reveal">
@@ -537,8 +548,7 @@
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 20 5 15h6l1.5 5z"/><path d="M11.5 20l1.5-5h6l1.5 5z"/><path d="M7.5 13 9 8h6l1.5 5z"/></svg></span>
           <h3>Buy physical gold instead</h3>
           <p>Paying for coins or bars and taking them home in the same visit
-             is the simplest way to meet the on-the-spot rule. That is why some
-             people who hold gold for Shariah reasons prefer it, even with the
+             is the simplest way to meet the on-the-spot rule, even with the
              storage and purity worries it brings.</p>
         </div>
 
@@ -546,27 +556,24 @@
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 7.5 12 3.5l8.5 4v9L12 20.5l-8.5-4z"/><path d="M3.5 7.5 12 11.5l8.5-4M12 11.5v9"/></svg></span>
           <h3>Take delivery of what they hold</h3>
           <p>Turning a digital gold balance into coins ends the shared-vault
-             question for that gold. It costs minting and delivery charges, and
-             the balance must reach the app's minimum, so it suits bigger
-             balances more than small ones.</p>
+             question for that gold. It costs minting and delivery charges,
+             so it suits bigger balances.</p>
         </div>
 
         <div class="card card-icon">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19V6.5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H8.5z"/><path d="M10.2 8.6a2 2 0 1 1 2.5 1.9c-.4.1-.7.5-.7.9v.4"/><path d="M12 13.4h.01"/></svg></span>
           <h3>Ask the provider two questions first</h3>
           <p>Is my gold tied to a specific, numbered bar? Do I get a
-             certificate for it on the day I buy? The standard's test turns on
-             these two facts, and they differ from company to company — so the
-             answer for one app may not hold for another.</p>
+             certificate for it on the day I buy? The answers differ from
+             company to company.</p>
         </div>
 
         <div class="card card-icon">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 12h5M10 15.5h5"/></svg></span>
           <h3>Treat existing SGBs separately</h3>
-          <p>There the question is interest, not possession, so it is a
-             separate question from digital gold. Existing bonds pay into your
-             bank account twice a year and can be sold on the stock exchange
-             before they mature, which changes what your options are.</p>
+          <p>There the question is interest, not possession. Existing bonds
+             pay into your bank account twice a year and can be sold on the
+             stock exchange before they mature.</p>
         </div>
 
       </div>
@@ -587,11 +594,10 @@
       <h2 id="related">Related</h2>
 
       <ul class="route-list">
-        <li><a href="/instruments/">See every instrument checked so far</a></li>
         <li><a href="/instruments/epf/">Is EPF halal?</a></li>
-        <li><a href="/instruments/ppf/">Is PPF halal?</a></li>
         <li><a href="/instruments/nps/">Is NPS halal?</a></li>
         <li><a href="/compare/shariah-mutual-funds/">Compare India's six Shariah mutual funds</a></li>
+        <li><a href="/instruments/">Every instrument, checked</a></li>
       </ul>
 
     </div>
@@ -600,7 +606,7 @@
 
   <!-- ============================================================
        SOURCES — one closed list (README.md, rule 5). The ids are what
-       the tables above point at (data-src). EVERY FEW MONTHS: re-open
+       the figures above point at (data-src). EVERY FEW MONTHS: re-open
        the three providers' terms (TODO.md, 0b).
        ============================================================ -->
 
