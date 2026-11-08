@@ -227,35 +227,42 @@
         <div class="calc-result loan-result" aria-live="polite">
 
           <!-- THE INTEREST METER: how much interest you pay, against what you
-               borrowed. It fills completely at 200%. -->
+               borrowed. It fills completely at 200%. On a phone the dial
+               sits beside its sentence, so the whole answer fits on the
+               first screen (site.css, section 31). -->
           <div class="meter">
-            <svg viewBox="0 0 200 112" width="200" height="112" aria-hidden="true" focusable="false">
-              <path class="meter-track" d="M 14 100 A 86 86 0 0 1 186 100" pathLength="100"/>
-              <path class="meter-fill" id="meter-fill" d="M 14 100 A 86 86 0 0 1 186 100" pathLength="100"
-                    style="stroke-dashoffset:45.9"/>
-            </svg>
-            <p class="meter-figure"><span class="num" id="r-ratio">108%</span></p>
+            <div class="meter-dial">
+              <svg viewBox="0 0 200 112" width="200" height="112" aria-hidden="true" focusable="false">
+                <path class="meter-track" d="M 14 100 A 86 86 0 0 1 186 100" pathLength="100"/>
+                <path class="meter-fill" id="meter-fill" d="M 14 100 A 86 86 0 0 1 186 100" pathLength="100"
+                      style="stroke-dashoffset:45.9"/>
+              </svg>
+              <p class="meter-figure"><span class="num" id="r-ratio">108%</span></p>
+            </div>
             <p class="meter-label" id="r-ratio-words">You pay ₹108 in interest for every ₹100 you borrow</p>
           </div>
 
+          <!-- THE FOUR AMOUNTS. The two small colour squares match the bar
+               under them: grey for what you borrow, red for the interest. -->
           <div class="calc-split">
             <p><span class="calc-label">Monthly EMI</span>
                <span class="calc-value num" id="r-emi">₹26,035</span></p>
-            <p class="calc-danger"><span class="calc-label">Interest you pay</span>
+            <p class="calc-danger"><span class="calc-label"><span class="key key-interest"></span>Interest you pay</span>
                <span class="calc-value num" id="r-interest">₹32,48,327</span></p>
-            <p><span class="calc-label">You borrow</span>
+            <p><span class="calc-label"><span class="key key-loan"></span>You borrow</span>
                <span class="calc-value num" id="r-borrow">₹30,00,000</span></p>
             <p><span class="calc-label" id="lbl-total">You pay back in 20 years</span>
                <span class="calc-value num" id="r-total">₹62,48,327</span>
                <span class="calc-words" id="r-words">about ₹62.5 lakh</span></p>
           </div>
 
+          <!-- WHAT YOU REPAY, as one bar: what you borrowed, then the
+               interest on top. -->
           <div class="split-bar" aria-hidden="true">
             <span class="split-loan" id="bar-loan" style="width:48%"></span>
             <span class="split-interest" id="bar-int" style="width:52%"></span>
           </div>
-          <p class="split-key"><span><span class="key key-loan"></span>What you borrowed</span>
-             <span><span class="key key-interest"></span>Interest — <span id="r-share">52%</span> of everything you repay</span></p>
+          <p class="split-key">Interest — <span id="r-share">52%</span> of everything you repay</p>
         </div>
 
       </div>
