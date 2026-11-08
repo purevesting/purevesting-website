@@ -42,7 +42,7 @@
       "mainEntityOfPage": "https://purevesting.com/instruments/sukanya-samriddhi/",
       "image": "https://purevesting.com/assets/og/instruments-sukanya-samriddhi.jpg",
       "datePublished": "2026-09-24",
-      "dateModified": "2026-11-06",
+      "dateModified": "2026-11-08",
       "inLanguage": "en-IN",
       "author": {
         "@type": "Person",
@@ -194,19 +194,31 @@
 
 <main>
 
+  <!-- ============================================================
+       THE ANSWER, DRAWN (MAS, 8 Nov 2026, part 4): a new account and
+       one you already hold, side by side (site.css, section 32).
+       data-share-text is the same answer in sentences, for the "Share as
+       image" picture.
+       ============================================================ -->
+
   <section class="section">
     <div class="wrap">
 
       <h1>Is <span class="t-green">Sukanya Samriddhi Yojana</span> halal?</h1>
 
-      <!-- THE ANSWER BOX: the answer in 2 or 3 short lines, before
-           anything else on the page (README.md, writing rules). -->
-      <div class="answer">
-        <p>Scholars in India say no: it pays interest on money you choose to
-           deposit, like PPF, so it is against Shariah. The catch: money
-           already in an account keeps earning interest until it matures, 21
-           years after opening, and you can close it early only in a few
-           cases.</p>
+      <div class="answer answer-parts" data-share-text="Scholars in India say no: it pays interest on money you choose to deposit, like PPF, so it is against Shariah. The catch: money already in an account keeps earning interest until it matures, 21 years after opening, and you can close it early only in a few cases.">
+        <div class="part">
+          <p class="part-what">Opening or paying in</p>
+          <p class="part-word"><span class="v-mark v-no" aria-hidden="true"></span>Against Shariah</p>
+          <p class="part-why">Scholars in India say so: it pays interest on
+             money you choose to deposit, like PPF.</p>
+        </div>
+        <div class="part">
+          <p class="part-what">An account you already have</p>
+          <p class="part-word"><span class="v-mark v-note" aria-hidden="true"></span>Interest keeps coming</p>
+          <p class="part-why">Until it matures, 21 years after opening. You
+             can close it early only in a few cases.</p>
+        </div>
       </div>
 
       <div class="byline">
@@ -215,26 +227,18 @@
              width="48" height="48" alt="Moin Ali Syed">
         <div>
           <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
-          <div class="meta">Last updated <time datetime="2026-11-06">6 November 2026</time></div>
+          <div class="meta">Last updated <time datetime="2026-11-08">8 November 2026</time></div>
         </div>
       </div>
-
-      <nav class="toc" aria-label="Contents">
-        <strong>On this page</strong>
-        <ol>
-          <li><a href="#how-it-works">How Sukanya Samriddhi works</a></li>
-          <li><a href="#standards">What scholars say</a></li>
-          <li><a href="#stopping">What happens if you stop depositing</a></li>
-          <li><a href="#practice">What people do</a></li>
-        </ol>
-      </nav>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       HOW IT WORKS
+       HOW IT WORKS, AS A DRAWING: your money → where it goes → what
+       you get. data-src: tapping a figure shows its line in Sources.
+       EVERY QUARTER: the rate in "What you get" (TODO.md, 0b).
        ============================================================ -->
 
   <section class="section reveal">
@@ -242,73 +246,68 @@
 
       <h2 id="how-it-works">How Sukanya Samriddhi works</h2>
 
-      <p>Sukanya Samriddhi is a government savings scheme for a girl child,
-         launched in 2015. A parent opens it in the daughter's name, deposits
-         into it for 15 years, and the government adds interest at a rate it
-         sets every quarter.</p>
+      <p>A government savings scheme for a girl child, launched in 2015.</p>
 
-      <div class="table-scroll">
-        <!-- data-src: tapping a figure shows its line in Sources. The rate
-             row points at the rate's own line. Keep the ids. -->
-        <table data-src="src-ssy-rules">
-          <caption class="visually-hidden">How the Sukanya Samriddhi scheme works</caption>
-          <thead>
-            <tr>
-              <th scope="col">How it works</th>
-              <th scope="col">Detail</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Who opens it</td>
-              <td>A parent or guardian, in the name of a daughter under <span class="num">10</span></td>
-            </tr>
-            <tr>
-              <td>Accounts per family</td>
-              <td><span class="num">2</span>, with more allowed for twins or triplets</td>
-            </tr>
-            <tr>
-              <td>Rate</td>
-              <td data-src="src-ssy-rate"><span class="num">8.2%</span> a year, compounded annually, set by the Ministry of Finance each quarter</td>
-            </tr>
-            <tr>
-              <td>Deposits</td>
-              <td><span class="num">₹250</span> minimum and <span class="num">₹1,50,000</span> maximum in a financial year, for <span class="num">15</span> years</td>
-            </tr>
-            <tr>
-              <td>Maturity</td>
-              <td><span class="num">21</span> years from opening — interest keeps being credited until then</td>
-            </tr>
-            <tr>
-              <td>Who runs the account</td>
-              <td>The parent or guardian, until the girl turns <span class="num">18</span></td>
-            </tr>
-            <tr>
-              <td>Taking money out early</td>
-              <td>Up to <span class="num">50%</span> for higher education once she turns 18 or finishes Class 10; full closure early only in specific cases, such as her marriage after 18</td>
-            </tr>
-            <tr>
-              <td>Tax treatment</td>
-              <td>Deduction under Section 80C, tax-free interest, tax-free maturity</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <ol class="money-path">
+        <li class="step" data-src="src-ssy-rules">
+          <div class="mp-head">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.5"/><path d="M6.5 9.5h.01M17.5 15.5h.01"/></svg></span>
+            <h3>Your money</h3>
+          </div>
+          <p>A parent or guardian opens it in the name of a daughter under
+             <span class="num">10</span>, and deposits
+             <span class="num">₹250</span> to <span class="num">₹1,50,000</span>
+             in a financial year, for <span class="num">15</span> years.</p>
+        </li>
+        <li class="step">
+          <div class="mp-head">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5z"/><path d="M5.5 10.5v7M10 10.5v7M14 10.5v7M18.5 10.5v7"/><path d="M3.5 20.5h17"/></svg></span>
+            <h3>Where it goes</h3>
+          </div>
+          <p>Like PPF, into the National Small Savings Fund, which
+             <span class="mark">lends it on to the central and state
+             governments at interest</span>. The
+             <a href="/instruments/ppf/">PPF page</a> explains how.</p>
+        </li>
+        <li class="step" data-src="src-ssy-rate">
+          <div class="mp-head">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9 15l6-6M9.2 9.2h.01M14.8 14.8h.01"/></svg></span>
+            <h3>What you get</h3>
+          </div>
+          <p><span class="num">8.2%</span> a year, compounded annually, set
+             by the Ministry of Finance each quarter. Interest is credited
+             until the account matures, <span class="num">21</span> years
+             from opening.</p>
+          <p>A Section 80C deduction, tax-free interest and tax-free
+             maturity.</p>
+        </li>
+      </ol>
 
-      <p>Like PPF, it is a small savings scheme: deposits go into the
-         National Small Savings Fund, which lends them on to the central and
-         state governments at interest. The
-         <a href="/instruments/ppf/">PPF page</a> explains how.</p>
+      <details class="source">
+        <summary>Read more: the scheme's other rules</summary>
+        <div class="source-body">
+          <ul data-src="src-ssy-rules">
+            <li>Accounts per family: <span class="num">2</span>, with more
+                allowed for twins or triplets.</li>
+            <li>Who runs the account: the parent or guardian, until the girl
+                turns <span class="num">18</span>.</li>
+            <li>Taking money out early: up to <span class="num">50%</span>
+                for higher education once she turns 18 or finishes Class 10;
+                full closure early only in specific cases, such as her
+                marriage after 18.</li>
+          </ul>
+        </div>
+      </details>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       WHAT SCHOLARS SAY
-       Never name who gave a fatwa or ruling: no madrasa, organisation
-       of scholars, Shariah board or mufti (README.md, rule 1). The links
-       are in Sources.
+       WHAT SCHOLARS SAY — one short card per ruling, with its exact
+       words under "What … says". Never name who gave a fatwa or ruling:
+       no madrasa, organisation of scholars, Shariah board or mufti
+       (README.md, rule 1). The links are in Sources.
        ============================================================ -->
 
   <section class="section reveal">
@@ -316,113 +315,124 @@
 
       <h2 id="standards">What scholars say</h2>
 
-      <p>Scholars have ruled on Sukanya Samriddhi by name twice: once a large
-         group of Indian scholars, and once a Shariah board.</p>
+      <p>Scholars have ruled on Sukanya Samriddhi by name twice: once a
+         large group of Indian scholars, and once a Shariah board.</p>
 
-      <h3>About 200 Indian scholars: against Shariah, because it pays interest</h3>
+      <div class="grid grid-2">
 
-      <p>At a three-day meeting reported in March 2019, around 200 Islamic
-         scholars passed a resolution saying the scheme is against Shariah.
-         The reason was the interest itself: the balance grows each year by
-         an interest credit.</p>
+        <div class="card fatwa">
+          <h3>About 200 Indian scholars, 2019</h3>
+          <ul class="says">
+            <li><span class="v-mark v-no" aria-hidden="true"></span><span><strong>Against Shariah,</strong> because it pays interest</span></li>
+          </ul>
+          <p>At a three-day meeting reported in March 2019, around 200
+             Islamic scholars passed a resolution. The reason was the
+             interest itself: the balance grows each year by an interest
+             credit.</p>
+          <details class="source">
+            <summary>What the resolution says</summary>
+            <span class="source-body">
+              "The bank annually increases the amount by [adding] annual interest up
+              to nine percent. It is because that this scheme involves interest, it
+              is clearly un-Islamic."
+              <!-- Checked word for word against the PTI report, 1 Oct 2026. -->
+              — The resolution, as reported by PTI, 30 March 2019.
+            </span>
+          </details>
+        </div>
 
-      <details class="source">
-        <summary>What the resolution says</summary>
-        <span class="source-body">
-          "The bank annually increases the amount by [adding] annual interest up
-          to nine percent. It is because that this scheme involves interest, it
-          is clearly un-Islamic."
-          <!-- Checked word for word against the PTI report, 1 Oct 2026. -->
-          — The resolution, as reported by PTI, 30 March 2019.
-        </span>
-      </details>
+        <div class="card fatwa">
+          <h3>A Shariah board</h3>
+          <ul class="says">
+            <li><span class="v-mark v-no" aria-hidden="true"></span><span><strong>Not Shariah-compliant:</strong> a loan that pays a fixed rate of interest</span></li>
+          </ul>
+          <p>A Shariah board that checks some of India's Shariah mutual
+             funds answers the question on its own site.</p>
+          <details class="source">
+            <summary>What the board says</summary>
+            <span class="source-body">
+              Asked "Sukanya samridhi yojna is halal or haram and why?", the board
+              answers that "investment in Sukanya Samridhi Yojana is Shariah
+              non-compliant", describing it as a debt instrument with fixed
+              interest. Its answer quotes an interest rate of 8.4%, from an earlier
+              quarter — the rate has changed since, but the reasoning does not
+              depend on it.
+              <!-- Checked word for word against the board's page, 1 Oct 2026. -->
+              — Frequently asked questions, 17 September 2022.
+            </span>
+          </details>
+        </div>
 
-      <h3>A Shariah board: not Shariah-compliant</h3>
+      </div>
 
-      <p>A Shariah board that checks some of India's Shariah mutual funds
-         answers the question on its own site: investing in Sukanya Samriddhi
-         is not Shariah-compliant, because it is a loan that pays a fixed rate
-         of interest.</p>
-
-      <details class="source">
-        <summary>What the board says</summary>
-        <span class="source-body">
-          Asked "Sukanya samridhi yojna is halal or haram and why?", the board
-          answers that "investment in Sukanya Samridhi Yojana is Shariah
-          non-compliant", describing it as a debt instrument with fixed
-          interest. Its answer quotes an interest rate of 8.4%, from an earlier
-          quarter — the rate has changed since, but the reasoning does not
-          depend on it.
-          <!-- Checked word for word against the board's page, 1 Oct 2026. -->
-          — Frequently asked questions, 17 September 2022.
-        </span>
-      </details>
-
-      <h3>How this lines up with PPF</h3>
-
-      <p>It works like <a href="/instruments/ppf/">PPF</a>: you choose to
-         deposit money you already own, and it is lent on at a fixed return.
-         That is what the PPF fatwas treat as interest — unlike a compulsory
-         provident fund, cut before your salary reaches you. No fatwa was
-         found saying Sukanya Samriddhi is allowed. If you know of one, send
-         it to <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>.</p>
+      <p class="after-cards">It works like <a href="/instruments/ppf/">PPF</a>:
+         you choose to deposit money you already own, and it is lent on at a
+         fixed return. That is what the PPF fatwas treat as interest — unlike
+         a compulsory provident fund, cut before your salary reaches you. No
+         fatwa was found saying Sukanya Samriddhi is allowed. If you know of
+         one, send it to
+         <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>.</p>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       STOPPING DEPOSITS
+       IF YOU STOP DEPOSITING — what most parents asking need to know.
+       One line on show; what happens in each case under Read more.
        ============================================================ -->
 
   <section class="section reveal">
     <div class="wrap">
 
-      <h2 id="stopping">What happens if you stop depositing</h2>
+      <h2 id="stopping">If you stop depositing</h2>
 
-      <p>This is what most parents asking need to know.
-         <span class="mark">Stopping deposits does not stop the interest.</span></p>
+      <p><span class="mark">Stopping deposits does not stop the
+         interest.</span> If you opened an account years ago, the question is
+         also what to do with the interest that will keep coming, in your
+         daughter's name, for years.</p>
 
-      <div class="table-scroll">
-        <table>
-          <caption class="visually-hidden">What happens to a Sukanya Samriddhi account when deposits stop</caption>
-          <thead>
-            <tr>
-              <th scope="col">If you…</th>
-              <th scope="col">What happens</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Miss the ₹250 minimum in a year</td>
-              <td>The account goes into default. It can be revived until year 15 by paying the missed minimums plus a ₹50 penalty for each year missed. If it is never revived, the whole balance still earns the scheme's rate until the account is closed.</td>
-            </tr>
-            <tr>
-              <td>Keep depositing for the full 15 years</td>
-              <td>Deposits stop after year 15, but interest keeps being credited until year 21.</td>
-            </tr>
-            <tr>
-              <td>Want to close it early</td>
-              <td>Only allowed in specific cases, such as the girl's marriage after 18. There is no general option to close on request.</td>
-            </tr>
-            <tr>
-              <td>Want part of the money for education</td>
-              <td>Up to 50% can be withdrawn once she turns 18 or finishes Class 10, against actual fees.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p>So if you opened an account years ago, the question is not only
-         whether to keep depositing. It is also what to do with the interest
-         that will keep coming, in your daughter's name, for years.</p>
+      <details class="source">
+        <summary>Read more: what happens in each case</summary>
+        <div class="source-body">
+          <div class="table-scroll table-stack">
+            <table>
+              <caption class="visually-hidden">What happens to a Sukanya Samriddhi account when deposits stop</caption>
+              <thead>
+                <tr>
+                  <th scope="col">If you…</th>
+                  <th scope="col">What happens</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Miss the ₹250 minimum in a year</td>
+                  <td data-label="What happens">The account goes into default. It can be revived until year 15 by paying the missed minimums plus a ₹50 penalty for each year missed. If it is never revived, the whole balance still earns the scheme's rate until the account is closed.</td>
+                </tr>
+                <tr>
+                  <td>Keep depositing for the full 15 years</td>
+                  <td data-label="What happens">Deposits stop after year 15, but interest keeps being credited until year 21.</td>
+                </tr>
+                <tr>
+                  <td>Want to close it early</td>
+                  <td data-label="What happens">Only allowed in specific cases, such as the girl's marriage after 18. There is no general option to close on request.</td>
+                </tr>
+                <tr>
+                  <td>Want part of the money for education</td>
+                  <td data-label="What happens">Up to 50% can be withdrawn once she turns 18 or finishes Class 10, against actual fees.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       WHAT PEOPLE DO
+       WHAT PEOPLE DO — icon cards on a blue band.
        ============================================================ -->
 
   <section class="section band reveal">
@@ -435,41 +445,38 @@
         <div class="card card-icon">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12h8"/></svg></span>
           <h3>Not opening an account</h3>
-          <p>Parents who follow the rulings above and haven't opened one save
-             for the same goal another way, knowing that no Shariah-compliant
-             option guarantees a return the way this scheme does.</p>
+          <p>Parents who follow the rulings save for the same goal another
+             way, knowing that no Shariah-compliant option guarantees a return
+             the way this scheme does.</p>
         </div>
 
         <div class="card card-icon">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M5 12.5v8h14v-8M12 8.5v12"/><path d="M12 8.5C10.5 5.5 7 5 7 7.2 7 8.5 12 8.5 12 8.5zM12 8.5c1.5-3 5-3.5 5-1.3 0 1.3-5 1.3-5 1.3z"/></svg></span>
-          <h3>Keeping the account, giving the interest away</h3>
-          <p>Neither ruling above talks about an account you already have.
-             Some parents keep it and give the interest to the poor each year
-             — what a fatwa on PPF describes. That fatwa was about PPF, not
-             Sukanya Samriddhi itself.</p>
+          <h3>Keeping it, giving the interest away</h3>
+          <p>Some keep the account and give the interest to the poor each
+             year — what a fatwa on PPF describes. Neither ruling above is
+             about an account you already have.</p>
         </div>
 
         <div class="card card-icon">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.5"/><path d="M6.5 9.5h.01M17.5 15.5h.01"/></svg></span>
           <h3>Paying only the minimum</h3>
-          <p>Keeping the account alive at ₹250 a year avoids default
-             penalties while adding as little new money as the rules allow.
-             It does not reduce the interest already building up on the
-             balance.</p>
+          <p>₹250 a year avoids default penalties with as little new money as
+             the rules allow. It doesn't reduce the interest already building
+             up.</p>
         </div>
 
         <div class="card card-icon">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19V6.5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H8.5z"/><path d="M10.2 8.6a2 2 0 1 1 2.5 1.9c-.4.1-.7.5-.7.9v.4"/><path d="M12 13.4h.01"/></svg></span>
           <h3>Asking with your daughter in mind</h3>
-          <p>The account legally belongs to your daughter, not to you. People
-             who ask a scholar usually say this first, because what can be
-             done with a child's money is its own question.</p>
+          <p>The account legally belongs to your daughter, not to you, and
+             what can be done with a child's money is its own question.</p>
         </div>
 
       </div>
 
-      <p>Your passbook, from the post office or bank, shows the interest
-         separately from your deposits.</p>
+      <p class="after-cards">Your passbook, from the post office or bank,
+         shows the interest separately from your deposits.</p>
 
       <p class="ask-line">Still have a doubt? <a href="/ask/">Ask me</a></p>
 
@@ -489,9 +496,8 @@
       <ul class="route-list">
         <li><a href="/instruments/ppf/">Is PPF halal?</a></li>
         <li><a href="/instruments/epf/">Is EPF halal?</a></li>
-        <li><a href="/instruments/nps/">Is NPS halal?</a></li>
         <li><a href="/instruments/digital-gold/">Is digital gold halal?</a></li>
-        <li><a href="/instruments/">See every instrument checked so far</a></li>
+        <li><a href="/instruments/">Every instrument, checked</a></li>
       </ul>
 
     </div>
@@ -500,7 +506,7 @@
 
   <!-- ============================================================
        SOURCES — one closed list (README.md, rule 5). The ids are what
-       the table above points at (data-src). Link text never names who
+       the figures above point at (data-src). Link text never names who
        gave a ruling (rule 1).
        ============================================================ -->
 
