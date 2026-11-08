@@ -69,6 +69,30 @@
   font-display: swap;
 }
 
+/* THE ₹ SIGN (shows on every price, in both fonts). Google splits each
+   font into parts by alphabet, and ₹ is not in the "latin" part above,
+   so it used to come from the phone's own font and looked out of place.
+   These two tiny files (1 KB each) hold only ₹, taken from the same two
+   fonts. "unicode-range" means the browser fetches one only on a page
+   that actually shows ₹, and uses it for ₹ alone. */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('/assets/fonts/plus-jakarta-sans-rupee-wght.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+20B9;
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/assets/fonts/bricolage-grotesque-rupee-wght.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+20B9;
+}
+
 
 /* 2. TOKENS ===============================================================
    Every colour and font is named once here, then referenced below as
