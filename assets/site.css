@@ -645,6 +645,10 @@ input:focus-visible {
 
 .site-footer a:hover { text-decoration: underline; }
 
+/* A page that ends with a blue band (/instruments/, the hub pages): the
+   footer starts right under the band, with no cream strip between. */
+body:has(main > .band:last-child) .site-footer { margin-top: 0; }
+
 /* The footer's button keeps its button colours: the general footer-link
    rule above would otherwise turn its text cream. */
 .site-footer .btn { color: var(--white); }
@@ -3111,8 +3115,9 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .card-link:hover { border-color: var(--sky); box-shadow: var(--shadow); }
 .card-link:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
 
-/* /instruments/: one card per instrument — its icon and name, where the
-   rulings land, and who decides you hold it. The whole card is the link. */
+/* /instruments/: one card per instrument (MAS, 8 Nov 2026, part 4) — its
+   icon and name, its answer as small marks (section 32), and its answer
+   in one line. The whole card is the link. */
 .inst-cards {
   display: grid;
   gap: 1rem;
@@ -3135,18 +3140,27 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .inst p { grid-column: 1 / -1; color: var(--ink-2); font-size: 0.95rem; }
 .card-link.inst:hover .inst-name { text-decoration: underline; text-underline-offset: 4px; }
 
-.inst-who {
-  padding-top: 0.6rem;
-  border-top: 1px solid var(--line);
-  font-size: 0.88rem;
+/* The small marks under the name: one per part of the answer. */
+.inst-marks {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.inst-who span {
-  display: block;
-  font-size: 0.75rem;
+.inst-marks li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.86rem;
   font-weight: 700;
-  color: var(--sky-deep);
+  color: var(--ink);
 }
+
+.inst-marks .v-mark { width: 1.4rem; height: 1.4rem; border-width: 1.5px; background-size: 0.85rem; }
 
 @media (min-width: 46em) {
   .inst-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
