@@ -11,10 +11,16 @@ section 0d.
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 7 November 2026 (part 3 of 4: fewer words, more
-graphics — the screener's big answer, the long lists behind one button,
-the fund cards, the two-step drawing, the calculators on one screen, a
-video near the top where one fits; see section 0g). Before that, on
+Last updated: 8 November 2026 (part 4 of 4, the last: the five
+instrument pages with the answer drawn, how each works as a drawing, the
+fatwas as cards; /instruments/ as one-line cards; the hub, people and
+legal pages much shorter; the ₹ sign in our fonts; the calculators'
+whole answer on a small phone's first screen; the video's new title; the
+steps for an automatic reply on /ask/ (section 0, item 14); clear code
+and a README guide; see section 0h). On 7 November: part 3 of 4, fewer
+words, more graphics — the screener's big answer, the long lists behind
+one button, the fund cards, the two-step drawing, the calculators on one
+screen, a video near the top where one fits (section 0g). Before that, on
 6 November: part 2 of 4, the look — sky blue, drawings, light motion,
 two fonts, the new menu, footer and home page (the look's rules are in
 README.md under the writing rules; section 0f); and part 1 of 4, the cuts —
@@ -190,7 +196,10 @@ Each one says what to send or change, and where.
       nothing else to change. To feature an older video on the home page,
       move its line to the top. The list was filled on 24 Oct with the 15
       newest uploads from the channel's feed plus two older ones; videos
-      older than that can be added at the bottom.
+      older than that can be added at the bottom. **Due now (8 Nov):** four
+      Shorts are newer than the list (section 0h, "Noticed"). If a new
+      video fits a page's topic, ask the website chat to put it near the
+      top of that page too (as on NPS and digital gold).
 - [ ] **NSE factsheet figures.** NSE replaces its factsheets at the same web
       address at the start of each month. DONE for 30 September 2026 (in the
       1 Oct batch): 204 of the 501 companies pass (the Nifty 500 listed 501
@@ -266,16 +275,19 @@ Each one says what to send or change, and where.
 - [ ] **Small savings rates.** Around 31 Mar, 30 Jun, 30 Sep and 31 Dec the
       Ministry of Finance announces the next quarter's rates. Open the
       Department of Economic Affairs link (in the PPF page's Sources part),
-      then update the rate in the table, the quarter in the Sources part,
-      and the "Last updated" date and dateModified on the PPF and Sukanya
-      pages (and their dates in `sitemap.xml`).
+      then update the rate in "What you get" (the third card of "How PPF
+      works" and of "How Sukanya Samriddhi works", since 8 Nov), the
+      quarter in the Sources part, and the "Last updated" date and
+      dateModified on the PPF and Sukanya pages (and their dates in
+      `sitemap.xml`).
 
 ### Every few months
 
 - [ ] **Digital gold storage terms.** Providers change these without
       notice. Re-open the three terms pages linked in the gold page's
       Sources part and check the free periods (2 / 5 / 5 years) and the
-      10-year delivery rule (now also a sentence under the table).
+      10-year delivery rule (both under "Read more: storage, delivery and
+      who regulates it", since 8 Nov).
 - [ ] **The "Stop the genocide" list.** Check
       github.com/TechForPalestine/boycott-israeli-consumer-goods-dataset for
       new changes (last changed 19 Feb 2024 when copied on 6 Oct 2026;
@@ -485,11 +497,18 @@ the way; each needs a decision, or a session of its own.
       boycott update" brings the new ones. The 134 links to
       buyisraelitech.com couldn't be checked from the session at all (that
       site's security certificate fails the session's checks): open one or
-      two in a browser.
+      two in a browser. Checked again 8 Nov (part 4): 8 of the dataset's
+      links don't open (adidasunderwear.com twice, bdsmovement.net's
+      L'Oréal page, heseg.com, jnjcareers.co.il, calcalistech.com,
+      foa.org.uk's Pret page, tevauk.com), and buyisraelitech.com's 134
+      still fail the certificate check here.
 - [ ] **Two government links couldn't be checked from the session**, for
       the same certificate reason: the Department of Economic Affairs'
       small savings page (dea.gov.in, on the PPF and Sukanya pages) and the
       Sukanya scheme rules (nsiindia.gov.in). Open each once in a browser.
+      Still the same on 8 Nov; and India Code (indiacode.nic.in, the Code on
+      Social Security on the EPF page) took too long to answer from here —
+      open that one too.
       About 60 other outside links (Reuters, Instagram, Bloomberg, Value
       Research and others) refuse automated checks; that is normal for big
       sites and doesn't mean they're broken. Every other outside link
@@ -668,9 +687,8 @@ in each page's old text is still on the page).
 
 - [ ] **The October NSE factsheets are out** (dated 30 Oct 2026; still
       204 companies): the monthly update in section 0b is due.
-- [ ] /tools/ still has its "Check what I already hold — soon" card. The
-      "soon" items were removed from the home page as asked; say if this
-      one should go too.
+- [x] ~~/tools/ still has its "Check what I already hold — soon" card.~~
+      DONE 8 Nov (part 4): gone, as MAS asked.
 - [ ] The screener sends "Jio" to Jio Financial Services (JIOFIN). Someone
       typing "Jio" may mean Reliance Jio, the phone company, which belongs
       to Reliance Industries. The answer names the company it found, so it
@@ -680,13 +698,19 @@ in each page's old text is still on the page).
       picture still use the old cream-and-green look, without blue. They
       work as they are; remaking them is a small job for later
       (`og-template.html` no longer uses DM Mono).
-- [ ] The two fonts don't contain ₹ or →, so those come from the phone's
-      own font, as before. A font file with ₹ added would make prices look
-      more even.
-- [ ] Charts that could come next: NPS's three asset classes, the gold
-      formats. (Done in part 3: the compare page's index returns, as a
-      chart; and its fund returns, as small bars on each fund's card — MAS
-      asked for them, 6 Nov. They stay in fund-size order, one colour, one
+- [x] ~~The two fonts don't contain ₹ or →~~ — ₹ DONE 8 Nov (part 4): two
+      tiny files (`assets/fonts/…-rupee-wght.woff2`, 1 KB each) hold the ₹
+      from the same two fonts, used for ₹ alone. The → is in neither font
+      at all (Google's files don't have it), so the three small "→" links
+      (the home page's "See the full picture →" and "See all videos →",
+      and the boycott card) still use the phone's own arrow. They could
+      become small drawings if wanted.
+- [x] ~~Charts that could come next: NPS's three asset classes, the gold
+      formats.~~ DONE 8 Nov (part 4): the gold formats are four small cards;
+      NPS's three classes sit in its "How NPS works" drawing. (Done in
+      part 3: the compare page's index returns, as a chart; and its fund
+      returns, as small bars on each fund's card — MAS asked for them,
+      6 Nov. They stay in fund-size order, one colour, one
       scale for every card, so they don't read as a ranking.)
 
 ---
@@ -709,7 +733,8 @@ which MAS asked to drop).
       box. All 501 companies behind one button, "See all 501 companies"
       (a `<details>`, so every name is still in the page for Google), with
       two columns, the company and the answer, and All / Halal / Not halal
-      inside. A link to /screener/#list opens it (site.js, part 6).
+      inside. A link to /screener/#list opens it (site.js, part 7 since
+      8 Nov).
       `scripts/update_screener.py` writes the new rows (checked: fed the
       same data, it rewrites the page with no difference).
 - [x] **Privacy:** the video pictures now also show on the screener, halal
@@ -787,20 +812,151 @@ which MAS asked to drop).
 
 ### Noticed on 6–7 Nov (part 3) — not changed
 
-- [ ] `videos/list.js` calls the long video "Same Stock, Opposite Answer
-      for Halal Stocks"; on YouTube it is now "One Number Can Make a Halal
-      Stock Haram". The site uses the list's title everywhere (the video
-      cards on pages are written from it). Change the line in the list,
-      and the two cards on /screener/ and /methodology/, if the new title
-      should show.
-- [ ] On a small 360×800 phone, the last line of the SIP and purification
-      answers sits just under the first screen (their big figures and
-      charts are on it); on the loan calculator at 390×844, "about ₹62.5
-      lakh" and the borrowed / interest bar are just under it (the meter
-      and the four amounts are on it).
+- [x] ~~`videos/list.js` calls the long video "Same Stock, Opposite Answer
+      for Halal Stocks"~~ — DONE 8 Nov (part 4): "One Number Can Make a
+      Halal Stock Haram" in the list and on /screener/ and /methodology/.
+- [x] ~~On a small 360×800 phone, the last line of the SIP and
+      purification answers sits just under the first screen~~ — DONE
+      8 Nov (part 4): all three answers end on the first screen (section
+      0h).
 - [ ] Still open from part 2: the October NSE factsheets (the monthly job
-      is due), the "soon" card on /tools/, "Jio" in the screener, the
-      preview images' old look, ₹ not in the fonts.
+      is due) and "Jio" in the screener. (The "soon" card, the preview
+      images' old look and ₹: see section 0f — the "soon" card and ₹ are
+      done; the preview images are still open.)
+
+---
+
+## 0h. Part 4 of 4 — the instrument pages, shorter pages, clear code (8 Nov 2026)
+
+MAS's brief (8 Nov): the five instrument pages start with the answer as a
+simple graphic, show how each works as a small drawing, the fatwas as
+short cards and what people do as icon cards, with a matching video near
+the top; /instruments/ as one card per instrument; the hub, people and
+legal pages in the new look and much shorter; an automatic reply on
+/ask/; clear code and a README guide; and four items from the "Noticed"
+lists. Part 4 changed how things are shown and arranged, and the code's
+names and comments — no fact, figure or fatwa wording changed (checked by
+script: every number and every quote in each old page is still on the
+page; the corrections log's entries and the legal pages' paragraphs are
+word for word under "Read more").
+
+### Done (one commit per step, pushed to main)
+
+- [x] **₹ in our fonts.** Two 1 KB files hold the ₹ from each font
+      (`assets/fonts/…-rupee-wght.woff2`), used for ₹ alone and fetched
+      only on a page that shows one.
+- [x] **The long video's new title**, "One Number Can Make a Halal Stock
+      Haram", in `videos/list.js` and on /screener/ and /methodology/.
+- [x] **Calculators on a small phone:** the whole answer now ends on the
+      first screen of a 360×800 phone — SIP at 770px, loan at 781px,
+      purification at 781px (they were 853, 970 and 881). The loan's dial
+      sits beside its sentence on a phone; its colour squares moved onto
+      "You borrow" and "Interest you pay".
+- [x] **EPF, PPF, NPS, Sukanya Samriddhi, digital gold:** the answer drawn
+      (the parts side by side, each with a sign — ✓ ✗ ⚖ ? ! — and the
+      answer in a word or two); "How … works" as a drawing, your money →
+      where it goes → what you get (EPF's ranges as bars inside it); "What
+      scholars say" as one short card per fatwa ("a fatwa from India", no
+      names), its exact words under "What the fatwa says"; "What people
+      do" as shorter icon cards; long details under "Read more"; Sources
+      closed. NPS has my Short "Kya Muslim NPS me invest kar sakte hai? Is
+      it halal?" near the top, digital gold "Dhanteras pe gold lene se
+      pehle ye dekh lo!". On a 360px phone: EPF 9,332 → 6,183 pixels, PPF
+      7,981 → 5,799, NPS 11,320 → 5,851, Sukanya 7,892 → 5,810, gold
+      11,098 → 7,588. The gold page's five-column table became four cards.
+- [x] **/instruments/:** one card per instrument — its name, its answer as
+      the same small signs, and one line.
+- [x] **Shorter pages:** Tools (the "soon" card gone; question tiles),
+      Learn, Videos (half as long on a phone), Newsletter, Ask (feedback
+      behind "Send feedback instead"), About, App (each phone's steps
+      behind a toggle, the reader's own opened), Corrections (one line per
+      fix, 8,678 → 4,015 pixels), Disclaimer, Privacy and the 404 page.
+- [x] **The automatic reply on /ask/:** the steps are section 0, item 14
+      (it needs MAS's Web3Forms login and its paid plan).
+- [x] **Clear code:** plain names everywhere (sc-… → search-…, bc-… →
+      boycott-…, calc-… → calculator-…, the calculators' p, r, y → amount,
+      yearlyReturn, years…), a "Shows on:" comment on every part of
+      site.css and site.js, and README.md as a guide (what each file does,
+      how to add a page, change a colour, change a number, the building
+      blocks). Checked: every page's screenshot the same pixel for pixel
+      before and after, the tools' answers the same (31 checks), and both
+      monthly scripts rewrite their pages exactly as they are.
+- [x] **Final check:** every page at 360, 390 and 1280px with everything
+      opened — nothing slides sideways or sticks out, no script errors;
+      every link inside the site works; structured data parses; one
+      header and one footer on all 28 files; dates and `sitemap.xml`
+      updated (8 Nov for the 21 pages whose words changed).
+
+### Decided along the way — say if you want any of these the other way
+
+- **The answers' short words are mine:** EPF "Compulsory EPF — Scholars
+  differ" and "VPF, by choice — Most say riba"; PPF "The interest — Riba"
+  and "The account — You may keep it"; NPS "You may take them", "Give it
+  to the poor", "No fatwa found"; Sukanya "Against Shariah" and "Interest
+  keeps coming"; gold "The question is possession, not interest", then
+  "Gold on the spot" and "Raise concerns". On gold, the ✓ marks what the
+  standard accepts, not any app. The line under each is the old answer's
+  own words, and "Share as image" still shows the old answer word for
+  word (it is kept in the card's `data-share-text`: change both together).
+- **The signs:** ✓ green = you may; ✗ grey = riba (never red); scales =
+  scholars differ; dashed ? = no fatwa found; blue ! = good to know; – =
+  not asked.
+- **EPF:** the "where they agree" table became the two small signs on
+  each fatwa card; "Which part did you choose?" became the list in "Your
+  money"; "India's EPF has no Shariah option" stays on show.
+- **Videos:** for gold, the Dhanteras Short (about buying on the spot, and
+  digital gold apps) rather than "Can Muslims Invest in Gold?" (22
+  seconds, general). The channel has no EPF, PPF or Sukanya video, so
+  those pages have none.
+- **Cut from the hub and people pages** (all still one tap away): the
+  "Who decides you hold it" lines and the "Start with EPF / Then PPF"
+  cards on /instruments/; the YouTube and Instagram tiles on /learn/ (in
+  every footer); "On this site" on /about/; "New here? Start with these"
+  on /newsletter/.
+- **Words that are mine:** the tool tiles' questions ("What could my SIP
+  grow to?"…), the nine one-line titles in the corrections log, the
+  one-line summaries on the disclaimer and privacy cards (the full
+  paragraphs are word for word under "Read more"; "The first sentence
+  sits at the foot of every page" went, as it only explained the page).
+- **Calculators:** purification's "Three common ways to work it out can
+  differ a lot" moved from the opening line to the note under the bars,
+  and "to start" went from the line above the boxes. The fit was checked
+  the way parts 2 and 3 measured it (the whole 360×800 screen). On a real
+  phone the browser's own bars take about 60–80 pixels, so on the smallest
+  phones the last line may still sit just under the address bar; fitting
+  under that too would need a shorter header on the calculator pages.
+- **On a phone, an icon card puts its icon beside its title** (every page).
+  /videos/ cards are white now: the dark green is for the footer and the
+  home page's videos band only.
+- **Dates:** 8 Nov on every page whose words changed (the screener and
+  methodology pages too, for the video's new title; the home page in the
+  sitemap). The SIP, halal stocks, mutual funds and boycott pages kept
+  theirs.
+- **Names:** the service worker's `pv-…` storage names were left as they
+  are: renaming them would strand phones' saved copies.
+
+### Noticed on 8 Nov (part 4) — not changed
+
+- [ ] **Four Shorts are newer than `videos/list.js`.** To show them, paste
+      these lines at the top of the list — the home page then shows the
+      first three of them instead of "One Number Can Make a Halal Stock
+      Haram"; to keep that one on the home page, paste them just under it:
+      ```
+      https://www.youtube.com/shorts/yeVK3mEt4-4 | First salary ka kya karein? 3 steps (halal)
+      https://www.youtube.com/shorts/fNwefBr3kcA | Dhanteras pe gold lene se pehle ye dekh lo!
+      https://www.youtube.com/shorts/jwVKARVdacI | Halal investors will survive the AI bubble?
+      https://www.youtube.com/shorts/C6ozSMDB9bw | Muslim investing is very big market now!
+      ```
+- [ ] **No video yet for EPF, PPF or Sukanya Samriddhi** — three topics for
+      Shorts. Once one is up, a card goes near the top of its page.
+- [ ] **→ isn't in either font** (section 0f): three small links still use
+      the phone's own arrow.
+- [ ] **India Code** (the EPF page's Code on Social Security link) didn't
+      answer from here; open it once (section 0d, with dea.gov.in and
+      nsiindia.gov.in).
+- [ ] Still open from earlier parts: the October NSE factsheets (the
+      monthly job is due), "Jio" in the screener, the link pictures' old
+      look, the five titles over 60 characters (section 0d).
 
 ---
 
@@ -1163,7 +1319,8 @@ In the order they matter, from the original plan.
       **REPLACED 6 Nov:** tables get no share button any more (see the item
       above), and the "What each fund is" table is gone from the page.
 - [x] ~~**Tap a number to see its source and date**~~ — DONE 5 Oct, on every
-      page, by `assets/site.js` (section 2 of that file explains it). Each
+      page, by `assets/site.js` (part 3 of that file explains it, since
+      8 Nov; it was section 2). Each
       figure takes the source note nearest to it; `data-src` points a
       figure, a column or a table at a specific note instead, and
       `data-src="none"` marks something that isn't a sourced figure (the
@@ -1329,16 +1486,19 @@ Things MAS flagged while reviewing pages. Both done.
       1. **Zakat on shares and mutual funds** — the channel already covers
          Zakat, and people search for it by name, especially before
          Ramadan;
-      2. **Is a mutual fund SIP halal?** — the home page's "soon" line;
+      2. **Is a mutual fund SIP halal?** (it was a "soon" line on the
+         home page until 6 Nov);
       3. **The full list of the 204 companies** on /halal-stocks/, from
-         NSE's monthly constituent file (adds a monthly job);
+         NSE's monthly constituent file (adds a monthly job) — note that
+         /screener/'s "See all 501 companies" already lists them, with a
+         "Halal" filter, so this may not be needed: MAS's call;
       4. **Interest in loans and EMIs** — on the channel, not on the site;
       5. **Purevesting GPT** — once MAS sends the link (section 0).
-- [ ] When each page goes live: turn its greyed-out "soon" line on the home
-      page into a real link, turn its row on `/instruments/` into a link,
-      add it to the right list in the header menu (and the footer, if it is
-      a main page) on every page, and add it to `sitemap.xml` (the file
-      explains how).
+- [ ] When each page goes live: follow "How to add a page" in README.md
+      (since 8 Nov) — a card on its hub page (`/instruments/`, `/tools/`
+      or `/learn/`), one line in the right menu list on every page,
+      `sitemap.xml`, and its link picture. (There are no "soon" lines or
+      table rows any more.)
 - [x] ~~**Header nav.**~~ DONE 24 Sep. Every page now shows Instruments |
       Compare | Methodology | Newsletter in the header, and the same four in
       the footer. The compare page and `_template.html` got the missing
