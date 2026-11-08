@@ -118,18 +118,18 @@ def render(entries):
         urls = []
         for t in e['texts']:
             urls += source_urls(t)
-        count = f'<span class="bc-count">{len(brands)} brand{"s" if len(brands) != 1 else ""}</span>' if brands else ''
-        tags = ''.join(f'<span class="bc-tag">{REASON_WORDS.get(r, r)}</span>' for r in sorted(e['reasons']))
-        by = ('<p class="bc-by">Why it\'s listed:</p>'
-              f'<p class="bc-reasons">{tags}</p>' if tags else
-              '<p class="bc-by">No reason given in the list.</p>')
-        brand_line = (f'<p class="bc-brands"><strong>Brands listed:</strong> {html.escape(", ".join(brands))}</p>' if brands else '')
+        count = f'<span class="boycott-count">{len(brands)} brand{"s" if len(brands) != 1 else ""}</span>' if brands else ''
+        tags = ''.join(f'<span class="boycott-reason">{REASON_WORDS.get(r, r)}</span>' for r in sorted(e['reasons']))
+        by = ('<p class="boycott-why">Why it\'s listed:</p>'
+              f'<p class="boycott-reasons">{tags}</p>' if tags else
+              '<p class="boycott-why">No reason given in the list.</p>')
+        brand_line = (f'<p class="boycott-brands"><strong>Brands listed:</strong> {html.escape(", ".join(brands))}</p>' if brands else '')
         links = source_links(urls)
         src = (f'<p class="source-note">Sources: {", ".join(links)}</p>' if links else
                '<p class="source-note">No sources given in the list.</p>')
-        out.append(f'          <details class="bc-entry" data-names="{html.escape(names)}">'
-                   f'<summary><span class="bc-name">{html.escape(e["title"])}</span>{count}</summary>'
-                   f'<div class="bc-body">{by}{brand_line}{src}</div></details>')
+        out.append(f'          <details class="boycott-entry" data-names="{html.escape(names)}">'
+                   f'<summary><span class="boycott-name">{html.escape(e["title"])}</span>{count}</summary>'
+                   f'<div class="boycott-body">{by}{brand_line}{src}</div></details>')
     return out
 
 def write(rows, n_entries, n_companies, n_brands):
@@ -139,9 +139,9 @@ def write(rows, n_entries, n_companies, n_brands):
                    lambda m: m.group(1) + '\n' + '\n'.join(rows) + '\n' + m.group(2), s, flags=re.S)
     if n != 1:
         sys.exit('Stopped: could not find the BOYCOTT LIST markers.')
-    s = re.sub(r'<span class="num" data-bc-entries>\d+</span>', f'<span class="num" data-bc-entries>{n_entries}</span>', s)
-    s = re.sub(r'<span class="num" data-bc-brands>\d+</span>', f'<span class="num" data-bc-brands>{n_brands}</span>', s)
-    s = re.sub(r'<span class="num" data-bc-companies>\d+</span>', f'<span class="num" data-bc-companies>{n_companies}</span>', s)
+    s = re.sub(r'<span class="num" data-boycott-entries>\d+</span>', f'<span class="num" data-boycott-entries>{n_entries}</span>', s)
+    s = re.sub(r'<span class="num" data-boycott-brands>\d+</span>', f'<span class="num" data-boycott-brands>{n_brands}</span>', s)
+    s = re.sub(r'<span class="num" data-boycott-companies>\d+</span>', f'<span class="num" data-boycott-companies>{n_companies}</span>', s)
     open(p, 'w', encoding='utf-8').write(s)
     print(f'Done: {n_entries} entries ({n_companies} companies, {n_brands} brands marked "avoid").')
 

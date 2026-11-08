@@ -191,7 +191,7 @@
   <section class="section">
     <div class="wrap">
 
-      <h1>How do you check if a stock is <span class="t-green">halal</span>?</h1>
+      <h1>How do you check if a stock is <span class="word-green">halal</span>?</h1>
 
       <!-- THE ANSWER BOX: the answer in 2 or 3 short lines, before
            anything else on the page (README.md, writing rules). No
@@ -254,7 +254,7 @@
         </li>
 
         <li class="step flow-step" id="step-1" data-src="src-step1">
-          <div class="flow-head"><span class="step-n" aria-hidden="true">1</span>
+          <div class="flow-head"><span class="step-number" aria-hidden="true">1</span>
             <h3>What the company does</h3></div>
           <p>Its main business must be halal. NSE screens out a company that is
              "primarily into":</p>
@@ -275,7 +275,7 @@
         <li class="flow-pass-on">Halal business</li>
 
         <li class="step flow-step" id="step-2">
-          <div class="flow-head"><span class="step-n" aria-hidden="true">2</span>
+          <div class="flow-head"><span class="step-number" aria-hidden="true">2</span>
             <h3>How it borrows and keeps its cash</h3></div>
           <p>It must stay under NSE's three limits:</p>
           <div class="bars" data-src="src-nse">
@@ -438,8 +438,8 @@
          it owns ₹8,000 crore of assets, and it has borrowed ₹2,200 crore at
          interest. Here is how its debt alone looks under each screen.</p>
 
-      <div class="calc-fields">
-        <p class="calc-hint" id="calc-hint" aria-live="polite">Change any of the three numbers and the bars below update.</p>
+      <div class="calculator-fields">
+        <p class="calculator-hint" id="hint-line" aria-live="polite">Change any of the three numbers and the bars below update.</p>
         <div>
           <label for="in-mcap">Market value of all its shares (₹ crore)</label>
           <input id="in-mcap" type="number" value="10000" min="0" step="100" inputmode="decimal">
@@ -592,19 +592,19 @@
       <!-- Three things stand out, as three small cards. -->
       <div class="grid grid-3 stand-out">
         <div class="card">
-          <p class="stand-num"><span class="big-num num">0.18%</span></p>
+          <p class="stand-out-number"><span class="big-number num">0.18%</span></p>
           <h3>Financial services all but disappear</h3>
           <p>Step 1 removes banks, insurers and lenders outright.</p>
         </div>
         <div class="card">
-          <p class="stand-num"><span class="big-num num">0.13%</span></p>
+          <p class="stand-out-number"><span class="big-number num">0.13%</span></p>
           <h3>Power barely appears</h3>
           <p>Power is not on step 1's list: its near-absence comes from the
              money tests in step 2. Power plants are usually built with
              borrowed money.</p>
         </div>
         <div class="card">
-          <p class="stand-num"><span class="big-num num">13.07%</span></p>
+          <p class="stand-out-number"><span class="big-number num">13.07%</span></p>
           <h3>A few sectors carry a lot</h3>
           <p>The four IT companies in the index's top ten — Infosys, TCS,
              HCL Technologies and Tech Mahindra — make up this much of it
@@ -782,7 +782,7 @@
         <h2>HalalEdge, one email a week</h2>
         <p>One real money question, worked through with its sources. Free.</p>
       </div>
-      <a class="btn" href="/newsletter/">Subscribe free</a>
+      <a class="button" href="/newsletter/">Subscribe free</a>
     </div>
 
     <!-- A FEW LINKS (MAS, 6 Nov 2026: a short, clean footer). The menu
@@ -841,7 +841,7 @@
   var mcap   = document.getElementById('in-mcap');
   var assets = document.getElementById('in-assets');
   var debt   = document.getElementById('in-debt');
-  var hint   = document.getElementById('calc-hint');
+  var hint   = document.getElementById('hint-line');
   if (!mcap || !assets || !debt || !hint) return;
 
   // The line above the boxes. It swaps to the second message while a box

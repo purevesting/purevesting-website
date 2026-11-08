@@ -68,13 +68,13 @@ def build(n500_text, shariah_text):
         sym, name = c['Symbol'].strip(), c['Company Name'].strip()
         if sym in weight:
             status = '<span class="chip chip-pass">&#10003; Halal</span>'
-            row_cls = 'in'
+            row_class = 'row-halal'
         else:
             status = '<span class="chip chip-fail">&#10007; Not halal</span>'
-            row_cls = 'out'
+            row_class = 'row-not-halal'
         # Two columns (MAS, 6 Nov 2026, part 3): the company and the answer.
         # The symbol rides along as data-sym, so the search still finds it.
-        rows.append(f'                <tr class="sc-{row_cls}" data-sym="{html.escape(sym)}"><td>{html.escape(name)}</td>'
+        rows.append(f'                <tr class="{row_class}" data-sym="{html.escape(sym)}"><td>{html.escape(name)}</td>'
                     f'<td>{status}</td></tr>')
         squares.append(sym in weight)
     return rows, squares, as_of, len(weight), len(companies)

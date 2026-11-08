@@ -180,7 +180,7 @@
   <section class="section">
     <div class="wrap">
 
-      <h1>How many Indian stocks are <span class="t-green">halal</span>?</h1>
+      <h1>How many Indian stocks are <span class="word-green">halal</span>?</h1>
 
       <!-- THE ANSWER BOX, in two short lines, then straight away the
            graphic (MAS, 6 Nov 2026, part 3: "lead with the graphic").
@@ -204,20 +204,20 @@
 
         <div class="stat-pair">
           <p class="stat is-active" data-stat="count">
-            <span class="big-num num" data-count>40.7%</span>
+            <span class="big-number num" data-count>40.7%</span>
             <span class="stat-words">of the companies pass:
               <span class="num" data-screener-in>204</span> of
               <span class="num" data-screener-all>501</span></span>
           </p>
           <p class="stat" data-stat="value">
-            <span class="big-num num" data-count>31.4%</span>
+            <span class="big-number num" data-count>31.4%</span>
             <span class="stat-words">of the market value passes</span>
           </p>
         </div>
 
         <div class="grid-switch" role="group" aria-label="Draw the squares by">
-          <button type="button" class="switch-btn" data-view="count" aria-pressed="true">By companies</button>
-          <button type="button" class="switch-btn" data-view="value" aria-pressed="false">By market value</button>
+          <button type="button" class="switch-button" data-view="count" aria-pressed="true">By companies</button>
+          <button type="button" class="switch-button" data-view="value" aria-pressed="false">By market value</button>
         </div>
 
         <!-- One square per company, A to Z, filled if it passes ("by market
@@ -330,7 +330,7 @@
       <div class="step-cards">
 
         <div class="step">
-          <span class="step-n" aria-hidden="true">1</span>
+          <span class="step-number" aria-hidden="true">1</span>
           <h3>The business</h3>
           <p>A company that is "primarily into" conventional finance,
              alcohol, pork, tobacco, gambling, narcotic drugs, or the kinds
@@ -339,7 +339,7 @@
         </div>
 
         <div class="step">
-          <span class="step-n" aria-hidden="true">2</span>
+          <span class="step-number" aria-hidden="true">2</span>
           <h3>The money</h3>
           <p>A company that passes the first test must also stay under these
              limits, checked every month.</p>
@@ -530,7 +530,7 @@
         <h2>HalalEdge, one email a week</h2>
         <p>One real money question, worked through with its sources. Free.</p>
       </div>
-      <a class="btn" href="/newsletter/">Subscribe free</a>
+      <a class="button" href="/newsletter/">Subscribe free</a>
     </div>
 
     <!-- A FEW LINKS (MAS, 6 Nov 2026: a short, clean footer). The menu
@@ -588,7 +588,7 @@
    the bottom of the page. */
 (function () {
   var grid = document.querySelector('.screen-grid');
-  var buttons = document.querySelectorAll('.switch-btn[data-view]');
+  var buttons = document.querySelectorAll('.switch-button[data-view]');
   var stats = document.querySelectorAll('[data-stat]');
   if (!grid || buttons.length !== 2) return;
 

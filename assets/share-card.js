@@ -1,6 +1,10 @@
 /* ==========================================================================
    PUREVESTING — SHARE CARDS
    Save at:  /assets/share-card.js
+   Shows on: the "Share as image" button under the answer of an article
+   (the instrument pages, /halal-stocks/, /methodology/, the mutual funds
+   page). Every page loads this file; a page with no answer box gets no
+   button.
 
    Puts a "Share as image" button under the main answer of a page — the
    first answer box (<div class="answer">) — and nowhere else (MAS,
@@ -80,7 +84,7 @@
   // it (see the tappable figures in site.js), so the card never shows one.
   function textOf(el) {
     var copy = el.cloneNode(true);
-    copy.querySelectorAll('.fig-pop').forEach(function (pop) { pop.remove(); });
+    copy.querySelectorAll('.source-panel').forEach(function (pop) { pop.remove(); });
     return clean(copy.textContent);
   }
 
@@ -103,7 +107,7 @@
     var pieces = [];
     if (!h1) return pieces;
     h1.childNodes.forEach(function (node) {
-      var green = node.nodeType === 1 && node.classList.contains('t-green');
+      var green = node.nodeType === 1 && node.classList.contains('word-green');
       pieces.push({ text: node.textContent, color: green ? C.green : C.ink });
     });
     return pieces;
@@ -116,7 +120,7 @@
   // the card doesn't show.
   function readCell(cell, isNumColumn) {
     var copy = cell.cloneNode(true);
-    copy.querySelectorAll('.fig-pop').forEach(function (pop) { pop.remove(); });
+    copy.querySelectorAll('.source-panel').forEach(function (pop) { pop.remove(); });
     var note = copy.querySelector('.cell-note');
     var noteText = note ? clean(note.textContent) : '';
     if (note) note.remove();
@@ -132,7 +136,7 @@
   // A whole table: header cells and body rows.
   // A column whose <th> has data-share="skip" is left off the card — use it
   // for a column that only repeats what another one says, so the rest have
-  // room. Rows opened by tapping a figure (class "fig-row") are not data.
+  // room. Rows opened by tapping a figure (class "source-panel-row") are not data.
   function readTable(table) {
     var headCells = table.querySelectorAll('thead th');
     var numCols = [];
@@ -145,7 +149,7 @@
     });
     var rows = [];
     table.querySelectorAll('tbody tr').forEach(function (tr) {
-      if (tr.classList.contains('fig-row')) return;
+      if (tr.classList.contains('source-panel-row')) return;
       var cells = [];
       tr.querySelectorAll('th, td').forEach(function (cell, i) {
         if (!skip[i]) cells.push(readCell(cell, numCols[i]));
@@ -683,12 +687,12 @@
   function addButton(after, onClick) {
     var row = document.createElement('div');
     row.className = 'share-row';
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'share-btn';
-    btn.textContent = CAN_SHARE_FILES ? 'Share as image' : 'Download as image';
-    btn.addEventListener('click', onClick);
-    row.appendChild(btn);
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'share-button';
+    button.textContent = CAN_SHARE_FILES ? 'Share as image' : 'Download as image';
+    button.addEventListener('click', onClick);
+    row.appendChild(button);
     after.parentNode.insertBefore(row, after.nextSibling);
   }
 

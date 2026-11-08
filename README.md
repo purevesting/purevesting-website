@@ -1,5 +1,9 @@
 # Purevesting website
 
+The site at purevesting.com: halal finance for Muslims in India —
+investing, saving and borrowing. The rules come first; the guide to how
+it is built is after them.
+
 ## Writing rules — read these first
 
 Our visitors are Muslims in India who want to invest, save or borrow the
@@ -50,24 +54,6 @@ in TODO.md, or in a comment in the code, that says something different.
   me", linking to /ask/.
 - **Purevesting covers all of finance — investing, saving and borrowing —**
   not only investing. Use those words when the site talks about itself.
-
-### How these look in the HTML
-
-Copy from `_template.html`, which already follows the rules. In short:
-
-- The answer: `<div class="answer"><p>…</p></div>`, straight under the H1.
-  `assets/share-card.js` adds the "Share as image" button under the first
-  answer box on a page, and nowhere else.
-- The byline: photo, name, and `Last updated <time …>…</time>`.
-- "Read more": `<details class="source"><summary>Read more</summary>
-  <div class="source-body">…</div></details>`. It is closed until tapped.
-- Sources: one `<details class="source sources" id="sources">` at the very
-  end of `<main>`, with a list inside. Give each source line an id
-  (`<li id="src-epf-bands">`) and point the figures it backs at it with
-  `data-src="src-epf-bands"` — on the figure, its table, or the paragraph
-  or section around it. Then tapping a number still shows its source.
-- The friendly line: `<p class="ask-line">Still have a doubt?
-  <a href="/ask/">Ask me</a></p>`, at the end of the article.
 
 ## The look — set by MAS on 6 November 2026
 
@@ -147,44 +133,194 @@ Added by MAS on 6 November 2026 (part 3):
 - **A video on the same topic goes near the top**, as a small card that
   links to YouTube. Only where one really fits.
 
-### How the look is built in the HTML
+Added by MAS on 8 November 2026 (part 4):
 
-Copy from `index.html`, `halal-stocks/` and `_template.html`.
+- **Instrument pages** (EPF, PPF, NPS, Sukanya Samriddhi, digital gold)
+  start with the answer drawn — the parts side by side, each with a sign
+  (✓ ✗ ? !) and the answer in a word or two — then how it works as a small
+  drawing (your money → where it goes → what you get), what scholars say
+  as short cards ("a fatwa", never who), and what people do as icon
+  cards. Long details under "Read more"; Sources at the bottom, closed.
+- **Hub and legal pages are short.** One card or tile per thing; long
+  text under "Read more".
+- **Clear code beats short code.** Simple names, and a short plain-English
+  comment above each part saying what it does and where it shows.
 
-- A blue band: `<section class="section band">`.
-- An icon: `<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24">…</svg></span>`.
-  Draw with `stroke="currentColor"`, so CSS sets the colour.
-- A question tile (home page, hub pages): `<a class="tile" href="…">`
-  with an icon and the question inside.
-- Bars: `<div class="bars">`, one `<div class="bar-row">` per bar, with
-  the bar's size in its style (`style="--to: 65"` for 65%, and
-  `--from` too for a range). The rows hold the words and numbers; the bar
-  is only the drawing.
-- Count-up: put `data-count` on a number. Squares and bars fill in by
-  themselves when they scroll into view.
-- A table that becomes cards on a phone: `<div class="table-scroll table-stack">`,
-  and give each cell its column's name: `<td data-label="Share of new money">`.
-- Rising cards: put `reveal` on the section (`<section class="section reveal">`);
-  its cards and tiles rise one after another.
-- A long list behind one button (copy from `screener/`):
-  `<details class="list-toggle"><summary><span>See all …</span></summary>
-  <div class="list-body">…</div></details>`. A link to its id opens it.
-- A video near the top (copy from `screener/`): `<a class="video-pick">`
+## The guide — how the site is built
+
+Plain files, no build step: what is in this folder is what goes live.
+Cloudflare publishes it on every push to `main` (it reads `wrangler.jsonc`).
+
+### What each file and folder does
+
+**The pages** — each folder is one address: `ask/index.html` is
+purevesting.com/ask/.
+
+| File or folder | What it is |
+|---|---|
+| `index.html` | The home page: the stock search, the question tiles, the 500 squares, the videos, "Ask me", the newsletter. |
+| `screener/` | "Is my stock halal?" — the search and all 501 Nifty 500 companies. Rewritten every month by `scripts/update_screener.py`. |
+| `halal-stocks/` | How many Indian stocks are halal: the squares, by companies or by market value. |
+| `methodology/` | How a stock is checked: the two-step drawing and "Try it". |
+| `purification-calculator/` | How much to give away from share income. |
+| `compare/shariah-mutual-funds/` | The six Shariah mutual funds, as cards. |
+| `sip-calculator/`, `loan-calculator/` | The two calculators. |
+| `instruments/` | EPF & more: one card per instrument. Inside it, one folder per instrument: `epf/`, `ppf/`, `nps/`, `sukanya-samriddhi/`, `digital-gold/`. |
+| `tools/`, `learn/`, `videos/` | The hub pages. |
+| `newsletter/`, `ask/`, `about/`, `app/` | HalalEdge sign-up, the question form, about Purevesting, installing the app. |
+| `corrections/`, `disclaimer/`, `privacy/` | The corrections log and the two legal pages. |
+| `stop-the-genocide/` | The boycott list. Rewritten by `scripts/update_boycott.py` when its dataset changes. |
+| `404.html` | "This page doesn't exist", for any wrong address. |
+| `offline/` | What the app shows for a page never opened before, with no internet. |
+
+**The shared files** — every page uses these.
+
+| File or folder | What it is |
+|---|---|
+| `assets/site.css` | The whole look: colours, fonts, cards, charts… in 32 numbered sections, listed at the top of the file. Each section says where it shows on the site. |
+| `assets/site.js` | The polish: rising cards, filling charts, tap a figure to see its source, numbers counting up, the app, the offline note. The site works without it. |
+| `assets/share-card.js` | The "Share as image" button under an article's answer. |
+| `assets/videos.js` | Turns `videos/list.js` into video cards (home page and /videos/). |
+| `videos/list.js` | **The list of videos — the one file to edit for a new video.** |
+| `assets/fonts/` | The two fonts, plus two tiny files with just the ₹ sign. |
+| `assets/img/` | The logo, MAS's photo, the app's icons and screenshots. |
+| `assets/og/` | The picture WhatsApp and others show for each page's link (1200 × 630). |
+| `favicon…`, `apple-touch-icon.png` | The little icons in a browser tab and on a phone. |
+| `manifest.json`, `sw.js` | The app: its name and icons, and the part that keeps pages for reading offline. |
+| `sitemap.xml`, `robots.txt` | The list of pages for Google. |
+
+**Not published** (`.assetsignore` keeps them off the site):
+
+| File or folder | What it is |
+|---|---|
+| `README.md` | This file. |
+| `TODO.md` | What is left to do, the jobs that repeat (monthly, quarterly), and what MAS has to do himself. |
+| `_template.html` | The starting point for a new page, with every building block in it. |
+| `og-template.html` | Makes the link pictures in `assets/og/` (ask the website chat). |
+| `scripts/update_screener.py` | The monthly screener update ("run the screener update"). |
+| `scripts/update_boycott.py` | The boycott list update ("run the boycott update"). |
+| `wrangler.jsonc`, `.assetsignore` | Cloudflare's settings: what is published, and the 404 page. |
+
+### How to add a page
+
+1. Copy `_template.html` into a new folder, as `index.html`: for
+   example `instruments/zakat/index.html` becomes
+   purevesting.com/instruments/zakat/. Delete the template's
+   `<meta name="robots" content="noindex">` line.
+2. Fill in the per-page block at the top (the title, the description, the
+   address three times), the link picture (`og:image`), and the
+   structured data under it (the headline, the dates, the last
+   breadcrumb).
+3. Write the page with the rules above: the answer first, the byline (on
+   an article), the sections, "Still have a doubt? Ask me", then Sources,
+   closed. Copy any building block you need from `_template.html` or from
+   a page that already has it (the list below says which).
+4. Link to it: add one line to the right menu list in the header — on
+   **every** page, because the header is the same everywhere (a
+   find-and-replace across all files) — and a card on its hub page
+   (`/instruments/`, `/tools/` or `/learn/`).
+5. Add it to `sitemap.xml`: copy a `<url>` block and change the address
+   and the date.
+6. Ask the website chat to make its link picture for `assets/og/`.
+7. Check it on a small phone (360 pixels wide), a normal phone (390) and a
+   computer: nothing should slide sideways.
+
+### How to change a colour
+
+Every colour has a name, set once in `assets/site.css`, section 2
+("TOKENS"), and used everywhere else by that name. Change the code next
+to the name — for example `--sky: #2A9AE0;` — and every place that uses
+it changes. Never type a colour code anywhere else (the table under "The
+colours" above says what each name is for).
+
+### How to change a number
+
+Every figure is typed into the page itself, and has a line in the page's
+Sources part at the bottom, with its date.
+
+1. Find the number on the page (search the file for it, e.g. `7.1%`).
+2. Change it. If it sits in a chart, change its bar too: a bar's length is
+   in its style, `style="--to: 65"` for 65% of the track (`--from` too, for
+   a range). The comment above each chart says how its bars are worked
+   out.
+3. Change its line in Sources: the date ("as of …") and the link, if the
+   source changed.
+4. Change the page's "Last updated" date (on an article) and
+   `dateModified` in its structured data, to the same day, and the
+   page's date in `sitemap.xml`.
+
+The numbers that change on a timetable — the monthly NSE figures, the
+quarterly fund returns and small savings rates — have their own
+step-by-step list in `TODO.md`, section 0b, saying which page and which
+part each one lives in. A calculator's starting numbers are written out
+in full (the answer, its chart and the year-by-year table), so ask the
+website chat to work them out again.
+
+### Building blocks, and their names in the HTML
+
+Copy from the page named in brackets.
+
+- **The answer**: `<div class="answer"><p>…</p></div>`, straight under the
+  H1 (`_template.html`). "Share as image" appears under the first one.
+- **The answer drawn** (`instruments/epf/`): `<div class="answer
+  answer-parts" data-share-text="…">` with one `<div class="part">` per
+  part — `part-what` (what it is), `part-word` (a sign and the answer in a
+  word or two), `part-why` (one line). Add `three-parts` for three.
+  `data-share-text` holds the same answer in sentences, for the picture.
+- **Signs**: `<span class="sign sign-yes">` ✓ green, "you may";
+  `sign-no` ✗ grey, riba; `sign-differ` scales, scholars differ;
+  `sign-open` ? no fatwa found; `sign-note` ! good to know; `sign-none` –
+  not asked. The words beside a sign always say the answer too.
+- **How it works, drawn** (`instruments/ppf/`): `<ol class="money-path">`
+  with three `<li class="step">`, each with a `step-head` (an icon and a
+  heading). Add `money-path-wide` when the middle step holds a chart
+  (`instruments/epf/`).
+- **A fatwa card** (`instruments/epf/`): `<div class="card fatwa">` — a
+  heading saying where it is from (never who), its answers as a
+  `<ul class="fatwa-answers">` of signs, one line, and its exact words in
+  a `<details class="source">` "What the fatwa says".
+- **The byline** (articles only): MAS's photo, name and
+  `Last updated <time datetime="…">…</time>` (`_template.html`).
+- **Read more**: `<details class="source"><summary>Read more</summary>
+  <div class="source-body">…</div></details>` — closed until tapped.
+- **Sources**: one `<details class="source sources" id="sources">` at the
+  very end of `<main>`. Give each line an id (`<li id="src-epf-bands">`)
+  and point its figures at it with `data-src="src-epf-bands"` — on the
+  figure, its table, or anything around it. Tapping the figure then
+  shows its source.
+- **A figure**: `<span class="num">7.1%</span>` (same-width digits, so
+  figures line up); `big-number` for one big number on its own. Put
+  `data-count` on a number to make it count up.
+- **The friendly line**: `<p class="ask-line">Still have a doubt?
+  <a href="/ask/">Ask me</a></p>`, at the end of an article.
+- **A blue band**: `<section class="section band">`. Never two in a row.
+- **Rising cards**: put `reveal` on a section; its cards rise in turn.
+- **An icon**: `<span class="icon" aria-hidden="true"><svg viewBox="0 0
+  24 24">…</svg></span>`, drawn with `stroke="currentColor"`. On a phone
+  an icon card (`card card-icon`) puts its icon beside the title.
+- **A question tile** (`index.html`, `tools/`): `<a class="tile">` with an
+  icon, `tile-question` and `tile-arrow`; `tile-name` for a small grey
+  line under the question.
+- **Bars** (`instruments/epf/`): `<div class="bars">`, one
+  `<div class="bar-row" style="--to: 65">` per bar, holding `bar-label`,
+  `bar-value` and `bar-track`. Bars that can go below zero:
+  `bars bars-zero` (`compare/shariah-mutual-funds/`).
+- **A few facts in a card** (`instruments/digital-gold/`):
+  `<dl class="fact-list">`, one `<div>` with `<dt>` and `<dd>` per fact;
+  `class="wide"` for a long one.
+- **A table that becomes cards on a phone**: `<div class="table-scroll
+  table-stack">`, and `data-label="…"` on each cell with its column's
+  name.
+- **A long list behind one button** (`screener/`): `<details
+  class="list-toggle"><summary><span>See all …</span></summary><div
+  class="list-body">…</div></details>`. A link to an id inside it opens it.
+- **A video near the top** (`instruments/nps/`): `<a class="video-pick">`
   with the video's picture, its length and its title.
-- Bars that can go below zero (copy from `compare/shariah-mutual-funds/`):
-  `<div class="bars bars-zero">`, with 0 in the middle (`--from: 50`) and
-  `bar-row-left` on a row whose figure is negative.
-- A tapped figure in a small chart or a row of facts opens its source
-  under the whole thing, not inside one narrow box: put `fig-host` on it.
-- A calculator (copy from `sip-calculator/`): `<section class="section
-  calc-page">`, then `<div class="calc-layout">` holding the boxes
-  (`calc-fields calc-inline`, with a `calc-row` per box or a `calc-pair`
-  for two side by side) and the answer (`calc-result`).
-
-## Other files
-
-- `TODO.md` — everything still to do, and the monthly jobs.
-- `_template.html` — the starting point for a new page.
-- `scripts/` — the monthly screener update and the boycott list update.
-
-None of these are published on the site (see `.assetsignore`).
+- **A calculator** (`sip-calculator/`): `<section class="section
+  calculator-page">`, then `calculator-layout` holding the boxes
+  (`calculator-boxes`, with a `calculator-row` or `calculator-pair` per
+  box) and the answer (`calculator-answer`).
+- **A green or red word in a heading**: `word-green` (only in an H1 or
+  H2); `word-red` only for the cost of a loan.
+- **Buttons**: `button` (solid green), `button-quiet` (outlined),
+  `button-light` (white, on a dark band).

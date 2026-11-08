@@ -1,6 +1,8 @@
 /* ==========================================================================
    PUREVESTING — VIDEO CARDS
    Save at:  /assets/videos.js
+   Shows on: the home page (the newest three videos) and /videos/ (all of
+   them).
 
    Turns the list in /videos/list.js into video cards. Nothing to edit
    here: to add a video, add a line to /videos/list.js.
@@ -91,7 +93,7 @@
       c.style.setProperty('--i', Math.min(i, 8));   // they rise in turn
       box.appendChild(c);
     });
-    if (window.pvFigures) window.pvFigures(box);   // the site's rule for new HTML
+    if (window.makeFiguresTappable) window.makeFiguresTappable(box);   // site.js, part 3
   });
 
 })();

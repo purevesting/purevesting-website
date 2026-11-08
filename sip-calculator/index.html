@@ -173,10 +173,10 @@
 
 <main>
 
-  <section class="section calc-page">
+  <section class="section calculator-page">
     <div class="wrap">
 
-      <h1>SIP and <span class="nowrap">lump-sum</span> <span class="t-green">calculator</span></h1>
+      <h1>SIP and <span class="nowrap">lump-sum</span> <span class="word-green">calculator</span></h1>
 
       <!-- A tools page: no byline (README.md). No opening line either
            (MAS, 6 Nov 2026, part 3): the heading says what it is, and the
@@ -189,31 +189,31 @@
            out for the starting numbers (₹5,000 a month, 5.52%, 10 years),
            so the page reads correctly either way. The script at the bottom
            of this page does the sums. -->
-      <div class="calc-layout">
+      <div class="calculator-layout">
 
-        <div class="calc-inputs">
+        <div class="calculator-boxes">
 
-          <div class="grid-switch calc-modes" role="group" aria-label="How you invest">
-            <button type="button" class="switch-btn" data-mode="sip" aria-pressed="true">Monthly SIP</button>
-            <button type="button" class="switch-btn" data-mode="lump" aria-pressed="false">Lump sum</button>
+          <div class="grid-switch mode-buttons" role="group" aria-label="How you invest">
+            <button type="button" class="switch-button" data-mode="sip" aria-pressed="true">Monthly SIP</button>
+            <button type="button" class="switch-button" data-mode="lump" aria-pressed="false">Lump sum</button>
           </div>
 
-          <div class="calc-fields calc-inline">
-            <div class="calc-row">
-              <label for="in-amount" id="lbl-amount">Monthly amount (₹)</label>
-              <input id="in-amount" type="number" value="5000" min="1" step="500" inputmode="numeric">
+          <div class="calculator-fields calculator-rows">
+            <div class="calculator-row">
+              <label for="amount-box" id="amount-label">Monthly amount (₹)</label>
+              <input id="amount-box" type="number" value="5000" min="1" step="500" inputmode="numeric">
             </div>
-            <div class="calc-pair">
+            <div class="calculator-pair">
               <div>
-                <label for="in-rate">Return a year (%)</label>
-                <span class="calc-tag" id="rate-tag">A past return</span>
-                <input id="in-rate" type="number" value="5.52" min="0" max="50" step="0.01" inputmode="decimal" aria-describedby="rate-tag">
-                <input id="sl-rate" type="range" value="5.5" min="1" max="30" step="0.5" aria-label="Return a year (%)">
+                <label for="return-box">Return a year (%)</label>
+                <span class="calculator-tag" id="rate-tag">A past return</span>
+                <input id="return-box" type="number" value="5.52" min="0" max="50" step="0.01" inputmode="decimal" aria-describedby="rate-tag">
+                <input id="return-slider" type="range" value="5.5" min="1" max="30" step="0.5" aria-label="Return a year (%)">
               </div>
               <div>
-                <label for="in-years">Years</label>
-                <input id="in-years" type="number" value="10" min="1" max="50" step="1" inputmode="numeric">
-                <input id="sl-years" type="range" value="10" min="1" max="40" step="1" aria-label="Years">
+                <label for="years-box">Years</label>
+                <input id="years-box" type="number" value="10" min="1" max="50" step="1" inputmode="numeric">
+                <input id="years-slider" type="range" value="10" min="1" max="40" step="1" aria-label="Years">
               </div>
             </div>
             <!-- THE RETURN TO START FROM (MAS, 12 Oct). The two index figures
@@ -227,42 +227,42 @@
             <div class="rate-picks">
               <div class="grid-switch" role="group" aria-labelledby="rate-picks-label">
                 <span class="rate-picks-label" id="rate-picks-label">Last 5 years, a year:</span>
-                <button type="button" class="switch-btn" data-rate="5.52" aria-pressed="true">Nifty500 Shariah <span class="num">5.52%</span></button>
-                <button type="button" class="switch-btn" data-rate="9.04" aria-pressed="false">Nifty 500 <span class="num">9.04%</span></button>
-                <button type="button" class="switch-btn" data-rate="own" aria-pressed="false">Your own guess</button>
+                <button type="button" class="switch-button" data-rate="5.52" aria-pressed="true">Nifty500 Shariah <span class="num">5.52%</span></button>
+                <button type="button" class="switch-button" data-rate="9.04" aria-pressed="false">Nifty 500 <span class="num">9.04%</span></button>
+                <button type="button" class="switch-button" data-rate="own" aria-pressed="false">Your own guess</button>
               </div>
             </div>
-            <p class="calc-hint" id="calc-hint" aria-live="polite"></p>
+            <p class="calculator-hint" id="hint-line" aria-live="polite"></p>
           </div>
 
         </div>
 
         <!-- THE ANSWER, drawn: the value at the end, big, and one column
              per year — what you put in, and what it grew by. -->
-        <div class="calc-result" aria-live="polite">
-          <div class="calc-stat calc-main">
-            <span class="calc-label" id="lbl-total">Estimated value after 10 years</span>
-            <span class="calc-value num" id="r-total" data-src="none">₹8,02,071</span>
-            <span class="calc-words" id="r-words">about ₹8.0 lakh</span>
+        <div class="calculator-answer" aria-live="polite">
+          <div class="calculator-stat calculator-main">
+            <span class="calculator-label" id="total-label">Estimated value after 10 years</span>
+            <span class="calculator-value num" id="answer-total" data-src="none">₹8,02,071</span>
+            <span class="calculator-words" id="answer-words">about ₹8.0 lakh</span>
           </div>
-          <div class="growth-chart" id="gc" aria-hidden="true">
-            <span class="gc-col"><span class="gc-gain" style="--h: 0.2"></span><span class="gc-put" style="--h: 7.5"></span></span>
-            <span class="gc-col"><span class="gc-gain" style="--h: 0.9"></span><span class="gc-put" style="--h: 15"></span></span>
-            <span class="gc-col"><span class="gc-gain" style="--h: 2"></span><span class="gc-put" style="--h: 22.4"></span></span>
-            <span class="gc-col"><span class="gc-gain" style="--h: 3.6"></span><span class="gc-put" style="--h: 29.9"></span></span>
-            <span class="gc-col"><span class="gc-gain" style="--h: 5.8"></span><span class="gc-put" style="--h: 37.4"></span></span>
-            <span class="gc-col"><span class="gc-gain" style="--h: 8.4"></span><span class="gc-put" style="--h: 44.9"></span></span>
-            <span class="gc-col"><span class="gc-gain" style="--h: 11.7"></span><span class="gc-put" style="--h: 52.4"></span></span>
-            <span class="gc-col"><span class="gc-gain" style="--h: 15.5"></span><span class="gc-put" style="--h: 59.8"></span></span>
-            <span class="gc-col"><span class="gc-gain" style="--h: 20"></span><span class="gc-put" style="--h: 67.3"></span></span>
-            <span class="gc-col"><span class="gc-gain" style="--h: 25.2"></span><span class="gc-put" style="--h: 74.8"></span></span>
+          <div class="growth-chart" id="sip-chart" aria-hidden="true">
+            <span class="growth-year"><span class="growth-gain" style="--h: 0.2"></span><span class="growth-put" style="--h: 7.5"></span></span>
+            <span class="growth-year"><span class="growth-gain" style="--h: 0.9"></span><span class="growth-put" style="--h: 15"></span></span>
+            <span class="growth-year"><span class="growth-gain" style="--h: 2"></span><span class="growth-put" style="--h: 22.4"></span></span>
+            <span class="growth-year"><span class="growth-gain" style="--h: 3.6"></span><span class="growth-put" style="--h: 29.9"></span></span>
+            <span class="growth-year"><span class="growth-gain" style="--h: 5.8"></span><span class="growth-put" style="--h: 37.4"></span></span>
+            <span class="growth-year"><span class="growth-gain" style="--h: 8.4"></span><span class="growth-put" style="--h: 44.9"></span></span>
+            <span class="growth-year"><span class="growth-gain" style="--h: 11.7"></span><span class="growth-put" style="--h: 52.4"></span></span>
+            <span class="growth-year"><span class="growth-gain" style="--h: 15.5"></span><span class="growth-put" style="--h: 59.8"></span></span>
+            <span class="growth-year"><span class="growth-gain" style="--h: 20"></span><span class="growth-put" style="--h: 67.3"></span></span>
+            <span class="growth-year"><span class="growth-gain" style="--h: 25.2"></span><span class="growth-put" style="--h: 74.8"></span></span>
           </div>
-          <p class="gc-axis" aria-hidden="true"><span>Year 1</span><span id="gc-last">Year 10</span></p>
-          <div class="calc-split">
-            <p><span class="calc-label"><span class="key key-in"></span><span id="lbl-put">You put in</span></span>
-               <span class="calc-value num" id="r-put" data-src="none">₹6,00,000</span></p>
-            <p><span class="calc-label"><span class="key key-gain"></span>Estimated growth</span>
-               <span class="calc-value num" id="r-gain" data-src="none">₹2,02,071</span></p>
+          <p class="growth-axis" aria-hidden="true"><span>Year 1</span><span id="sip-chart-last-year">Year 10</span></p>
+          <div class="calculator-split">
+            <p><span class="calculator-label"><span class="key key-in"></span><span id="put-in-label">You put in</span></span>
+               <span class="calculator-value num" id="answer-put-in" data-src="none">₹6,00,000</span></p>
+            <p><span class="calculator-label"><span class="key key-gain"></span>Estimated growth</span>
+               <span class="calculator-value num" id="answer-growth" data-src="none">₹2,02,071</span></p>
           </div>
         </div>
 
@@ -366,7 +366,7 @@
         <h2>HalalEdge, one email a week</h2>
         <p>One real money question, worked through with its sources. Free.</p>
       </div>
-      <a class="btn" href="/newsletter/">Subscribe free</a>
+      <a class="button" href="/newsletter/">Subscribe free</a>
     </div>
 
     <!-- A FEW LINKS (MAS, 6 Nov 2026: a short, clean footer). The menu
@@ -414,124 +414,153 @@
 <script src="/assets/share-card.js"></script>
 
 <!-- ==================================================================
-     CALCULATOR SCRIPT — used on this page only.
-     SIP: value = amount x ((1 + m)^months - 1) / m x (1 + m), where m is
-     the yearly return / 12 / 100 (one payment at the start of each month).
-     Lump sum: value = amount x (1 + yearly return / 100)^years.
+     CALCULATOR SCRIPT — used on this page only. It does the sums, and
+     redraws the answer (the big figure, the chart and the two amounts)
+     and the year-by-year table each time a box, slider or button
+     changes.
+       SIP:      value = amount × ((1 + m)^months − 1) ÷ m × (1 + m),
+                 where m = the yearly return ÷ 12 ÷ 100 (one payment at
+                 the start of each month).
+       Lump sum: value = amount × (1 + yearly return ÷ 100)^years.
      The return buttons (data-rate) put an index's past return in the
      box; "Your own guess" leaves the number to the reader. Their figures
      are in the HTML above, not here: change them there.
      ================================================================== -->
 <script>
 (function () {
-  var amount = document.getElementById('in-amount');
-  var rate = document.getElementById('in-rate'), rateSl = document.getElementById('sl-rate');
-  var years = document.getElementById('in-years'), yearsSl = document.getElementById('sl-years');
-  var hint = document.getElementById('calc-hint');
-  var buttons = document.querySelectorAll('[data-mode]');
-  var picks = document.querySelectorAll('[data-rate]');
-  var tag = document.getElementById('rate-tag');
-  if (!amount || !rate || !years) return;
+
+  // THE BOXES, SLIDERS AND BUTTONS on the page (their ids are in the HTML).
+  var amountBox = document.getElementById('amount-box');
+  var returnBox = document.getElementById('return-box'), returnSlider = document.getElementById('return-slider');
+  var yearsBox = document.getElementById('years-box'), yearsSlider = document.getElementById('years-slider');
+  var hintLine = document.getElementById('hint-line');
+  var modeButtons = document.querySelectorAll('[data-mode]');      // Monthly SIP / Lump sum
+  var returnButtons = document.querySelectorAll('[data-rate]');    // the past returns, and "Your own guess"
+  var returnTag = document.getElementById('rate-tag');            // "A past return" above the box
+  var chart = document.getElementById('sip-chart');
+  if (!amountBox || !returnBox || !yearsBox) return;
 
   var TAG_PAST = 'A past return';
   var TAG_OWN = 'Your own guess';
-  var ownPick = document.querySelector('[data-rate="own"]');
+  var ownGuessButton = document.querySelector('[data-rate="own"]');
 
-  // Marks one return button as chosen, and says under the box what the
-  // number is: an index's past return, or the reader's own guess.
-  function choose(btn) {
-    for (var k = 0; k < picks.length; k++) {
-      picks[k].setAttribute('aria-pressed', picks[k] === btn ? 'true' : 'false');
-    }
-    if (tag) tag.textContent = btn === ownPick ? TAG_OWN : TAG_PAST;
-  }
-
-  var mode = 'sip';
-  var saved = { sip: 5000, lump: 100000 };   // each mode keeps its own amount
-  // The line under the boxes is empty while every box is fine.
+  // The line under the boxes: empty while every box is fine.
   var HINT_OK = '';
   var HINT_BAD = 'Each box needs a number: an amount above zero, a return of 0 to 50, and 1 to 50 years.';
-  var chart = document.getElementById('gc');
 
-  function inr(x) { return '₹' + Math.round(x).toLocaleString('en-IN'); }
-  function words(x) {
+  var mode = 'sip';                               // 'sip' or 'lump'
+  var amountForMode = { sip: 5000, lump: 100000 };  // each mode keeps its own amount
+
+  // Marks one return button as chosen, and says above the box what the
+  // number is: an index's past return, or the reader's own guess.
+  function chooseReturnButton(chosen) {
+    for (var i = 0; i < returnButtons.length; i++) {
+      returnButtons[i].setAttribute('aria-pressed', returnButtons[i] === chosen ? 'true' : 'false');
+    }
+    if (returnTag) returnTag.textContent = chosen === ownGuessButton ? TAG_OWN : TAG_PAST;
+  }
+
+  // ₹ with Indian commas: 802071 → "₹8,02,071".
+  function rupees(x) { return '₹' + Math.round(x).toLocaleString('en-IN'); }
+
+  // The same amount in words: "about ₹8.0 lakh", "about ₹2.28 crore".
+  function inWords(x) {
     if (x >= 1e7) return 'about ₹' + (x / 1e7).toFixed(2) + ' crore';
     if (x >= 1e5) return 'about ₹' + (x / 1e5).toFixed(1) + ' lakh';
-    return 'about ' + inr(x);
+    return 'about ' + rupees(x);
   }
-  function value(p, r, y) {
-    if (mode === 'lump') return p * Math.pow(1 + r / 100, y);
-    var m = r / 12 / 100, n = y * 12;
-    if (m === 0) return p * n;
-    return p * (Math.pow(1 + m, n) - 1) / m * (1 + m);
-  }
-  function putIn(p, y) { return mode === 'lump' ? p : p * 12 * y; }
-  function set(id, text) { document.getElementById(id).textContent = text; }
 
+  // What the money is worth after a number of years.
+  function valueAfter(amount, yearlyReturn, years) {
+    if (mode === 'lump') return amount * Math.pow(1 + yearlyReturn / 100, years);
+    var monthlyRate = yearlyReturn / 12 / 100, months = years * 12;
+    if (monthlyRate === 0) return amount * months;
+    return amount * (Math.pow(1 + monthlyRate, months) - 1) / monthlyRate * (1 + monthlyRate);
+  }
+
+  // How much of your own money went in by then.
+  function putInAfter(amount, years) { return mode === 'lump' ? amount : amount * 12 * years; }
+
+  function show(id, text) { document.getElementById(id).textContent = text; }
+
+  // Reads the boxes and redraws the whole answer.
   function update() {
-    var p = parseFloat(amount.value), r = parseFloat(rate.value), y = parseInt(years.value, 10);
-    var ok = p > 0 && r >= 0 && r <= 50 && y >= 1 && y <= 50;
-    hint.textContent = ok ? HINT_OK : HINT_BAD;
-    if (!ok) return;
-    var total = value(p, r, y), put = putIn(p, y), gain = total - put;
-    set('r-put', inr(put));
-    set('r-gain', inr(gain));
-    set('r-total', inr(total));
-    set('r-words', words(total));
-    set('lbl-total', 'Estimated value after ' + y + (y === 1 ? ' year' : ' years'));
-    set('gc-last', 'Year ' + y);
-    // The chart: one column per year, as tall as that year's value
-    // against the last year's — what you put in below, the growth on top.
-    var rows = '', cols = '';
-    function h(x) { return total > 0 ? Math.round(x / total * 1000) / 10 : 0; }
-    for (var k = 1; k <= y; k++) {
-      var v = value(p, r, k), pk = putIn(p, k);
-      rows += '<tr><td>Year ' + k + '</td><td class="num">' + inr(pk) +
-              '</td><td class="num">' + inr(v) + '</td></tr>';
-      cols += '<span class="gc-col"><span class="gc-gain" style="--h: ' + h(v - pk) + '"></span>' +
-              '<span class="gc-put" style="--h: ' + h(pk) + '"></span></span>';
+    var amount = parseFloat(amountBox.value);
+    var yearlyReturn = parseFloat(returnBox.value);
+    var years = parseInt(yearsBox.value, 10);
+    var allFine = amount > 0 && yearlyReturn >= 0 && yearlyReturn <= 50 && years >= 1 && years <= 50;
+    hintLine.textContent = allFine ? HINT_OK : HINT_BAD;
+    if (!allFine) return;
+
+    var total = valueAfter(amount, yearlyReturn, years);
+    var putIn = putInAfter(amount, years);
+    show('answer-put-in', rupees(putIn));
+    show('answer-growth', rupees(total - putIn));
+    show('answer-total', rupees(total));
+    show('answer-words', inWords(total));
+    show('total-label', 'Estimated value after ' + years + (years === 1 ? ' year' : ' years'));
+    show('sip-chart-last-year', 'Year ' + years);
+
+    // The chart: one column per year, as tall as that year's value against
+    // the last year's — what you put in below, the growth on top. And the
+    // year-by-year table under "Read more".
+    function heightOf(x) { return total > 0 ? Math.round(x / total * 1000) / 10 : 0; }
+    var tableRows = '', columns = '';
+    for (var year = 1; year <= years; year++) {
+      var value = valueAfter(amount, yearlyReturn, year), putInSoFar = putInAfter(amount, year);
+      tableRows += '<tr><td>Year ' + year + '</td><td class="num">' + rupees(putInSoFar) +
+                   '</td><td class="num">' + rupees(value) + '</td></tr>';
+      columns += '<span class="growth-year"><span class="growth-gain" style="--h: ' + heightOf(value - putInSoFar) + '"></span>' +
+                 '<span class="growth-put" style="--h: ' + heightOf(putInSoFar) + '"></span></span>';
     }
-    if (chart) chart.innerHTML = cols;
-    var body = document.getElementById('year-rows');
-    body.innerHTML = rows;
-    if (window.pvFigures) window.pvFigures(body);   // new HTML: same rules
+    if (chart) chart.innerHTML = columns;
+    var table = document.getElementById('year-rows');
+    table.innerHTML = tableRows;
+    if (window.makeFiguresTappable) window.makeFiguresTappable(table);   // site.js, part 3
   }
 
-  // Typing a return, or moving its slider, makes it the reader's own guess.
-  function sync(box, slider, edited) {
-    box.addEventListener('input', function () { if (slider) slider.value = box.value; if (edited) edited(); update(); });
-    if (slider) slider.addEventListener('input', function () { box.value = slider.value; if (edited) edited(); update(); });
+  // A box and its slider move together. Typing a return, or moving its
+  // slider, makes it the reader's own guess.
+  function linkBoxAndSlider(box, slider, whenChanged) {
+    box.addEventListener('input', function () { if (slider) slider.value = box.value; if (whenChanged) whenChanged(); update(); });
+    if (slider) slider.addEventListener('input', function () { box.value = slider.value; if (whenChanged) whenChanged(); update(); });
   }
-  sync(amount, null); sync(rate, rateSl, function () { choose(ownPick); }); sync(years, yearsSl);
+  linkBoxAndSlider(amountBox, null);
+  linkBoxAndSlider(returnBox, returnSlider, function () { chooseReturnButton(ownGuessButton); });
+  linkBoxAndSlider(yearsBox, yearsSlider);
 
-  for (var q = 0; q < picks.length; q++) {
-    picks[q].addEventListener('click', function () {
-      choose(this);
-      if (this === ownPick) {          // the box is the reader's to fill in
-        rate.focus();
-        try { rate.select(); } catch (e) {}
+  // The return buttons: an index's past return goes in the box; "Your own
+  // guess" leaves the box to the reader.
+  for (var i = 0; i < returnButtons.length; i++) {
+    returnButtons[i].addEventListener('click', function () {
+      chooseReturnButton(this);
+      if (this === ownGuessButton) {
+        returnBox.focus();
+        try { returnBox.select(); } catch (e) {}
         return;
       }
-      rate.value = rateSl.value = this.getAttribute('data-rate');
+      returnBox.value = returnSlider.value = this.getAttribute('data-rate');
       update();
     });
   }
 
-  for (var b = 0; b < buttons.length; b++) {
-    buttons[b].addEventListener('click', function () {
-      var next = this.getAttribute('data-mode');
-      if (next === mode) return;
-      saved[mode] = amount.value;
-      mode = next;
-      amount.value = saved[mode];
-      amount.step = mode === 'lump' ? 10000 : 500;
-      set('lbl-amount', mode === 'lump' ? 'One-time amount (₹)' : 'Monthly amount (₹)');
-      for (var k = 0; k < buttons.length; k++) {
-        buttons[k].setAttribute('aria-pressed', buttons[k] === this ? 'true' : 'false');
+  // Monthly SIP / Lump sum: each keeps its own amount.
+  for (var j = 0; j < modeButtons.length; j++) {
+    modeButtons[j].addEventListener('click', function () {
+      var nextMode = this.getAttribute('data-mode');
+      if (nextMode === mode) return;
+      amountForMode[mode] = amountBox.value;
+      mode = nextMode;
+      amountBox.value = amountForMode[mode];
+      amountBox.step = mode === 'lump' ? 10000 : 500;
+      show('amount-label', mode === 'lump' ? 'One-time amount (₹)' : 'Monthly amount (₹)');
+      for (var k = 0; k < modeButtons.length; k++) {
+        modeButtons[k].setAttribute('aria-pressed', modeButtons[k] === this ? 'true' : 'false');
       }
       update();
     });
   }
+
 })();
 </script>
 

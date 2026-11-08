@@ -188,10 +188,10 @@
 
 <main>
 
-  <section class="section calc-page">
+  <section class="section calculator-page">
     <div class="wrap">
 
-      <h1>How much should you give away to <span class="t-green">purify</span> your shares?</h1>
+      <h1>How much should you give away to <span class="word-green">purify</span> your shares?</h1>
 
       <!-- A tools page: one short line, no byline (README.md). Since 6 Nov
            2026 (part 3) it is a line, not an answer box, like the SIP and
@@ -207,78 +207,76 @@
            numbers, so the page reads correctly even with JavaScript
            switched off (the boxes need it, so they stay hidden; the line
            under them says what the starting numbers are). The small script
-           at the bottom of this page only makes the six boxes live. (Its
-           ids still say "aaoifi" and "mod" for the year-end and months-held
-           rows; visitors never see them.) -->
-      <div class="calc-layout" id="calculator">
+           at the bottom of this page only makes the six boxes live. -->
+      <div class="calculator-layout" id="calculator">
 
-        <div class="calc-inputs">
+        <div class="calculator-boxes">
           <p class="no-js-only">Take a made-up company. This year it earned
              ₹10,000 crore in total, ₹120 crore of it as interest. It has 50
              crore shares and paid a dividend of ₹6 a share. You held 100 of
              its shares for the whole year.</p>
-          <div class="calc-fields calc-inline">
-            <p class="calc-start">A made-up company's year. Put in your own.</p>
-            <div class="calc-pair">
+          <div class="calculator-fields calculator-rows">
+            <p class="calculator-start">A made-up company's year. Put in your own.</p>
+            <div class="calculator-pair">
               <div>
-                <label for="in-interest">Interest income (₹ cr)</label>
-                <input id="in-interest" type="number" value="120" min="0" step="any" inputmode="decimal">
+                <label for="interest-box">Interest income (₹ cr)</label>
+                <input id="interest-box" type="number" value="120" min="0" step="any" inputmode="decimal">
               </div>
               <div>
-                <label for="in-total">Total income (₹ cr)</label>
-                <input id="in-total" type="number" value="10000" min="0" step="any" inputmode="decimal">
-              </div>
-            </div>
-            <div class="calc-pair">
-              <div>
-                <label for="in-shares">Total shares (crore)</label>
-                <input id="in-shares" type="number" value="50" min="0" step="any" inputmode="decimal">
-              </div>
-              <div>
-                <label for="in-dps">Dividend a share (₹)</label>
-                <input id="in-dps" type="number" value="6" min="0" step="any" inputmode="decimal">
+                <label for="total-income-box">Total income (₹ cr)</label>
+                <input id="total-income-box" type="number" value="10000" min="0" step="any" inputmode="decimal">
               </div>
             </div>
-            <div class="calc-pair">
+            <div class="calculator-pair">
               <div>
-                <label for="in-held">Shares you hold</label>
-                <input id="in-held" type="number" value="100" min="0" step="1" inputmode="numeric">
+                <label for="total-shares-box">Total shares (crore)</label>
+                <input id="total-shares-box" type="number" value="50" min="0" step="any" inputmode="decimal">
               </div>
               <div>
-                <label for="in-months">Months held (0–12)</label>
-                <input id="in-months" type="number" value="12" min="0" max="12" step="1" inputmode="numeric">
+                <label for="dividend-box">Dividend a share (₹)</label>
+                <input id="dividend-box" type="number" value="6" min="0" step="any" inputmode="decimal">
               </div>
             </div>
-            <p class="calc-hint" id="calc-hint" aria-live="polite"></p>
+            <div class="calculator-pair">
+              <div>
+                <label for="shares-held-box">Shares you hold</label>
+                <input id="shares-held-box" type="number" value="100" min="0" step="1" inputmode="numeric">
+              </div>
+              <div>
+                <label for="months-box">Months held (0–12)</label>
+                <input id="months-box" type="number" value="12" min="0" max="12" step="1" inputmode="numeric">
+              </div>
+            </div>
+            <p class="calculator-hint" id="hint-line" aria-live="polite"></p>
           </div>
         </div>
 
         <!-- THE ANSWER, drawn: one bar per method, all one colour, each as
              long as its amount against the biggest. -->
-        <div class="calc-result pur-result" aria-live="polite">
+        <div class="calculator-answer purify-result" aria-live="polite">
           <p class="bars-title">You would give</p>
-          <div class="bars pur-bars" data-src="none">
+          <div class="bars purify-bars" data-src="none">
             <div class="bar-row">
               <span class="bar-label">Dividend method</span>
-              <span class="bar-value num" id="r-div">₹7.20</span>
-              <span class="bar-track"><span class="bar" id="b-div" style="--to: 3"></span></span>
+              <span class="bar-value num" id="answer-dividend">₹7.20</span>
+              <span class="bar-track"><span class="bar" id="bar-dividend" style="--to: 3"></span></span>
             </div>
             <div class="bar-row">
               <span class="bar-label">Year-end method</span>
-              <span class="bar-value num" id="r-aaoifi">₹240.00</span>
-              <span class="bar-track"><span class="bar" id="b-aaoifi" style="--to: 100"></span></span>
+              <span class="bar-value num" id="answer-year-end">₹240.00</span>
+              <span class="bar-track"><span class="bar" id="bar-year-end" style="--to: 100"></span></span>
             </div>
             <div class="bar-row">
               <span class="bar-label">Months-held method</span>
-              <span class="bar-value num" id="r-mod">₹240.00</span>
-              <span class="bar-track"><span class="bar" id="b-mod" style="--to: 100"></span></span>
+              <span class="bar-value num" id="answer-months-held">₹240.00</span>
+              <span class="bar-track"><span class="bar" id="bar-months-held" style="--to: 100"></span></span>
             </div>
           </div>
         </div>
 
       </div>
 
-      <p class="pur-note">Three common ways to work it out can differ a lot.
+      <p class="purify-note">Three common ways to work it out can differ a lot.
          This covers the interest the company earned, not profit you make
          from selling shares.</p>
 
@@ -459,7 +457,7 @@
         <h2>HalalEdge, one email a week</h2>
         <p>One real money question, worked through with its sources. Free.</p>
       </div>
-      <a class="btn" href="/newsletter/">Subscribe free</a>
+      <a class="button" href="/newsletter/">Subscribe free</a>
     </div>
 
     <!-- A FEW LINKS (MAS, 6 Nov 2026: a short, clean footer). The menu
@@ -511,74 +509,80 @@
      The bars above already show the answer for the starting numbers,
      so the page is complete without this. It only makes the six boxes
      live: each time a number changes, it works out the three amounts
-     again and redraws the bars. Formulas are the Shariah board's, as
-     quoted on the page.
+     again and redraws the three bars. The formulas are the Shariah
+     board's, as quoted on the page under "Read more".
      ================================================================== -->
 <script>
 (function () {
-  var box = {
-    interest: document.getElementById('in-interest'),
-    total:    document.getElementById('in-total'),
-    shares:   document.getElementById('in-shares'),
-    dps:      document.getElementById('in-dps'),
-    held:     document.getElementById('in-held'),
-    months:   document.getElementById('in-months')
-  };
-  var hint = document.getElementById('calc-hint');
-  var out  = {
-    div:    document.getElementById('r-div'),
-    aaoifi: document.getElementById('r-aaoifi'),
-    mod:    document.getElementById('r-mod')
-  };
-  for (var k in box) { if (!box[k]) return; }
-  if (!hint || !out.div || !out.aaoifi || !out.mod) return;
 
-  // The line above the boxes swaps to the second message while any box
-  // holds something that can't be worked out, and back again after.
-  var HINT_OK  = '';   // the line under the boxes is empty while every box is fine
+  // THE SIX BOXES on the page (their ids are in the HTML).
+  var boxes = {
+    interestIncome: document.getElementById('interest-box'),       // ₹ crore
+    totalIncome:    document.getElementById('total-income-box'),   // ₹ crore
+    totalShares:    document.getElementById('total-shares-box'),   // crore
+    dividend:       document.getElementById('dividend-box'),       // ₹ a share
+    sharesHeld:     document.getElementById('shares-held-box'),
+    monthsHeld:     document.getElementById('months-box')
+  };
+  var hintLine = document.getElementById('hint-line');
+  // THE THREE AMOUNTS in the answer, one per method.
+  var answers = {
+    dividendMethod:   document.getElementById('answer-dividend'),
+    yearEndMethod:    document.getElementById('answer-year-end'),
+    monthsHeldMethod: document.getElementById('answer-months-held')
+  };
+  for (var name in boxes) { if (!boxes[name]) return; }
+  if (!hintLine || !answers.dividendMethod || !answers.yearEndMethod || !answers.monthsHeldMethod) return;
+
+  // The line under the boxes: empty while every box is fine.
+  var HINT_OK  = '';
   var HINT_BAD = 'Each box needs a number of zero or more. Total income and ' +
                  'total shares must be above zero, and months can be 0 to 12.';
 
-  // Rupees with Indian digit grouping and two decimals, e.g. ₹1,20,000.00
+  // Rupees with Indian commas and two decimals, e.g. ₹1,20,000.00
   function rupees(x) {
     return '₹' + x.toLocaleString('en-IN', {
       minimumFractionDigits: 2, maximumFractionDigits: 2
     });
   }
 
+  // Reads the six boxes and redraws the three amounts and their bars.
   function update() {
-    var v = {};
-    for (var k in box) { v[k] = parseFloat(box[k].value); }
+    var n = {};
+    for (var name in boxes) { n[name] = parseFloat(boxes[name].value); }
 
-    var ok = true;
-    for (var k in v) { if (!(v[k] >= 0)) ok = false; }   // empty or negative
-    if (!(v.total > 0) || !(v.shares > 0) || v.months > 12) ok = false;
+    var allFine = true;
+    for (var key in n) { if (!(n[key] >= 0)) allFine = false; }   // empty or negative
+    if (!(n.totalIncome > 0) || !(n.totalShares > 0) || n.monthsHeld > 12) allFine = false;
 
-    if (!ok) {
-      out.div.textContent = out.aaoifi.textContent = out.mod.textContent = '—';
-      if (hint.textContent !== HINT_BAD) hint.textContent = HINT_BAD;
+    if (!allFine) {
+      answers.dividendMethod.textContent = answers.yearEndMethod.textContent =
+        answers.monthsHeldMethod.textContent = '—';
+      if (hintLine.textContent !== HINT_BAD) hintLine.textContent = HINT_BAD;
       return;
     }
 
     // Interest and total income are both in ₹ crore, and shares in crore,
     // so the "crore" cancels out in each division below.
-    var dividendBased = (v.interest / v.total) * v.dps * v.held;
-    var aaoifi        = (v.interest / v.shares) * v.held;
-    var modified      = aaoifi * (v.months / 12);
+    var dividendMethod   = (n.interestIncome / n.totalIncome) * n.dividend * n.sharesHeld;
+    var yearEndMethod    = (n.interestIncome / n.totalShares) * n.sharesHeld;
+    var monthsHeldMethod = yearEndMethod * (n.monthsHeld / 12);
 
-    out.div.textContent    = rupees(dividendBased);
-    out.aaoifi.textContent = rupees(aaoifi);
-    out.mod.textContent    = rupees(modified);
-    // The small bar under each method: its amount against the biggest.
-    var most = Math.max(dividendBased, aaoifi, modified) || 1;
-    [['b-div', dividendBased], ['b-aaoifi', aaoifi], ['b-mod', modified]].forEach(function (b) {
-      var bar = document.getElementById(b[0]);
-      if (bar) bar.style.setProperty('--to', Math.round(b[1] / most * 1000) / 10);
+    answers.dividendMethod.textContent   = rupees(dividendMethod);
+    answers.yearEndMethod.textContent    = rupees(yearEndMethod);
+    answers.monthsHeldMethod.textContent = rupees(monthsHeldMethod);
+
+    // The bar under each method: its amount against the biggest of the three.
+    var biggest = Math.max(dividendMethod, yearEndMethod, monthsHeldMethod) || 1;
+    [['bar-dividend', dividendMethod], ['bar-year-end', yearEndMethod], ['bar-months-held', monthsHeldMethod]].forEach(function (pair) {
+      var bar = document.getElementById(pair[0]);
+      if (bar) bar.style.setProperty('--to', Math.round(pair[1] / biggest * 1000) / 10);
     });
-    if (hint.textContent !== HINT_OK) hint.textContent = HINT_OK;
+    if (hintLine.textContent !== HINT_OK) hintLine.textContent = HINT_OK;
   }
 
-  for (var k in box) { box[k].addEventListener('input', update); }
+  for (var name2 in boxes) { boxes[name2].addEventListener('input', update); }
+
 })();
 </script>
 

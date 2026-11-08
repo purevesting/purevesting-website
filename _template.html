@@ -213,6 +213,29 @@
         <p>The answer, in 2 or 3 short sentences.</p>
       </div>
 
+      <!-- OR, ON AN INSTRUMENT PAGE: THE ANSWER DRAWN (copy from
+           instruments/epf/). Two parts side by side (add "three-parts"
+           for three), each with a sign, the answer in a word or two, and
+           one short line. Signs: sign-yes ✓ (you may), sign-no ✗ (riba —
+           grey, never red), sign-differ (scholars differ), sign-open ?
+           (no fatwa found), sign-note ! (good to know), sign-none – (not
+           asked). data-share-text: the same answer in sentences, for the
+           "Share as image" picture.
+
+      <div class="answer answer-parts" data-share-text="The answer in sentences.">
+        <div class="part">
+          <p class="part-what">The first part</p>
+          <p class="part-word"><span class="sign sign-yes" aria-hidden="true"></span>You may</p>
+          <p class="part-why">One short line why.</p>
+        </div>
+        <div class="part">
+          <p class="part-what">The second part</p>
+          <p class="part-word"><span class="sign sign-no" aria-hidden="true"></span>Riba</p>
+          <p class="part-why">One short line why.</p>
+        </div>
+      </div>
+      -->
+
       <!-- Byline: article pages only — photo, name and date, nothing else.
            Tools, hub and legal pages leave this out. -->
       <div class="byline">
@@ -245,6 +268,37 @@
           <p>The detail most people don't need.</p>
         </div>
       </details>
+
+      <!-- HOW IT WORKS, AS A DRAWING (copy from instruments/ppf/): your
+           money → where it goes → what you get, one card each, with the
+           arrows drawn by site.css.
+
+      <ol class="money-path">
+        <li class="step">
+          <div class="step-head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24">…</svg></span><h3>Your money</h3></div>
+          <p>One or two short lines.</p>
+        </li>
+        <li class="step"> … Where it goes … </li>
+        <li class="step"> … What you get … </li>
+      </ol>
+      -->
+
+      <!-- WHAT A FATWA SAYS, AS A SHORT CARD (copy from instruments/epf/):
+           where it is from, never who; its answers as small signs; one
+           line; its exact words under "What the fatwa says".
+
+      <div class="card fatwa">
+        <h3>A fatwa from India</h3>
+        <ul class="fatwa-answers">
+          <li><span class="sign sign-yes" aria-hidden="true"></span><span><strong>The question:</strong> its answer</span></li>
+        </ul>
+        <p>One short line.</p>
+        <details class="source">
+          <summary>What the fatwa says</summary>
+          <span class="source-body">"The fatwa's exact words." — Fatwa number.</span>
+        </details>
+      </div>
+      -->
 
       <!-- A chart instead of a table (README.md, "The look"): one row per
            bar, --to is the bar's length in % of the track (--from too, for
@@ -319,7 +373,7 @@
         <h2>HalalEdge, one email a week</h2>
         <p>One real money question, worked through with its sources. Free.</p>
       </div>
-      <a class="btn" href="/newsletter/">Subscribe free</a>
+      <a class="button" href="/newsletter/">Subscribe free</a>
     </div>
 
     <!-- A FEW LINKS (MAS, 6 Nov 2026: a short, clean footer). The menu

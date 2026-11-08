@@ -46,6 +46,7 @@
 
 
 /* 1. FONTS ================================================================
+   Shows on: every page — all the text.
    Two fonts (MAS, 6 Nov 2026): Bricolage Grotesque for headings, Plus
    Jakarta Sans for text and numbers. Both live in /assets/fonts/ rather
    than on Google's servers: one less connection for the browser, they can
@@ -96,6 +97,7 @@
 
 
 /* 2. TOKENS ===============================================================
+   Shows on: every page: every colour, font and size comes from here.
    Every colour and font is named once here, then referenced below as
    var(--name). Change a value here and it changes everywhere it is used.
    README.md lists them with what each is for.
@@ -175,6 +177,7 @@
 
 
 /* 3. BASE =================================================================
+   Shows on: every page.
    Browser defaults straightened out. You will rarely touch this.
    ========================================================================== */
 
@@ -209,6 +212,8 @@ svg { flex-shrink: 0; }
 
 
 /* 4. LAYOUT ===============================================================
+   Shows on: every page: the page width, the gaps between sections, the blue
+   bands.
    Two classes do nearly all the layout work on this site, plus the blue
    band that gives a page its rhythm.
    ========================================================================== */
@@ -260,7 +265,7 @@ svg { flex-shrink: 0; }
    green so they stay easy to read on blue. */
 .band h2,
 .band h3 { color: var(--sky-ink); }
-.band a:not(.btn):not(.tile):not(.card) { color: var(--green-ink); }
+.band a:not(.button):not(.tile):not(.card) { color: var(--green-ink); }
 
 /* .grid — a stack on mobile. Add .grid-2 or .grid-3 alongside it and
    section 15 turns it into that many columns once the screen is wide. */
@@ -271,6 +276,8 @@ svg { flex-shrink: 0; }
 
 
 /* 5. TYPOGRAPHY ===========================================================
+   Shows on: every page: headings, paragraphs, small grey dates, big
+   numbers.
    Bricolage Grotesque 800 for H1 and H2. Plus Jakarta Sans for H3 and
    everything else, numbers included. The sizes here are the 390px phone
    sizes; section 15 scales them up.
@@ -329,9 +336,9 @@ p {
   max-width: 34em;
 }
 
-/* .t-green — a large heading word in brand green. Only on H1 or H2: this
+/* .word-green — a large heading word in brand green. Only on H1 or H2: this
    green is not readable at small sizes. */
-.t-green { color: var(--green); }
+.word-green { color: var(--green); }
 
 /* .muted — secondary text anywhere. */
 .muted { color: var(--ink-2); }
@@ -372,9 +379,9 @@ p {
   font-variant-numeric: tabular-nums;
 }
 
-/* .big-num — one big number on its own (a headline figure). Ordinary
+/* .big-number — one big number on its own (a headline figure). Ordinary
    proportional digits look better at this size than same-width ones. */
-.big-num {
+.big-number {
   font-family: var(--font-body);
   font-weight: 800;
   font-variant-numeric: proportional-nums;
@@ -383,6 +390,7 @@ p {
 
 
 /* 6. LINKS AND BUTTONS ====================================================
+   Shows on: every page: links, the green buttons, the "give way" on a tap.
    Everything tappable is at least 44px tall, nothing depends on hover
    (a phone has no hover), and every button gives way a little when tapped.
    ========================================================================== */
@@ -396,9 +404,9 @@ a {
 
 a:hover { text-decoration-thickness: 2px; }
 
-/* .btn — the solid button. Deep green, because white text on the lighter
+/* .button — the solid button. Deep green, because white text on the lighter
    --green fails contrast at this size. */
-.btn {
+.button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -419,37 +427,35 @@ a:hover { text-decoration-thickness: 2px; }
   transition: transform 120ms var(--ease), background-color 150ms ease, box-shadow 150ms ease;
 }
 
-.btn:hover { background: var(--green-ink); text-decoration: none; }
-.btn svg { width: 20px; height: 20px; }
+.button:hover { background: var(--green-ink); text-decoration: none; }
+.button svg { width: 20px; height: 20px; }
 
-/* .btn-quiet — the same shape, outlined instead of filled. */
-.btn-quiet {
+/* .button-quiet — the same shape, outlined instead of filled. */
+.button-quiet {
   color: var(--green-deep);
   background: var(--white);
   border-color: var(--line);
   box-shadow: none;
 }
 
-.btn-quiet:hover { background: var(--white); border-color: var(--green); }
+.button-quiet:hover { background: var(--white); border-color: var(--green); }
 
-/* .btn-light — a white button on a dark or blue band. */
-.btn-light {
+/* .button-light — a white button on a dark or blue band. */
+.button-light {
   color: var(--forest);
   background: var(--white);
   border-color: var(--white);
   box-shadow: none;
 }
 
-.btn-light:hover { background: var(--bone); }
+.button-light:hover { background: var(--bone); }
 
 /* The tap: anything pressable gives way a little under the thumb. */
-.btn:active,
+.button:active,
 .tile:active,
 .card-link:active,
-.switch-btn:active,
-.share-btn:active,
-.toc li a:active,
-.chip-link:active { transform: scale(0.97); }
+.switch-button:active,
+.share-button:active { transform: scale(0.97); }
 
 /* Keyboard users must be able to see where they are. Do not remove. */
 a:focus-visible,
@@ -463,6 +469,8 @@ input:focus-visible {
 
 
 /* 7. HEADER ===============================================================
+   Shows on: the top of every page: the logo, the Subscribe pill and the
+   menu.
    Pasted identically into every page. No menu button and no JavaScript
    needed: Google and a screen reader always see the links. site.js only
    marks the menu word for the page you are on.
@@ -621,6 +629,7 @@ input:focus-visible {
 
 
 /* 8. FOOTER ===============================================================
+   Shows on: the bottom of every page.
    The one dark area at the bottom of every page, kept short (MAS, 6 Nov
    2026): the newsletter sign-up, a few links, where else to find
    Purevesting, what it is, and the one disclaimer line.
@@ -651,8 +660,8 @@ body:has(main > .band:last-child) .site-footer { margin-top: 0; }
 
 /* The footer's button keeps its button colours: the general footer-link
    rule above would otherwise turn its text cream. */
-.site-footer .btn { color: var(--white); }
-.site-footer .btn:hover { text-decoration: none; }
+.site-footer .button { color: var(--white); }
+.site-footer .button:hover { text-decoration: none; }
 
 /* The newsletter sign-up: a lighter box with a blue envelope. */
 .footer-news {
@@ -674,7 +683,7 @@ body:has(main > .band:last-child) .site-footer { margin-top: 0; }
 }
 
 .footer-news p { margin: 0.2rem 0 0; }
-.footer-news .btn { grid-column: 1 / -1; justify-self: start; }
+.footer-news .button { grid-column: 1 / -1; justify-self: start; }
 
 /* The home page has its own sign-up just above the footer, so there this
    one stands aside. (A browser too old for :has() simply shows both.) */
@@ -747,12 +756,15 @@ body:has(.home-news) .footer-nav { margin-top: 0; }
 @media (min-width: 46em) {
   .site-footer .wrap { padding-top: 3rem; padding-bottom: 2.5rem; }
   .footer-news { grid-template-columns: auto 1fr auto; padding: 1.25rem 1.5rem; }
-  .footer-news .btn { grid-column: auto; }
+  .footer-news .button { grid-column: auto; }
   .footer-nav { display: flex; flex-wrap: wrap; gap: 0 1.6rem; margin-top: 1.75rem; }
 }
 
 
-/* 9. CARDS, ICONS AND TILES =============================================== */
+/* 9. CARDS, ICONS AND TILES ===============================================
+   Shows on: white cards on most pages; the small icons in blue circles; the
+   question tiles on the home page, /tools/ and /learn/.
+   ========================================================================== */
 
 .card {
   background: var(--white);
@@ -845,7 +857,7 @@ body:has(.home-news) .footer-nav { margin-top: 0; }
   transform: translateY(-2px);
 }
 
-.tile-q {
+.tile-question {
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.3;
@@ -853,7 +865,7 @@ body:has(.home-news) .footer-nav { margin-top: 0; }
 }
 
 /* A small grey line under a tile's question: the tool's name (/tools/). */
-.tile-sub {
+.tile-name {
   margin-top: -0.45rem;
   font-size: 0.8rem;
   line-height: 1.35;
@@ -861,7 +873,7 @@ body:has(.home-news) .footer-nav { margin-top: 0; }
 }
 
 /* The small arrow in the corner of a tile. */
-.tile-go {
+.tile-arrow {
   position: absolute;
   right: 0.85rem;
   top: 1rem;
@@ -876,10 +888,12 @@ body:has(.home-news) .footer-nav { margin-top: 0; }
   transition: transform 150ms var(--ease);
 }
 
-.tile:hover .tile-go { transform: translateX(3px); }
+.tile:hover .tile-arrow { transform: translateX(3px); }
 
 
 /* 10. TABLES ==============================================================
+   Shows on: every table — the year-by-year tables, the tables under "Read
+   more", the screener's list.
    Markup shape — the scroll box is what stops a wide table dragging the
    whole page sideways:
 
@@ -951,7 +965,7 @@ td:first-child { font-weight: 600; }
    which row you are reading. On a table that fits the screen this does
    nothing at all. The thin shadow is the line between the two. */
 .table-scroll thead th:first-child,
-.table-scroll tbody tr:not(.fig-row) > td:first-child {
+.table-scroll tbody tr:not(.source-panel-row) > td:first-child {
   position: sticky;
   left: 0;
   z-index: 1;
@@ -963,7 +977,7 @@ td:first-child { font-weight: 600; }
 
 /* Wide enough that a fund's name wraps onto two or three lines on a phone,
    not five — the figures beside it scroll instead. */
-.table-scroll tbody tr:not(.fig-row) > td:first-child { min-width: 9rem; }
+.table-scroll tbody tr:not(.source-panel-row) > td:first-child { min-width: 9rem; }
 
 /* THE PHONE VERSION: a stack of cards. */
 @media (max-width: 45.99em) {
@@ -1005,7 +1019,7 @@ td:first-child { font-weight: 600; }
   }
 
   .table-stack td,
-  .table-stack tbody tr:not(.fig-row) > td:first-child {
+  .table-stack tbody tr:not(.source-panel-row) > td:first-child {
     position: static;
     min-width: 0;
     padding: 0;
@@ -1036,7 +1050,7 @@ td:first-child { font-weight: 600; }
   .table-stack td:first-child { font-size: 1rem; font-weight: 700; }
   .table-stack td:first-child::before { display: none; }
 
-  .table-stack td.num > button.fig {
+  .table-stack td.num > button.figure-button {
     display: inline;
     width: auto;
     margin: 0;
@@ -1045,7 +1059,7 @@ td:first-child { font-weight: 600; }
   }
 
   /* A tapped figure's source opens under its card. */
-  .table-stack tr.fig-row {
+  .table-stack tr.source-panel-row {
     margin-top: -0.35rem;
     padding: 0;
     background: none;
@@ -1053,7 +1067,7 @@ td:first-child { font-weight: 600; }
     box-shadow: none;
   }
 
-  .table-stack tr.fig-row .fig-pop { position: static; max-width: none; margin: 0; }
+  .table-stack tr.source-panel-row .source-panel { position: static; max-width: none; margin: 0; }
 
   /* A table of figures only (the calculators' year by year) stays a table
      on a phone, just tighter, so its columns fit side by side. */
@@ -1061,12 +1075,14 @@ td:first-child { font-weight: 600; }
   .table-compact th,
   .table-compact td { padding: 0.55rem 0.5rem; }
   .table-compact th { white-space: normal; }
-  .table-compact tbody tr:not(.fig-row) > td:first-child { min-width: 0; position: static; box-shadow: none; }
+  .table-compact tbody tr:not(.source-panel-row) > td:first-child { min-width: 0; position: static; box-shadow: none; }
   .table-compact thead th:first-child { position: static; box-shadow: none; }
 }
 
 
 /* 11. CHIPS: PASSES / FAILS ===============================================
+   Shows on: the ✓ Halal / ✗ Not halal labels: the screener's list, the fund
+   cards, the methodology page.
    Pass and fail are never shown by colour alone. Each chip carries a symbol
    and a word too, so it still reads correctly to someone colour-blind, in a
    black-and-white printout, or in a screenshot with a filter on it.
@@ -1097,7 +1113,11 @@ td:first-child { font-weight: 600; }
 }
 
 
-/* 12. ANSWER BOX, CONTENTS, BYLINE, READ MORE, SOURCES, THE ASK LINE ====== */
+/* 12. ANSWER BOX, CONTENTS, BYLINE, READ MORE, SOURCES, THE ASK LINE ======
+   Shows on: every article: the answer under the heading, the byline, "Read
+   more", the closed Sources at the bottom, and "Still have a doubt? Ask
+   me".
+   ========================================================================== */
 
 /* .answer — the real answer in 2 or 3 short lines, right under the H1. A
    white card with the green edge that marks the site's answer. */
@@ -1125,48 +1145,6 @@ td:first-child { font-weight: 600; }
 
 .answer p { font-size: 1.05rem; }
 .answer p:last-child { margin-bottom: 0; }
-
-/* .toc — "On this page": the sections as blue chips, easy to tap. */
-.toc {
-  margin: 1.5rem 0;
-  padding: 0;
-}
-
-.toc > strong {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-
-.toc ol {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.toc li a {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--tap);
-  padding: 0 1rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  line-height: 1.25;
-  color: var(--sky-ink);
-  background: var(--sky-tint);
-  border-radius: 999px;
-  text-decoration: none;
-  transition: background-color 150ms ease, transform 120ms var(--ease);
-}
-
-.toc li a:hover { background: var(--sky-soft); }
 
 /* .byline — MAS's photo, name and the date, nothing else (README.md), as
    a small white pill. The photo has a sky-blue ring. */
@@ -1380,7 +1358,9 @@ td:first-child { font-weight: 600; }
 }
 
 
-/* 13. NEWSLETTER FORM ===================================================== */
+/* 13. NEWSLETTER FORM =====================================================
+   Shows on: /newsletter/ (Beehiiv's own box sits inside it).
+   ========================================================================== */
 
 .subscribe {
   display: flex;
@@ -1402,7 +1382,7 @@ td:first-child { font-weight: 600; }
   border-radius: 999px;
 }
 
-.subscribe .btn { flex: 0 0 auto; }
+.subscribe .button { flex: 0 0 auto; }
 
 /* The small print right under a sign-up form needs a little air above it. */
 .subscribe + p { margin-top: 0.6rem; }
@@ -1414,6 +1394,8 @@ td:first-child { font-weight: 600; }
 
 
 /* 14. MOTION ==============================================================
+   Shows on: every page: cards that rise, charts that fill, numbers that
+   count up.
    Light and quick (README.md, "The look"). Everything is visible by
    default: the .js class is added to <html> by one line of JavaScript, so
    if JavaScript fails or is switched off, nothing hides and nothing
@@ -1477,6 +1459,7 @@ td:first-child { font-weight: 600; }
 
 
 /* 15. BIGGER SCREENS ======================================================
+   Shows on: every page, on a tablet or a computer.
    Everything above is the 390px phone design. These blocks only add changes
    on wider screens — that is what "mobile first" means in practice.
    ========================================================================== */
@@ -1503,7 +1486,7 @@ td:first-child { font-weight: 600; }
   .tile { min-height: 9.5rem; padding: 1.25rem; }
   .tile .icon { width: 3.25rem; height: 3.25rem; }
   .tile .icon svg { width: 1.75rem; height: 1.75rem; }
-  .tile-q { font-size: 1.1rem; }
+  .tile-question { font-size: 1.1rem; }
 
   /* Wide enough for the menu to sit beside the logo again. It no longer
      needs to scroll, and must not: the drop-down lists hang below it. */
@@ -1598,6 +1581,9 @@ td:first-child { font-weight: 600; }
 
 
 /* 16. HOME PAGE PIECES ===================================================
+   Shows on: the home page; its switch buttons are also on /halal-stocks/
+   and the calculators, its video cards on /videos/, its "Ask me" card on
+   /ask/.
    The home page (MAS, 6 Nov 2026): the headline, one short line and the
    stock search; the question tiles; the 500 squares; the videos; "Ask
    me"; the newsletter. The tiles' own style is in section 9 (the hub pages
@@ -1672,25 +1658,25 @@ td:first-child { font-weight: 600; }
 .hero-art { display: none; }
 
 .art { display: block; width: 100%; height: auto; overflow: visible; }
-.art .c-tint  { fill: var(--sky-tint); }
-.art .c-soft  { fill: var(--sky-soft); }
-.art .c-sky   { fill: var(--sky); }
-.art .c-white { fill: var(--white); }
-.art .c-bone  { fill: var(--bone); }
-.art .c-line  { fill: var(--line); }
-.art .c-line2 { fill: #E9E3D7; }
-.art .c-green { fill: var(--green); }
-.art .c-gtint { fill: var(--green-tint); }
-.art .card-s  { stroke: var(--line); stroke-width: 1.5; filter: drop-shadow(0 10px 18px rgba(12, 71, 102, 0.12)); }
-.art .s-sky,
-.art .s-green { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.art .s-sky   { stroke: var(--sky-deep); }
-.art .s-green { stroke: var(--green-ink); }
-.art .t-art   { font: 700 15px var(--font-body); fill: var(--green-ink); }
+.art .fill-tint  { fill: var(--sky-tint); }
+.art .fill-soft  { fill: var(--sky-soft); }
+.art .fill-sky   { fill: var(--sky); }
+.art .fill-white { fill: var(--white); }
+.art .fill-bone  { fill: var(--bone); }
+.art .fill-line  { fill: var(--line); }
+.art .fill-line-2 { fill: #E9E3D7; }
+.art .fill-green { fill: var(--green); }
+.art .fill-green-tint { fill: var(--green-tint); }
+.art .art-card  { stroke: var(--line); stroke-width: 1.5; filter: drop-shadow(0 10px 18px rgba(12, 71, 102, 0.12)); }
+.art .line-sky,
+.art .line-green { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.art .line-sky   { stroke: var(--sky-deep); }
+.art .line-green { stroke: var(--green-ink); }
+.art .art-text   { font: 700 15px var(--font-body); fill: var(--green-ink); }
 
-.art-a, .art-b, .art-c { animation: art-in 700ms var(--ease) both; }
-.art-b { animation-delay: 120ms; }
-.art-c { animation-delay: 240ms; }
+.art-first, .art-second, .art-third { animation: art-in 700ms var(--ease) both; }
+.art-second { animation-delay: 120ms; }
+.art-third { animation-delay: 240ms; }
 
 @keyframes art-in {
   from { opacity: 0; transform: translateY(14px); }
@@ -1740,7 +1726,7 @@ td:first-child { font-weight: 600; }
 
 .grid-card h2 { margin: 0 0 0.75rem; color: var(--ink); }
 
-.screen-stat .big-num {
+.screen-stat .big-number {
   display: block;
   font-size: 3.25rem;
   line-height: 1;
@@ -1769,7 +1755,7 @@ td:first-child { font-weight: 600; }
 }
 .js .grid-switch { display: flex; }
 
-.switch-btn {
+.switch-button {
   min-height: var(--tap);
   padding: 0 1rem;
   font: 700 0.9rem var(--font-body);
@@ -1780,8 +1766,8 @@ td:first-child { font-weight: 600; }
   cursor: pointer;
   transition: transform 120ms var(--ease), background-color 150ms ease;
 }
-.switch-btn:hover { border-color: var(--sky); }
-.switch-btn[aria-pressed="true"] {
+.switch-button:hover { border-color: var(--sky); }
+.switch-button[aria-pressed="true"] {
   color: var(--white);
   background: var(--sky-deep);
   border-color: var(--sky-deep);
@@ -1815,7 +1801,7 @@ td:first-child { font-weight: 600; }
 }
 
 .section-head h2 { margin: 0; }
-.section-head .btn svg { width: 22px; height: 22px; }
+.section-head .button svg { width: 22px; height: 22px; }
 
 .video-row {
   display: grid;
@@ -1991,8 +1977,8 @@ td:first-child { font-weight: 600; }
 .news-card > div { display: contents; }
 .news-card > div > h2 { grid-column: 2; margin: 0; }
 .news-card > div > p,
-.news-card > .btn { grid-column: 1 / -1; }
-.news-card > .btn { justify-self: start; }
+.news-card > .button { grid-column: 1 / -1; }
+.news-card > .button { justify-self: start; }
 
 /* /videos/: every video as a white card (MAS, 8 Nov 2026, part 4: the
    new look, much shorter). On a phone each is a short row — the picture
@@ -2038,7 +2024,7 @@ td:first-child { font-weight: 600; }
 
   .screen-stat { font-size: 2rem; }
   .grid-card { padding: 2rem 2.25rem; }
-  .screen-stat .big-num { display: inline; font-size: 4rem; vertical-align: -0.12em; margin-right: 0.35rem; }
+  .screen-stat .big-number { display: inline; font-size: 4rem; vertical-align: -0.12em; margin-right: 0.35rem; }
   .screen-words { display: inline; font-size: 1.2rem; }
 
   .video-row {
@@ -2060,7 +2046,7 @@ td:first-child { font-weight: 600; }
   .news-card .icon { width: 4rem; height: 4rem; }
   .news-card .icon svg { width: 1.9rem; height: 1.9rem; }
   .news-card > div { display: block; }
-  .news-card > .btn { grid-column: auto; }
+  .news-card > .button { grid-column: auto; }
 }
 
 @media (min-width: 64em) {
@@ -2069,11 +2055,14 @@ td:first-child { font-weight: 600; }
 
 
 /* 17. CHARTS: BARS AND SQUARES ===========================================
+   Shows on: every bar chart and the grid of squares — the home page,
+   /halal-stocks/, /methodology/, the fund cards, the instrument pages, the
+   purification calculator.
    Drawn with plain HTML and CSS, so the words and numbers are real text
    (they read without JavaScript, to screen readers, and still show their
    source when tapped). The bar itself is only the drawing.
 
-   BARS — README.md, "How the look is built":
+   BARS — README.md, "Building blocks":
      <div class="bars">
        <div class="bar-row" style="--to: 65">          (or --from: 45 too)
          <span class="bar-label">Government securities</span>
@@ -2142,7 +2131,7 @@ td:first-child { font-weight: 600; }
    class="bars bars-zero". A negative bar sits left of the line and grows
    from it (bar-row-left on its row, or bar-left on the bar). */
 .bars-zero .bar-track::after,
-.ret-track::after {
+.return-track::after {
   content: "";
   position: absolute;
   left: calc(50% - 1px);
@@ -2206,7 +2195,6 @@ td:first-child { font-weight: 600; }
 
 .swatch-green { background: var(--green); }
 .swatch-off   { background: var(--line); }
-.swatch-dim   { background: var(--sky-soft); }
 
 /* --- THE SQUARES ---
    One small square per company in the Nifty 500. Filled = passes. It is
@@ -2261,7 +2249,7 @@ td:first-child { font-weight: 600; }
 
 .stat.is-active { border-color: var(--sky); background: var(--sky-tint); }
 
-.stat .big-num {
+.stat .big-number {
   display: block;
   font-size: 2rem;
   line-height: 1.05;
@@ -2296,7 +2284,7 @@ td:first-child { font-weight: 600; }
 .step h3 { margin: 0.6rem 0 0.4rem; }
 .step > p:last-child, .step > .bars:last-child { margin-bottom: 0; }
 
-.step-n {
+.step-number {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2309,7 +2297,7 @@ td:first-child { font-weight: 600; }
 }
 
 @media (min-width: 46em) {
-  .stat .big-num { font-size: 2.75rem; }
+  .stat .big-number { font-size: 2.75rem; }
   .stat { padding: 1rem 1.25rem; }
   .step-cards { grid-template-columns: 0.8fr 1.2fr; align-items: start; }
 }
@@ -2323,23 +2311,25 @@ td:first-child { font-weight: 600; }
 
 
 /* 18. WORKED EXAMPLE ======================================================
+   Shows on: /methodology/ ("Try it") and the boxes of the three
+   calculators.
    The number boxes on the methodology page. They only work with
    JavaScript, so they stay hidden until the .js class is on <html> — the
    table under them already shows the answer for the starting numbers,
    so nothing is missing without them.
    ========================================================================== */
 
-.calc-fields {
+.calculator-fields {
   display: none;
   gap: 1rem;
   margin: 1rem 0 1.5rem;
 }
 
-.js .calc-fields { display: grid; }
+.js .calculator-fields { display: grid; }
 
 /* The one-line instruction above the boxes. Spans the full width once
    the boxes sit side by side on a wider screen. */
-.calc-hint {
+.calculator-hint {
   grid-column: 1 / -1;
   margin: 0;
   color: var(--ink-2);
@@ -2348,20 +2338,20 @@ td:first-child { font-weight: 600; }
 
 /* Each label-and-box pair. Pushing its contents to the bottom keeps the
    boxes level when one label wraps onto two lines and another doesn't. */
-.calc-fields > div {
+.calculator-fields > div {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.calc-fields label {
+.calculator-fields label {
   display: block;
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: 0.35rem;
 }
 
-.calc-fields input {
+.calculator-fields input {
   width: 100%;
   min-height: var(--tap);
   padding: 0.5rem 0.85rem;
@@ -2375,32 +2365,10 @@ td:first-child { font-weight: 600; }
   border-radius: var(--radius-sm);
 }
 
-.calc-fields input:focus { border-color: var(--sky); }
+.calculator-fields input:focus { border-color: var(--sky); }
 
 @media (min-width: 46em) {
-  .js .calc-fields { grid-template-columns: repeat(3, 1fr); }
-}
-
-/* .cell-bar — a small bar inside a table cell (the purification
-   calculator: each method's amount against the biggest). */
-.cell-bar {
-  display: block;
-  height: 10px;
-  margin-top: 0.55rem;
-  max-width: 16rem;
-  border-radius: 5px;
-  background: var(--sky-soft);
-  overflow: hidden;
-}
-
-.cell-bar > span {
-  display: block;
-  height: 100%;
-  width: calc(var(--to, 0) * 1%);
-  min-width: 3px;
-  border-radius: 5px;
-  background: var(--sky);
-  transition: width 300ms var(--ease);
+  .js .calculator-fields { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* .cell-note — a smaller second line inside a table cell, under the
@@ -2414,6 +2382,8 @@ td:first-child { font-weight: 600; }
 
 
 /* 19. SHARE BUTTON ========================================================
+   Shows on: under the answer of an article — the instrument pages,
+   /halal-stocks/, /methodology/, the mutual funds page.
    The "Share as image" button under a page's main answer (only there,
    since 6 Nov 2026). It is added by /assets/share-card.js, so it only
    appears when JavaScript works — which is what draws the picture in the
@@ -2427,7 +2397,7 @@ td:first-child { font-weight: 600; }
 /* Tuck it up closer under an answer box, which has a big margin of its own. */
 .answer + .share-row { margin-top: -0.75rem; }
 
-.share-btn {
+.share-button {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -2444,17 +2414,18 @@ td:first-child { font-weight: 600; }
   transition: transform 120ms var(--ease), border-color 150ms ease;
 }
 
-.share-btn::before {               /* a small "share" arrow */
+.share-button::before {               /* a small "share" arrow */
   content: "";
   width: 1rem;
   height: 1rem;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B6FAA' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 15V3M7.5 7.5 12 3l4.5 4.5'/%3E%3Cpath d='M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
-.share-btn:hover { border-color: var(--sky); }
+.share-button:hover { border-color: var(--sky); }
 
 
 /* 20. QUESTION AND FEEDBACK FORMS =========================================
+   Shows on: /ask/.
    The two forms on /ask/. Each box is full width on a phone and capped at
    a comfortable reading width on bigger screens.
    ========================================================================== */
@@ -2508,7 +2479,7 @@ td:first-child { font-weight: 600; }
   outline-offset: 2px;
 }
 
-.form-stack .btn { justify-self: start; }
+.form-stack .button { justify-self: start; }
 
 /* The "Sending… / Thank you" line under each form's button. */
 .form-status {
@@ -2522,6 +2493,8 @@ td:first-child { font-weight: 600; }
 
 
 /* 21. TAPPABLE FIGURES ====================================================
+   Shows on: every page with sourced figures (tap a number to see its
+   source).
    /assets/site.js turns each sourced figure into a button: tap it and its
    source and date open underneath. Without JavaScript none of this
    exists and the figures are plain text.
@@ -2530,7 +2503,7 @@ td:first-child { font-weight: 600; }
    every figure — a figure is never coloured, whatever its value.
    ========================================================================== */
 
-button.fig {
+button.figure-button {
   font: inherit;
   letter-spacing: inherit;
   color: inherit;
@@ -2546,11 +2519,11 @@ button.fig {
   text-underline-offset: 0.2em;
 }
 
-button.fig[aria-expanded="true"] { text-decoration-style: solid; }
+button.figure-button[aria-expanded="true"] { text-decoration-style: solid; }
 
 /* In a table the whole cell is the button, so it is easy to hit with a
    thumb: the negative margin stretches it over the cell's padding. */
-td.num > button.fig {
+td.num > button.figure-button {
   display: block;
   width: calc(100% + 1.8rem);
   margin: -0.75rem -0.9rem;
@@ -2559,7 +2532,7 @@ td.num > button.fig {
 }
 
 /* The panel that opens: a small blue box, like a Read more's. */
-.fig-pop {
+.source-panel {
   display: block;
   max-width: 34rem;
   margin: 0.35rem 0 0.75rem;
@@ -2576,28 +2549,30 @@ td.num > button.fig {
   white-space: normal;
 }
 
-.fig-pop a { color: var(--green-ink); }
+.source-panel a { color: var(--green-ink); }
 
 /* Under a table row: a full-width row of its own. On a phone a wide table
    scrolls sideways, so the panel holds still at the left edge and stays
    no wider than the screen — readable without scrolling the table. */
-.fig-row td {
+.source-panel-row td {
   padding: 0 0.9rem 0.75rem;
   font-weight: 400;
   background: var(--white);
 }
 
-.fig-row .fig-pop {
+.source-panel-row .source-panel {
   position: sticky;
   left: 0.9rem;
   max-width: min(34rem, calc(100vw - 5rem));
   margin: 0.6rem 0 0;
 }
 
-tr:has(+ .fig-row) td { border-bottom-color: transparent; }
+tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
 
 
 /* 22. THE APP =============================================================
+   Shows on: any page read without internet (the note at the bottom), and
+   /app/'s install box.
    The pieces that make the site installable: the offline note and the
    /app/ page's install box.
    ========================================================================== */
@@ -2656,8 +2631,8 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .js .install-box { display: block; }
 
 .install-box p { margin: 0; }
-.install-box .btn { margin-top: 0.9rem; }
-.install-box .btn[hidden] { display: none; }
+.install-box .button { margin-top: 0.9rem; }
+.install-box .button[hidden] { display: none; }
 
 /* The steps for each phone: numbered, with room between them. */
 .steps { padding-left: 1.3rem; }
@@ -2666,6 +2641,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 
 /* 23. CALCULATORS — SIP and loan ==========================================
+   Shows on: the answers on /sip-calculator/ and /loan-calculator/.
    The result boxes of /sip-calculator/ and /loan-calculator/. These two
    are the only places on the site where results carry colour, and only
    because they are the reader's own made-up numbers, not a real product's:
@@ -2673,7 +2649,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
    (MAS, 6 Oct). Real returns in tables stay uncoloured, as ever.
    ========================================================================== */
 
-.calc-fields input[type="range"] {
+.calculator-fields input[type="range"] {
   min-height: 32px;
   margin-top: 0.35rem;
   padding: 0;
@@ -2682,7 +2658,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   accent-color: var(--green-deep);
 }
 
-.calc-result {
+.calculator-answer {
   display: grid;
   gap: 0.8rem;
   margin: 1.25rem 0 0.75rem;
@@ -2693,7 +2669,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   box-shadow: var(--shadow);
 }
 
-.calc-stat {
+.calculator-stat {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -2701,18 +2677,18 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   gap: 0.25rem 1rem;
 }
 
-.calc-label { color: var(--ink-2); font-size: 0.95rem; }
-.calc-value { font-size: 1.15rem; font-weight: 700; }
+.calculator-label { color: var(--ink-2); font-size: 0.95rem; }
+.calculator-value { font-size: 1.15rem; font-weight: 700; }
 
-.calc-main {
+.calculator-main {
   padding-top: 0.8rem;
   border-top: 1px solid var(--line);
 }
 
-.calc-main .calc-label { color: var(--ink); font-weight: 700; }
-.calc-main .calc-value { font-size: 1.75rem; font-weight: 800; color: var(--green-deep); font-variant-numeric: proportional-nums; letter-spacing: -0.02em; }
+.calculator-main .calculator-label { color: var(--ink); font-weight: 700; }
+.calculator-main .calculator-value { font-size: 1.75rem; font-weight: 800; color: var(--green-deep); font-variant-numeric: proportional-nums; letter-spacing: -0.02em; }
 
-.calc-words {
+.calculator-words {
   flex-basis: 100%;
   text-align: right;
   font-size: 0.85rem;
@@ -2730,9 +2706,6 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 }
 
 .split-bar > span { transition: width 300ms var(--ease); }
-
-.split-in   { background: var(--green-tint); }
-.split-gain { background: var(--green); }
 
 /* The one line under the loan's bar: "Interest — 52% of everything you
    repay". */
@@ -2759,10 +2732,10 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
    button may take two lines. Above the return box, a small tag says what
    the number in it is (above, so the boxes stay level). */
 .rate-picks { margin-top: 0.6rem; }
-.rate-picks .switch-btn { line-height: 1.3; text-align: left; }
+.rate-picks .switch-button { line-height: 1.3; text-align: left; }
 .rate-picks + .source-note { margin-top: 0.5rem; }
 
-.calc-tag {
+.calculator-tag {
   display: block;
   margin: -0.2rem 0 0.35rem;
   font-size: 0.8rem;
@@ -2771,12 +2744,12 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 
 /* The loan calculator: the interest in red, the loan itself in grey. */
-.t-danger { color: var(--danger); }
+.word-red { color: var(--danger); }
 
-.loan-result .calc-main .calc-value { color: var(--ink); }
+.loan-result .calculator-main .calculator-value { color: var(--ink); }
 
-.calc-danger .calc-label { color: var(--danger-ink); font-weight: 700; }
-.calc-danger .calc-value { color: var(--danger); font-size: 1.45rem; }
+.calculator-red .calculator-label { color: var(--danger-ink); font-weight: 700; }
+.calculator-red .calculator-value { color: var(--danger); font-size: 1.45rem; }
 
 .split-loan     { background: var(--line); }
 .split-interest { background: var(--danger); }
@@ -2837,6 +2810,8 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 
 /* 24. SCREENER ==============================================================
+   Shows on: the search box on the home page and the 404 page, and the
+   search and its big answer on /screener/.
    The "check your stock" box at the top of the home page (a plain form,
    so it works without JavaScript) and the search on /screener/.
    ========================================================================== */
@@ -2856,8 +2831,8 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 /* Taller box and button than a normal form, so they are easy to hit with
    a thumb. */
 .screener-box input,
-.screener-box .btn { min-height: 52px; }
-.screener-box .btn { padding: 0 1.3rem; font-size: 1.05rem; }
+.screener-box .button { min-height: 52px; }
+.screener-box .button { padding: 0 1.3rem; font-size: 1.05rem; }
 
 .screener-box label,
 .screener-search label {
@@ -2896,7 +2871,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
    ✓ Halal, ✗ Not halal or ? Don't know yet — then the company's name and
    only a small date. "Not halal" is grey, never red, and every answer
    carries its word, so it never depends on colour alone. */
-.sc-answer {
+.search-answer {
   max-width: 40rem;
   margin: 1rem 0 0;
   padding: 1.15rem 1.25rem 1.25rem;
@@ -2907,16 +2882,16 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   animation: answer-in 300ms var(--ease) both;
 }
 
-.sc-answer[hidden] { display: none; }
-.sc-answer p { margin: 0 0 0.5rem; }
-.sc-answer > :last-child { margin-bottom: 0; }
+.search-answer[hidden] { display: none; }
+.search-answer p { margin: 0 0 0.5rem; }
+.search-answer > :last-child { margin-bottom: 0; }
 
 @keyframes answer-in {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: none; }
 }
 
-.sc-verdict {
+.search-verdict {
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -2929,9 +2904,9 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   text-wrap: balance;
 }
 
-.sc-answer p.sc-verdict { margin-bottom: 0.75rem; }
+.search-answer p.search-verdict { margin-bottom: 0.75rem; }
 
-.sc-mark {
+.search-mark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2941,7 +2916,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   border-radius: 50%;
 }
 
-.sc-mark svg {
+.search-mark svg {
   width: 1.9rem;
   height: 1.9rem;
   fill: none;
@@ -2951,38 +2926,30 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   stroke-linejoin: round;
 }
 
-.sc-verdict.is-in { color: var(--green-deep); }
-.sc-verdict.is-in .sc-mark { color: var(--white); background: var(--green); }
+.search-verdict.is-in { color: var(--green-deep); }
+.search-verdict.is-in .search-mark { color: var(--white); background: var(--green); }
 
-.sc-verdict.is-out { color: var(--ink-2); }
-.sc-verdict.is-out .sc-mark { color: var(--ink-2); background: var(--bone); border: 2px solid var(--line); }
+.search-verdict.is-out { color: var(--ink-2); }
+.search-verdict.is-out .search-mark { color: var(--ink-2); background: var(--bone); border: 2px solid var(--line); }
 
 /* "Don't know yet": dashed and empty, so it never reads as either answer. */
-.sc-verdict.is-unknown { color: var(--ink-2); }
-.sc-verdict.is-unknown .sc-mark { color: var(--ink-2); border: 2px dashed var(--ink-3); }
+.search-verdict.is-unknown { color: var(--ink-2); }
+.search-verdict.is-unknown .search-mark { color: var(--ink-2); border: 2px dashed var(--ink-3); }
 
-.sc-company { font-size: 1.1rem; line-height: 1.35; }
-.sc-sym { color: var(--ink-3); font-size: 0.8rem; font-weight: 600; }
-.sc-date { font-size: 0.85rem; color: var(--ink-3); }
-.sc-lead { font-weight: 700; }
-.sc-also { margin-top: 1rem; font-size: 0.85rem; color: var(--ink-3); }
+.search-company { font-size: 1.1rem; line-height: 1.35; }
+.search-symbol { color: var(--ink-3); font-size: 0.8rem; font-weight: 600; }
+.search-date { font-size: 0.85rem; color: var(--ink-3); }
+.search-lead { font-weight: 700; }
+.search-also { margin-top: 1rem; font-size: 0.85rem; color: var(--ink-3); }
 
 /* "(Zomato is now Eternal)" — for a search by a company's old name. */
-.sc-renamed { font-weight: 600; color: var(--sky-ink); }
-
-/* The third answer's chip in a list — "Don't know yet". Dashed and empty,
-   so it never reads as either halal or not halal. */
-.chip-unknown {
-  background: transparent;
-  color: var(--ink-2);
-  border: 1px dashed var(--ink-3);
-}
+.search-renamed { font-weight: 600; color: var(--sky-ink); }
 
 /* When a search matches several companies ("tata", "hdfc"): one button per
    company, each with its answer, so the reader can pick the one they meant. */
-.sc-picks { list-style: none; margin: 0.5rem 0 0; padding: 0; }
-.sc-picks li { margin: 0; }
-.sc-picks button {
+.search-picks { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+.search-picks li { margin: 0; }
+.search-picks button {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2998,70 +2965,49 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   border-bottom: 1px solid var(--line);
   cursor: pointer;
 }
-.sc-picks li:last-child button { border-bottom: 0; }
-.sc-picks button:hover { background: var(--sky-tint); }
+.search-picks li:last-child button { border-bottom: 0; }
+.search-picks button:hover { background: var(--sky-tint); }
 
 /* The list of all companies: two columns, the company and the answer
    (MAS, 6 Nov 2026, part 3), so it fits any phone without sliding. */
-#sc-table td:first-child { font-weight: 600; }
-#sc-table td:last-child,
-#sc-table th:last-child { width: 1%; white-space: nowrap; }
+#screener-table td:first-child { font-weight: 600; }
+#screener-table td:last-child,
+#screener-table th:last-child { width: 1%; white-space: nowrap; }
 
 @media (max-width: 45.99em) {
-  #sc-table th, #sc-table td { padding: 0.6rem 0.75rem; }
-  #sc-table .chip { padding: 0.2em 0.6em; font-size: 0.75rem; }
-  #sc-table tbody tr:not(.fig-row) > td:first-child { min-width: 0; position: static; box-shadow: none; }
-  #sc-table thead th:first-child { position: static; box-shadow: none; }
+  #screener-table th, #screener-table td { padding: 0.6rem 0.75rem; }
+  #screener-table .chip { padding: 0.2em 0.6em; font-size: 0.75rem; }
+  #screener-table tbody tr:not(.source-panel-row) > td:first-child { min-width: 0; position: static; box-shadow: none; }
+  #screener-table thead th:first-child { position: static; box-shadow: none; }
 }
 
 
 /* 25. STOP THE GENOCIDE ====================================================
-   The searchable boycott list on /stop-the-genocide/, its highlighted
-   links (the menu item on wide screens, the home page card), and the note
-   saying whose list it is.
+   Shows on: /stop-the-genocide/, and the amber "Stop the genocide" link in
+   the menu on a computer.
+   The searchable boycott list: its big answer (the screener's, with an
+   amber flag), each entry, and the highlighted menu link.
    ========================================================================== */
 
-.bc-note,
-.highlight-card {
-  display: block;
-  max-width: 44rem;
-  margin: 1.25rem 0;
-  padding: 1rem 1.2rem;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--amber);
-  border-radius: var(--radius-sm);
-}
-
-.bc-note p { margin: 0; }
-
-.highlight-card {
-  color: var(--ink);
-  text-decoration: none;
-}
-
-.highlight-card strong { color: var(--ink); }
-.highlight-card .go { color: var(--green-deep); font-weight: 700; white-space: nowrap; }
-
-.bc-list { display: grid; gap: 0.5rem; }
+.boycott-list { display: grid; gap: 0.5rem; }
 
 /* The search's answer (MAS, 6 Nov 2026, part 3): the screener's big
    answer card (section 24), with an amber flag for "On the boycott list"
    — amber is this page's colour — and the matching entries under it. */
-.sc-verdict.is-listed { color: var(--ink); }
-.sc-verdict.is-listed .sc-mark { color: #8A5A00; background: var(--amber-soft); }
-.bc-answer .sc-verdict { font-size: clamp(1.9rem, 8.5vw, 2.6rem); }
-.bc-answer .bc-list { margin-top: 0.5rem; }
-.bc-answer .bc-entry { box-shadow: none; }
-.bc-about { max-width: 40rem; margin: 1rem 0 0; }
+.search-verdict.is-listed { color: var(--ink); }
+.search-verdict.is-listed .search-mark { color: #8A5A00; background: var(--amber-soft); }
+.boycott-answer .search-verdict { font-size: clamp(1.9rem, 8.5vw, 2.6rem); }
+.boycott-answer .boycott-list { margin-top: 0.5rem; }
+.boycott-answer .boycott-entry { box-shadow: none; }
+.boycott-about { max-width: 40rem; margin: 1rem 0 0; }
 
-.bc-entry {
+.boycott-entry {
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
 }
 
-.bc-entry > summary {
+.boycott-entry > summary {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -3072,22 +3018,22 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   cursor: pointer;
 }
 
-.bc-entry > summary::-webkit-details-marker { display: none; }
+.boycott-entry > summary::-webkit-details-marker { display: none; }
 
-.bc-entry > summary::after {          /* + when closed, − when open */
+.boycott-entry > summary::after {          /* + when closed, − when open */
   content: "+";
   margin-left: auto;
   font-weight: 700;
   color: var(--sky-deep);
 }
 
-.bc-entry[open] > summary::after { content: "\2212"; }
-.bc-entry[open] > summary { border-bottom: 1px solid var(--line); }
+.boycott-entry[open] > summary::after { content: "\2212"; }
+.boycott-entry[open] > summary { border-bottom: 1px solid var(--line); }
 
-.bc-name { font-weight: 700; }
-.bc-count { font-size: 0.8rem; color: var(--ink-3); }
+.boycott-name { font-weight: 700; }
+.boycott-count { font-size: 0.8rem; color: var(--ink-3); }
 
-.bc-tag {
+.boycott-reason {
   padding: 0.15em 0.55em;
   font-size: 0.72rem;
   font-weight: 600;
@@ -3096,20 +3042,20 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   border-radius: 999px;
 }
 
-.bc-body {
+.boycott-body {
   padding: 0.75rem 0.9rem 0.9rem;
   font-size: 0.92rem;
   color: var(--ink-2);
 }
 
-.bc-body p { margin: 0 0 0.6rem; max-width: none; }
-.bc-body p:last-child { margin-bottom: 0; }
-.bc-brands { font-size: 0.88rem; }
+.boycott-body p { margin: 0 0 0.6rem; max-width: none; }
+.boycott-body p:last-child { margin-bottom: 0; }
+.boycott-brands { font-size: 0.88rem; }
 
 /* Inside an entry: "Why it's listed:", then the dataset's reason tags. */
-.bc-body .bc-by { margin-bottom: 0.35rem; font-weight: 600; color: var(--ink); }
-.bc-reasons { display: flex; flex-wrap: wrap; gap: 0.3rem 0.4rem; }
-.bc-body .source-note { margin-top: 0.4rem; }
+.boycott-body .boycott-why { margin-bottom: 0.35rem; font-weight: 600; color: var(--ink); }
+.boycott-reasons { display: flex; flex-wrap: wrap; gap: 0.3rem 0.4rem; }
+.boycott-body .source-note { margin-top: 0.4rem; }
 
 /* The highlighted menu item: wide screens only, a soft amber pill. */
 .nav-item.nav-highlight { display: none; }
@@ -3134,10 +3080,10 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 
 /* 26. HUB PAGES ============================================================
-   /tools/ and /learn/: one card per page, and the whole card is the link,
-   so it is easy to tap. The underline every other link gets is switched
-   off here, or the whole card would be underlined; the green title says
-   "link".
+   Shows on: /tools/, /learn/, /instruments/ and every "Related" list.
+   Cards that are links (the whole card is the link, so it is easy to tap).
+   The underline every other link gets is switched off here, or the whole
+   card would be underlined; the green title says "link".
    ========================================================================== */
 
 .card-link {
@@ -3148,38 +3094,37 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 }
 
 .card-link h3 { color: var(--green-deep); }
-.card-link p,
-.card-soon p { margin: 0; }
+.card-link p { margin: 0; }
 .card-link:hover { border-color: var(--sky); box-shadow: var(--shadow); }
 .card-link:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
 
 /* /instruments/: one card per instrument (MAS, 8 Nov 2026, part 4) — its
    icon and name, its answer as small marks (section 32), and its answer
    in one line. The whole card is the link. */
-.inst-cards {
+.instrument-cards {
   display: grid;
   gap: 1rem;
   margin: 1.5rem 0 0;
 }
 
-.inst {
+.instrument {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 0.6rem 0.9rem;
 }
 
-.inst-name {
+.instrument-name {
   margin: 0;
   font-size: 1.45rem;
   color: var(--green-deep);
 }
 
-.inst p { grid-column: 1 / -1; color: var(--ink-2); font-size: 0.95rem; }
-.card-link.inst:hover .inst-name { text-decoration: underline; text-underline-offset: 4px; }
+.instrument p { grid-column: 1 / -1; color: var(--ink-2); font-size: 0.95rem; }
+.card-link.instrument:hover .instrument-name { text-decoration: underline; text-underline-offset: 4px; }
 
 /* The small marks under the name: one per part of the answer. */
-.inst-marks {
+.instrument-signs {
   grid-column: 1 / -1;
   display: flex;
   flex-wrap: wrap;
@@ -3189,7 +3134,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   list-style: none;
 }
 
-.inst-marks li {
+.instrument-signs li {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -3198,28 +3143,14 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   color: var(--ink);
 }
 
-.inst-marks .v-mark { width: 1.4rem; height: 1.4rem; border-width: 1.5px; background-size: 0.85rem; }
+.instrument-signs .sign { width: 1.4rem; height: 1.4rem; border-width: 1.5px; background-size: 0.85rem; }
 
 @media (min-width: 46em) {
-  .inst-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .instrument-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (min-width: 64em) {
-  .inst-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-
-/* A tool that is still being built: no link, quieter text. */
-.card-soon { color: var(--ink-3); }
-.card-soon h3 { color: var(--ink-2); }
-
-/* .soon — the small tag on a page that does not exist yet. */
-.soon {
-  margin-left: auto;
-  padding-left: 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--ink-3);
-  white-space: nowrap;
+  .instrument-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* .route-list — a short list of links ("Related" at the end of a page,
@@ -3264,6 +3195,8 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 
 /* 27. A LONG LIST BEHIND ONE BUTTON =======================================
+   Shows on: /screener/ (all 501 companies) and /stop-the-genocide/ (all 426
+   entries).
    The screener's 501 companies and the boycott list (MAS, 6 Nov 2026,
    part 3): the answer comes first, the whole list opens with one button.
    It is a <details>, so the list is in the page — Google reads every name —
@@ -3320,6 +3253,8 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 
 /* 28. A VIDEO ON THE SAME TOPIC ===========================================
+   Shows on: near the top of the screener, halal stocks, methodology, mutual
+   funds, NPS and digital gold pages, and the purification calculator.
    Near the top of a page that has one (MAS, 6 Nov 2026, part 3): the
    video's picture with a play button, its length and its title. The whole
    card is a plain link to YouTube; no player loads on the site, and the
@@ -3391,6 +3326,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 
 /* 29. MUTUAL FUND CARDS ===================================================
+   Shows on: /compare/shariah-mutual-funds/.
    /compare/shariah-mutual-funds/ (MAS, 6 Nov 2026, part 3): one card per
    fund — its name; index or active, Shariah board yes or no, and its size
    as three small facts; then its returns as small bars, all one colour,
@@ -3419,7 +3355,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   border-radius: var(--radius-sm);
 }
 
-.ff-k {
+.fund-fact-name {
   display: block;
   font-size: 0.68rem;
   font-weight: 700;
@@ -3427,7 +3363,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   color: var(--sky-deep);
 }
 
-.ff-v {
+.fund-fact-value {
   display: block;
   margin-top: 0.2rem;
   font-size: 0.92rem;
@@ -3436,17 +3372,17 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   white-space: nowrap;
 }
 
-.ff-v .chip { padding: 0.1em 0.55em; font-size: 0.78rem; }
-.ff-v .chip-fail { background: var(--white); }
+.fund-fact-value .chip { padding: 0.1em 0.55em; font-size: 0.78rem; }
+.fund-fact-value .chip-fail { background: var(--white); }
 
 /* A tapped figure's source opens under the facts or the bars, full width. */
-.fund-facts > .fig-pop { grid-column: 1 / -1; margin: 0; }
-.ret-bars > .fig-pop { margin: 0.35rem 0 0; }
+.fund-facts > .source-panel { grid-column: 1 / -1; margin: 0; }
+.return-bars > .source-panel { margin: 0.35rem 0 0; }
 
 /* The returns: label, figure, and a small bar from the zero line. */
-.ret-bars { gap: 0.35rem; margin: 0; max-width: none; }
+.return-bars { gap: 0.35rem; margin: 0; max-width: none; }
 
-.ret-row {
+.return-row {
   display: grid;
   grid-template-columns: 3.9rem 4.1rem minmax(0, 1fr);
   align-items: center;
@@ -3454,10 +3390,10 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   min-height: 1.75rem;
 }
 
-.ret-label { font-size: 0.82rem; color: var(--ink-2); }
-.ret-value { font-size: 0.92rem; font-weight: 700; text-align: right; white-space: nowrap; }
+.return-label { font-size: 0.82rem; color: var(--ink-2); }
+.return-value { font-size: 0.92rem; font-weight: 700; text-align: right; white-space: nowrap; }
 
-.ret-track {
+.return-track {
   position: relative;
   height: 12px;
   border-radius: 6px;
@@ -3465,10 +3401,10 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   overflow: hidden;
 }
 
-.ret-track .bar { border-radius: 6px; min-width: 3px; }
+.return-track .bar { border-radius: 6px; min-width: 3px; }
 
-.ret-none { font-size: 0.8rem; color: var(--ink-3); }
-.ret-bars > p.ret-none { margin: 0.25rem 0 0; font-size: 0.88rem; }
+.return-none { font-size: 0.8rem; color: var(--ink-3); }
+.return-bars > p.return-none { margin: 0.25rem 0 0; font-size: 0.88rem; }
 
 /* The expense ratios under "Read more": name, then figure. */
 .cost-list { list-style: none; margin: 0.5rem 0 0; padding: 0; }
@@ -3483,11 +3419,11 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .cost-list .num { font-weight: 700; }
 
 /* The index chart: a white card on the blue band. */
-.idx-card { max-width: 40rem; margin: 1.25rem 0 0.75rem; }
-.idx-card .bars { margin: 0; }
-.band .idx-card .bar-track { background: var(--sky-tint); }
-.idx-card .bars-title { margin-top: 0.4rem; }
-.idx-card .bars-title:first-child { margin-top: 0; }
+.index-card { max-width: 40rem; margin: 1.25rem 0 0.75rem; }
+.index-card .bars { margin: 0; }
+.band .index-card .bar-track { background: var(--sky-tint); }
+.index-card .bars-title { margin-top: 0.4rem; }
+.index-card .bars-title:first-child { margin-top: 0; }
 
 @media (min-width: 46em) {
   .fund-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -3500,6 +3436,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 
 /* 30. THE TWO-STEP DRAWING ================================================
+   Shows on: /methodology/.
    /methodology/ (MAS, 6 Nov 2026, part 3: "a simple two-step drawing
    instead of long paragraphs"). Plain HTML, so every word is real text:
      <ol class="flow">
@@ -3666,8 +3603,8 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 /* "Three things stand out" (the market section): a big figure on each. */
 .stand-out { margin-top: 1.5rem; }
-.stand-num { margin: 0 0 0.35rem; }
-.stand-num .big-num { font-size: 2.2rem; line-height: 1; color: var(--sky-deep); }
+.stand-out-number { margin: 0 0 0.35rem; }
+.stand-out-number .big-number { font-size: 2.2rem; line-height: 1; color: var(--sky-deep); }
 .stand-out h3 { margin: 0.2rem 0 0.35rem; font-size: 1.05rem; }
 .stand-out .card p:last-child { color: var(--ink-2); font-size: 0.95rem; }
 
@@ -3676,35 +3613,37 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 
 /* 31. CALCULATORS ON ONE SCREEN ===========================================
+   Shows on: /sip-calculator/, /loan-calculator/ and
+   /purification-calculator/.
    /sip-calculator/, /loan-calculator/ and /purification-calculator/ (MAS,
    6 Nov 2026, part 3): the boxes and the answer, drawn as a chart, on the
    first screen of a phone; tables and long explanations under "Read
    more". On a phone the boxes sit in compact rows — the name on the left,
    the box on the right, its slider under both — and the answer follows;
    on a wider screen the boxes and the answer sit side by side.
-     <section class="section calc-page">
-       <div class="calc-layout">
-         <div class="calc-inputs"> … <div class="calc-fields calc-inline">
-           <div class="calc-row"><label>…</label><input>…</div> … </div></div>
-         <div class="calc-result"> … the answer and its chart … </div>
+     <section class="section calculator-page">
+       <div class="calculator-layout">
+         <div class="calculator-boxes"> … <div class="calculator-fields calculator-rows">
+           <div class="calculator-row"><label>…</label><input>…</div> … </div></div>
+         <div class="calculator-answer"> … the answer and its chart … </div>
    ========================================================================== */
 
-.calc-page { padding-top: 1.75rem; }
-.calc-page h1 { margin-bottom: 0.75rem; font-size: 2rem; }
-.calc-page .standfirst { margin-bottom: 1rem; font-size: 1rem; }
+.calculator-page { padding-top: 1.75rem; }
+.calculator-page h1 { margin-bottom: 0.75rem; font-size: 2rem; }
+.calculator-page .standfirst { margin-bottom: 1rem; font-size: 1rem; }
 
-.calc-layout {
+.calculator-layout {
   display: grid;
   gap: 1rem;
   margin: 0 0 1rem;
 }
 
-.calc-inputs > .grid-switch { margin: 0 0 0.65rem; }
-.calc-inputs > .grid-switch .switch-btn { min-height: 2.6rem; }
+.calculator-boxes > .grid-switch { margin: 0 0 0.65rem; }
+.calculator-boxes > .grid-switch .switch-button { min-height: 2.6rem; }
 
-.js .calc-inline { gap: 0.65rem; margin: 0; }
+.js .calculator-rows { gap: 0.65rem; margin: 0; }
 
-.calc-inline > .calc-row {
+.calculator-rows > .calculator-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 7.25rem;
   align-items: center;
@@ -3713,73 +3652,73 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 /* Two boxes side by side, each with its slider (the SIP's return and
    years). Their boxes stay level, whatever sits above them. */
-.calc-inline > .calc-pair {
+.calculator-rows > .calculator-pair {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 0.85rem;
 }
 
-.calc-pair > div { display: flex; flex-direction: column; justify-content: flex-end; }
-.calc-pair label { margin-bottom: 0.2rem; }
-.calc-pair .calc-tag { margin: 0 0 0.3rem; }
+.calculator-pair > div { display: flex; flex-direction: column; justify-content: flex-end; }
+.calculator-pair label { margin-bottom: 0.2rem; }
+.calculator-pair .calculator-tag { margin: 0 0 0.3rem; }
 
-.calc-inline label { margin: 0; font-size: 0.92rem; line-height: 1.3; }
-.calc-inline .calc-tag { display: block; margin: 0.1rem 0 0; font-weight: 400; }
-.calc-inline input[type="number"] { min-height: 42px; text-align: right; }
-.calc-inline input[type="range"] { grid-column: 1 / -1; min-height: 26px; margin: 0; }
-.calc-inline .calc-hint:empty { display: none; }
-.calc-inline .calc-hint { color: var(--ink); font-weight: 600; }
+.calculator-rows label { margin: 0; font-size: 0.92rem; line-height: 1.3; }
+.calculator-rows .calculator-tag { display: block; margin: 0.1rem 0 0; font-weight: 400; }
+.calculator-rows input[type="number"] { min-height: 42px; text-align: right; }
+.calculator-rows input[type="range"] { grid-column: 1 / -1; min-height: 26px; margin: 0; }
+.calculator-rows .calculator-hint:empty { display: none; }
+.calculator-rows .calculator-hint { color: var(--ink); font-weight: 600; }
 
 /* A row of the "Read more"-free quick picks: a short label, small buttons. */
-.calc-inline .rate-picks { margin: 0; }
+.calculator-rows .rate-picks { margin: 0; }
 .rate-picks-label { align-self: center; font-size: 0.78rem; font-weight: 700; color: var(--ink-3); }
 .rate-picks .grid-switch { gap: 0.4rem; margin: 0; }
 .nowrap { white-space: nowrap; }
-.rate-picks .switch-btn { min-height: 2.4rem; padding: 0 0.8rem; font-size: 0.82rem; }
+.rate-picks .switch-button { min-height: 2.4rem; padding: 0 0.8rem; font-size: 0.82rem; }
 
 /* The answer: its main figure first and big, then the chart. */
-.calc-layout .calc-result { margin: 0; align-self: start; }
-.calc-result > .calc-main:first-child { padding-top: 0; border-top: 0; }
-.calc-layout .calc-main .calc-value { font-size: 2.1rem; }
-.calc-layout .calc-words { flex-basis: auto; }
-.calc-stat .calc-label { display: inline-flex; align-items: center; }
-.calc-layout .calc-result { gap: 0.7rem; padding: 1.1rem 1.15rem 1.15rem; }
+.calculator-layout .calculator-answer { margin: 0; align-self: start; }
+.calculator-answer > .calculator-main:first-child { padding-top: 0; border-top: 0; }
+.calculator-layout .calculator-main .calculator-value { font-size: 2.1rem; }
+.calculator-layout .calculator-words { flex-basis: auto; }
+.calculator-stat .calculator-label { display: inline-flex; align-items: center; }
+.calculator-layout .calculator-answer { gap: 0.7rem; padding: 1.1rem 1.15rem 1.15rem; }
 
 /* The answer's parts side by side: a label above, its figure below. */
-.calc-split {
+.calculator-split {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 0.75rem;
 }
 
-.calc-split p { margin: 0; }
-.calc-split .calc-label { display: flex; align-items: center; font-size: 0.85rem; color: var(--ink-2); }
-.calc-split .calc-value { display: block; font-size: 1.1rem; }
-.calc-split .calc-words { display: block; text-align: left; font-size: 0.8rem; }
+.calculator-split p { margin: 0; }
+.calculator-split .calculator-label { display: flex; align-items: center; font-size: 0.85rem; color: var(--ink-2); }
+.calculator-split .calculator-value { display: block; font-size: 1.1rem; }
+.calculator-split .calculator-words { display: block; text-align: left; font-size: 0.8rem; }
 
 /* The loan's answer: the meter a little smaller, so it all fits. */
-.calc-layout .meter { padding-bottom: 0.75rem; }
-.calc-layout .meter svg { max-width: 180px; }
-.calc-layout .meter-figure { margin-top: -2.7rem; font-size: 1.9rem; }
+.calculator-layout .meter { padding-bottom: 0.75rem; }
+.calculator-layout .meter svg { max-width: 180px; }
+.calculator-layout .meter-figure { margin-top: -2.7rem; font-size: 1.9rem; }
 
 /* THE PURIFICATION CALCULATOR'S ANSWER: one bar per method, one colour,
    each as long as its amount against the biggest. */
-.pur-result .bars-title { margin: 0; }
-.pur-result .bars { gap: 0.75rem; margin: 0; }
-.pur-bars .bar {
+.purify-result .bars-title { margin: 0; }
+.purify-result .bars { gap: 0.75rem; margin: 0; }
+.purify-bars .bar {
   transition: transform 700ms var(--ease), width 300ms var(--ease);
   transition-delay: calc(150ms + var(--i, 0) * 80ms), 0ms;
 }
-.pur-note { margin: -0.25rem 0 1rem; font-size: 0.9rem; color: var(--ink-2); }
-.calc-start { margin: 0; font-size: 0.85rem; color: var(--ink-3); }
+.purify-note { margin: -0.25rem 0 1rem; font-size: 0.9rem; color: var(--ink-2); }
+.calculator-start { margin: 0; font-size: 0.85rem; color: var(--ink-3); }
 
 /* Words only for readers without JavaScript, who don't see the boxes. */
 .js .no-js-only { display: none; }
 
 /* The loan's five typical-loan buttons: small, so they take two rows. */
-.calc-inputs > .presets { gap: 0.4rem; }
-.calc-inputs > .presets .switch-btn { min-height: 2.4rem; padding: 0 0.8rem; font-size: 0.84rem; }
-.calc-layout .meter-label { margin-top: 0.45rem; }
+.calculator-boxes > .presets { gap: 0.4rem; }
+.calculator-boxes > .presets .switch-button { min-height: 2.4rem; padding: 0 0.8rem; font-size: 0.84rem; }
+.calculator-layout .meter-label { margin-top: 0.45rem; }
 
 /* THE SIP'S CHART: one column per year, as tall as that year's value —
    what you put in at the bottom, what it grew by on top. Two greens,
@@ -3793,7 +3732,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   border-bottom: 1px solid var(--line);
 }
 
-.gc-col {
+.growth-year {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -3802,17 +3741,17 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   height: 100%;
 }
 
-.gc-gain,
-.gc-put {
+.growth-gain,
+.growth-put {
   display: block;
   height: calc(var(--h, 0) * 1%);
   transition: height 300ms var(--ease);
 }
 
-.gc-gain { background: var(--green); border-radius: 4px 4px 0 0; }
-.gc-put  { background: var(--green-tint); }
+.growth-gain { background: var(--green); border-radius: 4px 4px 0 0; }
+.growth-put  { background: var(--green-tint); }
 
-.gc-axis {
+.growth-axis {
   display: flex;
   justify-content: space-between;
   max-width: none;
@@ -3822,8 +3761,8 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 }
 
 @media (min-width: 46em) {
-  .calc-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.75rem; align-items: start; }
-  .js .calc-inline { grid-template-columns: 1fr; }
+  .calculator-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.75rem; align-items: start; }
+  .js .calculator-rows { grid-template-columns: 1fr; }
   .growth-chart { height: 9rem; }
 }
 
@@ -3834,14 +3773,14 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
    its chart a little shorter; the loan's dial beside its sentence; the
    purification bars a little thinner. A computer keeps the layout above. */
 @media (max-width: 45.99em) {
-  .calc-page { padding-top: 1rem; }
-  .calc-page h1 { margin-bottom: 0.5rem; }
-  .calc-page .standfirst { margin-bottom: 0.75rem; }
-  .calc-layout { gap: 0.75rem; }
-  .calc-layout .calc-result { gap: 0.6rem; padding: 0.85rem 1rem 0.95rem; }
+  .calculator-page { padding-top: 1rem; }
+  .calculator-page h1 { margin-bottom: 0.5rem; }
+  .calculator-page .standfirst { margin-bottom: 0.75rem; }
+  .calculator-layout { gap: 0.75rem; }
+  .calculator-layout .calculator-answer { gap: 0.6rem; padding: 0.85rem 1rem 0.95rem; }
 
   /* The SIP: "about ₹8.0 lakh" on the same line as ₹8,02,071. */
-  .calc-layout .calc-main { column-gap: 0.6rem; }
+  .calculator-layout .calculator-main { column-gap: 0.6rem; }
   .growth-chart { height: 3.6rem; }
 
   /* The loan: the dial on the left, its sentence beside it. */
@@ -3853,23 +3792,26 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
     text-align: left;
   }
   .meter-dial { flex: none; width: 8.25rem; text-align: center; }
-  .calc-layout .meter-dial svg { max-width: none; }
-  .calc-layout .meter-dial .meter-figure { margin-top: -2.2rem; font-size: 1.55rem; }
-  .calc-layout .meter-label { margin: 0; font-size: 0.86rem; line-height: 1.45; }
-  .calc-split .calc-value { line-height: 1.3; }
-  .loan-result .calc-split {
+  .calculator-layout .meter-dial svg { max-width: none; }
+  .calculator-layout .meter-dial .meter-figure { margin-top: -2.2rem; font-size: 1.55rem; }
+  .calculator-layout .meter-label { margin: 0; font-size: 0.86rem; line-height: 1.45; }
+  .calculator-split .calculator-value { line-height: 1.3; }
+  .loan-result .calculator-split {
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     row-gap: 0.55rem;
   }
-  .loan-result .calc-split .calc-label { font-size: 0.82rem; line-height: 1.35; }
+  .loan-result .calculator-split .calculator-label { font-size: 0.82rem; line-height: 1.35; }
 
   /* The purification calculator: thinner bars, closer together. */
-  .pur-result .bars { gap: 0.55rem; }
-  .pur-bars .bar-track { height: 10px; }
+  .purify-result .bars { gap: 0.55rem; }
+  .purify-bars .bar-track { height: 10px; }
 }
 
 
 /* 32. INSTRUMENT PAGES ====================================================
+   Shows on: /instruments/epf/, /ppf/, /nps/, /sukanya-samriddhi/ and
+   /digital-gold/; their signs also on /instruments/; the cards of the
+   corrections log; the fact lists on the gold page.
    EPF, PPF, NPS, Sukanya Samriddhi and digital gold (MAS, 8 Nov 2026,
    part 4). Every one of the five pages is built from the same parts, top
    to bottom:
@@ -3880,7 +3822,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
         <div class="answer answer-parts" data-share-text="…">
           <div class="part">
             <p class="part-what">The compulsory part</p>
-            <p class="part-word"><span class="v-mark v-differ"
+            <p class="part-word"><span class="sign sign-differ"
                aria-hidden="true"></span>Scholars differ</p>
             <p class="part-why">…</p>
           </div> …
@@ -3889,22 +3831,23 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
       "Share as image" picture. Add "parts-3" for three parts.
    2. HOW IT WORKS — a small drawing: your money → where it goes → what you
       get. <ol class="money-path"> with one <li class="step"> each, an icon
-      and a heading in <div class="mp-head">. The arrows are drawn here.
+      and a heading in <div class="step-head">. The arrows are drawn here.
    3. WHAT SCHOLARS SAY — one card per fatwa (<div class="card fatwa">):
       where it is from, never who; its answers as small marks
-      (<ul class="says">); one short line; its exact words under "What the
+      (<ul class="fatwa-answers">); one short line; its exact words under "What the
       fatwa says".
    4. WHAT PEOPLE DO — icon cards on a blue band (section 9).
    5. Long details under "Read more"; Sources at the bottom, closed.
 
-   THE MARKS (<span class="v-mark …">): v-yes ✓ in green — "you may";
-   v-no ✗ in grey — riba, not allowed (grey, never red); v-differ, a pair
-   of scales — scholars differ; v-open ? — no fatwa found; v-note ! — good
-   to know; v-none – — not asked. The word beside a mark always says the
+   THE SIGNS (<span class="sign sign-yes">): sign-yes ✓ in green — "you
+   may"; sign-no ✗ in grey — riba, not allowed (grey, never red);
+   sign-differ, a pair of scales — scholars differ; sign-open ? — no fatwa
+   found; sign-note ! — good to know; sign-none – — not asked. The word
+   beside a sign always says the
    answer too, so nothing depends on colour alone.
    ========================================================================== */
 
-.v-mark {
+.sign {
   display: inline-block;
   flex: none;
   width: 2.25rem;
@@ -3914,38 +3857,38 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   background: var(--bone) center / 1.25rem no-repeat;
 }
 
-.v-yes {
+.sign-yes {
   border-color: var(--green);
   background-color: var(--green);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E");
 }
 
-.v-no {
+.sign-no {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235B5951' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M7 7l10 10M17 7 7 17'/%3E%3C/svg%3E");
 }
 
-.v-differ,
-.v-note {
+.sign-differ,
+.sign-note {
   border-color: var(--sky-tint);
   background-color: var(--sky-tint);
 }
 
-.v-differ {
+.sign-differ {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B6FAA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4v16M7 20h10M5 7.5h14'/%3E%3Cpath d='M5 7.5 2.5 13a2.5 2.5 0 0 0 5 0zM19 7.5 16.5 13a2.5 2.5 0 0 0 5 0z'/%3E%3C/svg%3E");
 }
 
-.v-note {
+.sign-note {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B6FAA' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 6.5v7M12 17.5h.01'/%3E%3C/svg%3E");
 }
 
-.v-open {
+.sign-open {
   border-style: dashed;
   border-color: var(--ink-3);
   background-color: transparent;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236E6B60' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 9a3 3 0 1 1 4 2.8c-.6.3-1 .8-1 1.5v.7M12 18h.01'/%3E%3C/svg%3E");
 }
 
-.v-none {
+.sign-none {
   background-color: var(--white);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236E6B60' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M7.5 12h9'/%3E%3C/svg%3E");
 }
@@ -3988,11 +3931,11 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 /* The answer's colour follows its mark: green for "you may", grey for
    riba, blue for "scholars differ" and "good to know". */
-.part-word:has(.v-yes) { color: var(--green-deep); }
-.part-word:has(.v-no),
-.part-word:has(.v-open) { color: var(--ink-2); }
-.part-word:has(.v-differ),
-.part-word:has(.v-note) { color: var(--sky-ink); }
+.part-word:has(.sign-yes) { color: var(--green-deep); }
+.part-word:has(.sign-no),
+.part-word:has(.sign-open) { color: var(--ink-2); }
+.part-word:has(.sign-differ),
+.part-word:has(.sign-note) { color: var(--sky-ink); }
 
 .answer .part-why {
   margin: 0;
@@ -4003,9 +3946,9 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 
 /* Three parts (NPS): one under another on a phone, the mark beside the
    answer; three across on a computer. */
-.parts-3 { grid-template-columns: 1fr; row-gap: 0.9rem; }
-.parts-3 .part + .part { padding: 0.9rem 0 0; border-left: 0; border-top: 1px solid var(--line); }
-.parts-3 .part-word { flex-direction: row; align-items: center; gap: 0.65rem; }
+.three-parts { grid-template-columns: 1fr; row-gap: 0.9rem; }
+.three-parts .part + .part { padding: 0.9rem 0 0; border-left: 0; border-top: 1px solid var(--line); }
+.three-parts .part-word { flex-direction: row; align-items: center; gap: 0.65rem; }
 
 /* 2. HOW IT WORKS — three steps with an arrow between each: down on a
    phone, across on a computer. Each step is a white card (.step). */
@@ -4039,21 +3982,21 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   border-top: 7px solid var(--sky);
 }
 
-.mp-head {
+.step-head {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 0.6rem;
 }
 
-.mp-head h3 { margin: 0; font-size: 1.1rem; }
+.step-head h3 { margin: 0; font-size: 1.1rem; }
 .money-path p { margin: 0 0 0.5rem; color: var(--ink-2); font-size: 0.95rem; }
 .money-path li > :last-child { margin-bottom: 0; }
 .money-path .bars { gap: 0.7rem; margin: 0.75rem 0 0; }
 .money-path .bar-label { font-size: 0.88rem; }
 
 /* A short list inside a step: a word or two, then a grey or blue tag. */
-.mp-list {
+.step-list {
   display: grid;
   gap: 0.4rem;
   margin: 0.25rem 0 0;
@@ -4062,7 +4005,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   font-size: 0.92rem;
 }
 
-.mp-list li {
+.step-list li {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -4073,7 +4016,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   border-radius: var(--radius-sm);
 }
 
-.mp-list .tag {
+.step-list .tag {
   font-size: 0.78rem;
   font-weight: 700;
   color: var(--sky-deep);
@@ -4084,7 +4027,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 .fatwa > p { font-size: 0.93rem; color: var(--ink-2); }
 .fatwa .source { margin: 0; }
 
-.says {
+.fatwa-answers {
   display: grid;
   gap: 0.45rem;
   margin: 0 0 0.8rem;
@@ -4092,7 +4035,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   list-style: none;
 }
 
-.says li {
+.fatwa-answers li {
   display: flex;
   align-items: flex-start;
   gap: 0.55rem;
@@ -4100,7 +4043,7 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   line-height: 1.4;
 }
 
-.says .v-mark {
+.fatwa-answers .sign {
   width: 1.4rem;
   height: 1.4rem;
   margin-top: 0.05rem;
@@ -4133,10 +4076,10 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
 /* THE CORRECTIONS LOG (/corrections/): one short card per fix — its date
    and page, what changed in one line, and the full "what was wrong / what
    it says now" under the card's own Read more. */
-.fix-log { gap: 0.75rem; }
-.fix .meta { margin: 0 0 0.3rem; }
-.fix h3 { margin: 0 0 0.15rem; font-size: 1.02rem; line-height: 1.35; }
-.fix .source { margin: 0; }
+.fix-list { gap: 0.75rem; }
+.fix-card .meta { margin: 0 0 0.3rem; }
+.fix-card h3 { margin: 0 0 0.15rem; font-size: 1.02rem; line-height: 1.35; }
+.fix-card .source { margin: 0; }
 
 /* ICON CARDS ON A PHONE (every page with them: "What people do", Tools,
    About, the app…): the icon sits beside the title instead of above it,
@@ -4160,16 +4103,16 @@ tr:has(+ .fig-row) td { border-bottom-color: transparent; }
   .part + .part { padding-left: 1.5rem; }
   .answer .part-word { flex-direction: row; align-items: center; gap: 0.7rem; font-size: 1.6rem; }
   .answer .part-why { font-size: 1rem; }
-  .v-mark { width: 2.5rem; height: 2.5rem; background-size: 1.4rem; }
-  .says .v-mark { width: 1.45rem; height: 1.45rem; background-size: 0.85rem; }
+  .sign { width: 2.5rem; height: 2.5rem; background-size: 1.4rem; }
+  .fatwa-answers .sign { width: 1.45rem; height: 1.45rem; background-size: 0.85rem; }
 
-  .parts-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 58rem; }
-  .parts-3 .part + .part { padding: 0 0 0 1.5rem; border-top: 0; border-left: 1px solid var(--line); }
-  .parts-3 .part-word { font-size: 1.35rem; }
+  .three-parts { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 58rem; }
+  .three-parts .part + .part { padding: 0 0 0 1.5rem; border-top: 0; border-left: 1px solid var(--line); }
+  .three-parts .part-word { font-size: 1.35rem; }
 
   /* Across: the middle step is wider when it holds a chart. */
   .money-path { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; align-items: start; }
-  .money-path.mp-wide { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.5fr) minmax(0, 0.9fr); }
+  .money-path.money-path-wide { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.5fr) minmax(0, 0.9fr); }
   .money-path > li + li::before { left: -1.7rem; top: 2.35rem; width: 1.15rem; height: 2px; }
   .money-path > li + li::after {
     left: -0.62rem;

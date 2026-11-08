@@ -80,8 +80,8 @@ document.documentElement.classList.add('js');
 // of this page turns it into the Install button.
 window.addEventListener('beforeinstallprompt', function (event) {
   event.preventDefault();
-  window.pvInstallOffer = event;
-  document.dispatchEvent(new Event('pv-install-offer'));
+  window.installOffer = event;
+  document.dispatchEvent(new Event('install-offer-ready'));
 });
 </script>
 </head>
@@ -173,7 +173,7 @@ window.addEventListener('beforeinstallprompt', function (event) {
   <section class="section">
     <div class="wrap">
 
-      <h1>Install the <span class="t-green">Purevesting</span> app</h1>
+      <h1>Install the <span class="word-green">Purevesting</span> app</h1>
 
       <!-- A tools page: one short line, no byline (README.md). -->
       <p class="standfirst">Free, no app store and nothing to update. It
@@ -188,7 +188,7 @@ window.addEventListener('beforeinstallprompt', function (event) {
         <p id="install-status">If an Install button doesn't appear here in a
           few seconds, use your browser's menu instead — the steps for each
           phone are below.</p>
-        <button type="button" class="btn" id="install-btn" hidden>Install Purevesting</button>
+        <button type="button" class="button" id="install-button" hidden>Install Purevesting</button>
       </div>
 
     </div>
@@ -341,7 +341,7 @@ window.addEventListener('beforeinstallprompt', function (event) {
         <h2>HalalEdge, one email a week</h2>
         <p>One real money question, worked through with its sources. Free.</p>
       </div>
-      <a class="btn" href="/newsletter/">Subscribe free</a>
+      <a class="button" href="/newsletter/">Subscribe free</a>
     </div>
 
     <!-- A FEW LINKS (MAS, 6 Nov 2026: a short, clean footer). The menu
@@ -398,8 +398,8 @@ window.addEventListener('beforeinstallprompt', function (event) {
 <script>
 (function () {
   var status = document.getElementById('install-status');
-  var btn = document.getElementById('install-btn');
-  if (!status || !btn) return;
+  var installButton = document.getElementById('install-button');
+  if (!status || !installButton) return;
 
   var ua = navigator.userAgent;
   var installed = window.matchMedia('(display-mode: standalone)').matches ||
@@ -429,19 +429,19 @@ window.addEventListener('beforeinstallprompt', function (event) {
 
   // The browser's offer, caught early in this page's <head>.
   function offer() {
-    if (installed || inApp || !window.pvInstallOffer) return;
+    if (installed || inApp || !window.installOffer) return;
     say('Tap the button to install. It takes a second, and the Purevesting ' +
         'icon appears on your home screen.');
-    btn.hidden = false;
+    installButton.hidden = false;
   }
   offer();
-  document.addEventListener('pv-install-offer', offer);
+  document.addEventListener('install-offer-ready', offer);
 
-  btn.addEventListener('click', function () {
-    var offerEvent = window.pvInstallOffer;
+  installButton.addEventListener('click', function () {
+    var offerEvent = window.installOffer;
     if (!offerEvent) return;
-    window.pvInstallOffer = null;   // an offer can only be used once
-    btn.hidden = true;
+    window.installOffer = null;   // an offer can only be used once
+    installButton.hidden = true;
     offerEvent.prompt();
     offerEvent.userChoice.then(function (choice) {
       if (choice.outcome === 'accepted') {
@@ -454,7 +454,7 @@ window.addEventListener('beforeinstallprompt', function (event) {
   });
 
   window.addEventListener('appinstalled', function () {
-    btn.hidden = true;
+    installButton.hidden = true;
     say('Installed. Look for Purevesting on your home screen.');
   });
 })();
