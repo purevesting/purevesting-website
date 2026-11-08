@@ -56,7 +56,7 @@
         }
       },
       "datePublished": "2026-10-01",
-      "dateModified": "2026-11-06"
+      "dateModified": "2026-11-08"
     },
     {
       "@type": "BreadcrumbList",
@@ -202,11 +202,16 @@
 
 
   <!-- ============================================================
-       THE TWO FORMS
+       THE TWO FORMS — the question on show, the feedback form behind
+       "Send feedback instead" (a link to /ask/#feedback opens it).
        Both are delivered by Web3Forms, which emails each one to the
        address that owns the access key (salam@purevesting.com). The key
        appears twice on this page, once in each form. It is meant to be
        public: it only lets people send messages to that inbox.
+       THE AUTOMATIC REPLY: Web3Forms can email the asker a short "it
+       arrived" note, to the address in the box named "email". It is
+       switched on in the Web3Forms dashboard, not here — the steps are in
+       TODO.md, section 0.
        ============================================================ -->
 
   <section class="section reveal">
@@ -214,9 +219,7 @@
 
       <h2 id="question">Ask a question</h2>
 
-      <p>About any product, rule or ruling — EPF, a mutual fund, gold, a
-         loan, how a Shariah screen works, what purification means for you.
-         Good questions may be answered in public — in a video, the
+      <p>Good questions may be answered in public — in a video, the
          newsletter or on a page — but never with your name.</p>
 
       <form class="form-stack" action="https://api.web3forms.com/submit" method="POST" data-web3forms>
@@ -249,54 +252,41 @@
          and is used only to read and answer it — never sold.
          <a href="/privacy/#forms">Privacy, in plain words</a></p>
 
-    </div>
-  </section>
+      <details class="source" id="feedback">
+        <summary>Send feedback instead</summary>
+        <div class="source-body">
 
+          <p>Something missing, unclear or broken? Say which page, if you
+             can. A wrong fact gets checked against its source and, if the
+             page is wrong, fixed and recorded in the
+             <a href="/corrections/">corrections log</a>.</p>
 
-  <section class="section reveal">
-    <div class="wrap">
+          <form class="form-stack" action="https://api.web3forms.com/submit" method="POST" data-web3forms>
+            <input type="hidden" name="access_key" value="c8aa73dd-74ef-47e4-b316-bf5d6896a82f">
+            <input type="hidden" name="subject" value="New feedback from purevesting.com">
+            <input type="hidden" name="from_name" value="Purevesting website">
 
-      <h2 id="feedback">Send feedback</h2>
+            <div>
+              <label for="f-feedback">Your feedback</label>
+              <textarea id="f-feedback" name="feedback" required maxlength="3000"></textarea>
+            </div>
+            <div>
+              <label for="f-page">Which page? <span class="optional">(optional)</span></label>
+              <input id="f-page" type="text" name="page" placeholder="For example, the EPF page" maxlength="200">
+            </div>
+            <div>
+              <label for="f-email">Your email <span class="optional">(optional — only if you'd like a reply)</span></label>
+              <input id="f-email" type="email" name="email" autocomplete="email" maxlength="200">
+            </div>
 
-      <p>Something missing, unclear or broken? Say which page, if you can. A
-         wrong fact gets checked against its source and, if the page is
-         wrong, fixed and recorded in the <a href="/corrections/">corrections
-         log</a>.</p>
+            <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
 
-      <form class="form-stack" action="https://api.web3forms.com/submit" method="POST" data-web3forms>
-        <input type="hidden" name="access_key" value="c8aa73dd-74ef-47e4-b316-bf5d6896a82f">
-        <input type="hidden" name="subject" value="New feedback from purevesting.com">
-        <input type="hidden" name="from_name" value="Purevesting website">
+            <button class="btn" type="submit">Send feedback</button>
+            <p class="form-status" role="status" hidden></p>
+          </form>
 
-        <div>
-          <label for="f-feedback">Your feedback</label>
-          <textarea id="f-feedback" name="feedback" required maxlength="3000"></textarea>
         </div>
-        <div>
-          <label for="f-page">Which page? <span class="optional">(optional)</span></label>
-          <input id="f-page" type="text" name="page" placeholder="For example, the EPF page" maxlength="200">
-        </div>
-        <div>
-          <label for="f-email">Your email <span class="optional">(optional — only if you'd like a reply)</span></label>
-          <input id="f-email" type="email" name="email" autocomplete="email" maxlength="200">
-        </div>
-
-        <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
-
-        <button class="btn" type="submit">Send feedback</button>
-        <p class="form-status" role="status" hidden></p>
-      </form>
-
-      <p class="meta form-note">It comes to my inbox, salam@purevesting.com,
-         and is used only to read and answer it — never sold.
-         <a href="/privacy/#forms">Privacy, in plain words</a></p>
-
-    </div>
-  </section>
-
-
-  <section class="section reveal">
-    <div class="wrap">
+      </details>
 
       <p>Rather write directly? Email me at
          <a href="mailto:salam@purevesting.com">salam@purevesting.com</a>.</p>
