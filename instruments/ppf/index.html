@@ -42,7 +42,7 @@
       "mainEntityOfPage": "https://purevesting.com/instruments/ppf/",
       "image": "https://purevesting.com/assets/og/instruments-ppf.jpg",
       "datePublished": "2026-09-18",
-      "dateModified": "2026-11-06",
+      "dateModified": "2026-11-08",
       "inLanguage": "en-IN",
       "author": {
         "@type": "Person",
@@ -194,18 +194,32 @@
 
 <main>
 
+  <!-- ============================================================
+       THE ANSWER, DRAWN (MAS, 8 Nov 2026, part 4): the interest and the
+       account side by side, each with its mark (site.css, section 32).
+       data-share-text is the same answer in sentences, for the "Share as
+       image" picture.
+       ============================================================ -->
+
   <section class="section">
     <div class="wrap">
 
       <h1>Is <span class="t-green">PPF</span> halal?</h1>
 
-      <!-- THE ANSWER BOX: the answer in 2 or 3 short lines, before
-           anything else on the page (README.md, writing rules). -->
-      <div class="answer">
-        <p>Every fatwa found says PPF interest is riba (interest), because you
-           chose to put your own money in. But a fatwa also says you may use a
-           PPF account to save income tax, if you give the interest to the
-           poor without expecting reward.</p>
+      <div class="answer answer-parts" data-share-text="Every fatwa found says PPF interest is riba (interest), because you chose to put your own money in. But a fatwa also says you may use a PPF account to save income tax, if you give the interest to the poor without expecting reward.">
+        <div class="part">
+          <p class="part-what">The interest</p>
+          <p class="part-word"><span class="v-mark v-no" aria-hidden="true"></span>Riba</p>
+          <p class="part-why">Every fatwa found says so, because you chose
+             to put your own money in.</p>
+        </div>
+        <div class="part">
+          <p class="part-what">The account</p>
+          <p class="part-word"><span class="v-mark v-yes" aria-hidden="true"></span>You may keep it</p>
+          <p class="part-why">A fatwa says you may use it to save income
+             tax, if you give the interest to the poor without expecting
+             reward.</p>
+        </div>
       </div>
 
       <div class="byline">
@@ -214,95 +228,80 @@
              width="48" height="48" alt="Moin Ali Syed">
         <div>
           <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
-          <div class="meta">Last updated <time datetime="2026-11-06">6 November 2026</time></div>
+          <div class="meta">Last updated <time datetime="2026-11-08">8 November 2026</time></div>
         </div>
       </div>
-
-      <nav class="toc" aria-label="Contents">
-        <strong>On this page</strong>
-        <ol>
-          <li><a href="#how-it-earns">How PPF works, and where the money goes</a></li>
-          <li><a href="#standards">What scholars say</a></li>
-          <li><a href="#vs-epf">Why PPF and EPF get different answers</a></li>
-          <li><a href="#practice">What people do</a></li>
-        </ol>
-      </nav>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       HOW IT WORKS
+       HOW PPF WORKS, AS A DRAWING: your money → where it goes → what
+       you get. data-src: tapping a figure shows its line in Sources.
+       EVERY QUARTER: the rate in "What you get" (TODO.md, 0b).
        ============================================================ -->
 
   <section class="section reveal">
     <div class="wrap">
 
-      <h2 id="how-it-earns">How PPF works, and where the money goes</h2>
+      <h2 id="how-it-works">How PPF works</h2>
 
-      <p>PPF is simpler than EPF, which is why scholars disagree less about
-         it. There is no fund manager, no shares and no market risk. You
-         deposit money, the government adds interest at a rate it sets, and
-         it pays everything back at the end.</p>
+      <p>Simpler than EPF: no fund manager, no shares and no market risk.</p>
 
-      <div class="table-scroll">
-        <!-- data-src: tapping a figure shows its line in Sources. The rate
-             row points at the rate's own line. Keep the ids. -->
-        <table data-src="src-ppf-rules">
-          <caption class="visually-hidden">How the PPF scheme works</caption>
-          <thead>
-            <tr>
-              <th scope="col">How it works</th>
-              <th scope="col">Detail</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Who sets the rate</td>
-              <td>The Ministry of Finance, announced every quarter</td>
-            </tr>
-            <tr>
-              <td>Rate</td>
-              <td data-src="src-ppf-rate"><span class="num">7.1%</span> a year, compounded annually</td>
-            </tr>
-            <tr>
-              <td>Deposit limits</td>
-              <td><span class="num">₹500</span> minimum and <span class="num">₹1,50,000</span> maximum in a financial year</td>
-            </tr>
-            <tr>
-              <td>Lock-in</td>
-              <td><span class="num">15</span> years, then extendable in <span class="num">5</span>-year blocks</td>
-            </tr>
-            <tr>
-              <td>Tax treatment</td>
-              <td>Deduction under Section 80C, tax-free interest, tax-free maturity</td>
-            </tr>
-            <tr>
-              <td>Who opens the account</td>
-              <td>You do. Nobody is enrolled automatically.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <ol class="money-path">
+        <li class="step" data-src="src-ppf-rules">
+          <div class="mp-head">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.5"/><path d="M6.5 9.5h.01M17.5 15.5h.01"/></svg></span>
+            <h3>Your money</h3>
+          </div>
+          <p>You choose to open an account and deposit
+             <span class="num">₹500</span> to <span class="num">₹1,50,000</span>
+             in a financial year. Nobody is enrolled automatically.</p>
+          <p>It is locked for <span class="num">15</span> years, then you
+             can extend it in <span class="num">5</span>-year blocks.</p>
+        </li>
+        <li class="step">
+          <div class="mp-head">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5z"/><path d="M5.5 10.5v7M10 10.5v7M14 10.5v7M18.5 10.5v7"/><path d="M3.5 20.5h17"/></svg></span>
+            <h3>Where it goes</h3>
+          </div>
+          <p>Into the National Small Savings Fund, which buys special central
+             and state government securities. In other words, it
+             <span class="mark">lends the money to governments at
+             interest</span>.</p>
+        </li>
+        <li class="step" data-src="src-ppf-rate">
+          <div class="mp-head">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9 15l6-6M9.2 9.2h.01M14.8 14.8h.01"/></svg></span>
+            <h3>What you get</h3>
+          </div>
+          <p><span class="num">7.1%</span> a year, compounded annually. The
+             Ministry of Finance sets it, announced every quarter.</p>
+          <p>A Section 80C deduction, tax-free interest and tax-free
+             maturity.</p>
+        </li>
+      </ol>
 
-      <h3>Where your money goes</h3>
-
-      <p>Your PPF money goes into the National Small Savings Fund. That fund
-         buys special central and state government securities — in other
-         words, it <span class="mark">lends the money to governments at
-         interest</span>. The rate you get and the rate the governments pay
-         are set separately, but underneath it is a loan that pays a fixed
-         return.</p>
+      <details class="source">
+        <summary>Read more: the rate and the loan underneath</summary>
+        <div class="source-body">
+          <p>You deposit money, the government adds interest at a rate it
+             sets, and it pays everything back at the end. The rate you get
+             and the rate the governments pay are set separately, but
+             underneath it is a loan that pays a fixed return.</p>
+        </div>
+      </details>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       WHAT SCHOLARS SAY
-       Never name who gave a fatwa: no madrasa, school of thought or
-       mufti (README.md, rule 1). Each fatwa's link is in Sources.
+       WHAT SCHOLARS SAY — one short card per fatwa, with its exact
+       words under "What the fatwa says". Never name who gave a fatwa:
+       no madrasa, school of thought or mufti (README.md, rule 1). Each
+       fatwa's link is in Sources.
        ============================================================ -->
 
   <section class="section reveal">
@@ -310,126 +309,122 @@
 
       <h2 id="standards">What scholars say</h2>
 
-      <p>Both fatwas below come from the same fatwa office in India and are
-         about Indian schemes. They were given years apart, to different
-         people, and answer two different questions. They don't contradict
-         each other.</p>
+      <p>Both fatwas come from the same fatwa office in India, years apart,
+         and answer two different questions. They don't contradict each
+         other.</p>
 
-      <h3>The interest: it is riba, and not yours to use</h3>
+      <div class="grid grid-2">
 
-      <p>Asked if PPF interest is like the interest on a government
-         provident fund, the fatwa said no. PPF is voluntary and the money is
-         yours, so what it adds is interest in the Shariah sense, and you may
-         not use it. It should be given to the poor, without expecting reward.
-         The same fatwa says zakat is due on what you deposited, but not on
-         the interest.</p>
+        <div class="card fatwa">
+          <h3>A fatwa on PPF interest</h3>
+          <ul class="says">
+            <li><span class="v-mark v-no" aria-hidden="true"></span><span><strong>The interest:</strong> riba; not lawful to use</span></li>
+            <li><span class="v-mark v-note" aria-hidden="true"></span><span><strong>Zakat:</strong> due on what you deposited, not on the interest</span></li>
+          </ul>
+          <p>Asked if PPF interest is like the interest on a government
+             provident fund, it said no: PPF is voluntary and the money is
+             yours. The interest should be given to the poor, without
+             expecting reward.</p>
+          <details class="source">
+            <summary>What the fatwa says</summary>
+            <span class="source-body">
+              Since PPF is voluntary and the depositor owns the invested amount,
+              "the interest which is levied on it shall be interest as per the
+              government rules as well as according to Shariah. Hence it is not
+              lawful to use it." The ruling adds that the interest should be given
+              to the poor without seeking reward, and that zakah is due on the
+              deposited amount but not on the interest.
+              <!-- Checked word for word against the fatwa page, 1 Oct 2026. -->
+              — Fatwa 894/876/SN=09/1437.
+            </span>
+          </details>
+        </div>
 
-      <details class="source">
-        <summary>What the fatwa says</summary>
-        <span class="source-body">
-          Since PPF is voluntary and the depositor owns the invested amount,
-          "the interest which is levied on it shall be interest as per the
-          government rules as well as according to Shariah. Hence it is not
-          lawful to use it." The ruling adds that the interest should be given
-          to the poor without seeking reward, and that zakah is due on the
-          deposited amount but not on the interest.
-          <!-- Checked word for word against the fatwa page, 1 Oct 2026. -->
-          — Fatwa 894/876/SN=09/1437.
-        </span>
-      </details>
+        <div class="card fatwa">
+          <h3>A fatwa on using PPF to save tax</h3>
+          <ul class="says">
+            <li><span class="v-mark v-yes" aria-hidden="true"></span><span><strong>The account:</strong> you may use it to save income tax</span></li>
+            <li><span class="v-mark v-note" aria-hidden="true"></span><span><strong>The condition:</strong> give the extra amount to the poor</span></li>
+          </ul>
+          <p>This is the answer most people need, because saving tax is
+             usually why a PPF account is opened.</p>
+          <details class="source">
+            <summary>What the fatwa says</summary>
+            <span class="source-body">
+              "Yes, you can avail PF to save your hard-earned income from income
+              tax. However, the extra amount which you receive on it, give it in
+              charity to poor and needy ones without the intention of reward."
+              <!-- Checked word for word against the fatwa page, 1 Oct 2026. -->
+              — Fatwa 634/510/B=1431.
+            </span>
+          </details>
+        </div>
 
-      <h3>The account: you may use it to save income tax</h3>
+      </div>
 
-      <p>Someone asked if they could use a PPF account to save income tax,
-         and give the interest to the poor. The fatwa said yes, on that
-         condition. This is the answer most people need, because saving tax
-         is usually why a PPF account is opened.</p>
-
-      <details class="source">
-        <summary>What the fatwa says</summary>
-        <span class="source-body">
-          "Yes, you can avail PF to save your hard-earned income from income
-          tax. However, the extra amount which you receive on it, give it in
-          charity to poor and needy ones without the intention of reward."
-          <!-- Checked word for word against the fatwa page, 1 Oct 2026. -->
-          — Fatwa 634/510/B=1431.
-        </span>
-      </details>
-
-      <h3>No fatwa found that says otherwise</h3>
-
-      <p>On EPF, scholars really do disagree. On PPF, no fatwa saying the
-         opposite was found. If you know of one that says PPF interest is not
-         riba, send it to
+      <p class="after-cards">On EPF, scholars really do disagree. On PPF, no
+         fatwa saying the opposite was found. If you know of one that says
+         PPF interest is not riba, send it to
          <a href="mailto:salam@purevesting.com">salam@purevesting.com</a> and
          I'll add it here.</p>
 
-    </div>
-  </section>
+      <!-- PPF NEXT TO EPF: the same fatwa office answers them in opposite
+           ways. One line on show; the four differences under Read more. -->
+      <h3 id="vs-epf">Why PPF and EPF get different answers</h3>
 
+      <p>Both pay a rate the government sets. The difference is not the
+         rate, and not who the money is lent to. It is whether the money was
+         yours first, and whether you chose.</p>
 
-  <!-- ============================================================
-       PPF vs EPF
-       ============================================================ -->
-
-  <section class="section reveal">
-    <div class="wrap">
-
-      <h2 id="vs-epf">Why PPF and EPF get different answers</h2>
-
-      <p>Both pay a rate the government sets, yet the same fatwa office gives
-         opposite answers about them. The difference is not the rate, and not
-         who the money is lent to. It is whether the money was yours first,
-         and whether you chose.</p>
-
-      <div class="table-scroll table-stack">
-        <table>
-          <caption class="visually-hidden">The difference between PPF and a compulsory provident fund, in the fatwa's reasoning</caption>
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">PPF</th>
-              <th scope="col">Compulsory provident fund</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Who decides you pay in</td>
-              <td data-label="PPF">You do</td>
-              <td data-label="Compulsory provident fund">The law does</td>
-            </tr>
-            <tr>
-              <td>Did the money reach you first</td>
-              <td data-label="PPF">Yes — you deposit money you already hold</td>
-              <td data-label="Compulsory provident fund">No — it is cut before your salary reaches you</td>
-            </tr>
-            <tr>
-              <td>Did you agree to a return</td>
-              <td data-label="PPF">Yes, by opening the account</td>
-              <td data-label="Compulsory provident fund">No, you were never given the choice</td>
-            </tr>
-            <tr>
-              <td>What the extra amount is</td>
-              <td data-label="PPF">Interest, in the Shariah sense</td>
-              <td data-label="Compulsory provident fund">A bonus for your service, not riba</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p>Some scholars see the compulsory case differently: the
-         <a href="/instruments/epf/">EPF page</a> has their views.</p>
-
-      <p>So if you have both EPF and PPF, one answer doesn't cover both. The
-         same fatwa office treats them differently, for a reason that has
-         nothing to do with what either one pays.</p>
+      <details class="source">
+        <summary>Read more: PPF next to a compulsory provident fund</summary>
+        <div class="source-body">
+          <div class="table-scroll table-stack">
+            <table>
+              <caption class="visually-hidden">The difference between PPF and a compulsory provident fund, in the fatwa's reasoning</caption>
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">PPF</th>
+                  <th scope="col">Compulsory provident fund</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Who decides you pay in</td>
+                  <td data-label="PPF">You do</td>
+                  <td data-label="Compulsory provident fund">The law does</td>
+                </tr>
+                <tr>
+                  <td>Did the money reach you first</td>
+                  <td data-label="PPF">Yes — you deposit money you already hold</td>
+                  <td data-label="Compulsory provident fund">No — it is cut before your salary reaches you</td>
+                </tr>
+                <tr>
+                  <td>Did you agree to a return</td>
+                  <td data-label="PPF">Yes, by opening the account</td>
+                  <td data-label="Compulsory provident fund">No, you were never given the choice</td>
+                </tr>
+                <tr>
+                  <td>What the extra amount is</td>
+                  <td data-label="PPF">Interest, in the Shariah sense</td>
+                  <td data-label="Compulsory provident fund">A bonus for your service, not riba</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Some scholars see the compulsory case differently: the
+             <a href="/instruments/epf/">EPF page</a> has their views. So if
+             you have both EPF and PPF, one answer doesn't cover both.</p>
+        </div>
+      </details>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       WHAT PEOPLE DO
+       WHAT PEOPLE DO — icon cards on a blue band.
        ============================================================ -->
 
   <section class="section band reveal">
@@ -442,44 +437,39 @@
         <div class="card card-icon">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M5 12.5v8h14v-8M12 8.5v12"/><path d="M12 8.5C10.5 5.5 7 5 7 7.2 7 8.5 12 8.5 12 8.5zM12 8.5c1.5-3 5-3.5 5-1.3 0 1.3-5 1.3-5 1.3z"/></svg></span>
           <h3>Keep the account, give the interest away</h3>
-          <p>What the second fatwa above describes: use the account for the
-             Section 80C tax deduction, note the interest added each year in
-             the passbook, and give that amount to the poor without expecting
-             reward. Your deposit stays your own money.</p>
+          <p>As the second fatwa describes: use it for the Section 80C
+             deduction, note the interest added each year in the passbook,
+             and give that amount to the poor.</p>
         </div>
 
         <div class="card card-icon">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 8h11l-3-3"/><path d="M17.5 16h-11l3 3"/></svg></span>
           <h3>Use a different 80C deduction</h3>
           <p>Section 80C is one limit that several things can fill, not just
-             PPF. People who would rather not hold PPF at all fill the limit
-             with something else they already pay or hold, and keep the tax
-             question separate from the investment question.</p>
+             PPF. Some fill it with something else they already pay or
+             hold.</p>
         </div>
 
         <div class="card card-icon">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12h8"/></svg></span>
           <h3>Stop new deposits, leave the balance</h3>
-          <p>PPF is locked for 15 years, with only limited withdrawals from the
-             seventh year, so you can't just close it. Some people stop paying
-             in, leave the balance where it is, and give away the interest
+          <p>PPF is locked for 15 years, with only limited withdrawals from
+             the seventh year. Some stop paying in and give away the interest
              added in the meantime.</p>
         </div>
 
         <div class="card card-icon">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19V6.5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H8.5z"/><path d="M10.2 8.6a2 2 0 1 1 2.5 1.9c-.4.1-.7.5-.7.9v.4"/><path d="M12 13.4h.01"/></svg></span>
           <h3>Ask before closing an account</h3>
-          <p>Closing or extending a PPF account has tax and lock-in effects
-             that aren't Shariah questions at all, and it often holds a
-             child's education savings. People usually ask first instead of
-             acting in a hurry.</p>
+          <p>Closing or extending has tax and lock-in effects, and it often
+             holds a child's education savings. People usually ask first.</p>
         </div>
 
       </div>
 
-      <p>Your PPF passbook shows the interest separately from your deposits.
-         You can get it from your bank or post office, and in most net
-         banking.</p>
+      <p class="after-cards">Your PPF passbook shows the interest separately
+         from your deposits. You can get it from your bank or post office,
+         and in most net banking.</p>
 
       <p class="ask-line">Still have a doubt? <a href="/ask/">Ask me</a></p>
 
@@ -498,14 +488,10 @@
 
       <ul class="route-list">
         <li><a href="/instruments/epf/">Is EPF halal?</a></li>
-        <li><a href="/instruments/nps/">Is NPS halal?</a></li>
         <li><a href="/instruments/sukanya-samriddhi/">Is Sukanya Samriddhi Yojana halal?</a></li>
         <li><a href="/compare/shariah-mutual-funds/">Compare India's six Shariah mutual funds</a></li>
+        <li><a href="/instruments/">Every instrument, checked</a></li>
       </ul>
-
-      <!-- If you add an item marked "soon" to this list, put this line
-           under it: <p class="meta">Items marked "soon" are being written.</p>
-           When that page goes live, turn its line into a link. -->
 
     </div>
   </section>
@@ -525,7 +511,8 @@
           <ul>
             <!-- EVERY QUARTER (around 31 March, 30 June, 30 September and
                  31 December): open the link below, read the newest office
-                 memorandum, and update the rate here and in the table. -->
+                 memorandum, and update the rate here and in "What you get"
+                 above. -->
             <li id="src-ppf-rate">The rate:
               <a href="https://dea.gov.in/budget-division/475">Ministry of Finance, Department of Economic Affairs — small savings interest rates</a>
               (office memorandum of 30 September 2026), as notified for
