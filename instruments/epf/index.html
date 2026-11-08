@@ -42,7 +42,7 @@
       "mainEntityOfPage": "https://purevesting.com/instruments/epf/",
       "image": "https://purevesting.com/assets/og/instruments-epf.jpg",
       "datePublished": "2026-09-18",
-      "dateModified": "2026-11-06",
+      "dateModified": "2026-11-08",
       "inLanguage": "en-IN",
       "author": {
         "@type": "Person",
@@ -194,18 +194,31 @@
 
 <main>
 
+  <!-- ============================================================
+       THE ANSWER, DRAWN (MAS, 8 Nov 2026, part 4): the compulsory part
+       and VPF side by side, each with its mark and the answer in a word
+       or two (site.css, section 32). data-share-text is the same answer
+       in sentences, for the "Share as image" picture.
+       ============================================================ -->
+
   <section class="section">
     <div class="wrap">
 
       <h1>Is <span class="t-green">EPF</span> halal?</h1>
 
-      <!-- THE ANSWER BOX: the answer in 2 or 3 short lines, before
-           anything else on the page (README.md, writing rules). -->
-      <div class="answer">
-        <p>Scholars differ on the compulsory part: some fatwas say the extra
-           amount is not riba (interest), so you may use it; others say it is
-           riba, so give it away. On the voluntary top-up (VPF), most say it
-           is riba, because you chose it.</p>
+      <div class="answer answer-parts" data-share-text="Scholars differ on the compulsory part: some fatwas say the extra amount is not riba (interest), so you may use it; others say it is riba, so give it away. On the voluntary top-up (VPF), most say it is riba, because you chose it.">
+        <div class="part">
+          <p class="part-what">Compulsory EPF</p>
+          <p class="part-word"><span class="v-mark v-differ" aria-hidden="true"></span>Scholars differ</p>
+          <p class="part-why">Some fatwas say the extra amount is not riba
+             (interest), so you may use it. Others say it is riba, so give
+             it away.</p>
+        </div>
+        <div class="part">
+          <p class="part-what">VPF, by choice</p>
+          <p class="part-word"><span class="v-mark v-no" aria-hidden="true"></span>Most say riba</p>
+          <p class="part-why">Because you chose it.</p>
+        </div>
       </div>
 
       <div class="byline">
@@ -214,117 +227,108 @@
              width="48" height="48" alt="Moin Ali Syed">
         <div>
           <div><strong><a class="byline-name" href="/about/">Moin Ali Syed</a></strong></div>
-          <div class="meta">Last updated <time datetime="2026-11-06">6 November 2026</time></div>
+          <div class="meta">Last updated <time datetime="2026-11-08">8 November 2026</time></div>
         </div>
       </div>
-
-      <nav class="toc" aria-label="Contents">
-        <strong>On this page</strong>
-        <ol>
-          <li><a href="#how-it-earns">Where your EPF money goes</a></li>
-          <li><a href="#standards">What scholars say</a></li>
-          <li><a href="#compulsory">Why compulsory and voluntary are different</a></li>
-          <li><a href="#practice">What people do</a></li>
-        </ol>
-      </nav>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       WHERE THE MONEY GOES
+       HOW EPF WORKS, AS A DRAWING: your money → where it goes → what
+       you get. The middle step's bars are EPFO's investment pattern for
+       new money, drawn as ranges: each bar runs from the lowest to the
+       highest share allowed (--from and --to, in %).
        ============================================================ -->
 
   <section class="section reveal">
     <div class="wrap">
 
-      <h2 id="how-it-earns">Where your EPF money goes</h2>
+      <h2 id="how-it-works">How EPF works</h2>
 
-      <p>EPFO invests your EPF money, and each year its Central Board of
-         Trustees declares the interest rate. Where the money goes is
-         public. EPFO follows an investment pattern set by the Department
-         of Financial Services in the Ministry of Finance. It gives ranges,
-         not fixed numbers, so the actual split moves within them.</p>
+      <ol class="money-path mp-wide">
+        <li class="step" data-src="src-epf-code">
+          <div class="mp-head">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.5"/><path d="M6.5 9.5h.01M17.5 15.5h.01"/></svg></span>
+            <h3>Your money</h3>
+          </div>
+          <p>Paid in from your salary:</p>
+          <ul class="mp-list">
+            <li>Your share <span class="tag">Compulsory, by law</span></li>
+            <li>Your employer's <span class="tag">Compulsory, by law</span></li>
+            <li>VPF, if you add it <span class="tag">Your choice</span></li>
+          </ul>
+        </li>
+        <li class="step">
+          <div class="mp-head">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5z"/><path d="M5.5 10.5v7M10 10.5v7M14 10.5v7M18.5 10.5v7"/><path d="M3.5 20.5h17"/></svg></span>
+            <h3>Where it goes</h3>
+          </div>
+          <p>EPFO invests it, and most of it is <span class="mark">lent at
+             interest</span>. Share of new money:</p>
+          <div class="bars" data-src="src-epf-bands" role="group" aria-label="EPFO's investment pattern for new money">
+            <div class="bar-row" style="--from: 45; --to: 65">
+              <span class="bar-label">Government securities <small>Loans to the central and state governments, paying interest</small></span>
+              <span class="bar-value num">45–65%</span>
+              <span class="bar-track"><span class="bar"></span></span>
+            </div>
+            <div class="bar-row" style="--from: 20; --to: 45">
+              <span class="bar-label">Other debt instruments <small>Bonds of public sector undertakings and highly rated companies, paying interest</small></span>
+              <span class="bar-value num">20–45%</span>
+              <span class="bar-track"><span class="bar"></span></span>
+            </div>
+            <div class="bar-row" style="--from: 5; --to: 15">
+              <span class="bar-label">Equity <small>Exchange-traded funds tracking broad market indices</small></span>
+              <span class="bar-value num">5–15%</span>
+              <span class="bar-track"><span class="bar"></span></span>
+            </div>
+            <div class="bar-row" style="--to: 5">
+              <span class="bar-label">Short-term debt <small>Short-dated interest-bearing instruments</small></span>
+              <span class="bar-value num">Up to 5%</span>
+              <span class="bar-track"><span class="bar"></span></span>
+            </div>
+            <p class="bar-scale" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="mp-head">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9 15l6-6M9.2 9.2h.01M14.8 14.8h.01"/></svg></span>
+            <h3>What you get</h3>
+          </div>
+          <p>A yearly interest credit on your balance. EPFO's Central Board
+             of Trustees declares the rate each year.</p>
+        </li>
+      </ol>
 
-      <!-- EPFO's investment pattern for new money, drawn as ranges: each
-           bar runs from the lowest to the highest share allowed. -->
-      <div class="bars" data-src="src-epf-bands" role="group" aria-label="EPFO's investment pattern for new money">
-        <p class="bars-title">Share of new money</p>
-        <div class="bar-row" style="--from: 45; --to: 65">
-          <span class="bar-label">Government securities <small>Loans to the central and state governments, paying interest</small></span>
-          <span class="bar-value num">45–65%</span>
-          <span class="bar-track"><span class="bar"></span></span>
+      <details class="source">
+        <summary>Read more: where the money goes, in detail</summary>
+        <div class="source-body">
+          <p>Where the money goes is public. EPFO follows an investment
+             pattern set by the Department of Financial Services in the
+             Ministry of Finance. It gives ranges, not fixed numbers, so the
+             actual split moves within them.</p>
+          <p>Government securities and company bonds are loans that pay a
+             fixed return, which is riba in its plainest form. There is no
+             grey area in these investments themselves.</p>
+          <p>The share part isn't Shariah-screened either. EPFO buys index
+             funds (ETFs) that track the Nifty 50, the Sensex, the CPSE index
+             and the Bharat 22 index. None of these use a Shariah screen, so
+             that part includes banks, finance companies and other businesses
+             a Shariah screen would remove.</p>
         </div>
-        <div class="bar-row" style="--from: 20; --to: 45">
-          <span class="bar-label">Other debt instruments <small>Bonds of public sector undertakings and highly rated companies, paying interest</small></span>
-          <span class="bar-value num">20–45%</span>
-          <span class="bar-track"><span class="bar"></span></span>
-        </div>
-        <div class="bar-row" style="--from: 5; --to: 15">
-          <span class="bar-label">Equity <small>Exchange-traded funds tracking broad market indices</small></span>
-          <span class="bar-value num">5–15%</span>
-          <span class="bar-track"><span class="bar"></span></span>
-        </div>
-        <div class="bar-row" style="--to: 5">
-          <span class="bar-label">Short-term debt <small>Short-dated interest-bearing instruments</small></span>
-          <span class="bar-value num">Up to 5%</span>
-          <span class="bar-track"><span class="bar"></span></span>
-        </div>
-        <p class="bar-scale" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></p>
-      </div>
-
-      <p>Most of the money is <span class="mark">lent at interest</span>.
-         Government securities and company bonds are loans that pay a fixed
-         return, which is riba in its plainest form. There is no grey area
-         in these investments themselves.</p>
-
-      <p>The share part isn't Shariah-screened either. EPFO buys index funds
-         (ETFs) that track the Nifty 50, the Sensex, the CPSE index and the
-         Bharat 22 index. None of these use a Shariah screen, so that part
-         includes banks, finance companies and other businesses a Shariah
-         screen would remove.</p>
-
-      <h3>Which part did you choose?</h3>
-
-      <div class="table-scroll table-stack">
-        <table>
-          <caption class="visually-hidden">EPF contribution types and whether they are compulsory</caption>
-          <thead>
-            <tr>
-              <th scope="col">Contribution</th>
-              <th scope="col">Who decides</th>
-              <th scope="col">Compulsory?</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Employee contribution</td>
-              <td data-label="Who decides">Set by law for covered workplaces</td>
-              <td data-label="Compulsory?">Compulsory</td>
-            </tr>
-            <tr>
-              <td>Employer contribution</td>
-              <td data-label="Who decides">Set by law for covered workplaces</td>
-              <td data-label="Compulsory?">Compulsory</td>
-            </tr>
-            <tr>
-              <td>Voluntary Provident Fund (VPF)</td>
-              <td data-label="Who decides">You, by choosing to pay in extra</td>
-              <td data-label="Compulsory?">Voluntary</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      </details>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       WHAT SCHOLARS SAY
-       Never name who gave a fatwa: no madrasa, school of thought or
-       mufti (README.md, rule 1). Each fatwa's link is in Sources.
+       WHAT SCHOLARS SAY — one short card per fatwa: where it is from,
+       its answer on the compulsory part and on VPF, one line, and its
+       exact words under "What the fatwa says". Never name who gave a
+       fatwa: no madrasa, school of thought or mufti (README.md, rule 1).
+       Each fatwa's link is in Sources.
        ============================================================ -->
 
   <section class="section reveal">
@@ -332,170 +336,134 @@
 
       <h2 id="standards">What scholars say</h2>
 
-      <h3>A fatwa from India: not riba, you may take it</h3>
+      <div class="grid grid-2">
 
-      <p>Asked about provident fund cut from salary by law, this fatwa calls
-         the extra amount a gift from the employer or the government for
-         your service, not interest. So you may take it and use it. It comes
-         from India and is about Indian provident funds, so it fits EPF most
-         closely.</p>
+        <div class="card fatwa">
+          <h3>A fatwa from India</h3>
+          <ul class="says">
+            <li><span class="v-mark v-yes" aria-hidden="true"></span><span><strong>Compulsory:</strong> not riba; may be taken</span></li>
+            <li><span class="v-mark v-none" aria-hidden="true"></span><span><strong>VPF:</strong> not asked</span></li>
+          </ul>
+          <p>Asked about provident fund cut from salary by law, it calls the
+             extra amount a gift from the employer or the government for your
+             service. It is about Indian provident funds, so it fits EPF most
+             closely.</p>
+          <details class="source">
+            <summary>What the fatwa says</summary>
+            <span class="source-body">
+              "The provident fund that the employees receive with double amount is a
+              gift from the company or the government that is given to an employee
+              after he is retired with good performance. It is not interest as per
+              the Shariah."
+              <!-- Checked word for word against the fatwa page, 1 Oct 2026. -->
+              — Fatwa 1084/915/B=1432.
+            </span>
+          </details>
+        </div>
 
-      <details class="source">
-        <summary>What the fatwa says</summary>
-        <span class="source-body">
-          "The provident fund that the employees receive with double amount is a
-          gift from the company or the government that is given to an employee
-          after he is retired with good performance. It is not interest as per
-          the Shariah."
-          <!-- Checked word for word against the fatwa page, 1 Oct 2026. -->
-          — Fatwa 1084/915/B=1432.
-        </span>
-      </details>
+        <div class="card fatwa">
+          <h3>A fatwa from Sri Lanka</h3>
+          <ul class="says">
+            <li><span class="v-mark v-yes" aria-hidden="true"></span><span><strong>Compulsory:</strong> not riba; part of salary</span></li>
+            <li><span class="v-mark v-no" aria-hidden="true"></span><span><strong>VPF:</strong> similar to riba; take back only what you put in</span></li>
+          </ul>
+          <p>It draws the line between compulsory and voluntary clearly. It is
+             about Sri Lanka's EPF and ETF, not India's.</p>
+          <details class="source">
+            <summary>What the fatwa says</summary>
+            <span class="source-body">
+              "The amount earned as interest on compulsory provident fund
+              distribution does not fall in the [ambit] of riba (interest) but can be
+              considered a part of employee's salary. It is therefore legitimate to
+              receive this amount and use it for one's personal needs. However, if
+              contribution to the provident fund is on a voluntary basis, then the
+              amount earned as interest is [quite] similar to riba and is likely to
+              become the means to earning interest. It is therefore recommended that
+              the employee should forego amount of interest and accept the principal
+              only."
+            </span>
+          </details>
+        </div>
 
-      <h3>A fatwa from Sri Lanka: compulsory is salary, voluntary is not</h3>
+        <div class="card fatwa">
+          <h3>A fatwa from the UK</h3>
+          <ul class="says">
+            <li><span class="v-mark v-none" aria-hidden="true"></span><span><strong>Compulsory:</strong> not asked</span></li>
+            <li><span class="v-mark v-no" aria-hidden="true"></span><span><strong>VPF:</strong> not permissible</span></li>
+          </ul>
+          <p>VPF pays interest and joining it is your own choice, so it
+             should be avoided.</p>
+          <details class="source">
+            <summary>What the fatwa says</summary>
+            <span class="source-body">
+              "[A]s the Voluntary Provident Fund (VPF) scheme attracts interest in
+              the payout to those who sign up for it, it will not be permissible …
+              As it is a voluntary contribution it will need to be avoided."
+              <!-- Checked word for word against the fatwa page, 2 Oct 2026. -->
+              — Fatwa 05248, 17 April 2021.
+            </span>
+          </details>
+        </div>
 
-      <p>This fatwa draws the line between compulsory and voluntary
-         clearly. On the compulsory part, the amount
-         credited is not riba but part of your salary, so you may take it. On
-         voluntary contributions it says the opposite, and advises taking
-         back only what you put in. It is about Sri Lanka's EPF and ETF, not
-         India's.</p>
+        <div class="card fatwa">
+          <h3>A scholar's answer</h3>
+          <ul class="says">
+            <li><span class="v-mark v-no" aria-hidden="true"></span><span><strong>Compulsory:</strong> riba where you have a choice; give it away</span></li>
+            <li><span class="v-mark v-no" aria-hidden="true"></span><span><strong>VPF:</strong> riba</span></li>
+          </ul>
+          <p>If you have any say in whether interest is added, refuse it. If
+             it is added anyway and you can't refuse it, work out the exact
+             interest amount and give it to people in need.</p>
+          <details class="source">
+            <summary>What the answer says</summary>
+            <span class="source-body">
+              "When you are given this discretion to allow your provident fund to be
+              credited with the amount of interest, which these funds are getting on
+              investment, that interest is indeed Riba. A God-fearing Muslim should
+              refuse riba to be credited to him. If it gets added, nevertheless, by
+              default … you should be aware of the exact amount of interest, so that
+              you may draw that much, and pass it onto some poor or needy person(s),
+              or institution(s) helping them out."
+            </span>
+          </details>
+        </div>
 
-      <details class="source">
-        <summary>What the fatwa says</summary>
-        <span class="source-body">
-          "The amount earned as interest on compulsory provident fund
-          distribution does not fall in the [ambit] of riba (interest) but can be
-          considered a part of employee's salary. It is therefore legitimate to
-          receive this amount and use it for one's personal needs. However, if
-          contribution to the provident fund is on a voluntary basis, then the
-          amount earned as interest is [quite] similar to riba and is likely to
-          become the means to earning interest. It is therefore recommended that
-          the employee should forego amount of interest and accept the principal
-          only."
-        </span>
-      </details>
-
-      <h3>A fatwa from the UK: VPF is not allowed</h3>
-
-      <p>Asked about the Voluntary Provident Fund, this fatwa says VPF pays
-         interest and joining it is your own choice, so it is not allowed
-         and should be avoided. It is only about VPF, not compulsory
-         EPF.</p>
-
-      <details class="source">
-        <summary>What the fatwa says</summary>
-        <span class="source-body">
-          "[A]s the Voluntary Provident Fund (VPF) scheme attracts interest in
-          the payout to those who sign up for it, it will not be permissible …
-          As it is a voluntary contribution it will need to be avoided."
-          <!-- Checked word for word against the fatwa page, 2 Oct 2026. -->
-          — Fatwa 05248, 17 April 2021.
-        </span>
-      </details>
-
-      <h3>A scholar's answer: if you have a choice, it is riba</h3>
-
-      <p>If you have any say in whether interest is added to your fund, this
-         scholar says it is riba and you should refuse it. If it is added
-         anyway and you can't refuse it, work out the exact interest amount
-         and give it to people in need instead of using it.</p>
-
-      <details class="source">
-        <summary>What the answer says</summary>
-        <span class="source-body">
-          "When you are given this discretion to allow your provident fund to be
-          credited with the amount of interest, which these funds are getting on
-          investment, that interest is indeed Riba. A God-fearing Muslim should
-          refuse riba to be credited to him. If it gets added, nevertheless, by
-          default … you should be aware of the exact amount of interest, so that
-          you may draw that much, and pass it onto some poor or needy person(s),
-          or institution(s) helping them out."
-        </span>
-      </details>
-
-      <h3>Where they agree, and where they don't</h3>
-
-      <div class="table-scroll table-stack">
-        <table>
-          <caption class="visually-hidden">Summary of the fatwas on compulsory EPF and on VPF</caption>
-          <thead>
-            <tr>
-              <th scope="col">Fatwa</th>
-              <th scope="col">On compulsory EPF</th>
-              <th scope="col">On VPF</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>From India</td>
-              <td data-label="On compulsory EPF">Not riba; may be taken</td>
-              <td data-label="On VPF">Not asked</td>
-            </tr>
-            <tr>
-              <td>From Sri Lanka</td>
-              <td data-label="On compulsory EPF">Not riba; part of salary</td>
-              <td data-label="On VPF">Similar to riba; take back only what you put in</td>
-            </tr>
-            <tr>
-              <td>From the UK</td>
-              <td data-label="On compulsory EPF">Not asked</td>
-              <td data-label="On VPF">Not permissible</td>
-            </tr>
-            <tr>
-              <td>A scholar's answer</td>
-              <td data-label="On compulsory EPF">Riba where you have a choice; give it away</td>
-              <td data-label="On VPF">Riba</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
 
-    </div>
-  </section>
+      <p class="after-cards" data-src="src-epf-malaysia"><strong>India's
+         EPF has no Shariah option.</strong> Malaysia's EPF has one next to
+         its normal one, with its own Shariah committee and its own declared
+         dividend. India's EPFO has nothing like it, so you can't ask for
+         your balance to be invested the Shariah way.</p>
 
-
-  <!-- ============================================================
-       COMPULSORY VS VOLUNTARY
-       ============================================================ -->
-
-  <section class="section reveal">
-    <div class="wrap">
-
-      <h2 id="compulsory">Why compulsory and voluntary are different</h2>
-
-      <p>How can two scholars look at the same 8% credit and give opposite
-         answers? It comes down to choice.</p>
-
-      <p>The fatwas that allow it don't say EPF's investments are halal. They
-         say something narrower: when the law makes the deduction and you
-         have no say, what comes back is better seen as pay you get later,
-         from your employer or the state, than as a return you agreed to.
-         You never signed up for interest, because you were never given the
-         choice.</p>
-
-      <p>That reasoning stops working once you choose. With VPF, you put in
-         extra money knowing it pays a fixed return. The thing that made the
-         compulsory part acceptable — that you had no choice — is gone.</p>
-
-      <p>So "Is EPF halal?" can have two answers for one person. Someone who
-         pays only the compulsory amount is in a different position from
-         someone who has added VPF for years, even though both have one EPF
-         account.</p>
-
-      <h3>India's EPF has no Shariah option</h3>
-
-      <p data-src="src-epf-malaysia">Malaysia's EPF has a Shariah option next
-         to its normal one, with its own Shariah committee and its own
-         declared dividend. India's EPFO has nothing like it, so you can't
-         ask for your balance to be invested the Shariah way.</p>
+      <details class="source">
+        <summary>Read more: why compulsory and voluntary get different answers</summary>
+        <div class="source-body">
+          <p>How can two scholars look at the same 8% credit and give
+             opposite answers? It comes down to choice.</p>
+          <p>The fatwas that allow it don't say EPF's investments are halal.
+             They say something narrower: when the law makes the deduction
+             and you have no say, what comes back is better seen as pay you
+             get later, from your employer or the state, than as a return you
+             agreed to. You never signed up for interest, because you were
+             never given the choice.</p>
+          <p>That reasoning stops working once you choose. With VPF, you put
+             in extra money knowing it pays a fixed return. The thing that
+             made the compulsory part acceptable — that you had no choice — is
+             gone.</p>
+          <p>So "Is EPF halal?" can have two answers for one person. Someone
+             who pays only the compulsory amount is in a different position
+             from someone who has added VPF for years, even though both have
+             one EPF account.</p>
+        </div>
+      </details>
 
     </div>
   </section>
 
 
   <!-- ============================================================
-       WHAT PEOPLE DO
+       WHAT PEOPLE DO — icon cards on a blue band.
        ============================================================ -->
 
   <section class="section band reveal">
@@ -509,43 +477,39 @@
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="12.5" r="2.5"/><path d="M6.5 9.5h.01M17.5 15.5h.01"/></svg></span>
           <h3>Take it as pay</h3>
           <p>Following the fatwas from India and Sri Lanka, they treat the
-             credit on the compulsory part as pay for their service and use
-             it normally. On this view, nothing from that part needs to be
-             given away.</p>
+             credit on the compulsory part as pay for their service, and use
+             it normally.</p>
         </div>
 
         <div class="card card-icon">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M5 12.5v8h14v-8M12 8.5v12"/><path d="M12 8.5C10.5 5.5 7 5 7 7.2 7 8.5 12 8.5 12 8.5zM12 8.5c1.5-3 5-3.5 5-1.3 0 1.3-5 1.3-5 1.3z"/></svg></span>
           <h3>Give the interest away</h3>
-          <p>Following the view that the credit is riba, they find the
-             interest in their yearly statement and give it away, without
-             expecting reward, and keep what they put in. Several of the
-             fatwas above say this is what to do when the credit can't be
-             refused.</p>
+          <p>Following the view that it is riba, they find the interest in
+             their yearly statement, give it away without expecting reward,
+             and keep what they put in.</p>
         </div>
 
         <div class="card card-icon">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12h8"/></svg></span>
           <h3>Stop or avoid VPF</h3>
           <p>Because the fatwas agree more closely against the voluntary
-             top-up, some people pay only the compulsory amount into EPF and
-             save the rest somewhere else. For them, the compulsory and
-             voluntary parts are two different questions.</p>
+             top-up, some pay only the compulsory amount and save the rest
+             somewhere else.</p>
         </div>
 
         <div class="card card-icon">
           <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19V6.5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H8.5z"/><path d="M10.2 8.6a2 2 0 1 1 2.5 1.9c-.4.1-.7.5-.7.9v.4"/><path d="M12 13.4h.01"/></svg></span>
           <h3>Ask before you touch the balance</h3>
           <p>EPF has withdrawal rules, tax effects and a linked pension, so
-             leaving it is not only a Shariah question. The scholars above
-             who talk about leaving advise asking first, not acting in a
-             hurry.</p>
+             leaving it is not only a Shariah question. Ask first, and don't
+             act in a hurry.</p>
         </div>
 
       </div>
 
-      <p>Your yearly EPF statement shows the interest separately from what
-         you paid in. You can get it from the EPFO member portal.</p>
+      <p class="after-cards">Your yearly EPF statement shows the interest
+         separately from what you paid in. You can get it from the EPFO
+         member portal.</p>
 
       <p class="ask-line">Still have a doubt? <a href="/ask/">Ask me</a></p>
 
@@ -565,13 +529,9 @@
       <ul class="route-list">
         <li><a href="/instruments/ppf/">Is PPF halal?</a></li>
         <li><a href="/instruments/nps/">Is NPS halal?</a></li>
-        <li><a href="/instruments/digital-gold/">Is digital gold halal?</a></li>
         <li><a href="/compare/shariah-mutual-funds/">Compare India's six Shariah mutual funds</a></li>
+        <li><a href="/instruments/">Every instrument, checked</a></li>
       </ul>
-
-      <!-- If you add an item marked "soon" to this list, put this line
-           under it: <p class="meta">Items marked "soon" are being written.</p>
-           When that page goes live, turn its line into a link. -->
 
     </div>
   </section>

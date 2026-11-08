@@ -694,6 +694,9 @@
 
   // One button, under the page's main answer: the first answer box. No
   // other answer box and no table gets one (MAS, 6 Nov 2026).
+  // An answer drawn as a picture (the instrument pages' two side-by-side
+  // parts) carries its answer as plain sentences in data-share-text, so
+  // the shared picture reads as sentences, not as a jumble of labels.
   function start() {
     var box = document.querySelector('.answer');
     if (!box) return;
@@ -702,7 +705,7 @@
         titlePieces: headingPieces(),
         titleSize: 60,
         scales: ANSWER_SCALES,
-        body: answerBody(textOf(box)),
+        body: answerBody(box.getAttribute('data-share-text') || textOf(box)),
         source: lastUpdated(),
         address: pageAddress()
       }, fileName(1));
