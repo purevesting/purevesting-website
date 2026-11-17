@@ -1,6 +1,6 @@
 # Fable website new version check — what is still left
 
-Updated 17 November 2026, right after step 0.2 and its fixes went live.
+Updated 17 November 2026, right after step 0.3 (the join page) went live.
 A short list of everything still open, so nothing gets lost. The full
 details are in TODO.md (section numbers given below). Not published on
 the site (.assetsignore keeps it off).
@@ -15,14 +15,18 @@ the site (.assetsignore keeps it off).
   - UTI's card: "Shariah board ✓ Yes";
   - the new page /official/ ("Is it really Purevesting?"), linked as
     "Official channels" in every footer.
+- **Live:** step 0.3, the join page: purevesting.com/join, the one place
+  to join the email list. Every "Subscribe" button now says "Join" and
+  goes there; the footer says "Join free"; nine articles end with "Get
+  one answer like this every week. Join free →".
 - **Checker:** 0 ERROR, 4 WARN (the four long titles, item 16).
-- **Next:** step 0.3, the join page.
+- **Next:** step 0.4, monthly update and history.
 
 ## 1. The plan's steps still to build (TODO.md, "Website plan")
 
 - [x] 0.1 House rules and the checker
 - [x] 0.2 Red-team fixes
-- [ ] 0.3 The join page
+- [x] 0.3 The join page
 - [ ] 0.4 Monthly update and history
 - [ ] 1.1 Rates and Nisab today
 - [ ] 1.2 Zakat calculator
@@ -30,7 +34,28 @@ the site (.assetsignore keeps it off).
 - [ ] 1.4 Ramadan switch
 - [ ] 1.5 Scholar's edits and launch
 
-## 2. New from step 0.2 — for MAS (TODO.md, section 0 and section 1)
+## 2. New from step 0.3 — for MAS (TODO.md, section 0)
+
+- [ ] **Check /join/ on your phone — first.** The website chat couldn't
+      load Beehiiv's real box (Beehiiv blocks test browsers). Open
+      purevesting.com/join: the heading and the box should show without
+      scrolling. Then sign up once with a personal email (not salam@)
+      and look for the welcome email, in spam too.
+- [ ] **Item 22. Say "purevesting.com/join" in the newsletter Short.**
+- [ ] **Item 23. Put purevesting.com/join** in every pinned comment, in
+      the YouTube description's first line and in the Instagram bio —
+      and on every new video from now on.
+- [ ] **Item 24. Write the two lines on /join/ in your own words.** The
+      second line ("…my welcome email sends you my free guide") should
+      name the guide. Send the words, or edit join/index.html under the
+      "MAS: say this your way" notes.
+- [ ] **WhatsApp Channel link (item 21).** The button on /join/ is ready
+      but hidden. Send the link once the Channel exists; it goes on
+      /join/ and /official/ together.
+- [ ] **Item 20. A link picture for /join/** (it uses the default, like
+      /official/).
+
+## 3. New from step 0.2 — for MAS (TODO.md, section 0 and section 1)
 
 - [ ] **Item 21. Send the Telegram link — most urgent.** /official/ says
       our only official places are four: purevesting.com, YouTube,
@@ -44,14 +69,15 @@ the site (.assetsignore keeps it off).
 - [ ] **Item 19. Corrections log for step 0.2?** Both fact changes were
       changed back the same day, so probably nothing to log. Say "log
       them" or "no log needed".
-- [ ] **Item 20. A link picture for /official/** (it uses the default).
+- [ ] **Item 20. A link picture for /official/** (it uses the default;
+      /join/ too, see section 2).
 - [ ] **UTI (section 1).** Waiting for UTI's reply on whether the fund has
       its own Shariah adviser. The card says "Shariah board ✓ Yes" for now.
 - [ ] **Boycott page sentence.** Near the top it says: "A brand on this
       list can still pass a Shariah screen for its shares. These are two
       different questions." Say if you want it removed.
 
-## 3. From step 0.1 — for MAS (TODO.md, section 0)
+## 4. From step 0.1 — for MAS (TODO.md, section 0)
 
 - [ ] **Item 15. Switch on preview links in Cloudflare.**
       dash.cloudflare.com → Workers & Pages → purevesting-website →
@@ -62,7 +88,7 @@ the site (.assetsignore keeps it off).
       /instruments/ (61), /newsletter/ (61), SIP calculator (63). Send new
       words, or say "leave the titles".
 
-## 4. Older items for MAS, still open (TODO.md, section 0)
+## 5. Older items for MAS, still open (TODO.md, section 0)
 
 - [ ] 4. Fix the purevesting.in redirect (still 302, should be 301)
 - [ ] 6. Bing Webmaster Tools
@@ -75,15 +101,16 @@ the site (.assetsignore keeps it off).
 - [ ] 13. boycottisrael.org: send the right link
 - [ ] 14. Automatic reply for /ask/ (Web3Forms Pro, paid)
 
-## 5. Jobs that repeat (TODO.md, section 0b)
+## 6. Jobs that repeat (TODO.md, section 0b)
 
 Monthly NSE figures and the screener update (it now writes the red
 "✗ Not halal"), a new video in `videos/list.js`, quarterly fund returns
 and small savings rates, digital gold terms, the boycott list, the loan
-calculator's typical rates. After any of them: run the checker before it
+calculator's typical rates. New video: purevesting.com/join in its
+pinned comment and description's first line. After any of them: run the checker before it
 goes live.
 
-## 6. Ideas for later (TODO.md, sections 0c and 3–4)
+## 7. Ideas for later (TODO.md, sections 0c and 3–4)
 
 MAS's own full screener, halal finance by city, and the other parked
 ideas — none started yet.
