@@ -122,9 +122,18 @@ Never colour a real fund's returns.
 Added by MAS on 6 November 2026 (part 3):
 
 - **The answer first and big; a long list behind one button.** The
-  screener shows ✓ Halal, ✗ Not halal or ? Don't know yet, big, with only
-  a small date; its 501 companies, and the boycott list, open with one
+  screener shows ✓ Halal, ✗ Not on NSE's Shariah list or ? Don't know yet,
+  big, with one small line under it: "Source: NSE's Nifty500 Shariah
+  index, [its date]. Other lists can differ — see why", where "see why"
+  links to /methodology/#disagree (the home page's search box has the
+  same line). Its 501 companies, and the boycott list, open with one
   "See all" button. The list stays in the page, so Google reads it.
+- **Never "Not halal" (changed by MAS on 17 November 2026, step 0.2).** A
+  company that is not in NSE's Shariah index was never called haram by
+  anyone: it is only not on the list. So the answer says "✗ Not on NSE's
+  Shariah list"; in the long list of companies the short form "✗ Not on
+  the list" is fine, and the list's buttons are All · Halal · Not on the
+  list. `scripts/update_screener.py` writes these words every month.
 - **No table may need sideways scrolling on a phone.** A table becomes
   cards on a phone, or a chart, or goes under a "Read more".
 - **Calculators:** the boxes and the answer, drawn as a chart, on the
@@ -169,7 +178,8 @@ purevesting.com/ask/.
 | `tools/`, `learn/`, `videos/` | The hub pages. |
 | `newsletter/`, `ask/`, `about/`, `app/` | HalalEdge sign-up, the question form, about Purevesting, installing the app. |
 | `corrections/`, `disclaimer/`, `privacy/` | The corrections log and the two legal pages. |
-| `stop-the-genocide/` | The boycott list. Rewritten by `scripts/update_boycott.py` when its dataset changes. |
+| `stop-the-genocide/` | The boycott list. Rewritten by `scripts/update_boycott.py` when its dataset changes. Since 17 Nov 2026 (step 0.2) no menu, footer or home page link points to it; it stays at this address and in `sitemap.xml`. |
+| `official/` | "Is it really Purevesting?" — our only official places, what we never do, and what to do about a fake. Linked from the footer of every page ("Official channels"). Since 17 Nov 2026 (step 0.2). |
 | `404.html` | "This page doesn't exist", for any wrong address. |
 | `offline/` | What the app shows for a page never opened before, with no internet. |
 
@@ -308,7 +318,9 @@ Copy from the page named in brackets.
 - **Signs**: `<span class="sign sign-yes">` ✓ green, "you may";
   `sign-no` ✗ grey, riba; `sign-differ` scales, scholars differ;
   `sign-open` ? no fatwa found; `sign-note` ! good to know; `sign-none` –
-  not asked. The words beside a sign always say the answer too.
+  not asked. The words beside a sign always say the answer too. In an
+  icon card a sign can take the icon's place: `<span class="icon sign
+  sign-no">` (`official/`).
 - **How it works, drawn** (`instruments/ppf/`): `<ol class="money-path">`
   with three `<li class="step">`, each with a `step-head` (an icon and a
   heading). Add `money-path-wide` when the middle step holds a chart

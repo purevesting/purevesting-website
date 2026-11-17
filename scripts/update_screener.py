@@ -8,15 +8,19 @@ What it does:
      Nifty500 Shariah index's sector file, which names every company in
      the Shariah index with its weight and the date of the data.
   2. Rewrites the table in screener/index.html (between the
-     "SCREENER ROWS" markers) and every "as of" date on that page and in
-     the home page's screener box. A company in the Shariah index is
-     marked "Halal"; a Nifty 500 company that isn't, "Not halal" (MAS,
-     6 Oct). Anything outside the Nifty 500 shows "Don't know yet" when
-     searched — that part is in the page's own script. Since 6 Nov 2026
-     (part 3) the table has two columns, the company and the answer; the
-     NSE symbol sits on each row as data-sym, for the search. The counts
-     marked data-screener-in, data-screener-out and data-screener-all are
-     rewritten too.
+     "SCREENER ROWS" markers) and every date marked data-screener-date on
+     that page and in the home page's screener box (its "Source: NSE's
+     Nifty500 Shariah index, …" line). A company in the Shariah index is
+     marked "✓ Halal"; a Nifty 500 company that isn't, "✗ Not on the
+     list". Never "Not halal": nobody called these companies haram — NSE
+     only left them out of its Shariah list (MAS, 17 Nov 2026, step 0.2;
+     before that the rows said "Not halal"). The big answer under the
+     search says it in full, "✗ Not on NSE's Shariah list", and anything
+     outside the Nifty 500 shows "? Don't know yet" — both are in the
+     page's own script, not here. Since 6 Nov 2026 (part 3) the table has
+     two columns, the company and the answer; the NSE symbol sits on each
+     row as data-sym, for the search. The counts marked data-screener-in,
+     data-screener-out and data-screener-all are rewritten too.
   3. Redraws the grid of squares — one per company, A to Z, filled if it
      is in the Shariah index — between the "GRID START" and "GRID END"
      markers on each page in GRID_PAGES, and rewrites the counts marked
@@ -66,12 +70,17 @@ def build(n500_text, shariah_text):
     rows, squares = [], []
     for c in sorted(companies, key=lambda c: c['Company Name'].strip().lower()):
         sym, name = c['Symbol'].strip(), c['Company Name'].strip()
+        # The answer in the list: "✓ Halal" if the company is in NSE's
+        # Shariah index, "✗ Not on the list" if it isn't (MAS, 17 Nov 2026,
+        # step 0.2 — never "Not halal"). The row's class says the same
+        # (row-halal or row-not-on-list); the page's search looks for
+        # row-halal to know a company's answer.
         if sym in weight:
             status = '<span class="chip chip-pass">&#10003; Halal</span>'
             row_class = 'row-halal'
         else:
-            status = '<span class="chip chip-fail">&#10007; Not halal</span>'
-            row_class = 'row-not-halal'
+            status = '<span class="chip chip-fail">&#10007; Not on the list</span>'
+            row_class = 'row-not-on-list'
         # Two columns (MAS, 6 Nov 2026, part 3): the company and the answer.
         # The symbol rides along as data-sym, so the search still finds it.
         rows.append(f'                <tr class="{row_class}" data-sym="{html.escape(sym)}"><td>{html.escape(name)}</td>'

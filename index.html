@@ -191,7 +191,6 @@
         </div>
       </div>
       <div class="nav-item nav-desktop nav-subscribe"><a href="/newsletter/">Subscribe</a></div>
-      <div class="nav-item nav-highlight"><a href="/stop-the-genocide/">Stop the genocide</a></div>
     </nav>
   </div>
 </header>
@@ -219,8 +218,11 @@
              which shows the answer, so it works even without JavaScript.
              No autofocus, on purpose: on a phone it would pop the keyboard
              up over the page. The "Try" names open the screener with that
-             name filled in. scripts/update_screener.py keeps the count and
-             the date current. -->
+             name filled in. Under the box: the count, then the same source
+             line as under the screener's answer — "Source: NSE's Nifty500
+             Shariah index, [date]. Other lists can differ — see why" (MAS,
+             17 Nov 2026, step 0.2). scripts/update_screener.py keeps the
+             count and the date current. -->
         <form class="screener-box hero-search" action="/screener/" method="get" role="search">
           <label for="home-q">Is your stock halal?</label>
           <div class="screener-row">
@@ -231,8 +233,9 @@
             <a href="/screener/?q=Infosys">Infosys</a>
             <a href="/screener/?q=Zomato">Zomato</a>
             <a href="/screener/?q=Reliance">Reliance</a></p>
-          <p class="meta">All <span data-screener-all>501</span> Nifty 500 companies · NSE's list as of
-            <time datetime="2026-09-30" data-screener-date>30 September 2026</time></p>
+          <p class="meta">All <span data-screener-all>501</span> Nifty 500 companies · Source: NSE's
+            Nifty500 Shariah index, <time datetime="2026-09-30" data-screener-date>30 September 2026</time>.
+            Other lists can differ — <a href="/methodology/#disagree">see why</a>.</p>
         </form>
       </div>
 
@@ -330,14 +333,6 @@
         </a>
 
       </div>
-
-      <!-- The highlighted card for /stop-the-genocide/ (MAS, 6 Oct). -->
-      <a class="cause" href="/stop-the-genocide/">
-        <span class="icon icon-amber" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8.5h14l-1 11.5H6z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></svg></span>
-        <span><strong>Stop the genocide.</strong> Is a brand you buy on the
-          boycott list?</span>
-        <span class="go">See the list</span>
-      </a>
 
     </div>
   </section>
@@ -516,7 +511,9 @@
     </div>
 
     <!-- A FEW LINKS (MAS, 6 Nov 2026: a short, clean footer). The menu
-         above, the Learn page and the About page link the rest. -->
+         above, the Learn page and the About page link the rest. "Official
+         channels" opens /official/: Purevesting's only official places,
+         and what to do about a fake (MAS, 17 Nov 2026, step 0.2). -->
     <nav class="footer-nav" aria-label="Footer">
       <a href="/screener/">Stocks</a>
       <a href="/compare/shariah-mutual-funds/">Mutual funds</a>
@@ -526,8 +523,8 @@
       <a href="/videos/">Videos</a>
       <a href="/ask/">Ask me</a>
       <a href="/about/">About</a>
+      <a href="/official/">Official channels</a>
       <a href="/app/">Install the app</a>
-      <a href="/stop-the-genocide/">Stop the genocide</a>
       <a href="/privacy/">Privacy</a>
     </nav>
 

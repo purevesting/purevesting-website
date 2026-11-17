@@ -9,7 +9,13 @@ MAS says "go live" (CLAUDE.md, "How to hand over").
 - [x] **0.1 House rules and the checker** — done 17 Nov 2026, on branch
       step-0-1: CLAUDE.md, scripts/check_site.py, .assetsignore, the
       README guide, this list. Nothing a visitor sees changed.
-- [ ] **0.2 Red-team fixes**
+- [x] **0.2 Red-team fixes** — done 17 Nov 2026, on branch step-0-2:
+      the screener never says "Not halal" ("✗ Not on NSE's Shariah list",
+      with a source line under the answer and in the home page's search
+      box); no menu, footer or home page link to /stop-the-genocide/ (the
+      page stays, with one new sentence near the top); UTI's fund card;
+      the new /official/ page, linked from every footer. Live when MAS
+      says "go live". Open points: section 0, items 17 to 20.
 - [ ] **0.3 The join page**
 - [ ] **0.4 Monthly update and history**
 - [ ] **1.1 Rates and Nisab today**
@@ -31,7 +37,11 @@ section 0d.
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 17 November 2026, step 0.1 of the plan above: the house
+Last updated: 17 November 2026, step 0.2 of the plan above: the
+red-team fixes — the screener never says "Not halal", the boycott page
+unlinked from the menu, footer and home page, UTI's fund card, the new
+/official/ page (what is left for MAS: section 0, items 17 to 20, and
+section 1, the UTI item). Earlier the same day, step 0.1: the house
 rules in CLAUDE.md, the checker scripts/check_site.py, how to switch on
 preview links for branches (section 0, item 15) and four long page titles
 to decide (item 16). Before that, on 8 November 2026: part 4 of 4, the
@@ -159,7 +169,11 @@ decision only he can make.
       judgement of our own" note is gone (README rule 4). The page still
       says at the top that the list comes from an open boycott dataset, and
       its Sources part names and links Tech for Palestine. Show the lawyer
-      this version.
+      this version. **Since 17 Nov (step 0.2)** no menu, footer or home
+      page link points to the page (it stays at its address and in
+      sitemap.xml), and near the top it says: "A brand on this list can
+      still pass a Shariah screen for its shares. These are two different
+      questions."
 - [ ] **13. boycottisrael.org — send the right link.** That address is
       parked (checked 6 Oct: it forwards to a "domain for sale" style page),
       so the page doesn't link it. If MAS meant a different site, send its
@@ -258,6 +272,32 @@ decision only he can make.
       Tell the website chat the new words for any you want shorter, or
       "leave the titles": a title only a few letters too long loses just
       its last word or two.
+- [ ] **17. Tap the cybercrime.gov.in link on /official/ once (added
+      17 Nov, step 0.2).** The website chat could not open
+      cybercrime.gov.in on 17 Nov (the site refused the connection), so
+      that link and the 1930 number are exactly as you gave them, not
+      checked. After "go live", open purevesting.com/official/ on your
+      phone and tap "cybercrime.gov.in": it should open the government's
+      site for reporting cyber crime. The SEBI link was checked on 17 Nov:
+      it opens SEBI's "Recognised Intermediaries" page, which lists every
+      registered investment adviser, research analyst, broker and more.
+- [ ] **18. HalalEdge is not on /official/'s list — decide (added 17 Nov,
+      step 0.2).** The page names four official places, as you set them:
+      purevesting.com, the YouTube channel, Instagram @purevesting and
+      salam@purevesting.com. The newsletter's emails come through Beehiiv,
+      and /about/ lists "HalalEdge on Beehiiv" as one of Purevesting's
+      places. Say "add HalalEdge to /official/" or "leave it at four".
+- [ ] **19. The corrections log for step 0.2 — decide (added 17 Nov).**
+      CLAUDE.md says fact fixes are logged in /corrections/. Step 0.2
+      changed two things a reader could call facts: the screener's "Not
+      halal" is now "Not on NSE's Shariah list", and UTI's card no longer
+      says "Shariah board ✓ Yes". The step's list of files did not include
+      /corrections/, so nothing was logged. Say "log them" (for UTI,
+      perhaps once UTI replies — section 1) or "no log needed".
+- [ ] **20. /official/ has no link picture of its own yet (added 17 Nov,
+      step 0.2).** WhatsApp shows the site's default picture for it. If
+      you want its own, ask the website chat for one (made from
+      og-template.html, as for every other page).
 
 ---
 
@@ -314,8 +354,12 @@ Each one says what to send or change, and where.
         one per company, A to Z — on the home page and /halal-stocks/,
         with their two counts. Since part 3 the screener's list has two
         columns (the company and the answer; the NSE symbol rides on each
-        row for the search), and the script also writes the "not halal"
-        count. Then set the screener page's dateModified
+        row for the search), and the script also writes the "not on the
+        list" count. Since step 0.2 (17 Nov 2026) the script writes
+        "✗ Not on the list" in the list, never "Not halal", and the date
+        it rewrites on the home page sits in the search box's line
+        "Source: NSE's Nifty500 Shariah index, [date]". Then set the
+        screener page's dateModified
         to the day of the update. The counts it prints must match the
         factsheet (204 of 501 for 30 Sep 2026). If NSE renames a company
         (as Zomato became Eternal), add the old name to the `ALSO` list in
@@ -422,7 +466,9 @@ Each one says what to send or change, and where.
 - [x] ~~**"Stop the genocide" page**~~ DONE (step 6): /stop-the-genocide/,
       426 entries from Tech for Palestine's dataset, searchable, each with
       the dataset's reason and sources; highlighted link in the computer
-      menu, a card on the home page, a footer link. Open points for MAS:
+      menu, a card on the home page, a footer link (**REPLACED 17 Nov,
+      step 0.2:** all three taken out; the page stays at its address and
+      in sitemap.xml). Open points for MAS:
       items 11 to 13 in section 0. Since 12 Oct each entry shows names,
       reason tags and source links only (below).
 - Colour note: the brief's rule — never colour a real fund's returns —
@@ -816,6 +862,11 @@ which MAS asked to drop).
       8 Nov).
       `scripts/update_screener.py` writes the new rows (checked: fed the
       same data, it rewrites the page with no difference).
+      **CHANGED 17 Nov (step 0.2):** never "Not halal" — the answer says
+      "✗ Not on NSE's Shariah list", the list "✗ Not on the list", the
+      buttons All / Halal / Not on the list, and one small source line
+      sits under the answer, with "see why" linking to
+      /methodology/#disagree.
 - [x] **Privacy:** the video pictures now also show on the screener, halal
       stocks, methodology and mutual funds pages and the purification
       calculator; the page says so (its date moved to 6 Nov).
@@ -829,7 +880,9 @@ which MAS asked to drop).
       and 5-year returns as small bars, one colour, one scale for every
       card, 0 in the middle. Expense ratios under "Read more: what each
       fund costs". The index comparison is a small chart (two blues). The
-      app's install-sheet picture of the page retaken.
+      app's install-sheet picture of the page retaken. **CHANGED 17 Nov
+      (step 0.2):** UTI's card says "Index screened by NSE's Shariah
+      partner" instead of "Shariah board ✓ Yes" (section 1, the UTI item).
 - [x] **How many stocks are halal:** a two-line answer, then straight away
       the squares with the two big figures and the switch; the byline
       after them. "Why less of the value passes" (financial services as
@@ -1059,6 +1112,14 @@ date. These are the places that don't yet.
       the corrections log. /purification-calculator/'s NSE line now points
       to the same document; its wording didn't change, so that one is a
       routine source update and not logged.
+
+- [ ] **UTI — asked whether the fund has its own Shariah adviser; waiting
+      for the reply.** (Added 17 Nov 2026, step 0.2.) Until then, UTI's card
+      on /compare/shariah-mutual-funds/ says "Index screened by NSE's
+      Shariah partner" instead of "Shariah board ✓ Yes". Nothing else on
+      that page changed, so its answer box still says "Four are checked by
+      a Shariah board" (UTI is one of the four). When UTI replies, send
+      their answer to the website chat, and decide whether "Four" stays.
 
 - [ ] **Compare page — ShariahCap Advisors for Taurus and Quantum (6 Oct).**
       Restored as MAS set it on 17 Sep (the 2 Oct "None named" change was
@@ -1727,6 +1788,13 @@ here, which needs building before the first sponsor conversation, not after.
       the Zakat basics Short. Titles taken from YouTube itself.
 - Swapping in the flagship videos is now a monthly job (MAS, 5 Oct) —
   see section 0b.
+- [ ] **Styles nothing uses since step 0.2 (added 17 Nov 2026).** In
+      `assets/site.css`, `.cause` and `.icon-amber` (section 16: the old
+      "Stop the genocide" card on the home page) and `.nav-highlight` (end
+      of section 25: the old amber menu link) now show nowhere; their
+      comments say so. Step 0.2 allowed only comment changes in site.css,
+      so they stay for now. Say "delete the old boycott styles" to remove
+      them, or leave them if the links may come back.
 
 ## 9. Obsolete — decided against
 

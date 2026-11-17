@@ -1081,8 +1081,8 @@ td:first-child { font-weight: 600; }
 
 
 /* 11. CHIPS: PASSES / FAILS ===============================================
-   Shows on: the ✓ Halal / ✗ Not halal labels: the screener's list, the fund
-   cards, the methodology page.
+   Shows on: the ✓ Halal / ✗ Not on the list labels: the screener's list
+   and its search, the fund cards, the methodology page.
    Pass and fail are never shown by colour alone. Each chip carries a symbol
    and a word too, so it still reads correctly to someone colour-blind, in a
    black-and-white printout, or in a screenshot with a filter on it.
@@ -1683,7 +1683,9 @@ td:first-child { font-weight: 600; }
   to   { opacity: 1; transform: none; }
 }
 
-/* --- The "Stop the genocide" card under the tiles: an amber edge. --- */
+/* --- The "Stop the genocide" card under the tiles: an amber edge.
+   Shows on: nothing since 17 Nov 2026 (step 0.2: MAS took the card off
+   the home page). Kept, unused, in case it comes back. --- */
 .cause {
   display: flex;
   align-items: center;
@@ -2867,10 +2869,13 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
 .js .screener-search { display: block; }
 .screener-search input { min-height: 52px; padding-left: 1.2rem; background: var(--white); box-shadow: var(--shadow-sm); }
 
-/* THE ANSWER, BIG (MAS, 6 Nov 2026, part 3): a drawn mark and the word —
-   ✓ Halal, ✗ Not halal or ? Don't know yet — then the company's name and
-   only a small date. "Not halal" is grey, never red, and every answer
-   carries its word, so it never depends on colour alone. */
+/* THE ANSWER, BIG (MAS, 6 Nov 2026, part 3): a drawn mark and the words —
+   ✓ Halal, ✗ Not on NSE's Shariah list or ? Don't know yet — then the
+   company's name and one small line: the source and its date (.search-date;
+   MAS, 17 Nov 2026, step 0.2). A company outside NSE's Shariah index was
+   never called haram by anyone: it is only not on the list. "Not on NSE's
+   Shariah list" is grey, never red, and every answer carries its words,
+   so it never depends on colour alone. */
 .search-answer {
   max-width: 40rem;
   margin: 1rem 0 0;
@@ -2983,10 +2988,12 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
 
 
 /* 25. STOP THE GENOCIDE ====================================================
-   Shows on: /stop-the-genocide/, and the amber "Stop the genocide" link in
-   the menu on a computer.
+   Shows on: /stop-the-genocide/.
    The searchable boycott list: its big answer (the screener's, with an
-   amber flag), each entry, and the highlighted menu link.
+   amber flag) and each entry. The highlighted menu link at the end of
+   this section shows nowhere since 17 Nov 2026 (step 0.2: MAS took the
+   "Stop the genocide" link out of the menu and the footer); its style is
+   kept in case it comes back.
    ========================================================================== */
 
 .boycott-list { display: grid; gap: 0.5rem; }
@@ -3057,7 +3064,9 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
 .boycott-reasons { display: flex; flex-wrap: wrap; gap: 0.3rem 0.4rem; }
 .boycott-body .source-note { margin-top: 0.4rem; }
 
-/* The highlighted menu item: wide screens only, a soft amber pill. */
+/* The highlighted menu item: wide screens only, a soft amber pill.
+   Shows on: nothing since 17 Nov 2026 (step 0.2). Kept, unused, in case
+   the link comes back into the menu. */
 .nav-item.nav-highlight { display: none; }
 
 @media (min-width: 64em) {
