@@ -195,6 +195,7 @@ purevesting.com/ask/.
 |---|---|
 | `README.md` | This file. |
 | `CLAUDE.md` | The house rules for anyone, human or AI, who changes the site: who it is for, what never to do, what always to do, and how to hand over a step. Read it after this file. |
+| `fable-website-new-version-check.md` | A short list of everything still left to do (17 Nov 2026), pointing into TODO.md. |
 | `TODO.md` | The plan's steps, what is left to do, the jobs that repeat (monthly, quarterly), and what MAS has to do himself. |
 | `_template.html` | The starting point for a new page, with every building block in it. |
 | `og-template.html` | Makes the link pictures in `assets/og/` (ask the website chat). |
