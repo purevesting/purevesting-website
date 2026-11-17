@@ -194,12 +194,49 @@ purevesting.com/ask/.
 | File or folder | What it is |
 |---|---|
 | `README.md` | This file. |
-| `TODO.md` | What is left to do, the jobs that repeat (monthly, quarterly), and what MAS has to do himself. |
+| `CLAUDE.md` | The house rules for anyone, human or AI, who changes the site: who it is for, what never to do, what always to do, and how to hand over a step. Read it after this file. |
+| `TODO.md` | The plan's steps, what is left to do, the jobs that repeat (monthly, quarterly), and what MAS has to do himself. |
 | `_template.html` | The starting point for a new page, with every building block in it. |
 | `og-template.html` | Makes the link pictures in `assets/og/` (ask the website chat). |
+| `scripts/check_site.py` | The checker: run it before anything goes live (see "Before anything goes live: run the checker", below). Its lists of banned names and advice words are at the top of the file. |
 | `scripts/update_screener.py` | The monthly screener update ("run the screener update"). |
 | `scripts/update_boycott.py` | The boycott list update ("run the boycott update"). |
+| `plan/`, `data/`, `partials/`, `templates/`, `tests/`, `worker/` | Folders for later steps; none of them exists yet. `tests/` will hold the tests for the money maths in `assets/calc/` (CLAUDE.md, "Always" rule 7). `.assetsignore` already lists all six, so nothing put in them can go live by mistake. |
 | `wrangler.jsonc`, `.assetsignore` | Cloudflare's settings: what is published, and the 404 page. |
+
+### Before anything goes live: run the checker
+
+Open a terminal in the purevesting-website folder (in VS Code: **Terminal**
+→ **New Terminal**) and type:
+
+    python3 scripts/check_site.py
+
+(On Windows, if it says Python isn't found, type `python` or `py` instead
+of `python3`.) It reads every page that goes live — it skips what
+`.assetsignore` lists — and prints one line per problem, then a count:
+
+    WARN   instruments/epf/index.html:12  The page title is 63 letters long; Google shows about 60: "…"
+    Checked 27 pages and sitemap.xml: 0 ERROR, 4 WARN.
+
+`instruments/epf/index.html:12` is the file and the line: in VS Code, hold
+Ctrl and click it to jump there.
+
+- **ERROR — fix it before anything goes live.** A banned name in the page
+  text (a madrasa, a board, a standards body); a second "not investment
+  advice" line; a link to one of our pages, or an image, that doesn't
+  exist; a header or footer that isn't the same as in `index.html`; a page
+  missing from `sitemap.xml`, or a sitemap line with no page; a figure
+  whose `data-src` source isn't on the page; broken structured data
+  (JSON-LD).
+- **WARN — look, then decide.** Advice words ("guaranteed", "target
+  price"…); "bank" close to "cooperative" or "society"; a title over 60
+  letters or a description over 160; a missing canonical link or
+  og:image; a colour code typed into a page; an image without width,
+  height or alt.
+
+The checker only reads: it never changes a file. To add a name or a word
+it looks for, open `scripts/check_site.py` and add a line to the list at
+the top.
 
 ### How to add a page
 

@@ -1,5 +1,25 @@
 # Purevesting website — open items
 
+## Website plan — the steps
+
+Set by MAS on 17 November 2026. One step at a time, each on its own
+branch named after it (step-0-1, step-0-2…); a step goes live only when
+MAS says "go live" (CLAUDE.md, "How to hand over").
+
+- [x] **0.1 House rules and the checker** — done 17 Nov 2026, on branch
+      step-0-1: CLAUDE.md, scripts/check_site.py, .assetsignore, the
+      README guide, this list. Nothing a visitor sees changed.
+- [ ] **0.2 Red-team fixes**
+- [ ] **0.3 The join page**
+- [ ] **0.4 Monthly update and history**
+- [ ] **1.1 Rates and Nisab today**
+- [ ] **1.2 Zakat calculator**
+- [ ] **1.3 Zakat answers and interest tool**
+- [ ] **1.4 Ramadan switch**
+- [ ] **1.5 Scholar's edits and launch**
+
+---
+
 **Writing rules: see the top of README.md (set by MAS, 6 November 2026).**
 They replace any older rule in this file that says otherwise. Each old
 rule they replace is marked **REPLACED 6 Nov** below.
@@ -11,13 +31,17 @@ section 0d.
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 8 November 2026 (part 4 of 4, the last: the five
+Last updated: 17 November 2026, step 0.1 of the plan above: the house
+rules in CLAUDE.md, the checker scripts/check_site.py, how to switch on
+preview links for branches (section 0, item 15) and four long page titles
+to decide (item 16). Before that, on 8 November 2026: part 4 of 4, the
+last: the five
 instrument pages with the answer drawn, how each works as a drawing, the
 fatwas as cards; /instruments/ as one-line cards; the hub, people and
 legal pages much shorter; the ₹ sign in our fonts; the calculators'
 whole answer on a small phone's first screen; the video's new title; the
 steps for an automatic reply on /ask/ (section 0, item 14); clear code
-and a README guide; see section 0h). On 7 November: part 3 of 4, fewer
+and a README guide; see section 0h. On 7 November: part 3 of 4, fewer
 words, more graphics — the screener's big answer, the long lists behind
 one button, the fund cards, the two-step drawing, the calculators on one
 screen, a video near the top where one fits (section 0g). Before that, on
@@ -179,6 +203,61 @@ decision only he can make.
       messages sent without leaving the page, and it makes every visitor
       pass a "not a robot" page on its site first; the forms would need
       rewiring. Say "use FormSubmit instead" if the price matters more.
+- [ ] **15. Switch on preview links for branches in Cloudflare (added
+      17 Nov, step 0.1).** Each step of the plan is now built on its own
+      branch (step-0-2, step-0-3…) and goes live only when you say "go
+      live". With this switched on, Cloudflare also builds each branch
+      and gives it its own link, so you can try a step on your phone
+      before it goes live. The live site doesn't change. It is free:
+      Cloudflare's Free plan includes 3,000 build minutes a month.
+      Checked against Cloudflare's help pages on 17 Nov 2026
+      (developers.cloudflare.com/workers/ci-cd/builds/build-branches/ and
+      developers.cloudflare.com/workers/versions-and-deployments/version-urls/).
+      Cloudflare's screens are changing just now, so where the names
+      differ, the older name is given in brackets.
+      1. Go to **dash.cloudflare.com** and log in. In the menu on the
+         left, open **Workers & Pages** (it may sit under **Compute**)
+         and click **purevesting-website**.
+      2. Click **Settings**, then **Build**. Under **Branch control**,
+         leave the production branch as **main**, tick **Enable Preview
+         Builds** (older: "Builds for non-production branches") and
+         **Save**.
+      3. Switch on the links themselves. Still in purevesting-website,
+         click the **Domains** tab; under **Worker URL**, switch
+         **Preview** on. (Older: **Settings** → **Domains & Routes** →
+         **Version URLs**, once called "Preview URLs" → **Enable**.)
+         Leave the **workers.dev** line as it is.
+      4. If a banner says **Set up Worker Previews**, don't press it for
+         now: that switch can't be undone, and Cloudflare's guide for it
+         asks for a newer Wrangler (Cloudflare's publishing tool) written
+         in a package.json file, which the site doesn't have. If you
+         want it one day, tell the website chat "get ready for Worker
+         Previews" and it becomes a step of its own.
+      5. That's all. From the next branch the website chat pushes, each
+         build gets a link ending in **.workers.dev**. To find it: in
+         purevesting-website, open **Deployments** (newer screens also
+         have a **Previews** list) and click the newest build; the link
+         is also near the end of its build log. Step 0.1 changes nothing
+         a visitor sees, so the first link worth opening is step 0.2's.
+      Good to know: anyone who has a preview link can open it, so don't
+      post one anywhere. If a branch's build fails, or the switch in
+      point 3 is off again after the next push to main, copy what
+      Cloudflare shows into the website chat.
+- [ ] **16. Four page titles are a little long — decide (found by the
+      checker, 17 Nov, step 0.1; not changed).** Google shows about 60
+      letters of a title and cuts the rest off with "…". These four are
+      61 to 63:
+      - `instruments/epf/` (63): "Is EPF halal? What scholars actually
+        say, and where they differ"
+      - `instruments/` (61): "Is it halal? Indian financial instruments,
+        checked one by one"
+      - `newsletter/` (61): "HalalEdge: a free weekly newsletter on halal
+        finance in India"
+      - `sip-calculator/` (63): "SIP calculator with lump sum — free, year
+        by year | Purevesting"
+      Tell the website chat the new words for any you want shorter, or
+      "leave the titles": a title only a few letters too long loses just
+      its last word or two.
 
 ---
 

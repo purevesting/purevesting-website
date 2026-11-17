@@ -11,9 +11,20 @@
 # (Delete the TODO.md line if you ever want the TODO list public.)
 TODO.md
 README.md
+CLAUDE.md
 _template.html
 og-template.html
 scripts/
+
+# Folders for planning, building and testing the site, not for visitors.
+# Some don't exist yet: listing them now means nothing put in them can
+# ever go live by mistake.
+plan/
+data/
+partials/
+templates/
+tests/
+worker/
 
 # Settings files the live site has no reason to show anyone.
 wrangler.jsonc
