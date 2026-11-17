@@ -51,7 +51,9 @@ in TODO.md, or in a comment in the code, that says something different.
 - **"Share as image" only under the main answer** of a page, never under
   tables.
 - **End every article with one friendly line:** "Still have a doubt? Ask
-  me", linking to /ask/.
+  me", linking to /ask/. Under it, one more line: "Get one answer like
+  this every week. Join free →", linking to /join/ (MAS, 17 Nov 2026,
+  step 0.3).
 - **Purevesting covers all of finance — investing, saving and borrowing —**
   not only investing. Use those words when the site talks about itself.
 
@@ -175,7 +177,8 @@ purevesting.com/ask/.
 | `sip-calculator/`, `loan-calculator/` | The two calculators. |
 | `instruments/` | EPF & more: one card per instrument. Inside it, one folder per instrument: `epf/`, `ppf/`, `nps/`, `sukanya-samriddhi/`, `digital-gold/`. |
 | `tools/`, `learn/`, `videos/` | The hub pages. |
-| `newsletter/`, `ask/`, `about/`, `app/` | HalalEdge sign-up, the question form, about Purevesting, installing the app. |
+| `join/` | "Join": the one place to join the email list. Only the heading, one line, Beehiiv's sign-up box and two small grey lines; on a 360px phone the heading and the box show without scrolling. The Join pill at the top of every page, "Join free" in the footer, the home page's newsletter part and the line under "Still have a doubt? Ask me" all lead here. A WhatsApp Channel button waits inside comment marks for MAS's link. Since 17 Nov 2026 (step 0.3). |
+| `newsletter/`, `ask/`, `about/`, `app/` | HalalEdge sign-up, with what an issue holds; the question form; about Purevesting; installing the app. |
 | `corrections/`, `disclaimer/`, `privacy/` | The corrections log and the two legal pages. |
 | `stop-the-genocide/` | The boycott list. Rewritten by `scripts/update_boycott.py` when its dataset changes. Linked from the menu (on a computer), the home page and the footer. |
 | `official/` | "Is it really Purevesting?" — our only official places, what we never do, and what to do about a fake. Linked from the footer of every page ("Official channels"). Since 17 Nov 2026 (step 0.2). |
@@ -259,9 +262,10 @@ the top.
    structured data under it (the headline, the dates, the last
    breadcrumb).
 3. Write the page with the rules above: the answer first, the byline (on
-   an article), the sections, "Still have a doubt? Ask me", then Sources,
-   closed. Copy any building block you need from `_template.html` or from
-   a page that already has it (the list below says which).
+   an article), the sections, "Still have a doubt? Ask me" with the join
+   line under it, then Sources, closed. Copy any building block you need
+   from `_template.html` or from a page that already has it (the list
+   below says which).
 4. Link to it: add one line to the right menu list in the header — on
    **every** page, because the header is the same everywhere (a
    find-and-replace across all files) — and a card on its hub page
@@ -342,6 +346,9 @@ Copy from the page named in brackets.
   `data-count` on a number to make it count up.
 - **The friendly line**: `<p class="ask-line">Still have a doubt?
   <a href="/ask/">Ask me</a></p>`, at the end of an article.
+- **The join line**, right under the friendly line: `<p
+  class="join-line">Get one answer like this every week. <a
+  href="/join/">Join free &rarr;</a></p>` (`_template.html`).
 - **A blue band**: `<section class="section band">`. Never two in a row.
 - **Rising cards**: put `reveal` on a section; its cards rise in turn.
 - **An icon**: `<span class="icon" aria-hidden="true"><svg viewBox="0 0

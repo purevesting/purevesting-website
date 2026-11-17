@@ -23,7 +23,20 @@ MAS says "go live" (CLAUDE.md, "How to hand over").
       says "Shariah board ✓ Yes" again; /official/ no longer has the
       "No WhatsApp or Telegram tip groups" card. Open points: section 0,
       items 17 to 21.
-- [ ] **0.3 The join page**
+- [x] **0.3 The join page** — done 17 Nov 2026, on branch
+      claude/purevesting-join-page-xnidiy: the new page /join/, the one
+      place to join the email list — the heading, one line, Beehiiv's
+      sign-up box (the same code as /newsletter/) and two small grey
+      lines; on a 360px phone the heading and the box show without
+      scrolling. On every page the Subscribe pill (and its copy in the
+      computer menu) now says "Join", and the footer's "Subscribe free"
+      says "Join free"; both go to /join/, and so does the home page's
+      newsletter button. Under "Still have a doubt? Ask me", on the nine
+      pages that end with it: "Get one answer like this every week. Join
+      free →". /newsletter/ stays as it was; /privacy/ now says the
+      Beehiiv box is on both pages. A WhatsApp Channel button waits
+      inside comment marks. Open points: section 0, items 22 to 24 (and
+      20 and 21).
 - [ ] **0.4 Monthly update and history**
 - [ ] **1.1 Rates and Nisab today**
 - [ ] **1.2 Zakat calculator**
@@ -44,7 +57,10 @@ section 0d.
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 17 November 2026, the step 0.2 fixes MAS asked for (red
+Last updated: 17 November 2026, step 0.3 of the plan above: the join
+page /join/, with every Subscribe button now "Join" and going there
+(what is left for MAS: section 0, items 22 to 24). Before that, the
+step 0.2 fixes MAS asked for (red
 "✗ Not halal" back, the boycott page's links back, UTI's tick back, the
 WhatsApp/Telegram card off /official/; item 21: send the Telegram link).
 Before that, step 0.2 of the plan above: the
@@ -302,17 +318,38 @@ decision only he can make.
       card lost its "Shariah board ✓ Yes" — both were changed back the
       same day (step-0-2-fix). So probably nothing to log; say "log them"
       or "no log needed".
-- [ ] **20. /official/ has no link picture of its own yet (added 17 Nov,
-      step 0.2).** WhatsApp shows the site's default picture for it. If
-      you want its own, ask the website chat for one (made from
-      og-template.html, as for every other page).
+- [ ] **20. /official/ and /join/ have no link picture of their own yet
+      (added 17 Nov, steps 0.2 and 0.3).** WhatsApp shows the site's
+      default picture for them. If you want their own, ask the website
+      chat for them (made from og-template.html, as for every other
+      page).
 - [ ] **21. Send the Telegram link (added 17 Nov, after step 0.2).**
       Purevesting has a Telegram (and plans a WhatsApp), but /official/
       says our only official places are four: purevesting.com, YouTube,
       Instagram and salam@purevesting.com. So right now it would make the
       real Telegram look fake. Send its link in the website chat and it
       goes on /official/ (and the footer and /about/, if you want); the
-      WhatsApp one once it exists.
+      WhatsApp one once it exists. **Since step 0.3:** /join/ has a
+      WhatsApp Channel button waiting inside comment marks. When the
+      Channel exists, paste its link there and remove the marks (the
+      note in join/index.html shows where), or send the link in the
+      website chat. Add it to /official/ at the same time, or the Channel
+      will look fake there.
+- [ ] **22. Say "purevesting.com/join" in the newsletter Short (added
+      17 Nov, step 0.3).** /join/ is the one place to join the email
+      list.
+- [ ] **23. Put purevesting.com/join in every pinned comment, in the
+      YouTube description's first line and in the Instagram bio (added
+      17 Nov, step 0.3).** For every new video too (section 0b, "New
+      video?").
+- [ ] **24. Write the two lines on /join/ in your own words (added
+      17 Nov, step 0.3).** Now they say: the heading "Halal money, made
+      simple. One email a week." and, under it, "The moment you join, my
+      welcome email sends you my free guide." The second line should say
+      which guide your welcome email sends: the website chat doesn't
+      know it. Send the new words in the website chat, or change them
+      yourself in join/index.html, where each has a "MAS: say this your
+      way" note above it.
 
 ---
 
@@ -333,7 +370,9 @@ Each one says what to send or change, and where.
       older than that can be added at the bottom. **Due now (8 Nov):** four
       Shorts are newer than the list (section 0h, "Noticed"). If a new
       video fits a page's topic, ask the website chat to put it near the
-      top of that page too (as on NPS and digital gold).
+      top of that page too (as on NPS and digital gold). **Since 17 Nov
+      (step 0.3):** put purevesting.com/join in its pinned comment and in
+      the first line of its description (section 0, item 23).
 - [ ] **NSE factsheet figures.** NSE replaces its factsheets at the same web
       address at the start of each month. DONE for 30 September 2026 (in the
       1 Oct batch): 204 of the 501 companies pass (the Nifty 500 listed 501

@@ -22,7 +22,7 @@
      10. Tables — and how they become cards on a phone
      11. Chips: passes / fails
      12. Answer box, contents, byline, Read more, Sources, the ask line
-     13. Newsletter form
+     13. Newsletter form, and the join page
      14. Motion
      15. Bigger screens
      16. Home page pieces
@@ -470,8 +470,7 @@ input:focus-visible {
 
 
 /* 7. HEADER ===============================================================
-   Shows on: the top of every page: the logo, the Subscribe pill and the
-   menu.
+   Shows on: the top of every page: the logo, the Join pill and the menu.
    Pasted identically into every page. No menu button and no JavaScript
    needed: Google and a screen reader always see the links. site.js only
    marks the menu word for the page you are on.
@@ -595,10 +594,10 @@ input:focus-visible {
 .nav-menu,
 .nav-item.nav-desktop { display: none; }
 
-/* The green "Subscribe" pill on a phone, at the right end of the logo
-   row. The pill is drawn small (the ::before), but the link around it is
-   a full 44px tall, so it is easy to tap. On wider screens it hides and
-   its copy in the menu shows instead (section 15). */
+/* The green "Join" pill on a phone, at the right end of the logo row. It
+   goes to /join/ (step 0.3). The pill is drawn small (the ::before), but
+   the link around it is a full 44px tall, so it is easy to tap. On wider
+   screens it hides and its copy in the menu shows instead (section 15). */
 .pill-phone {
   position: relative;
   z-index: 0;
@@ -686,10 +685,13 @@ body:has(main > .band:last-child) .site-footer { margin-top: 0; }
 .footer-news p { margin: 0.2rem 0 0; }
 .footer-news .button { grid-column: 1 / -1; justify-self: start; }
 
-/* The home page has its own sign-up just above the footer, so there this
-   one stands aside. (A browser too old for :has() simply shows both.) */
-body:has(.home-news) .footer-news { display: none; }
-body:has(.home-news) .footer-nav { margin-top: 0; }
+/* The home page has its own sign-up just above the footer, and /join/ is
+   the sign-up itself, so on those two pages this one stands aside. (A
+   browser too old for :has() simply shows it.) */
+body:has(.home-news) .footer-news,
+body:has(.join-page) .footer-news { display: none; }
+body:has(.home-news) .footer-nav,
+body:has(.join-page) .footer-nav { margin-top: 0; }
 
 /* A few links: two columns on a phone, one row on a computer. */
 .footer-nav {
@@ -1126,7 +1128,7 @@ td:first-child { font-weight: 600; }
 /* 12. ANSWER BOX, CONTENTS, BYLINE, READ MORE, SOURCES, THE ASK LINE ======
    Shows on: every article: the answer under the heading, the byline, "Read
    more", the closed Sources at the bottom, and "Still have a doubt? Ask
-   me".
+   me" with the join line under it.
    ========================================================================== */
 
 /* .answer — the real answer in 2 or 3 short lines, right under the H1. A
@@ -1357,6 +1359,28 @@ td:first-child { font-weight: 600; }
 
 .band .ask-line { background: var(--white); }
 
+/* .join-line — "Get one answer like this every week. Join free →", the
+   line right under the ask line (MAS, 17 Nov 2026, step 0.3). Quieter
+   than the bubble, and lined up with the photo in it, so the two read
+   as one ending. On a small phone "Join free →" drops to a line of its
+   own.
+   Its link goes to /join/ and is 44px tall.
+   Shows on: every article that ends with "Still have a doubt? Ask me". */
+.join-line {
+  max-width: 34rem;
+  margin: 0.25rem 0 0;
+  padding-left: 0.7rem;      /* the same as the bubble's own, above */
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
+
+.join-line a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  font-weight: 700;
+}
+
 /* .visually-hidden — text only a screen reader hears. */
 .visually-hidden {
   position: absolute;
@@ -1368,8 +1392,8 @@ td:first-child { font-weight: 600; }
 }
 
 
-/* 13. NEWSLETTER FORM =====================================================
-   Shows on: /newsletter/ (Beehiiv's own box sits inside it).
+/* 13. NEWSLETTER FORM, AND THE JOIN PAGE ==================================
+   Shows on: /newsletter/ and /join/ (Beehiiv's own box sits inside them).
    ========================================================================== */
 
 .subscribe {
@@ -1397,10 +1421,29 @@ td:first-child { font-weight: 600; }
 /* The small print right under a sign-up form needs a little air above it. */
 .subscribe + p { margin-top: 0.6rem; }
 
-/* The Beehiiv form on /newsletter/ arrives a moment after the page loads.
-   The minimum height keeps the text below from jumping when it does. */
+/* The Beehiiv form on /newsletter/ and /join/ arrives a moment after the
+   page loads. The minimum height keeps the text below from jumping when
+   it does. */
 .beehiiv-form { margin-top: 1rem; min-height: var(--tap); }
 .beehiiv-form + p { margin-top: 0.6rem; }
+
+/* THE JOIN PAGE — /join/, the one place to join the email list (MAS,
+   17 Nov 2026, step 0.3): the heading, one line, Beehiiv's box and two
+   small grey lines, nothing else. On a 360px phone the heading and the
+   box show without scrolling. The two small lines sit close together,
+   and their links are 44px tall, so they are easy to tap.
+   Shows on: /join/ only. */
+.join-page .meta { margin: 0; }
+
+.join-page .meta a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+}
+
+/* The WhatsApp Channel button, once MAS switches it on (join/index.html
+   says how): a little air between it and the small lines above. */
+.join-whatsapp { margin-top: 1rem; }
 
 
 /* 14. MOTION ==============================================================
@@ -1512,7 +1555,7 @@ td:first-child { font-weight: 600; }
   .site-nav a { font-size: 0.9rem; }
   .site-nav a:focus-visible { outline-offset: 2px; }
 
-  /* The Subscribe pill moves from the logo row into the menu. */
+  /* The Join pill moves from the logo row into the menu. */
   .pill-phone { display: none; }
   .nav-item.nav-desktop { display: contents; }
   .site-nav .nav-subscribe > a {
@@ -1525,6 +1568,9 @@ td:first-child { font-weight: 600; }
   }
   .site-nav .nav-subscribe > a:hover { color: var(--white); background: var(--green-ink); }
   .site-nav .nav-subscribe > a::before { display: none; }
+  /* On /join/ itself, site.js marks the pill as the page you are on,
+     which would turn its word dark. It stays white on the green. */
+  .site-nav .nav-subscribe.is-current > a { color: var(--white); }
 
 }
 
