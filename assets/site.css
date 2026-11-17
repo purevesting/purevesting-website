@@ -143,8 +143,9 @@
   --amber:  #F5A524;
   --amber-soft: #FDE1AE;  /* the highlighter wash behind a word */
 
-  /* --- Red: ONLY for the cost of a loan, on /loan-calculator/ (MAS,
-     6 Oct). Never on investment figures. --- */
+  /* --- Red: for the cost of a loan, on /loan-calculator/ (MAS, 6 Oct),
+     and for the screener's "✗ Not halal" (MAS, 17 Nov 2026). Never on
+     investment figures or returns. --- */
   --danger:      #C2362B;
   --danger-tint: #FCE4E1;
   --danger-ink:  #8F2219;
@@ -1081,8 +1082,8 @@ td:first-child { font-weight: 600; }
 
 
 /* 11. CHIPS: PASSES / FAILS ===============================================
-   Shows on: the ✓ Halal / ✗ Not on the list labels: the screener's list
-   and its search, the fund cards, the methodology page.
+   Shows on: the ✓ Halal / ✗ Not halal labels in the screener's list and
+   its search; the ✓ / ✗ chips on the fund cards and the methodology page.
    Pass and fail are never shown by colour alone. Each chip carries a symbol
    and a word too, so it still reads correctly to someone colour-blind, in a
    black-and-white printout, or in a screenshot with a filter on it.
@@ -1105,11 +1106,20 @@ td:first-child { font-weight: 600; }
 }
 
 /* Fail is deliberately neutral, not red. "Fails a screening rule" is not
-   the same thing as "bad". */
+   the same thing as "bad". Shows on: the fund cards ("✗ No") and the
+   methodology page ("✗ Out", "✗ Over"). */
 .chip-fail {
   background: var(--bone);
   color: var(--ink-2);
   border: 1px solid var(--line);
+}
+
+/* "✗ Not halal" in red (MAS, 17 Nov 2026). Shows on: the screener's list
+   of companies and its "which one?" list. The ✗ and the words still say
+   it, so it never depends on colour alone. */
+.chip-not-halal {
+  background: var(--danger-tint);
+  color: var(--danger-ink);
 }
 
 
@@ -1683,9 +1693,7 @@ td:first-child { font-weight: 600; }
   to   { opacity: 1; transform: none; }
 }
 
-/* --- The "Stop the genocide" card under the tiles: an amber edge.
-   Shows on: nothing since 17 Nov 2026 (step 0.2: MAS took the card off
-   the home page). Kept, unused, in case it comes back. --- */
+/* --- The "Stop the genocide" card under the tiles: an amber edge. --- */
 .cause {
   display: flex;
   align-items: center;
@@ -2870,12 +2878,10 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
 .screener-search input { min-height: 52px; padding-left: 1.2rem; background: var(--white); box-shadow: var(--shadow-sm); }
 
 /* THE ANSWER, BIG (MAS, 6 Nov 2026, part 3): a drawn mark and the words —
-   ✓ Halal, ✗ Not on NSE's Shariah list or ? Don't know yet — then the
-   company's name and one small line: the source and its date (.search-date;
-   MAS, 17 Nov 2026, step 0.2). A company outside NSE's Shariah index was
-   never called haram by anyone: it is only not on the list. "Not on NSE's
-   Shariah list" is grey, never red, and every answer carries its words,
-   so it never depends on colour alone. */
+   ✓ Halal in green, ✗ Not halal in red (MAS, 17 Nov 2026) or ? Don't
+   know yet in grey — then the company's name and one small line: the
+   source and its date (.search-date). Every answer carries its words, so
+   it never depends on colour alone. */
 .search-answer {
   max-width: 40rem;
   margin: 1rem 0 0;
@@ -2934,8 +2940,8 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
 .search-verdict.is-in { color: var(--green-deep); }
 .search-verdict.is-in .search-mark { color: var(--white); background: var(--green); }
 
-.search-verdict.is-out { color: var(--ink-2); }
-.search-verdict.is-out .search-mark { color: var(--ink-2); background: var(--bone); border: 2px solid var(--line); }
+.search-verdict.is-out { color: var(--danger); }
+.search-verdict.is-out .search-mark { color: var(--white); background: var(--danger); }
 
 /* "Don't know yet": dashed and empty, so it never reads as either answer. */
 .search-verdict.is-unknown { color: var(--ink-2); }
@@ -2988,12 +2994,10 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
 
 
 /* 25. STOP THE GENOCIDE ====================================================
-   Shows on: /stop-the-genocide/.
+   Shows on: /stop-the-genocide/, and the amber "Stop the genocide" link in
+   the menu on a computer.
    The searchable boycott list: its big answer (the screener's, with an
-   amber flag) and each entry. The highlighted menu link at the end of
-   this section shows nowhere since 17 Nov 2026 (step 0.2: MAS took the
-   "Stop the genocide" link out of the menu and the footer); its style is
-   kept in case it comes back.
+   amber flag), each entry, and the highlighted menu link.
    ========================================================================== */
 
 .boycott-list { display: grid; gap: 0.5rem; }
@@ -3064,9 +3068,7 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
 .boycott-reasons { display: flex; flex-wrap: wrap; gap: 0.3rem 0.4rem; }
 .boycott-body .source-note { margin-top: 0.4rem; }
 
-/* The highlighted menu item: wide screens only, a soft amber pill.
-   Shows on: nothing since 17 Nov 2026 (step 0.2). Kept, unused, in case
-   the link comes back into the menu. */
+/* The highlighted menu item: wide screens only, a soft amber pill. */
 .nav-item.nav-highlight { display: none; }
 
 @media (min-width: 64em) {

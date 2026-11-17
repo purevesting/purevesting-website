@@ -97,9 +97,9 @@ codes.
 
 The blues were checked against the green with a colour-blindness test
 (they stay far apart for people who can't tell red from green) and for
-contrast. Two rules that don't change: "doesn't pass" is grey, never
-red; and red is only for the cost of a loan, on the loan calculator.
-Never colour a real fund's returns.
+contrast. Red is only for two things: the cost of a loan, on the loan
+calculator, and the screener's "✗ Not halal" (MAS, 17 Nov 2026). Any
+other "doesn't pass" is grey. Never colour a real fund's returns.
 
 ### What that means in practice
 
@@ -122,18 +122,17 @@ Never colour a real fund's returns.
 Added by MAS on 6 November 2026 (part 3):
 
 - **The answer first and big; a long list behind one button.** The
-  screener shows ✓ Halal, ✗ Not on NSE's Shariah list or ? Don't know yet,
+  screener shows ✓ Halal (green), ✗ Not halal (red) or ? Don't know yet,
   big, with one small line under it: "Source: NSE's Nifty500 Shariah
   index, [its date]. Other lists can differ — see why", where "see why"
   links to /methodology/#disagree (the home page's search box has the
   same line). Its 501 companies, and the boycott list, open with one
   "See all" button. The list stays in the page, so Google reads it.
-- **Never "Not halal" (changed by MAS on 17 November 2026, step 0.2).** A
-  company that is not in NSE's Shariah index was never called haram by
-  anyone: it is only not on the list. So the answer says "✗ Not on NSE's
-  Shariah list"; in the long list of companies the short form "✗ Not on
-  the list" is fine, and the list's buttons are All · Halal · Not on the
-  list. `scripts/update_screener.py` writes these words every month.
+- **Three answers, three meanings (MAS, 17 November 2026).** ✓ Halal: in
+  NSE's Shariah index. ✗ Not halal, in red: a Nifty 500 company that was
+  screened and failed. ? Don't know yet: outside the Nifty 500, so never
+  screened. The list's buttons are All · Halal · Not halal.
+  `scripts/update_screener.py` writes these words every month.
 - **No table may need sideways scrolling on a phone.** A table becomes
   cards on a phone, or a chart, or goes under a "Read more".
 - **Calculators:** the boxes and the answer, drawn as a chart, on the
@@ -178,7 +177,7 @@ purevesting.com/ask/.
 | `tools/`, `learn/`, `videos/` | The hub pages. |
 | `newsletter/`, `ask/`, `about/`, `app/` | HalalEdge sign-up, the question form, about Purevesting, installing the app. |
 | `corrections/`, `disclaimer/`, `privacy/` | The corrections log and the two legal pages. |
-| `stop-the-genocide/` | The boycott list. Rewritten by `scripts/update_boycott.py` when its dataset changes. Since 17 Nov 2026 (step 0.2) no menu, footer or home page link points to it; it stays at this address and in `sitemap.xml`. |
+| `stop-the-genocide/` | The boycott list. Rewritten by `scripts/update_boycott.py` when its dataset changes. Linked from the menu (on a computer), the home page and the footer. |
 | `official/` | "Is it really Purevesting?" — our only official places, what we never do, and what to do about a fake. Linked from the footer of every page ("Official channels"). Since 17 Nov 2026 (step 0.2). |
 | `404.html` | "This page doesn't exist", for any wrong address. |
 | `offline/` | What the app shows for a page never opened before, with no internet. |
