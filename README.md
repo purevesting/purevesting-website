@@ -212,9 +212,10 @@ purevesting.com/ask/.
 | `_template.html` | The starting point for a new page, with every building block in it. |
 | `og-template.html` | Makes the link pictures in `assets/og/` (ask the website chat). |
 | `scripts/check_site.py` | The checker: run it before anything goes live (see "Before anything goes live: run the checker", below). Its lists of banned names and advice words are at the top of the file. |
-| `scripts/update_screener.py` | The monthly screener update ("run the screener update"). |
+| `scripts/update_screener.py` | The monthly screener update ("run the screener update"). On a day NSE's site blocks it, save NSE's two files with your browser into `downloads/` (git and Cloudflare skip that folder) and add `--from-folder downloads/`. |
 | `scripts/update_boycott.py` | The boycott list update ("run the boycott update"). |
-| `plan/`, `data/`, `partials/`, `templates/`, `tests/`, `worker/` | Folders for later steps; none of them exists yet. `tests/` will hold the tests for the money maths in `assets/calc/` (CLAUDE.md, "Always" rule 7). `.assetsignore` already lists all six, so nothing put in them can go live by mistake. |
+| `data/shariah-history.csv` | The history of NSE's Shariah list: one row per Nifty 500 company per month (month, date of NSE's data, symbol, company, and 1 or 0 for in or out of the Shariah index), from October 2026. The screener update adds each new month by itself. |
+| `plan/`, `data/`, `partials/`, `templates/`, `tests/`, `worker/` | Folders for later steps; only `data/` exists so far (the line above). `tests/` will hold the tests for the money maths in `assets/calc/` (CLAUDE.md, "Always" rule 7). `.assetsignore` already lists all six, so nothing put in them can go live by mistake. |
 | `wrangler.jsonc`, `.assetsignore` | Cloudflare's settings: what is published, and the 404 page. |
 
 ### Before anything goes live: run the checker

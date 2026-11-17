@@ -37,7 +37,19 @@ MAS says "go live" (CLAUDE.md, "How to hand over").
       Beehiiv box is on both pages. A WhatsApp Channel button waits
       inside comment marks. Open points: section 0, items 22 to 24 (and
       20 and 21).
-- [ ] **0.4 Monthly update and history**
+- [x] **0.4 Monthly update and history** — done 17 Nov 2026, on branch
+      step-0-4: NSE's figures for 30 October 2026 on the home page,
+      /screener/, /halal-stocks/ and /methodology/ — 204 of 501 pass, the
+      same count as in September and as in both NSE factsheets, but six
+      companies left the Shariah index and six joined, and the weights
+      changed (31.1% of the market value, was 31.4%). ICICI Prudential
+      Life Insurance is now ICICI Life Insurance: its old names are in the
+      screener's ALSO and OLD_NAMES lists. `scripts/update_screener.py`
+      now also writes `data/shariah-history.csv` (one row per Nifty 500
+      company per month, starting with October 2026) and, on days NSE's
+      site blocks it, reads NSE's two files from a folder
+      (`--from-folder`). Seven new videos at the top of `videos/list.js`.
+      Open points: section 0, items 25 and 26.
 - [ ] **1.1 Rates and Nisab today**
 - [ ] **1.2 Zakat calculator**
 - [ ] **1.3 Zakat answers and interest tool**
@@ -57,7 +69,11 @@ section 0d.
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 17 November 2026, step 0.3 of the plan above: the join
+Last updated: 17 November 2026, step 0.4 of the plan above: the monthly
+update to NSE's figures for 30 October 2026, the new history file
+data/shariah-history.csv, `--from-folder` for the days NSE's site blocks
+the screener update, and seven new videos (what is left for MAS:
+section 0, items 25 and 26). Before that, step 0.3: the join
 page /join/, with every Subscribe button now "Join" and going there
 (what is left for MAS: section 0, items 22 to 24). Before that, the
 step 0.2 fixes MAS asked for (red
@@ -350,6 +366,22 @@ decision only he can make.
       know it. Send the new words in the website chat, or change them
       yourself in join/index.html, where each has a "MAS: say this your
       way" note above it.
+- [ ] **25. The home page's three videos — decide (added 17 Nov, step
+      0.4).** Seven new videos went to the top of `videos/list.js`, newest
+      first, so the home page now shows the three newest Shorts ("Pakistan
+      khatam ho gya…", "Banking Islam ne di…", "Halal investing me returns
+      kam milte hai?"), and the long video "One Number Can Make a Halal
+      Stock Haram" is no longer among them (it is still on /videos/,
+      /screener/ and /methodology/). To bring it back to the home page,
+      move its line to the top of the list, or say "put One Number back
+      on the home page". Or say "newest first is fine".
+- [ ] **26. Start the history one month earlier? — decide (added 17 Nov,
+      step 0.4).** `data/shariah-history.csv` starts with October 2026.
+      September 2026 (the list the site showed until 17 Nov) can be added
+      from the site's own history in git, so the file would show the six
+      companies that left the Shariah index and the six that joined. Say
+      "add September to the history" or "start from October". Months
+      before September can't be added: the site has no list for them.
 
 ---
 
@@ -367,20 +399,25 @@ Each one says what to send or change, and where.
       nothing else to change. To feature an older video on the home page,
       move its line to the top. The list was filled on 24 Oct with the 15
       newest uploads from the channel's feed plus two older ones; videos
-      older than that can be added at the bottom. **Due now (8 Nov):** four
-      Shorts are newer than the list (section 0h, "Noticed"). If a new
+      older than that can be added at the bottom. DONE up to 17 Nov 2026
+      (step 0.4): seven Shorts added, the newest from 17 Nov ("Pakistan
+      khatam ho gya…"). The channel's public feed lists its 15 newest
+      uploads: youtube.com/feeds/videos.xml?channel_id=UCY_rjMlDGOAXyhC-aC_aQCA.
+      **Next due:** the first video after 17 Nov. If a new
       video fits a page's topic, ask the website chat to put it near the
       top of that page too (as on NPS and digital gold). **Since 17 Nov
       (step 0.3):** put purevesting.com/join in its pinned comment and in
       the first line of its description (section 0, item 23).
 - [ ] **NSE factsheet figures.** NSE replaces its factsheets at the same web
-      address at the start of each month. DONE for 30 September 2026 (in the
-      1 Oct batch): 204 of the 501 companies pass (the Nifty 500 listed 501
-      that month, so the grid has 501 squares). **Due now:** the October
-      factsheet (dated 30 October 2026) was already up on 6 Nov — it still
-      lists 204 companies, but the weights and dates change. Each month,
-      from the two factsheets (Nifty500 Shariah, and Nifty 500 at
-      niftyindices.com/Factsheet/ind_nifty_500.pdf), update (changed
+      address at the start of each month. DONE for 30 October 2026 (17 Nov
+      2026, step 0.4): 204 of the 501 companies pass, the same count as on
+      30 September, but six companies left the Shariah index and six
+      joined, and the weights changed. **Next due:** the November
+      factsheets (dated the last trading day of November 2026), once NSE
+      puts them up in early December. Each month,
+      from the two factsheets (Nifty500 Shariah at
+      niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf, and Nifty
+      500 at niftyindices.com/Factsheet/ind_nifty_500.pdf), update (changed
       6 Nov, part 2):
       - home page: the og:description (it quotes the count), and the date
         in the Sources part at the bottom.
@@ -389,15 +426,25 @@ Each one says what to send or change, and where.
       - /halal-stocks/ (the "by market value" switch lives here since
         6 Nov): the answer box, the two big figures above the squares
         (since part 3 they sit straight under the answer; 40.7% = count ÷
-        companies; 31.4% = Infosys's weight in the Nifty 500 ÷ its weight in
+        companies; 31.1% = Infosys's weight in the Nifty 500 ÷ its weight in
         the Shariah index), VALUE_SQUARES in the script at the bottom of the
-        page (31.4% × number of squares), the financial services figures
+        page (31.1% × number of squares, rounded: 156 for 30 Oct 2026) and
+        the comment above it, the financial services figures
         (two bars: change each number and the `--to` in its style), every
         "as of" date (the Sources part at the bottom has them), the meta and
         og:title, and the page's "Last updated" date and dateModified;
-      - methodology page: the "204" mentions and the sector chart (each
+      - methodology page: the "204" mentions and the month beside them
+        ("at the end of October 2026"), the sector chart (each
         bar: its figure, and `--to` = its share ÷ the biggest share × 100,
-        as the comment above the chart says);
+        as the comment above the chart says; the five biggest sectors stay
+        biggest first, and "the other eleven sectors combined" is the other
+        eleven added up), the three cards under the chart (financial
+        services, power, and the four IT companies in the index's top ten
+        added up: 15.84% for 30 Oct 2026), and in the Sources part, the
+        date and what the printed weights add up to (100.02% for 30 Oct
+        2026), then the page's "Last updated" date and dateModified (since
+        17 Nov 2026, step 0.4: the cards and the total were missing from
+        this list);
       - the preview images don't show the count, so they never need
         remaking for this.
       - **the screener**: in the website chat, say "run the screener
@@ -415,11 +462,32 @@ Each one says what to send or change, and where.
         "Source: NSE's Nifty500 Shariah index, [date]". Then set the
         screener page's dateModified
         to the day of the update. The counts it prints must match the
-        factsheet (204 of 501 for 30 Sep 2026). If NSE renames a company
-        (as Zomato became Eternal), add the old name to the `ALSO` list in
+        factsheets (204 of 501 for 30 Oct 2026). **If NSE's site blocks
+        the script** (since 17 Nov 2026, step 0.4): open the two web
+        addresses at the top of the script in your browser, save both
+        files into one folder, and run
+        `python3 scripts/update_screener.py --from-folder downloads/`
+        (with your folder's name after `--from-folder`). It prints the two
+        files it needs and their web addresses. If NSE renames a company
+        (as Zomato became Eternal, and ICICI Prudential Life Insurance
+        became ICICI Life Insurance, found on 17 Nov 2026), add the old
+        name to the `ALSO` list in
         the script at the bottom of screener/index.html so people searching
         the old name still find it, and to `OLD_NAMES` just below it so the
-        answer says "(Zomato is now Eternal)".
+        answer says "(Zomato is now Eternal)". To spot a rename, compare
+        the old list with the new one: the same ISIN under a new name or
+        symbol is a rename.
+- [ ] **The history file grows by itself (since 17 Nov 2026, step 0.4).**
+      Every screener update also writes `data/shariah-history.csv`: one
+      row per Nifty 500 company for the month of NSE's data, with five
+      columns — month (YYYY-MM), date_of_data, symbol, company, on_list
+      (1 = in the Shariah index, 0 = not). A new month adds about 500
+      rows; running the update twice for the same month replaces that
+      month's rows instead of adding them again. Nothing to type by hand:
+      check the line the script prints ("History: … 501 rows for
+      2026-10 …") and commit the file with the pages. It starts with
+      October 2026 (section 0, item 26). It is not published: `data/` is
+      in .assetsignore.
 
 ### Every quarter
 
@@ -863,8 +931,9 @@ in each page's old text is still on the page).
 
 ### Noticed on 6 Nov (part 2) — not changed
 
-- [ ] **The October NSE factsheets are out** (dated 30 Oct 2026; still
-      204 companies): the monthly update in section 0b is due.
+- [x] ~~**The October NSE factsheets are out** (dated 30 Oct 2026; still
+      204 companies): the monthly update in section 0b is due.~~ DONE
+      17 Nov (step 0.4).
 - [x] ~~/tools/ still has its "Check what I already hold — soon" card.~~
       DONE 8 Nov (part 4): gone, as MAS asked.
 - [ ] The screener sends "Jio" to Jio Financial Services (JIOFIN). Someone
@@ -1000,8 +1069,8 @@ which MAS asked to drop).
       purification answers sits just under the first screen~~ — DONE
       8 Nov (part 4): all three answers end on the first screen (section
       0h).
-- [ ] Still open from part 2: the October NSE factsheets (the monthly job
-      is due) and "Jio" in the screener. (The "soon" card, the preview
+- [ ] Still open from part 2: "Jio" in the screener (the October NSE
+      factsheets: done 17 Nov, step 0.4). (The "soon" card, the preview
       images' old look and ₹: see section 0f — the "soon" card and ₹ are
       done; the preview images are still open.)
 
@@ -1118,16 +1187,10 @@ word for word under "Read more").
 
 ### Noticed on 8 Nov (part 4) — not changed
 
-- [ ] **Four Shorts are newer than `videos/list.js`.** To show them, paste
-      these lines at the top of the list — the home page then shows the
-      first three of them instead of "One Number Can Make a Halal Stock
-      Haram"; to keep that one on the home page, paste them just under it:
-      ```
-      https://www.youtube.com/shorts/yeVK3mEt4-4 | First salary ka kya karein? 3 steps (halal)
-      https://www.youtube.com/shorts/fNwefBr3kcA | Dhanteras pe gold lene se pehle ye dekh lo!
-      https://www.youtube.com/shorts/jwVKARVdacI | Halal investors will survive the AI bubble?
-      https://www.youtube.com/shorts/C6ozSMDB9bw | Muslim investing is very big market now!
-      ```
+- [x] ~~**Four Shorts are newer than `videos/list.js`.**~~ DONE 17 Nov
+      (step 0.4): the four, and three newer ones (10, 13 and 17 Nov), at
+      the top of the list, newest first. Which three the home page shows:
+      section 0, item 25.
 - [ ] **No video yet for EPF, PPF or Sukanya Samriddhi** — three topics for
       Shorts. Once one is up, a card goes near the top of its page.
 - [ ] **→ isn't in either font** (section 0f): three small links still use
@@ -1135,8 +1198,8 @@ word for word under "Read more").
 - [ ] **India Code** (the EPF page's Code on Social Security link) didn't
       answer from here; open it once (section 0d, with dea.gov.in and
       nsiindia.gov.in).
-- [ ] Still open from earlier parts: the October NSE factsheets (the
-      monthly job is due), "Jio" in the screener, the link pictures' old
+- [ ] Still open from earlier parts (the October NSE factsheets: done
+      17 Nov, step 0.4): "Jio" in the screener, the link pictures' old
       look, the five titles over 60 characters (section 0d).
 
 ---

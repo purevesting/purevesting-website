@@ -24,6 +24,13 @@
    ========================================================================== */
 
 window.PV_VIDEOS = `
+https://www.youtube.com/shorts/CtHuvaZdYRs | Pakistan khatam ho gya lekin interest khatam nhi ho paya!
+https://www.youtube.com/shorts/PUUAGU96JsQ | Banking Islam ne di, FD me paisa kyun?
+https://www.youtube.com/shorts/Xf6cC5_eb9s | Halal investing me returns kam milte hai? Nifty Shariah vs Nifty 50
+https://www.youtube.com/shorts/yeVK3mEt4-4 | First salary ka kya karein? 3 steps (halal)
+https://www.youtube.com/shorts/fNwefBr3kcA | Dhanteras pe gold lene se pehle ye dekh lo!
+https://www.youtube.com/shorts/jwVKARVdacI | Halal investors will survive the AI bubble?
+https://www.youtube.com/shorts/C6ozSMDB9bw | Muslim investing is very big market now!
 https://youtu.be/slddWZuMqew | One Number Can Make a Halal Stock Haram
 https://www.youtube.com/shorts/LIMUJcDTdu4 | FD & RD: halal or not? What every Muslim must know
 https://www.youtube.com/shorts/pwPK3-5w0fo | Invested in haram stocks? Do this!
