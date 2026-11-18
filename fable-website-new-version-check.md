@@ -1,6 +1,7 @@
 # Fable website new version check — what is still left
 
-Updated 17 November 2026, right after step 0.3 (the join page) went live.
+Updated 18 November 2026, right after step 0.4 (monthly update and
+history) went live.
 A short list of everything still open, so nothing gets lost. The full
 details are in TODO.md (section numbers given below). Not published on
 the site (.assetsignore keeps it off).
@@ -19,22 +20,58 @@ the site (.assetsignore keeps it off).
   to join the email list. Every "Subscribe" button now says "Join" and
   goes there; the footer says "Join free"; nine articles end with "Get
   one answer like this every week. Join free →".
+- **Live:** step 0.4, the monthly update and history (see "What step 0.4
+  did" below).
 - **Checker:** 0 ERROR, 4 WARN (the four long titles, item 16).
-- **Next:** step 0.4, monthly update and history.
+- **Next:** step 1.1, rates and Nisab today.
+
+## What step 0.4 did (live 17–18 Nov 2026)
+
+- NSE figures moved to 30 October 2026 on the home page, /screener/,
+  /halal-stocks/ and /methodology/.
+- Shariah index: **204 of 501** companies pass (six left, six joined).
+- Share of market value: **31.1%** (was 31.4%). The squares drawing lights
+  156 squares.
+- "ICICI Prudential Life Insurance" is now "ICICI Life Insurance". The old
+  name still works in the search box.
+- The screener update script now also writes `data/shariah-history.csv`,
+  one block per month, so the history grows by itself.
+- The script can read NSE's two files from a folder on your computer
+  (`--from-folder downloads/`) on a day NSE's site blocks it.
+- Seven new Shorts added to `videos/list.js`, newest first.
+- README, TODO and sitemap brought up to date.
+- Checked: the counts match everywhere, the maths adds up, the script
+  works on a test copy, and the pages look right at 360px, 390px and
+  1280px.
+- Not checked: the NSE factsheet PDFs would not load from here. The
+  numbers were typed in by hand from them. Check them once (section 2).
 
 ## 1. The plan's steps still to build (TODO.md, "Website plan")
 
 - [x] 0.1 House rules and the checker
 - [x] 0.2 Red-team fixes
 - [x] 0.3 The join page
-- [ ] 0.4 Monthly update and history
+- [x] 0.4 Monthly update and history
 - [ ] 1.1 Rates and Nisab today
 - [ ] 1.2 Zakat calculator
 - [ ] 1.3 Zakat answers and interest tool
 - [ ] 1.4 Ramadan switch
 - [ ] 1.5 Scholar's edits and launch
 
-## 2. New from step 0.3 — for MAS (TODO.md, section 0)
+## 2. New from step 0.4 — for MAS (TODO.md, section 0)
+
+- [ ] **Check the two NSE numbers.** Open NSE's factsheet for 30 Oct 2026
+      and check 204 of 501 and 31.1% match the home page.
+- [ ] **Item 25. The home page's three videos — decide.** The three
+      newest Shorts now show there, so the long video "One Number Can Make
+      a Halal Stock Haram" dropped off the home page (it is still on
+      /videos/, /screener/ and /methodology/). Say "bring it back" or
+      "leave it".
+- [ ] **Item 26. Start the history one month earlier? — decide.** The
+      history file starts with October 2026. Say "add September to the
+      history" or "start from October".
+
+## 2b. From step 0.3 — for MAS (TODO.md, section 0)
 
 - [ ] **Check /join/ on your phone — first.** The website chat couldn't
       load Beehiiv's real box (Beehiiv blocks test browsers). Open
@@ -104,7 +141,7 @@ the site (.assetsignore keeps it off).
 ## 6. Jobs that repeat (TODO.md, section 0b)
 
 Monthly NSE figures and the screener update (it now writes the red
-"✗ Not halal"), a new video in `videos/list.js`, quarterly fund returns
+"✗ Not halal" and adds the month to `data/shariah-history.csv`), a new video in `videos/list.js`, quarterly fund returns
 and small savings rates, digital gold terms, the boycott list, the loan
 calculator's typical rates. New video: purevesting.com/join in its
 pinned comment and description's first line. After any of them: run the checker before it
