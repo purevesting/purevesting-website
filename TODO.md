@@ -48,7 +48,8 @@ MAS says "go live" (CLAUDE.md, "How to hand over").
       now also writes `data/shariah-history.csv` (one row per Nifty 500
       company per month, starting with October 2026) and, on days NSE's
       site blocks it, reads NSE's two files from a folder
-      (`--from-folder`). Seven new videos at the top of `videos/list.js`.
+      (`--from-folder`). Since 18 Nov 2026 it also keeps NSE's two files
+      in git, in `data/nse/<date of the data>/`. Seven new videos at the top of `videos/list.js`.
       Open points: section 0, items 25 and 26.
 - [ ] **1.1 Rates and Nisab today**
 - [ ] **1.2 Zakat calculator**
@@ -464,11 +465,18 @@ Each one says what to send or change, and where.
         to the day of the update. The counts it prints must match the
         factsheets (204 of 501 for 30 Oct 2026). **If NSE's site blocks
         the script** (since 17 Nov 2026, step 0.4): open the two web
-        addresses at the top of the script in your browser, save both
-        files into one folder, and run
-        `python3 scripts/update_screener.py --from-folder downloads/`
-        (with your folder's name after `--from-folder`). It prints the two
-        files it needs and their web addresses. If NSE renames a company
+        addresses at the top of the script in a browser (phone or
+        computer), then on github.com open `data/nse/`, tap "Add file" →
+        "Upload files" and upload both into a new folder named after the
+        month-end date (type `2026-11-28/` in front of the file name).
+        Then run
+        `python3 scripts/update_screener.py --from-folder data/nse/2026-11-28/`.
+        It prints the two files it needs and their web addresses.
+- [ ] **NSE's raw files are kept in git (since 18 Nov 2026).** Every
+      screener update saves a copy of NSE's two files in
+      `data/nse/<date of the data>/` (the first: `data/nse/2026-10-30/`).
+      Commit that folder with the pages. Nothing lives only on your
+      computer. Not published: `data/` is in .assetsignore. If NSE renames a company
         (as Zomato became Eternal, and ICICI Prudential Life Insurance
         became ICICI Life Insurance, found on 17 Nov 2026), add the old
         name to the `ALSO` list in

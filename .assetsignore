@@ -26,9 +26,6 @@ partials/
 templates/
 tests/
 worker/
-# NSE's two files, saved by hand for the screener update on a day NSE's
-# site blocks it (scripts/update_screener.py --from-folder downloads/).
-downloads/
 
 # Settings files the live site has no reason to show anyone.
 wrangler.jsonc

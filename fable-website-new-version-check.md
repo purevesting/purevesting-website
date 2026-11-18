@@ -36,15 +36,19 @@ the site (.assetsignore keeps it off).
   name still works in the search box.
 - The screener update script now also writes `data/shariah-history.csv`,
   one block per month, so the history grows by itself.
-- The script can read NSE's two files from a folder on your computer
-  (`--from-folder downloads/`) on a day NSE's site blocks it.
+- The script keeps NSE's two files in git every month, in
+  `data/nse/<date of the data>/` (October's: `data/nse/2026-10-30/`).
+  Nothing lives only on your computer. On a day NSE's site blocks it,
+  upload the two files on github.com into a new `data/nse/` folder and
+  run the script on that folder.
 - Seven new Shorts added to `videos/list.js`, newest first.
 - README, TODO and sitemap brought up to date.
 - Checked: the counts match everywhere, the maths adds up, the script
   works on a test copy, and the pages look right at 360px, 390px and
   1280px.
-- Not checked: the NSE factsheet PDFs would not load from here. The
-  numbers were typed in by hand from them. Check them once (section 2).
+- Checked again on 18 Nov against NSE's own two files, downloaded fresh:
+  the same 204 of 501, the pages came out unchanged. The factsheet PDFs
+  still would not load from here.
 
 ## 1. The plan's steps still to build (TODO.md, "Website plan")
 
@@ -60,8 +64,9 @@ the site (.assetsignore keeps it off).
 
 ## 2. New from step 0.4 — for MAS (TODO.md, section 0)
 
-- [ ] **Check the two NSE numbers.** Open NSE's factsheet for 30 Oct 2026
-      and check 204 of 501 and 31.1% match the home page.
+- [ ] **Check one NSE number.** 204 of 501 is now checked against NSE's
+      own files. Only 31.1% comes from the factsheet PDFs: open NSE's
+      factsheet for 30 Oct 2026 and check it matches the home page.
 - [ ] **Item 25. The home page's three videos — decide.** The three
       newest Shorts now show there, so the long video "One Number Can Make
       a Halal Stock Haram" dropped off the home page (it is still on

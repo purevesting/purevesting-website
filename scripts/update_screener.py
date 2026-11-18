@@ -3,11 +3,19 @@ UPDATE THE SCREENER — run once a month, after NSE's month-end update.
 
     python3 scripts/update_screener.py
 
-On a day NSE's site blocks the script, get NSE's two files by hand: open
-the two web addresses below (N500_URL and SHARIAH_URL) in your browser,
-save both files into one folder, and tell the script which folder:
+Every run keeps a copy of NSE's two files in git, in data/nse/ under the
+date of the data (for example data/nse/2026-10-30/). So every month's
+raw files are saved with the site, on GitHub, and nothing lives only on
+someone's computer. (Since 18 Nov 2026.)
 
-    python3 scripts/update_screener.py --from-folder downloads/
+On a day NSE's site blocks the script, get NSE's two files by hand: open
+the two web addresses below (N500_URL and SHARIAH_URL) in a browser, on
+any phone or computer. On github.com, open the repo's data/nse/ folder,
+tap "Add file" → "Upload files", and upload both into a new folder named
+after the month-end date (type "2026-11-28/" in front of the file name).
+Then run the script on that folder:
+
+    python3 scripts/update_screener.py --from-folder data/nse/2026-11-28/
 
 (--from-folder since 17 Nov 2026, step 0.4. When it is used, the script
 first prints which two files it needs and their web addresses.)
@@ -16,7 +24,8 @@ What it does:
   1. Gets NSE Indices' list of the Nifty 500 companies, and the Nifty500
      Shariah index's sector file, which names every company in the
      Shariah index with its weight and the date of the data. It downloads
-     them, or reads them from the folder given after --from-folder.
+     them, or reads them from the folder given after --from-folder,
+     and keeps a copy of both in data/nse/<date of the data>/.
   2. Rewrites the table in screener/index.html (between the
      "SCREENER ROWS" markers) and every date marked data-screener-date on
      that page and in the home page's screener box (its "Source: NSE's
@@ -68,6 +77,12 @@ SHARIAH_NAME = (['nifty500', 'shariah'], '.js')
 # Pages with a grid of squares (between "GRID START" and "GRID END").
 GRID_PAGES = ['index.html', os.path.join('halal-stocks', 'index.html')]
 
+# Where the copy of NSE's two files is kept, one folder per date of the
+# data, with these two names. (Since 18 Nov 2026.)
+NSE_COPIES = os.path.join(ROOT, 'data', 'nse')
+N500_COPY_NAME = 'ind_nifty500list.csv'
+SHARIAH_COPY_NAME = 'SectorialIndexDataNIFTY500 SHARIAH_Sector.js'
+
 # The history of the list, one month after another (step 4 above).
 HISTORY = os.path.join(ROOT, 'data', 'shariah-history.csv')
 HISTORY_COLUMNS = ['month', 'date_of_data', 'symbol', 'company', 'on_list']
@@ -94,8 +109,8 @@ def download(url):
         sys.exit(f"Stopped: could not download {url}\n({error})\n"
                  "NSE's site sometimes blocks scripts. Get the two files with your browser instead.\n"
                  + two_files() + "\n"
-                 "Save both into one folder (for example downloads/), then run:\n"
-                 "    python3 scripts/update_screener.py --from-folder downloads/")
+                 "Upload both on github.com into data/nse/<month-end date>/ (see the top of this script), then run:\n"
+                 "    python3 scripts/update_screener.py --from-folder data/nse/<month-end date>/")
 
 # The file in `folder` whose name has all the `words` and ends with
 # `ending`, capitals not mattering. If there are several, the newest.
@@ -243,6 +258,17 @@ def write_history(old_rows, listed, as_of):
     print(f'History: data/shariah-history.csv has {len(new_rows)} rows for {month}; '
           f'{len(months)} month(s) in all, {months[0]} to {months[-1]}.')
 
+# Keeps a copy of NSE's two files in data/nse/<date of the data>/, so the
+# raw files of every month are saved in git with the site. If the folder
+# already holds that month's files, they are replaced by these.
+def keep_copy(n500_text, shariah_text, as_of):
+    folder = os.path.join(NSE_COPIES, as_of.isoformat())
+    os.makedirs(folder, exist_ok=True)
+    for name, text in ((N500_COPY_NAME, n500_text), (SHARIAH_COPY_NAME, shariah_text)):
+        with open(os.path.join(folder, name), 'w', encoding='utf-8', newline='') as f:
+            f.write(text)
+    print(f"Copy: NSE's two files are kept in {os.path.relpath(folder, ROOT)}/ (push them with the rest).")
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description="Updates the screener, the squares and data/shariah-history.csv from NSE's two files.")
@@ -251,7 +277,9 @@ if __name__ == '__main__':
                              "(for the days NSE's site blocks the script)")
     args = parser.parse_args()
     history = read_history()
-    rows, squares, listed, as_of, n_in, n_all = build(*load(args.from_folder))
+    n500_text, shariah_text = load(args.from_folder)
+    rows, squares, listed, as_of, n_in, n_all = build(n500_text, shariah_text)
     write(rows, squares, as_of, n_in, n_all)
     write_history(history, listed, as_of)
+    keep_copy(n500_text, shariah_text, as_of)
     print("Check the counts against NSE's two factsheets, then set \"dateModified\" in the screener page's structured data to today, and push.")
