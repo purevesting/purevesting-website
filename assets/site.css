@@ -1085,7 +1085,8 @@ td:first-child { font-weight: 600; }
 
 /* 11. CHIPS: PASSES / FAILS ===============================================
    Shows on: the ✓ Halal / ✗ Not halal labels in the screener's list and
-   its search; the ✓ / ✗ chips on the fund cards and the methodology page.
+   its search, and its grey ? Don't know yet; the ✓ / ✗ chips on the fund
+   cards and the methodology page.
    Pass and fail are never shown by colour alone. Each chip carries a symbol
    and a word too, so it still reads correctly to someone colour-blind, in a
    black-and-white printout, or in a screenshot with a filter on it.
@@ -1122,6 +1123,15 @@ td:first-child { font-weight: 600; }
 .chip-not-halal {
   background: var(--danger-tint);
   color: var(--danger-ink);
+}
+
+/* "? Don't know yet" in grey, dashed like the big answer's mark (MAS,
+   19 Nov 2026). Shows on: the screener's "which one?" list, beside a
+   company that is on NSE but outside the Nifty 500, so not screened. */
+.chip-unknown {
+  background: var(--white);
+  color: var(--ink-2);
+  border: 1px dashed var(--ink-3);
 }
 
 

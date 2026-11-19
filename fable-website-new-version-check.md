@@ -1,7 +1,7 @@
 # Fable website new version check — what is still left
 
-Updated 18 November 2026, right after step 0.4 (monthly update and
-history) went live.
+Updated 19 November 2026: the screener now names every company on NSE
+(an extra step after 0.4, waiting for "go live").
 A short list of everything still open, so nothing gets lost. The full
 details are in TODO.md (section numbers given below). Not published on
 the site (.assetsignore keeps it off).
@@ -22,8 +22,31 @@ the site (.assetsignore keeps it off).
   one answer like this every week. Join free →".
 - **Live:** step 0.4, the monthly update and history (see "What step 0.4
   did" below).
+- **Ready, not live yet:** the screener names every company on NSE (see
+  "What the extra step did" below). Say "go live" to put it on the site.
 - **Checker:** 0 ERROR, 4 WARN (the four long titles, item 16).
 - **Next:** step 1.1, rates and Nisab today.
+
+## What the extra step did (19 Nov 2026, not live yet)
+
+- You searched "Dreamfolks" and got a bare "Don't know yet". Now the
+  search names it: **? Don't know yet — Dreamfolks Services Limited
+  (DREAMFOLKS).** "On NSE, but not in the Nifty 500, so not screened here
+  yet", with NSE's list and its date.
+- It knows all 2,135 other companies on NSE, from NSE's list
+  (EQUITY_L.csv), in `screener/outside-nifty500.js`.
+- That list loads only when a search has no exact Nifty 500 match, so a
+  Nifty 500 search never waits for it. If it can't load, the search
+  works as before.
+- A Nifty 500 company still wins a close call: "apollo" lists Apollo
+  Hospitals and Apollo Tyres first. An exact name now wins over part of
+  a Nifty 500 name: "Birla Corporation" no longer shows Birlasoft.
+- A name found nowhere: "We couldn't find this name in NSE's list of
+  companies". Check the spelling.
+- The monthly script downloads EQUITY_L.csv as a third file, writes the
+  list, and keeps the file in `data/nse/` on GitHub.
+- Checked: 4,265 of 4,270 exact searches find the company (before:
+  none). The Nifty 500 companies answer exactly as before.
 
 ## What step 0.4 did (live 17–18 Nov 2026)
 
@@ -62,7 +85,18 @@ the site (.assetsignore keeps it off).
 - [ ] 1.4 Ramadan switch
 - [ ] 1.5 Scholar's edits and launch
 
-## 2. New from step 0.4 — for MAS (TODO.md, section 0)
+## 2. New from the extra step — for MAS (TODO.md, section 0)
+
+- [ ] **Say "go live"** for the screener change, after looking at the
+      screenshots.
+- [ ] **Item 27. "Dummy HEG Ltd." — decide.** NSE's own files put a
+      stand-in called "Dummy HEG Ltd." in the Nifty 500 and the Shariah
+      index (it looks like the stand-in NSE uses while HEG splits off a
+      business). So the screener shows "Dummy HEG Ltd. ✓ Halal", and
+      "204 of 501" counts it. Say "leave it as NSE has it" or "skip
+      stand-ins" (then 203 of 500).
+
+## 2a. From step 0.4 — for MAS (TODO.md, section 0)
 
 - [ ] **Check one NSE number.** 204 of 501 is now checked against NSE's
       own files. Only 31.1% comes from the factsheet PDFs: open NSE's

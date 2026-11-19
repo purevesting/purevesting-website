@@ -51,6 +51,26 @@ MAS says "go live" (CLAUDE.md, "How to hand over").
       (`--from-folder`). Since 18 Nov 2026 it also keeps NSE's two files
       in git, in `data/nse/<date of the data>/`. Seven new videos at the top of `videos/list.js`.
       Open points: section 0, items 25 and 26.
+- [x] **Extra, 19 Nov 2026: the screener names every company on NSE**
+      — MAS asked (his example: "Dreamfolks" got a bare "Don't know
+      yet"). Done on branch main-cnkumz; live once MAS says "go live". A
+      search for a company outside the Nifty 500 now names it: "? Don't
+      know yet — Dreamfolks Services Limited, DREAMFOLKS. On NSE, but not
+      in the Nifty 500, so not screened here yet…", with NSE's list and
+      its date. The list is `screener/outside-nifty500.js`: the 2,135
+      companies on NSE's list (EQUITY_L.csv) that are not in the Nifty
+      500. The page loads it only when a search has no exact Nifty 500
+      match; a company outside the Nifty 500 scores 10 less, so a Nifty
+      500 company wins a close call ("apollo"), but an exact name wins
+      over part of a Nifty 500 name ("Birla Corporation" no longer shows
+      Birlasoft). A name found nowhere says "We couldn't find this name
+      in NSE's list of companies (date)". If the list can't load, the
+      search answers as before. `scripts/update_screener.py` downloads
+      EQUITY_L.csv as a third file, writes the list, and keeps the file
+      in `data/nse/`. Checked: all 2,135 companies, typed by exact name
+      and by symbol: 4,265 of 4,270 searches find the company (before:
+      none); the 501 Nifty 500 companies answer exactly as before.
+      Open points: section 0, item 27.
 - [ ] **1.1 Rates and Nisab today**
 - [ ] **1.2 Zakat calculator**
 - [ ] **1.3 Zakat answers and interest tool**
@@ -70,7 +90,9 @@ section 0d.
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 17 November 2026, step 0.4 of the plan above: the monthly
+Last updated: 19 November 2026, an extra step after 0.4: the screener's
+search now names every company on NSE (what is left for MAS: section 0,
+item 27). Before that, 17 November 2026, step 0.4 of the plan above: the monthly
 update to NSE's figures for 30 October 2026, the new history file
 data/shariah-history.csv, `--from-folder` for the days NSE's site blocks
 the screener update, and seven new videos (what is left for MAS:
@@ -383,6 +405,20 @@ decision only he can make.
       companies that left the Shariah index and the six that joined. Say
       "add September to the history" or "start from October". Months
       before September can't be added: the site has no list for them.
+- [ ] **27. "Dummy HEG Ltd." in the screener — decide (added 19 Nov
+      2026).** NSE's own two files for 30 Oct 2026 list "Dummy HEG Ltd."
+      (symbol DUMMYHEG, ISIN DUM545A01024) in the Nifty 500 and in the
+      Shariah index (weight 0.07%). It is not a company you can buy
+      shares in: it looks like the stand-in NSE puts in its indices when
+      a company splits off a business, until the new company is listed.
+      Its ISIN is HEG's (INE545A01024, now "HEG Advanced Materials Ltd.",
+      HEGAM) with DUM in front. So the screener shows "Dummy HEG Ltd.
+      ✓ Halal", and the counts "204 of 501" include it: the 501st line
+      is this stand-in (not a company with two kinds of shares, as the
+      website chat first said on 18 Nov). Say "leave it as NSE has it"
+      or "skip stand-ins" (the update would skip any symbol starting with
+      DUMMY, and the counts would become 203 of 500). Nothing is changed
+      yet: it is a fact on the site (CLAUDE.md, "Never" rule 8).
 
 ---
 
@@ -450,7 +486,7 @@ Each one says what to send or change, and where.
         remaking for this.
       - **the screener**: in the website chat, say "run the screener
         update". It runs `python3 scripts/update_screener.py`, which
-        downloads NSE's two lists and rewrites /screener/ and the home
+        downloads NSE's three lists and rewrites /screener/ and the home
         page's search box with the new date (including the date in the
         screener's Sources part) and, since 6 Nov, redraws the squares —
         one per company, A to Z — on the home page and /halal-stocks/,
@@ -463,20 +499,19 @@ Each one says what to send or change, and where.
         "Source: NSE's Nifty500 Shariah index, [date]". Then set the
         screener page's dateModified
         to the day of the update. The counts it prints must match the
-        factsheets (204 of 501 for 30 Oct 2026). **If NSE's site blocks
-        the script** (since 17 Nov 2026, step 0.4): open the two web
-        addresses at the top of the script in a browser (phone or
+        factsheets (204 of 501 for 30 Oct 2026). Since 19 Nov 2026 it
+        also writes `screener/outside-nifty500.js`, every other company on
+        NSE, for the search: check its line ("Outside list: 2135 other
+        NSE companies…") and push it with the pages. **If NSE's site
+        blocks the script** (since 17 Nov 2026, step 0.4): open the three
+        web addresses at the top of the script in a browser (phone or
         computer), then on github.com open `data/nse/`, tap "Add file" →
-        "Upload files" and upload both into a new folder named after the
-        month-end date (type `2026-11-28/` in front of the file name).
+        "Upload files" and upload all three into a new folder named after
+        the month-end date (type `2026-11-28/` in front of the file name).
         Then run
         `python3 scripts/update_screener.py --from-folder data/nse/2026-11-28/`.
-        It prints the two files it needs and their web addresses.
-- [ ] **NSE's raw files are kept in git (since 18 Nov 2026).** Every
-      screener update saves a copy of NSE's two files in
-      `data/nse/<date of the data>/` (the first: `data/nse/2026-10-30/`).
-      Commit that folder with the pages. Nothing lives only on your
-      computer. Not published: `data/` is in .assetsignore. If NSE renames a company
+        It prints the three files it needs and their web addresses.
+        If NSE renames a company
         (as Zomato became Eternal, and ICICI Prudential Life Insurance
         became ICICI Life Insurance, found on 17 Nov 2026), add the old
         name to the `ALSO` list in
@@ -485,6 +520,12 @@ Each one says what to send or change, and where.
         answer says "(Zomato is now Eternal)". To spot a rename, compare
         the old list with the new one: the same ISIN under a new name or
         symbol is a rename.
+- [ ] **NSE's raw files are kept in git (since 18 Nov 2026).** Every
+      screener update saves a copy of NSE's three files in
+      `data/nse/<date of the data>/` (the first: `data/nse/2026-10-30/`;
+      the third file, EQUITY_L.csv, since 19 Nov 2026). Commit that
+      folder with the pages. Nothing lives only on your computer. Not
+      published: `data/` is in .assetsignore.
 - [ ] **The history file grows by itself (since 17 Nov 2026, step 0.4).**
       Every screener update also writes `data/shariah-history.csv`: one
       row per Nifty 500 company for the month of NSE's data, with five

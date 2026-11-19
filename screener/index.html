@@ -41,7 +41,7 @@
       "url": "https://purevesting.com/screener/",
       "image": "https://purevesting.com/assets/og/screener.jpg",
       "datePublished": "2026-10-06",
-      "dateModified": "2026-11-17",
+      "dateModified": "2026-11-19",
       "inLanguage": "en-IN",
       "isPartOf": {
         "@id": "https://purevesting.com/#website"
@@ -188,7 +188,10 @@
            17 Nov 2026). Three answers, three meanings (MAS, 17 Nov 2026):
            Halal = passed the Shariah screen; Not halal = a Nifty 500
            company that was screened and failed; Don't know yet = outside
-           the Nifty 500, so not screened. A tools page: no byline. The
+           the Nifty 500, so not screened. Since 19 Nov 2026 (MAS), a
+           company outside the Nifty 500 that is listed on NSE is named in
+           the answer too: "Don't know yet — Dreamfolks Services Limited".
+           A tools page: no byline. The
            search needs JavaScript, so it stays hidden without it; the list below opens
            either way. A search from the home page arrives here as ?q=...,
            and the script fills it in. -->
@@ -878,6 +881,16 @@
      lists can differ (MAS, 17 Nov 2026). The All / Halal / Not halal
      buttons inside the list show or hide its rows.
 
+     EVERY OTHER COMPANY ON NSE (MAS, 19 Nov 2026). When nothing in the
+     Nifty 500 matches exactly, the script also looks in
+     /screener/outside-nifty500.js: every other company listed on NSE,
+     written by scripts/update_screener.py. It loads that list the first
+     time it is needed, and only then, so a search for a Nifty 500
+     company never waits for it. A company found there gets "Don't know
+     yet" with its name: it is on NSE, but NSE's Shariah index only checks
+     the Nifty 500. If the list can't load (no internet the first time),
+     the search works as before, with the Nifty 500 alone.
+
      HOW IT RECOGNISES A COMPANY. It tries, best first:
        1. the exact NSE symbol or full name ("INFY", "Infosys Ltd"),
           or a name in the ALSO list below ("Zomato", "SBI", "L&T") —
@@ -889,6 +902,11 @@
        5. the name with a small spelling slip ("infosis", "relaince").
      Words like "share", "stock", "Ltd" or "is … halal" are ignored, and
      "&" and "and" count as the same.
+     A company outside the Nifty 500 scores 10 less, so a Nifty 500
+     company wins a close call ("apollo" lists Apollo Hospitals and
+     Apollo Tyres before Apollo Micro Systems). A full name or exact
+     symbol still beats part of a Nifty 500 name ("Birla Corporation"
+     finds Birla Corporation, not Birlasoft).
      ================================================================== -->
 <script>
 (function () {
@@ -1007,16 +1025,50 @@
     return spellingSlips(q, w) <= allowed || spellingSlips(q, w.slice(0, q.length)) <= allowed;
   }
 
-  var rows = Array.prototype.map.call(table.tBodies[0].rows, function (tr) {
-    var name = tr.cells[0].textContent, sym = tr.getAttribute('data-sym') || '';
+  // One company, ready to be searched. answer: 'in' (Halal), 'out' (Not
+  // halal) or 'unknown' (Don't know yet: on NSE, outside the Nifty 500).
+  function company(sym, name, answer) {
     return {
-      tr: tr, name: name, sym: sym, inIndex: tr.classList.contains('row-halal'),
+      name: name, sym: sym, answer: answer,
       symbolLetters: sym.toLowerCase().replace(/[^a-z0-9]/g, ''),
       nameLetters: compact(name), words: words(name), initials: initials(name)
     };
+  }
+
+  // The Nifty 500: one company per row of the table on this page.
+  var rows = Array.prototype.map.call(table.tBodies[0].rows, function (tr) {
+    var r = company(tr.getAttribute('data-sym') || '', tr.cells[0].textContent,
+                    tr.classList.contains('row-halal') ? 'in' : 'out');
+    r.tr = tr;
+    return r;
   });
   var bySymbol = {};
   rows.forEach(function (r) { bySymbol[r.sym] = r; });
+
+  // EVERY OTHER COMPANY ON NSE (19 Nov 2026), from
+  // /screener/outside-nifty500.js. Loaded once, the first time a search
+  // needs it. state: 'not loaded', 'loading', 'loaded' or 'failed'.
+  var outside = { state: 'not loaded', rows: [], date: '' };
+  var outsideBySymbol = {};
+  function loadOutside() {
+    outside.state = 'loading';
+    var tag = document.createElement('script');
+    tag.src = '/screener/outside-nifty500.js';
+    tag.onload = function () {
+      var list = window.PV_OUTSIDE_NIFTY500;
+      if (list && list.companies) {
+        outside.date = list.date;
+        outside.rows = list.companies.map(function (c) { return company(c[0], c[1], 'unknown'); });
+        outside.rows.forEach(function (r) { outsideBySymbol[r.sym] = r; });
+        outside.state = 'loaded';
+      } else {
+        outside.state = 'failed';
+      }
+      update();   // answer again, now with the whole list
+    };
+    tag.onerror = function () { outside.state = 'failed'; update(); };
+    document.head.appendChild(tag);
+  }
 
   // How well one company matches what was typed: 0 = not at all.
   function score(r, q) {
@@ -1042,11 +1094,12 @@
   }
 
   // The small answer beside each company when several match ("tata"):
-  // the same words as the long list — green Halal, red Not halal.
+  // the same words as the long list — green Halal, red Not halal — and
+  // grey "Don't know yet" for a company outside the Nifty 500.
   function chip(r) {
-    return r.inIndex
-      ? '<span class="chip chip-pass">&#10003; Halal</span>'
-      : '<span class="chip chip-not-halal">&#10007; Not halal</span>';
+    if (r.answer === 'in') return '<span class="chip chip-pass">&#10003; Halal</span>';
+    if (r.answer === 'out') return '<span class="chip chip-not-halal">&#10007; Not halal</span>';
+    return '<span class="chip chip-unknown">? Don\'t know yet</span>';
   }
   // "(Zomato is now Eternal)": the old name as written in OLD_NAMES, and
   // the company's NSE name without "Ltd." or "Limited".
@@ -1074,10 +1127,17 @@
   // Eternal)" when needed, then one small line (MAS, 17 Nov 2026):
   // where the answer comes from, its date (the list's own date), and
   // a link to why other halal lists can give a different answer.
+  // A company outside the Nifty 500 (19 Nov 2026): "Don't know yet", the
+  // company, why it isn't screened, and NSE's list with its date.
   function verdict(r, typed, guessed, q) {
     var lead = guessed ? '<p class="search-lead">Closest match for “' + safeText(typed) + '”:</p>' : '';
-    return lead + bigAnswer(r.inIndex ? 'in' : 'out', r.inIndex ? 'Halal' : 'Not halal') +
-      '<p class="search-company"><strong>' + safeText(r.name) + '</strong> <span class="search-symbol">' + safeText(r.sym) + '</span></p>' +
+    var name = '<p class="search-company"><strong>' + safeText(r.name) + '</strong> <span class="search-symbol">' + safeText(r.sym) + '</span></p>';
+    if (r.answer === 'unknown') {
+      return lead + bigAnswer('unknown', 'Don\'t know yet') + name +
+        '<p class="search-date">On NSE, but not in the Nifty 500, so not screened here yet: it may or may not be halal. ' +
+        'More companies are coming soon. Source: NSE\'s list of companies, ' + safeText(outside.date) + '.</p>';
+    }
+    return lead + bigAnswer(r.answer, r.answer === 'in' ? 'Halal' : 'Not halal') + name +
       renamed(r, q) +
       '<p class="search-date">Source: NSE\'s Nifty500 Shariah index, ' + safeText(asOf) +
       '. Other lists can differ — <a href="/methodology/#disagree">see why</a>.</p>';
@@ -1089,7 +1149,23 @@
     }).join('') + '</ul>';
   }
 
-  function update() {
+  // Every company in `list` that matches what was typed, with its score.
+  // A company outside the Nifty 500 scores 10 less (see the top).
+  function matchesIn(list, q) {
+    var found = [];
+    list.forEach(function (r) {
+      var s = score(r, q);
+      if (s) found.push({ r: r, s: r.answer === 'unknown' ? s - 10 : s });
+    });
+    return found;
+  }
+  function bestScore(matches) {
+    return matches.reduce(function (n, m) { return Math.max(n, m.s); }, 0);
+  }
+
+  // `picked` is set only when a company was tapped in a list of matches:
+  // that company becomes the answer.
+  function update(picked) {
     var typed = box.value.trim();
     var cleaned = typed.replace(/^(nse|bse)\s*:\s*/i, '').replace(/\.(ns|bo)$/i, '');
     var q = { c: compact(cleaned), w: words(cleaned) };
@@ -1097,27 +1173,57 @@
 
     if (!q.c) { result.hidden = true; result.innerHTML = ''; return; }
 
-    var matches = [];
-    rows.forEach(function (r) {
-      var s = score(r, q);
-      if (s) matches.push({ r: r, s: s });
-    });
+    var matches = matchesIn(rows, q);
+    var best = bestScore(matches);
+
+    // No exact match in the Nifty 500 (95 or more)? Then a company outside
+    // it may be the one meant: look in the list of every other NSE company
+    // too, loading it the first time. An exact Nifty 500 match always
+    // beats any company outside it, so then the list isn't needed.
+    if (best < 95) {
+      if (outside.state === 'not loaded') loadOutside();
+      if (outside.state === 'loaded') {
+        matches = matches.concat(matchesIn(outside.rows, q));
+        best = bestScore(matches);
+      } else if (outside.state === 'loading' && best < 60) {
+        // Nothing good in the Nifty 500: say so while the list loads. The
+        // answer is redrawn the moment it arrives. (A good Nifty 500 match
+        // shows at once instead, and is redrawn too.)
+        result.hidden = false;
+        result.innerHTML = '<p class="search-lead">Looking for “' + safeText(typed) + '” among all companies on NSE…</p>';
+        return;
+      }
+      // 'failed': the list couldn't load, so the Nifty 500 alone answers.
+    }
+
     // A company found by a slip of spelling is only shown when nothing
     // better turned up. Likewise, once the exact company is found, only
     // close relatives ("Reliance Power" for "reliance") are listed with it.
-    var best = matches.reduce(function (n, m) { return Math.max(n, m.s); }, 0);
     var floor = best >= 95 ? 85 : best >= 60 ? 60 : 0;
     matches = matches.filter(function (m) { return m.s >= floor; });
+    // Best score first. On a tie, a Nifty 500 company before one outside
+    // it, then the shorter name, then A to Z.
     matches.sort(function (a, b) {
-      return b.s - a.s || a.r.nameLetters.length - b.r.nameLetters.length || a.r.name.localeCompare(b.r.name);
+      return b.s - a.s ||
+        (a.r.answer === 'unknown' ? 1 : 0) - (b.r.answer === 'unknown' ? 1 : 0) ||
+        a.r.nameLetters.length - b.r.nameLetters.length || a.r.name.localeCompare(b.r.name);
     });
+    if (picked) {
+      matches = [{ r: picked, s: 1000 }].concat(matches.filter(function (m) { return m.r !== picked; }));
+    }
 
     result.hidden = false;
     if (!matches.length) {
+      // Nothing anywhere. With the whole list searched, say so; if it
+      // couldn't load, the old answer, which never claims more than the
+      // Nifty 500.
       result.innerHTML = bigAnswer('unknown', 'Don\'t know yet') +
         '<p class="search-company"><strong>' + safeText(typed) + '</strong></p>' +
-        '<p class="search-date">Not in the Nifty 500, so not screened here yet: it may or may not be halal. ' +
-        'More companies are coming soon. Check the spelling, or try the NSE symbol.</p>';
+        (outside.state === 'loaded'
+          ? '<p class="search-date">We couldn\'t find this name in NSE\'s list of companies (' + safeText(outside.date) + '). ' +
+            'Check the spelling, or try the NSE symbol.</p>'
+          : '<p class="search-date">Not in the Nifty 500, so not screened here yet: it may or may not be halal. ' +
+            'More companies are coming soon. Check the spelling, or try the NSE symbol.</p>');
       return;
     }
     var top = matches[0], rest = matches.slice(1);
@@ -1131,17 +1237,20 @@
     }
   }
 
-  // Picking a company from the list fills its name in and shows its answer.
+  // Picking a company from the list fills its symbol in and shows its
+  // answer — that company's, even when its symbol also matches others
+  // ("APOLLO" is Apollo Micro Systems, and the start of Apollo Hospitals).
   result.addEventListener('click', function (e) {
     var b = e.target.closest('[data-pick]');
-    var r = b && bySymbol[b.getAttribute('data-pick')];
+    var sym = b && b.getAttribute('data-pick');
+    var r = sym && (bySymbol[sym] || outsideBySymbol[sym]);
     if (!r) return;
     box.value = r.sym;
-    update();
+    update(r);
     box.focus();
   });
 
-  box.addEventListener('input', update);
+  box.addEventListener('input', function () { update(); });
 
   // "Try Infosys · Zomato · Reliance": fills the box and answers at once.
   document.querySelectorAll('[data-try]').forEach(function (t) {
@@ -1157,7 +1266,7 @@
     buttons[b].addEventListener('click', function () {
       var show = this.getAttribute('data-show');
       for (var k = 0; k < buttons.length; k++) buttons[k].setAttribute('aria-pressed', buttons[k] === this ? 'true' : 'false');
-      rows.forEach(function (r) { r.tr.hidden = !(show === 'all' || (show === 'in') === r.inIndex); });
+      rows.forEach(function (r) { r.tr.hidden = !(show === 'all' || show === r.answer); });
     });
   }
 

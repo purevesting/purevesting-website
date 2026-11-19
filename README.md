@@ -134,7 +134,10 @@ Added by MAS on 6 November 2026 (part 3):
   NSE's Shariah index. ✗ Not halal, in red: a Nifty 500 company that was
   screened and failed. ? Don't know yet: outside the Nifty 500, so never
   screened. The list's buttons are All · Halal · Not halal.
-  `scripts/update_screener.py` writes these words every month.
+  `scripts/update_screener.py` writes these words every month. Since
+  19 November 2026 the search also knows every other company on NSE: it
+  names the company, with "? Don't know yet" and why (on NSE, but not in
+  the Nifty 500, so not screened).
 - **No table may need sideways scrolling on a phone.** A table becomes
   cards on a phone, or a chart, or goes under a "Read more".
 - **Calculators:** the boxes and the answer, drawn as a chart, on the
@@ -169,7 +172,7 @@ purevesting.com/ask/.
 | File or folder | What it is |
 |---|---|
 | `index.html` | The home page: the stock search, the question tiles, the 500 squares, the videos, "Ask me", the newsletter. |
-| `screener/` | "Is my stock halal?" — the search and all 501 Nifty 500 companies. Rewritten every month by `scripts/update_screener.py`. |
+| `screener/` | "Is my stock halal?" — the search and all 501 Nifty 500 companies. Rewritten every month by `scripts/update_screener.py`. Inside it, `outside-nifty500.js`: every other company on NSE (2,135), also written by the script. The search loads it only when a search has no exact Nifty 500 match, and then names the company with "? Don't know yet". Since 19 Nov 2026. |
 | `halal-stocks/` | How many Indian stocks are halal: the squares, by companies or by market value. |
 | `methodology/` | How a stock is checked: the two-step drawing and "Try it". |
 | `purification-calculator/` | How much to give away from share income. |
@@ -207,12 +210,12 @@ purevesting.com/ask/.
 |---|---|
 | `README.md` | This file. |
 | `CLAUDE.md` | The house rules for anyone, human or AI, who changes the site: who it is for, what never to do, what always to do, and how to hand over a step. Read it after this file. |
-| `fable-website-new-version-check.md` | A short list of everything still left to do (17 Nov 2026), pointing into TODO.md. |
+| `fable-website-new-version-check.md` | A short list of everything still left to do (19 Nov 2026), pointing into TODO.md. |
 | `TODO.md` | The plan's steps, what is left to do, the jobs that repeat (monthly, quarterly), and what MAS has to do himself. |
 | `_template.html` | The starting point for a new page, with every building block in it. |
 | `og-template.html` | Makes the link pictures in `assets/og/` (ask the website chat). |
 | `scripts/check_site.py` | The checker: run it before anything goes live (see "Before anything goes live: run the checker", below). Its lists of banned names and advice words are at the top of the file. |
-| `scripts/update_screener.py` | The monthly screener update ("run the screener update"). Every run keeps NSE's two files in git, in `data/nse/<date of the data>/`. On a day NSE's site blocks it, upload the two files on github.com into `data/nse/<month-end date>/` and add `--from-folder data/nse/<month-end date>/`. |
+| `scripts/update_screener.py` | The monthly screener update ("run the screener update"). It reads three NSE files: the Nifty 500 list, the Shariah index file and NSE's list of every company (EQUITY_L.csv, since 19 Nov 2026). Every run keeps all three in git, in `data/nse/<date of the data>/`. On a day NSE's site blocks it, upload the three files on github.com into `data/nse/<month-end date>/` and add `--from-folder data/nse/<month-end date>/`. |
 | `scripts/update_boycott.py` | The boycott list update ("run the boycott update"). |
 | `data/shariah-history.csv` | The history of NSE's Shariah list: one row per Nifty 500 company per month (month, date of NSE's data, symbol, company, and 1 or 0 for in or out of the Shariah index), from October 2026. The screener update adds each new month by itself. |
 | `plan/`, `data/`, `partials/`, `templates/`, `tests/`, `worker/` | Folders for later steps; only `data/` exists so far (the line above). `tests/` will hold the tests for the money maths in `assets/calc/` (CLAUDE.md, "Always" rule 7). `.assetsignore` already lists all six, so nothing put in them can go live by mistake. |
