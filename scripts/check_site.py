@@ -48,6 +48,13 @@ BANNED_NAMES = [
     "ShariahCap",
     "AAOIFI",
     "Dow Jones",
+    # Schools of thought and a fiqh council (added in step 1.1). "Shafi"
+    # also finds "Shafi'i" and "Shafii".
+    "Hanafi",
+    "Shafi",
+    "Maliki",
+    "Hanbali",
+    "Fiqh Academy",
 ]
 
 # "Not advice" kinds of lines (CLAUDE.md, "Never" rule 7). A page may

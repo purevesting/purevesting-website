@@ -42,6 +42,7 @@
      30. The two-step drawing, and the worked example's limits
      31. Calculators on one screen
      32. Instrument pages — the answer drawn, how it works, fatwa cards
+     33. Zakat pages — gold icons, and Nisab today
    ========================================================================== */
 
 
@@ -139,6 +140,12 @@
   --sky-tint:  #E4F2FB;   /* blue bands and info boxes */
   --sky-soft:  #C8E6F8;   /* lines on a blue band, empty chart tracks */
 
+  /* --- Gold: for zakat, sadaqah and purification, and later for
+     members' things (MAS, step 1.1, 21 Nov 2026). --- */
+  --gold-deep: #946200;   /* gold icons and small gold words */
+  --gold-ink:  #6B4700;   /* headings and text on a gold tint */
+  --gold-tint: #FFF4D9;   /* the pale gold circle behind a gold icon */
+
   /* --- Amber: a highlighter, never a fill --- */
   --amber:  #F5A524;
   --amber-soft: #FDE1AE;  /* the highlighter wash behind a word */
@@ -171,6 +178,17 @@
   --tap:       44px;      /* minimum height of anything tappable */
   --shadow-sm: 0 1px 2px rgba(12, 71, 102, 0.05), 0 2px 10px rgba(12, 71, 102, 0.05);
   --shadow:    0 2px 6px rgba(12, 71, 102, 0.06), 0 12px 32px rgba(12, 71, 102, 0.10);
+
+  /* --- Gaps: one scale for every new gap (step 1.1). 1rem is 16px. --- */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-7: 3rem;      /* 48px */
+  --space-8: 4.5rem;    /* 72px */
+  --tap-main: 48px;     /* the main box or button of a tool: bigger than --tap */
 
   /* --- Motion: quick, and settling gently at the end --- */
   --ease:  cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -4189,6 +4207,221 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
     border-left: 7px solid var(--sky);
     border-right: 0;
   }
+}
+
+
+/* 33. ZAKAT PAGES — GOLD ICONS, AND NISAB TODAY ===========================
+   Shows on: /zakat/nisab-today/ (step 1.1). The gold icon will show on the
+   zakat calculator too (step 1.2).
+   Gold is for zakat, sadaqah and purification (MAS, step 1.1; README.md,
+   "The colours"). Every gap here is a --space name from section 2.
+
+   1. A GOLD ICON: <span class="icon icon-gold">, the same 24px line
+      drawing as a blue icon (section 9), in gold on a pale gold circle.
+   2. THE ANSWER: "Nisab today: ₹…" big, the gold figure, the gold-only
+      line and the date, all on the first screen of a 360px phone.
+   3. HOW IT IS WORKED OUT: for silver and for gold, a small sum, one line
+      each: the sign (× or =), the figure, and what it is.
+   4. SILVER OR GOLD?: one icon card; its heading is an H2 at a card
+      heading's size.
+   5. YOUR JEWELLER'S RATE: two boxes side by side, even on a phone, then
+      your own nisab. Hidden without JavaScript, which they need.
+   6. THE NEXT STEP: one wide tile, its icon beside its words.
+   ========================================================================== */
+
+/* 1. A GOLD ICON. */
+.icon-gold { color: var(--gold-deep); background: var(--gold-tint); }
+
+/* 2. THE ANSWER. Less air above it than a normal section, on a phone. */
+.nisab-page { padding-top: var(--space-4); }
+.nisab-page h1 { margin-bottom: 0; }
+
+.nisab-answer { margin-top: var(--space-4); }
+.nisab-answer p { margin: 0; font-size: 0.95rem; line-height: 1.5; color: var(--ink-2); }
+
+/* "Nisab today:" in small bold letters, the figure big under it. */
+.nisab-answer .nisab-main { font-weight: 700; color: var(--ink); }
+
+.nisab-main .big-number {
+  display: block;
+  margin: var(--space-1) 0 var(--space-1);
+  font-size: 2.75rem;
+  line-height: 1;
+}
+
+/* The gold figure and the gold-only line, under a thin line. */
+.nisab-answer .nisab-gold {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line);
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.nisab-gold [data-nisab] { font-weight: 800; }
+.nisab-answer .nisab-gold-only { margin-top: var(--space-1); }
+
+/* The date and the source: small and grey, the source one tap away. */
+.nisab-answer .nisab-date {
+  margin-top: var(--space-3);
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.nisab-date a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  margin: calc(var(--space-3) * -1) 0;   /* a full tap target, no extra height */
+  font-weight: 700;
+}
+
+/* 3. HOW IT IS WORKED OUT. */
+.nisab-sums { margin-top: var(--space-4); }
+
+.nisab-sum-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.nisab-sum-head h3 { margin: 0; }
+
+.nisab-sum-lines {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nisab-sum-lines li {
+  display: grid;
+  grid-template-columns: 1.5rem auto minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: var(--space-3);
+}
+
+.sum-sign {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--gold-deep);
+}
+
+.sum-value { font-size: 1.1rem; font-weight: 700; }
+.sum-what { font-size: 0.86rem; line-height: 1.35; color: var(--ink-2); }
+
+/* The answer of the sum: under a line, a little bigger. */
+.nisab-sum-lines .sum-answer {
+  padding-top: var(--space-2);
+  border-top: 2px solid var(--line);
+}
+
+.sum-answer .sum-value { font-size: 1.3rem; font-weight: 800; }
+
+/* A tapped figure's source opens under its whole line. */
+.nisab-sum-lines .source-panel { grid-column: 1 / -1; margin-bottom: 0; }
+
+/* 4. SILVER OR GOLD? */
+.nisab-choice { max-width: 44rem; }
+
+.nisab-choice h2 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: normal;
+  line-height: 1.3;
+}
+
+/* 5. YOUR JEWELLER'S RATE. */
+.nisab-own { display: none; }
+
+.js .nisab-own {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 40rem;
+  margin-bottom: var(--space-4);
+}
+
+.nisab-own-boxes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-3);
+}
+
+/* Each label sits right above its box; the boxes stay level when one
+   label takes two lines and the other one. */
+.nisab-own-boxes > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.nisab-own label {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.nisab-own input {
+  width: 100%;
+  min-height: var(--tap-main);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-body);
+  font-size: 1.05rem;            /* 16px or more stops iPhones zooming in */
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.nisab-own input:focus { border-color: var(--sky); }
+
+.nisab-own-hint { margin: 0; font-size: 0.9rem; font-weight: 600; }
+.nisab-own-hint:empty { display: none; }
+
+/* The visitor's own nisab: the answer box of the calculators, with the
+   figure in ink, not green (green means "Halal"). */
+.nisab-own .nisab-own-answer { margin: 0; gap: var(--space-2); }
+.nisab-own-answer p { margin: 0; }
+.nisab-own-answer .calculator-main .calculator-value { color: var(--ink); }
+
+.nisab-helper { max-width: 40rem; font-size: 0.92rem; color: var(--ink-2); }
+
+/* 6. THE NEXT STEP. */
+.nisab-next {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 40rem;
+  min-height: 0;
+  margin-top: var(--space-6);
+  padding: var(--space-4) var(--space-7) var(--space-4) var(--space-4);
+}
+
+.nisab-next .tile-arrow { top: 50%; margin-top: -0.625rem; }
+
+.tile-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.nisab-next .tile-name { margin-top: 0; }
+
+/* A computer: more air above, a bigger figure, the date on its own. */
+@media (min-width: 46em) {
+  .nisab-page { padding-top: var(--space-7); }
+  .nisab-answer { padding: var(--space-5) var(--space-6) var(--space-5) var(--space-6); }
+  .nisab-main .big-number { font-size: 3.5rem; }
+  .nisab-answer .nisab-gold { font-size: 1.1rem; }
 }
 
 

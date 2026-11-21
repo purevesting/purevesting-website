@@ -21,7 +21,10 @@ scripts/
 # Some don't exist yet: listing them now means nothing put in them can
 # ever go live by mistake.
 plan/
-data/
+# Only the data/ folder at the top (NSE's files, the history). The "/" in
+# front ties it to the top: without it, assets/data/ (the gold and silver
+# rates the pages read, step 1.1) would be kept off the site too.
+/data/
 partials/
 templates/
 tests/

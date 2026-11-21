@@ -95,7 +95,21 @@ codes.
 | `--sky-ink` | #0C4766 | headings and text on a blue band |
 | `--sky-tint` | #E4F2FB | blue bands and info boxes |
 | `--sky-soft` | #C8E6F8 | lines on a blue band, empty chart tracks |
+| `--gold-deep` | #946200 | gold icons and small gold words |
+| `--gold-ink` | #6B4700 | headings and text on a gold tint |
+| `--gold-tint` | #FFF4D9 | the pale gold circle behind a gold icon |
 | `--forest` | #123B30 | the footer and the videos band only |
+
+Gold is for zakat, sadaqah and purification, and later for members'
+things (MAS, step 1.1, 21 Nov 2026). Gold icons are the same line
+drawings as the blue ones, in `--gold-deep` on a `--gold-tint` circle
+(`class="icon icon-gold"`). Gold on its pale tint passes the contrast
+test for small text (4.8 to 1).
+
+Gaps have names too, in the same section: `--space-1` (4px) up to
+`--space-8` (72px). New parts use them instead of typing sizes.
+`--tap-main` (48px) is the height of a tool's main box or button; every
+other tappable thing stays at least `--tap` (44px).
 
 The blues were checked against the green with a colour-blindness test
 (they stay far apart for people who can't tell red from green) and for
@@ -185,6 +199,7 @@ purevesting.com/ask/.
 | `corrections/`, `disclaimer/`, `privacy/` | The corrections log and the two legal pages. |
 | `stop-the-genocide/` | The boycott list. Rewritten by `scripts/update_boycott.py` when its dataset changes. Linked from the menu (on a computer), the home page and the footer. |
 | `official/` | "Is it really Purevesting?" — our only official places, what we never do, and what to do about a fake. Linked from the footer of every page ("Official channels"). Since 17 Nov 2026 (step 0.2). |
+| `zakat/nisab-today/` | "What is the nisab today?" — the nisab in rupees by silver (big) and by gold, with the date of the rates; how it is worked out, as a drawing; "Silver or gold?"; a box for your own jeweller's rate. Its figures sit between `<!-- NISAB START -->` and `<!-- NISAB END -->` and are rewritten every week by `scripts/update_prices.py`. Linked from /tools/ (not from the menu yet). Since 21 Nov 2026 (step 1.1). |
 | `404.html` | "This page doesn't exist", for any wrong address. |
 | `offline/` | What the app shows for a page never opened before, with no internet. |
 
@@ -194,6 +209,8 @@ purevesting.com/ask/.
 |---|---|
 | `assets/site.css` | The whole look: colours, fonts, cards, charts… in 32 numbered sections, listed at the top of the file. Each section says where it shows on the site. |
 | `assets/site.js` | The polish: rising cards, filling charts, tap a figure to see its source, numbers counting up, the app, the offline note. The site works without it. |
+| `assets/data/prices.json` | **The gold and silver rates**: IBJA's gold 999 (24K) and silver 999 rates for 1 gram, and their date. One small file any page can read. Rewritten every week by `scripts/update_prices.py` (see "How to change the gold and silver rate", below). Since step 1.1. |
+| `assets/calc/` | The money maths, as small functions that only work out an answer (CLAUDE.md, "Always" rule 7), each with its tests in `tests/`. `nisab.js`: the nisab from a silver or gold rate, tola to grams, the value of 24K, 22K, 18K or 14K gold, and how figures are written (₹1,11,366). Since step 1.1. |
 | `assets/share-card.js` | The "Share as image" button under an article's answer. |
 | `assets/videos.js` | Turns `videos/list.js` into video cards (home page and /videos/). |
 | `videos/list.js` | **The list of videos — the one file to edit for a new video.** |
@@ -217,8 +234,10 @@ purevesting.com/ask/.
 | `scripts/check_site.py` | The checker: run it before anything goes live (see "Before anything goes live: run the checker", below). Its lists of banned names and advice words are at the top of the file. |
 | `scripts/update_screener.py` | The monthly screener update ("run the screener update"). It reads three NSE files: the Nifty 500 list, the Shariah index file and NSE's list of every company (EQUITY_L.csv, since 19 Nov 2026). Every run keeps all three in git, in `data/nse/<date of the data>/`. On a day NSE's site blocks it, upload the three files on github.com into `data/nse/<month-end date>/` and add `--from-folder data/nse/<month-end date>/`. |
 | `scripts/update_boycott.py` | The boycott list update ("run the boycott update"). |
+| `scripts/update_prices.py` | The weekly gold and silver rate: rewrites `assets/data/prices.json` and every nisab figure on every page (see "How to change the gold and silver rate", below). Since step 1.1. |
+| `tests/` | The tests for the money maths in `assets/calc/` (CLAUDE.md, "Always" rule 7). Run them all with `node --test tests/` (Node 18 or newer, nothing to install). `nisab.test.js` checks the nisab maths, that the page shows the figures `prices.json` gives, and that the weekly script works out the same figures. `index.js` only makes the command work on newer Node. Since step 1.1. |
 | `data/shariah-history.csv` | The history of NSE's Shariah list: one row per Nifty 500 company per month (month, date of NSE's data, symbol, company, and 1 or 0 for in or out of the Shariah index), from October 2026. The screener update adds each new month by itself. |
-| `plan/`, `data/`, `partials/`, `templates/`, `tests/`, `worker/` | Folders for later steps; only `data/` exists so far (the line above). `tests/` will hold the tests for the money maths in `assets/calc/` (CLAUDE.md, "Always" rule 7). `.assetsignore` already lists all six, so nothing put in them can go live by mistake. |
+| `plan/`, `data/`, `partials/`, `templates/`, `worker/` | Folders for later steps; `data/` exists (the line above). `.assetsignore` already lists them, so nothing put in them can go live by mistake. It lists `data/` as `/data/`, the top folder only, so `assets/data/` (the rates the pages read) still goes live (since step 1.1). |
 | `wrangler.jsonc`, `.assetsignore` | Cloudflare's settings: what is published, and the 404 page. |
 
 ### Before anything goes live: run the checker
@@ -311,6 +330,52 @@ part each one lives in. A calculator's starting numbers are written out
 in full (the answer, its chart and the year-by-year table), so ask the
 website chat to work them out again.
 
+### How to change the gold and silver rate
+
+Every Sunday (every day in Ramadan). It takes two minutes. Since step 1.1.
+
+1. Open **ibjarates.com** (IBJA, the India Bullion and Jewellers
+   Association). On Saturdays and Sundays it says rates are not published:
+   that's fine, use the last working day's.
+2. Under **Previous Dates Rate** there are two tables, AM and PM. Use the
+   **PM** one (the day's closing rate), its top row. Write down three
+   things:
+   - the date (like 20/11/2026),
+   - **999** (gold, for 10 grams, like 123893),
+   - **Silver 999** (for 1 kg, like 152528).
+3. Turn them into the rate for 1 gram: gold ÷ 10 (123893 → 12389.3),
+   silver ÷ 1,000 (152528 → 152.528 — keep all three decimals). The date
+   becomes year-month-day: 20/11/2026 → 2026-11-20.
+4. In VS Code: **Terminal** → **New Terminal**, and type (with your
+   numbers):
+
+       python3 scripts/update_prices.py --gold 12389.3 --silver 152.528 --date 2026-11-20
+
+   (On Windows, type `python` or `py` if `python3` isn't found.)
+5. It prints the two rates (with the change since last week) and the new
+   nisab by silver and by gold. Check them: silver should be 612.36 × the
+   silver rate, gold 87.48 × the gold rate. If it says **Stopped**, read
+   why: nothing was changed. A rate five times last week's means it was
+   typed for 10 grams or 1 kg.
+6. Run the checker: `python3 scripts/check_site.py` (0 ERROR).
+7. Put it live: in VS Code, **Source Control** (the branch icon on the
+   left) → type "Gold and silver rate, 20 Nov 2026" in the message box →
+   **Commit** → **Sync Changes**.
+
+What the script changes, so nothing else needs touching by hand:
+`assets/data/prices.json`; on every page, each figure between
+`<!-- NISAB START -->` and `<!-- NISAB END -->` that is marked
+`data-nisab="…"` (the nisab by silver and by gold, the two rates, the
+date); and, on each page it changed, `dateModified` and its date in
+`sitemap.xml`. The page's own script also reads `prices.json`, so a copy
+of the page saved on a phone shows the newest rates it has.
+
+To put a nisab figure on another page: copy it from
+`zakat/nisab-today/` with its `data-nisab="…"`, and put
+`<!-- NISAB START -->` and `<!-- NISAB END -->` around it. A rupee
+figure between the markers without `data-nisab`, or a `data-nisab`
+figure outside them, makes the script stop and say where.
+
 ### Building blocks, and their names in the HTML
 
 Copy from the page named in brackets.
@@ -380,6 +445,16 @@ Copy from the page named in brackets.
   calculator-page">`, then `calculator-layout` holding the boxes
   (`calculator-boxes`, with a `calculator-row` or `calculator-pair` per
   box) and the answer (`calculator-answer`).
+- **A gold icon** (`zakat/nisab-today/`): `<span class="icon icon-gold"
+  aria-hidden="true">`, for zakat, sadaqah and purification.
+- **A nisab figure** (`zakat/nisab-today/`): `<span class="num"
+  data-nisab="silver-nisab">₹93,402</span>` between `<!-- NISAB START -->`
+  and `<!-- NISAB END -->`. The names: `silver-nisab`, `gold-nisab`,
+  `silver-rate`, `gold-rate`, and `as-of` on a `<time>` for the date.
+  `scripts/update_prices.py` rewrites them every week.
+- **A small sum, drawn** (`zakat/nisab-today/`): `<ol
+  class="nisab-sum-lines">`, one `<li>` per line with `sum-sign` (× or
+  =), `sum-value` and `sum-what`; the last line `sum-answer`.
 - **A green or red word in a heading**: `word-green` (only in an H1 or
   H2); `word-red` only for the cost of a loan.
 - **Buttons**: `button` (solid green), `button-quiet` (outlined),

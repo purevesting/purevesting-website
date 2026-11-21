@@ -71,7 +71,26 @@ MAS says "go live" (CLAUDE.md, "How to hand over").
       and by symbol: 4,265 of 4,270 searches find the company (before:
       none); the 501 Nifty 500 companies answer exactly as before.
       Open points: section 0, item 27.
-- [ ] **1.1 Rates and Nisab today**
+- [x] **1.1 Rates and Nisab today** — done 21 Nov 2026, on branch
+      ccr-7dda71ab-1mp5sr (the branch this session was given): the new
+      page /zakat/nisab-today/, "What is the nisab today?" — the nisab by
+      silver, big, and by gold, with the date of the rates and IBJA as the
+      source; the gold-only line; how it is worked out, as a drawing;
+      "Silver or gold?"; a box for your own jeweller's rate, with the
+      fatwa's line on which rate; a tile to the zakat calculator (to
+      /tools/ until step 1.2); Sources, closed. First figures: IBJA's
+      closing rates of 20 Nov 2026, gold 999 ₹12,389.30 and silver 999
+      ₹152.528 a gram, so ₹93,402 by silver and ₹10,83,816 by gold.
+      Linked from /tools/ (no menu change). `assets/data/prices.json`
+      holds the rates and `scripts/update_prices.py` rewrites it and every
+      nisab figure, every Sunday (section 0b). `assets/calc/nisab.js` has
+      the maths, with 17 tests in `tests/` (`node --test tests/`; the small
+      `tests/index.js` makes that command work on Node 22). site.css: the
+      gold colours, the `--space` gaps and `--tap-main`, and section 33.
+      sw.js fetches the rates fresh whenever the phone is online. The
+      checker bans five more names. `.assetsignore` now keeps only the top
+      `data/` folder off the site (it kept `assets/data/` off too). Open
+      points: section 0, items 28 to 31.
 - [ ] **1.2 Zakat calculator**
 - [ ] **1.3 Zakat answers and interest tool**
 - [ ] **1.4 Ramadan switch**
@@ -90,7 +109,12 @@ section 0d.
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 19 November 2026, an extra step after 0.4: the screener's
+Last updated: 21 November 2026, step 1.1 of the plan above: the gold and
+silver rates in `assets/data/prices.json`, the weekly
+`scripts/update_prices.py` (section 0b, "Every week"), the nisab maths in
+`assets/calc/nisab.js` with its tests, and the new page
+/zakat/nisab-today/ (what is left for MAS: section 0, items 28 to 31).
+Before that, 19 November 2026, an extra step after 0.4: the screener's
 search now names every company on NSE (what is left for MAS: section 0,
 item 27). Before that, 17 November 2026, step 0.4 of the plan above: the monthly
 update to NSE's figures for 30 October 2026, the new history file
@@ -419,6 +443,39 @@ decision only he can make.
       or "skip stand-ins" (the update would skip any symbol starting with
       DUMMY, and the counts would become 203 of 500). Nothing is changed
       yet: it is a fact on the site (CLAUDE.md, "Never" rule 8).
+- [ ] **28. Check the first gold and silver rates (added 21 Nov, step
+      1.1).** The page uses IBJA's closing (PM) rates of Friday 20 Nov 2026
+      (IBJA publishes nothing on Saturdays): gold 999 ₹1,23,893 for 10 g
+      (₹12,389.30 a gram) and silver 999 ₹1,52,528 for 1 kg (₹152.528 a
+      gram). They are much lower than the 9 Nov rates in the zakat
+      research (₹14,102 and ₹181.863): IBJA's own closing rates fell on
+      every working day after 11 Nov, gold from 1,40,603 to 1,23,893 for
+      10 g, silver from 1,85,900 to 1,52,528 for 1 kg. Open
+      ibjarates.com → "Previous Dates Rate" → the PM table → the row
+      20/11/2026, and check the two numbers. The morning (AM) rates that
+      day were 1,23,584 and 1,50,650. Say "PM is right" or "use AM".
+- [ ] **29. "Silver or gold?": the reason for gold — decide (added 21 Nov,
+      step 1.1).** The card's words are yours, exactly (the task said so):
+      "Some scholars use gold, because silver has lost much of its value."
+      But the gold fatwa in the zakat research gives a different reason:
+      scholars agree on the weight of the gold minimum, and differ on the
+      weight of the silver one. (Two of its sources are copies of that one
+      fatwa; the third uses gold and gives no reason.) Sources on the page
+      describe it as it is. Say "keep the words", or send new ones — for
+      example "Some scholars use gold, because they agree on its weight,
+      but differ on silver's." Not changed: CLAUDE.md, "Never" rule 8.
+- [ ] **30. Nisab today in the menu — decide when (added 21 Nov, step
+      1.1).** The page is linked from /tools/ only, as the step asked. Say
+      when it goes in the menu (with the zakat calculator in step 1.2, or
+      in Ramadan, step 1.4), and under which word (Tools?).
+- [ ] **31. Two choices for the zakat calculator, step 1.2 (added 21 Nov,
+      step 1.1).** (a) 14K gold: nisab.js counts 14K as 14/24 of the 24K
+      rate (58.3%), as the step said; its hallmark, 585, is 58.5%. On 10 g
+      the two differ by about ₹200. Say "14/24" or "585". (b) 22K: IBJA
+      also publishes its own 22K (916) rate, which the zakat research
+      prefers for 22K when it is there; prices.json has only the 24K and
+      silver rates, as the step said. Say if the weekly job should take
+      the 22K rate too (one more number every Sunday).
 
 ---
 
@@ -426,6 +483,27 @@ decision only he can make.
 
 Jobs that never finish, because the data or the videos keep changing.
 Each one says what to send or change, and where.
+
+### Every week
+
+- [ ] **Every Sunday: the gold and silver rate (daily in Ramadan).**
+      Since 21 Nov 2026 (step 1.1). Open ibjarates.com; under "Previous
+      Dates Rate", take the PM table's top row, and run (with its numbers):
+
+          python3 scripts/update_prices.py --gold 12389.3 --silver 152.528 --date 2026-11-20
+
+      --gold is "999" ÷ 10 (IBJA gives gold for 10 g); --silver is
+      "Silver 999" ÷ 1,000 (for 1 kg; keep all three decimals); --date is
+      that row's date, year-month-day. It rewrites
+      `assets/data/prices.json` and every nisab figure on every page
+      (today: /zakat/nisab-today/), with the page's dateModified and its
+      date in sitemap.xml, and prints the new nisab by silver and by gold:
+      check them, run the checker, then commit and push. It stops,
+      changing nothing, on a rate five times last week's (one typed for
+      10 g or 1 kg). The steps with every click: README.md, "How to change
+      the gold and silver rate". DONE for the rates of 20 Nov 2026 (step
+      1.1). **Next due:** Sunday 29 Nov 2026, with the rates of Friday
+      27 Nov.
 
 ### Every month
 

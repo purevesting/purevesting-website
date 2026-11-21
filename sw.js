@@ -17,6 +17,10 @@
      seconds to answer. A page that was never saved shows /offline/.
    - The stylesheet and scripts: fresh first too, saved copy when offline,
      so they always match the page.
+   - The gold and silver rates (/assets/data/prices.json, since step 1.1):
+     always fetched fresh while the phone is online, never from the
+     browser's own quick store, so the nisab is never worked out from an
+     old rate. The last saved copy is used only when there is no internet.
    - Fonts and images: the saved copy at once (they almost never change),
      and a fresh copy is fetched quietly in the background for next time.
    - Anything on another website (YouTube thumbnails, Beehiiv, the form
@@ -32,6 +36,7 @@ var VERSION = 'v2';
 var STATIC = 'pv-static-' + VERSION;   // the stylesheet, scripts, fonts, images
 var PAGES  = 'pv-pages-' + VERSION;    // pages, saved as people open them
 var OFFLINE_URL = '/offline/';
+var RATES_URL = '/assets/data/prices.json';   // the gold and silver rates (step 1.1)
 
 // Saved the moment the app is installed (or the site is first visited), so
 // the home page and the "you're offline" page open even with no internet.
@@ -96,6 +101,14 @@ self.addEventListener('fetch', function (event) {
 
   if (request.mode === 'navigate') {
     event.respondWith(page(event));
+    return;
+  }
+
+  // The gold and silver rates: fresh from the internet, the saved copy
+  // only offline. "no-cache" makes the browser ask the site every time,
+  // even if it kept a copy of its own.
+  if (url.pathname === RATES_URL) {
+    event.respondWith(freshFirst(new Request(request, { cache: 'no-cache' })));
     return;
   }
 

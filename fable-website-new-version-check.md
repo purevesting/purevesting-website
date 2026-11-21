@@ -1,7 +1,8 @@
 # Fable website new version check — what is still left
 
-Updated 19 November 2026: the screener now names every company on NSE
-(an extra step after 0.4, waiting for "go live").
+Updated 21 November 2026: step 1.1, the gold and silver rates and the
+page "Nisab today" (waiting for "go live"). Before that, 19 November
+2026: the screener names every company on NSE (an extra step after 0.4).
 A short list of everything still open, so nothing gets lost. The full
 details are in TODO.md (section numbers given below). Not published on
 the site (.assetsignore keeps it off).
@@ -24,8 +25,33 @@ the site (.assetsignore keeps it off).
   did" below).
 - **Ready, not live yet:** the screener names every company on NSE (see
   "What the extra step did" below). Say "go live" to put it on the site.
+- **Ready, not live yet:** step 1.1, the gold and silver rates and
+  /zakat/nisab-today/ (see "What step 1.1 did" below). Say "go live".
 - **Checker:** 0 ERROR, 4 WARN (the four long titles, item 16).
-- **Next:** step 1.1, rates and Nisab today.
+- **Tests:** `node --test tests/`: 17 of 17 pass.
+- **Next:** step 1.2, the zakat calculator.
+
+## What step 1.1 did (21 Nov 2026, not live yet)
+
+- New page **purevesting.com/zakat/nisab-today**: "Nisab today: ₹93,402"
+  big (612.36 g of silver), then ₹10,83,816 by gold (87.48 g), the
+  gold-only line, and "As of 20 November 2026 · Source: IBJA". All of it
+  on the first screen of a small phone.
+- Under it: how it is worked out, drawn as two small sums; "Silver or
+  gold?" in your words; a box for your own jeweller's rate, with the
+  fatwa's line on which rate; a tile to the zakat calculator (to /tools/
+  until step 1.2); Sources, closed.
+- `assets/data/prices.json`: IBJA's closing rates of Friday 20 Nov 2026,
+  gold ₹12,389.30 and silver ₹152.528 a gram.
+- **Every Sunday** you run one line (TODO.md 0b, README "How to change
+  the gold and silver rate"):
+  `python3 scripts/update_prices.py --gold … --silver … --date …`
+- `assets/calc/nisab.js` (the maths) and `tests/nisab.test.js` (17
+  tests). The checker bans five more names. sw.js fetches the rates
+  fresh online.
+- Fixed on the way: `.assetsignore` kept every folder named `data`
+  off the site, so `assets/data/prices.json` would never have gone live.
+  Now only the top `data/` folder is kept off.
 
 ## What the extra step did (19 Nov 2026, not live yet)
 
@@ -79,11 +105,24 @@ the site (.assetsignore keeps it off).
 - [x] 0.2 Red-team fixes
 - [x] 0.3 The join page
 - [x] 0.4 Monthly update and history
-- [ ] 1.1 Rates and Nisab today
+- [x] 1.1 Rates and Nisab today
 - [ ] 1.2 Zakat calculator
 - [ ] 1.3 Zakat answers and interest tool
 - [ ] 1.4 Ramadan switch
 - [ ] 1.5 Scholar's edits and launch
+
+## 1b. New from step 1.1 — for MAS (TODO.md, section 0)
+
+- [ ] **Say "go live"** for step 1.1, after looking at the screenshots.
+- [ ] **Item 28. Check the first rates** on ibjarates.com (PM table, row
+      20/11/2026: gold 1,23,893, silver 1,52,528). Both fell sharply since
+      9 Nov.
+- [ ] **Item 29. "Silver or gold?": the reason for gold — decide.** Its
+      fatwa gives a different reason from the card's words.
+- [ ] **Item 30. Nisab today in the menu — when?**
+- [ ] **Item 31. Two choices for step 1.2:** 14K as 14/24 or 585, and
+      IBJA's own 22K rate.
+- [ ] **Every Sunday:** the gold and silver rate. Next: 29 Nov 2026.
 
 ## 2. New from the extra step — for MAS (TODO.md, section 0)
 
@@ -179,7 +218,7 @@ the site (.assetsignore keeps it off).
 
 ## 6. Jobs that repeat (TODO.md, section 0b)
 
-Monthly NSE figures and the screener update (it now writes the red
+Every Sunday, the gold and silver rate (since step 1.1). Monthly NSE figures and the screener update (it now writes the red
 "✗ Not halal" and adds the month to `data/shariah-history.csv`), a new video in `videos/list.js`, quarterly fund returns
 and small savings rates, digital gold terms, the boycott list, the loan
 calculator's typical rates. New video: purevesting.com/join in its
