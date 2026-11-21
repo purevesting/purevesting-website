@@ -1,28 +1,38 @@
 """
-UPDATE THE GOLD AND SILVER RATE — run it every Sunday (every day in
-Ramadan), with IBJA's latest rates.
+UPDATE THE GOLD AND SILVER RATE — it runs by itself, every morning after
+a working day, on GitHub (.github/workflows/update-prices.yml). Nobody has
+to run it. Since 21 Nov 2026 (step 1.1).
+
+What GitHub runs:
+
+    python3 scripts/update_prices.py --from-ibja
+
+It reads ibjarates.com, the rates of the India Bullion and Jewellers
+Association (IBJA): under "Previous Dates Rate", the PM table (the day's
+closing rate), its newest row. IBJA gives gold for 10 grams and silver
+for 1 kg, so it divides gold by 10 and silver by 1,000. It takes gold 999
+(24K), 916 (22K), 750 (18K) and 585 (14K), and silver 999.
+
+  --from-ibja saved.html   reads a copy of IBJA's page saved on the
+                           computer, instead of downloading it (the tests
+                           use this).
+
+BY HAND, only if the automatic run is broken (the website chat can do
+it): type the rates yourself, for 1 gram, and their date:
 
     python3 scripts/update_prices.py --gold 12389.3 --silver 152.528 --date 2026-11-20
 
 (Run it from the purevesting-website folder. On Windows, if "python3" is
-not found, type "python" or "py" instead.)
-
-WHERE THE THREE NUMBERS COME FROM: ibjarates.com, the rates of the India
-Bullion and Jewellers Association (IBJA). Under "Previous Dates Rate"
-there are two tables; use the PM one (the day's closing rate), top row:
-
-  --gold    "999", divided by 10 (IBJA gives gold for 10 grams):
-            1,23,893 becomes 12389.3
-  --silver  "Silver 999", divided by 1,000 (IBJA gives silver for 1 kg):
-            1,52,528 becomes 152.528. Keep all three decimals.
-  --date    that row's date, written year-month-day:
-            20/11/2026 becomes 2026-11-20
+not found, type "python" or "py" instead.) Typed by hand, prices.json
+gets only the 24K and silver rates; 22K, 18K and 14K are then worked out
+as 22, 18 or 14 parts of 24 until the next automatic run.
 
 WHAT IT DOES
-  1. Checks the three numbers. It stops, changing nothing, if a rate is
-     more than five times (or less than a fifth of) the last one: that is
-     a rate for 10 grams or 1 kg typed by mistake. It also stops on more
-     than three decimals, or a date that is wrong or in the future.
+  1. Checks the rates. It stops, changing nothing, if a rate is more than
+     five times (or less than a fifth of) the last one: a rate for 10
+     grams or 1 kg read or typed by mistake. It also stops on more than
+     three decimals, or a date that is wrong or in the future. In the
+     automatic run, rates no newer than the site's change nothing.
   2. Rewrites assets/data/prices.json: the one file the pages read the
      rates from.
   3. On every page, between the markers <!-- NISAB START --> and
@@ -33,7 +43,7 @@ WHAT IT DOES
      outside the markers.
   4. On each page it changed, sets "dateModified" in the structured data,
      and the page's <lastmod> in sitemap.xml, to today.
-  5. Prints the rates and the new nisab, so you can check them.
+  5. Prints the rates and the new nisab.
 
 The maths is the same as in assets/calc/nisab.js, which the pages use;
 tests/nisab.test.js checks that the two always give the same figures.
@@ -51,7 +61,10 @@ import json
 import os
 import re
 import sys
+import time
+import urllib.request
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
+from html.parser import HTMLParser
 from pathlib import Path
 
 # The purevesting-website folder: the folder above scripts/.
@@ -64,6 +77,24 @@ OUR_SITE = "https://purevesting.com"
 # Where the rates come from (written into prices.json).
 SOURCE_NAME = "IBJA"
 SOURCE_URL = "https://ibjarates.com/"
+
+# How the script introduces itself to IBJA's site: as a normal browser,
+# as the screener update does for NSE.
+BROWSER = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                         "(KHTML, like Gecko) Chrome/130.0 Safari/537.36"}
+
+# The columns it reads from IBJA's PM table (their names on IBJA's page),
+# what IBJA gives each one for, and where it goes in prices.json.
+IBJA_COLUMNS = {
+    "Gold 999": (Decimal(10), "gold_24k_per_gram"),
+    "Silver 999": (Decimal(1000), "silver_999_per_gram"),
+    "Gold 916": (Decimal(10), "gold_22k_per_gram"),
+    "Gold 750": (Decimal(10), "gold_18k_per_gram"),
+    "Gold 585": (Decimal(10), "gold_14k_per_gram"),
+}
+
+# IBJA's own rates for 22K, 18K and 14K, in prices.json (step 1.1).
+KARAT_FIELDS = ["gold_22k_per_gram", "gold_18k_per_gram", "gold_14k_per_gram"]
 
 # Grams in the nisab: the same numbers as in assets/calc/nisab.js.
 SILVER_NISAB_GRAMS = Decimal("612.36")
@@ -169,6 +200,83 @@ def check_move(new, old, name, bigger_unit):
     if new > old * BIGGEST_MOVE or new * BIGGEST_MOVE < old:
         stop(f"{name} {new} is very far from the last one ({old}). Is it the "
              f"rate for {bigger_unit}? Type the rate for 1 gram.")
+
+
+# ==========================================================================
+# READING IBJA'S PAGE — for the automatic run (--from-ibja)
+# ==========================================================================
+
+class IbjaTable(HTMLParser):
+    """Reads every table cell on IBJA's page that has a data-label (IBJA
+    names each cell after its column: "PM", "Gold 999", "Silver 999"…),
+    and groups them into the rows of the PM table."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.pm_rows = []        # each one: {"PM": "20/11/2026", "Gold 999": "123893", …}
+        self.row = None          # the PM row being read
+        self.label = None        # the column of the cell being read
+        self.words = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag != "td":
+            return
+        label = (dict(attrs).get("data-label") or "").strip()
+        if label in ("AM", "PM"):
+            self.row = {} if label == "PM" else None   # a new row: keep it if it is PM
+            if self.row is not None:
+                self.pm_rows.append(self.row)
+        self.label = label
+        self.words = []
+
+    def handle_data(self, data):
+        if self.label:
+            self.words.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "td" and self.label:
+            if self.row is not None:
+                self.row[self.label] = "".join(self.words).strip()
+            self.label = None
+
+
+def download_ibja():
+    """IBJA's page, downloaded. Tries three times, a little apart."""
+    for attempt in range(1, 4):
+        try:
+            request = urllib.request.Request(SOURCE_URL, headers=BROWSER)
+            with urllib.request.urlopen(request, timeout=40) as answer:
+                return answer.read().decode("utf-8", errors="replace")
+        except OSError as problem:
+            if attempt == 3:
+                stop(f"IBJA's page ({SOURCE_URL}) did not open: {problem}")
+            time.sleep(10 * attempt)
+
+
+def read_ibja(page_text):
+    """IBJA's newest closing (PM) rates: (their date, {prices.json name:
+    the rate for 1 gram}). Stops if the page doesn't look as expected."""
+    table = IbjaTable()
+    table.feed(page_text)
+    newest = None
+    for row in table.pm_rows:
+        try:
+            day = datetime.datetime.strptime(row.get("PM", ""), "%d/%m/%Y").date()
+        except ValueError:
+            continue
+        if all(column in row for column in IBJA_COLUMNS) and (newest is None or day > newest[0]):
+            newest = (day, row)
+    if newest is None:
+        stop("IBJA's page has changed: its PM table, with the columns "
+             f"{', '.join(IBJA_COLUMNS)}, was not found. The website chat can fix this script.")
+    day, row = newest
+    rates = {}
+    for column, (unit, field) in IBJA_COLUMNS.items():
+        written = row[column].replace(",", "")
+        if not re.fullmatch(r"\d+(\.\d+)?", written):
+            stop(f'IBJA\'s "{column}" for {row["PM"]} is not a number: "{row[column]}".')
+        rates[field] = Decimal(written) / unit
+    return day, rates
 
 
 # ==========================================================================
@@ -371,21 +479,45 @@ def main():
 
     parser = argparse.ArgumentParser(
         description="Rewrites the gold and silver rate, and the nisab on every page.")
-    parser.add_argument("--gold", required=True,
-                        help="IBJA's gold 999 (24K) rate for 1 gram: its rate for 10 g, divided by 10")
-    parser.add_argument("--silver", required=True,
-                        help="IBJA's silver 999 rate for 1 gram: its rate for 1 kg, divided by 1,000")
-    parser.add_argument("--date", required=True,
-                        help="the date of those rates, year-month-day, like 2026-11-20")
+    parser.add_argument("--from-ibja", nargs="?", const="download", metavar="SAVED_PAGE",
+                        help="read IBJA's newest PM rates from ibjarates.com (or from a saved copy)")
+    parser.add_argument("--gold",
+                        help="by hand: IBJA's gold 999 (24K) rate for 1 gram (its rate for 10 g, divided by 10)")
+    parser.add_argument("--silver",
+                        help="by hand: IBJA's silver 999 rate for 1 gram (its rate for 1 kg, divided by 1,000)")
+    parser.add_argument("--date",
+                        help="by hand: the date of those rates, year-month-day, like 2026-11-20")
     args = parser.parse_args()
 
-    # 1. The three numbers, checked.
-    gold = read_rate(args.gold, "--gold")
-    silver = read_rate(args.silver, "--silver")
-    day = read_date(args.date)
+    # 1. The rates, checked: read from IBJA, or typed by hand.
     last = read_last_prices()
+    karat_rates = {}                     # IBJA's own 22K, 18K and 14K rates
+    if args.from_ibja:
+        if args.gold or args.silver or args.date:
+            stop("use either --from-ibja, or --gold, --silver and --date, not both.")
+        page_text = download_ibja() if args.from_ibja == "download" else read_text(Path(args.from_ibja))
+        day, ibja = read_ibja(page_text)
+        if day > datetime.date.today():
+            stop(f"IBJA's newest rates are dated {day.isoformat()}, in the future. Not used.")
+        if last and day < last["as_of"]:
+            print(f"IBJA's newest rates ({date_words(day)}) are older than the site's "
+                  f"({date_words(last['as_of'])}). Nothing changed.")
+            return 0
+        gold, silver = ibja["gold_24k_per_gram"], ibja["silver_999_per_gram"]
+        karat_rates = {field: ibja[field] for field in KARAT_FIELDS}
+        print(f"Read from {SOURCE_URL}: the PM rates of {date_words(day)}.")
+    else:
+        if not (args.gold and args.silver and args.date):
+            stop("give --from-ibja, or all three of --gold, --silver and --date.")
+        gold = read_rate(args.gold, "--gold")
+        silver = read_rate(args.silver, "--silver")
+        day = read_date(args.date)
     check_move(gold, last and last["gold"], "--gold", "10 grams")
     check_move(silver, last and last["silver"], "--silver", "1 kg")
+    for field, rate in karat_rates.items():
+        # Each karat's rate must sit between half and all of the 24K rate.
+        if not gold / 2 < rate <= gold:
+            stop(f"IBJA's {field} rate ({rate}) doesn't fit its 24K rate ({gold}). Not used.")
 
     silver_nisab = SILVER_NISAB_GRAMS * silver
     gold_nisab = GOLD_NISAB_GRAMS * gold
@@ -400,13 +532,19 @@ def main():
     today_iso = datetime.date.today().isoformat()
 
     # 2. The new prices.json (written below, once every page is checked).
-    prices_text = json.dumps({
+    # IBJA's own 22K, 18K and 14K rates go in too when they were read from
+    # IBJA; typed by hand, they are left out, and the pages work them out
+    # as 22, 18 or 14 parts of 24 (assets/calc/nisab.js).
+    prices = {
         "as_of": iso_date,
         "source_name": SOURCE_NAME,
         "source_url": SOURCE_URL,
         "gold_24k_per_gram": json_number(gold),
         "silver_999_per_gram": json_number(silver),
-    }, indent=2, ensure_ascii=False) + "\n"
+    }
+    for field, rate in karat_rates.items():
+        prices[field] = json_number(rate)
+    prices_text = json.dumps(prices, indent=2, ensure_ascii=False) + "\n"
 
     # 3 and 4. Every page with the markers, rewritten in memory first.
     problems, new_pages = [], {}
@@ -457,6 +595,9 @@ def main():
     print(f"Rates of {date_words(day)}, from {SOURCE_NAME}:")
     print(f"  Gold 999 (24K): {rate_words(gold)} a gram{move(gold, last and last['gold'])}")
     print(f"  Silver 999:     {rate_words(silver)} a gram{move(silver, last and last['silver'])}")
+    if karat_rates:
+        print("  Gold 22K, 18K, 14K: " + ", ".join(rate_words(rate) for rate in karat_rates.values())
+              + " a gram (IBJA's 916, 750 and 585)")
     if day.weekday() >= 5:
         print(f"  Note: {date_words(day)} is a {day.strftime('%A')}. IBJA publishes no "
               f"rates on Saturdays and Sundays: is it the date on IBJA's page?")
@@ -478,7 +619,10 @@ def main():
     for note in sitemap_notes:
         print(note)
     print()
-    print("Next: look at the page, run python3 scripts/check_site.py, then commit and push.")
+    if args.from_ibja:
+        print("Next (GitHub does this by itself): the checker and the tests, then save and publish.")
+    else:
+        print("Next: look at the page, run python3 scripts/check_site.py, then commit and push.")
     return 0
 
 

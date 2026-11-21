@@ -199,7 +199,7 @@ purevesting.com/ask/.
 | `corrections/`, `disclaimer/`, `privacy/` | The corrections log and the two legal pages. |
 | `stop-the-genocide/` | The boycott list. Rewritten by `scripts/update_boycott.py` when its dataset changes. Linked from the menu (on a computer), the home page and the footer. |
 | `official/` | "Is it really Purevesting?" — our only official places, what we never do, and what to do about a fake. Linked from the footer of every page ("Official channels"). Since 17 Nov 2026 (step 0.2). |
-| `zakat/nisab-today/` | "What is the nisab today?" — the nisab in rupees by silver (big) and by gold, with the date of the rates; how it is worked out, as a drawing; "Silver or gold?"; a box for your own jeweller's rate. Its figures sit between `<!-- NISAB START -->` and `<!-- NISAB END -->` and are rewritten every week by `scripts/update_prices.py`. Linked from /tools/ (not from the menu yet). Since 21 Nov 2026 (step 1.1). |
+| `zakat/nisab-today/` | "What is the nisab today?" — the nisab in rupees by silver (big) and by gold, with the date of the rates; how it is worked out, as a drawing; "Silver or gold?"; a box for your own jeweller's rate. Its figures sit between `<!-- NISAB START -->` and `<!-- NISAB END -->` and are rewritten by itself after every working day (`scripts/update_prices.py`, run by GitHub). Linked from /tools/ (not from the menu yet). Since 21 Nov 2026 (step 1.1). |
 | `404.html` | "This page doesn't exist", for any wrong address. |
 | `offline/` | What the app shows for a page never opened before, with no internet. |
 
@@ -209,7 +209,7 @@ purevesting.com/ask/.
 |---|---|
 | `assets/site.css` | The whole look: colours, fonts, cards, charts… in 32 numbered sections, listed at the top of the file. Each section says where it shows on the site. |
 | `assets/site.js` | The polish: rising cards, filling charts, tap a figure to see its source, numbers counting up, the app, the offline note. The site works without it. |
-| `assets/data/prices.json` | **The gold and silver rates**: IBJA's gold 999 (24K) and silver 999 rates for 1 gram, and their date. One small file any page can read. Rewritten every week by `scripts/update_prices.py` (see "How to change the gold and silver rate", below). Since step 1.1. |
+| `assets/data/prices.json` | **The gold and silver rates**: IBJA's gold 999 (24K) and silver 999 rates for 1 gram, and their date. One small file any page can read. Rewritten by itself every morning after a working day (see "The gold and silver rate updates itself", below). Since step 1.1. |
 | `assets/calc/` | The money maths, as small functions that only work out an answer (CLAUDE.md, "Always" rule 7), each with its tests in `tests/`. `nisab.js`: the nisab from a silver or gold rate, tola to grams, the value of 24K, 22K, 18K or 14K gold, and how figures are written (₹1,11,366). Since step 1.1. |
 | `assets/share-card.js` | The "Share as image" button under an article's answer. |
 | `assets/videos.js` | Turns `videos/list.js` into video cards (home page and /videos/). |
@@ -234,8 +234,9 @@ purevesting.com/ask/.
 | `scripts/check_site.py` | The checker: run it before anything goes live (see "Before anything goes live: run the checker", below). Its lists of banned names and advice words are at the top of the file. |
 | `scripts/update_screener.py` | The monthly screener update ("run the screener update"). It reads three NSE files: the Nifty 500 list, the Shariah index file and NSE's list of every company (EQUITY_L.csv, since 19 Nov 2026). Every run keeps all three in git, in `data/nse/<date of the data>/`. On a day NSE's site blocks it, upload the three files on github.com into `data/nse/<month-end date>/` and add `--from-folder data/nse/<month-end date>/`. |
 | `scripts/update_boycott.py` | The boycott list update ("run the boycott update"). |
-| `scripts/update_prices.py` | The weekly gold and silver rate: rewrites `assets/data/prices.json` and every nisab figure on every page (see "How to change the gold and silver rate", below). Since step 1.1. |
-| `tests/` | The tests for the money maths in `assets/calc/` (CLAUDE.md, "Always" rule 7). Run them all with `node --test tests/` (Node 18 or newer, nothing to install). `nisab.test.js` checks the nisab maths, that the page shows the figures `prices.json` gives, and that the weekly script works out the same figures. `index.js` only makes the command work on newer Node. Since step 1.1. |
+| `scripts/update_prices.py` | The gold and silver rate: reads IBJA, rewrites `assets/data/prices.json` and every nisab figure on every page. GitHub runs it by itself (see "The gold and silver rate updates itself", below). Since step 1.1. |
+| `.github/workflows/update-prices.yml` | Tells GitHub to run that script every morning after a working day, check the site, and publish the new rates. Since step 1.1. |
+| `tests/` | The tests for the money maths in `assets/calc/` (CLAUDE.md, "Always" rule 7). Run them all with `node --test tests/` (Node 18 or newer, nothing to install). `nisab.test.js` checks the nisab maths, that the page shows the figures `prices.json` gives, that the update script works out the same figures, and that it reads IBJA's page. `index.js` only makes the command work on newer Node. Since step 1.1. |
 | `data/shariah-history.csv` | The history of NSE's Shariah list: one row per Nifty 500 company per month (month, date of NSE's data, symbol, company, and 1 or 0 for in or out of the Shariah index), from October 2026. The screener update adds each new month by itself. |
 | `plan/`, `data/`, `partials/`, `templates/`, `worker/` | Folders for later steps; `data/` exists (the line above). `.assetsignore` already lists them, so nothing put in them can go live by mistake. It lists `data/` as `/data/`, the top folder only, so `assets/data/` (the rates the pages read) still goes live (since step 1.1). |
 | `wrangler.jsonc`, `.assetsignore` | Cloudflare's settings: what is published, and the 404 page. |
@@ -330,45 +331,54 @@ part each one lives in. A calculator's starting numbers are written out
 in full (the answer, its chart and the year-by-year table), so ask the
 website chat to work them out again.
 
-### How to change the gold and silver rate
+### The gold and silver rate updates itself
 
-Every Sunday (every day in Ramadan). It takes two minutes. Since step 1.1.
+Nobody has to do anything (MAS, 21 Nov 2026). Every morning after a
+working day (Tuesday to Saturday, 8:47 in India), GitHub runs
+`.github/workflows/update-prices.yml`, which:
 
-1. Open **ibjarates.com** (IBJA, the India Bullion and Jewellers
-   Association). On Saturdays and Sundays it says rates are not published:
-   that's fine, use the last working day's.
-2. Under **Previous Dates Rate** there are two tables, AM and PM. Use the
-   **PM** one (the day's closing rate), its top row. Write down three
-   things:
-   - the date (like 20/11/2026),
-   - **999** (gold, for 10 grams, like 123893),
-   - **Silver 999** (for 1 kg, like 152528).
-3. Turn them into the rate for 1 gram: gold ÷ 10 (123893 → 12389.3),
-   silver ÷ 1,000 (152528 → 152.528 — keep all three decimals). The date
-   becomes year-month-day: 20/11/2026 → 2026-11-20.
-4. In VS Code: **Terminal** → **New Terminal**, and type (with your
-   numbers):
+1. reads IBJA's newest closing (PM) rates from **ibjarates.com** (the
+   India Bullion and Jewellers Association): gold 999 (24K), 916 (22K),
+   750 (18K), 585 (14K) and silver 999, and turns them into rates for 1
+   gram (gold ÷ 10, silver ÷ 1,000);
+2. rewrites `assets/data/prices.json` and every nisab figure on every page
+   (`python3 scripts/update_prices.py --from-ibja`);
+3. runs the checker and the tests;
+4. if the rates changed and everything passed, saves them to `main`, so
+   Cloudflare puts them live. On Saturdays, Sundays and holidays IBJA
+   publishes nothing, so nothing changes.
 
-       python3 scripts/update_prices.py --gold 12389.3 --silver 152.528 --date 2026-11-20
+**If it goes wrong**, nothing is saved: the page keeps the last rates,
+with their date. GitHub opens an issue, "The gold and silver rate did not
+update" (you get an email), with a link to what happened. Ask the website
+chat to "fix the rate update". The script stops by itself, changing
+nothing, if a rate is more than five times or less than a fifth of the
+last one, or if IBJA's page has changed shape.
 
-   (On Windows, type `python` or `py` if `python3` isn't found.)
-5. It prints the two rates (with the change since last week) and the new
-   nisab by silver and by gold. Check them: silver should be 612.36 × the
-   silver rate, gold 87.48 × the gold rate. If it says **Stopped**, read
-   why: nothing was changed. A rate five times last week's means it was
-   typed for 10 grams or 1 kg.
-6. Run the checker: `python3 scripts/check_site.py` (0 ERROR).
-7. Put it live: in VS Code, **Source Control** (the branch icon on the
-   left) → type "Gold and silver rate, 20 Nov 2026" in the message box →
-   **Commit** → **Sync Changes**.
+**To see it work**: on github.com, open the repo → **Actions** → "Gold and
+silver rate". Each run is listed, green or red. "Run workflow" there runs
+it once by hand. The commits it makes are by "github-actions[bot]",
+named "Gold and silver rate: IBJA's closing rates of 2026-11-27".
 
-What the script changes, so nothing else needs touching by hand:
+**By hand**, only if the automatic run is broken (the website chat can do
+it): `python3 scripts/update_prices.py --gold 12389.3 --silver 152.528
+--date 2026-11-20` — IBJA's PM gold 999 ÷ 10, silver 999 ÷ 1,000 (all
+three decimals), and that row's date. Typed by hand, prices.json gets
+only the 24K and silver rates; 22K, 18K and 14K are worked out as parts
+of 24 until the next automatic run.
+
+What the script changes, so nothing else needs touching:
 `assets/data/prices.json`; on every page, each figure between
 `<!-- NISAB START -->` and `<!-- NISAB END -->` that is marked
 `data-nisab="…"` (the nisab by silver and by gold, the two rates, the
 date); and, on each page it changed, `dateModified` and its date in
 `sitemap.xml`. The page's own script also reads `prices.json`, so a copy
 of the page saved on a phone shows the newest rates it has.
+
+**22K, 18K and 14K** (decided 21 Nov 2026): the calculator uses IBJA's
+own rates for 916, 750 and 585 from `prices.json` (so 14K is 58.5% gold,
+its hallmark). Only if they are missing does it use 22, 18 or 14 parts of
+24 (`Nisab.goldRateFromPrices` in `assets/calc/nisab.js`).
 
 To put a nisab figure on another page: copy it from
 `zakat/nisab-today/` with its `data-nisab="…"`, and put
@@ -451,7 +461,7 @@ Copy from the page named in brackets.
   data-nisab="silver-nisab">₹93,402</span>` between `<!-- NISAB START -->`
   and `<!-- NISAB END -->`. The names: `silver-nisab`, `gold-nisab`,
   `silver-rate`, `gold-rate`, and `as-of` on a `<time>` for the date.
-  `scripts/update_prices.py` rewrites them every week.
+  `scripts/update_prices.py` rewrites them after every working day, by itself.
 - **A small sum, drawn** (`zakat/nisab-today/`): `<ol
   class="nisab-sum-lines">`, one `<li>` per line with `sum-sign` (× or
   =), `sum-value` and `sum-what`; the last line `sum-answer`.

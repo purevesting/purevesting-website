@@ -13,7 +13,8 @@
    storage, so the tests in tests/nisab.test.js can check every one.
    Run the tests with:  node --test tests/
 
-   The weekly script scripts/update_prices.py works out the same figures
+   The update script scripts/update_prices.py (GitHub runs it by itself
+   after every working day) works out the same figures
    in Python, so a page shows them even without JavaScript. A test checks
    that the two always agree.
 
@@ -100,9 +101,11 @@ var Nisab = (function () {
 
 
   /* 6. GOLD OF 24K, 22K, 18K OR 14K ======================================
-     22K is 22/24 of the 24K rate; 18K is 18/24; 14K is 14/24. These two
-     are NOT rounded: the calculator adds things up first and rounds only
-     its final answer. */
+     Worked out from the 24K rate: 22K is 22/24 of it; 18K is 18/24; 14K
+     is 14/24. When prices.json has IBJA's own rates for these
+     (goldRateFromPrices, below), those are used instead. None of these
+     is rounded: the calculator adds things up first and rounds only its
+     final answer. */
 
   // The rate for 1 gram of gold of this karat.
   // goldRateForKarat(14000, 22) → 12833.33…
@@ -121,9 +124,27 @@ var Nisab = (function () {
     return grams * goldRateForKarat(gold24kRatePerGram, karat);
   }
 
+  // The rate for 1 gram of gold of this karat, from prices.json. IBJA
+  // publishes its own rates for 22K (916), 18K (750) and 14K (585), and
+  // the automatic update keeps them in prices.json: they are used when
+  // they are there. Without them (rates typed by hand, or the test
+  // prices), it is 22, 18 or 14 parts of 24, as above.
+  // goldRateFromPrices({ gold_24k_per_gram: 12389.3, gold_22k_per_gram: 11348.6 }, 22) → 11348.6
+  var PRICES_FIELD_FOR_KARAT = {
+    22: 'gold_22k_per_gram',
+    18: 'gold_18k_per_gram',
+    14: 'gold_14k_per_gram'
+  };
+
+  function goldRateFromPrices(prices, karat) {
+    var worked = goldRateForKarat(prices.gold_24k_per_gram, karat);   // also checks the karat
+    var own = karat === 24 ? prices.gold_24k_per_gram : prices[PRICES_FIELD_FOR_KARAT[karat]];
+    return typeof own === 'number' && isFinite(own) && own > 0 ? own : worked;
+  }
+
 
   /* 7. SHOWING FIGURES ===================================================
-     The way the site writes them, the same as the weekly script does. */
+     The way the site writes them, the same as the update script does. */
 
   // A whole number with Indian commas: 1233643 → "12,33,643".
   function withIndianCommas(wholeNumber) {
@@ -182,6 +203,7 @@ var Nisab = (function () {
     tolaToGrams: tolaToGrams,
     goldRateForKarat: goldRateForKarat,
     goldValue: goldValue,
+    goldRateFromPrices: goldRateFromPrices,
     withIndianCommas: withIndianCommas,
     formatRupees: formatRupees,
     formatRate: formatRate,

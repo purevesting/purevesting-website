@@ -83,14 +83,17 @@ MAS says "go live" (CLAUDE.md, "How to hand over").
       ₹152.528 a gram, so ₹93,402 by silver and ₹10,83,816 by gold.
       Linked from /tools/ (no menu change). `assets/data/prices.json`
       holds the rates and `scripts/update_prices.py` rewrites it and every
-      nisab figure, every Sunday (section 0b). `assets/calc/nisab.js` has
-      the maths, with 17 tests in `tests/` (`node --test tests/`; the small
+      nisab figure. MAS asked for no hand job (21 Nov), so GitHub runs it
+      by itself every morning after a working day
+      (`.github/workflows/update-prices.yml`, section 0b), with IBJA's own
+      22K, 18K and 14K rates too. `assets/calc/nisab.js` has
+      the maths, with 20 tests in `tests/` (`node --test tests/`; the small
       `tests/index.js` makes that command work on Node 22). site.css: the
       gold colours, the `--space` gaps and `--tap-main`, and section 33.
       sw.js fetches the rates fresh whenever the phone is online. The
       checker bans five more names. `.assetsignore` now keeps only the top
-      `data/` folder off the site (it kept `assets/data/` off too). Open
-      points: section 0, items 28 to 31.
+      `data/` folder off the site (it kept `assets/data/` off too), and
+      `.github/` off too. Open points: section 0, items 28 to 32.
 - [ ] **1.2 Zakat calculator**
 - [ ] **1.3 Zakat answers and interest tool**
 - [ ] **1.4 Ramadan switch**
@@ -110,10 +113,10 @@ Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
 Last updated: 21 November 2026, step 1.1 of the plan above: the gold and
-silver rates in `assets/data/prices.json`, the weekly
-`scripts/update_prices.py` (section 0b, "Every week"), the nisab maths in
+silver rates in `assets/data/prices.json`, updated by themselves every
+morning after a working day (section 0b, "By itself"), the nisab maths in
 `assets/calc/nisab.js` with its tests, and the new page
-/zakat/nisab-today/ (what is left for MAS: section 0, items 28 to 31).
+/zakat/nisab-today/ (what is left for MAS: section 0, items 28 to 32).
 Before that, 19 November 2026, an extra step after 0.4: the screener's
 search now names every company on NSE (what is left for MAS: section 0,
 item 27). Before that, 17 November 2026, step 0.4 of the plan above: the monthly
@@ -468,14 +471,33 @@ decision only he can make.
       1.1).** The page is linked from /tools/ only, as the step asked. Say
       when it goes in the menu (with the zakat calculator in step 1.2, or
       in Ramadan, step 1.4), and under which word (Tools?).
-- [ ] **31. Two choices for the zakat calculator, step 1.2 (added 21 Nov,
-      step 1.1).** (a) 14K gold: nisab.js counts 14K as 14/24 of the 24K
-      rate (58.3%), as the step said; its hallmark, 585, is 58.5%. On 10 g
-      the two differ by about ₹200. Say "14/24" or "585". (b) 22K: IBJA
-      also publishes its own 22K (916) rate, which the zakat research
-      prefers for 22K when it is there; prices.json has only the 24K and
-      silver rates, as the step said. Say if the weekly job should take
-      the 22K rate too (one more number every Sunday).
+- [x] ~~**31. Two choices for the zakat calculator, step 1.2.**~~ DECIDED
+      21 Nov: MAS said "choose whichever suits best". Chosen: IBJA's own
+      published rates for 22K (916), 18K (750) and 14K (585). The
+      automatic update keeps them in prices.json, and
+      `Nisab.goldRateFromPrices` uses them; only without them is it 22,
+      18 or 14 parts of 24. Why: the zakat research prefers IBJA's own
+      22K rate when it is there (Fix 8), it is the real gold in Indian
+      hallmarked jewellery (14K = 58.5%), and it costs MAS nothing. The
+      research's test cases (22K = ₹12,833.33 at ₹14,000) still hold: they
+      give no IBJA rate, so 22/24 is used.
+- [ ] **32. After "go live": check the first automatic rate update (added
+      21 Nov, step 1.1).** It can only run from main, so it starts after
+      "go live". On github.com → the repo → **Actions** → "Gold and silver
+      rate" → **Run workflow** → **Run workflow** (green). After a minute
+      it should be green, and if IBJA has newer rates, a commit by
+      "github-actions[bot]" appears and the page shows the new date. If it
+      is red: (1) Settings → Actions → General → "Workflow permissions" →
+      choose "Read and write permissions" → Save, and run it again; (2) if
+      main is protected (Settings → Branches), allow GitHub Actions to push.
+      Also check once that Cloudflare published the bot's commit (the
+      page's "As of" date changes). It could not be tested from here: the
+      job only exists on GitHub once it is on main.
+      Note: IBJA's home page says that using its rates for "valuation and
+      pricing activities and in transactions & financial products" should
+      go through its paid API. The site reads the public page once a day
+      for an educational figure; if IBJA ever objects or blocks it, the
+      issue appears and the API is the way out.
 
 ---
 
@@ -484,26 +506,21 @@ decision only he can make.
 Jobs that never finish, because the data or the videos keep changing.
 Each one says what to send or change, and where.
 
-### Every week
+### By itself — nothing to do
 
-- [ ] **Every Sunday: the gold and silver rate (daily in Ramadan).**
-      Since 21 Nov 2026 (step 1.1). Open ibjarates.com; under "Previous
-      Dates Rate", take the PM table's top row, and run (with its numbers):
-
-          python3 scripts/update_prices.py --gold 12389.3 --silver 152.528 --date 2026-11-20
-
-      --gold is "999" ÷ 10 (IBJA gives gold for 10 g); --silver is
-      "Silver 999" ÷ 1,000 (for 1 kg; keep all three decimals); --date is
-      that row's date, year-month-day. It rewrites
-      `assets/data/prices.json` and every nisab figure on every page
-      (today: /zakat/nisab-today/), with the page's dateModified and its
-      date in sitemap.xml, and prints the new nisab by silver and by gold:
-      check them, run the checker, then commit and push. It stops,
-      changing nothing, on a rate five times last week's (one typed for
-      10 g or 1 kg). The steps with every click: README.md, "How to change
-      the gold and silver rate". DONE for the rates of 20 Nov 2026 (step
-      1.1). **Next due:** Sunday 29 Nov 2026, with the rates of Friday
-      27 Nov.
+- [ ] **The gold and silver rate: automatic, every morning after a
+      working day (since 21 Nov 2026, step 1.1; MAS: "I don't want to run
+      anything").** GitHub runs `.github/workflows/update-prices.yml`
+      Tuesday to Saturday at 8:47 in India: it reads IBJA's newest PM
+      rates (gold 999, 916, 750, 585; silver 999), rewrites
+      `assets/data/prices.json` and every nisab figure, runs the checker
+      and the tests, and publishes if anything changed. That also covers
+      Ramadan (no separate daily job needed). **Only if** an issue "The
+      gold and silver rate did not update" appears on GitHub (you get an
+      email): ask the website chat to fix it; the page keeps the last
+      rates and their date meanwhile. How it works, and the by-hand
+      command for the website chat: README.md, "The gold and silver rate
+      updates itself". First run: see section 0, item 32.
 
 ### Every month
 

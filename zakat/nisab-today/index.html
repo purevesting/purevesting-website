@@ -7,7 +7,7 @@
 
 <!-- ==================================================================
      PER-PAGE BLOCK — only these six lines differ from page to page.
-     No rupee figure up here: the rates change every week, and this
+     No rupee figure up here: the rates change after every working day, and this
      block is not rewritten by scripts/update_prices.py.
      ================================================================== -->
 
@@ -32,7 +32,7 @@
 
 <!-- STRUCTURED DATA — a summary of this page written for Google (JSON-LD).
      Visitors never see it. scripts/update_prices.py sets "dateModified"
-     to the day it rewrites the figures, every week. -->
+     to the day it rewrites the figures (by itself, after every working day). -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -195,8 +195,8 @@
        THE ANSWER: today's nisab, big, then the gold figure and the
        date. All of it shows on the first screen of a 360px phone.
        Every figure between the NISAB markers is marked data-nisab, so
-       scripts/update_prices.py rewrites it every week (README.md, "How
-       to change the gold and silver rate"): the page is right even
+       scripts/update_prices.py rewrites it by itself after every working
+       day (README.md, "The gold and silver rate updates itself"): the page is right even
        without JavaScript. The script at the bottom of this page reads
        /assets/data/prices.json too, and shows its figures if they are
        newer than the page's (a copy of the page saved for offline
@@ -225,7 +225,7 @@
   <!-- ============================================================
        HOW IT IS WORKED OUT, AS A DRAWING: for silver and for gold, a
        small sum: the grams, × today's rate for 1 gram, = the nisab.
-       The rates and the answers are rewritten every week, like the
+       The rates and the answers are rewritten by themselves, like the
        answer's (the markers below).
        ============================================================ -->
 
@@ -467,7 +467,8 @@
      NISAB TODAY SCRIPT — used on this page only.
      Shows on: /zakat/nisab-today/.
      The page is complete without it: the figures are written into the
-     HTML every week by scripts/update_prices.py. This script adds two
+     HTML by scripts/update_prices.py, which GitHub runs by itself after
+     every working day. This script adds two
      things:
        1. Fresh rates. It reads /assets/data/prices.json (fetched fresh
           whenever the phone is online, see sw.js) and, if its rates are
@@ -486,7 +487,7 @@
 
   /* 1. THE FIGURES ON THE PAGE ---------------------------------------- */
 
-  // Every figure the weekly script writes, by its data-nisab name.
+  // Every figure the update script writes, by its data-nisab name.
   function figures(kind) {
     return document.querySelectorAll('[data-nisab="' + kind + '"]');
   }

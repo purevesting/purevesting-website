@@ -3,5 +3,8 @@
   "source_name": "IBJA",
   "source_url": "https://ibjarates.com/",
   "gold_24k_per_gram": 12389.3,
-  "silver_999_per_gram": 152.528
+  "silver_999_per_gram": 152.528,
+  "gold_22k_per_gram": 11348.6,
+  "gold_18k_per_gram": 9292,
+  "gold_14k_per_gram": 7247.7
 }

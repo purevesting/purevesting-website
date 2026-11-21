@@ -28,7 +28,7 @@ the site (.assetsignore keeps it off).
 - **Ready, not live yet:** step 1.1, the gold and silver rates and
   /zakat/nisab-today/ (see "What step 1.1 did" below). Say "go live".
 - **Checker:** 0 ERROR, 4 WARN (the four long titles, item 16).
-- **Tests:** `node --test tests/`: 17 of 17 pass.
+- **Tests:** `node --test tests/`: 20 of 20 pass.
 - **Next:** step 1.2, the zakat calculator.
 
 ## What step 1.1 did (21 Nov 2026, not live yet)
@@ -42,11 +42,19 @@ the site (.assetsignore keeps it off).
   fatwa's line on which rate; a tile to the zakat calculator (to /tools/
   until step 1.2); Sources, closed.
 - `assets/data/prices.json`: IBJA's closing rates of Friday 20 Nov 2026,
-  gold ₹12,389.30 and silver ₹152.528 a gram.
-- **Every Sunday** you run one line (TODO.md 0b, README "How to change
-  the gold and silver rate"):
-  `python3 scripts/update_prices.py --gold … --silver … --date …`
-- `assets/calc/nisab.js` (the maths) and `tests/nisab.test.js` (17
+  gold ₹12,389.30 and silver ₹152.528 a gram (and IBJA's own 22K, 18K
+  and 14K rates).
+- **The rates update by themselves.** Nothing to run, ever. Every morning
+  after a working day (Tuesday to Saturday, 8:47 in India), GitHub reads
+  IBJA's newest rates, rewrites the figures, runs the checker and the
+  tests, and publishes. If it fails, nothing changes on the site and
+  GitHub opens an issue (you get an email): then ask the website chat.
+  Ramadan is covered too. (`.github/workflows/update-prices.yml`,
+  `scripts/update_prices.py --from-ibja`.)
+- 22K, 18K and 14K: IBJA's own rates (916, 750, 585) are used, so 14K is
+  58.5%, its hallmark. You said "choose whichever suits best"; this is
+  what the zakat research prefers (Fix 8), and it costs you nothing.
+- `assets/calc/nisab.js` (the maths) and `tests/nisab.test.js` (20
   tests). The checker bans five more names. sw.js fetches the rates
   fresh online.
 - Fixed on the way: `.assetsignore` kept every folder named `data`
@@ -111,18 +119,24 @@ the site (.assetsignore keeps it off).
 - [ ] 1.4 Ramadan switch
 - [ ] 1.5 Scholar's edits and launch
 
-## 1b. New from step 1.1 — for MAS (TODO.md, section 0)
+## 1b. Step 1.1 — what I need from you (TODO.md, section 0)
 
 - [ ] **Say "go live"** for step 1.1, after looking at the screenshots.
-- [ ] **Item 28. Check the first rates** on ibjarates.com (PM table, row
-      20/11/2026: gold 1,23,893, silver 1,52,528). Both fell sharply since
-      9 Nov.
-- [ ] **Item 29. "Silver or gold?": the reason for gold — decide.** Its
-      fatwa gives a different reason from the card's words.
+- [ ] **Item 28. Check the first rates** on ibjarates.com → "Previous
+      Dates Rate" → the PM table → row 20/11/2026: gold 999 = 1,23,893,
+      silver 999 = 1,52,528. Both fell sharply since 9 Nov.
+- [ ] **Item 29. "Silver or gold?": the reason for gold — decide.** The
+      card says "because silver has lost much of its value"; its fatwa
+      says scholars agree on gold's weight but differ on silver's. Say
+      "keep the words" or send new ones.
 - [ ] **Item 30. Nisab today in the menu — when?**
-- [ ] **Item 31. Two choices for step 1.2:** 14K as 14/24 or 585, and
-      IBJA's own 22K rate.
-- [ ] **Every Sunday:** the gold and silver rate. Next: 29 Nov 2026.
+- [ ] **Item 32. After "go live", once:** github.com → the repo →
+      Actions → "Gold and silver rate" → Run workflow. It should turn
+      green. If red: Settings → Actions → General → Workflow permissions
+      → "Read and write permissions" → Save, and run it again.
+- [x] ~~Item 31. 14K and 22K~~ — decided: IBJA's own rates (you said
+      "choose whichever suits best").
+- [x] ~~Every Sunday~~ — no longer: automatic.
 
 ## 2. New from the extra step — for MAS (TODO.md, section 0)
 
@@ -218,7 +232,7 @@ the site (.assetsignore keeps it off).
 
 ## 6. Jobs that repeat (TODO.md, section 0b)
 
-Every Sunday, the gold and silver rate (since step 1.1). Monthly NSE figures and the screener update (it now writes the red
+The gold and silver rate updates itself after every working day (since step 1.1; only an email if it fails). Monthly NSE figures and the screener update (it now writes the red
 "✗ Not halal" and adds the month to `data/shariah-history.csv`), a new video in `videos/list.js`, quarterly fund returns
 and small savings rates, digital gold terms, the boycott list, the loan
 calculator's typical rates. New video: purevesting.com/join in its

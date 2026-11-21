@@ -1,0 +1,95 @@
+# ==========================================================================
+# THE GOLD AND SILVER RATE, BY ITSELF (step 1.1, 21 Nov 2026)
+# Shows on: nothing you can see. GitHub runs it; it keeps the nisab on
+# /zakat/nisab-today/ (and any page with NISAB markers) up to date.
+#
+# Every morning after a working day (Tuesday to Saturday, 8:47 in India),
+# GitHub:
+#   1. reads IBJA's newest closing (PM) rates from ibjarates.com and
+#      rewrites prices.json and the nisab figures
+#      (scripts/update_prices.py --from-ibja);
+#   2. runs the checker and the tests;
+#   3. if the rates changed and everything passed, saves them to main,
+#      which puts them live (Cloudflare publishes every push to main).
+# IBJA publishes nothing on Saturdays, Sundays and holidays: on those
+# days nothing changes and nothing is saved.
+#
+# If anything goes wrong, nothing is saved: the page keeps the last rates,
+# with their date. GitHub then opens an issue, "The gold and silver rate
+# did not update", with a link to what happened. Ask the website chat to
+# fix it.
+#
+# It only runs from the main branch. "Run workflow" on the Actions tab of
+# GitHub runs it once by hand.
+# ==========================================================================
+
+name: Gold and silver rate
+
+on:
+  schedule:
+    - cron: "17 3 * * 2-6"     # 03:17 UTC = 8:47 in India, Tuesday to Saturday
+  workflow_dispatch:           # the "Run workflow" button, for a test
+
+# What the run may do: save files to the repo, and open an issue.
+permissions:
+  contents: write
+  issues: write
+
+# Never two runs at once.
+concurrency:
+  group: gold-and-silver-rate
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Get the site
+        uses: actions/checkout@v4
+
+      - name: Get Node 22, for the tests
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Read IBJA's newest rates and rewrite the nisab figures
+        run: python3 scripts/update_prices.py --from-ibja
+
+      - name: Run the checker (0 ERROR needed)
+        run: python3 scripts/check_site.py
+
+      - name: Run the tests
+        run: node --test tests/
+
+      - name: Save and publish, if the rates changed
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No new rates: nothing to save."
+            exit 0
+          fi
+          AS_OF=$(python3 -c "import json; print(json.load(open('assets/data/prices.json'))['as_of'])")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- assets/data/prices.json sitemap.xml '*.html'
+          git commit -m "Gold and silver rate: IBJA's closing rates of $AS_OF"
+          git pull --rebase
+          git push
+
+      - name: If anything went wrong, open an issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_LINK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          TITLE="The gold and silver rate did not update"
+          OPEN=$(gh issue list --state open --search "in:title \"$TITLE\"" --json number --jq 'length')
+          if [ "$OPEN" = "0" ]; then
+            gh issue create --title "$TITLE" --body "The automatic update of the gold and silver rate stopped on $(date -u +%Y-%m-%d). Nothing was saved: the nisab page keeps showing the last rates, with their date.
+
+          What happened: $RUN_LINK
+
+          Ask the website chat to fix the rate update. Close this issue once it runs again."
+          else
+            echo "An issue is already open; not opening another."
+          fi

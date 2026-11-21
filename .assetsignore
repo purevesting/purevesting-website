@@ -6,6 +6,8 @@
 .git/
 .claude/
 .vscode/
+# GitHub's settings, and the automatic gold and silver rate update (step 1.1).
+.github/
 
 # Notes and working files that are for you, not for visitors.
 # (Delete the TODO.md line if you ever want the TODO list public.)

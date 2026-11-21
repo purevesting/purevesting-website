@@ -10,8 +10,9 @@
      3. Rounding, and how figures are written (₹1,11,366).
      4. Wrong numbers are refused, never turned into a nisab.
      5. The page shows the figures that prices.json gives.
-     6. The weekly script writes the same figures as nisab.js, and stops
-        on a rate typed for 10 grams. (Needs Python; skipped without it.)
+     6. The update script writes the same figures as nisab.js, reads
+        IBJA's page, and stops on a rate typed for 10 grams. (Needs
+        Python; skipped without it.)
    Not published on the site (tests/ is in .assetsignore).
    ========================================================================== */
 
@@ -74,6 +75,19 @@ test('the value of gold: grams × the rate for its karat', () => {
   assert.equal(Nisab.goldValue(10, 18, 14000), 105000);
   assert.equal(Nisab.roundToRupee(Nisab.goldValue(10, 14, 14000)), 81667);   // 81666.67
   assert.equal(Nisab.goldValue(0, 22, 14000), 0);
+});
+
+test("from prices.json: IBJA's own 22K, 18K and 14K rates when it has them", () => {
+  const prices = { gold_24k_per_gram: 12389.3, gold_22k_per_gram: 11348.6,
+                   gold_18k_per_gram: 9292, gold_14k_per_gram: 7247.7 };
+  assert.equal(Nisab.goldRateFromPrices(prices, 24), 12389.3);
+  assert.equal(Nisab.goldRateFromPrices(prices, 22), 11348.6);   // IBJA's 916
+  assert.equal(Nisab.goldRateFromPrices(prices, 18), 9292);      // IBJA's 750
+  assert.equal(Nisab.goldRateFromPrices(prices, 14), 7247.7);    // IBJA's 585
+  // Without them (typed by hand, or the test prices): parts of 24.
+  assert.equal(Nisab.goldRateFromPrices({ gold_24k_per_gram: 14000 }, 22).toFixed(2), '12833.33');
+  assert.equal(Nisab.goldRateFromPrices({ gold_24k_per_gram: 14000, gold_14k_per_gram: null }, 14).toFixed(2), '8166.67');
+  assert.throws(() => Nisab.goldRateFromPrices(prices, 9), /Karat/);
 });
 
 test('9K and other karats are refused: they are not counted as gold', () => {
@@ -175,9 +189,14 @@ function checkPageMatches(html, prices) {
   return figures;
 }
 
-test('prices.json has the five things the pages read', () => {
+test('prices.json has the five things the pages read, and maybe IBJA\'s karat rates', () => {
   const prices = JSON.parse(fs.readFileSync(PRICES_FILE, 'utf8'));
-  assert.deepEqual(Object.keys(prices), ['as_of', 'source_name', 'source_url', 'gold_24k_per_gram', 'silver_999_per_gram']);
+  const keys = Object.keys(prices);
+  assert.deepEqual(keys.slice(0, 5), ['as_of', 'source_name', 'source_url', 'gold_24k_per_gram', 'silver_999_per_gram']);
+  for (const extra of keys.slice(5)) {
+    assert.ok(['gold_22k_per_gram', 'gold_18k_per_gram', 'gold_14k_per_gram'].includes(extra), 'unknown field ' + extra);
+    assert.ok(prices[extra] > prices.gold_24k_per_gram / 2 && prices[extra] <= prices.gold_24k_per_gram, extra);
+  }
   assert.match(prices.as_of, /^\d{4}-\d{2}-\d{2}$/);
   assert.ok(prices.gold_24k_per_gram > 0 && prices.silver_999_per_gram > 0);
 });
@@ -227,7 +246,7 @@ function runScript(python, folder, args) {
 
 const python = findPython();
 
-test('the weekly script rewrites prices.json and the page, with the same figures as nisab.js',
+test('rates typed by hand: the script rewrites prices.json and the page, with the same figures as nisab.js',
      { skip: python ? false : 'Python 3 not found' }, () => {
   const folder = copyOfTheSite();
   const run = runScript(python, folder, ['--gold', '13000.5', '--silver', '160.123', '--date', '2026-11-13']);
@@ -249,7 +268,7 @@ test('the weekly script rewrites prices.json and the page, with the same figures
   fs.rmSync(folder, { recursive: true, force: true });
 });
 
-test('the weekly script stops, changing nothing, on a gold rate typed for 10 grams',
+test('rates typed by hand: the script stops, changing nothing, on a gold rate for 10 grams',
      { skip: python ? false : 'Python 3 not found' }, () => {
   const folder = copyOfTheSite();
   const before = fs.readFileSync(path.join(folder, 'assets/data/prices.json'), 'utf8');
@@ -259,5 +278,47 @@ test('the weekly script stops, changing nothing, on a gold rate typed for 10 gra
   assert.match(run.stdout, /Is it the rate for 10 grams\?/);
   assert.equal(fs.readFileSync(path.join(folder, 'assets/data/prices.json'), 'utf8'), before);
   assert.equal(fs.readFileSync(path.join(folder, 'zakat/nisab-today/index.html'), 'utf8'), pageBefore);
+  fs.rmSync(folder, { recursive: true, force: true });
+});
+
+// Writes a prices.json into the copy, as if the site had these rates.
+function setPrices(folder, prices) {
+  fs.writeFileSync(path.join(folder, 'assets/data/prices.json'), JSON.stringify(prices, null, 2) + '\n');
+}
+
+const SAMPLE = path.join(__dirname, 'ibja-sample.html');   // IBJA's tables, 21 Nov 2026
+
+test("the automatic update reads IBJA's newest PM row: 999, 916, 750, 585 and silver",
+     { skip: python ? false : 'Python 3 not found' }, () => {
+  const folder = copyOfTheSite();
+  setPrices(folder, { as_of: '2026-11-13', source_name: 'IBJA', source_url: 'https://ibjarates.com/',
+                      gold_24k_per_gram: 13580.9, silver_999_per_gram: 178 });
+  const run = runScript(python, folder, ['--from-ibja', SAMPLE]);
+  assert.equal(run.status, 0, run.stdout + run.stderr);
+  const prices = JSON.parse(fs.readFileSync(path.join(folder, 'assets/data/prices.json'), 'utf8'));
+  assert.deepEqual(prices, {
+    as_of: '2026-11-20',                 // the PM table's newest row
+    source_name: 'IBJA',
+    source_url: 'https://ibjarates.com/',
+    gold_24k_per_gram: 12389.3,          // 1,23,893 for 10 g
+    silver_999_per_gram: 152.528,        // 1,52,528 for 1 kg
+    gold_22k_per_gram: 11348.6,          // 916: 1,13,486 for 10 g
+    gold_18k_per_gram: 9292,             // 750: 92,920
+    gold_14k_per_gram: 7247.7            // 585: 72,477
+  });
+  checkPageMatches(fs.readFileSync(path.join(folder, 'zakat/nisab-today/index.html'), 'utf8'), prices);
+  fs.rmSync(folder, { recursive: true, force: true });
+});
+
+test("the automatic update changes nothing when IBJA's rates are older than the site's",
+     { skip: python ? false : 'Python 3 not found' }, () => {
+  const folder = copyOfTheSite();
+  setPrices(folder, { as_of: '2026-11-21', source_name: 'IBJA', source_url: 'https://ibjarates.com/',
+                      gold_24k_per_gram: 12389.3, silver_999_per_gram: 152.528 });
+  const before = fs.readFileSync(path.join(folder, 'assets/data/prices.json'), 'utf8');
+  const run = runScript(python, folder, ['--from-ibja', SAMPLE]);
+  assert.equal(run.status, 0, run.stdout + run.stderr);
+  assert.match(run.stdout, /older than the site's/);
+  assert.equal(fs.readFileSync(path.join(folder, 'assets/data/prices.json'), 'utf8'), before);
   fs.rmSync(folder, { recursive: true, force: true });
 });
