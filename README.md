@@ -199,7 +199,8 @@ purevesting.com/ask/.
 | `corrections/`, `disclaimer/`, `privacy/` | The corrections log and the two legal pages. |
 | `stop-the-genocide/` | The boycott list. Rewritten by `scripts/update_boycott.py` when its dataset changes. Linked from the menu (on a computer), the home page and the footer. |
 | `official/` | "Is it really Purevesting?" — our only official places, what we never do, and what to do about a fake. Linked from the footer of every page ("Official channels"). Since 17 Nov 2026 (step 0.2). |
-| `zakat/nisab-today/` | "What is the nisab today?" — the nisab in rupees by silver (big) and by gold, with the date of the rates; how it is worked out, as a drawing; "Silver or gold?"; a box for your own jeweller's rate. Its figures sit between `<!-- NISAB START -->` and `<!-- NISAB END -->` and are rewritten by itself after every working day (`scripts/update_prices.py`, run by GitHub). Linked from /tools/ (not from the menu yet). Since 21 Nov 2026 (step 1.1). |
+| `zakat/nisab-today/` | "What is the nisab today?" — the nisab in rupees by silver (big) and by gold, with the date of the rates; how it is worked out, as a drawing; "Silver or gold?"; a box for your own jeweller's rate. Its figures sit between `<!-- NISAB START -->` and `<!-- NISAB END -->` and are rewritten by itself after every working day (`scripts/update_prices.py`, run by GitHub). Linked from /tools/ and from the zakat calculator (not from the menu yet); its last tile leads to the calculator. Since 21 Nov 2026 (step 1.1). |
+| `zakat-calculator/` | "How much zakat do I owe?" — the zakat calculator, for one person at a time. The first screen of a phone holds the quick calculator (cash and bank, gold, what you must pay now) and the answer; "Add more" opens six groups, one at a time on a phone. Where scholars differ it asks, and "Not sure" shows the lowest and the highest number. Its nisab figures sit between NISAB markers, rewritten by themselves with the rates. How it works: "How the zakat calculator works", below. In the Tools menu. Since 21 Nov 2026 (step 1.2). |
 | `404.html` | "This page doesn't exist", for any wrong address. |
 | `offline/` | What the app shows for a page never opened before, with no internet. |
 
@@ -207,10 +208,11 @@ purevesting.com/ask/.
 
 | File or folder | What it is |
 |---|---|
-| `assets/site.css` | The whole look: colours, fonts, cards, charts… in 32 numbered sections, listed at the top of the file. Each section says where it shows on the site. |
+| `assets/site.css` | The whole look: colours, fonts, cards, charts… in 34 numbered sections, listed at the top of the file. Section 34, "Tools: shared blocks", holds the boxes, questions and answer card later calculators reuse (since step 1.2). Each section says where it shows on the site. |
 | `assets/site.js` | The polish: rising cards, filling charts, tap a figure to see its source, numbers counting up, the app, the offline note. The site works without it. |
 | `assets/data/prices.json` | **The gold and silver rates**: IBJA's gold 999 (24K) and silver 999 rates for 1 gram, and their date. One small file any page can read. Rewritten by itself every morning after a working day (see "The gold and silver rate updates itself", below). Since step 1.1. |
-| `assets/calc/` | The money maths, as small functions that only work out an answer (CLAUDE.md, "Always" rule 7), each with its tests in `tests/`. `nisab.js`: the nisab from a silver or gold rate, tola to grams, the value of 24K, 22K, 18K or 14K gold, and how figures are written (₹1,11,366). Since step 1.1. |
+| `assets/calc/` | The money maths, as small functions that only work out an answer (CLAUDE.md, "Always" rule 7), each with its tests in `tests/`. `nisab.js`: the nisab from a silver or gold rate, tola to grams, the value of 24K, 22K, 18K or 14K gold, and how figures are written (₹1,11,366). Since step 1.1. `zakat.js`: the zakat for one person, from the boxes and the answers to the questions where scholars differ, with the lowest and the highest number for "Not sure". Since step 1.2. |
+| `assets/tools/` | The screen code of a tool page: it reads the boxes, calls the maths in `assets/calc/` and draws the answer, and works nothing out itself. `zakat-page.js`: the zakat calculator's (since step 1.2). |
 | `assets/share-card.js` | The "Share as image" button under an article's answer. |
 | `assets/videos.js` | Turns `videos/list.js` into video cards (home page and /videos/). |
 | `videos/list.js` | **The list of videos — the one file to edit for a new video.** |
@@ -236,7 +238,7 @@ purevesting.com/ask/.
 | `scripts/update_boycott.py` | The boycott list update ("run the boycott update"). |
 | `scripts/update_prices.py` | The gold and silver rate: reads IBJA, rewrites `assets/data/prices.json` and every nisab figure on every page. GitHub runs it by itself (see "The gold and silver rate updates itself", below). Since step 1.1. |
 | `.github/workflows/update-prices.yml` | Tells GitHub to run that script every morning after a working day, check the site, and publish the new rates. Since step 1.1. |
-| `tests/` | The tests for the money maths in `assets/calc/` (CLAUDE.md, "Always" rule 7). Run them all with `node --test tests/` (Node 18 or newer, nothing to install). `nisab.test.js` checks the nisab maths, that the page shows the figures `prices.json` gives, that the update script works out the same figures, and that it reads IBJA's page. `index.js` only makes the command work on newer Node. Since step 1.1. |
+| `tests/` | The tests for the money maths in `assets/calc/` (CLAUDE.md, "Always" rule 7). Run them all with `node --test tests/` (Node 18 or newer, nothing to install). `nisab.test.js` checks the nisab maths, that the page shows the figures `prices.json` gives, that the update script works out the same figures, and that it reads IBJA's page. `zakat.test.js` checks the zakat maths: cases A to R (not K) and the seven families of MAS's zakat rules, the loan maths, "Not sure", and that the update script rewrites the calculator page too (since step 1.2). `index.js` only makes the command work on newer Node. Since step 1.1. |
 | `data/shariah-history.csv` | The history of NSE's Shariah list: one row per Nifty 500 company per month (month, date of NSE's data, symbol, company, and 1 or 0 for in or out of the Shariah index), from October 2026. The screener update adds each new month by itself. |
 | `plan/`, `data/`, `partials/`, `templates/`, `worker/` | Folders for later steps; `data/` exists (the line above). `.assetsignore` already lists them, so nothing put in them can go live by mistake. It lists `data/` as `/data/`, the top folder only, so `assets/data/` (the rates the pages read) still goes live (since step 1.1). |
 | `wrangler.jsonc`, `.assetsignore` | Cloudflare's settings: what is published, and the 404 page. |
@@ -368,7 +370,8 @@ only the 24K and silver rates; 22K, 18K and 14K are worked out as parts
 of 24 until the next automatic run.
 
 What the script changes, so nothing else needs touching:
-`assets/data/prices.json`; on every page, each figure between
+`assets/data/prices.json`; on every page (today /zakat/nisab-today/ and
+/zakat-calculator/), each figure between
 `<!-- NISAB START -->` and `<!-- NISAB END -->` that is marked
 `data-nisab="…"` (the nisab by silver and by gold, the two rates, the
 date); and, on each page it changed, `dateModified` and its date in
@@ -385,6 +388,65 @@ To put a nisab figure on another page: copy it from
 `<!-- NISAB START -->` and `<!-- NISAB END -->` around it. A rupee
 figure between the markers without `data-nisab`, or a `data-nisab`
 figure outside them, makes the script stop and say where.
+
+### How the zakat calculator works
+
+/zakat-calculator/ (step 1.2, 21 Nov 2026). It follows the method in
+MAS's zakat rules (Part 3 of the private rules page), with every
+"start with" as the rules give it.
+
+**The files.** `zakat-calculator/index.html` (the page: the boxes, the
+questions, the answer card, six questions and answers, "Read more",
+Sources) · `assets/calc/zakat.js` (the maths, small pure functions,
+using `assets/calc/nisab.js`) · `assets/tools/zakat-page.js` (the
+screen code: it reads the boxes, calls zakat.js and draws the answer)
+· `tests/zakat.test.js` (the tests) · section 34 of `assets/site.css`
+(the blocks).
+
+**The screen.** On a phone the first screen is the quick calculator:
+three boxes (cash and bank, gold, what you must pay now) and the
+answer under them. "Add more" opens the full calculator in six groups:
+Money · Gold and silver · Investments · Property · Business (after the
+tick "I run a business or a shop") · What you owe. A phone shows one
+group at a time, with Back and Next; a computer shows them all, with
+the answer beside them. The three quick boxes are the first boxes of
+groups 1, 2 and 6, so nothing is typed twice. While the groups are
+filled, a thin bar at the bottom says "Your zakat so far".
+
+**The maths, in short.** Add up what is counted → take off what you
+owe → compare with the nisab: only gold counted → its weight against
+87.48 g; only silver → its weight against 612.36 g; anything else →
+its value against the silver nisab, or the gold one if chosen (then a
+metal that reaches its own weight still owes zakat) → 2.5% of all of
+it, rounded to the rupee. Long loans: from the loan left, the rate and
+the EMI, the loan part of the next 12 months; the interest is never
+taken off.
+
+**The nine questions**, where scholars differ: which nisab · women's
+jewellery worn regularly · long loans · long-term shares · compulsory
+PF and NPS · LIC and ULIP · gold kept for a gold loan · why the plot
+was bought · a flat booked to resell. A question shows only once its
+box has a number. "Not sure" works the zakat out every way and shows
+the lowest and the highest, never an average. Their words are the
+visitor words of the rules: change them only with MAS.
+
+**The rates.** IBJA's: from the page itself (between NISAB markers,
+rewritten after every working day) and from `prices.json` (with IBJA's
+own 22K, 18K and 14K rates). A rate typed over them is used instead,
+and its karats are then 22, 18 or 14 parts of 24.
+
+**Saved, and offline.** Save keeps the numbers on the phone only
+(the browser's own storage, `purevesting-zakat-v1`); nothing is sent
+anywhere. "Clear my numbers" deletes them. `sw.js` keeps the page, its
+two scripts and the rates, so it works with no internet after one
+visit.
+
+**To change something.** A word: in `zakat-calculator/index.html`
+(each of the six questions and answers is there twice: on the page and
+in the structured data at the top). A rule: in `assets/calc/zakat.js`,
+with a test in `tests/zakat.test.js`, then `node --test tests/`. In
+step 1.3: point "Interest to give away" (the "What next" list) at the
+interest page.
 
 ### Building blocks, and their names in the HTML
 
@@ -469,3 +531,40 @@ Copy from the page named in brackets.
   H2); `word-red` only for the cost of a loan.
 - **Buttons**: `button` (solid green), `button-quiet` (outlined),
   `button-light` (white, on a dark band).
+- **A step field** (`zakat-calculator/`, since step 1.2): `<div
+  class="step-field">` with a `step-label`, a `unit-box` holding a
+  `unit-chip` (₹ before the number; g, kg, tola or % after it) and the
+  `step-input`, then a `step-help` line. A unit the visitor can change:
+  `<span class="unit-pick">` with two buttons, the chosen one
+  `aria-pressed="true"`. Two fields side by side: `step-pair`. A
+  warning line the script fills in: `step-hint`.
+- **Picks** (`zakat-calculator/`): answers as round buttons, with radio
+  buttons underneath: `<div class="pick-group"><label class="pick"><input
+  type="radio" …><span>22K</span></label>…</div>`. (A `chip` is the
+  ✓ / ✗ label: a different thing.)
+- **A question where scholars differ** (`zakat-calculator/`):
+  `<fieldset class="choice-block">`, its question in `<legend
+  class="choice-legend">` with a `sign sign-differ`, its answers as
+  picks. A plain question of fact: add `choice-plain`.
+- **A calculator in groups** (`zakat-calculator/`): `<form
+  class="tool-form is-quick">` shows only the boxes marked
+  `data-quick`; with `is-full`, a phone shows one `<fieldset
+  class="step-group">` at a time (the `is-current` one, with the
+  `step-nav` bar: Back · 1 of 6 · Next) and a computer shows every
+  group. `add-row` adds a row of boxes; `tick` is a tick box.
+- **The answer card** (`zakat-calculator/`): `<div class="answer-card">`,
+  white with a gold edge: `answer-label`, `answer-amount` (the big
+  figure) and `answer-line`s. Two numbers: `range-answer`, with two
+  `range-end`s, the scales between them and `range-ask`. The parts:
+  `parts`, with a `parts-bar` (one `part-…` piece per part) and the same
+  figures in `parts-key`.
+- **Save · Share · What next** (`zakat-calculator/`): `<div
+  class="tool-actions">`, three `tool-action` buttons in that order,
+  then the `tool-note` line, `tool-clear` and the `what-next` list.
+- **The running total** (`zakat-calculator/`): `<a
+  class="running-total">`, a thin bar fixed at the bottom of the
+  screen, shown by the page's script.
+- **Questions and answers** (`zakat-calculator/`): `<div
+  class="faq-list">`, each a `<details class="source faq-item">`.
+- **Print** (`zakat-calculator/`): a page with an `answer-card` prints
+  only that card; `print-only` shows only on paper.

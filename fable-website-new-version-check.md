@@ -1,7 +1,8 @@
 # Fable website new version check — what is still left
 
 Updated 21 November 2026: step 1.1 (the gold and silver rates, and the
-page "Nisab today") is live. A short list of everything still open, so nothing gets lost. The full
+page "Nisab today") is live. Step 1.2 (the zakat calculator) is done,
+not live yet. A short list of everything still open, so nothing gets lost. The full
 details are in TODO.md (section numbers given below). Not published on
 the site (.assetsignore keeps it off).
 
@@ -25,9 +26,12 @@ the site (.assetsignore keeps it off).
   extra step did" below).
 - **Live (21 Nov 2026):** step 1.1, purevesting.com/zakat/nisab-today.
   The gold and silver rates update themselves after every working day.
+- **Done, not live yet (21 Nov 2026):** step 1.2,
+  purevesting.com/zakat-calculator: the zakat calculator, one person at
+  a time; in the Tools menu on every page. Live once MAS says "go live".
 - **Checker:** 0 ERROR, 4 WARN (the four long titles, item 16).
-- **Tests:** `node --test tests/`: 20 of 20 pass.
-- **Next:** step 1.2, the zakat calculator.
+- **Tests:** `node --test tests/`: 63 of 63 pass.
+- **Next:** step 1.3, the zakat answers and the interest tool.
 
 ## What the extra step did (19 Nov 2026, not live yet)
 
@@ -82,10 +86,24 @@ the site (.assetsignore keeps it off).
 - [x] 0.3 The join page
 - [x] 0.4 Monthly update and history
 - [x] 1.1 Rates and Nisab today
-- [ ] 1.2 Zakat calculator
+- [x] 1.2 Zakat calculator (done 21 Nov 2026, not live yet)
 - [ ] 1.3 Zakat answers and interest tool
 - [ ] 1.4 Ramadan switch
 - [ ] 1.5 Scholar's edits and launch
+
+## 1a. Still to do from step 1.2 — for MAS (TODO.md, section 0)
+
+- [ ] **Item 33. Check the calculator on your phone:** three checks from
+      your zakat rules (Sana 2b, Fatima, Ayesha), the exact taps are in
+      TODO.md; then Save, close, open again; and once in flight mode.
+- [ ] **Item 34. What I decided where the rules say nothing:** twelve
+      small points (for example: cash and bank share one box; a loan
+      with no EMI counts as due within 12 months; the plot counts only
+      once "To sell" is picked). Say "fine", or change any of them.
+- [ ] **Item 35. Two things waiting:** the "check it with me on a call"
+      block stays inside comment marks until the check-up is live and the
+      lawyer says yes; "Interest to give away" goes to /tools/ until
+      step 1.3.
 
 ## 1b. Still to do from step 1.1 — for MAS (TODO.md, section 0)
 

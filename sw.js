@@ -21,6 +21,9 @@
      always fetched fresh while the phone is online, never from the
      browser's own quick store, so the nisab is never worked out from an
      old rate. The last saved copy is used only when there is no internet.
+   - The zakat calculator (since step 1.2): the page, its two scripts and
+     the rates are saved the first time anyone visits the site, so the
+     calculator works in flight mode after one visit.
    - Fonts and images: the saved copy at once (they almost never change),
      and a fresh copy is fetched quietly in the background for next time.
    - Anything on another website (YouTube thumbnails, Beehiiv, the form
@@ -32,34 +35,44 @@
    v2), so phones that already have the app replace their saved copies.
    ========================================================================== */
 
-var VERSION = 'v2';
+var VERSION = 'v3';
 var STATIC = 'pv-static-' + VERSION;   // the stylesheet, scripts, fonts, images
 var PAGES  = 'pv-pages-' + VERSION;    // pages, saved as people open them
 var OFFLINE_URL = '/offline/';
 var RATES_URL = '/assets/data/prices.json';   // the gold and silver rates (step 1.1)
+var ZAKAT_URL = '/zakat-calculator/';         // the zakat calculator (step 1.2)
 
 // Saved the moment the app is installed (or the site is first visited), so
-// the home page and the "you're offline" page open even with no internet.
+// the home page, the "you're offline" page and the zakat calculator (with
+// its scripts and the rates) open even with no internet.
 var PRECACHE = [
   '/',
   OFFLINE_URL,
+  ZAKAT_URL,
   '/assets/site.css',
   '/assets/site.js',
   '/assets/share-card.js',
+  '/assets/calc/nisab.js',
+  '/assets/calc/zakat.js',
+  '/assets/tools/zakat-page.js',
+  RATES_URL,
   '/assets/fonts/bricolage-grotesque-latin-wght.woff2',
   '/assets/fonts/plus-jakarta-sans-latin-wght.woff2',
   '/assets/img/logo.svg',
   '/assets/img/byline-96.webp'
 ];
 
+// The pages in that list; they go in the pages store.
+var PRECACHE_PAGES = ['/', OFFLINE_URL, ZAKAT_URL];
+
 
 /* 1. INSTALL — save the list above ======================================= */
 
 self.addEventListener('install', function (event) {
   event.waitUntil(
-    // The two pages go in the pages store, everything else in static.
+    // The pages go in the pages store, everything else in static.
     Promise.all(PRECACHE.map(function (url) {
-      var store = (url === '/' || url === OFFLINE_URL) ? PAGES : STATIC;
+      var store = PRECACHE_PAGES.indexOf(url) >= 0 ? PAGES : STATIC;
       return fetch(url, { cache: 'no-cache' }).then(function (response) {
         return save(store, url, response);
       });

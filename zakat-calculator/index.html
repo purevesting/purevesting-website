@@ -1,0 +1,1311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FAF7F0">
+
+<!-- ==================================================================
+     PER-PAGE BLOCK — only these six lines differ from page to page.
+     No rupee figure up here: the rates change after every working day,
+     and this block is not rewritten by scripts/update_prices.py.
+     ================================================================== -->
+
+<title>Zakat calculator India: gold, silver, cash and loans</title>
+<meta name="description" content="Work out zakat for one person: cash, gold in grams or tola, silver, shares, PF and loans, at today's IBJA rates. Where scholars differ, see both numbers.">
+<link rel="canonical" href="https://purevesting.com/zakat-calculator/">
+<meta property="og:title" content="How much zakat do I owe?">
+<meta property="og:description" content="A free zakat calculator for one person at a time: cash, gold, silver, shares and loans, at today's gold and silver rates.">
+<meta property="og:url" content="https://purevesting.com/zakat-calculator/">
+
+<!-- ================ END PER-PAGE BLOCK ============================== -->
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Purevesting">
+<!-- This page's preview image (1200x630), made from og-template.html.
+     It shows no rupee figure, so it never needs remaking for new rates. -->
+<meta property="og:image" content="https://purevesting.com/assets/og/zakat-calculator.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="en_IN">
+
+<!-- STRUCTURED DATA — a summary of this page written for Google (JSON-LD):
+     the calculator, and the six questions and answers near the bottom of
+     the page (keep them word for word the same as the page's). Visitors
+     never see it. scripts/update_prices.py sets "dateModified" to the day
+     it rewrites the nisab figures (by itself, after every working day). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://purevesting.com/zakat-calculator/#app",
+      "name": "Zakat calculator",
+      "description": "Work out zakat for one person: cash, gold in grams or tola, silver, shares, PF and loans, at today's IBJA rates. Where scholars differ, see both numbers.",
+      "url": "https://purevesting.com/zakat-calculator/",
+      "image": "https://purevesting.com/assets/og/zakat-calculator.png",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+      "datePublished": "2026-11-21",
+      "dateModified": "2026-11-21",
+      "inLanguage": "en-IN",
+      "publisher": { "@id": "https://purevesting.com/#organization" },
+      "isPartOf": { "@id": "https://purevesting.com/#website" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://purevesting.com/zakat-calculator/#questions",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is nisab?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The minimum for zakat: the value of 612.36 g of silver, or of 87.48 g of gold. Zakat is due once what is yours, after what you must pay now, reaches it. Today's figure, with its date, is on the page Nisab today." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which gold and silver rate do you use?",
+          "acceptedAnswer": { "@type": "Answer", "text": "IBJA's latest closing rates (the India Bullion and Jewellers Association), with its own rates for 22K, 18K and 14K gold. You can type your jeweller's rate over them. A fatwa says today's market rate is better. The lower price a jeweller pays for old gold is also enough." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do I see two numbers?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Where scholars differ and you answer \"Not sure\", the calculator works out your zakat each way and shows the lowest and the highest, side by side. It never shows an average. Pick an answer to see one number, or ask a scholar you trust." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my numbers saved anywhere?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Only on this phone, and only when you tap Save. Nothing you type is sent to Purevesting or to anyone else. \"Clear my numbers\" deletes them." }
+        },
+        {
+          "@type": "Question",
+          "name": "When do I pay?",
+          "acceptedAnswer": { "@type": "Answer", "text": "On your zakat date: the same Islamic date each year, one lunar year after you first had the minimum. If you use an English-calendar date, scholars say pay about 2.577%. Not sure of your date? Ask a scholar how to set one." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is never counted?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Is there zakat on my house, car or furniture? No, not on things you use. But money you are saving for a house, a wedding or Hajj is counted. Also left out: clothes and the tools you earn with; term, health and vehicle insurance; gratuity and pension until they are paid; job shares that have not vested; a rent deposit you paid; a jeweller's gold scheme with no cash refund; diamonds and stones you wear; inheritance, salary and refunds not yet received; a child's own money; and interest or other haram money, which is given away instead." }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://purevesting.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Zakat calculator" }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- Fonts load before the stylesheet asks for them, so text doesn't flash.
+     crossorigin is required on font preloads even for your own files. -->
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="/assets/site.css">
+
+<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- THE APP — lets phones install the site from the browser (see /app/). -->
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Purevesting">
+
+<!-- Tells the stylesheet JavaScript is available, so section 14 may animate.
+     Without it nothing hides and nothing animates. Keep it in <head>. -->
+<script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+
+<!-- ==================================================================
+     HEADER — identical in every page. Never edit this per page.
+     ================================================================== -->
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-logo" href="/">
+      <img src="/assets/img/logo.svg" width="28" height="28" alt="">
+      Purevesting
+    </a>
+    <!-- THE JOIN PILL for phones: the right end of the logo row. On a
+         computer it hides, and its copy in the menu below shows instead.
+         Both go to /join/, the one place to join the email list (MAS,
+         17 Nov 2026, step 0.3). -->
+    <a class="pill-phone" href="/join/">Join</a>
+    <!-- THE MENU, in the words people use (MAS, 6 Nov 2026): Stocks ·
+         Mutual funds · EPF & more · Tools · Learn — the same five on every
+         screen, on one line even on a 360px phone. On a phone a tap opens
+         the word's own page (no drop-downs). On a computer, pointing at a
+         word (or tabbing to it) opens its list, the "nav-menu". Every link
+         is plain HTML, so Google reads them all. site.js marks the word
+         for the page you are on. To add a page, add one line to the right
+         list — on every page, so the header stays identical. -->
+    <nav class="site-nav" aria-label="Main">
+      <div class="nav-item">
+        <a href="/screener/">Stocks</a>
+        <div class="nav-menu">
+          <a href="/screener/">Is my stock halal?</a>
+          <a href="/halal-stocks/">How many Indian stocks are halal?</a>
+          <a href="/methodology/">How a stock is checked</a>
+          <a href="/purification-calculator/">How much should I purify?</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/compare/shariah-mutual-funds/">Mutual funds</a>
+        <div class="nav-menu">
+          <a href="/compare/shariah-mutual-funds/">Halal mutual funds, compared</a>
+          <a href="/sip-calculator/">SIP calculator</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/instruments/">EPF &amp; more</a>
+        <div class="nav-menu">
+          <a href="/instruments/epf/">Is EPF halal?</a>
+          <a href="/instruments/ppf/">Is PPF halal?</a>
+          <a href="/instruments/nps/">Is NPS halal?</a>
+          <a href="/instruments/sukanya-samriddhi/">Is Sukanya Samriddhi halal?</a>
+          <a href="/instruments/digital-gold/">Is digital gold halal?</a>
+          <a href="/instruments/">All of them, checked</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/tools/">Tools</a>
+        <div class="nav-menu">
+          <a href="/screener/">Halal stock screener</a>
+          <a href="/sip-calculator/">SIP calculator</a>
+          <a href="/loan-calculator/">Loan calculator</a>
+          <a href="/purification-calculator/">Purification calculator</a>
+          <a href="/zakat-calculator/">Zakat calculator</a>
+          <a href="/app/">Install the app</a>
+          <a href="/tools/">All tools</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/learn/">Learn</a>
+        <div class="nav-menu">
+          <a href="/videos/">Videos</a>
+          <a href="/methodology/#disagree">Why halal stock lists disagree</a>
+          <a href="/newsletter/">HalalEdge, the weekly email</a>
+          <a href="/ask/">Ask me a question</a>
+          <a href="/about/">About Purevesting</a>
+          <a href="/corrections/">Corrections log</a>
+        </div>
+      </div>
+      <div class="nav-item nav-desktop nav-subscribe"><a href="/join/">Join</a></div>
+      <div class="nav-item nav-highlight"><a href="/stop-the-genocide/">Stop the genocide</a></div>
+    </nav>
+  </div>
+</header>
+
+<!-- ======================= END HEADER =============================== -->
+
+
+<main>
+
+  <!-- WRITING RULES: read the top of README.md before writing a word.
+       Never name a madrasa, school of thought, council or mufti on this
+       page ("a fatwa", "scholars"): the links live in Sources. The words
+       of every question are the ones in MAS's zakat rules; never change
+       them without MAS. -->
+
+  <!-- ============================================================
+       THE CALCULATOR (step 1.2). Shows on: /zakat-calculator/.
+       One person at a time. On a 360px phone the first screen holds the
+       QUICK calculator: three boxes (cash and bank, gold, what you must
+       pay now) and the answer under them, big.
+       "Add more" opens the FULL calculator: six groups, one on screen at
+       a time on a phone ("1 of 6"), all open on a computer. The three
+       quick boxes are the first boxes of groups 1, 2 and 6, so nothing
+       is typed twice.
+       A question where scholars differ shows only once its box has a
+       number. "Not sure" shows two numbers, never an average.
+       The screen code is /assets/tools/zakat-page.js; the maths is
+       /assets/calc/zakat.js (with nisab.js). Nothing typed leaves the
+       phone; Save keeps it on the phone only.
+       Without JavaScript the boxes stay hidden and a plain note (below)
+       says how zakat is worked out.
+       ============================================================ -->
+
+  <section class="section calculator-page zakat-page">
+    <div class="wrap">
+
+      <h1>How much <span class="word-green">zakat</span> do I owe?</h1>
+      <p class="standfirst">Work out zakat for one person at a time. Count only what is yours.</p>
+
+      <!-- WITHOUT JAVASCRIPT: the method in three lines, and the nisab.
+           The nisab and its date sit between the NISAB markers, so
+           scripts/update_prices.py rewrites them by itself. -->
+      <div class="no-js-only zakat-no-js">
+        <!-- NISAB START -->
+        <ol>
+          <li>Add up what is yours: cash and bank money, gold and silver, savings, shares and business stock.</li>
+          <li>Take off what you must pay now.</li>
+          <li>If what is left reaches the nisab (<span class="num" data-nisab="silver-nisab" data-src="src-rates">₹93,402</span> by silver, as of <time datetime="2026-11-20" data-nisab="as-of">20 November 2026</time>), zakat is 2.5% of all of it.</li>
+        </ol>
+        <!-- NISAB END -->
+        <p>The nisab, with its date: <a href="/zakat/nisab-today/">Nisab today</a>.</p>
+      </div>
+
+      <div class="zakat-layout">
+
+        <form class="tool-form is-quick" id="zakat-form" novalidate>
+
+          <!-- ======================================================
+               GROUP 1 · MONEY. Its first box is a quick box.
+               ====================================================== -->
+          <fieldset class="step-group is-current" data-group="1" data-has-quick>
+            <legend class="step-legend">
+              <span class="icon icon-gold" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.5"/><path d="M6.5 9.5v5M17.5 9.5v5"/></svg></span>
+              <span class="step-name">Money</span>
+              <span class="step-count">1 of 6</span>
+            </legend>
+
+            <div class="step-field step-field-row" data-quick>
+              <label class="step-label" for="cash-bank">Cash and bank balance</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="cash-bank" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">Your numbers stay on this phone.</p>
+              <p class="step-help" data-full-only>Cash at home and in all your bank accounts. Leave out interest the bank added: it is not yours. Give away the interest before your zakat date.</p>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="wallets">In wallets and UPI apps</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="wallets" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="other-currencies">Money in other currencies</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="other-currencies" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">In rupees, at today's rate. Leave out any interest.</p>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="trading-cash">Cash in a trading account</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="trading-cash" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="money-lent">Money you lent that you expect back</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="money-lent" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">Leave out money you have no hope of getting back.</p>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="committee-paid">Committee (BC): what you have paid in and not yet received</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="committee-paid" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+            </div>
+          </fieldset>
+
+          <!-- ======================================================
+               GROUP 2 · GOLD AND SILVER. Its first gold row is a quick
+               box. Gold: grams first, tola as a second unit; 24K, 22K,
+               18K or 14K. Silver: grams or kg; 999, 925 or another %.
+               ====================================================== -->
+          <fieldset class="step-group" data-group="2" data-has-quick>
+            <legend class="step-legend">
+              <span class="icon icon-gold" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 19.5h18l-2.3-5.5H5.3z"/><path d="M7.6 14l1.9-5h5l1.9 5"/></svg></span>
+              <span class="step-name">Gold and silver</span>
+              <span class="step-count">2 of 6</span>
+            </legend>
+
+            <!-- The gold rows. The first is the quick box; "Add more gold"
+                 adds a row (from the template below) for gold of another
+                 karat. -->
+            <div class="step-stack" data-quick>
+              <div class="row-list" id="gold-rows">
+                <div class="step-field metal-row" data-row="gold">
+                  <div class="metal-head">
+                    <label class="step-label" for="gold-1">Gold</label>
+                    <div class="pick-group" role="radiogroup" aria-label="Karat">
+                      <label class="pick"><input type="radio" name="gold-1-karat" value="24"><span>24K</span></label>
+                      <label class="pick"><input type="radio" name="gold-1-karat" value="22" checked><span>22K</span></label>
+                      <label class="pick"><input type="radio" name="gold-1-karat" value="18"><span>18K</span></label>
+                      <label class="pick"><input type="radio" name="gold-1-karat" value="14"><span>14K</span></label>
+                    </div>
+                  </div>
+                  <div class="unit-box">
+                    <input id="gold-1" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-field="grams">
+                    <span class="unit-pick" id="gold-1-unit" role="group" aria-label="Unit">
+                      <button type="button" data-unit="g" aria-pressed="true">g</button>
+                      <button type="button" data-unit="tola" aria-pressed="false">tola</button>
+                    </span>
+                  </div>
+                  <p class="step-equal" data-equal hidden></p>
+                </div>
+              </div>
+              <p class="step-help">1 tola = 11.66 g. Some jewellers say 10 g. Check the grams on your bill.</p>
+              <p class="step-help">9K or less: not counted as gold.</p>
+              <button type="button" class="add-row" id="add-gold" data-full-only>Add more gold</button>
+            </div>
+
+            <!-- Of the gold above: women's jewellery worn regularly
+                 (Fix 6). Shows once the gold has a number. Its question
+                 (choice 2) shows once this box has a number. -->
+            <div class="step-field" id="worn-gold-field" hidden>
+              <label class="step-label" for="worn-gold">Of this gold, how many grams are jewellery a woman wears regularly (not kept as savings)?</label>
+              <div class="unit-box"><input id="worn-gold" class="step-input" type="text" inputmode="decimal" autocomplete="off"><span class="unit-chip" aria-hidden="true">g</span></div>
+              <div class="pick-group" id="worn-gold-karats" role="radiogroup" aria-label="Karat of this jewellery" hidden>
+                <label class="pick"><input type="radio" name="worn-gold-karat" value="24"><span>24K</span></label>
+                <label class="pick"><input type="radio" name="worn-gold-karat" value="22" checked><span>22K</span></label>
+                <label class="pick"><input type="radio" name="worn-gold-karat" value="18"><span>18K</span></label>
+                <label class="pick"><input type="radio" name="worn-gold-karat" value="14"><span>14K</span></label>
+              </div>
+              <p class="step-help">Coins, bars, men's gold and jewellery kept as savings are always counted.</p>
+              <p class="step-hint" data-hint="worn-gold" aria-live="polite"></p>
+            </div>
+
+            <!-- CHOICE 2 · Women's jewellery worn regularly. It sits under
+                 the gold jewellery box, or under the silver one when only
+                 silver jewellery has a number (zakat-page.js moves it). -->
+            <fieldset class="choice-block" id="choice-jewellery" data-choice="jewellery" hidden>
+              <legend class="choice-legend"><span class="sign sign-differ" aria-hidden="true"></span>Scholars differ on these grams. What do you follow?</legend>
+              <div class="choice-options">
+                <label class="pick"><input type="radio" name="choice-jewellery" value="count"><span>Count it</span></label>
+                <label class="pick"><input type="radio" name="choice-jewellery" value="dontCount"><span>Don't count it</span></label>
+                <label class="pick"><input type="radio" name="choice-jewellery" value="notSure" checked><span>Not sure</span></label>
+              </div>
+            </fieldset>
+
+            <div class="step-field metal-row" data-row="gold-lent">
+              <div class="metal-head">
+                <label class="step-label" for="gold-lent">Gold you lent to someone</label>
+                <div class="pick-group" role="radiogroup" aria-label="Karat">
+                  <label class="pick"><input type="radio" name="gold-lent-karat" value="24"><span>24K</span></label>
+                  <label class="pick"><input type="radio" name="gold-lent-karat" value="22" checked><span>22K</span></label>
+                  <label class="pick"><input type="radio" name="gold-lent-karat" value="18"><span>18K</span></label>
+                  <label class="pick"><input type="radio" name="gold-lent-karat" value="14"><span>14K</span></label>
+                </div>
+              </div>
+              <div class="unit-box">
+                <input id="gold-lent" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-field="grams">
+                <span class="unit-pick" id="gold-lent-unit" role="group" aria-label="Unit">
+                  <button type="button" data-unit="g" aria-pressed="true">g</button>
+                  <button type="button" data-unit="tola" aria-pressed="false">tola</button>
+                </span>
+              </div>
+              <p class="step-equal" data-equal hidden></p>
+            </div>
+
+            <div class="step-field metal-row" data-row="gold-pledged">
+              <div class="metal-head">
+                <label class="step-label" for="gold-pledged">Gold kept with a lender for a gold loan</label>
+                <div class="pick-group" role="radiogroup" aria-label="Karat">
+                  <label class="pick"><input type="radio" name="gold-pledged-karat" value="24"><span>24K</span></label>
+                  <label class="pick"><input type="radio" name="gold-pledged-karat" value="22" checked><span>22K</span></label>
+                  <label class="pick"><input type="radio" name="gold-pledged-karat" value="18"><span>18K</span></label>
+                  <label class="pick"><input type="radio" name="gold-pledged-karat" value="14"><span>14K</span></label>
+                </div>
+              </div>
+              <div class="unit-box">
+                <input id="gold-pledged" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-field="grams">
+                <span class="unit-pick" id="gold-pledged-unit" role="group" aria-label="Unit">
+                  <button type="button" data-unit="g" aria-pressed="true">g</button>
+                  <button type="button" data-unit="tola" aria-pressed="false">tola</button>
+                </span>
+              </div>
+              <p class="step-equal" data-equal hidden></p>
+              <p class="step-help">The gold loan itself goes in group 6, "What you owe".</p>
+            </div>
+
+            <!-- CHOICE 7 · Gold kept with a lender for a gold loan. -->
+            <fieldset class="choice-block" data-choice="goldLoan" hidden>
+              <legend class="choice-legend"><span class="sign sign-differ" aria-hidden="true"></span>Gold kept with a lender for a gold loan. Scholars differ.</legend>
+              <div class="choice-options">
+                <label class="pick"><input type="radio" name="choice-gold-loan" value="count" checked><span>Count it</span></label>
+                <label class="pick"><input type="radio" name="choice-gold-loan" value="dontCount"><span>Don't count it while the lender has it</span></label>
+                <label class="pick"><input type="radio" name="choice-gold-loan" value="notSure"><span>Not sure</span></label>
+              </div>
+            </fieldset>
+
+            <div class="step-field">
+              <label class="step-label" for="gold-digital">Digital gold and EGR</label>
+              <div class="unit-box"><input id="gold-digital" class="step-input" type="text" inputmode="decimal" autocomplete="off"><span class="unit-chip" aria-hidden="true">g</span></div>
+              <p class="step-help">The grams in your app or account, counted as 24K gold.</p>
+            </div>
+
+            <!-- The silver rows: grams or kg, and how pure (999, 925 or
+                 another %). "Add more silver" adds a row. -->
+            <div class="row-list" id="silver-rows">
+              <div class="step-field metal-row" data-row="silver">
+                <div class="metal-head">
+                  <label class="step-label" for="silver-1">Silver</label>
+                  <div class="pick-group" role="radiogroup" aria-label="Purity">
+                    <label class="pick"><input type="radio" name="silver-1-purity" value="99.9"><span>999</span></label>
+                    <label class="pick"><input type="radio" name="silver-1-purity" value="92.5" checked><span>925</span></label>
+                    <label class="pick"><input type="radio" name="silver-1-purity" value="other"><span>Another %</span></label>
+                  </div>
+                </div>
+                <div class="unit-box">
+                  <input id="silver-1" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-field="grams">
+                  <span class="unit-pick" id="silver-1-unit" role="group" aria-label="Unit">
+                    <button type="button" data-unit="g" aria-pressed="true">g</button>
+                    <button type="button" data-unit="kg" aria-pressed="false">kg</button>
+                  </span>
+                </div>
+                <div class="unit-box unit-box-small" data-other hidden><input id="silver-1-other" class="step-input" type="text" inputmode="decimal" autocomplete="off" aria-label="Its purity, in %" data-field="other"><span class="unit-chip" aria-hidden="true">%</span></div>
+              </div>
+            </div>
+            <button type="button" class="add-row" id="add-silver">Add more silver</button>
+
+            <div class="step-field" id="worn-silver-field" hidden>
+              <label class="step-label" for="worn-silver">Of this silver, how many grams are jewellery a woman wears regularly (not kept as savings)?</label>
+              <div class="unit-box"><input id="worn-silver" class="step-input" type="text" inputmode="decimal" autocomplete="off"><span class="unit-chip" aria-hidden="true">g</span></div>
+              <div class="pick-group" id="worn-silver-purities" role="radiogroup" aria-label="Purity of this jewellery" hidden>
+                <label class="pick"><input type="radio" name="worn-silver-purity" value="99.9"><span>999</span></label>
+                <label class="pick"><input type="radio" name="worn-silver-purity" value="92.5" checked><span>925</span></label>
+                <label class="pick"><input type="radio" name="worn-silver-purity" value="other"><span>Another %</span></label>
+              </div>
+              <div class="unit-box unit-box-small" data-other hidden><input id="worn-silver-other" class="step-input" type="text" inputmode="decimal" autocomplete="off" aria-label="Its purity, in %"><span class="unit-chip" aria-hidden="true">%</span></div>
+              <p class="step-help">Coins, utensils and silver kept as savings are always counted.</p>
+              <p class="step-hint" data-hint="worn-silver" aria-live="polite"></p>
+            </div>
+
+            <!-- THE RATES: IBJA's, from /assets/data/prices.json, filled in
+                 by zakat-page.js; type your jeweller's rate over them.
+                 The line under the boxes holds the rates and their date
+                 between the NISAB markers, so scripts/update_prices.py
+                 rewrites it by itself after every working day; the page
+                 script reads it too when prices.json can't be fetched. -->
+            <div class="step-pair">
+              <div class="step-field">
+                <label class="step-label" for="rate-gold">Gold 24K, ₹ for 1 gram</label>
+                <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="rate-gold" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money data-rate="gold"></div>
+              </div>
+              <div class="step-field">
+                <label class="step-label" for="rate-silver">Silver 999, ₹ for 1 gram</label>
+                <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="rate-silver" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money data-rate="silver"></div>
+              </div>
+            </div>
+            <p class="step-hint" data-hint="rates" aria-live="polite"></p>
+            <!-- NISAB START -->
+            <p class="step-help zakat-rates" data-src="src-rates">IBJA's rates of <time datetime="2026-11-20" data-nisab="as-of">20 November 2026</time>: gold 24K <span class="num" data-nisab="gold-rate">₹12,389.30</span> and silver <span class="num" data-nisab="silver-rate">₹152.528</span> for 1&nbsp;g. Type your jeweller's rate over them.</p>
+            <!-- NISAB END -->
+            <p class="step-help">A fatwa says today's market rate is better. The lower price a jeweller pays for old gold is also enough.</p>
+          </fieldset>
+
+          <!-- ======================================================
+               GROUP 3 · INVESTMENTS
+               ====================================================== -->
+          <fieldset class="step-group" data-group="3">
+            <legend class="step-legend">
+              <span class="icon icon-gold" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7"/><path d="M3 20.5h18"/></svg></span>
+              <span class="step-name">Investments</span>
+              <span class="step-count">3 of 6</span>
+            </legend>
+
+            <div class="step-field">
+              <label class="step-label" for="shares">Shares and equity mutual funds</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="shares" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">Today's value.</p>
+            </div>
+
+            <!-- M5: bought to sell soon? Yes = the full value, no
+                 question. No = choice 4. -->
+            <fieldset class="choice-block choice-plain" data-choice="sellSoon" hidden>
+              <legend class="choice-legend">Did you buy these to sell soon?</legend>
+              <div class="choice-options">
+                <label class="pick"><input type="radio" name="sell-soon" value="yes"><span>Yes</span></label>
+                <label class="pick"><input type="radio" name="sell-soon" value="no"><span>No</span></label>
+              </div>
+            </fieldset>
+
+            <div class="step-field">
+              <label class="step-label" for="rsus">Vested job shares (RSUs)</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="rsus" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">Today's value. Shares that have not vested yet: nothing to enter.</p>
+            </div>
+
+            <!-- CHOICE 4 · Shares, funds and vested job shares kept for
+                 the long term. -->
+            <fieldset class="choice-block" data-choice="shares" hidden>
+              <legend class="choice-legend"><span class="sign sign-differ" aria-hidden="true"></span>Shares, funds and vested job shares kept for the long term. Scholars differ.</legend>
+              <div class="choice-options">
+                <label class="pick"><input type="radio" name="choice-shares" value="full" checked><span>The full value</span></label>
+                <label class="pick"><input type="radio" name="choice-shares" value="part"><span>A part of the value: my scholar gave me this %</span></label>
+              </div>
+              <div class="choice-percent" id="shares-percent-field" hidden>
+                <div class="unit-box unit-box-small"><input id="shares-percent" class="step-input" type="text" inputmode="decimal" autocomplete="off" aria-label="The % to count"><span class="unit-chip" aria-hidden="true">%</span></div>
+                <p class="step-help"><span class="num" data-src="src-shares">25%</span> is a rough guide some scholars use · <span class="num" data-src="src-shares">0%</span> = count only the dividends you got (they are already in your bank).</p>
+              </div>
+            </fieldset>
+
+            <div class="step-field">
+              <label class="step-label" for="crypto">Crypto</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="crypto" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">Scholars differ on whether crypto is allowed. If you hold it, scholars who allow it say zakat is due on today's value. Ask a scholar you trust.</p>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="gold-funds">Gold ETFs and gold funds</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="gold-funds" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">Today's value.</p>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="sgb">Sovereign Gold Bonds (SGB)</label>
+              <div class="unit-box"><input id="sgb" class="step-input" type="text" inputmode="decimal" autocomplete="off"><span class="unit-chip" aria-hidden="true">g</span></div>
+              <p class="step-help">The grams of gold they are for. Leave out their interest.</p>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="deposits">Fixed and recurring deposits, PPF, NSC, KVP, post-office schemes, bonds and debt funds</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="deposits" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">The money you put in, not the interest.</p>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="pf-compulsory">PF: the compulsory part, cut from your salary</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="pf-compulsory" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="vpf">PF: extra you put in by choice (VPF)</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="vpf" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">Counted every year.</p>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="nps-own">NPS: your own voluntary payments</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="nps-own" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">The money you put in, not the returns.</p>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="nps-compulsory">NPS: the compulsory and employer part</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="nps-compulsory" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+            </div>
+
+            <!-- CHOICE 5 · Compulsory PF and NPS (and the employer's
+                 part). -->
+            <fieldset class="choice-block" data-choice="pf" hidden>
+              <legend class="choice-legend"><span class="sign sign-differ" aria-hidden="true"></span>Compulsory PF and NPS (and the employer's part)</legend>
+              <div class="choice-options">
+                <label class="pick"><input type="radio" name="choice-pf" value="leaveOut" checked><span>Leave it out until I receive it</span></label>
+                <label class="pick"><input type="radio" name="choice-pf" value="count"><span>Count it now</span></label>
+              </div>
+            </fieldset>
+
+            <div class="step-field">
+              <label class="step-label" for="lic">LIC policies and ULIPs: the premiums you paid</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="lic" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">Premiums paid so far, minus money already paid back to you; for a ULIP, its fund value if that is lower. Count only the premiums you paid. Leave out the bonus: it is interest, and scholars say give it away. Term, health and vehicle insurance: nothing to enter.</p>
+            </div>
+
+            <!-- CHOICE 6 · LIC and ULIP premiums. -->
+            <fieldset class="choice-block" data-choice="lic" hidden>
+              <legend class="choice-legend"><span class="sign sign-differ" aria-hidden="true"></span>Your policy's premiums. Scholars differ.</legend>
+              <div class="choice-options">
+                <label class="pick"><input type="radio" name="choice-lic" value="count" checked><span>Count them every year</span></label>
+                <label class="pick"><input type="radio" name="choice-lic" value="notUntil"><span>Don't count them until I get money back</span></label>
+                <label class="pick"><input type="radio" name="choice-lic" value="notSure"><span>Not sure</span></label>
+              </div>
+            </fieldset>
+          </fieldset>
+
+          <!-- ======================================================
+               GROUP 4 · PROPERTY. Your home is never counted.
+               ====================================================== -->
+          <fieldset class="step-group" data-group="4">
+            <legend class="step-legend">
+              <span class="icon icon-gold" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg></span>
+              <span class="step-name">Property</span>
+              <span class="step-count">4 of 6</span>
+            </legend>
+
+            <div class="step-field">
+              <label class="step-label" for="plot">A plot or land</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="plot" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">Use what the plot would sell for today, not what you paid.</p>
+            </div>
+
+            <!-- CHOICE 8 · Why did you buy the plot? Counted only "to
+                 sell"; until it is answered, the plot is not counted. -->
+            <fieldset class="choice-block choice-plain" data-choice="plot" hidden>
+              <legend class="choice-legend">Why did you buy this plot?</legend>
+              <div class="choice-options">
+                <label class="pick"><input type="radio" name="choice-plot" value="toSell"><span>To sell it (now or later)</span></label>
+                <label class="pick"><input type="radio" name="choice-plot" value="toUse"><span>To build or use</span></label>
+                <label class="pick"><input type="radio" name="choice-plot" value="undecided"><span>I didn't decide, I'd sell only for a good profit, or I inherited it</span></label>
+              </div>
+            </fieldset>
+
+            <div class="step-field">
+              <label class="step-label" for="flat">A flat or shop booked with a builder, to resell</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="flat" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">What you have paid so far. A home to live in or use: nothing to enter.</p>
+            </div>
+
+            <!-- CHOICE 9 · A flat or shop booked to resell. -->
+            <fieldset class="choice-block" data-choice="flat" hidden>
+              <legend class="choice-legend"><span class="sign sign-differ" aria-hidden="true"></span>Booked to resell. Scholars differ.</legend>
+              <div class="choice-options">
+                <label class="pick"><input type="radio" name="choice-flat" value="count"><span>Count what I have paid</span></label>
+                <label class="pick"><input type="radio" name="choice-flat" value="notUntil" checked><span>Not until I get it</span></label>
+                <label class="pick"><input type="radio" name="choice-flat" value="notSure"><span>Not sure</span></label>
+              </div>
+            </fieldset>
+          </fieldset>
+
+          <!-- ======================================================
+               GROUP 5 · BUSINESS, only with the tick.
+               ====================================================== -->
+          <fieldset class="step-group" data-group="5">
+            <legend class="step-legend">
+              <span class="icon icon-gold" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9.5 5.5 4h13L20 9.5"/><path d="M4 9.5a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0"/><path d="M5.5 11.5V20h13v-8.5"/><path d="M10 20v-4.5h4V20"/></svg></span>
+              <span class="step-name">Business</span>
+              <span class="step-count">5 of 6</span>
+            </legend>
+
+            <label class="tick" for="runs-business"><input id="runs-business" type="checkbox"><span>I run a business or a shop</span></label>
+
+            <div class="business-boxes" id="business-boxes" hidden>
+              <div class="step-field">
+                <label class="step-label" for="stock">Stock for sale</label>
+                <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="stock" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+                <p class="step-help">At today's selling price.</p>
+              </div>
+              <div class="step-field">
+                <label class="step-label" for="business-cash">Cash in the business</label>
+                <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="business-cash" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              </div>
+              <div class="step-field">
+                <label class="step-label" for="customers-owe">Money customers owe you</label>
+                <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="customers-owe" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+                <p class="step-help">Leave out money you have no hope of getting.</p>
+              </div>
+              <div class="step-field">
+                <label class="step-label" for="business-property">Property you bought to sell</label>
+                <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="business-property" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+                <p class="step-help">At today's market value.</p>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- ======================================================
+               GROUP 6 · WHAT YOU OWE. Its first box is a quick box.
+               ====================================================== -->
+          <fieldset class="step-group" data-group="6" data-has-quick>
+            <legend class="step-legend">
+              <span class="icon icon-gold" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>
+              <span class="step-name">What you owe</span>
+              <span class="step-count">6 of 6</span>
+            </legend>
+
+            <div class="step-field step-field-row" data-quick>
+              <label class="step-label" for="pay-now">What you must pay now</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="pay-now" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">Bills and borrowed money due now.</p>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="card-bill">A credit-card bill due now</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="card-bill" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+            </div>
+
+            <div class="step-field" id="suppliers-field" hidden>
+              <label class="step-label" for="suppliers">What the business owes its suppliers now</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="suppliers" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="family-loans">Loans from family or friends with no fixed dates</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="family-loans" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">The whole amount you still owe.</p>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="mehr-due">Mehr that is due now</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="mehr-due" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">Unpaid prompt mehr, or mehr your wife has asked for. Mehr due later is not taken off.</p>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="deposits-back">Deposits you must give back</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="deposits-back" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              <p class="step-help">A tenant's deposit you hold, for example.</p>
+            </div>
+
+            <div class="step-field">
+              <label class="step-label" for="builder-12">Builder instalments due in the next 12 months</label>
+              <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="builder-12" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+            </div>
+
+            <!-- Committee money received and still to pay: taken off like
+                 a long loan with no interest (choice 3). -->
+            <p class="step-label step-label-group">Committee (BC) money you received and still have to pay</p>
+            <div class="step-pair">
+              <div class="step-field">
+                <label class="step-label step-label-small" for="committee-left">Still to pay</label>
+                <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="committee-left" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              </div>
+              <div class="step-field">
+                <label class="step-label step-label-small" for="committee-monthly">You pay each month</label>
+                <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="committee-monthly" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money></div>
+              </div>
+            </div>
+
+            <!-- Long loans: one row per loan, as its statement shows it.
+                 "Add another loan" adds a row. -->
+            <p class="step-label step-label-group">Long loans: home, car, education, personal or gold loan</p>
+            <p class="step-help">As the loan statement shows them. Only the loan part is taken off, never the interest.</p>
+            <div class="row-list" id="loan-rows">
+              <div class="loan-row" data-row="loan">
+                <p class="loan-name">Loan 1</p>
+                <div class="step-field">
+                  <label class="step-label step-label-small" for="loan-1-left">Loan left</label>
+                  <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="loan-1-left" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money data-field="left"></div>
+                </div>
+                <div class="step-pair">
+                  <div class="step-field">
+                    <label class="step-label step-label-small" for="loan-1-rate">Interest a year</label>
+                    <div class="unit-box"><input id="loan-1-rate" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-field="rate"><span class="unit-chip" aria-hidden="true">%</span></div>
+                  </div>
+                  <div class="step-field">
+                    <label class="step-label step-label-small" for="loan-1-emi">EMI</label>
+                    <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="loan-1-emi" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money data-field="emi"></div>
+                  </div>
+                </div>
+                <p class="step-hint" data-hint="loan" aria-live="polite"></p>
+              </div>
+            </div>
+            <p class="step-help">No EMI, because it is paid back in one go (like most gold loans)? Leave the EMI empty: all of it counts as due within 12 months.</p>
+            <button type="button" class="add-row" id="add-loan">Add another loan</button>
+
+            <!-- CHOICE 3 · Long loans paid in EMIs (and committee money
+                 still to pay). -->
+            <fieldset class="choice-block" data-choice="loans" hidden>
+              <legend class="choice-legend"><span class="sign sign-differ" aria-hidden="true"></span>Long loans paid in EMIs. Scholars differ. What do you take off?</legend>
+              <div class="choice-options">
+                <label class="pick"><input type="radio" name="choice-loans" value="next12" checked><span>The loan part of the next 12 months</span></label>
+                <label class="pick"><input type="radio" name="choice-loans" value="whole"><span>The whole loan left</span></label>
+                <label class="pick"><input type="radio" name="choice-loans" value="notSure"><span>Not sure</span></label>
+              </div>
+            </fieldset>
+          </fieldset>
+
+          <!-- "Add more": opens the full calculator. In the full
+               calculator on a phone, Back and Next move between the six
+               groups instead. -->
+          <button type="button" class="button button-quiet add-more" id="add-more">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            Add more
+          </button>
+          <div class="step-nav" id="step-nav" hidden>
+            <button type="button" class="button button-quiet" id="step-back">Back</button>
+            <span class="step-place" id="step-place" aria-live="polite">1 of 6</span>
+            <button type="button" class="button" id="step-next">Next</button>
+          </div>
+
+        </form>
+
+        <!-- ======================================================
+             THE ANSWER. The amount, big (it counts up once), or the
+             two numbers of "Not sure"; the parts as a bar, with the
+             same numbers as text; the nisab, with its source one tap
+             away; the zakat date; how many answers scholars differ on;
+             then Save · Share · What next, always in that order.
+             zakat-page.js fills it in. Printing shows only this card,
+             with the date.
+             ====================================================== -->
+        <div class="answer-card zakat-answer" id="answer" tabindex="-1">
+          <p class="print-only answer-printed" id="answer-printed">Zakat worked out on <span id="printed-date"></span> at purevesting.com/zakat-calculator</p>
+
+          <p class="answer-label">Your zakat</p>
+          <p class="answer-amount" aria-live="polite" aria-atomic="true"><span class="big-number" id="zakat-amount">₹0</span></p>
+
+          <!-- THE TWO NUMBERS of "Not sure", side by side, with the scales
+               between them. Never an average. -->
+          <div class="range-answer" id="zakat-range" hidden>
+            <p class="range-end"><span class="range-word">Lowest</span> <span class="big-number" id="range-low">₹0</span></p>
+            <span class="icon icon-gold range-sign" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7.5h14"/><path d="M5 7.5 2.5 13a2.5 2.5 0 0 0 5 0zM19 7.5 16.5 13a2.5 2.5 0 0 0 5 0z"/></svg></span>
+            <p class="range-end"><span class="range-word">Highest</span> <span class="big-number" id="range-high">₹0</span></p>
+            <p class="range-ask">Ask a scholar you trust</p>
+          </div>
+
+          <p class="answer-status" id="zakat-status">Type your numbers above. Your zakat shows here.</p>
+
+          <!-- THE PARTS, as one bar (each part's colour key is beside its
+               figure) and as text. Only parts with a figure show. -->
+          <div class="parts" id="parts" hidden>
+            <p class="parts-title" id="parts-title">What is counted</p>
+            <div class="parts-bar" id="parts-bar" aria-hidden="true"></div>
+            <ul class="parts-key" id="parts-key"></ul>
+          </div>
+
+          <p class="answer-line" id="nisab-line"><span id="nisab-words">Nisab today:</span> <span class="num" id="nisab-figure" data-src="src-rates">—</span> <span id="nisab-kind">(silver)</span><span id="nisab-asof">, as of <time id="nisab-date"></time></span></p>
+          <p class="answer-line" id="weight-line" hidden></p>
+
+          <!-- CHOICE 1 · Which minimum (nisab) for money? Shows when the
+               answer compares a value with the nisab in rupees. -->
+          <fieldset class="choice-block choice-nisab" data-choice="nisab" hidden>
+            <legend class="choice-legend">Which minimum (nisab) for money?</legend>
+            <div class="choice-options">
+              <label class="pick"><input type="radio" name="choice-nisab" value="silver" checked><span>Silver</span></label>
+              <label class="pick"><input type="radio" name="choice-nisab" value="gold"><span>Gold</span></label>
+            </div>
+          </fieldset>
+
+          <p class="answer-line" id="date-line">It is due on your zakat date: the same Islamic date each year, one lunar year after you first had the nisab.</p>
+          <p class="answer-line answer-differ" id="differ-line" hidden></p>
+
+          <!-- SAVE · SHARE · WHAT NEXT, always in this order. Save keeps
+               the numbers on this phone only. Share opens the phone's
+               share sheet with the link and one line, never the amount. -->
+          <div class="tool-actions">
+            <button type="button" class="tool-action" id="save-button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9.5L19.5 7.5V20a.5.5 0 0 1-.5.5H6a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5z"/><path d="M8.5 3.5V8h6V3.5M8.5 20.5v-6h7v6"/></svg>
+              Save
+            </button>
+            <button type="button" class="tool-action" id="share-button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></svg>
+              Share
+            </button>
+            <button type="button" class="tool-action" id="next-button" aria-expanded="false" aria-controls="what-next">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              What next
+            </button>
+          </div>
+          <p class="tool-note" id="tool-note" role="status" aria-live="polite"></p>
+          <p class="tool-clear" id="clear-line" hidden><button type="button" class="link-button" id="clear-button">Clear my numbers</button></p>
+
+          <!-- WHAT NEXT. "Interest to give away" is a page that arrives in
+               step 1.3; until then it goes to /tools/. STEP 1.3: point it
+               at the interest page. -->
+          <ul class="what-next" id="what-next" hidden>
+            <li><a href="/tools/">Interest to give away</a></li>
+            <li><a href="/zakat/nisab-today/">Nisab today</a></li>
+          </ul>
+
+          <p class="answer-more"><button type="button" class="link-button" id="print-button">Print or save as PDF</button></p>
+          <p class="answer-more"><a href="/join/">Remind me next year</a></p>
+          <p class="answer-never">Purevesting never collects zakat.</p>
+
+          <!-- MAS: remove the comment marks only when the zakat check-up is live and the lawyer has said yes.
+          <div class="answer-call">
+            <p>Not sure about your numbers? Check it with me on a call.</p>
+            <a class="button" href="/ask/">Check it with me on a call</a>
+          </div>
+          -->
+        </div>
+
+      </div>
+
+      <!-- THE RUNNING TOTAL: a thin bar at the bottom of the screen while
+           the groups are being filled and the answer is out of sight. A
+           tap jumps to the answer. -->
+      <a class="running-total" id="running-total" href="#answer" hidden>Your zakat so far: <strong id="running-amount">₹0</strong></a>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SIX SHORT QUESTIONS AND ANSWERS, on a blue band. Each opens on a
+       tap. Word for word the same as the FAQPage in the structured data
+       at the top of this page. No rulings here.
+       ============================================================ -->
+
+  <section class="section band reveal">
+    <div class="wrap">
+
+      <h2 id="questions">Questions</h2>
+
+      <div class="faq-list">
+        <details class="source faq-item">
+          <summary>What is nisab?</summary>
+          <div class="source-body">
+            <p>The minimum for zakat: the value of <span class="num" data-src="src-weights">612.36&nbsp;g</span> of silver, or of <span class="num" data-src="src-weights">87.48&nbsp;g</span> of gold. Zakat is due once what is yours, after what you must pay now, reaches it. Today's figure, with its date, is on the page <a href="/zakat/nisab-today/">Nisab today</a>.</p>
+          </div>
+        </details>
+        <details class="source faq-item">
+          <summary>Which gold and silver rate do you use?</summary>
+          <div class="source-body">
+            <p>IBJA's latest closing rates (the India Bullion and Jewellers Association), with its own rates for 22K, 18K and 14K gold. You can type your jeweller's rate over them. A fatwa says today's market rate is better. The lower price a jeweller pays for old gold is also enough.</p>
+          </div>
+        </details>
+        <details class="source faq-item">
+          <summary>Why do I see two numbers?</summary>
+          <div class="source-body">
+            <p>Where scholars differ and you answer "Not sure", the calculator works out your zakat each way and shows the lowest and the highest, side by side. It never shows an average. Pick an answer to see one number, or ask a scholar you trust.</p>
+          </div>
+        </details>
+        <details class="source faq-item">
+          <summary>Are my numbers saved anywhere?</summary>
+          <div class="source-body">
+            <p>Only on this phone, and only when you tap Save. Nothing you type is sent to Purevesting or to anyone else. "Clear my numbers" deletes them.</p>
+          </div>
+        </details>
+        <details class="source faq-item">
+          <summary>When do I pay?</summary>
+          <div class="source-body">
+            <p>On your zakat date: the same Islamic date each year, one lunar year after you first had the minimum. If you use an English-calendar date, scholars say pay about <span class="num" data-src="src-date">2.577%</span>. Not sure of your date? Ask a scholar how to set one.</p>
+          </div>
+        </details>
+        <details class="source faq-item">
+          <summary>What is never counted?</summary>
+          <div class="source-body">
+            <p>Is there zakat on my house, car or furniture? No, not on things you use. But money you are saving for a house, a wedding or Hajj is counted.</p>
+            <p>Also left out: clothes and the tools you earn with; term, health and vehicle insurance; gratuity and pension until they are paid; job shares that have not vested; a rent deposit you paid; a jeweller's gold scheme with no cash refund; diamonds and stones you wear; inheritance, salary and refunds not yet received; a child's own money; and interest or other haram money, which is given away instead.</p>
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       READ MORE: the method in plain words, closed until tapped. Made
+       from the method in MAS's zakat rules (what the tool is, the six
+       steps, what is counted, how things are valued, what is taken off,
+       the nisab rules, the questions), without its questions for a
+       scholar and without its private notes.
+       ============================================================ -->
+
+  <section class="section reveal">
+    <div class="wrap">
+
+      <details class="source zakat-method" id="method">
+        <summary>Read more: how the calculator works</summary>
+        <div class="source-body">
+
+          <h3>What it does</h3>
+          <p>It works out zakat for one person at a time, on that person's zakat date. Where scholars differ, it asks you. If you are not sure, it shows the lowest and the highest answer side by side, never an average, with the words "Ask a scholar you trust". It does not collect zakat, and your numbers stay on your phone.</p>
+          <p>This calculator covers money, gold, silver, shares, savings and trade. Farm produce, animals and khums follow different rules. Ask a scholar you trust.</p>
+
+          <h3>The six steps</h3>
+          <ol>
+            <li><strong>Your zakat date:</strong> one lunar year after you first owned the nisab. Ups and downs during the year are left aside, unless your wealth falls to zero. On the date, everything counts, even money saved last month. With an English-calendar date, scholars say about <span class="num" data-src="src-date">2.577%</span>.</li>
+            <li><strong>Add up</strong> everything that is counted, at today's value.</li>
+            <li><strong>Take off</strong> what you owe.</li>
+            <li><strong>Compare</strong> what is left with the nisab.</li>
+            <li><strong>Zakat</strong> is <span class="num" data-src="src-rate">2.5%</span> (one-fortieth) of the whole amount left, if it reaches the nisab. If not, nothing.</li>
+            <li><strong>Round</strong> to the nearest rupee.</li>
+          </ol>
+
+          <h3>What is counted</h3>
+          <ul>
+            <li>Cash, bank accounts, wallets, UPI and money in other currencies (in rupees): in full. Bank interest is left out, to be given away.</li>
+            <li>Money lent and expected back: in full, every year. Committee (BC) money paid in and not yet received: in full.</li>
+            <li>Fixed and recurring deposits, PPF, NSC, KVP, senior-citizen and monthly-income schemes, bonds and debt funds: the money put in, not the interest.</li>
+            <li>PF: the compulsory part is left out until you receive it, then counted once a year has passed (question 5). Extra put in by choice (VPF): every year.</li>
+            <li>NPS: your own voluntary payments, every year. The compulsory and employer part: like compulsory PF (question 5).</li>
+            <li>Gold (coins, bars, men's gold, jewellery kept as savings): its weight × today's rate for its karat. 14K to 24K count by their whole weight; 9K and below is not counted as gold. Stones are left out: only the metal is weighed.</li>
+            <li>Women's jewellery worn regularly (question 2). Gold kept with a lender for a gold loan (question 7). Gold lent to someone, digital gold and EGR: as gold.</li>
+            <li>Sovereign Gold Bonds: their grams × today's 24K rate, without the interest. Gold ETFs and gold funds: today's value.</li>
+            <li>Silver (jewellery, coins, utensils): its weight × the silver rate × its purity.</li>
+            <li>Shares and funds bought to sell soon: their full market value. Kept for the long term, and vested job shares: question 4.</li>
+            <li>Crypto: today's value.</li>
+            <li>LIC endowment, money-back and whole-life policies: the premiums paid so far, minus money already paid back. A ULIP: the lower of its fund value and the premiums paid (question 6).</li>
+            <li>Business: cash, stock and money customers owe, in full. Stock at today's selling price. Customers' debts with no hope of payment are left out.</li>
+            <li>A plot or land: its market value, only if it was bought to sell (question 8). A flat or shop booked with a builder to resell: question 9.</li>
+          </ul>
+
+          <h3>Never counted</h3>
+          <p>Your home, vehicle, furniture, clothes, and the tools or machines you earn a living with · term, health and vehicle insurance · gratuity and pension until they are paid · job shares that have not vested · a rent deposit you paid · a jeweller's gold scheme with no cash refund · diamonds and stones that are worn · inheritance, salary and refunds not yet received · a child's own money · haram money, which is given away instead.</p>
+
+          <h3>How things are valued</h3>
+          <ul>
+            <li>Gold and silver: IBJA's daily rates (24K 999 and silver 999), and IBJA's own 22K, 18K and 14K rates. You can type your own jeweller's rate. A fatwa says today's market rate is better, and a jeweller's buy-back rate is enough.</li>
+            <li>Weight in grams. 1 tola = <span class="num" data-src="src-tola">11.664&nbsp;g</span>; some jewellers call 10&nbsp;g a tola.</li>
+            <li>Business stock, plots, shares, funds and crypto: what they would sell for today.</li>
+          </ul>
+
+          <h3>What is taken off</h3>
+          <ul>
+            <li>Debts due now: bills, a credit-card bill, what a business owes its suppliers, prompt mehr that is unpaid.</li>
+            <li>Loans from family or friends with no fixed dates: in full.</li>
+            <li>Long loans paid in EMIs (home, car, education, personal, gold loan): question 3. It starts with the loan part of the next 12 months. The interest is never taken off.</li>
+            <li>Committee money received and still to pay: like a long loan. Builder instalments: the part due in the next 12 months. Deposits a landlord must give back.</li>
+            <li>Not taken off: mehr that is not yet due.</li>
+          </ul>
+
+          <h3>The nisab</h3>
+          <ul>
+            <li>The weights: silver <span class="num" data-src="src-weights">612.36&nbsp;g</span>, gold <span class="num" data-src="src-weights">87.48&nbsp;g</span>.</li>
+            <li>Wealth of more than one kind: everything is added by value and compared with the silver nisab, unless you choose gold (question 1).</li>
+            <li>Only gold: the gold's weight, after debts, against 87.48&nbsp;g. Only silver: the silver's weight, after debts, against 612.36&nbsp;g.</li>
+            <li>With gold chosen: if the total is below the gold nisab, zakat is still due on any metal that reaches its own weight (silver 612.36&nbsp;g, gold 87.48&nbsp;g). Your debts come off your other wealth first.</li>
+          </ul>
+
+          <h3>The questions where scholars differ</h3>
+          <p>Each question starts with the answer marked "start"; change it to what you follow.</p>
+          <ol>
+            <li>Which minimum (nisab) for money? Silver (start) · Gold.</li>
+            <li>Women's jewellery worn regularly: Count it · Don't count it · Not sure (start).</li>
+            <li>Long loans paid in EMIs: The loan part of the next 12 months (start) · The whole loan left · Not sure.</li>
+            <li>Shares, funds and vested job shares kept for the long term: The full value (start) · A part of the value, the % your scholar gave you.</li>
+            <li>Compulsory PF and NPS (and the employer's part): Leave it out until I receive it (start) · Count it now.</li>
+            <li>LIC and ULIP premiums: Count them every year (start) · Not until money comes back · Not sure.</li>
+            <li>Gold kept with a lender for a gold loan: Count it (start) · Don't count it while the lender has it · Not sure.</li>
+            <li>Why did you buy the plot? Counted only "To sell".</li>
+            <li>A flat or shop booked to resell: Count what I paid · Not until I get it (start) · Not sure.</li>
+          </ol>
+          <p>"Not sure" works out the lowest and the highest zakat over every open answer and shows both.</p>
+
+        </div>
+      </details>
+
+      <!-- The end of the page: one friendly line, and the join line under
+           it (README.md). -->
+      <p class="ask-line">Still have a doubt? <a href="/ask/">Ask me</a></p>
+      <p class="join-line">Get one answer like this every week. <a href="/join/">Join free &rarr;</a></p>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SOURCES — one closed list (README.md, rule 5). The fatwas are
+       described, never who gave them; their links stay. The date of the
+       rates sits between NISAB markers, so it is rewritten with them.
+       ============================================================ -->
+
+  <section class="section">
+    <div class="wrap">
+      <details class="source sources" id="sources">
+        <summary>Sources</summary>
+        <div class="source-body">
+          <ul>
+            <!-- NISAB START -->
+            <li id="src-rates">The gold 999 (24K), 916 (22K), 750 (18K), 585 (14K) and silver 999 rates:
+              <a href="https://ibjarates.com/">IBJA's daily rates</a> (India
+              Bullion and Jewellers Association), the closing (PM) rates of
+              <time datetime="2026-11-20" data-nisab="as-of">20 November 2026</time>.
+              IBJA gives gold for 10&nbsp;g and silver for 1&nbsp;kg: they are divided by
+              10 and by 1,000 here.</li>
+            <!-- NISAB END -->
+            <li id="src-weights">The nisab, 612.36&nbsp;g of silver or 87.48&nbsp;g of gold:
+              <a href="https://islamqa.org/?p=78605">a fatwa on the tola and the nisab</a>, and
+              <a href="https://islamqa.org/?p=110680">a fatwa on deposits and provident fund</a>, which uses the same 612.36&nbsp;g.
+              Only gold: the gold minimum; gold with cash, or cash only: the silver minimum:
+              <a href="https://islamqa.org/?p=110742">a fatwa on which nisab to use</a>.</li>
+            <li id="src-rate">Zakat is one-fortieth (2.5%) of the whole amount; the market rate is
+              better and a jeweller's buy-back rate is enough:
+              <a href="https://islamqa.org/?p=138121">a fatwa on the gold rate</a>.
+              Gold ornaments valued with the mixed metal counted with the gold:
+              <a href="https://islamqa.org/?p=110805">a fatwa on valuing ornaments</a>.
+              14K and above counted as gold:
+              <a href="https://seekersguidance.org/answers/zakat-hanafi-answers/is-zakat-due-on-gold-alloys-and-mixed-karat-jewelry/">an answer on gold alloys</a>.</li>
+            <li id="src-tola">The tola is 11.6638&nbsp;g, and many jewellers round it to 10&nbsp;g:
+              <a href="https://www.iifl.com/index.php/blogs/gold-loan/how-many-grams-is-1-tola-of-gold">IIFL</a> and
+              <a href="https://www.airtel.in/blog/?p=30302">Airtel</a>.</li>
+            <li id="src-person">Husband and wife each count their own wealth:
+              <a href="https://islamqa.org/?p=78559">a fatwa on who owns the jewellery</a>.</li>
+            <li id="src-jewellery">Women's jewellery worn regularly: two views among scholars, and
+              paying anyway earns reward:
+              <a href="https://islamqa.org/?p=109663">a fatwa on worn jewellery</a>. A view that does not
+              count it still counts jewellery beyond the usual amount, or kept as savings:
+              <a href="https://www.muis.gov.sg/officeofthemufti/Fatwa/Zakat-On-Gold-Jewellery">a fatwa on gold jewellery</a>.</li>
+            <li id="src-interest">Deposits: zakat on the money put in, not the interest; give the interest
+              away: <a href="https://islamqa.org/?p=110680">a fatwa on deposits and provident fund</a> and
+              <a href="https://islamqa.org/?p=110298">a fatwa on interest money</a>.</li>
+            <li id="src-pf">Provident fund: the compulsory part when received, extra put in by choice
+              every year: <a href="https://www.ifa-india.org/pdfs/pdf-20210602061630.pdf">decisions of scholars in India on provident funds (1992)</a>
+              and <a href="https://islamqa.org/?p=110680">a fatwa on company PF</a>. NPS:
+              <a href="https://iifa-aifi.org/en/32897.html">an international resolution on savings schemes and end-of-service money (2005)</a>.</li>
+            <li id="src-loans">Debts: money owed to you, long loans with only the next year's instalments taken
+              off, inheritance and mehr not yet received:
+              <a href="https://www.ifa-india.org/pdfs/pdf-20210410123007.pdf">decisions of scholars in India on debts and zakat (1992)</a>.
+              The interest inside an EMI is not taken off:
+              <a href="https://daruliftabirmingham.co.uk/?p=37257">a fatwa on loan interest and zakat</a>.
+              Family loans in full: <a href="https://islamicportal.co.uk/deduction-of-full-house-bank-loan-or-what-is-due-in-the-next-12-months-for-zakat/">an answer on house loans</a>.
+              Deferred mehr: <a href="https://islamqa.org/?p=178881">an answer on short and long-term debts</a>.</li>
+            <li id="src-committee">Committee money: <a href="https://nzf.org.uk/knowledge/zakat-and-committee-money/">a zakat guide on committee money</a>.</li>
+            <li id="src-business">Business stock at today's selling price:
+              <a href="https://islamqa.org/?p=138112">a fatwa on business stock</a>.</li>
+            <li id="src-shares">Shares: <a href="https://islamqa.org/?p=109690">a fatwa on shares kept for dividends</a>,
+              <a href="https://iifa-aifi.org/en/32294.html">an international resolution on company shares (1988)</a>, and
+              <a href="https://nzf.org.uk/?p=8056">a zakat guide on shares</a>, which uses 25% of the value as a rough guide.
+              Job shares: <a href="https://nzf.org.uk/knowledge/zakat-on-rsus">a zakat guide on RSUs</a>.</li>
+            <li id="src-crypto">Crypto: <a href="https://daruliftabirmingham.co.uk/?p=27889">a fatwa counting crypto at its sale value</a>;
+              scholars who say it is not allowed: <a href="https://islamqa.org/?p=120926">an answer quoting two fatwas</a> and
+              <a href="https://propakistani.pk/2026/07/09/pakistans-top-mufti-declares-crypto-trading-haram/amp/">a news report of a fatwa (June 2026)</a>.</li>
+            <li id="src-lic">LIC: zakat every year on the premiums paid:
+              <a href="https://islamqa.org/?p=27250">a fatwa on policies</a> and
+              <a href="https://islamqa.org/?p=24640">a fatwa on LIC</a>; no zakat on premiums:
+              <a href="https://islamqa.org/?p=44626">an answer on insurance policies</a>.</li>
+            <li id="src-gold-loan">Gold kept for a gold loan:
+              <a href="https://islamqa.org/?p=85558">an answer that zakat is due</a> and
+              <a href="https://islamqa.org/?p=78561">a fatwa on gold kept with a bank</a>.
+              Gold lent to a relative: <a href="https://islamqa.org/?p=156583">a fatwa on lent gold</a>.
+              Digital gold: <a href="https://seekersguidance.org/uncategorized/is-it-permissible-to-invest-in-digital-gold/">an answer on digital gold</a>.
+              Sovereign Gold Bonds: <a href="https://vikaspedia.in/social-welfare/financial-inclusion/swarnabharath">the government's scheme notes</a>.</li>
+            <li id="src-property">Plots: the intention when buying decides:
+              <a href="https://islamqa.org/?p=137652">a fatwa on land to sell</a>,
+              <a href="https://islamqa.org/?p=138132">a fatwa on a changed intention</a> and
+              <a href="https://islamqa.org/?p=25602">a fatwa on land for a future house</a>.
+              A flat under construction: <a href="https://islamqa.org/?p=136976">a fatwa on an unregistered flat</a>;
+              another view: <a href="https://dar-alifta.org/en/fatwa/details/7739/paying-zakat-on-pieces-of-land-whose-price-is-paid-in-installments">a fatwa on land paid in instalments</a>.</li>
+            <li id="src-never">Things you use are not counted; money saved for a house, a wedding or Hajj is:
+              <a href="https://www.ifa-india.org/pdfs/pdf-20210410122948.pdf">decisions of scholars in India on bare necessities (1992)</a>.</li>
+            <li id="src-date">The zakat date and the year: <a href="https://islamqa.org/?p=175831">an answer on wealth falling below the nisab</a>,
+              <a href="https://www.islamweb.net/en/fatwa/49483/how-to-give-zakah-on-ones-salary">a fatwa on salary and the lunar year</a>, and
+              <a href="https://www.ajmanbank.ae/site/files/136Zakat%20Calculation%20-%202025.pdf">a bank's zakat guide</a>, which uses 2.5775% for an English-calendar year.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ==================================================================
+     FOOTER — identical in every page. Never edit this per page.
+     The disclaimer is required on every page, including the home page.
+     ================================================================== -->
+
+<footer class="site-footer">
+  <div class="wrap">
+
+    <!-- THE NEWSLETTER SIGN-UP. Signing up happens on /join/ (Beehiiv's own
+         box), so nobody types their email twice. The stylesheet hides this
+         one on the home page, which has a sign-up of its own, and on /join/
+         itself. -->
+    <div class="footer-news">
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7.5 8 5.5 8-5.5"/></svg></span>
+      <div>
+        <h2>HalalEdge, one email a week</h2>
+        <p>One real money question, worked through with its sources. Free.</p>
+      </div>
+      <a class="button" href="/join/">Join free</a>
+    </div>
+
+    <!-- A FEW LINKS (MAS, 6 Nov 2026: a short, clean footer). The menu
+         above, the Learn page and the About page link the rest. "Official
+         channels" opens /official/: Purevesting's only official places,
+         and what to do about a fake (MAS, 17 Nov 2026, step 0.2). -->
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/screener/">Stocks</a>
+      <a href="/compare/shariah-mutual-funds/">Mutual funds</a>
+      <a href="/instruments/">EPF &amp; more</a>
+      <a href="/tools/">Tools</a>
+      <a href="/learn/">Learn</a>
+      <a href="/videos/">Videos</a>
+      <a href="/ask/">Ask me</a>
+      <a href="/about/">About</a>
+      <a href="/official/">Official channels</a>
+      <a href="/app/">Install the app</a>
+      <a href="/stop-the-genocide/">Stop the genocide</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
+
+    <p class="footer-social">
+      <a href="https://www.youtube.com/channel/UCY_rjMlDGOAXyhC-aC_aQCA" rel="me"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path class="solid" d="m10.2 9.3 4.6 2.7-4.6 2.7z"/></svg>YouTube</a>
+      <a href="https://www.instagram.com/purevesting/" rel="me"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="solid" cx="17.3" cy="6.7" r="1"/></svg>Instagram</a>
+      <a href="mailto:salam@purevesting.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7.5 8 5.5 8-5.5"/></svg>salam@purevesting.com</a>
+    </p>
+
+    <!-- What Purevesting is, in one line. The same words open the About
+         page and sit in the home page's structured data, so Google and
+         its AI answers describe the site the same way everywhere. It
+         covers all of finance, not only investing (MAS, 6 Nov 2026). -->
+    <p class="footer-about"><strong>Purevesting</strong> is a startup building
+       India's one-stop destination for halal finance: investing, saving and
+       borrowing.</p>
+
+    <!-- THE ONE DISCLAIMER LINE (MAS, 6 Nov 2026). Outside /disclaimer/,
+         this is the only place the site says it: never repeat it on a
+         page (README.md, writing rules). -->
+    <p class="disclaimer">Educational content, not investment advice.
+       <a href="/disclaimer/">Read the disclaimer</a></p>
+
+  </div>
+</footer>
+
+<!-- ======================= END FOOTER =============================== -->
+
+
+<!-- THE TEMPLATES for the rows that "Add more gold", "Add more silver"
+     and "Add another loan" add. zakat-page.js copies one and numbers its
+     boxes (gold-2, gold-3…). -->
+<template id="gold-row-template">
+  <div class="step-field metal-row" data-row="gold">
+    <div class="metal-head">
+      <label class="step-label" for="gold-N">More gold</label>
+      <div class="pick-group" role="radiogroup" aria-label="Karat">
+        <label class="pick"><input type="radio" name="gold-N-karat" value="24" checked><span>24K</span></label>
+        <label class="pick"><input type="radio" name="gold-N-karat" value="22"><span>22K</span></label>
+        <label class="pick"><input type="radio" name="gold-N-karat" value="18"><span>18K</span></label>
+        <label class="pick"><input type="radio" name="gold-N-karat" value="14"><span>14K</span></label>
+      </div>
+    </div>
+    <div class="unit-box">
+      <input id="gold-N" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-field="grams">
+      <span class="unit-pick" id="gold-N-unit" role="group" aria-label="Unit">
+        <button type="button" data-unit="g" aria-pressed="true">g</button>
+        <button type="button" data-unit="tola" aria-pressed="false">tola</button>
+      </span>
+    </div>
+    <p class="step-equal" data-equal hidden></p>
+  </div>
+</template>
+
+<template id="silver-row-template">
+  <div class="step-field metal-row" data-row="silver">
+    <div class="metal-head">
+      <label class="step-label" for="silver-N">More silver</label>
+      <div class="pick-group" role="radiogroup" aria-label="Purity">
+        <label class="pick"><input type="radio" name="silver-N-purity" value="99.9" checked><span>999</span></label>
+        <label class="pick"><input type="radio" name="silver-N-purity" value="92.5"><span>925</span></label>
+        <label class="pick"><input type="radio" name="silver-N-purity" value="other"><span>Another %</span></label>
+      </div>
+    </div>
+    <div class="unit-box">
+      <input id="silver-N" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-field="grams">
+      <span class="unit-pick" id="silver-N-unit" role="group" aria-label="Unit">
+        <button type="button" data-unit="g" aria-pressed="true">g</button>
+        <button type="button" data-unit="kg" aria-pressed="false">kg</button>
+      </span>
+    </div>
+    <div class="unit-box unit-box-small" data-other hidden><input id="silver-N-other" class="step-input" type="text" inputmode="decimal" autocomplete="off" aria-label="Its purity, in %" data-field="other"><span class="unit-chip" aria-hidden="true">%</span></div>
+  </div>
+</template>
+
+<template id="loan-row-template">
+  <div class="loan-row" data-row="loan">
+    <p class="loan-name">Loan N</p>
+    <div class="step-field">
+      <label class="step-label step-label-small" for="loan-N-left">Loan left</label>
+      <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="loan-N-left" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money data-field="left"></div>
+    </div>
+    <div class="step-pair">
+      <div class="step-field">
+        <label class="step-label step-label-small" for="loan-N-rate">Interest a year</label>
+        <div class="unit-box"><input id="loan-N-rate" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-field="rate"><span class="unit-chip" aria-hidden="true">%</span></div>
+      </div>
+      <div class="step-field">
+        <label class="step-label step-label-small" for="loan-N-emi">EMI</label>
+        <div class="unit-box"><span class="unit-chip" aria-hidden="true">₹</span><input id="loan-N-emi" class="step-input" type="text" inputmode="decimal" autocomplete="off" data-money data-field="emi"></div>
+      </div>
+    </div>
+    <p class="step-hint" data-hint="loan" aria-live="polite"></p>
+  </div>
+</template>
+
+
+<script src="/assets/site.js"></script>
+<script src="/assets/share-card.js"></script>
+<!-- The maths (nisab.js first: zakat.js uses it), then the screen code. -->
+<script src="/assets/calc/nisab.js"></script>
+<script src="/assets/calc/zakat.js"></script>
+<script src="/assets/tools/zakat-page.js"></script>
+
+<!-- Visitor counting: Cloudflare Web Analytics is switched on in the
+     Cloudflare dashboard ("automatic setup") and adds its script to every
+     page by itself. Nothing needs pasting here. -->
+
+</body>
+</html>

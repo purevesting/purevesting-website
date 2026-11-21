@@ -42,7 +42,10 @@
      30. The two-step drawing, and the worked example's limits
      31. Calculators on one screen
      32. Instrument pages — the answer drawn, how it works, fatwa cards
-     33. Zakat pages — gold icons, and Nisab today
+     33. Zakat pages — gold icons, Nisab today, the zakat calculator
+     34. Tools: shared blocks — step fields, picks, questions, the answer
+         card, the range answer, the parts bar, Save · Share · What next,
+         the running total, questions and answers, print
    ========================================================================== */
 
 
@@ -4210,9 +4213,10 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
 }
 
 
-/* 33. ZAKAT PAGES — GOLD ICONS, AND NISAB TODAY ===========================
-   Shows on: /zakat/nisab-today/ (step 1.1). The gold icon will show on the
-   zakat calculator too (step 1.2).
+/* 33. ZAKAT PAGES — GOLD ICONS, NISAB TODAY, THE ZAKAT CALCULATOR =========
+   Shows on: /zakat/nisab-today/ (step 1.1) and /zakat-calculator/ (step
+   1.2: the gold icons, and part 7 below; its boxes and answer card are
+   the shared blocks of section 34).
    Gold is for zakat, sadaqah and purification (MAS, step 1.1; README.md,
    "The colours"). Every gap here is a --space name from section 2.
 
@@ -4227,6 +4231,8 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
    5. YOUR JEWELLER'S RATE: two boxes side by side, even on a phone, then
       your own nisab. Hidden without JavaScript, which they need.
    6. THE NEXT STEP: one wide tile, its icon beside its words.
+   7. THE ZAKAT CALCULATOR: the boxes, then the answer card (side by side
+      on a computer); the plain note without JavaScript; "Read more".
    ========================================================================== */
 
 /* 1. A GOLD ICON. */
@@ -4422,6 +4428,860 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
   .nisab-answer { padding: var(--space-5) var(--space-6) var(--space-5) var(--space-6); }
   .nisab-main .big-number { font-size: 3.5rem; }
   .nisab-answer .nisab-gold { font-size: 1.1rem; }
+}
+
+/* 7. THE ZAKAT CALCULATOR (step 1.2). Shows on: /zakat-calculator/.
+   Its blocks are the shared ones of section 34; this part only lays
+   them out. On a phone: the boxes, then the answer card under them. On a
+   computer: the boxes on the left, the answer card on the right, staying
+   in view while the groups are filled. Without JavaScript the boxes and
+   the card stay hidden, and the plain note shows instead. */
+.zakat-page h1 { margin-bottom: var(--space-2); }
+.zakat-page .standfirst { margin-bottom: var(--space-4); }
+
+.zakat-layout { display: none; }
+
+.js .zakat-layout {
+  display: grid;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.zakat-no-js {
+  max-width: 40rem;
+  padding: var(--space-4) var(--space-5);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.zakat-no-js ol { margin: 0 0 var(--space-3); padding-left: 1.25rem; }
+.zakat-no-js li { margin-bottom: var(--space-2); }
+.zakat-no-js p { margin: 0; }
+
+/* The line with IBJA's rates and their date, under the two rate boxes. */
+.zakat-rates { margin-top: calc(var(--space-2) * -1); }
+
+/* "Read more" holds a few headings; they sit closer than an article's. */
+.zakat-method h3 { margin: var(--space-5) 0 var(--space-2); font-size: 1rem; color: var(--sky-ink); }
+.zakat-method h3:first-child { margin-top: var(--space-2); }
+.zakat-method ul,
+.zakat-method ol { margin: 0 0 var(--space-3); padding-left: 1.2rem; }
+.zakat-method li { margin-bottom: var(--space-2); }
+
+@media (min-width: 46em) {
+  .js .zakat-layout {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+  .js .zakat-layout > .zakat-answer { position: sticky; top: var(--space-4); }
+}
+
+
+/* 34. TOOLS: SHARED BLOCKS ================================================
+   Shows on: /zakat-calculator/ (step 1.2). Made to be reused: a later
+   calculator copies the HTML from zakat-calculator/index.html, and these
+   blocks style it. Every gap is a --space name from section 2, every
+   tappable thing is at least --tap (44px) tall, and section 14 stops all
+   movement when the phone asks for less motion.
+
+   1. A STEP FIELD: a label, a box with a unit chip, a helper line.
+        <div class="step-field">
+          <label class="step-label" for="cash">Cash and bank balance</label>
+          <div class="unit-box"><span class="unit-chip">₹</span><input id="cash" class="step-input"></div>
+          <p class="step-help">Your numbers stay on this phone.</p>
+        </div>
+      ₹ sits before the number; g, kg, tola and % after it. A unit the
+      visitor can change is a "unit-pick": two buttons, the chosen one
+      aria-pressed="true". "step-pair" puts two fields side by side.
+      "step-hint" is a warning line the page's script fills in.
+   2. PICKS: answers as round buttons, with radio buttons underneath
+      (24K · 22K · 18K · 14K, Count it · Don't count it…).
+        <div class="pick-group"><label class="pick"><input type="radio"><span>22K</span></label>…</div>
+   3. A QUESTION: <fieldset class="choice-block">, the question in
+      <legend class="choice-legend">, the answers as picks. On a pale blue
+      box with the scales (sign-differ) where scholars differ;
+      "choice-plain" for a plain question of fact (white).
+   4. THE FORM IN GROUPS: <form class="tool-form is-quick"> shows only the
+      boxes marked data-quick. With "is-full", a phone shows one
+      <fieldset class="step-group"> at a time (the one marked
+      "is-current", with the step-nav bar: Back · 1 of 6 · Next), and a
+      computer shows every group. "add-row" adds a row of boxes; "tick"
+      is a tick box.
+   5. THE ANSWER CARD: white, with a gold edge (gold is for zakat): a
+      label, the amount big, and short lines under it.
+   6. THE RANGE ANSWER: two numbers side by side, the scales between
+      them, "Ask a scholar you trust" under them. Never an average.
+   7. THE PARTS BAR: one bar in parts, one colour per part, and the same
+      figures as text with a colour key each (the .key of section 23).
+   8. SAVE · SHARE · WHAT NEXT: three buttons in a row, always in that
+      order, then a status line and the "What next" links.
+   9. THE RUNNING TOTAL: a thin gold bar fixed at the bottom of the
+      screen, shown by the page's script while the answer is out of view.
+   10. QUESTIONS AND ANSWERS: <div class="faq-list">, each a "Read more"
+      (<details class="source faq-item">) that opens on a tap.
+   11. PRINT: a page with an answer card prints only that card, with the
+      date (.print-only), and no menu or footer.
+   ========================================================================== */
+
+/* Anything a tool's script hides stays hidden, whatever else styles it. */
+.tool-form [hidden],
+.answer-card [hidden],
+.running-total[hidden] { display: none !important; }
+
+/* 1. A STEP FIELD. */
+.step-field {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.step-label {
+  display: block;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.step-label-small { font-size: 0.85rem; }
+.step-label-group { margin-top: var(--space-2); font-weight: 700; }
+
+.unit-box {
+  display: flex;
+  align-items: stretch;
+  min-height: var(--tap-main);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+/* The box shows where you are typing: a deep blue edge and a blue ring,
+   strong enough for keyboard users (it stands in for section 6's outline,
+   which would only show inside the box). */
+.unit-box:focus-within {
+  border-color: var(--sky-deep);
+  box-shadow: 0 0 0 3px var(--sky-soft);
+}
+
+.unit-box-small { max-width: 9rem; }
+
+.step-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-body);
+  font-size: 1.05rem;              /* 16px or more stops iPhones zooming in */
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: none;                   /* the box's ring above shows the focus */
+}
+
+.step-input:focus-visible { outline: none; }
+
+.unit-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  min-width: 2.6rem;
+  padding: 0 var(--space-2);
+  font-weight: 700;
+  color: var(--ink-2);
+  background: var(--bone);
+}
+
+.unit-chip:first-child { border-right: 1px solid var(--line); }
+.unit-chip:last-child { border-left: 1px solid var(--line); }
+
+/* A unit the visitor can change: g or tola, g or kg. */
+.unit-pick {
+  display: flex;
+  flex: none;
+  border-left: 1px solid var(--line);
+}
+
+.unit-pick button {
+  min-width: var(--tap);
+  padding: 0 var(--space-3);
+  font: 700 0.9rem var(--font-body);
+  color: var(--ink-2);
+  background: var(--bone);
+  border: 0;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.unit-pick button + button { border-left: 1px solid var(--line); }
+
+.unit-pick button[aria-pressed="true"] {
+  color: var(--white);
+  background: var(--sky-deep);
+}
+
+.step-help {
+  max-width: 38rem;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.step-hint {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.step-hint:empty { display: none; }
+
+/* "= 87.48 g", under a box filled in tola. */
+.step-equal {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.step-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: end;
+}
+
+/* A few lines that belong together (a box, its helper lines, its "Add
+   more" button), set closer than the fields around them. */
+.step-stack {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+/* A gold or silver row: its name and its picks (24K · 22K…) share one
+   line above the box, when there is room. */
+.metal-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-3);
+}
+
+.metal-head .pick span { padding: var(--space-2) var(--space-3); }
+
+/* 2. PICKS. The radio button stays in the page for keyboards and screen
+   readers, but out of sight; its round button shows instead. */
+.pick-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.pick {
+  position: relative;
+  display: inline-flex;
+  max-width: 100%;
+}
+
+.pick input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pick span {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-4);
+  font: 700 0.9rem/1.3 var(--font-body);
+  color: var(--sky-ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 1.4rem;
+  cursor: pointer;
+  transition: transform 120ms var(--ease), background-color 150ms ease, border-color 150ms ease;
+}
+
+.pick:hover span { border-color: var(--sky); }
+.pick span:active { transform: scale(0.97); }
+
+.pick input:checked + span {
+  color: var(--white);
+  background: var(--sky-deep);
+  border-color: var(--sky-deep);
+}
+
+.pick input:focus-visible + span {
+  outline: 2px solid var(--green-deep);
+  outline-offset: 2px;
+}
+
+/* 3. A QUESTION. Its legend floats, so it sits inside the box like any
+   other line instead of on its edge. */
+.choice-block {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  background: var(--sky-tint);
+  border: 0;
+  border-radius: var(--radius-sm);
+}
+
+.choice-plain {
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.choice-legend {
+  float: left;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--sky-ink);
+}
+
+.choice-legend .sign {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-width: 1.5px;
+  border-color: var(--white);
+  background-color: var(--white);
+  background-size: 0.95rem;
+}
+
+.choice-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.choice-percent { display: grid; gap: var(--space-2); }
+
+/* 4. THE FORM IN GROUPS. */
+.tool-form {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.step-group {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.step-legend {
+  float: left;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.step-count {
+  margin-left: auto;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--ink-3);
+}
+
+/* The quick calculator: only the boxes marked data-quick, set a little
+   closer, so they and the answer fit on a small phone's first screen. */
+.tool-form.is-quick .step-group:not([data-has-quick]),
+.tool-form.is-quick .step-group > :not([data-quick]),
+.tool-form.is-quick [data-full-only] { display: none; }
+
+.tool-form.is-quick { gap: var(--space-3); }
+
+/* In the quick calculator a short label sits beside its box, as on the
+   other calculators; its helper line goes under both. */
+.tool-form.is-quick .step-field-row {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 10.5rem);
+  align-items: center;
+  column-gap: var(--space-3);
+}
+
+.tool-form.is-quick .step-field-row > .step-help { grid-column: 1 / -1; }
+
+/* The full calculator on a phone: one group at a time. */
+.tool-form.is-full .step-group:not(.is-current) { display: none; }
+
+.row-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.add-row {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-4) 0 var(--space-3);
+  font: 700 0.9rem var(--font-body);
+  color: var(--green-deep);
+  background: var(--white);
+  border: 1px dashed var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.add-row::before {
+  content: "+";
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.add-row:hover { border-color: var(--green); }
+
+.tick {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--tap-main);
+  padding: var(--space-2) var(--space-4);
+  font-weight: 700;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.tick input {
+  flex: none;
+  width: 1.35rem;
+  height: 1.35rem;
+  margin: 0;
+  accent-color: var(--sky-deep);
+}
+
+.loan-row {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.loan-name {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.business-boxes {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* "Add more", and the Back · 1 of 6 · Next bar. */
+.add-more { width: 100%; }
+
+.add-more svg,
+.tool-action svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* "Investments · 3 of 6" on its own line, Back and Next under it. */
+.step-nav {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas: "place place" "back next";
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line);
+}
+
+.step-nav > :first-child { grid-area: back; }
+.step-nav > :last-child { grid-area: next; }
+
+.step-place {
+  grid-area: place;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--ink-2);
+}
+
+/* Back, on the first group: there is nowhere to go back to. */
+.step-nav button:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
+}
+
+/* A computer shows every group, each under a thin line. */
+@media (min-width: 46em) {
+  .tool-form.is-full .step-group:not(.is-current) { display: grid; }
+  .tool-form.is-full .step-group + .step-group {
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--line);
+  }
+  .step-nav,
+  .step-count { display: none; }
+}
+
+/* 5. THE ANSWER CARD. */
+.answer-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+  padding: var(--space-3) var(--space-4) var(--space-5) var(--space-5);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.answer-card::before {          /* the gold edge */
+  content: "";
+  position: absolute;
+  left: 0;
+  top: var(--space-4);
+  bottom: var(--space-4);
+  width: 5px;
+  border-radius: 0 5px 5px 0;
+  background: var(--gold-deep);
+}
+
+.answer-card:focus { outline: none; }
+.answer-card p { margin: 0; max-width: none; }
+
+.answer-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gold-ink);
+}
+
+.answer-card .answer-label { margin-bottom: calc(var(--space-2) * -1); }   /* close to its amount */
+
+.answer-amount .big-number {
+  display: block;
+  font-size: 2.75rem;
+  line-height: 1;
+}
+
+.answer-status { font-size: 0.95rem; color: var(--ink-2); }
+
+.answer-line {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.answer-differ { font-weight: 700; color: var(--sky-ink); }
+
+.answer-more a,
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  font-weight: 700;
+}
+
+.link-button {
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: inherit;
+  color: var(--green-deep);
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  cursor: pointer;
+}
+
+.answer-never { font-size: 0.85rem; color: var(--ink-3); }
+
+/* 6. THE RANGE ANSWER. The figures shrink on a small phone, so the two
+   always fit side by side. */
+.range-answer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+
+.range-end {
+  display: grid;
+  gap: var(--space-1);
+  text-align: center;
+}
+
+.range-word {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.range-end .big-number {
+  font-size: min(1.85rem, 6.4vw);
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.range-ask {
+  grid-column: 1 / -1;
+  font-weight: 700;
+  text-align: center;
+  color: var(--gold-ink);
+}
+
+/* 7. THE PARTS BAR. */
+.parts {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.parts-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.parts-bar {
+  display: flex;
+  gap: 2px;
+  height: 14px;
+  overflow: hidden;
+  border-radius: 7px;
+  background: var(--line);
+}
+
+.parts-bar > span {
+  flex: none;
+  min-width: 4px;
+  transition: width 300ms var(--ease);
+}
+
+/* One colour per part, the same on its key square. */
+.part-money       { background: var(--gold-deep); }
+.part-metals      { background: var(--amber); }
+.part-investments { background: var(--sky-deep); }
+.part-property    { background: var(--sky); }
+.part-business    { background: var(--gold-ink); }
+
+.parts-key {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.parts-key li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.parts-key .num { font-weight: 700; white-space: nowrap; }
+.parts-key .parts-owe { color: var(--ink-2); }
+
+.parts-key .parts-left {
+  padding-top: var(--space-1);
+  border-top: 1px solid var(--line);
+  font-weight: 700;
+}
+
+/* 8. SAVE · SHARE · WHAT NEXT. */
+.tool-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.tool-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: 3.5rem;
+  padding: var(--space-2);
+  font: 700 0.85rem/1.2 var(--font-body);
+  color: var(--green-deep);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: transform 120ms var(--ease), border-color 150ms ease, background-color 150ms ease;
+}
+
+.tool-action svg { width: 22px; height: 22px; stroke-width: 2; }
+.tool-action:hover { border-color: var(--green); }
+.tool-action:active { transform: scale(0.97); }
+
+.tool-action[aria-expanded="true"] {
+  background: var(--green-tint);
+  border-color: var(--green-tint);
+}
+
+.tool-note {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--green-ink);
+}
+
+.tool-note:empty { display: none; }
+.tool-clear .link-button { font-size: 0.88rem; color: var(--ink-2); }
+
+.what-next {
+  display: grid;
+  margin: 0;
+  padding: var(--space-1) var(--space-4);
+  list-style: none;
+  background: var(--bone);
+  border-radius: var(--radius-sm);
+}
+
+.what-next a {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap);
+  font-weight: 700;
+}
+
+.what-next a::after { content: "\2192"; margin-left: auto; padding-left: var(--space-2); }
+
+/* 9. THE RUNNING TOTAL. The section it belongs to gets more room at the
+   bottom while it shows ("has-running-total"), so it never covers the
+   Back and Next buttons. */
+.running-total {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap-main);
+  padding: var(--space-2) var(--space-4) calc(var(--space-2) + env(safe-area-inset-bottom, 0px));
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gold-ink);
+  background: var(--gold-tint);
+  border-top: 1px solid var(--amber-soft);
+  text-decoration: none;
+}
+
+.running-total strong { font-size: 1.05rem; color: var(--ink); }
+.running-total:hover { text-decoration: underline; }
+
+.has-running-total { padding-bottom: calc(var(--section) + var(--tap-main)); }
+
+/* 10. QUESTIONS AND ANSWERS: white boxes on a blue band. */
+.faq-list {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 46rem;
+}
+
+.faq-item {
+  margin: 0;
+  padding: 0 var(--space-4);
+  background: var(--white);
+  border-radius: var(--radius-sm);
+}
+
+.faq-item > summary {
+  width: 100%;
+  font-size: 1rem;
+  color: var(--sky-ink);
+}
+
+.band .faq-item > summary::before { background-color: var(--sky-tint); }
+
+.faq-item > .source-body,
+.band .faq-item > .source-body {
+  margin: 0;
+  padding: 0 0 var(--space-3);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: none;
+}
+
+.faq-item .source-body p { margin: 0 0 var(--space-2); }
+
+/* 11. PRINT. Only the answer card, with the date it was worked out. */
+.print-only { display: none; }
+
+@media print {
+  .answer-card .print-only { display: block; }
+  body:has(.answer-card) .site-header,
+  body:has(.answer-card) .site-footer,
+  body:has(.answer-card) .offline-note,
+  body:has(.answer-card) main > section:not(:has(.answer-card)),
+  section:has(.answer-card) h1,
+  section:has(.answer-card) .standfirst,
+  section:has(.answer-card) .no-js-only,
+  .tool-form,
+  .running-total,
+  .tool-actions,
+  .tool-note,
+  .tool-clear,
+  .what-next,
+  .answer-card .choice-block,
+  .answer-more,
+  .answer-never { display: none !important; }
+  .js .zakat-layout { display: block; }
+  .answer-card { position: static; border: 1px solid var(--line); box-shadow: none; }
+  .answer-card::before,
+  .parts-bar > span,
+  .parts-key .key { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .answer-printed { font-size: 0.85rem; color: var(--ink-3); }
 }
 
 

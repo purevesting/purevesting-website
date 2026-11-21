@@ -95,7 +95,35 @@ MAS says "go live" (CLAUDE.md, "How to hand over").
       `data/` folder off the site (it kept `assets/data/` off too), and
       `.github/` off too. Live 21 Nov 2026 (MAS: "go live"). Open points:
       section 0, items 28 to 30 and 32.
-- [ ] **1.2 Zakat calculator**
+- [x] **1.2 Zakat calculator** — done 21 Nov 2026, on branch
+      claude/trusting-allen-v3xxpz (the branch this session was given):
+      the new page /zakat-calculator/, "How much zakat do I owe?", for
+      one person at a time. On a phone's first screen: three boxes (cash
+      and bank; gold in grams or tola, 24K/22K/18K/14K; what you must
+      pay now) and the answer under them. "Add more" opens six groups,
+      one at a time on a phone ("1 of 6"), all open on a computer, with
+      a thin "Your zakat so far" bar at the bottom. The nine questions
+      of the zakat rules (Part 3, section 7), each shown once its box
+      has a number, in the rules' own words; "Not sure" shows the lowest
+      and the highest, never an average. The answer: the amount (it
+      counts up once) or the two numbers with the scales and "Ask a
+      scholar you trust"; the parts as a bar and as text; the nisab with
+      its date and source, or the gold-only words of Fix 1; the zakat
+      date; "Scholars differ on n of your answers"; Save · Share · What
+      next; print; "Remind me next year"; "Purevesting never collects
+      zakat"; the call block inside comment marks. Six questions and
+      answers, structured data (a web application and the six
+      questions), "Read more" with the method, Sources. The maths:
+      `assets/calc/zakat.js`, with 43 tests in `tests/zakat.test.js`
+      (cases A to R without K, the seven families, the loans, "Not
+      sure", the page); `node --test tests/`: 63 of 63 pass. The screen
+      code: `assets/tools/zakat-page.js`. site.css: section 34, "Tools:
+      shared blocks". In the Tools menu on every page; a tile on /tools/;
+      the tile on /zakat/nisab-today/ now leads to it; sitemap; link
+      picture `assets/og/zakat-calculator.png`; sw.js (v3) keeps it for
+      use with no internet. The daily rate job rewrites its nisab figures
+      too. Not live yet: live once MAS says "go live". Open points:
+      section 0, items 33 to 35.
 - [ ] **1.3 Zakat answers and interest tool**
 - [ ] **1.4 Ramadan switch**
 - [ ] **1.5 Scholar's edits and launch**
@@ -113,7 +141,11 @@ section 0d.
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 21 November 2026, step 1.1 of the plan above: the gold and
+Last updated: 21 November 2026, step 1.2 of the plan above: the zakat
+calculator at /zakat-calculator/, its maths in `assets/calc/zakat.js`
+with its tests, and the shared tool blocks in site.css section 34 (what
+is left for MAS: section 0, items 33 to 35). Earlier the same day, step
+1.1 of the plan above: the gold and
 silver rates in `assets/data/prices.json`, updated by themselves every
 morning after a working day (section 0b, "By itself"), the nisab maths in
 `assets/calc/nisab.js` with its tests, and the new page
@@ -471,7 +503,9 @@ decision only he can make.
 - [ ] **30. Nisab today in the menu — decide when (added 21 Nov, step
       1.1).** The page is linked from /tools/ only, as the step asked. Say
       when it goes in the menu (with the zakat calculator in step 1.2, or
-      in Ramadan, step 1.4), and under which word (Tools?).
+      in Ramadan, step 1.4), and under which word (Tools?). Step 1.2 put
+      only "Zakat calculator" in the Tools menu, as asked; the calculator
+      links to Nisab today under "What next".
 - [x] ~~**31. Two choices for the zakat calculator, step 1.2.**~~ DECIDED
       21 Nov: MAS said "choose whichever suits best". Chosen: IBJA's own
       published rates for 22K (916), 18K (750) and 14K (585). The
@@ -498,6 +532,64 @@ decision only he can make.
       go through its paid API. The site reads the public page once a day
       for an educational figure; if IBJA ever objects or blocks it, the
       issue appears and the API is the way out.
+- [ ] **33. Check the zakat calculator on your phone (added 21 Nov,
+      step 1.2).** Your zakat rules (4.10) ask for three checks by hand.
+      Open purevesting.com/zakat-calculator. Type the cash and the gold
+      in the quick boxes, then tap "Add more" → Next (group 2, "Gold and
+      silver") and type 14000 in "Gold 24K" and 180 in "Silver 999" (the
+      rules' test rates; they stay while you change the other boxes).
+      (a) Sana 2b: Cash and bank 5,000; Gold 70 g, 22K; in group 2, "Of
+      this gold, how many grams are jewellery a woman wears regularly":
+      60 → Lowest ₹3,333 · Highest ₹22,583.
+      (b) Fatima: Cash and bank 2,36,000; Gold 30 g, 22K; in group 2,
+      worn 30 and Silver 700 g, 925; in group 3, "Fixed and recurring
+      deposits…" 5,00,000 → ₹21,314 to ₹30,939.
+      (c) Ayesha: Cash and bank 30,000; Gold 40 g, 22K; in group 2, worn
+      40 → ₹0 to ₹13,583.
+      (Checked by the website chat on 21 Nov: all three match.) Empty the
+      boxes by hand between checks ("Clear my numbers" also puts IBJA's
+      rates back). Then: tap Save, close the browser, open the page
+      again: the numbers are still there. And once, in flight mode: the
+      page still opens and works.
+- [ ] **34. What I decided where the rules say nothing — say "fine",
+      or change it (added 21 Nov, step 1.2).** None of these is a ruling;
+      each is how a box works.
+      (a) Cash at home and bank accounts share one box, the quick box
+      "Cash and bank balance" (its helper line in the full calculator
+      names both, and the bank-interest note), so nothing is typed twice.
+      (b) Silver jewellery a woman wears regularly has its own grams box
+      and follows the same jewellery question, as family 2c of the rules
+      needs.
+      (c) A long loan with no EMI (paid back in one go, like most gold
+      loans) counts all of it as due within 12 months; a line under the
+      loan says so.
+      (d) Committee (BC) money still to pay: two boxes, "Still to pay"
+      and "You pay each month"; taken off like a loan with no interest
+      (the rules: "like a long loan").
+      (e) Builder instalments: one box, the part due in the next 12
+      months, whatever the loan answer (as the rules' box list has it).
+      (f) The plot: until "Why did you buy this plot?" is answered, it is
+      not counted.
+      (g) Long-term shares, "a part": until a % is typed, the full value
+      stays.
+      (h) With the gold minimum chosen and a metal reaching its own
+      weight (the weight guard), debts come off the other wealth first,
+      then off the metals. The rules don't say; a test shows it.
+      (i) Only silver counted: the answer says "You entered only silver.
+      When silver is all you own, zakat starts at 612.36 g of silver."
+      My words: the rules have words only for gold.
+      (j) The starting karat is 22K and the starting silver purity 925
+      (a second row starts at 24K, or 999).
+      (k) Question 1 (silver or gold) sits in the answer card, under
+      "Nisab today", so the first screen keeps its three boxes.
+      (l) The words of the six questions and answers, of "Read more" and
+      of the helper lines without visitor words in the rules are mine,
+      made from the rules (no rulings in them).
+- [ ] **35. Two things waiting (added 21 Nov, step 1.2).** (a) The
+      "check it with me on a call" block is in the page, inside comment
+      marks: remove them only when the zakat check-up is live and the
+      lawyer has said yes. (b) Step 1.3: "Interest to give away", under
+      "What next", goes to /tools/ until the interest page exists.
 
 ---
 
@@ -513,8 +605,10 @@ Each one says what to send or change, and where.
       anything").** GitHub runs `.github/workflows/update-prices.yml`
       Tuesday to Saturday at 8:47 in India: it reads IBJA's newest PM
       rates (gold 999, 916, 750, 585; silver 999), rewrites
-      `assets/data/prices.json` and every nisab figure, runs the checker
-      and the tests, and publishes if anything changed. That also covers
+      `assets/data/prices.json` and every nisab figure (on
+      /zakat/nisab-today/ and, since step 1.2, /zakat-calculator/), runs
+      the checker and the tests, and publishes if anything changed. That
+      also covers
       Ramadan (no separate daily job needed). **Only if** an issue "The
       gold and silver rate did not update" appears on GitHub (you get an
       email): ask the website chat to fix it; the page keeps the last
