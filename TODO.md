@@ -122,8 +122,9 @@ MAS says "go live" (CLAUDE.md, "How to hand over").
       the tile on /zakat/nisab-today/ now leads to it; sitemap; link
       picture `assets/og/zakat-calculator.png`; sw.js (v3) keeps it for
       use with no internet. The daily rate job rewrites its nisab figures
-      too. Not live yet: live once MAS says "go live". Open points:
-      section 0, items 33 to 35.
+      too. Live 21 Nov 2026 (MAS: "go live"). Open points: section 0,
+      items 33 to 35, and fable-website-new-version-check.md, section 1a
+      (what to try once on a real phone; what was not asked for).
 - [ ] **1.3 Zakat answers and interest tool**
 - [ ] **1.4 Ramadan switch**
 - [ ] **1.5 Scholar's edits and launch**

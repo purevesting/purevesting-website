@@ -1,8 +1,8 @@
 # Fable website new version check — what is still left
 
 Updated 21 November 2026: step 1.1 (the gold and silver rates, and the
-page "Nisab today") is live. Step 1.2 (the zakat calculator) is done,
-not live yet. A short list of everything still open, so nothing gets lost. The full
+page "Nisab today") is live. Step 1.2 (the zakat calculator) is live
+too (MAS: "go live", 21 Nov 2026). A short list of everything still open, so nothing gets lost. The full
 details are in TODO.md (section numbers given below). Not published on
 the site (.assetsignore keeps it off).
 
@@ -26,9 +26,9 @@ the site (.assetsignore keeps it off).
   extra step did" below).
 - **Live (21 Nov 2026):** step 1.1, purevesting.com/zakat/nisab-today.
   The gold and silver rates update themselves after every working day.
-- **Done, not live yet (21 Nov 2026):** step 1.2,
-  purevesting.com/zakat-calculator: the zakat calculator, one person at
-  a time; in the Tools menu on every page. Live once MAS says "go live".
+- **Live (21 Nov 2026):** step 1.2, purevesting.com/zakat-calculator:
+  the zakat calculator, one person at a time; in the Tools menu on every
+  page.
 - **Checker:** 0 ERROR, 4 WARN (the four long titles, item 16).
 - **Tests:** `node --test tests/`: 63 of 63 pass.
 - **Next:** step 1.3, the zakat answers and the interest tool.
@@ -86,7 +86,7 @@ the site (.assetsignore keeps it off).
 - [x] 0.3 The join page
 - [x] 0.4 Monthly update and history
 - [x] 1.1 Rates and Nisab today
-- [x] 1.2 Zakat calculator (done 21 Nov 2026, not live yet)
+- [x] 1.2 Zakat calculator (live 21 Nov 2026)
 - [ ] 1.3 Zakat answers and interest tool
 - [ ] 1.4 Ramadan switch
 - [ ] 1.5 Scholar's edits and launch
@@ -104,6 +104,38 @@ the site (.assetsignore keeps it off).
       block stays inside comment marks until the check-up is live and the
       lawyer says yes; "Interest to give away" goes to /tools/ until
       step 1.3.
+
+### Not tested from here — check once on your real phone (part of item 33)
+
+The website chat tested in a test browser, not on a real phone. Please
+try these once on your own phone and tell the chat if any fails:
+
+- [ ] **Share:** tap Share in the answer card. Your phone's share sheet
+      should open with "I worked out my zakat on Purevesting. Have you?"
+      and the link, and no amount.
+- [ ] **Print or save as PDF:** tap it. The PDF should show only the
+      answer card, with today's date, no menu or footer.
+- [ ] **The number pad:** tapping a box should open the number keypad
+      with a dot, not the letter keyboard.
+- [ ] **First screen on your phone:** the answer's big amount was checked
+      on a 360 × 800 screen. With the browser's own address bar, on a small
+      phone it may sit just under the bottom edge. Say if you want it
+      moved higher (it would need a smaller heading on this page).
+- [ ] **Flight mode:** open the site once with internet, turn on flight
+      mode, open purevesting.com/zakat-calculator: it should still work.
+
+### Not done in step 1.2 (nobody asked for them) — say if you want them
+
+- [ ] **Nisab today in the menu** (item 30): only "Zakat calculator" went
+      in the Tools menu, as the step asked.
+- [ ] **A shortcut on the app icon:** the app (manifest.json) has
+      shortcuts for four pages; the zakat calculator is not one of them.
+- [ ] **"Add another person"** button: the rules mention it for later
+      (Fix 2). Today the calculator is for one person; to work out a
+      second person, clear the numbers and start again.
+- [ ] **A converter for other currencies:** the rules (2.23) mention a
+      small converter; today the box asks for the amount already in
+      rupees.
 
 ## 1b. Still to do from step 1.1 — for MAS (TODO.md, section 0)
 
