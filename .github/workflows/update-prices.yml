@@ -46,10 +46,10 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Get the site
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Get Node 22, for the tests
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
 

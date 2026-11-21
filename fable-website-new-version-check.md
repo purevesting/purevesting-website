@@ -97,10 +97,13 @@ the site (.assetsignore keeps it off).
       says scholars agree on gold's weight but differ on silver's. Say
       "keep the words" or send new ones.
 - [ ] **Item 30. Nisab today in the menu — when?**
-- [ ] **Item 32. After "go live", once:** github.com → the repo →
-      Actions → "Gold and silver rate" → Run workflow. It should turn
-      green. If red: Settings → Actions → General → Workflow permissions
-      → "Read and write permissions" → Save, and run it again.
+- [ ] **Item 32. Nothing to click: just watch your email.** The automatic
+      update ran once on GitHub on 21 Nov: green (it read IBJA, the
+      checker and tests passed; no new rates, so nothing saved). The
+      first time it saves new rates is Tuesday 24 Nov, morning. If you
+      get an email "The gold and silver rate did not update", tell the
+      website chat (the usual fix: Settings → Actions → General →
+      Workflow permissions → "Read and write permissions" → Save).
 
 ## 2. New from the extra step — for MAS (TODO.md, section 0)
 

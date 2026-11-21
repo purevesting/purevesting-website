@@ -482,18 +482,17 @@ decision only he can make.
       hallmarked jewellery (14K = 58.5%), and it costs MAS nothing. The
       research's test cases (22K = ₹12,833.33 at ₹14,000) still hold: they
       give no IBJA rate, so 22/24 is used.
-- [ ] **32. After "go live": check the first automatic rate update (added
-      21 Nov, step 1.1).** It can only run from main, so it starts after
-      "go live". On github.com → the repo → **Actions** → "Gold and silver
-      rate" → **Run workflow** → **Run workflow** (green). After a minute
-      it should be green, and if IBJA has newer rates, a commit by
-      "github-actions[bot]" appears and the page shows the new date. If it
-      is red: (1) Settings → Actions → General → "Workflow permissions" →
-      choose "Read and write permissions" → Save, and run it again; (2) if
-      main is protected (Settings → Branches), allow GitHub Actions to push.
-      Also check once that Cloudflare published the bot's commit (the
-      page's "As of" date changes). It could not be tested from here: the
-      job only exists on GitHub once it is on main.
+- [ ] **32. The first saved automatic update — just watch your email
+      (added 21 Nov, step 1.1).** After "go live" (21 Nov) the website chat
+      ran the job once by hand on GitHub: green. It read IBJA from GitHub,
+      the checker and the 20 tests passed, and with no new rates it saved
+      nothing. Not proven yet: the first push of new rates, Tuesday 24 Nov
+      (Monday's rates). If an issue "The gold and silver rate did not
+      update" appears (you get an email), tell the website chat. The
+      usual fixes: Settings → Actions → General → "Workflow permissions"
+      → "Read and write permissions" → Save; or, if main is protected
+      (Settings → Branches), allow GitHub Actions to push. Then check
+      once that the page's "As of" date moved to 23 November 2026.
       Note: IBJA's home page says that using its rates for "valuation and
       pricing activities and in transactions & financial products" should
       go through its paid API. The site reads the public page once a day
