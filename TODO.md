@@ -93,7 +93,8 @@ MAS says "go live" (CLAUDE.md, "How to hand over").
       sw.js fetches the rates fresh whenever the phone is online. The
       checker bans five more names. `.assetsignore` now keeps only the top
       `data/` folder off the site (it kept `assets/data/` off too), and
-      `.github/` off too. Open points: section 0, items 28 to 32.
+      `.github/` off too. Live 21 Nov 2026 (MAS: "go live"). Open points:
+      section 0, items 28 to 30 and 32.
 - [ ] **1.2 Zakat calculator**
 - [ ] **1.3 Zakat answers and interest tool**
 - [ ] **1.4 Ramadan switch**
