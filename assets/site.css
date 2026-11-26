@@ -46,6 +46,7 @@
      34. Tools: shared blocks — step fields, picks, questions, the answer
          card, the range answer, the parts bar, Save · Share · What next,
          the running total, questions and answers, print
+     35. The links page — one big button per link (/links/)
    ========================================================================== */
 
 
@@ -706,13 +707,16 @@ body:has(main > .band:last-child) .site-footer { margin-top: 0; }
 .footer-news p { margin: 0.2rem 0 0; }
 .footer-news .button { grid-column: 1 / -1; justify-self: start; }
 
-/* The home page has its own sign-up just above the footer, and /join/ is
-   the sign-up itself, so on those two pages this one stands aside. (A
+/* The home page has its own sign-up just above the footer, /join/ is
+   the sign-up itself, and /links/ has a Newsletter button already, so on
+   those three pages this one stands aside. (A
    browser too old for :has() simply shows it.) */
 body:has(.home-news) .footer-news,
-body:has(.join-page) .footer-news { display: none; }
+body:has(.join-page) .footer-news,
+body:has(.links-page) .footer-news { display: none; }
 body:has(.home-news) .footer-nav,
-body:has(.join-page) .footer-nav { margin-top: 0; }
+body:has(.join-page) .footer-nav,
+body:has(.links-page) .footer-nav { margin-top: 0; }
 
 /* A few links: two columns on a phone, one row on a computer. */
 .footer-nav {
@@ -5282,6 +5286,151 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
   .parts-bar > span,
   .parts-key .key { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .answer-printed { font-size: 0.85rem; color: var(--ink-3); }
+}
+
+
+/* 35. THE LINKS PAGE ======================================================
+   Shows on: /links/ only — the page for the Instagram bio, YouTube,
+   WhatsApp and the QR code on the visiting card (MAS, 26 Nov 2026).
+   Most people open it on a phone, from a QR code, so everything fits on
+   the first screen of a 360px phone: the logo, the name, one line, then
+   one big button per link in a single column, centred. On a computer the
+   column stays phone-wide, so the buttons never stretch.
+
+   1. THE HEAD: the logo, "Purevesting" and one line, centred.
+   2. THE BUTTONS: <a class="link-button"> — a white card, the whole of it
+      tappable (at least 68px tall): a blue icon, the name in green, a
+      short grey line under it, and a small arrow on the right.
+   3. THE MAIN BUTTON: add "link-main" — solid green with white words.
+      Only the website has it.
+   4. SOMETHING NEW: add "link-new" — a green edge and a small "New"
+      label after the name. One at a time, put first.
+   ========================================================================== */
+
+/* 1. THE HEAD. A little less air above it than a normal section. */
+.links-page { padding-top: var(--space-6); }
+
+.links-head {
+  max-width: 30rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.links-head img {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-3);
+}
+
+.links-head h1 {
+  margin: 0;
+  font-size: 2.25rem;
+}
+
+.links-about {
+  max-width: 22rem;
+  margin: var(--space-2) auto 0;
+  color: var(--ink-2);
+  font-size: 1rem;
+  line-height: 1.5;
+  text-wrap: balance;
+}
+
+/* 2. THE BUTTONS. One column, phone-wide even on a computer. */
+.links-list {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 30rem;
+  margin: var(--space-5) auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link-button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 4.25rem;
+  padding: var(--space-3) var(--space-4);
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  transition: transform 120ms var(--ease), box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.link-button:hover { border-color: var(--sky); box-shadow: var(--shadow); }
+.link-button:active { transform: scale(0.97); }
+
+/* The name and the short line, one above the other. min-width: 0 lets a
+   long line (the email address) wrap instead of pushing the page wide. */
+.link-words {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.link-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--green-deep);
+}
+
+.link-line {
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--ink-3);
+  overflow-wrap: anywhere;
+}
+
+/* The small arrow on the right. */
+.link-arrow {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--sky);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 150ms var(--ease);
+}
+
+.link-button:hover .link-arrow { transform: translateX(3px); }
+
+/* 3. THE MAIN BUTTON: solid green, white words (5 to 1 contrast). */
+.link-main {
+  color: var(--white);
+  background: var(--green-deep);
+  border-color: var(--green-deep);
+}
+
+.link-main:hover { background: var(--green-ink); border-color: var(--green-ink); }
+.link-main .icon { color: var(--white); background: var(--green-ink); }
+.link-main .link-name,
+.link-main .link-line,
+.link-main .link-arrow { color: var(--white); }
+
+/* 4. SOMETHING NEW: a green edge and a small "New" label after the name. */
+.link-new { border: 2px solid var(--green); }
+
+.link-new .link-name::after {
+  content: "New";
+  display: inline-block;
+  margin-left: var(--space-2);
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  vertical-align: 0.2em;
+  color: var(--green-ink);
+  background: var(--green-tint);
 }
 
 

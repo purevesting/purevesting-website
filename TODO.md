@@ -125,6 +125,20 @@ MAS says "go live" (CLAUDE.md, "How to hand over").
       too. Live 21 Nov 2026 (MAS: "go live"). Open points: section 0,
       items 33 to 35, and fable-website-new-version-check.md, section 1a
       (what to try once on a real phone; what was not asked for).
+- [x] **Extra, 26 Nov 2026: the links page** — MAS asked. Done on
+      branch claude/modest-franklin-0u1ha3 (the branch this session was
+      given); live once MAS says "go live". The new page /links/
+      (purevesting.com/links lands there too), for the Instagram bio,
+      YouTube, WhatsApp and the QR code on the visiting card: the logo,
+      "Purevesting", the footer's one line, then one big button each —
+      Website (solid green), YouTube (@purevesting), Instagram,
+      Newsletter (to /join/), Email (salam@, with the address written
+      out). Everything on the first screen of a 360px phone; no
+      JavaScript. Ready inside comment marks: the zakat calculator, the
+      riba audit and the halal finance course. "link-new" makes a new
+      thing stand out with a "New" label. site.css section 35; the
+      footer's sign-up hides on this page (section 8). Sitemap; README.
+      Not in the menu, not in sw.js. Open points: section 0, item 36.
 - [ ] **1.3 Zakat answers and interest tool**
 - [ ] **1.4 Ramadan switch**
 - [ ] **1.5 Scholar's edits and launch**
@@ -142,7 +156,9 @@ section 0d.
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 21 November 2026, step 1.2 of the plan above: the zakat
+Last updated: 26 November 2026, an extra step: the links page /links/
+(what is left for MAS: section 0, item 36). Before that, 21 November
+2026, step 1.2 of the plan above: the zakat
 calculator at /zakat-calculator/, its maths in `assets/calc/zakat.js`
 with its tests, and the shared tool blocks in site.css section 34 (what
 is left for MAS: section 0, items 33 to 35). Earlier the same day, step
@@ -591,6 +607,42 @@ decision only he can make.
       marks: remove them only when the zakat check-up is live and the
       lawyer has said yes. (b) Step 1.3: "Interest to give away", under
       "What next", goes to /tools/ until the interest page exists.
+- [ ] **36. The links page: put it to work (added 26 Nov, links page).**
+      After "go live":
+      1. Open **purevesting.com/links** on your phone and tap each of the
+         five buttons once. YouTube and Instagram should open in their
+         apps; Email should open your mail app.
+      2. **Instagram bio:** Instagram app → your profile → **Edit
+         profile** → **Links** → **Add external link** → URL
+         `https://purevesting.com/links` → Title `Purevesting` → Done.
+         Put it first, above any other link.
+      3. **YouTube:** YouTube Studio → **Customisation** → **Basic info**
+         → **Links** → **Add link** → Title `All links`, URL
+         `https://purevesting.com/links` → **Publish**. Also paste it in
+         the channel description and at the end of video descriptions.
+      4. **WhatsApp:** paste `purevesting.com/links` in your WhatsApp
+         Business profile (Settings → Business tools → Profile →
+         Website) and in your WhatsApp Channel's description.
+      5. **The visiting card's QR code:** make it for
+         `https://purevesting.com/links` exactly (with https://). Make a
+         **static** QR code, not a "dynamic" one: a dynamic code sends
+         every scan through the maker's own website first, can count
+         people, and stops working if that service closes or asks for
+         money. Before you print, scan it with two phones. Print it at
+         least 2 cm wide, black on white, with a white edge around it.
+      6. **Switch on the zakat calculator button if you like:** it is
+         already live, so in `links/index.html` just delete the two
+         comment-mark lines (`<!--` and `-->`) around its block.
+      7. **Riba audit and course:** when each is live, send the website
+         chat its link and its short line, or paste them yourself into
+         its block (where it says PASTE…) and delete its comment marks.
+         Say "make it New" to give it the "New" label at the top.
+      Good to know: the YouTube button uses the address you gave,
+      youtube.com/@purevesting. The footer and /official/ still use the
+      channel's long address (youtube.com/channel/UCY_…). Both open the
+      same channel; say "use @purevesting everywhere" to change them.
+      The page has no link picture of its own yet (a WhatsApp preview
+      shows the site's default one); ask for one if you want it.
 
 ---
 
