@@ -5305,10 +5305,15 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
       Only the website has it.
    4. SOMETHING NEW: add "link-new" — a green edge and a small "New"
       label after the name. One at a time, put first.
+   5. A GENTLE START: the buttons rise in, one after another.
    ========================================================================== */
 
-/* 1. THE HEAD. A little less air above it than a normal section. */
-.links-page { padding-top: var(--space-6); }
+/* 1. THE HEAD. A little less air above it than a normal section, and a
+   soft sky-blue glow behind the top that fades into the cream page. */
+.links-page {
+  padding-top: var(--space-6);
+  background: radial-gradient(ellipse 90% 22rem at 50% 0, var(--sky-tint), transparent);
+}
 
 .links-head {
   max-width: 30rem;
@@ -5316,15 +5321,37 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
   text-align: center;
 }
 
-.links-head img {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto var(--space-3);
+/* The logo in a white circle with a thin blue ring and a soft shadow. */
+.links-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.5rem;
+  height: 5.5rem;
+  margin-bottom: var(--space-4);
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--sky-soft);
+  box-shadow: var(--shadow);
 }
+
+.links-logo img { width: 56px; height: 56px; }
 
 .links-head h1 {
   margin: 0;
   font-size: 2.25rem;
+  letter-spacing: -0.03em;
+}
+
+/* The green dot after the name, like the logo in the header. */
+.links-head h1::after {
+  content: "";
+  display: inline-block;
+  width: 0.22em;
+  height: 0.22em;
+  margin-left: 0.05em;
+  border-radius: 50%;
+  background: var(--green);
 }
 
 .links-about {
@@ -5433,6 +5460,26 @@ tr:has(+ .source-panel-row) td { border-bottom-color: transparent; }
   background: var(--green-tint);
 }
 
+
+/* 5. A GENTLE START: the buttons rise into place one after another when
+   the page opens (under half a second in all). Plain CSS, so it needs no
+   JavaScript. It switches off when the phone asks for less motion, and
+   the buttons then simply show. */
+@keyframes link-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.links-list li { animation: link-rise 320ms var(--ease) both; }
+.links-list li:nth-child(2) { animation-delay: 40ms; }
+.links-list li:nth-child(3) { animation-delay: 80ms; }
+.links-list li:nth-child(4) { animation-delay: 120ms; }
+.links-list li:nth-child(5) { animation-delay: 160ms; }
+.links-list li:nth-child(n+6) { animation-delay: 200ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .links-list li { animation: none; }
+}
 
 /* ==========================================================================
    DARK MODE GOES HERE LATER.

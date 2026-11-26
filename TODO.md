@@ -138,7 +138,12 @@ MAS says "go live" (CLAUDE.md, "How to hand over").
       riba audit and the halal finance course. "link-new" makes a new
       thing stand out with a "New" label. site.css section 35; the
       footer's sign-up hides on this page (section 8). Sitemap; README.
-      Not in the menu, not in sw.js. Open points: section 0, item 36.
+      Not in the menu, not in sw.js. The same day MAS asked for it to be
+      "beautiful, appealing but still minimalistic": a soft sky-blue glow
+      behind the top, the logo in a white circle, the green dot after the
+      name, and the buttons rising in one after another (none of it when
+      a phone asks for less motion). Live 26 Nov 2026 (MAS: "go live").
+      Open points: section 0, item 36.
 - [ ] **1.3 Zakat answers and interest tool**
 - [ ] **1.4 Ramadan switch**
 - [ ] **1.5 Scholar's edits and launch**
@@ -156,8 +161,8 @@ section 0d.
 Everything the site still needs. Add to this file whenever something gets
 parked. Delete a line when it's actually done.
 
-Last updated: 26 November 2026, an extra step: the links page /links/
-(what is left for MAS: section 0, item 36). Before that, 21 November
+Last updated: 26 November 2026, an extra step: the links page /links/,
+live the same day (what is left for MAS: section 0, item 36). Before that, 21 November
 2026, step 1.2 of the plan above: the zakat
 calculator at /zakat-calculator/, its maths in `assets/calc/zakat.js`
 with its tests, and the shared tool blocks in site.css section 34 (what
@@ -608,7 +613,7 @@ decision only he can make.
       lawyer has said yes. (b) Step 1.3: "Interest to give away", under
       "What next", goes to /tools/ until the interest page exists.
 - [ ] **36. The links page: put it to work (added 26 Nov, links page).**
-      After "go live":
+      It is live (26 Nov):
       1. Open **purevesting.com/links** on your phone and tap each of the
          five buttons once. YouTube and Instagram should open in their
          apps; Email should open your mail app.
